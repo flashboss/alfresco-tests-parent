@@ -1,0 +1,96 @@
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+	<bean id="global-properties"
+		class="org.alfresco.config.JndiPropertiesFactoryBean">
+		<property name="locations">
+			<list>
+				<value>classpath*:alfresco/module/*/alfresco-global.properties</value>
+				<value>classpath*:alfresco-global.properties</value>
+			</list>
+		</property>
+		<property name="systemPropertiesModeName">
+			<value>SYSTEM_PROPERTIES_MODE_OVERRIDE</value>
+		</property>
+		<property name="propertiesPersister">
+			<bean class="org.alfresco.config.AlfrescoPropertiesPersister" />
+		</property>
+	</bean>
+	<bean id="common-placeholder-configurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		abstract="true">
+		<!-- Note: If you change these settings you may also want to change them 
+			in the LegacyConfigPostProcessor as well. -->
+		<property name="valueSeparator">
+			<null />
+		</property>
+		<property name="ignoreUnresolvablePlaceholders">
+			<value>true</value>
+		</property>
+		<property name="searchSystemEnvironment">
+			<value>false</value>
+		</property>
+		<property name="propertiesPersister">
+			<bean class="org.alfresco.config.AlfrescoPropertiesPersister" />
+		</property>
+	</bean>
+	<bean id="repository-properties"
+		parent="common-placeholder-configurer">
+		<property name="properties">
+			<ref bean="global-properties" />
+		</property>
+		<!-- Do not allow version information to be overriden -->
+		<property name="localOverride">
+			<value>false</value>
+		</property>
+		<property name="systemPropertiesModeName">
+			<value>SYSTEM_PROPERTIES_MODE_NEVER</value>
+		</property>
+		<!-- Order before shared-properties to give you a chance to override its 
+			parameters here -->
+		<property name="order">
+			<value>6</value>
+		</property>
+	</bean>
+	<bean id="contentService"
+		class="org.alfresco.mock.test.MockContentService" />
+	<alias name="contentService" alias="ContentService" />
+	<bean id="nodeService"
+		class="org.alfresco.mock.test.MockNodeService" />
+	<alias name="nodeService" alias="NodeService" />
+	<bean id="FileFolderService"
+		class="org.alfresco.mock.test.MockFileFolderService" />
+	<bean id="SearchService"
+		class="org.alfresco.mock.test.MockSearchService" />
+	<bean id="mimetypeService"
+		class="org.alfresco.mock.test.MockMimetypeService" />
+	<bean id="NodeLocatorService"
+		class="org.alfresco.mock.test.MockNodeLocatorService" />
+	<bean id="baseJavaScriptExtension" abstract="true" />
+	<bean id="dictionaryModelBootstrap"
+		class="org.alfresco.repo.dictionary.DictionaryBootstrap"
+		abstract="true" />
+	<bean id="dictionaryBootstrap"
+		class="org.alfresco.repo.dictionary.DictionaryBootstrap" />
+	<bean id="ServiceRegistry"
+		class="org.alfresco.mock.test.MockServiceRegistry">
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>
+		<property name="contentService">
+			<ref bean="ContentService" />
+		</property>
+		<property name="searchService">
+			<ref bean="SearchService" />
+		</property>
+		<property name="fileFolderService">
+			<ref bean="FileFolderService" />
+		</property>
+		<property name="nodeLocatorService">
+			<ref bean="NodeLocatorService" />
+		</property>
+	</bean>
+	<bean id="action-executer" abstract="true" />
+	<alias name="mimetypeService" alias="MimetypeService"/>
+	<bean id="ImporterService" class="org.alfresco.mock.test.MockImporterService" />
+</beans>
