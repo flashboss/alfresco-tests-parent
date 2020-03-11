@@ -183,3 +183,5 @@ src -> test -> resources -> alfresco -> module -> test-module-context.xml
 		resource="classpath:alfresco/module/${project.artifactId}/context/service-context.xml" />
 </beans>
 ```
+
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/master/alfresco-tests-sample
