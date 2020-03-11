@@ -23,7 +23,7 @@
 	<scm>
 		<connection>svn:git:https://github.com/flashboss/alfresco-tests-parent.git</connection>
 		<developerConnection>svn:git:https://github.com/flashboss/alfresco-tests-parent.git</developerConnection>
-		<tag>6.2.0-ea.0</tag>
+		<tag>6.2.0-ea</tag>
 		<url>svn:git:https://github.com/flashboss/alfresco-tests-parent.git</url>
 	</scm>
 	<developers>
