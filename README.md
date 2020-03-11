@@ -4,9 +4,9 @@ A library to test the alfresco components. It offer mock file to execute unit an
 
 This version is for:
 
-- Java 7
-- ALfresco SDK 1.1.1
-- Alfresco enterprise 4.2.6.6
+- Java 11
+- ALfresco SDK 4.1.0
+- Alfresco community 4.2.0-ea
 
 To start add the dependency in your project sdk amp:
 ```
@@ -147,7 +147,7 @@ src -> main -> amp -> config -> alfresco -> module -> alfresco-tests-sample -> m
 
 and:
 
-src -> main -> amp -> config -> alfresco -> module -> alfresco-tests-sample -> context -> service-context.xml
+src -> main -> resources -> alfresco -> module -> alfresco-tests-sample -> context -> service-context.xml
 
 ```
 <?xml version='1.0' encoding='UTF-8'?>
@@ -163,7 +163,7 @@ src -> main -> amp -> config -> alfresco -> module -> alfresco-tests-sample -> c
 </beans>
 ```
 
-Before to start your test remember to add a alfresco-global.properties withe the variables of the action to test:
+Before to start your test remember to add a alfresco-global.properties with the variables of the action to test:
 
 src -> test -> resources -> alfresco -> module -> alfresco-tests-sample -> alfresco-global.properties
 
