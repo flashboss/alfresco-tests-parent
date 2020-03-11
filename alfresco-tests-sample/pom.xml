@@ -7,7 +7,7 @@
     <name>Alfresco Tests sample</name>
     <packaging>jar</packaging>
     <version>6.2.0-ea.0</version>
-    <description>Simple AMP sample for tests</description>
+    <description>Simple jar sample for tests</description>
 
     <!-- 
         SDK properties have sensible defaults in the SDK parent,
@@ -70,7 +70,7 @@
 		<dependency>
 			<groupId>it.vige</groupId>
 			<artifactId>alfresco-tests</artifactId>
-			<version>${alfresco.version}.0.0.1</version>
+			<version>${alfresco.version}.0</version>
 			<scope>test</scope>
 		</dependency>
 
