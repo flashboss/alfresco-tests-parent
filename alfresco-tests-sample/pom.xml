@@ -3,16 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>alfresco-tests-sample</artifactId>
+    <groupId>it.vige</groupId>
     <name>Alfresco Tests sample</name>
-    <packaging>amp</packaging>
+    <packaging>jar</packaging>
     <version>6.2.0-ea.0</version>
     <description>Simple AMP sample for tests</description>
-
-	<parent>
-		<groupId>org.alfresco.maven</groupId>
-		<artifactId>alfresco-sdk-parent</artifactId>
-		<version>1.1.1</version>
-	</parent>
 
     <!-- 
         SDK properties have sensible defaults in the SDK parent,
@@ -20,7 +15,9 @@
         For more available properties see the alfresco-sdk-parent POM.
        -->
     <properties>
-		<alfresco.version>4.2.6.6</alfresco.version>
+		<alfresco.groupId>org.alfresco</alfresco.groupId>
+		<alfresco.platform.version>6.2.0-ea</alfresco.platform.version>
+        <alfresco.bomDependencyArtifactId>acs-community-packaging</alfresco.bomDependencyArtifactId>
         <!-- The following are default values for data location and Alfresco Community version.
              Uncomment if you need to change (Note. current default version for Enterprise edition is 5.1)
           <alfresco.version>5.1.e</alfresco.version>
@@ -47,8 +44,8 @@
             -->
             <dependency>
                 <groupId>${alfresco.groupId}</groupId>
-                <artifactId>alfresco-platform-distribution</artifactId>
-                <version>${alfresco.version}</version>
+                <artifactId>${alfresco.bomDependencyArtifactId}</artifactId>
+                <version>${alfresco.platform.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -62,22 +59,6 @@
         <dependency>
             <groupId>${alfresco.groupId}</groupId>
             <artifactId>alfresco-repository</artifactId>
-        </dependency>
-
-        <!-- If we are running tests then make the H2 Scripts available
-             Note. tests are skipped when you are running -Pamp-to-war -->
-        <dependency>
-            <groupId>${alfresco.groupId}</groupId>
-            <artifactId>alfresco-repository</artifactId>
-            <version>${alfresco.version}</version>
-            <classifier>h2scripts</classifier>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>

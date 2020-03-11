@@ -11,58 +11,73 @@
 		This is a jar project based on mock classes to test fastly the alfresco applications
 	</description>
 	<url>http://www.vige.it</url>
-	<parent>
-		<groupId>org.alfresco.maven</groupId>
-		<artifactId>alfresco-sdk-parent</artifactId>
-		<version>1.1.1</version>
-	</parent>
 	
 	<properties>
-		<alfresco.version>4.2.6.6</alfresco.version>
+		<alfresco.groupId>org.alfresco</alfresco.groupId>
+		<alfresco.platform.version>6.2.0-ea</alfresco.platform.version>
+        <alfresco.bomDependencyArtifactId>acs-community-packaging</alfresco.bomDependencyArtifactId>
 		<maven.source.plugin.version>3.1.0</maven.source.plugin.version>
 		<maven.javadoc.plugin.version>3.1.1</maven.javadoc.plugin.version>
 		<maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>alfresco-public</id>
-			<url>https://artifacts.alfresco.com/nexus/content/groups/public</url>
-		</repository>
-		<repository>
-			<id>alfresco-private-repository</id>
-			<url>https://artifacts.alfresco.com/nexus/content/groups/private</url>
-		</repository>
-		<repository>
-			<id>alfresco-public-snapshots</id>
-			<url>https://artifacts.alfresco.com/nexus/content/groups/public-snapshots</url>
-		</repository>
-		<repository>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>central</id>
-			<name>Maven Repository Switchboard</name>
-			<url>http://repo1.maven.org/maven2</url>
-		</repository>
-	</repositories>
+    <!--
+        Alfresco Maven Repositories
+        -->
+    <repositories>
+        <repository>
+            <id>alfresco-public</id>
+            <url>https://artifacts.alfresco.com/nexus/content/groups/public</url>
+        </repository>
+        <repository>
+            <id>alfresco-public-snapshots</id>
+            <url>https://artifacts.alfresco.com/nexus/content/groups/public-snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </snapshots>
+        </repository>
+        <!-- Alfresco Enterprise Edition Artifacts, put username/pwd for server in settings.xml -->
+        <repository>
+            <id>alfresco-private-repository</id>
+            <url>https://artifacts.alfresco.com/nexus/content/groups/private</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>alfresco-plugin-public</id>
+            <url>https://artifacts.alfresco.com/nexus/content/groups/public</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>alfresco-plugin-public-snapshots</id>
+            <url>https://artifacts.alfresco.com/nexus/content/groups/public-snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
 	<!-- Here we realize the connection with the Alfresco selected platform 
 		(e.g.version and edition) -->
-	<dependencyManagement>
-		<dependencies>
-			<!-- Setup what versions of the different Alfresco artifacts that will 
-				be used (depends on alfresco.version), so we don't have to specify version 
-				in any of the dependency definitions in our POM. For more info see: http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Importing_Dependencies -->
-			<dependency>
-				<groupId>${alfresco.groupId}</groupId>
-				<artifactId>alfresco-platform-distribution</artifactId>
-				<version>${alfresco.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+    <dependencyManagement>
+        <dependencies>
+            <!-- This will import the dependencyManagement for all artifacts in the selected Alfresco platform.
+                 NOTE: You still need to define dependencies in your POM, but you can omit version as
+                       it's enforced by this dependencyManagement.
+                 NOTE: It defaults to the latest version this SDK pom has been tested with,
+                       but alfresco version can/should be overridden in your project's pom
+            -->
+            <dependency>
+                <groupId>${alfresco.groupId}</groupId>
+                <artifactId>${alfresco.bomDependencyArtifactId}</artifactId>
+                <version>${alfresco.platform.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 	<dependencies>
 		<!-- Following dependencies are needed for compiling Java code in src/main/java; 
@@ -72,23 +87,6 @@
 			<groupId>${alfresco.groupId}</groupId>
 			<artifactId>alfresco-repository</artifactId>
 		</dependency>
-
-		<!-- If we are running tests then make the H2 Scripts available Note. tests 
-			are skipped when you are running -Pamp-to-war -->
-		<dependency>
-			<groupId>${alfresco.groupId}</groupId>
-			<artifactId>alfresco-repository</artifactId>
-			<version>${alfresco.version}</version>
-			<classifier>h2scripts</classifier>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>*</groupId>
-					<artifactId>*</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
