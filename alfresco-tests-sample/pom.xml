@@ -90,7 +90,7 @@
 		<dependency>
 			<groupId>it.vige</groupId>
 			<artifactId>alfresco-tests</artifactId>
-			<version>${alfresco.version}.0.0.1</version>
+			<version>${alfresco.version}.0</version>
 			<scope>test</scope>
 		</dependency>
 
