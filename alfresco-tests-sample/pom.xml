@@ -15,6 +15,7 @@
         For more available properties see the alfresco-sdk-parent POM.
        -->
     <properties>
+    	<alfresco.sdk.version>4.1.0</alfresco.sdk.version>
 		<alfresco.groupId>org.alfresco</alfresco.groupId>
 		<alfresco.platform.version>6.2.0-ea</alfresco.platform.version>
         <alfresco.bomDependencyArtifactId>acs-community-packaging</alfresco.bomDependencyArtifactId>
@@ -70,9 +71,17 @@
 		<dependency>
 			<groupId>it.vige</groupId>
 			<artifactId>alfresco-tests</artifactId>
-			<version>${alfresco.version}.0</version>
+			<version>${alfresco.platform.version}.0</version>
 			<scope>test</scope>
 		</dependency>
+
+        <!-- Bring in Alfresco RAD so we get access to AlfrescoTestRunner classes -->
+        <dependency>
+            <groupId>org.alfresco.maven</groupId>
+            <artifactId>alfresco-rad</artifactId>
+            <version>${alfresco.sdk.version}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
