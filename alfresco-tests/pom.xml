@@ -3,16 +3,21 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>alfresco-tests</artifactId>
-	<groupId>it.vige</groupId>
 	<name>Alfresco Tests</name>
-	<version>6.2.0-ea.0</version>
 	<packaging>jar</packaging>
 	<description>
 		This is a jar project based on mock classes to test fastly the alfresco applications
 	</description>
 	<url>http://www.vige.it</url>
 
+	<parent>
+		<groupId>it.vige</groupId>
+		<artifactId>alfresco-tests-parent</artifactId>
+		<version>6.2.0-ea.0</version>
+	</parent>
+
 	<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<alfresco.groupId>org.alfresco</alfresco.groupId>
 		<alfresco.platform.version>6.2.0-ea</alfresco.platform.version>
 		<alfresco.bomDependencyArtifactId>acs-community-packaging</alfresco.bomDependencyArtifactId>
@@ -88,6 +93,10 @@
 				<exclusion>
 					<groupId>xml-apis</groupId>
 					<artifactId>xml-apis</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.xml.bind</groupId>
+					<artifactId>jaxb-core</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
