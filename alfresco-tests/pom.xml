@@ -97,6 +97,16 @@
 			<version>4.12</version>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>3.0.6.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>com.tradeshift</groupId>
+			<artifactId>junit-remote</artifactId>
+			<version>3</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.neethi</groupId>
 			<artifactId>neethi</artifactId>
 			<version>2.0.4</version>
