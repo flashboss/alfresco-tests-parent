@@ -10,8 +10,96 @@
 	<description>Alfresco tests parent pom</description>
 	<packaging>pom</packaging>
 
+	<organization>
+		<name>Vige</name>
+		<url>http://www.vige.it</url>
+	</organization>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+	<scm>
+		<connection>svn:git:https://github.com/flashboss/alfresco-tests-parent.git</connection>
+		<developerConnection>svn:git:https://github.com/flashboss/alfresco-tests-parent.git</developerConnection>
+		<url>svn:git:https://github.com/flashboss/alfresco-tests-parent.git</url>
+	</scm>
+	<developers>
+		<developer>
+			<id>flashboss</id>
+			<name>Luca Stancapiano</name>
+			<organization>vige</organization>
+			<organizationUrl>http://www.vige.it</organizationUrl>
+			<url>http://www.vige.it</url>
+		</developer>
+	</developers>
+
 	<modules>
 		<module>alfresco-tests</module>
 		<module>alfresco-tests-sample</module>
 	</modules>
+
+	<profiles>
+		<profile>
+			<id>release-sign-artifacts</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>${maven.source.plugin.version}</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>${maven.javadoc.plugin.version}</version>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>${maven.gpg.plugin.version}</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+			<distributionManagement>
+				<snapshotRepository>
+					<id>oss.sonatype</id>
+					<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+				</snapshotRepository>
+				<repository>
+					<id>oss.sonatype</id>
+					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+				</repository>
+			</distributionManagement>
+		</profile>
+	</profiles>
 </project>
