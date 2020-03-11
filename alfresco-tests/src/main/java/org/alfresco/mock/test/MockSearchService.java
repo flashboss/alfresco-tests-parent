@@ -23,6 +23,7 @@ import org.alfresco.service.cmr.search.ResultSetRow;
 import org.alfresco.service.cmr.search.SearchParameters;
 import org.alfresco.service.cmr.search.SearchParameters.Operator;
 import org.alfresco.service.cmr.search.SearchService;
+import org.alfresco.service.cmr.search.SpellCheckResult;
 import org.alfresco.service.namespace.NamespacePrefixResolver;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.util.Pair;
@@ -237,6 +238,24 @@ public class MockSearchService implements SearchService {
 		public Iterator<ResultSetRow> iterator() {
 			// TODO Auto-generated method stub
 			return rows.iterator();
+		}
+
+		@Override
+		public Map<String, Integer> getFacetQueries() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Map<NodeRef, List<Pair<String, List<String>>>> getHighlighting() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public SpellCheckResult getSpellCheckResult() {
+			// TODO Auto-generated method stub
+			return null;
 		}
 	}
 
