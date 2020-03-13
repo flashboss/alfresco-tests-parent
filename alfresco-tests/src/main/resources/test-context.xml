@@ -93,4 +93,7 @@
 	<bean id="action-executer" abstract="true" />
 	<alias name="mimetypeService" alias="MimetypeService"/>
 	<bean id="ImporterService" class="org.alfresco.mock.test.MockImporterService" />
+	<bean id="module.baseComponent" abstract="true" init-method="init">
+        <property name="serviceRegistry" ref="ServiceRegistry" />
+   </bean>
 </beans>
