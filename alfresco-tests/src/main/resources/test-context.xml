@@ -66,6 +66,8 @@
 		class="org.alfresco.mock.test.MockMimetypeService" />
 	<bean id="NodeLocatorService"
 		class="org.alfresco.mock.test.MockNodeLocatorService" />
+	<bean id="nodeLocatorService"
+		class="org.alfresco.mock.test.MockNodeLocatorService" />
 	<bean id="baseJavaScriptExtension" abstract="true" />
 	<bean id="dictionaryModelBootstrap"
 		class="org.alfresco.repo.dictionary.DictionaryBootstrap"
