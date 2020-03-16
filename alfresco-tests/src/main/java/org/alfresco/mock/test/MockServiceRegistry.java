@@ -83,6 +83,14 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 
 	private NodeLocatorService nodeLocatorService;
 
+	private NamespaceService namespaceService;
+
+	private ScriptService scriptService;
+
+	private MimetypeService mimetypeService;
+
+	private ImporterService importerService;
+
 	@Override
 	public Collection<QName> getServices() {
 		// TODO Auto-generated method stub
@@ -121,8 +129,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 
 	@Override
 	public NamespaceService getNamespaceService() {
-		// TODO Auto-generated method stub
-		return null;
+		return namespaceService;
 	}
 
 	@Override
@@ -143,8 +150,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 
 	@Override
 	public MimetypeService getMimetypeService() {
-		// TODO Auto-generated method stub
-		return null;
+		return mimetypeService;
 	}
 
 	@Override
@@ -201,8 +207,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 
 	@Override
 	public ImporterService getImporterService() {
-		// TODO Auto-generated method stub
-		return null;
+		return importerService;
 	}
 
 	@Override
@@ -248,8 +253,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 
 	@Override
 	public ScriptService getScriptService() {
-		// TODO Auto-generated method stub
-		return null;
+		return scriptService;
 	}
 
 	@Override
@@ -503,6 +507,22 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 
 	public void setNodeLocatorService(NodeLocatorService nodeLocatorService) {
 		this.nodeLocatorService = nodeLocatorService;
+	}
+
+	public void setNamespaceService(NamespaceService namespaceService) {
+		this.namespaceService = namespaceService;
+	}
+
+	public void setMimetypeService(MimetypeService mimetypeService) {
+		this.mimetypeService = mimetypeService;
+	}
+
+	public void setScriptService(ScriptService scriptService) {
+		this.scriptService = scriptService;
+	}
+
+	public void setImporterService(ImporterService importerService) {
+		this.importerService = importerService;
 	}
 
 }
