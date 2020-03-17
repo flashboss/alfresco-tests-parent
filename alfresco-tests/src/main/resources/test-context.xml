@@ -111,7 +111,7 @@
 	<bean id="NamespaceService"
 		class="org.alfresco.mock.test.MockNamespaceService" />
 	<alias name="ServiceRegistry" alias="services" />
-		<bean id="processEngineConfiguration"
+	<bean id="processEngineConfiguration"
 		class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
 		<property name="jdbcUrl"
 			value="jdbc:h2:mem:activiti;DB_CLOSE_DELAY=1000" />
@@ -120,12 +120,8 @@
 		<property name="jdbcPassword" value="" />
 		<property name="mailServerHost" value="localhost" />
 		<property name="mailServerPort" value="25000" />
-
-		<!-- Database configurations -->
 		<property name="databaseSchemaUpdate" value="true" />
-
 		<property name="createDiagramOnDeploy" value="false" />
 		<property name="history" value="full" />
-
 	</bean>
 </beans>
