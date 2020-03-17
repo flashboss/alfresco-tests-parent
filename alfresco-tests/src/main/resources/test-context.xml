@@ -63,6 +63,7 @@
 		class="org.alfresco.mock.test.MockFileFolderService" />
 	<bean id="SearchService"
 		class="org.alfresco.mock.test.MockSearchService" />
+	<alias name="SearchService" alias="searchService" />
 	<bean id="mimetypeService"
 		class="org.alfresco.mock.test.MockMimetypeService" />
 	<bean id="NodeLocatorService"
@@ -110,6 +111,7 @@
 		class="org.alfresco.mock.test.MockScriptService" />
 	<bean id="NamespaceService"
 		class="org.alfresco.mock.test.MockNamespaceService" />
+	<alias name="NamespaceService" alias="namespaceService" />
 	<alias name="ServiceRegistry" alias="services" />
 	<bean id="processEngineConfiguration"
 		class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
