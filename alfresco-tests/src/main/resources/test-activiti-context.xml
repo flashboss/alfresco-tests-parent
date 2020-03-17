@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+	<bean id="transactionManager"
+		class="org.alfresco.mock.test.activiti.MockTransactionManager" />
+	<bean id="processEngineConfiguration"
+		class="org.alfresco.repo.workflow.activiti.AlfrescoProcessEngineConfiguration">
+		<property name="jdbcUrl"
+			value="jdbc:h2:mem:activiti;DB_CLOSE_DELAY=1000" />
+		<property name="jdbcDriver" value="org.h2.Driver" />
+		<property name="jdbcUsername" value="sa" />
+		<property name="jdbcPassword" value="" />
+		<property name="mailServerHost" value="localhost" />
+		<property name="mailServerPort" value="25000" />
+		<property name="databaseSchemaUpdate" value="true" />
+		<property name="createDiagramOnDeploy" value="false" />
+		<property name="history" value="full" />
+		<property name="beans" ref="activitiBeanRegistry" />
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="unprotectedNodeService" ref="NodeService" />
+	</bean>
+	<util:map id="activitiBeanRegistry" map-class="java.util.HashMap">
+        <entry key="services" value-ref="ServiceRegistry" />
+    </util:map>
+	<import resource="classpath:test-context.xml" />
+</beans>
