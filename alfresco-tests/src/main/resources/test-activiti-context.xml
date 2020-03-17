@@ -26,4 +26,5 @@
         <entry key="services" value-ref="ServiceRegistry" />
     </util:map>
 	<import resource="classpath:test-context.xml" />
+	<import resource="classpath:alfresco/activiti-context.xml" />
 </beans>
