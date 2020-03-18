@@ -4,9 +4,28 @@
 	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 						http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
-	<bean id="transactionManager"
-		class="org.alfresco.mock.test.activiti.MockTransactionManager" />
-	<bean id="processEngineConfiguration"
+	<import resource="classpath:test-context.xml" />
+	<util:map id="activitiBeanRegistry"
+		map-class="java.util.HashMap">
+		<entry key="services" value-ref="ServiceRegistry" />
+	</util:map>
+	<import resource="classpath:alfresco/activiti-context.xml" />
+	<import resource="classpath:alfresco/workflow-context.xml" />
+	<bean id="dataSource"
+		class="org.alfresco.mock.test.activiti.MockDataSource" />
+	<bean id="wrappedDataSource"
+		class="org.alfresco.mock.test.activiti.MockWrappedDataSource">
+		<property name="targetDataSource" ref="dataSource" />
+	</bean>
+	<bean id="authorityDAO"
+		class="org.alfresco.mock.test.activiti.MockAuthorityDAO" />
+	<bean id="baseDefaultDataSource"
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+		abstract="true" />
+	<bean id="interpreterBase" abstract="true" />
+	<bean id="sessionFactory"
+		class="org.alfresco.mock.test.activiti.MockSessionFactory" />
+	<bean id="activitiProcessEngineConfiguration"
 		class="org.alfresco.repo.workflow.activiti.AlfrescoProcessEngineConfiguration">
 		<property name="jdbcUrl"
 			value="jdbc:h2:mem:activiti;DB_CLOSE_DELAY=1000" />
@@ -22,9 +41,186 @@
 		<property name="transactionManager" ref="transactionManager" />
 		<property name="unprotectedNodeService" ref="NodeService" />
 	</bean>
-	<util:map id="activitiBeanRegistry" map-class="java.util.HashMap">
-        <entry key="services" value-ref="ServiceRegistry" />
-    </util:map>
-	<import resource="classpath:test-context.xml" />
-	<import resource="classpath:alfresco/activiti-context.xml" />
+	<bean id="WorkflowService"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<value>org.alfresco.service.cmr.workflow.WorkflowService</value>
+		</property>
+		<property name="target">
+			<ref bean="workflowServiceImpl" />
+		</property>
+	</bean>
+	<bean id="policyComponent"
+		class="org.alfresco.repo.policy.MockPolicyComponent" />
+	<bean id="workflowBootstrap" parent="workflowDeployer">
+		<property name="workflowDefinitions">
+			<list>
+				<!-- Adhoc workflow definition -->
+				<props>
+					<prop key="engineId">jbpm</prop>
+					<prop key="location">alfresco/workflow/adhoc_processdefinition.xml</prop>
+					<prop key="mimetype">text/xml</prop>
+					<prop key="redeploy">false</prop>
+				</props>
+
+				<!-- Review and Approve workflow definitions -->
+				<props>
+					<prop key="engineId">jbpm</prop>
+					<prop key="location">alfresco/workflow/review_processdefinition.xml
+					</prop>
+					<prop key="mimetype">text/xml</prop>
+					<prop key="redeploy">false</prop>
+				</props>
+				<props>
+					<prop key="engineId">jbpm</prop>
+					<prop key="location">alfresco/workflow/review_pooled_processdefinition.xml
+					</prop>
+					<prop key="mimetype">text/xml</prop>
+					<prop key="redeploy">false</prop>
+				</props>
+				<props>
+					<prop key="engineId">jbpm</prop>
+					<prop key="location">alfresco/workflow/parallelreview_processdefinition.xml
+					</prop>
+					<prop key="mimetype">text/xml</prop>
+					<prop key="redeploy">false</prop>
+				</props>
+				<props>
+					<prop key="engineId">jbpm</prop>
+					<prop key="location">alfresco/workflow/parallelreview_group_processdefinition.xml
+					</prop>
+					<prop key="mimetype">text/xml</prop>
+					<prop key="redeploy">false</prop>
+				</props>
+
+				<!-- WCM workflow definitions -->
+				<props>
+					<prop key="engineId">jbpm</prop>
+					<prop key="location">alfresco/workflow/submit_processdefinition.xml
+					</prop>
+					<prop key="mimetype">text/xml</prop>
+					<prop key="redeploy">false</prop>
+				</props>
+				<props>
+					<prop key="engineId">jbpm</prop>
+					<prop key="location">alfresco/workflow/changerequest_processdefinition.xml
+					</prop>
+					<prop key="mimetype">text/xml</prop>
+					<prop key="redeploy">false</prop>
+				</props>
+				<props>
+					<prop key="engineId">jbpm</prop>
+					<prop key="location">alfresco/workflow/submitdirect_processdefinition.xml
+					</prop>
+					<prop key="mimetype">text/xml</prop>
+					<prop key="redeploy">false</prop>
+				</props>
+
+				<!-- Invitation service workflow definition -->
+				<props>
+					<prop key="engineId">jbpm</prop>
+					<prop key="location">alfresco/workflow/invitation-nominated_processdefinition.xml
+					</prop>
+					<prop key="mimetype">text/xml</prop>
+					<prop key="redeploy">false</prop>
+				</props>
+
+				<!-- Invitation service workflow definition -->
+				<props>
+					<prop key="engineId">jbpm</prop>
+					<prop key="location">alfresco/workflow/invitation-moderated_processdefinition.xml
+					</prop>
+					<prop key="mimetype">text/xml</prop>
+					<prop key="redeploy">false</prop>
+				</props>
+
+				<!-- Activiti Adhoc workflow definition -->
+				<props>
+					<prop key="engineId">activiti</prop>
+					<prop key="location">alfresco/workflow/adhoc.bpmn20.xml</prop>
+					<prop key="mimetype">text/xml</prop>
+					<prop key="redeploy">false</prop>
+				</props>
+
+				<!-- Activiti Review workflow definition -->
+				<props>
+					<prop key="engineId">activiti</prop>
+					<prop key="location">alfresco/workflow/review.bpmn20.xml</prop>
+					<prop key="mimetype">text/xml</prop>
+					<prop key="redeploy">false</prop>
+				</props>
+
+				<!-- Activiti Pooled Review workflow definition -->
+				<props>
+					<prop key="engineId">activiti</prop>
+					<prop key="location">alfresco/workflow/review-pooled.bpmn20.xml</prop>
+					<prop key="mimetype">text/xml</prop>
+					<prop key="redeploy">false</prop>
+				</props>
+
+				<!-- Activiti Parallel Review workflow definition -->
+				<props>
+					<prop key="engineId">activiti</prop>
+					<prop key="location">alfresco/workflow/parallel-review.bpmn20.xml</prop>
+					<prop key="mimetype">text/xml</prop>
+					<prop key="redeploy">false</prop>
+				</props>
+
+				<!-- Activiti Parallel Group Review workflow definition -->
+				<props>
+					<prop key="engineId">activiti</prop>
+					<prop key="location">alfresco/workflow/parallel-review-group.bpmn20.xml
+					</prop>
+					<prop key="mimetype">text/xml</prop>
+					<prop key="redeploy">false</prop>
+				</props>
+
+				<!-- Activiti invitation service workflow definition -->
+				<props>
+					<prop key="engineId">activiti</prop>
+					<prop key="location">alfresco/workflow/invitation-moderated.bpmn20.xml
+					</prop>
+					<prop key="mimetype">text/xml</prop>
+					<prop key="redeploy">false</prop>
+				</props>
+
+				<!-- Activiti invitation service workflow definition -->
+				<props>
+					<prop key="engineId">activiti</prop>
+					<prop key="location">alfresco/workflow/invitation-nominated.bpmn20.xml
+					</prop>
+					<prop key="mimetype">text/xml</prop>
+					<prop key="redeploy">false</prop>
+				</props>
+			</list>
+		</property>
+		<property name="models">
+			<list>
+				<value>alfresco/workflow/workflowModel.xml</value>
+				<value>alfresco/workflow/wcmWorkflowModel.xml</value>
+				<value>alfresco/workflow/invitation-nominated-workflow-model.xml
+				</value>
+				<value>alfresco/workflow/invitation-moderated-workflow-model.xml
+				</value>
+				<value>alfresco/workflow/publishingWorkflowModel.xml</value>
+			</list>
+		</property>
+		<property name="labels">
+			<list>
+				<value>alfresco/workflow/workflow-messages</value>
+				<value>alfresco/workflow/wcm-workflow-messages</value>
+				<value>alfresco/workflow/invitation-nominated-workflow-messages
+				</value>
+				<value>alfresco/workflow/invitation-moderated-workflow-messages
+				</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="authenticationContext"
+		class="org.alfresco.repo.security.authentication.AuthenticationContextImpl">
+		<property name="tenantService">
+			<ref bean="tenantService" />
+		</property>
+	</bean>
+	<bean id="dictionaryDAO" class="org.alfresco.mock.test.activiti.MockDictionaryDAO" />
 </beans>

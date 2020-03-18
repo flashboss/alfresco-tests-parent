@@ -6,7 +6,8 @@
 		class="org.alfresco.config.JndiPropertiesFactoryBean">
 		<property name="locations">
 			<list>
-				<value>classpath*:alfresco/module/*/alfresco-global.properties</value>
+				<value>classpath*:alfresco/module/*/alfresco-global.properties
+				</value>
 				<value>classpath*:alfresco-global.properties</value>
 			</list>
 		</property>
@@ -105,25 +106,59 @@
 		</property>
 	</bean>
 	<bean id="action-executer" abstract="true" />
-	<alias name="mimetypeService" alias="MimetypeService"/>
-	<bean id="ImporterService" class="org.alfresco.mock.test.MockImporterService" />
+	<alias name="mimetypeService" alias="MimetypeService" />
+	<bean id="ImporterService"
+		class="org.alfresco.mock.test.MockImporterService" />
+	<bean id="tenantService"
+		class="org.alfresco.mock.test.MockTenantService" />
 	<bean id="ScriptService"
 		class="org.alfresco.mock.test.MockScriptService" />
 	<bean id="NamespaceService"
-		class="org.alfresco.mock.test.MockNamespaceService" />
+		class="org.alfresco.service.namespace.NamespaceServiceMemoryImpl" />
+	<bean id="PersonService"
+		class="org.alfresco.mock.test.MockPersonService" />
+	<bean id="DictionaryService"
+		class="org.alfresco.mock.test.MockDictionaryService" />
+	<bean id="messageService"
+		class="org.alfresco.mock.test.MockMessageService" />
+	<bean id="repositoryHelper"
+		class="org.alfresco.mock.test.MockRepositoryHelper" />
+	<bean id="authorityService"
+		class="org.alfresco.mock.test.MockAuthorityService" />
+	<bean id="transactionManager"
+		class="org.alfresco.mock.test.MockTransactionManager" />
+	<bean id="transactionService"
+		class="org.alfresco.mock.test.MockTransactionService" />
+	<bean id="retryingTransactionHelper"
+		class="org.alfresco.mock.test.MockRetryingTransactionHelper">
+		<property name="transactionService" ref="transactionService" />
+	</bean>
+	<bean id="spacesBootstrap"
+		class="org.alfresco.mock.test.MockSpacesBootstrap">
+		<property name="transactionService" ref="transactionService" />
+		<property name="retryingTransactionHelper"
+			ref="retryingTransactionHelper" />
+		<property name="namespaceService" ref="namespaceService" />
+		<property name="nodeService" ref="nodeService" />
+		<property name="importerService" ref="ImporterService" />
+	</bean>
+	<bean id="permissionService"
+		class="org.alfresco.mock.test.MockPermissionService" />
+	<bean id="policyBehaviourFilter"
+		class="org.alfresco.mock.test.MockPolicyBehaviourFilter" />
+	<bean id="AVMSyncService"
+		class="org.alfresco.mock.test.MockAVMSyncService" />
+	<bean id="AVMService"
+		class="org.alfresco.mock.test.MockAVMService" />
+	<bean id="NotificationService"
+		class="org.alfresco.mock.test.MockNotificationService" />
+	<bean id="tenantAdminService"
+		class="org.alfresco.mock.test.MockTenantAdminService" />
+	<bean id="templateService"
+		class="org.alfresco.mock.test.MockTemplateService" />
 	<alias name="NamespaceService" alias="namespaceService" />
 	<alias name="ServiceRegistry" alias="services" />
-	<bean id="processEngineConfiguration"
-		class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
-		<property name="jdbcUrl"
-			value="jdbc:h2:mem:activiti;DB_CLOSE_DELAY=1000" />
-		<property name="jdbcDriver" value="org.h2.Driver" />
-		<property name="jdbcUsername" value="sa" />
-		<property name="jdbcPassword" value="" />
-		<property name="mailServerHost" value="localhost" />
-		<property name="mailServerPort" value="25000" />
-		<property name="databaseSchemaUpdate" value="true" />
-		<property name="createDiagramOnDeploy" value="false" />
-		<property name="history" value="full" />
-	</bean>
+	<alias name="DictionaryService" alias="dictionaryService" />
+	<alias name="PersonService" alias="personService" />
+	<alias name="FileFolderService" alias="fileFolderService" />
 </beans>
