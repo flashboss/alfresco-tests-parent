@@ -346,4 +346,8 @@ public class MockFileFolderService implements FileFolderService {
 		return (MockNodeService) nodeService;
 	}
 
+	public void setNodeService(MockNodeService nodeService) {
+		this.nodeService = nodeService;
+	}
+
 }

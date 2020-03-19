@@ -68,7 +68,7 @@ public class MockSearchService implements SearchService {
 	public List<NodeRef> selectNodes(NodeRef contextNodeRef, String xpath, QueryParameterDefinition[] parameters,
 			NamespacePrefixResolver namespacePrefixResolver, boolean followAllParentLinks)
 			throws InvalidNodeRefException, XPathException {
-		// TODO Auto-generated method stub
+		ResultSet resultSet = query(contextNodeRef.getStoreRef(), SearchService.LANGUAGE_XPATH, xpath, parameters);
 		return null;
 	}
 
@@ -119,6 +119,10 @@ public class MockSearchService implements SearchService {
 
 	public MockNodeService getNodeService() {
 		return (MockNodeService) nodeService;
+	}
+
+	public void setNodeService(MockNodeService nodeService) {
+		this.nodeService = nodeService;
 	}
 
 	public class MockResultSet implements ResultSet {

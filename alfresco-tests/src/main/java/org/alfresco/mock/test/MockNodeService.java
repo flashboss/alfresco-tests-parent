@@ -81,8 +81,7 @@ public class MockNodeService implements NodeService {
 
 	@Override
 	public NodeRef getRootNode(StoreRef storeRef) throws InvalidStoreRefException {
-		// TODO Auto-generated method stub
-		return null;
+		return nodeRefs.keySet().toArray(new NodeRef[0])[1];
 	}
 
 	@Override

@@ -164,4 +164,16 @@ public class MockContentService implements ContentService {
 		return (MockNodeService) nodeService;
 	}
 
+	public MimetypeService getMimetypeService() {
+		return mimetypeService;
+	}
+
+	public void setMimetypeService(MimetypeService mimetypeService) {
+		this.mimetypeService = mimetypeService;
+	}
+
+	public void setNodeService(MockNodeService nodeService) {
+		this.nodeService = nodeService;
+	}
+
 }

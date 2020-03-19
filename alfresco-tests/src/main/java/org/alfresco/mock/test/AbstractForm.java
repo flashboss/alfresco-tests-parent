@@ -33,7 +33,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class AbstractForm {
+public abstract class AbstractForm {
 
 	@Autowired
 	protected NodeService nodeService;
