@@ -1,7 +1,6 @@
 package org.alfresco.mock.test;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,8 +14,9 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 
+import org.alfresco.mock.NodeUtils;
+import org.alfresco.mock.ZipUtils;
 import org.alfresco.model.ContentModel;
-import org.alfresco.repo.content.MimetypeMap;
 import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.repository.ContentService;
 import org.alfresco.service.cmr.repository.ContentWriter;
@@ -90,20 +90,12 @@ public abstract class AbstractForm {
 		ContentWriter writer = contentService.getWriter(node, ContentModel.PROP_CONTENT, true);
 		writer.setMimetype(mimetypeService.getMimetype(mimetypeService.getExtension(name)));
 		writer.putContent(inputStream);
-		return node;
+		return NodeUtils.insertDocument(parent, name, text, properties, nodeService, contentService, mimetypeService);
 	}
 
 	protected NodeRef insertZip(NodeRef parent, String zipName, String entryName, String text,
 			Map<QName, Serializable> properties) throws IOException {
-		NodeRef node = nodeService.createNode(parent, ContentModel.ASSOC_CONTAINS,
-				QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, zipName), ContentModel.TYPE_CONTENT,
-				properties).getChildRef();
-		ByteArrayOutputStream output = new ByteArrayOutputStream();
-		ZipUtils.addEntryToZip(text, entryName, output);
-		ContentWriter writer = contentService.getWriter(node, ContentModel.PROP_CONTENT, true);
-		writer.setMimetype(MimetypeMap.MIMETYPE_ZIP);
-		writer.putContent(new ByteArrayInputStream(output.toByteArray()));
-		return node;
+		return ZipUtils.insertZip(parent, zipName, entryName, text, properties, nodeService, contentService);
 	}
 
 	protected String encrypt(InputStream inputStream) throws Exception {

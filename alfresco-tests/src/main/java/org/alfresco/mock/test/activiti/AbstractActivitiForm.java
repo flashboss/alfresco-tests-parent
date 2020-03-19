@@ -5,11 +5,8 @@ import static java.util.Calendar.getInstance;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static org.activiti.engine.impl.util.IoUtil.readInputStream;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
@@ -30,20 +27,17 @@ import org.activiti.engine.impl.cfg.SpringBeanFactoryProxyMap;
 import org.activiti.engine.impl.identity.Authentication;
 import org.activiti.engine.impl.test.ResourceActivitiTestCase;
 import org.activiti.engine.repository.Deployment;
+import org.alfresco.mock.NodeUtils;
+import org.alfresco.mock.ZipUtils;
 import org.alfresco.mock.test.MockContentService;
-import org.alfresco.mock.test.ZipUtils;
-import org.alfresco.model.ContentModel;
-import org.alfresco.repo.content.MimetypeMap;
 import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.repository.ContentService;
-import org.alfresco.service.cmr.repository.ContentWriter;
 import org.alfresco.service.cmr.repository.MimetypeService;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.search.ResultSet;
 import org.alfresco.service.cmr.search.SearchService;
-import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -122,8 +116,8 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	}
 
 	protected NodeRef insertFolder(NodeRef parent, String name) {
-		return ((ActivitiProcessEngineConfiguration) processEngineConfiguration).getFileFolderService()
-				.create(parent, name, ContentModel.TYPE_FOLDER).getNodeRef();
+		return NodeUtils.insertFolder(parent, name,
+				((ActivitiProcessEngineConfiguration) processEngineConfiguration).getFileFolderService());
 	}
 
 	protected NodeRef insertDocument(NodeRef parent, String name, String text, Map<QName, Serializable> properties) {
@@ -131,14 +125,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		NodeService nodeService = activitiProcessEngineConfiguration.getNodeService();
 		ContentService contentService = activitiProcessEngineConfiguration.getContentService();
 		MimetypeService mimetypeService = activitiProcessEngineConfiguration.getMimetypeService();
-		NodeRef node = nodeService.createNode(parent, ContentModel.ASSOC_CONTAINS,
-				QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, name), ContentModel.TYPE_CONTENT, properties)
-				.getChildRef();
-		InputStream inputStream = new ByteArrayInputStream(text.getBytes());
-		ContentWriter writer = contentService.getWriter(node, ContentModel.PROP_CONTENT, true);
-		writer.setMimetype(mimetypeService.getMimetype(mimetypeService.getExtension(name)));
-		writer.putContent(inputStream);
-		return node;
+		return NodeUtils.insertDocument(parent, name, text, properties, nodeService, contentService, mimetypeService);
 	}
 
 	protected NodeRef insertZip(NodeRef parent, String zipName, String entryName, String text,
@@ -146,15 +133,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
 		NodeService nodeService = activitiProcessEngineConfiguration.getNodeService();
 		ContentService contentService = activitiProcessEngineConfiguration.getContentService();
-		NodeRef node = nodeService.createNode(parent, ContentModel.ASSOC_CONTAINS,
-				QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, zipName), ContentModel.TYPE_CONTENT,
-				properties).getChildRef();
-		ByteArrayOutputStream output = new ByteArrayOutputStream();
-		ZipUtils.addEntryToZip(text, entryName, output);
-		ContentWriter writer = contentService.getWriter(node, ContentModel.PROP_CONTENT, true);
-		writer.setMimetype(MimetypeMap.MIMETYPE_ZIP);
-		writer.putContent(new ByteArrayInputStream(output.toByteArray()));
-		return node;
+		return ZipUtils.insertZip(parent, zipName, entryName, text, properties, nodeService, contentService);
 	}
 
 	@Override
@@ -387,9 +366,9 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		return identityService.createUserQuery().userId(Authentication.getAuthenticatedUserId()).memberOfGroup("admin")
 				.count() > 0;
 	}
-	
+
 	public abstract void initDemoUsers(IdentityService identityService);
-	
+
 	public abstract void initDemoGroups(IdentityService identityService);
 
 }
