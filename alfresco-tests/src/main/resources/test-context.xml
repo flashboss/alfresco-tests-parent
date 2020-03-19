@@ -54,15 +54,22 @@
 		</property>
 	</bean>
 	<bean id="contentService"
-		class="org.alfresco.mock.test.MockContentService" />
+		class="org.alfresco.mock.test.MockContentService">
+		<property name="nodeService" ref="nodeService" />
+		<property name="mimetypeService" ref="mimetypeService" />
+	</bean>
 	<alias name="contentService" alias="ContentService" />
 	<bean id="nodeService"
 		class="org.alfresco.mock.test.MockNodeService" />
 	<alias name="nodeService" alias="NodeService" />
 	<bean id="FileFolderService"
-		class="org.alfresco.mock.test.MockFileFolderService" />
+		class="org.alfresco.mock.test.MockFileFolderService">
+		<property name="nodeService" ref="nodeService" />
+	</bean>
 	<bean id="SearchService"
-		class="org.alfresco.mock.test.MockSearchService" />
+		class="org.alfresco.mock.test.MockSearchService">
+		<property name="nodeService" ref="nodeService" />
+	</bean>
 	<alias name="SearchService" alias="searchService" />
 	<bean id="mimetypeService"
 		class="org.alfresco.mock.test.MockMimetypeService" />
