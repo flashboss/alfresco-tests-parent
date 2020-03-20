@@ -49,8 +49,7 @@ public class MockSearchService implements SearchService {
 	@Override
 	public ResultSet query(StoreRef store, String language, String query,
 			QueryParameterDefinition[] queryParameterDefinitions) {
-		// TODO Auto-generated method stub
-		return null;
+		return query(store, language, query);
 	}
 
 	@Override
@@ -68,8 +67,11 @@ public class MockSearchService implements SearchService {
 	public List<NodeRef> selectNodes(NodeRef contextNodeRef, String xpath, QueryParameterDefinition[] parameters,
 			NamespacePrefixResolver namespacePrefixResolver, boolean followAllParentLinks)
 			throws InvalidNodeRefException, XPathException {
+		List<NodeRef> result = new ArrayList<NodeRef>();
 		ResultSet resultSet = query(contextNodeRef.getStoreRef(), SearchService.LANGUAGE_XPATH, xpath, parameters);
-		return null;
+		for (ResultSetRow row : resultSet)
+			result.add(row.getNodeRef());
+		return result;
 	}
 
 	@Override
