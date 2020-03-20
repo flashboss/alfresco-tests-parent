@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import java.io.Serializable;
 
 import org.alfresco.model.ContentModel;
 import org.alfresco.repo.importer.ACPImportPackageHandler;
@@ -23,7 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.google.gdata.util.common.base.Charsets;
 import com.google.gdata.util.common.io.CharStreams;
 
-public class MockImporterService implements ImporterService {
+public class MockImporterService implements ImporterService, Serializable {
 
 	@Autowired
 	private NodeService nodeService;

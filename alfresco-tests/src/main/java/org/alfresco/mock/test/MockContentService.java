@@ -1,6 +1,7 @@
 package org.alfresco.mock.test;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ import org.alfresco.service.cmr.repository.TransformationOptions;
 import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class MockContentService implements ContentService {
+public class MockContentService implements ContentService, Serializable {
 
 	public final static String FOLDER_TEST = "./target/test-classes/";
 

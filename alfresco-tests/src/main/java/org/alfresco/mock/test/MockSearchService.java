@@ -28,7 +28,7 @@ import org.alfresco.service.namespace.QName;
 import org.alfresco.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class MockSearchService implements SearchService {
+public class MockSearchService implements SearchService, Serializable {
 
 	@Autowired
 	private NodeService nodeService;

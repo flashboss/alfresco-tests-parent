@@ -1,12 +1,13 @@
 package org.alfresco.mock.test;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
 
 import org.alfresco.service.namespace.NamespaceException;
 import org.alfresco.service.namespace.NamespaceService;
 
-public class MockNamespaceService implements NamespaceService {
+public class MockNamespaceService implements NamespaceService, Serializable {
 
 	@Override
 	public String getNamespaceURI(String prefix) throws NamespaceException {

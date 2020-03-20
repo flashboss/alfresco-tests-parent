@@ -1,5 +1,6 @@
 package org.alfresco.mock.test;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import org.alfresco.cmis.CMISDictionaryService;
@@ -71,7 +72,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 
-public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
+public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, Serializable {
 
 	private NodeService nodeService;
 

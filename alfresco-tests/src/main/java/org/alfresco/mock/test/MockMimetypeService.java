@@ -1,6 +1,7 @@
 package org.alfresco.mock.test;
 
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,7 @@ import org.alfresco.repo.content.encoding.ContentCharsetFinder;
 import org.alfresco.service.cmr.repository.ContentReader;
 import org.alfresco.service.cmr.repository.MimetypeService;
 
-public class MockMimetypeService implements MimetypeService {
+public class MockMimetypeService implements MimetypeService, Serializable {
 
 	@Override
 	public String getExtension(String mimetype) {

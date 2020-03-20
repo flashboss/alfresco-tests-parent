@@ -1,5 +1,6 @@
 package org.alfresco.mock.test;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import org.alfresco.service.cmr.repository.NodeRef;
@@ -10,7 +11,7 @@ import org.alfresco.service.cmr.security.PermissionContext;
 import org.alfresco.service.cmr.security.PermissionService;
 import org.alfresco.service.namespace.QName;
 
-public class MockPermissionService implements PermissionService {
+public class MockPermissionService implements PermissionService, Serializable {
 
 	@Override
 	public String getOwnerAuthority() {

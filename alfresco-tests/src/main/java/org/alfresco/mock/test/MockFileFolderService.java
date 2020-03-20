@@ -31,7 +31,7 @@ import org.alfresco.util.Pair;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class MockFileFolderService implements FileFolderService {
+public class MockFileFolderService implements FileFolderService, Serializable {
 
 	@Autowired
 	private NodeService nodeService;

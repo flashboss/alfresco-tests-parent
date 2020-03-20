@@ -30,7 +30,7 @@ import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.service.namespace.QNamePattern;
 
-public class MockNodeService implements NodeService {
+public class MockNodeService implements NodeService, Serializable {
 
 	private Map<NodeRef, Map<QName, Serializable>> sampleProperties = new HashMap<NodeRef, Map<QName, Serializable>>();
 

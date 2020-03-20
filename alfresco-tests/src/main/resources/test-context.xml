@@ -6,7 +6,8 @@
 		class="org.alfresco.config.JndiPropertiesFactoryBean">
 		<property name="locations">
 			<list>
-				<value>classpath*:alfresco/module/*/alfresco-global.properties</value>
+				<value>classpath*:alfresco/module/*/alfresco-global.properties
+				</value>
 				<value>classpath*:alfresco-global.properties</value>
 			</list>
 		</property>
@@ -104,7 +105,7 @@
 			<ref bean="NamespaceService" />
 		</property>
 		<property name="scriptService">
-			<ref bean="ScriptService" />
+			<ref bean="scriptService" />
 		</property>
 		<property name="mimetypeService">
 			<ref bean="MimetypeService" />
@@ -117,12 +118,48 @@
 		</property>
 	</bean>
 	<bean id="action-executer" abstract="true" />
-	<alias name="mimetypeService" alias="MimetypeService"/>
-	<bean id="ImporterService" class="org.alfresco.mock.test.MockImporterService" />
-	<bean id="ScriptService"
-		class="org.alfresco.mock.test.MockScriptService" />
+	<alias name="mimetypeService" alias="MimetypeService" />
+	<bean id="ImporterService"
+		class="org.alfresco.mock.test.MockImporterService" />
+	<bean id="scriptService"
+		class="org.alfresco.mock.test.MockScriptService">
+		<property name="scriptProcessor"
+			ref="javaScriptProcessor" />
+	</bean>
 	<bean id="NamespaceService"
 		class="org.alfresco.mock.test.MockNamespaceService" />
 	<alias name="NamespaceService" alias="namespaceService" />
 	<alias name="ServiceRegistry" alias="services" />
+	<bean id="javaScriptProcessor"
+		class="org.alfresco.mock.test.MockScriptProcessor"
+		init-method="register">
+		<property name="name">
+			<value>javascript</value>
+		</property>
+		<property name="extension">
+			<value>js</value>
+		</property>
+		<!-- compile javascript and cache compiled scripts -->
+		<property name="compile">
+			<value>true</value>
+		</property>
+		<!-- allow sharing of sealed scopes for performance -->
+		<!-- disable to give each script it's own new scope which can be extended -->
+		<property name="shareSealedScopes">
+			<value>true</value>
+		</property>
+		<property name="scriptService">
+			<ref bean="scriptService" />
+		</property>
+		<!-- Creates ScriptNodes which require the ServiceRegistry -->
+		<property name="serviceRegistry">
+			<ref bean="ServiceRegistry" />
+		</property>
+		<property name="storeUrl">
+			<value>workspace://SpacesStore</value>
+		</property>
+		<property name="storePath">
+			<value>app:company_home</value>
+		</property>
+	</bean>
 </beans>
