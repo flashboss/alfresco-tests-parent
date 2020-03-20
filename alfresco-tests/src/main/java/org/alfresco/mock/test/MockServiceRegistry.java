@@ -91,6 +91,8 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 
 	private ImporterService importerService;
 
+	private PermissionService permissionService;
+
 	@Override
 	public Collection<QName> getServices() {
 		// TODO Auto-generated method stub
@@ -230,8 +232,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 
 	@Override
 	public PermissionService getPermissionService() {
-		// TODO Auto-generated method stub
-		return null;
+		return permissionService;
 	}
 
 	@Override
@@ -523,6 +524,10 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 
 	public void setImporterService(ImporterService importerService) {
 		this.importerService = importerService;
+	}
+
+	public void setPermissionService(PermissionService permissionService) {
+		this.permissionService = permissionService;
 	}
 
 }

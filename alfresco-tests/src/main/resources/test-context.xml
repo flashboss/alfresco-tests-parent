@@ -75,6 +75,8 @@
 		class="org.alfresco.mock.test.MockMimetypeService" />
 	<bean id="NodeLocatorService"
 		class="org.alfresco.mock.test.MockNodeLocatorService" />
+	<bean id="permissionService"
+		class="org.alfresco.mock.test.MockPermissionService" />
 	<bean id="baseJavaScriptExtension" abstract="true" />
 	<bean id="dictionaryModelBootstrap"
 		class="org.alfresco.repo.dictionary.DictionaryBootstrap"
@@ -109,6 +111,9 @@
 		</property>
 		<property name="importerService">
 			<ref bean="ImporterService" />
+		</property>
+		<property name="permissionService">
+			<ref bean="permissionService" />
 		</property>
 	</bean>
 	<bean id="action-executer" abstract="true" />

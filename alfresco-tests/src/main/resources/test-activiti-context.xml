@@ -16,6 +16,7 @@
 		<property name="databaseSchemaUpdate" value="true" />
 		<property name="createDiagramOnDeploy" value="false" />
 		<property name="history" value="full" />
+		<property name="serviceRegistry" ref="ServiceRegistry" />
 		<property name="searchService" ref="searchService" />
 		<property name="fileFolderService"
 			ref="FileFolderService" />

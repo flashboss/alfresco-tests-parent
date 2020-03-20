@@ -105,6 +105,7 @@ public class MockNodeService implements NodeService {
 			storeRef = StoreRef.STORE_REF_ARCHIVE_SPACESSTORE;
 		NodeRef nodeRef = new NodeRef(storeRef + File.separator + pathStr);
 		setProperty(nodeRef, ContentModel.PROP_NAME, nodeUUID);
+		setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
 		File file = new File(pathStr);
 		if (nodeTypeQName.equals(ContentModel.TYPE_FOLDER))
 			file.mkdir();
@@ -129,6 +130,7 @@ public class MockNodeService implements NodeService {
 		NodeRef nodeRef = new NodeRef(storeRef + File.separator + pathStr);
 		setProperties(nodeRef, properties);
 		File file = new File(pathStr);
+		setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
 		if (nodeTypeQName.equals(ContentModel.TYPE_FOLDER))
 			file.mkdir();
 		else
@@ -157,13 +159,12 @@ public class MockNodeService implements NodeService {
 
 	@Override
 	public QName getType(NodeRef nodeRef) throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-		return null;
+		return (QName) getProperty(nodeRef, ContentModel.TYPE_BASE);
 	}
 
 	@Override
 	public void setType(NodeRef nodeRef, QName typeQName) throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
+		setProperty(nodeRef, ContentModel.TYPE_BASE, typeQName);
 
 	}
 

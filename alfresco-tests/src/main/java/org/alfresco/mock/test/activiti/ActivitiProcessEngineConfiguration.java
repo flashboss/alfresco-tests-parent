@@ -1,6 +1,7 @@
 package org.alfresco.mock.test.activiti;
 
 import org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration;
+import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.repository.ContentService;
 import org.alfresco.service.cmr.repository.MimetypeService;
@@ -14,6 +15,7 @@ public class ActivitiProcessEngineConfiguration extends StandaloneProcessEngineC
 	private NodeService nodeService;
 	private ContentService contentService;
 	private MimetypeService mimetypeService;
+	private ServiceRegistry serviceRegistry;
 	
 	public SearchService getSearchService() {
 		return searchService;
@@ -44,5 +46,11 @@ public class ActivitiProcessEngineConfiguration extends StandaloneProcessEngineC
 	}
 	public void setMimetypeService(MimetypeService mimetypeService) {
 		this.mimetypeService = mimetypeService;
+	}
+	public ServiceRegistry getServiceRegistry() {
+		return serviceRegistry;
+	}
+	public void setServiceRegistry(ServiceRegistry serviceRegistry) {
+		this.serviceRegistry = serviceRegistry;
 	}
 }
