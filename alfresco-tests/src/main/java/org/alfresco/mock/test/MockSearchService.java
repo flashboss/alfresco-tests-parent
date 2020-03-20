@@ -40,7 +40,7 @@ public class MockSearchService implements SearchService {
 		Collection<NodeRef> nodeRefs = nodeService.getNodeRefs().keySet();
 		for (NodeRef nodeRef : nodeRefs) {
 			String name = (String) nodeService.getProperty(nodeRef, ContentModel.PROP_NAME);
-			if (query.endsWith(name + "\"") || query.endsWith("\"*\""))
+			if ((name != null && query.replaceAll("\"", "").endsWith(name)) || query.endsWith("\"*\""))
 				rows.add(new MockResultSetRow(nodeRef));
 		}
 		return new MockResultSet(rows);
