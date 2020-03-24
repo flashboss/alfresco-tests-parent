@@ -159,13 +159,16 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public QName getType(NodeRef nodeRef) throws InvalidNodeRefException {
-		return (QName) getProperty(nodeRef, ContentModel.TYPE_BASE);
+		Serializable object = getProperty(nodeRef, ContentModel.TYPE_BASE);
+		if (object instanceof QName)
+			return (QName) object;
+		else
+			return QName.createQName(object + "");
 	}
 
 	@Override
 	public void setType(NodeRef nodeRef, QName typeQName) throws InvalidNodeRefException {
 		setProperty(nodeRef, ContentModel.TYPE_BASE, typeQName);
-
 	}
 
 	@Override
