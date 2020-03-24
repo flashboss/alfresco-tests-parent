@@ -1,4 +1,4 @@
-package org.alfresco.mock.test;
+package org.alfresco.mock.test.script;
 
 import java.io.Serializable;
 

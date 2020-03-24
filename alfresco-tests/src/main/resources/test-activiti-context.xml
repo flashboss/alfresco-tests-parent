@@ -24,6 +24,10 @@
 		<property name="contentService" ref="contentService" />
 		<property name="mimetypeService"
 			ref="mimetypeService" />
+		<property name="searchScript"
+			ref="searchScript" />
+		<property name="loggerScript"
+			ref="loggerScript" />
 	</bean>
 	<import resource="classpath:test-context.xml" />
 	<import resource="classpath:alfresco/activiti-context.xml" />

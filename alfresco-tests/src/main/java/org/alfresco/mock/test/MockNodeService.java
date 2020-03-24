@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -159,7 +160,11 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public QName getType(NodeRef nodeRef) throws InvalidNodeRefException {
-		return (QName) getProperty(nodeRef, ContentModel.TYPE_BASE);
+		Serializable object = getProperty(nodeRef, ContentModel.TYPE_BASE);
+		if (object instanceof QName)
+			return (QName) object;
+		else
+			return QName.createQName(object + "");
 	}
 
 	@Override
@@ -192,7 +197,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public Set<QName> getAspects(NodeRef nodeRef) throws InvalidNodeRefException {
-		return sampleAspects.keySet();
+		return new HashSet<QName>(sampleAspects.keySet());
 	}
 
 	@Override
