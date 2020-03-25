@@ -13,13 +13,11 @@ public class MockActivitiScriptNode extends ActivitiScriptNode {
 
 	@Override
 	public void save() {
-
 	}
-	
+
 	@Override
-    public void setScope(Scriptable scope)
-    {
-        this.scope = null;
-    }
+	public void setScope(Scriptable scope) {
+		this.scope = null;
+	}
 
 }
