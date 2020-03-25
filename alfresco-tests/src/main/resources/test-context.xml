@@ -123,8 +123,7 @@
 		class="org.alfresco.mock.test.MockImporterService" />
 	<bean id="scriptService"
 		class="org.alfresco.mock.test.MockScriptService">
-		<property name="scriptProcessor"
-			ref="javaScriptProcessor" />
+		<property name="scriptProcessor" ref="javaScriptProcessor" />
 	</bean>
 	<bean id="NamespaceService"
 		class="org.alfresco.mock.test.MockNamespaceService" />
@@ -162,61 +161,73 @@
 			<value>app:company_home</value>
 		</property>
 	</bean>
-	<bean id="searchScript" parent="baseJavaScriptExtension" class="org.alfresco.mock.test.script.MockSearch">
-        <property name="extensionName">
-            <value>search</value>
-        </property>
-        <property name="searchSubsystemSwitchableApplicationContextFactory">
-            <ref bean="Search" />
-        </property>
-        <property name="serviceRegistry">
-            <ref bean="ServiceRegistry"/>
-        </property>
-        <property name="repositoryHelper">
-           <ref bean="repositoryHelper"/>
-        </property>
-        <property name="storeUrl">
-            <value>workspace://SpacesStore</value>
-        </property>
-    </bean>
-    <bean id="loggerScript" parent="baseJavaScriptExtension" class="org.alfresco.mock.test.script.MockLogger">
-        <property name="extensionName">
-            <value>logger</value>
-        </property>
-    </bean>
-    <bean id="repositoryHelper" class="org.alfresco.repo.model.Repository">
-      <property name="namespaceService" ref="namespaceService" />
-      <property name="nodeService" ref="nodeService" />
-      <property name="fileFolderService" ref="FileFolderService" />
-      <property name="searchService" ref="searchService" />
-      <property name="companyHomeStore"><value>workspace://SpacesStore</value></property>
-      <property name="companyHomePath"><value>app:company_home</value></property>
-   </bean>
-   <bean id="Search" class="org.alfresco.repo.management.subsystems.SwitchableApplicationContextFactory" parent="abstractPropertyBackedBean">
-        <property name="autoStart">
-            <value>false</value>
-        </property>
-        <property name="category">
-            <value>Search</value>
-        </property>
-        <property name="sourceBeanName">
-            <value>lucene</value>
-        </property>
-        <property name="instancePath">
-            <list>
-                <value>manager</value>
-            </list>
-        </property>
-    </bean>
-    <bean id="propertyBackedBeanRegistry" class="org.alfresco.repo.management.subsystems.DefaultPropertyBackedBeanRegistry"/>
-    <bean id="abstractPropertyBackedBean" class="org.alfresco.repo.management.subsystems.AbstractPropertyBackedBean"
-        abstract="true">
-        <property name="registry">
-            <ref local="propertyBackedBeanRegistry" />
-        </property>
-        <!-- Ensure that child application contexts propagate global default values -->
-        <property name="propertyDefaults">
-            <ref local="global-properties" />
-        </property>
-    </bean>
+	<bean id="searchScript" parent="baseJavaScriptExtension"
+		class="org.alfresco.mock.test.script.MockSearch">
+		<property name="extensionName">
+			<value>search</value>
+		</property>
+		<property
+			name="searchSubsystemSwitchableApplicationContextFactory">
+			<ref bean="Search" />
+		</property>
+		<property name="serviceRegistry">
+			<ref bean="ServiceRegistry" />
+		</property>
+		<property name="repositoryHelper">
+			<ref bean="repositoryHelper" />
+		</property>
+		<property name="storeUrl">
+			<value>workspace://SpacesStore</value>
+		</property>
+	</bean>
+	<bean id="loggerScript" parent="baseJavaScriptExtension"
+		class="org.alfresco.mock.test.script.MockLogger">
+		<property name="extensionName">
+			<value>logger</value>
+		</property>
+	</bean>
+	<bean id="repositoryHelper"
+		class="org.alfresco.repo.model.Repository">
+		<property name="namespaceService" ref="namespaceService" />
+		<property name="nodeService" ref="nodeService" />
+		<property name="fileFolderService" ref="FileFolderService" />
+		<property name="searchService" ref="searchService" />
+		<property name="companyHomeStore">
+			<value>workspace://SpacesStore</value>
+		</property>
+		<property name="companyHomePath">
+			<value>app:company_home</value>
+		</property>
+	</bean>
+	<bean id="Search"
+		class="org.alfresco.repo.management.subsystems.SwitchableApplicationContextFactory"
+		parent="abstractPropertyBackedBean">
+		<property name="autoStart">
+			<value>false</value>
+		</property>
+		<property name="category">
+			<value>Search</value>
+		</property>
+		<property name="sourceBeanName">
+			<value>lucene</value>
+		</property>
+		<property name="instancePath">
+			<list>
+				<value>manager</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="propertyBackedBeanRegistry"
+		class="org.alfresco.repo.management.subsystems.DefaultPropertyBackedBeanRegistry" />
+	<bean id="abstractPropertyBackedBean"
+		class="org.alfresco.repo.management.subsystems.AbstractPropertyBackedBean"
+		abstract="true">
+		<property name="registry">
+			<ref local="propertyBackedBeanRegistry" />
+		</property>
+		<!-- Ensure that child application contexts propagate global default values -->
+		<property name="propertyDefaults">
+			<ref local="global-properties" />
+		</property>
+	</bean>
 </beans>

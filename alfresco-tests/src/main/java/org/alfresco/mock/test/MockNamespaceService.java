@@ -11,8 +11,9 @@ public class MockNamespaceService implements NamespaceService, Serializable {
 
 	@Override
 	public String getNamespaceURI(String prefix) throws NamespaceException {
-		// TODO Auto-generated method stub
-		return null;
+		return prefix != null && prefix.equals(NamespaceService.CONTENT_MODEL_PREFIX)
+				? NamespaceService.CONTENT_MODEL_1_0_URI
+				: null;
 	}
 
 	@Override
