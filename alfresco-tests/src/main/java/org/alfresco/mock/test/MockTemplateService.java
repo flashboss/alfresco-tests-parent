@@ -27,8 +27,7 @@ public class MockTemplateService implements TemplateService, Serializable {
 
 	@Override
 	public String processTemplate(String engine, String template, Object model) throws TemplateException {
-		// TODO Auto-generated method stub
-		return null;
+		return engine;
 	}
 
 	@Override

@@ -13,7 +13,7 @@ To start add the dependency in your project sdk amp:
    <dependency>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests</artifactId>
-		<version>${alfresco.version}.0</version>
+		<version>${alfresco.version}.1</version>
 		<scope>test</scope>
    </dependency>
 ```
@@ -163,7 +163,7 @@ src -> main -> amp -> config -> alfresco -> module -> alfresco-tests-sample -> c
 </beans>
 ```
 
-Before to start your test remember to add a alfresco-global.properties withe the variables of the action to test:
+Before to start your test remember to add a alfresco-global.properties with the variables of the action to test:
 
 src -> test -> resources -> alfresco -> module -> alfresco-tests-sample -> alfresco-global.properties
 
