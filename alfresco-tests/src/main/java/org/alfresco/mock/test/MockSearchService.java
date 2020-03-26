@@ -40,7 +40,9 @@ public class MockSearchService implements SearchService, Serializable {
 		Collection<NodeRef> nodeRefs = nodeService.getNodeRefs().keySet();
 		for (NodeRef nodeRef : nodeRefs) {
 			String name = (String) nodeService.getProperty(nodeRef, ContentModel.PROP_NAME);
-			if ((name != null && query.replaceAll("\"", "").endsWith(name)) || query.endsWith("\"*\""))
+			String[] paths = query.split("/");
+			if ((name != null && query.replaceAll("\"", "").endsWith(name)) || query.endsWith("\"*\"")
+					|| (paths.length >= 3 && nodeRef.toString().contains(paths[paths.length - 3] + "/")))
 				rows.add(new MockResultSetRow(nodeRef));
 		}
 		return new MockResultSet(rows);

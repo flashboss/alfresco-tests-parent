@@ -207,8 +207,9 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public ChildAssociationRef addChild(NodeRef parentRef, NodeRef childRef, QName assocTypeQName, QName qname)
 			throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-		return null;
+		ChildAssociationRef association = createNode(parentRef, ContentModel.ASSOC_CONTAINS, qname,
+				ContentModel.TYPE_CONTENT, getProperties(childRef));
+		return association;
 	}
 
 	@Override
@@ -353,7 +354,16 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public ChildAssociationRef getPrimaryParent(NodeRef nodeRef) throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
+		Set<NodeRef> nodes = nodeRefs.keySet();
+		String parent = nodeRef.toString().substring(0, nodeRef.toString().lastIndexOf("/"));
+		for (NodeRef nodeRefFromMap : nodes) {
+			if (nodeRefFromMap.toString().equals(parent)) {
+				QName childQName = getType(nodeRef);
+				ChildAssociationRef childAssociationRef = new ChildAssociationRef(ContentModel.ASSOC_CONTAINS,
+						nodeRefFromMap, childQName, nodeRef, true, -1);
+				return childAssociationRef;
+			}
+		}
 		return null;
 	}
 

@@ -1,8 +1,10 @@
 package org.alfresco.mock.test.activiti;
 
+import org.alfresco.mock.test.script.MockScope;
 import org.alfresco.repo.workflow.activiti.ActivitiScriptNode;
 import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.repository.NodeRef;
+import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 
 public class MockActivitiScriptNode extends ActivitiScriptNode {
@@ -17,7 +19,8 @@ public class MockActivitiScriptNode extends ActivitiScriptNode {
 
 	@Override
 	public void setScope(Scriptable scope) {
-		this.scope = null;
+		Context.enter();
+		this.scope = new MockScope();
 	}
 
 }

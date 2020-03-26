@@ -94,6 +94,8 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 
 	private PermissionService permissionService;
 
+	private TemplateService templateService;
+
 	@Override
 	public Collection<QName> getServices() {
 		// TODO Auto-generated method stub
@@ -244,8 +246,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 
 	@Override
 	public TemplateService getTemplateService() {
-		// TODO Auto-generated method stub
-		return null;
+		return templateService;
 	}
 
 	@Override
@@ -529,6 +530,10 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 
 	public void setPermissionService(PermissionService permissionService) {
 		this.permissionService = permissionService;
+	}
+
+	public void setTemplateService(TemplateService templateService) {
+		this.templateService = templateService;
 	}
 
 }

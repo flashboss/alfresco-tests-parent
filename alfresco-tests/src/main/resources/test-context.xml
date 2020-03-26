@@ -116,6 +116,9 @@
 		<property name="permissionService">
 			<ref bean="permissionService" />
 		</property>
+		<property name="templateService">
+			<ref bean="templateService" />
+		</property>
 	</bean>
 	<bean id="action-executer" abstract="true" />
 	<alias name="mimetypeService" alias="MimetypeService" />
@@ -127,6 +130,8 @@
 	</bean>
 	<bean id="NamespaceService"
 		class="org.alfresco.mock.test.MockNamespaceService" />
+	<bean id="templateService"
+		class="org.alfresco.mock.test.MockTemplateService" />
 	<alias name="NamespaceService" alias="namespaceService" />
 	<alias name="ServiceRegistry" alias="services" />
 	<bean id="javaScriptProcessor"

@@ -30,6 +30,8 @@ import org.activiti.engine.repository.Deployment;
 import org.alfresco.mock.NodeUtils;
 import org.alfresco.mock.ZipUtils;
 import org.alfresco.mock.test.MockContentService;
+import org.alfresco.repo.workflow.activiti.ActivitiScriptNode;
+import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.repository.ContentService;
 import org.alfresco.service.cmr.repository.MimetypeService;
@@ -61,6 +63,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	protected NodeRef workspace;
 	protected NodeRef archive;
 	protected NodeRef site;
+	protected ActivitiScriptNode bpmPackage;
 
 	public AbstractActivitiForm() {
 		super("test-module-context.xml");
@@ -69,10 +72,11 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	/**
 	 * Inits the mail server and create the demo users and groups
 	 */
-	public void init() {
+	public void init(Map<String, Object> variables) {
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
 		FileFolderService fileFolderService = activitiProcessEngineConfiguration.getFileFolderService();
 		SearchService searchService = activitiProcessEngineConfiguration.getSearchService();
+		ServiceRegistry serviceRegistry = activitiProcessEngineConfiguration.getServiceRegistry();
 		// elimino i vecchi documenti
 		ResultSet nodes = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
 				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"*\"");
@@ -92,6 +96,11 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		workspace = insertFolder(root, StoreRef.PROTOCOL_WORKSPACE);
 		archive = insertFolder(root, StoreRef.PROTOCOL_ARCHIVE);
 		site = insertFolder(workspace, "cm:Site");
+		NodeRef workflow = insertFolder(workspace, "sys:workflow");
+		NodeRef packages = insertFolder(workflow, "cm:packages");
+		NodeRef bpmPackageFolder = insertFolder(packages, "cm:pkg_919f220e-870a-4c56-ba11-5030ee5325f0");
+		bpmPackage = new MockActivitiScriptNode(bpmPackageFolder, serviceRegistry);
+		variables.put("bpm_package", bpmPackage);
 
 		// STARTING MAIL SERVER
 		startMailServer();
