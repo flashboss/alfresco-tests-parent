@@ -42,8 +42,7 @@ public class MockContentReader implements ContentReader {
 
 	@Override
 	public long getSize() {
-		// TODO Auto-generated method stub
-		return 0;
+		return file.length();
 	}
 
 	@Override

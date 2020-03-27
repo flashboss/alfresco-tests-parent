@@ -3,6 +3,8 @@ package org.alfresco.mock.test;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -209,6 +211,12 @@ public class MockNodeService implements NodeService, Serializable {
 			throws InvalidNodeRefException {
 		ChildAssociationRef association = createNode(parentRef, ContentModel.ASSOC_CONTAINS, qname,
 				ContentModel.TYPE_CONTENT, getProperties(childRef));
+		try {
+			Files.copy(nodeRefs.get(childRef).toPath(), nodeRefs.get(association.getChildRef()).toPath(),
+					StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return association;
 	}
 
