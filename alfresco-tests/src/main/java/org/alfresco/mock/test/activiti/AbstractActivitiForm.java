@@ -74,8 +74,9 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	 */
 	public void init(Map<String, Object> variables) {
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
-		FileFolderService fileFolderService = activitiProcessEngineConfiguration.getFileFolderService();
-		SearchService searchService = activitiProcessEngineConfiguration.getSearchService();
+		FileFolderService fileFolderService = activitiProcessEngineConfiguration.getServiceRegistry()
+				.getFileFolderService();
+		SearchService searchService = activitiProcessEngineConfiguration.getServiceRegistry().getSearchService();
 		ServiceRegistry serviceRegistry = activitiProcessEngineConfiguration.getServiceRegistry();
 		// elimino i vecchi documenti
 		ResultSet nodes = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
@@ -125,23 +126,23 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	}
 
 	protected NodeRef insertFolder(NodeRef parent, String name) {
-		return NodeUtils.insertFolder(parent, name,
-				((ActivitiProcessEngineConfiguration) processEngineConfiguration).getFileFolderService());
+		return NodeUtils.insertFolder(parent, name, ((ActivitiProcessEngineConfiguration) processEngineConfiguration)
+				.getServiceRegistry().getFileFolderService());
 	}
 
 	protected NodeRef insertDocument(NodeRef parent, String name, String text, Map<QName, Serializable> properties) {
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
-		NodeService nodeService = activitiProcessEngineConfiguration.getNodeService();
-		ContentService contentService = activitiProcessEngineConfiguration.getContentService();
-		MimetypeService mimetypeService = activitiProcessEngineConfiguration.getMimetypeService();
+		NodeService nodeService = activitiProcessEngineConfiguration.getServiceRegistry().getNodeService();
+		ContentService contentService = activitiProcessEngineConfiguration.getServiceRegistry().getContentService();
+		MimetypeService mimetypeService = activitiProcessEngineConfiguration.getServiceRegistry().getMimetypeService();
 		return NodeUtils.insertDocument(parent, name, text, properties, nodeService, contentService, mimetypeService);
 	}
 
 	protected NodeRef insertZip(NodeRef parent, String zipName, String entryName, String text,
 			Map<QName, Serializable> properties) throws IOException {
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
-		NodeService nodeService = activitiProcessEngineConfiguration.getNodeService();
-		ContentService contentService = activitiProcessEngineConfiguration.getContentService();
+		NodeService nodeService = activitiProcessEngineConfiguration.getServiceRegistry().getNodeService();
+		ContentService contentService = activitiProcessEngineConfiguration.getServiceRegistry().getContentService();
 		return ZipUtils.insertZip(parent, zipName, entryName, text, properties, nodeService, contentService);
 	}
 

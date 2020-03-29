@@ -122,8 +122,12 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	@Override
 	public FileInfo moveFrom(NodeRef sourceNodeRef, NodeRef sourceParentRef, NodeRef targetParentRef, String newName)
 			throws FileExistsException, FileNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		File file = getNodeService().getNodeRefs().get(targetParentRef);
+		if (file.isFile()) {
+			file.delete();
+			file.mkdir();
+		}
+		return move(sourceNodeRef, targetParentRef, newName);
 	}
 
 	@Override

@@ -17,13 +17,6 @@
 		<property name="createDiagramOnDeploy" value="false" />
 		<property name="history" value="full" />
 		<property name="serviceRegistry" ref="ServiceRegistry" />
-		<property name="searchService" ref="searchService" />
-		<property name="fileFolderService"
-			ref="FileFolderService" />
-		<property name="nodeService" ref="nodeService" />
-		<property name="contentService" ref="contentService" />
-		<property name="mimetypeService"
-			ref="mimetypeService" />
 		<property name="searchScript"
 			ref="searchScript" />
 		<property name="loggerScript"

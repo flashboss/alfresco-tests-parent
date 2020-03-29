@@ -43,7 +43,8 @@ public class MockSearchService implements SearchService, Serializable {
 			String[] paths = query.split("/");
 			if ((name != null && query.replaceAll("\"", "").endsWith(name)) || query.endsWith("\"*\"")
 					|| (paths.length >= 3 && nodeRef.toString().contains(paths[paths.length - 3] + "/")))
-				rows.add(new MockResultSetRow(nodeRef));
+				if (hasType(query, nodeRef))
+					rows.add(new MockResultSetRow(nodeRef));
 		}
 		return new MockResultSet(rows);
 	}
@@ -330,6 +331,26 @@ public class MockSearchService implements SearchService, Serializable {
 			return null;
 		}
 
+	}
+
+	private String getTypeFromQuery(String query) {
+		if (query.contains("TYPE:\"")) {
+			query = query.substring(query.indexOf("TYPE:\"") + 6);
+			query = query.substring(0, query.indexOf("\""));
+			return query;
+		}
+		return null;
+	}
+
+	private boolean hasType(String query, NodeRef nodeRef) {
+		String type = getTypeFromQuery(query);
+		if (type == null)
+			return true;
+		else {
+			QName typeNode = nodeService.getType(nodeRef);
+			String typeNodeStr = typeNode.getPrefixString();
+			return type.equals(typeNodeStr);
+		}
 	}
 
 }

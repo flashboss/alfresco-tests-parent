@@ -28,7 +28,7 @@ import org.alfresco.service.namespace.QName;
 public class ZipUtils {
 
 	public final static File TEMP_DIR = new File(MockContentService.FOLDER_TEST + "temp");
-	
+
 	public static void unzip(InputStream inputStream, File targetDirectory) throws IOException {
 		targetDirectory.mkdir();
 		byte[] buffer = new byte[1024];
@@ -88,10 +88,17 @@ public class ZipUtils {
 	}
 
 	public static NodeRef insertZip(NodeRef parent, String zipName, String entryName, String text,
-			Map<QName, Serializable> properties, NodeService nodeService, ContentService contentService) throws IOException {
-		NodeRef node = nodeService.createNode(parent, ContentModel.ASSOC_CONTAINS,
-				QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, zipName), ContentModel.TYPE_CONTENT,
-				properties).getChildRef();
+			Map<QName, Serializable> properties, NodeService nodeService, ContentService contentService)
+			throws IOException {
+		QName type = null;
+		if (properties != null)
+			type = (QName) properties.get(ContentModel.TYPE_BASE);
+		if (type == null)
+			type = ContentModel.TYPE_CONTENT;
+		NodeRef node = nodeService
+				.createNode(parent, ContentModel.ASSOC_CONTAINS,
+						QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, zipName), type, properties)
+				.getChildRef();
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		addEntryToZip(text, entryName, output);
 		ContentWriter writer = contentService.getWriter(node, ContentModel.PROP_CONTENT, true);

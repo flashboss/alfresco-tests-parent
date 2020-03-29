@@ -41,6 +41,8 @@ public class MockNodeService implements NodeService, Serializable {
 
 	private Map<NodeRef, File> nodeRefs = new HashMap<NodeRef, File>();
 
+	private final static QName PRIMARY_PARENT = QName.createQName("primary_parent");
+
 	@Override
 	public List<StoreRef> getStores() {
 		// TODO Auto-generated method stub
@@ -209,6 +211,7 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public ChildAssociationRef addChild(NodeRef parentRef, NodeRef childRef, QName assocTypeQName, QName qname)
 			throws InvalidNodeRefException {
+		sampleProperties.get(childRef).put(PRIMARY_PARENT, this.getPrimaryParent(childRef).getParentRef());
 		ChildAssociationRef association = createNode(parentRef, ContentModel.ASSOC_CONTAINS, qname,
 				ContentModel.TYPE_CONTENT, getProperties(childRef));
 		try {
@@ -349,7 +352,10 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public NodeRef getChildByName(NodeRef nodeRef, QName assocTypeQName, String childName) {
-		// TODO Auto-generated method stub
+		List<ChildAssociationRef> children = getChildAssocs(nodeRef);
+		for (ChildAssociationRef ref : children)
+			if (ref.getChildRef().getId().equals(childName))
+				return ref.getChildRef();
 		return null;
 	}
 
@@ -362,17 +368,21 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public ChildAssociationRef getPrimaryParent(NodeRef nodeRef) throws InvalidNodeRefException {
-		Set<NodeRef> nodes = nodeRefs.keySet();
-		String parent = nodeRef.toString().substring(0, nodeRef.toString().lastIndexOf("/"));
-		for (NodeRef nodeRefFromMap : nodes) {
-			if (nodeRefFromMap.toString().equals(parent)) {
-				QName childQName = getType(nodeRef);
-				ChildAssociationRef childAssociationRef = new ChildAssociationRef(ContentModel.ASSOC_CONTAINS,
-						nodeRefFromMap, childQName, nodeRef, true, -1);
-				return childAssociationRef;
-			}
+		NodeRef primaryParent = (NodeRef) sampleProperties.get(nodeRef).get(PRIMARY_PARENT);
+		NodeRef result = null;
+		if (primaryParent != null)
+			result = primaryParent;
+		else {
+			Set<NodeRef> nodes = nodeRefs.keySet();
+			String parentStr = nodeRef.toString().substring(0, nodeRef.toString().lastIndexOf("/"));
+			for (NodeRef nodeRefFromMap : nodes)
+				if (nodeRefFromMap.toString().equals(parentStr))
+					result = nodeRefFromMap;
 		}
-		return null;
+		QName childQName = getType(nodeRef);
+		ChildAssociationRef childAssociationRef = new ChildAssociationRef(ContentModel.ASSOC_CONTAINS, result,
+				childQName, nodeRef, true, -1);
+		return childAssociationRef;
 	}
 
 	@Override
