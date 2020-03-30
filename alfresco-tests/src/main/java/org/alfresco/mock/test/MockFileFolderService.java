@@ -127,7 +127,8 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 			file.delete();
 			file.mkdir();
 		}
-		NodeRef originalNode = nodeService.getChildByName(sourceParentRef, ContentModel.ASSOC_CONTAINS, newName);
+		String name = getNodeService().getNodeRefs().get(sourceNodeRef).getName();
+		NodeRef originalNode = nodeService.getChildByName(sourceParentRef, ContentModel.ASSOC_CONTAINS, name);
 		return move(originalNode, targetParentRef, newName);
 	}
 

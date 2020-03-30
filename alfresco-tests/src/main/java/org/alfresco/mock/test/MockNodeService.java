@@ -379,7 +379,7 @@ public class MockNodeService implements NodeService, Serializable {
 				if (nodeRefFromMap.toString().equals(parentStr))
 					result = nodeRefFromMap;
 		}
-		QName childQName = getType(nodeRef);
+		QName childQName = QName.createQName((String) getProperty(nodeRef, ContentModel.PROP_NAME));
 		ChildAssociationRef childAssociationRef = new ChildAssociationRef(ContentModel.ASSOC_CONTAINS, result,
 				childQName, nodeRef, true, -1);
 		return childAssociationRef;
