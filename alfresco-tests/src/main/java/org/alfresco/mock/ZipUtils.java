@@ -18,6 +18,7 @@ import java.util.zip.ZipOutputStream;
 import org.alfresco.mock.test.MockContentService;
 import org.alfresco.model.ContentModel;
 import org.alfresco.repo.content.MimetypeMap;
+import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.repository.ContentService;
 import org.alfresco.service.cmr.repository.ContentWriter;
 import org.alfresco.service.cmr.repository.NodeRef;
@@ -88,8 +89,10 @@ public class ZipUtils {
 	}
 
 	public static NodeRef insertZip(NodeRef parent, String zipName, String entryName, String text,
-			Map<QName, Serializable> properties, NodeService nodeService, ContentService contentService)
+			Map<QName, Serializable> properties, ServiceRegistry serviceRegistry)
 			throws IOException {
+		NodeService nodeService = serviceRegistry.getNodeService(); 
+		ContentService contentService = serviceRegistry.getContentService();
 		QName type = null;
 		if (properties != null)
 			type = (QName) properties.get(ContentModel.TYPE_BASE);

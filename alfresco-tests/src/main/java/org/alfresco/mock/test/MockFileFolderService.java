@@ -36,6 +36,9 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	@Autowired
 	private NodeService nodeService;
 
+	@Autowired
+	private NamespaceService namespaceService;
+
 	@Override
 	public List<FileInfo> list(NodeRef contextNodeRef) {
 		List<FileInfo> result = new ArrayList<FileInfo>();
@@ -159,8 +162,16 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 
 	@Override
 	public FileInfo create(NodeRef parentNodeRef, String name, QName typeQName) throws FileExistsException {
-		ChildAssociationRef association = nodeService.createNode(parentNodeRef, ContentModel.ASSOC_CONTAINS,
-				QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, name), typeQName);
+		if (!parentNodeRef.getId().isEmpty() && nodeService.getPrimaryParent(parentNodeRef) != null
+				&& !name.contains(":")) {
+			String prefix = NamespaceService.CONTENT_MODEL_PREFIX;
+			name = prefix + ":" + name;
+		}
+		QName assocQName = QName.createQName(name);
+		if (name.contains(":"))
+			assocQName = QName.createQName(name.split(":")[0], name.split(":")[1], namespaceService);
+		ChildAssociationRef association = nodeService.createNode(parentNodeRef, ContentModel.ASSOC_CONTAINS, assocQName,
+				typeQName);
 		return new MockFileInfo(association.getChildRef(), name, typeQName);
 	}
 

@@ -98,18 +98,17 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public ChildAssociationRef createNode(NodeRef parentRef, QName assocTypeQName, QName assocQName,
 			QName nodeTypeQName) throws InvalidNodeRefException, InvalidTypeException {
-		String nodeUUID = assocQName.getLocalName();
 		Path path = getPath(parentRef);
 		String pathStr = "";
 		if (path != null)
-			pathStr = path.toString() + File.separator + nodeUUID;
+			pathStr = path.toString() + File.separator + assocQName.getPrefixString();
 		else
 			pathStr = MockContentService.FOLDER_TEST;
 		StoreRef storeRef = StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
 		if (pathStr.contains(StoreRef.PROTOCOL_ARCHIVE))
 			storeRef = StoreRef.STORE_REF_ARCHIVE_SPACESSTORE;
 		NodeRef nodeRef = new NodeRef(storeRef + File.separator + pathStr);
-		setProperty(nodeRef, ContentModel.PROP_NAME, nodeUUID);
+		setProperty(nodeRef, ContentModel.PROP_NAME, assocQName.getLocalName());
 		setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
 		File file = new File(pathStr);
 		if (nodeTypeQName.equals(ContentModel.TYPE_FOLDER))
@@ -122,7 +121,7 @@ public class MockNodeService implements NodeService, Serializable {
 	public ChildAssociationRef createNode(NodeRef parentRef, QName assocTypeQName, QName assocQName,
 			QName nodeTypeQName, Map<QName, Serializable> properties)
 			throws InvalidNodeRefException, InvalidTypeException {
-		String nodeUUID = assocQName.getLocalName();
+		String nodeUUID = assocQName.getPrefixString();
 		Path path = getPath(parentRef);
 		String pathStr = "";
 		if (path != null)

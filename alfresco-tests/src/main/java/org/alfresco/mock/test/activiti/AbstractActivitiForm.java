@@ -33,10 +33,7 @@ import org.alfresco.mock.test.MockContentService;
 import org.alfresco.repo.workflow.activiti.ActivitiScriptNode;
 import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.model.FileFolderService;
-import org.alfresco.service.cmr.repository.ContentService;
-import org.alfresco.service.cmr.repository.MimetypeService;
 import org.alfresco.service.cmr.repository.NodeRef;
-import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.search.ResultSet;
 import org.alfresco.service.cmr.search.SearchService;
@@ -132,18 +129,15 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
 	protected NodeRef insertDocument(NodeRef parent, String name, String text, Map<QName, Serializable> properties) {
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
-		NodeService nodeService = activitiProcessEngineConfiguration.getServiceRegistry().getNodeService();
-		ContentService contentService = activitiProcessEngineConfiguration.getServiceRegistry().getContentService();
-		MimetypeService mimetypeService = activitiProcessEngineConfiguration.getServiceRegistry().getMimetypeService();
-		return NodeUtils.insertDocument(parent, name, text, properties, nodeService, contentService, mimetypeService);
+		return NodeUtils.insertDocument(parent, name, text, properties,
+				activitiProcessEngineConfiguration.getServiceRegistry());
 	}
 
 	protected NodeRef insertZip(NodeRef parent, String zipName, String entryName, String text,
 			Map<QName, Serializable> properties) throws IOException {
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
-		NodeService nodeService = activitiProcessEngineConfiguration.getServiceRegistry().getNodeService();
-		ContentService contentService = activitiProcessEngineConfiguration.getServiceRegistry().getContentService();
-		return ZipUtils.insertZip(parent, zipName, entryName, text, properties, nodeService, contentService);
+		return ZipUtils.insertZip(parent, zipName, entryName, text, properties,
+				activitiProcessEngineConfiguration.getServiceRegistry());
 	}
 
 	@Override

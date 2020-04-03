@@ -1,5 +1,6 @@
 package org.alfresco.mock.test;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,7 +9,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.alfresco.model.ContentModel;
 import org.alfresco.service.cmr.repository.ChildAssociationRef;
 import org.alfresco.service.cmr.repository.InvalidNodeRefException;
 import org.alfresco.service.cmr.repository.NodeRef;
@@ -25,6 +25,7 @@ import org.alfresco.service.cmr.search.SearchParameters.Operator;
 import org.alfresco.service.cmr.search.SearchService;
 import org.alfresco.service.namespace.NamespacePrefixResolver;
 import org.alfresco.service.namespace.QName;
+import org.alfresco.util.ISO9075;
 import org.alfresco.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -35,16 +36,22 @@ public class MockSearchService implements SearchService, Serializable {
 
 	@Override
 	public ResultSet query(StoreRef store, String language, String query) {
+		query = ISO9075.decode(query);
 		MockNodeService nodeService = getNodeService();
 		List<ResultSetRow> rows = new ArrayList<ResultSetRow>();
 		Collection<NodeRef> nodeRefs = nodeService.getNodeRefs().keySet();
+		String path = getSegmentFromQuery(query, "PATH:\"");
+		if (!path.startsWith(File.separator))
+			path = File.separator + path;
+		String[] subpaths = getSubpaths(path);
+		int wildcardsNumber = 1;
+		String type = getSegmentFromQuery(query, "TYPE:\"");
+		for (int j = subpaths.length - 1; j > 0; j--)
+			if (subpaths[j].equals("/"))
+				wildcardsNumber++;
 		for (NodeRef nodeRef : nodeRefs) {
-			String name = (String) nodeService.getProperty(nodeRef, ContentModel.PROP_NAME);
-			String[] paths = query.split("/");
-			if ((name != null && query.replaceAll("\"", "").endsWith(name)) || query.endsWith("\"*\"")
-					|| (paths.length >= 3 && nodeRef.toString().contains(paths[paths.length - 3] + "/")))
-				if (hasType(query, nodeRef))
-					rows.add(new MockResultSetRow(nodeRef));
+			if (hasType(type, nodeRef) && hasPath(path, subpaths, wildcardsNumber, nodeRef))
+				rows.add(new MockResultSetRow(nodeRef));
 		}
 		return new MockResultSet(rows);
 	}
@@ -271,7 +278,7 @@ public class MockSearchService implements SearchService, Serializable {
 
 		@Override
 		public Serializable getValue(QName qname) {
-			return nodeRef.getId();
+			return nodeService.getProperty(nodeRef, qname);
 		}
 
 		@Override
@@ -333,17 +340,16 @@ public class MockSearchService implements SearchService, Serializable {
 
 	}
 
-	private String getTypeFromQuery(String query) {
-		if (query.contains("TYPE:\"")) {
-			query = query.substring(query.indexOf("TYPE:\"") + 6);
+	private String getSegmentFromQuery(String query, String segment) {
+		if (query.contains(segment)) {
+			query = query.substring(query.indexOf(segment) + 6);
 			query = query.substring(0, query.indexOf("\""));
 			return query;
 		}
 		return null;
 	}
 
-	private boolean hasType(String query, NodeRef nodeRef) {
-		String type = getTypeFromQuery(query);
+	private boolean hasType(String type, NodeRef nodeRef) {
 		if (type == null)
 			return true;
 		else {
@@ -351,6 +357,39 @@ public class MockSearchService implements SearchService, Serializable {
 			String typeNodeStr = typeNode.getPrefixString();
 			return type.equals(typeNodeStr);
 		}
+	}
+
+	private boolean hasPath(String path, String[] subpaths, int wildcardsNumber, NodeRef nodeRef) {
+		String nodepath = nodeRef.toString();
+		nodepath = nodepath
+				.substring(nodepath.indexOf(MockContentService.FOLDER_TEST) + MockContentService.FOLDER_TEST.length());
+		if (nodepath.indexOf(File.separator) >= 0)
+			nodepath = nodepath.substring(nodepath.indexOf(File.separator));
+		else
+			nodepath = "";
+		boolean result = true;
+		for (int i = 0; i < subpaths.length; i++) {
+			String subpath = subpaths[i];
+			result = result && nodepath.contains(subpath.replaceAll("//", ""));
+			if (result && i == subpaths.length - 1 && nodepath.indexOf(File.separator) >= 0
+					&& subpath.indexOf("/") >= 0)
+				if (!subpath.endsWith(File.separator)) {
+					String nameNodePath = nodepath.substring(nodepath.lastIndexOf(File.separator));
+					String nameSubpath = subpath.substring(subpath.lastIndexOf(File.separator));
+					result = result && nameNodePath.equals(nameSubpath);
+				} else if (path.endsWith("/*") && !path.endsWith("//*") && !path.equals("/*")) {
+					String[] splittedNodePath = nodepath.split("/");
+					String pathNode = splittedNodePath[splittedNodePath.length - wildcardsNumber];
+					String nameSubpath = subpaths[subpaths.length - wildcardsNumber];
+					String nameNodePath = nodepath.substring(0, nodepath.indexOf(pathNode));
+					result = result && nameNodePath.equals(nameSubpath);
+				}
+		}
+		return result;
+	}
+
+	private String[] getSubpaths(String path) {
+		return path.split("(\\*)|(///)");
 	}
 
 }

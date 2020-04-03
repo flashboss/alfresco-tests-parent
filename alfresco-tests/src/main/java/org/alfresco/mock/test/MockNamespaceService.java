@@ -1,9 +1,10 @@
 package org.alfresco.mock.test;
 
 import java.io.Serializable;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.alfresco.service.namespace.NamespaceException;
@@ -22,7 +23,11 @@ public class MockNamespaceService implements NamespaceService, Serializable {
 
 	@Override
 	public Collection<String> getPrefixes(String namespaceURI) throws NamespaceException {
-		return Arrays.asList(NamespaceService.DEFAULT_PREFIX);
+		List<String> results = new ArrayList<String>();
+		for (String namespaceURIFromPrefixes : prefixes.values())
+			if (namespaceURIFromPrefixes.equals(namespaceURI))
+				results.add(namespaceURIFromPrefixes);
+		return results;
 	}
 
 	@Override

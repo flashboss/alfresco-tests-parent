@@ -206,7 +206,6 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 
 	@Override
 	public CategoryService getCategoryService() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

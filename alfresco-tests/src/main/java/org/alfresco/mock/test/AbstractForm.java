@@ -1,6 +1,5 @@
 package org.alfresco.mock.test;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,12 +16,11 @@ import javax.xml.transform.stream.StreamSource;
 import org.alfresco.mock.NodeUtils;
 import org.alfresco.mock.ZipUtils;
 import org.alfresco.model.ContentModel;
+import org.alfresco.repo.site.SiteModel;
+import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.repository.ContentService;
-import org.alfresco.service.cmr.repository.ContentWriter;
-import org.alfresco.service.cmr.repository.MimetypeService;
 import org.alfresco.service.cmr.repository.NodeRef;
-import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.search.ResultSet;
 import org.alfresco.service.cmr.search.SearchService;
@@ -36,27 +34,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 public abstract class AbstractForm {
 
 	@Autowired
-	protected NodeService nodeService;
-
-	@Autowired
-	protected ContentService contentService;
-
-	@Autowired
-	protected FileFolderService fileFolderService;
-
-	@Autowired
-	protected SearchService searchService;
-
-	@Autowired
-	protected MimetypeService mimetypeService;
+	protected ServiceRegistry serviceRegistry;
 
 	protected NodeRef workspace;
 	protected NodeRef archive;
-	protected NodeRef site;
+	protected NodeRef sites;
 	protected Date today;
 	protected String todayStr;
 
 	public void init() {
+		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
+		namespaceService.registerNamespace(NamespaceService.APP_MODEL_PREFIX, NamespaceService.APP_MODEL_1_0_URI);
+		namespaceService.registerNamespace(SiteModel.SITE_MODEL_PREFIX, SiteModel.SITE_MODEL_URL);
+		namespaceService.registerNamespace(NamespaceService.CONTENT_MODEL_PREFIX, NamespaceService.CONTENT_MODEL_1_0_URI);
+
+		SearchService searchService = serviceRegistry.getSearchService();
+		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
 		// elimino i vecchi documenti
 		ResultSet nodes = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
 				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"*\"");
@@ -74,28 +67,30 @@ public abstract class AbstractForm {
 		// creo le directory iniziali per i pdv, gli rdv e il repository
 		NodeRef root = insertFolder(new NodeRef(new StoreRef("", ""), ""), ".");
 		workspace = insertFolder(root, StoreRef.PROTOCOL_WORKSPACE);
+		NodeRef companyHome = insertFolder(workspace, NamespaceService.APP_MODEL_PREFIX, "company_home");
 		archive = insertFolder(root, StoreRef.PROTOCOL_ARCHIVE);
-		site = insertFolder(workspace, "cm:Site");
+		sites = insertFolder(companyHome, SiteModel.SITE_MODEL_PREFIX, SiteModel.TYPE_SITES.getLocalName());
 	}
 
 	protected NodeRef insertFolder(NodeRef parent, String name) {
+		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
 		return fileFolderService.create(parent, name, ContentModel.TYPE_FOLDER).getNodeRef();
 	}
 
+	protected NodeRef insertFolder(NodeRef parent, String prefix, String localName) {
+		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
+		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
+		QName qname = QName.createQName(prefix, localName, namespaceService);
+		return fileFolderService.create(parent, qname.getPrefixString(), ContentModel.TYPE_FOLDER).getNodeRef();
+	}
+
 	protected NodeRef insertDocument(NodeRef parent, String name, String text, Map<QName, Serializable> properties) {
-		NodeRef node = nodeService.createNode(parent, ContentModel.ASSOC_CONTAINS,
-				QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, name), ContentModel.TYPE_CONTENT, properties)
-				.getChildRef();
-		InputStream inputStream = new ByteArrayInputStream(text.getBytes());
-		ContentWriter writer = contentService.getWriter(node, ContentModel.PROP_CONTENT, true);
-		writer.setMimetype(mimetypeService.getMimetype(mimetypeService.getExtension(name)));
-		writer.putContent(inputStream);
-		return NodeUtils.insertDocument(parent, name, text, properties, nodeService, contentService, mimetypeService);
+		return NodeUtils.insertDocument(parent, name, text, properties, serviceRegistry);
 	}
 
 	protected NodeRef insertZip(NodeRef parent, String zipName, String entryName, String text,
 			Map<QName, Serializable> properties) throws IOException {
-		return ZipUtils.insertZip(parent, zipName, entryName, text, properties, nodeService, contentService);
+		return ZipUtils.insertZip(parent, zipName, entryName, text, properties, serviceRegistry);
 	}
 
 	protected String encrypt(InputStream inputStream) throws Exception {
@@ -107,6 +102,7 @@ public abstract class AbstractForm {
 	}
 
 	protected <T> T getObjectFromXml(NodeRef createdNodeRef, Class<T> objectClass) throws Exception {
+		ContentService contentService = serviceRegistry.getContentService();
 		final JAXBContext contextPdv = JAXBContext.newInstance(objectClass);
 		final Unmarshaller unmarshallerPdv = contextPdv.createUnmarshaller();
 		InputStream inputStream = contentService.getReader(createdNodeRef, ContentModel.PROP_CONTENT)
