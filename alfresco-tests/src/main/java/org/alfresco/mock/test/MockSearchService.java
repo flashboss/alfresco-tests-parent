@@ -3,12 +3,13 @@ package org.alfresco.mock.test;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.alfresco.mock.NodeUtils;
 import org.alfresco.service.cmr.repository.ChildAssociationRef;
 import org.alfresco.service.cmr.repository.InvalidNodeRefException;
 import org.alfresco.service.cmr.repository.NodeRef;
@@ -36,23 +37,14 @@ public class MockSearchService implements SearchService, Serializable {
 
 	@Override
 	public ResultSet query(StoreRef store, String language, String query) {
-		query = ISO9075.decode(query);
+		query = ISO9075.decode(query).trim();
 		MockNodeService nodeService = getNodeService();
 		List<ResultSetRow> rows = new ArrayList<ResultSetRow>();
-		Collection<NodeRef> nodeRefs = nodeService.getNodeRefs().keySet();
-		String path = getSegmentFromQuery(query, "PATH:\"");
-		if (!path.startsWith(File.separator))
-			path = File.separator + path;
-		String[] subpaths = getSubpaths(path);
-		int wildcardsNumber = 1;
-		String type = getSegmentFromQuery(query, "TYPE:\"");
-		for (int j = subpaths.length - 1; j > 0; j--)
-			if (subpaths[j].equals("/"))
-				wildcardsNumber++;
-		for (NodeRef nodeRef : nodeRefs) {
-			if (hasType(type, nodeRef) && hasPath(path, subpaths, wildcardsNumber, nodeRef))
-				rows.add(new MockResultSetRow(nodeRef));
-		}
+		List<NodeRef> nodeRefs = NodeUtils.sortByName(nodeService.getNodeRefs().keySet());
+		if (language.equals(SearchService.LANGUAGE_XPATH))
+			XPATHQuery(store, query, nodeRefs, rows);
+		else if (language.equals(SearchService.LANGUAGE_FTS_ALFRESCO))
+			FCSQuery(store, query, nodeRefs, rows);
 		return new MockResultSet(rows);
 	}
 
@@ -359,37 +351,93 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 	}
 
-	private boolean hasPath(String path, String[] subpaths, int wildcardsNumber, NodeRef nodeRef) {
+	private boolean hasPath(StoreRef store, String path, String[] subpaths, int wildcardsNumber, NodeRef nodeRef) {
 		String nodepath = nodeRef.toString();
+		if (store == null)
+			return true;
+		else if (store != null && !nodepath.startsWith(store.toString()))
+			return false;
+		else if (store != null && nodepath.endsWith(MockContentService.FOLDER_TEST + store.getProtocol()))
+			return false;
 		nodepath = nodepath
 				.substring(nodepath.indexOf(MockContentService.FOLDER_TEST) + MockContentService.FOLDER_TEST.length());
-		if (nodepath.indexOf(File.separator) >= 0)
+		String lastNodepath = "";
+		if (nodepath.indexOf(File.separator) >= 0) {
 			nodepath = nodepath.substring(nodepath.indexOf(File.separator));
-		else
+			lastNodepath = nodepath.substring(nodepath.lastIndexOf(File.separator));
+		} else
 			nodepath = "";
 		boolean result = true;
 		for (int i = 0; i < subpaths.length; i++) {
 			String subpath = subpaths[i];
 			result = result && nodepath.contains(subpath.replaceAll("//", ""));
 			if (result && i == subpaths.length - 1 && nodepath.indexOf(File.separator) >= 0
-					&& subpath.indexOf("/") >= 0)
+					&& subpath.indexOf(File.separator) >= 0)
 				if (!subpath.endsWith(File.separator)) {
-					String nameNodePath = nodepath.substring(nodepath.lastIndexOf(File.separator));
 					String nameSubpath = subpath.substring(subpath.lastIndexOf(File.separator));
-					result = result && nameNodePath.equals(nameSubpath);
-				} else if (path.endsWith("/*") && !path.endsWith("//*") && !path.equals("/*")) {
-					String[] splittedNodePath = nodepath.split("/");
-					String pathNode = splittedNodePath[splittedNodePath.length - wildcardsNumber];
-					String nameSubpath = subpaths[subpaths.length - wildcardsNumber];
-					String nameNodePath = nodepath.substring(0, nodepath.indexOf(pathNode));
-					result = result && nameNodePath.equals(nameSubpath);
+					result = result && lastNodepath.equals(nameSubpath);
+				} else if (path.endsWith("/*") && !path.endsWith("//*") && !path.equals("/*")
+						&& !subpath.equals(File.separator)) {
+					String nameSubpath = nodepath;
+					for (int j = 0; j < wildcardsNumber; j++)
+						nameSubpath = nameSubpath.substring(0, nameSubpath.lastIndexOf("/"));
+					result = result && (nameSubpath + "/").endsWith(subpath);
+				} else {
+					String firstLine = subpath.replaceAll("//", "");
+					String nameSubpath = firstLine.substring(firstLine.lastIndexOf(File.separator));
+					if (lastNodepath.equals(nameSubpath))
+						result = false;
 				}
 		}
 		return result;
 	}
 
 	private String[] getSubpaths(String path) {
-		return path.split("(\\*)|(///)");
+		String subpath = path;
+		String[] splittedPath = subpath.split("(\\*)|(//)");
+		if (path.endsWith("//*")) {
+			path = path.substring(0, path.length() - 3);
+			splittedPath[splittedPath.length - 1] = splittedPath[splittedPath.length - 1] + "//";
+		} else if (!path.equals(File.separator) && !path.equals("/*")) {
+			String lastPath = splittedPath[splittedPath.length - 1];
+			while (lastPath.equals(File.separator)) {
+				splittedPath = Arrays.copyOf(splittedPath, splittedPath.length - 1);
+				lastPath = splittedPath[splittedPath.length - 1];
+			}
+		}
+		return splittedPath;
+	}
+
+	private void XPATHQuery(StoreRef store, String query, List<NodeRef> nodeRefs, List<ResultSetRow> rows) {
+		String[] subpaths = getSubpaths(query);
+		int wildcardsNumber = 0;
+		String processQuery = query;
+		while (processQuery.endsWith("/*")) {
+			wildcardsNumber++;
+			processQuery = processQuery.substring(0, processQuery.lastIndexOf("/*"));
+		}
+		for (NodeRef nodeRef : nodeRefs) {
+			if (hasPath(store, query, subpaths, wildcardsNumber, nodeRef))
+				rows.add(new MockResultSetRow(nodeRef));
+		}
+	}
+
+	private void FCSQuery(StoreRef store, String query, List<NodeRef> nodeRefs, List<ResultSetRow> rows) {
+		String path = getSegmentFromQuery(query, "PATH:\"");
+		if (!path.startsWith(File.separator))
+			path = File.separator + path;
+		String[] subpaths = getSubpaths(path);
+		String type = getSegmentFromQuery(query, "TYPE:\"");
+		int wildcardsNumber = 0;
+		String processQuery = path;
+		while (processQuery.endsWith("/*")) {
+			wildcardsNumber++;
+			processQuery = processQuery.substring(0, processQuery.lastIndexOf("/*"));
+		}
+		for (NodeRef nodeRef : nodeRefs) {
+			if (hasType(type, nodeRef) && hasPath(store, path, subpaths, wildcardsNumber, nodeRef))
+				rows.add(new MockResultSetRow(nodeRef));
+		}
 	}
 
 }

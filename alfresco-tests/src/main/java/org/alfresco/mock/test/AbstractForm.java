@@ -46,13 +46,13 @@ public abstract class AbstractForm {
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
 		namespaceService.registerNamespace(NamespaceService.APP_MODEL_PREFIX, NamespaceService.APP_MODEL_1_0_URI);
 		namespaceService.registerNamespace(SiteModel.SITE_MODEL_PREFIX, SiteModel.SITE_MODEL_URL);
-		namespaceService.registerNamespace(NamespaceService.CONTENT_MODEL_PREFIX, NamespaceService.CONTENT_MODEL_1_0_URI);
+		namespaceService.registerNamespace(NamespaceService.CONTENT_MODEL_PREFIX,
+				NamespaceService.CONTENT_MODEL_1_0_URI);
 
 		SearchService searchService = serviceRegistry.getSearchService();
 		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
-		// elimino i vecchi documenti
-		ResultSet nodes = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
-				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"*\"");
+		// delete the old documents
+		ResultSet nodes = searchService.query(null, SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"*\"");
 		if (nodes.length() > 0)
 			for (NodeRef node : nodes.getNodeRefs())
 				fileFolderService.delete(node);

@@ -30,6 +30,7 @@ import org.alfresco.service.cmr.repository.Path;
 import org.alfresco.service.cmr.repository.Path.Element;
 import org.alfresco.service.cmr.repository.StoreExistsException;
 import org.alfresco.service.cmr.repository.StoreRef;
+import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.service.namespace.QNamePattern;
 
@@ -122,6 +123,8 @@ public class MockNodeService implements NodeService, Serializable {
 			QName nodeTypeQName, Map<QName, Serializable> properties)
 			throws InvalidNodeRefException, InvalidTypeException {
 		String nodeUUID = assocQName.getPrefixString();
+		if (!nodeUUID.contains(":"))
+			nodeUUID = NamespaceService.CONTENT_MODEL_PREFIX + ":" + nodeUUID;
 		Path path = getPath(parentRef);
 		String pathStr = "";
 		if (path != null)
@@ -204,6 +207,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public void deleteNode(NodeRef nodeRef) throws InvalidNodeRefException {
+		nodeRefs.get(nodeRef).delete();
 		nodeRefs.remove(nodeRef);
 	}
 

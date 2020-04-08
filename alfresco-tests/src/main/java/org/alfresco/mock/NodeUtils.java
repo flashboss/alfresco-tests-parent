@@ -3,7 +3,11 @@ package org.alfresco.mock;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.alfresco.model.ContentModel;
 import org.alfresco.service.ServiceRegistry;
@@ -42,6 +46,18 @@ public class NodeUtils {
 		writer.setMimetype(mimetypeService.getMimetype(mimetypeService.getExtension(name)));
 		writer.putContent(inputStream);
 		return node;
+	}
+
+	public static List<NodeRef> sortByName(Set<NodeRef> nodeRefs) {
+		NodeRef[] nodeArray = nodeRefs.toArray(new NodeRef[0]);
+		Arrays.sort(nodeArray, new Comparator<NodeRef>() {
+
+			@Override
+			public int compare(NodeRef o1, NodeRef o2) {
+				return o1.getId().compareTo(o2.getId());
+			}
+		});
+		return Arrays.asList(nodeArray);
 	}
 
 }
