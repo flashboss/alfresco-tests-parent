@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="contrattiPdaGenerationWorkflow" name="Workflow di Generazione PdA per Contratti Banca" isExecutable="true">
+    <subProcess id="PdASubProcess" name="PdA Sub Process">
+      <endEvent id="endevent1" name="End"></endEvent>
+      <serviceTask id="pdaStoring" name="Memorizzazione PdA" activiti:delegateExpression="${ContrattiPdAStoring}"></serviceTask>
+      <sequenceFlow id="flow12" sourceRef="pdaStoring" targetRef="endevent1"></sequenceFlow>
+      <serviceTask id="ipdaLabeling" name="Marcatura IPdA" activiti:delegateExpression="${ContrattiIPdALabeling}">
+        <extensionElements>
+          <activiti:executionListener event="end" class="org.alfresco.repo.workflow.activiti.listener.ScriptExecutionListener">
+            <activiti:field name="script">
+              <activiti:string><![CDATA[execution.setVariable('mccwf_pda_ipda_labeling_retry', execution.getVariable('mccwf_pda_ipda_labeling_retry')+1);]]></activiti:string>
+            </activiti:field>
+          </activiti:executionListener>
+        </extensionElements>
+      </serviceTask>
+      <sequenceFlow id="flow9" sourceRef="ipdaLabeling" targetRef="exclusivegateway2"></sequenceFlow>
+      <serviceTask id="indexGeneration" name="Generazione Indice" activiti:delegateExpression="${ContrattiIPdAGeneration}"></serviceTask>
+      <sequenceFlow id="flow7" sourceRef="indexGeneration" targetRef="ipdaSubscription"></sequenceFlow>
+      <sequenceFlow id="flow6" sourceRef="exclusivegateway6" targetRef="indexGeneration">
+        <extensionElements>
+          <activiti:executionListener event="take" delegateExpression="${ContrattiPdACleaner}"></activiti:executionListener>
+        </extensionElements>
+        <conditionExpression xsi:type="tFormalExpression"><![CDATA[${mccwf_resubmit == false and mccwf_cancelPdA == false}]]></conditionExpression>
+      </sequenceFlow>
+      <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway" default="flow4"></exclusiveGateway>
+      <sequenceFlow id="flow4" sourceRef="exclusivegateway1" targetRef="pdaReview"></sequenceFlow>
+      <serviceTask id="pdaCheckTask" name="Task di Controllo del PdA generato" activiti:delegateExpression="${ContrattiPdACheck}">
+        <extensionElements>
+          <activiti:executionListener event="start" class="org.alfresco.repo.workflow.activiti.listener.ScriptExecutionListener">
+            <activiti:field name="script">
+              <activiti:string><![CDATA[execution.setVariable('mccwf_pda_check_errors', true);]]></activiti:string>
+            </activiti:field>
+          </activiti:executionListener>
+        </extensionElements>
+      </serviceTask>
+      <sequenceFlow id="flow3" sourceRef="pdaCheckTask" targetRef="exclusivegateway1"></sequenceFlow>
+      <serviceTask id="pdaGenerationTask" name="Task di Generazione PdA" activiti:delegateExpression="${ContrattiPdAGeneration}"></serviceTask>
+      <sequenceFlow id="flow2" sourceRef="pdaGenerationTask" targetRef="pdaCheckTask"></sequenceFlow>
+      <startEvent id="startevent2" name="Start"></startEvent>
+      <sequenceFlow id="flow11" sourceRef="startevent2" targetRef="pdaGenerationTask"></sequenceFlow>
+      <sequenceFlow id="flow17" sourceRef="exclusivegateway6" targetRef="pdaGenerationTask">
+        <conditionExpression xsi:type="tFormalExpression"><![CDATA[${mccwf_resubmit == true and mccwf_cancelPdA == false}]]></conditionExpression>
+      </sequenceFlow>
+      <sequenceFlow id="flow18" sourceRef="exclusivegateway1" targetRef="indexGeneration">
+        <conditionExpression xsi:type="tFormalExpression"><![CDATA[${mccwf_pda_check_errors==false}]]></conditionExpression>
+      </sequenceFlow>
+      <intermediateCatchEvent id="timerintermediatecatchevent1" name="TimerCatchEvent">
+        <timerEventDefinition>
+          <timeDuration>P1D</timeDuration>
+        </timerEventDefinition>
+      </intermediateCatchEvent>
+      <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>
+      <sequenceFlow id="flow20" sourceRef="exclusivegateway2" targetRef="pdaStoring"></sequenceFlow>
+      <sequenceFlow id="flow21" sourceRef="exclusivegateway2" targetRef="timerintermediatecatchevent1">
+        <conditionExpression xsi:type="tFormalExpression"><![CDATA[${mccwf_pda_ipda_labeling_errors==true}]]></conditionExpression>
+      </sequenceFlow>
+      <sequenceFlow id="flow22" sourceRef="timerintermediatecatchevent1" targetRef="ipdaLabeling"></sequenceFlow>
+      <exclusiveGateway id="exclusivegateway3" name="Exclusive Gateway"></exclusiveGateway>
+      <serviceTask id="ipdaSubscriptionService" name="Servizio Sottoscrizione IPdA" activiti:delegateExpression="${ContrattiIPdASubscription}">
+        <extensionElements>
+          <activiti:executionListener event="end" class="org.alfresco.repo.workflow.activiti.listener.ScriptExecutionListener">
+            <activiti:field name="script">
+              <activiti:string><![CDATA[execution.setVariable('mccwf_pda_ipda_subscription_retry', execution.getVariable('mccwf_pda_ipda_subscription_retry')+1);]]></activiti:string>
+            </activiti:field>
+          </activiti:executionListener>
+        </extensionElements>
+      </serviceTask>
+      <sequenceFlow id="flow23" sourceRef="ipdaSubscriptionService" targetRef="exclusivegateway3"></sequenceFlow>
+      <sequenceFlow id="flow24" sourceRef="exclusivegateway3" targetRef="ipdaLabeling">
+        <extensionElements>
+          <activiti:executionListener event="start" class="org.alfresco.repo.workflow.activiti.listener.ScriptExecutionListener">
+            <activiti:field name="script">
+              <activiti:string><![CDATA[execution.setVariable('mccwf_pda_ipda_labeling_retry', 0);]]></activiti:string>
+            </activiti:field>
+          </activiti:executionListener>
+        </extensionElements>
+      </sequenceFlow>
+      <intermediateCatchEvent id="timerintermediatecatchevent2" name="TimerCatchEvent">
+        <timerEventDefinition>
+          <timeDuration>P1D</timeDuration>
+        </timerEventDefinition>
+      </intermediateCatchEvent>
+      <sequenceFlow id="flow25" sourceRef="exclusivegateway3" targetRef="timerintermediatecatchevent2">
+        <conditionExpression xsi:type="tFormalExpression"><![CDATA[${mccwf_pda_ipda_subscription_error==true}]]></conditionExpression>
+      </sequenceFlow>
+      <sequenceFlow id="flow26" sourceRef="timerintermediatecatchevent2" targetRef="ipdaSubscriptionService"></sequenceFlow>
+      <userTask id="pdaReview" name="Rivisitazione PdA" activiti:candidateGroups="GROUP_conservatori" activiti:formKey="mccwf:reviewPdAProcessTask">
+        <extensionElements>
+          <activiti:taskListener event="create" class="org.alfresco.repo.workflow.activiti.tasklistener.ScriptTaskListener">
+            <activiti:field name="script">
+              <activiti:string><![CDATA[if (typeof bpm_workflowDueDate != 'undefined') task.dueDate = bpm_workflowDueDate
+                        if (typeof bpm_workflowPriority != 'undefined') task.priority = bpm_workflowPriority;]]></activiti:string>
+            </activiti:field>
+          </activiti:taskListener>
+          <activiti:taskListener event="complete" class="org.alfresco.repo.workflow.activiti.tasklistener.ScriptTaskListener">
+            <activiti:field name="script">
+              <activiti:string><![CDATA[if (task.getVariableLocal('mccwf_reviewPdA') == 'Continua') {
+execution.setVariable('mccwf_resubmit', false);
+execution.setVariable('mccwf_cancelPdA', false);
+} else if (task.getVariableLocal('mccwf_reviewPdA') == 'Riavvia'){
+execution.setVariable('mccwf_resubmit', true);
+execution.setVariable('mccwf_cancelPdA', false);
+}else if (task.getVariableLocal('mccwf_reviewPdA') == 'Cancella PdA'){
+execution.setVariable('mccwf_cancelPdA', true);
+execution.setVariable('mccwf_resubmit', false);
+}]]></activiti:string>
+            </activiti:field>
+          </activiti:taskListener>
+        </extensionElements>
+      </userTask>
+      <userTask id="ipdaSubscription" name="Sottoscrizione IPdA" activiti:candidateGroups="GROUP_conservatori" activiti:formKey="mccwf:submitIPdAProcessTask">
+        <extensionElements>
+          <activiti:taskListener event="create" class="org.alfresco.repo.workflow.activiti.tasklistener.ScriptTaskListener">
+            <activiti:field name="script">
+              <activiti:string><![CDATA[if (typeof bpm_workflowDueDate != 'undefined') task.dueDate = bpm_workflowDueDate
+                        if (typeof bpm_workflowPriority != 'undefined') task.priority = bpm_workflowPriority;]]></activiti:string>
+            </activiti:field>
+          </activiti:taskListener>
+          <activiti:taskListener event="complete" class="org.alfresco.repo.workflow.activiti.tasklistener.ScriptTaskListener">
+            <activiti:field name="script">
+              <activiti:string><![CDATA[execution.setVariable('mccwf_namirialUsername', task.getVariableLocal('mccwf_namirialUsername'));
+execution.setVariable('mccwf_namirialPassword', task.getVariableLocal('mccwf_namirialPassword'));
+if (task.getVariableLocal('mccwf_submitIPdA') == 'Cancella PdA'){
+	execution.setVariable('mccwf_cancelPdA', true);
+}]]></activiti:string>
+            </activiti:field>
+          </activiti:taskListener>
+        </extensionElements>
+      </userTask>
+      <sequenceFlow id="flow8" sourceRef="exclusivegateway8" targetRef="ipdaSubscriptionService">
+        <extensionElements>
+          <activiti:executionListener event="start" class="org.alfresco.repo.workflow.activiti.listener.ScriptExecutionListener">
+            <activiti:field name="script">
+              <activiti:string><![CDATA[execution.setVariable('mccwf_pda_ipda_subscription_retry', 0);]]></activiti:string>
+            </activiti:field>
+          </activiti:executionListener>
+        </extensionElements>
+        <conditionExpression xsi:type="tFormalExpression"><![CDATA[${mccwf_cancelPdA == false}]]></conditionExpression>
+      </sequenceFlow>
+      <endEvent id="errorendevent1" name="ErrorEnd">
+        <errorEventDefinition errorRef="subscriptionError"></errorEventDefinition>
+      </endEvent>
+      <endEvent id="errorendevent2" name="ErrorEnd">
+        <errorEventDefinition errorRef="labelingError"></errorEventDefinition>
+      </endEvent>
+      <sequenceFlow id="flow30" sourceRef="exclusivegateway2" targetRef="errorendevent2">
+        <conditionExpression xsi:type="tFormalExpression"><![CDATA[${mccwf_pda_ipda_labeling_retry==4}]]></conditionExpression>
+      </sequenceFlow>
+      <sequenceFlow id="flow31" sourceRef="exclusivegateway3" targetRef="errorendevent1">
+        <conditionExpression xsi:type="tFormalExpression"><![CDATA[${mccwf_pda_ipda_subscription_retry==4}]]></conditionExpression>
+      </sequenceFlow>
+      <endEvent id="endevent6" name="End"></endEvent>
+      <sequenceFlow id="flow42" sourceRef="cancelPdA" targetRef="endevent6"></sequenceFlow>
+      <serviceTask id="cancelPdA" name="Cancella PdA" activiti:class="org.alfresco.repo.workflow.activiti.script.AlfrescoScriptDelegate">
+        <extensionElements>
+          <activiti:field name="script">
+            <activiti:string><![CDATA[var relatedIPdA=execution.getVariable('mccwf_relatedIPdA');
+if (relatedIPdA!=null) {
+	var relatedIPdAScriptNode=search.findNode(relatedIPdA);
+	relatedIPdAScriptNode.remove();
+}]]></activiti:string>
+          </activiti:field>
+        </extensionElements>
+      </serviceTask>
+      <exclusiveGateway id="exclusivegateway6" name="Exclusive Gateway"></exclusiveGateway>
+      <sequenceFlow id="flow47" sourceRef="pdaReview" targetRef="exclusivegateway6"></sequenceFlow>
+      <sequenceFlow id="flow48" sourceRef="exclusivegateway6" targetRef="exclusivegateway7">
+        <conditionExpression xsi:type="tFormalExpression"><![CDATA[${mccwf_resubmit == false and mccwf_cancelPdA == true}]]></conditionExpression>
+      </sequenceFlow>
+      <exclusiveGateway id="exclusivegateway7" name="Exclusive Gateway"></exclusiveGateway>
+      <sequenceFlow id="flow49" sourceRef="exclusivegateway7" targetRef="cancelPdA"></sequenceFlow>
+      <sequenceFlow id="flow51" sourceRef="exclusivegateway8" targetRef="exclusivegateway7">
+        <conditionExpression xsi:type="tFormalExpression"><![CDATA[${mccwf_cancelPdA == true}]]></conditionExpression>
+      </sequenceFlow>
+      <exclusiveGateway id="exclusivegateway8" name="Exclusive Gateway"></exclusiveGateway>
+      <sequenceFlow id="flow52" sourceRef="ipdaSubscription" targetRef="exclusivegateway8"></sequenceFlow>
+    </subProcess>
+    <endEvent id="endevent2" name="End"></endEvent>
+    <sequenceFlow id="flow13" sourceRef="PdASubProcess" targetRef="endevent2"></sequenceFlow>
+    <boundaryEvent id="boundaryerror1" name="Error" attachedToRef="PdASubProcess">
+      <errorEventDefinition errorRef="subscriptionError"></errorEventDefinition>
+    </boundaryEvent>
+    <startEvent id="alfrescoStartevent1" name="Alfresco start" activiti:formKey="mccwf:submitPdAProcessTask"></startEvent>
+    <sequenceFlow id="flow29" sourceRef="alfrescoStartevent1" targetRef="exclusivegateway4"></sequenceFlow>
+    <serviceTask id="subscriptionErrorMailTask" name="Subscription Error Mail Task" activiti:class="org.alfresco.repo.workflow.activiti.script.AlfrescoScriptDelegate">
+      <extensionElements>
+        <activiti:field name="script">
+          <activiti:string><![CDATA[var mail = actions.create("mail");
+                mail.parameters.to = "euleon@gmail.com";
+                mail.parameters.subject = "send a workflow's email. second test! " + bpm_workflowDescription;
+                mail.parameters.ignore_send_failure = true;
+                mail.parameters.from = "mcc@gmail.com";
+                mail.parameters.text = "2nd Test message! ";
+                mail.execute(bpm_package);]]></activiti:string>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
+    <boundaryEvent id="boundaryerror2" name="Error" attachedToRef="PdASubProcess">
+      <errorEventDefinition errorRef="labelingError"></errorEventDefinition>
+    </boundaryEvent>
+    <serviceTask id="labelingErrorMailTask" name="Labeling Error Mail Task" activiti:class="org.alfresco.repo.workflow.activiti.script.AlfrescoScriptDelegate">
+      <extensionElements>
+        <activiti:field name="script">
+          <activiti:string><![CDATA[var mail = actions.create("mail");
+                mail.parameters.to = "euleon@gmail.com";
+                mail.parameters.subject = "send a workflow's email. second test! " + bpm_workflowDescription;
+                mail.parameters.ignore_send_failure = true;
+                mail.parameters.from = "mcc@gmail.com";
+                mail.parameters.text = "2nd Test message! ";
+                mail.execute(bpm_package);]]></activiti:string>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
+    <endEvent id="endevent4" name="End"></endEvent>
+    <sequenceFlow id="flow33" sourceRef="labelingErrorMailTask" targetRef="endevent4"></sequenceFlow>
+    <endEvent id="endevent5" name="End"></endEvent>
+    <sequenceFlow id="flow34" sourceRef="subscriptionErrorMailTask" targetRef="endevent5"></sequenceFlow>
+    <userTask id="selectedPdV" name="PdV Selezionati" activiti:candidateGroups="GROUP_conservatori" activiti:formKey="mccwf:submitSelectedPdVTask">
+      <extensionElements>
+        <activiti:taskListener event="create" class="org.alfresco.repo.workflow.activiti.tasklistener.ScriptTaskListener">
+          <activiti:field name="script">
+            <activiti:string><![CDATA[var userName = execution.getVariable('initiator').properties.userName;
+            var userFirst = execution.getVariable('initiator').properties.firstName;
+            var userLast = execution.getVariable('initiator').properties.lastName;
+            task.setVariable('mccwf_wfInitiator', userFirst + ' ' + userLast + ' (' + userName + ')' );]]></activiti:string>
+          </activiti:field>
+        </activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <exclusiveGateway id="exclusivegateway4" name="Exclusive Gateway"></exclusiveGateway>
+    <sequenceFlow id="flow36" sourceRef="exclusivegateway4" targetRef="selectedPdV">
+      <extensionElements>
+        <activiti:executionListener event="take" class="org.alfresco.repo.workflow.activiti.listener.ScriptExecutionListener">
+          <activiti:field name="script">
+            <activiti:string><![CDATA[function arrayUnique(array) {
+    var a = array.concat();
+    for(var i=0; i<a.length; ++i) {
+        for(var j=i+1; j<a.length; ++j) {
+            if(a[i].nodeRef.toString().equals(a[j].nodeRef.toString())||a[i].name.toString().equals(a[j].name.toString()))
+                a.splice(j--, 1);
+        }
+    }
+    return a;
+}
+
+var pdvsResult= new Array();
+var relatedPdVSFolder=execution.getVariable('mccwf_relatedPdVFolder');
+var startDatePdV=execution.getVariable('mccwf_startDatePdV');
+var endDatePdV=execution.getVariable('mccwf_endDatePdV');
+if (endDatePdV==null) {
+endDatePdV=new Date();
+}
+var startDatePdVMillisecs = startDatePdV.getTime(); 
+var endDatePdVMillisecs = endDatePdV.getTime();    
+for each (var relatedPdVFolder in relatedPdVSFolder.toArray()){
+	var pdvFolderpath = relatedPdVFolder.qnamePath;
+	var pdvs=search.luceneSearch('TYPE:"mcccont:contrattiPdvCons" AND PATH:"'+ pdvFolderpath+'//*"');
+	logger.log("Query:" + pdvFolderpath + "//*");
+	pdvsResult = arrayUnique(pdvsResult.concat(pdvs));
+	logger.log("ARRAYpdvs:");
+	logger.log(pdvsResult);
+}
+var bpmPackage = execution.getVariable('bpm_package');
+logger.log("Nodi da inserire in var workflow:");
+for each (pdv in pdvsResult) {
+	logger.log(pdv);
+	bpmPackage.addNode(pdv);
+}
+bpmPackage.save();]]></activiti:string>
+          </activiti:field>
+        </activiti:executionListener>
+      </extensionElements>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${mccwf_starterPdA=='Human'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow37" sourceRef="selectedPdV" targetRef="PdASubProcess"></sequenceFlow>
+    <sequenceFlow id="flow38" sourceRef="exclusivegateway4" targetRef="PdASubProcess"></sequenceFlow>
+    <sequenceFlow id="flow39" sourceRef="boundaryerror1" targetRef="subscriptionErrorMailTask"></sequenceFlow>
+    <sequenceFlow id="flow40" sourceRef="boundaryerror2" targetRef="labelingErrorMailTask"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_lBPdaGenerationWorkflow">
+    <bpmndi:BPMNPlane bpmnElement="lBPdaGenerationWorkflow" id="BPMNPlane_lBPdaGenerationWorkflow">
+      <bpmndi:BPMNShape bpmnElement="PdASubProcess" id="BPMNShape_PdASubProcess">
+        <omgdc:Bounds height="394.0" width="1391.0" x="350.0" y="77.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="1690.0" y="164.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="pdaStoring" id="BPMNShape_pdaStoring">
+        <omgdc:Bounds height="55.0" width="105.0" x="1430.0" y="154.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ipdaLabeling" id="BPMNShape_ipdaLabeling">
+        <omgdc:Bounds height="55.0" width="105.0" x="1250.0" y="154.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="indexGeneration" id="BPMNShape_indexGeneration">
+        <omgdc:Bounds height="55.0" width="105.0" x="760.0" y="154.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
+        <omgdc:Bounds height="40.0" width="40.0" x="700.0" y="161.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="pdaCheckTask" id="BPMNShape_pdaCheckTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="570.0" y="154.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="pdaGenerationTask" id="BPMNShape_pdaGenerationTask">
+        <omgdc:Bounds height="55.0" width="131.0" x="420.0" y="154.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="startevent2" id="BPMNShape_startevent2">
+        <omgdc:Bounds height="35.0" width="35.0" x="360.0" y="164.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="timerintermediatecatchevent1" id="BPMNShape_timerintermediatecatchevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="1285.0" y="92.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway2" id="BPMNShape_exclusivegateway2">
+        <omgdc:Bounds height="40.0" width="40.0" x="1370.0" y="161.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway3" id="BPMNShape_exclusivegateway3">
+        <omgdc:Bounds height="40.0" width="40.0" x="1190.0" y="161.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ipdaSubscriptionService" id="BPMNShape_ipdaSubscriptionService">
+        <omgdc:Bounds height="55.0" width="105.0" x="1070.0" y="154.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="timerintermediatecatchevent2" id="BPMNShape_timerintermediatecatchevent2">
+        <omgdc:Bounds height="35.0" width="35.0" x="1105.0" y="92.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="pdaReview" id="BPMNShape_pdaReview">
+        <omgdc:Bounds height="55.0" width="105.0" x="668.0" y="240.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ipdaSubscription" id="BPMNShape_ipdaSubscription">
+        <omgdc:Bounds height="55.0" width="105.0" x="880.0" y="154.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="errorendevent1" id="BPMNShape_errorendevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="1193.0" y="272.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="errorendevent2" id="BPMNShape_errorendevent2">
+        <omgdc:Bounds height="35.0" width="35.0" x="1373.0" y="272.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent6" id="BPMNShape_endevent6">
+        <omgdc:Bounds height="35.0" width="35.0" x="1630.0" y="370.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="cancelPdA" id="BPMNShape_cancelPdA">
+        <omgdc:Bounds height="55.0" width="105.0" x="1140.0" y="360.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway6" id="BPMNShape_exclusivegateway6">
+        <omgdc:Bounds height="40.0" width="40.0" x="700.0" y="330.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway7" id="BPMNShape_exclusivegateway7">
+        <omgdc:Bounds height="40.0" width="40.0" x="1010.0" y="367.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway8" id="BPMNShape_exclusivegateway8">
+        <omgdc:Bounds height="40.0" width="40.0" x="1010.0" y="161.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="boundaryerror1" id="BPMNShape_boundaryerror1">
+        <omgdc:Bounds height="30.0" width="30.0" x="706.0" y="453.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="boundaryerror2" id="BPMNShape_boundaryerror2">
+        <omgdc:Bounds height="30.0" width="30.0" x="1160.0" y="453.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent2" id="BPMNShape_endevent2">
+        <omgdc:Bounds height="35.0" width="35.0" x="1780.0" y="256.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="alfrescoStartevent1" id="BPMNShape_alfrescoStartevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="31.0" y="256.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="subscriptionErrorMailTask" id="BPMNShape_subscriptionErrorMailTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="798.0" y="530.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="labelingErrorMailTask" id="BPMNShape_labelingErrorMailTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="1240.0" y="530.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent4" id="BPMNShape_endevent4">
+        <omgdc:Bounds height="35.0" width="35.0" x="1420.0" y="540.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent5" id="BPMNShape_endevent5">
+        <omgdc:Bounds height="35.0" width="35.0" x="971.0" y="540.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="selectedPdV" id="BPMNShape_selectedPdV">
+        <omgdc:Bounds height="55.0" width="105.0" x="180.0" y="246.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway4" id="BPMNShape_exclusivegateway4">
+        <omgdc:Bounds height="40.0" width="40.0" x="110.0" y="253.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
+        <omgdi:waypoint x="1535.0" y="181.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1690.0" y="181.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="1355.0" y="181.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1370.0" y="181.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="865.0" y="181.0"></omgdi:waypoint>
+        <omgdi:waypoint x="880.0" y="181.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="740.0" y="350.0"></omgdi:waypoint>
+        <omgdi:waypoint x="812.0" y="350.0"></omgdi:waypoint>
+        <omgdi:waypoint x="812.0" y="242.0"></omgdi:waypoint>
+        <omgdi:waypoint x="812.0" y="209.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="720.0" y="201.0"></omgdi:waypoint>
+        <omgdi:waypoint x="720.0" y="240.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="675.0" y="181.0"></omgdi:waypoint>
+        <omgdi:waypoint x="700.0" y="181.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="551.0" y="181.0"></omgdi:waypoint>
+        <omgdi:waypoint x="570.0" y="181.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
+        <omgdi:waypoint x="395.0" y="181.0"></omgdi:waypoint>
+        <omgdi:waypoint x="420.0" y="181.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow17" id="BPMNEdge_flow17">
+        <omgdi:waypoint x="700.0" y="350.0"></omgdi:waypoint>
+        <omgdi:waypoint x="485.0" y="349.0"></omgdi:waypoint>
+        <omgdi:waypoint x="485.0" y="209.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow18" id="BPMNEdge_flow18">
+        <omgdi:waypoint x="740.0" y="181.0"></omgdi:waypoint>
+        <omgdi:waypoint x="760.0" y="181.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow20" id="BPMNEdge_flow20">
+        <omgdi:waypoint x="1410.0" y="181.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1430.0" y="181.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow21" id="BPMNEdge_flow21">
+        <omgdi:waypoint x="1390.0" y="161.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1389.0" y="109.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1320.0" y="109.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow22" id="BPMNEdge_flow22">
+        <omgdi:waypoint x="1302.0" y="127.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1302.0" y="154.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow23" id="BPMNEdge_flow23">
+        <omgdi:waypoint x="1175.0" y="181.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1190.0" y="181.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow24" id="BPMNEdge_flow24">
+        <omgdi:waypoint x="1230.0" y="181.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1250.0" y="181.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow25" id="BPMNEdge_flow25">
+        <omgdi:waypoint x="1210.0" y="161.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1210.0" y="109.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1140.0" y="109.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow26" id="BPMNEdge_flow26">
+        <omgdi:waypoint x="1122.0" y="127.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1122.0" y="154.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
+        <omgdi:waypoint x="1050.0" y="181.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1070.0" y="181.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow30" id="BPMNEdge_flow30">
+        <omgdi:waypoint x="1390.0" y="201.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1390.0" y="272.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow31" id="BPMNEdge_flow31">
+        <omgdi:waypoint x="1210.0" y="201.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1210.0" y="272.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow42" id="BPMNEdge_flow42">
+        <omgdi:waypoint x="1245.0" y="387.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1630.0" y="387.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow47" id="BPMNEdge_flow47">
+        <omgdi:waypoint x="720.0" y="295.0"></omgdi:waypoint>
+        <omgdi:waypoint x="720.0" y="330.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow48" id="BPMNEdge_flow48">
+        <omgdi:waypoint x="720.0" y="370.0"></omgdi:waypoint>
+        <omgdi:waypoint x="720.0" y="387.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1010.0" y="387.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow49" id="BPMNEdge_flow49">
+        <omgdi:waypoint x="1050.0" y="387.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1140.0" y="387.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow51" id="BPMNEdge_flow51">
+        <omgdi:waypoint x="1030.0" y="201.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1030.0" y="367.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow52" id="BPMNEdge_flow52">
+        <omgdi:waypoint x="985.0" y="181.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1010.0" y="181.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow13" id="BPMNEdge_flow13">
+        <omgdi:waypoint x="1741.0" y="274.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1780.0" y="273.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow29" id="BPMNEdge_flow29">
+        <omgdi:waypoint x="66.0" y="273.0"></omgdi:waypoint>
+        <omgdi:waypoint x="110.0" y="273.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow33" id="BPMNEdge_flow33">
+        <omgdi:waypoint x="1345.0" y="557.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1420.0" y="557.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow34" id="BPMNEdge_flow34">
+        <omgdi:waypoint x="903.0" y="557.0"></omgdi:waypoint>
+        <omgdi:waypoint x="971.0" y="557.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow36" id="BPMNEdge_flow36">
+        <omgdi:waypoint x="150.0" y="273.0"></omgdi:waypoint>
+        <omgdi:waypoint x="180.0" y="273.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow37" id="BPMNEdge_flow37">
+        <omgdi:waypoint x="285.0" y="273.0"></omgdi:waypoint>
+        <omgdi:waypoint x="350.0" y="274.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow38" id="BPMNEdge_flow38">
+        <omgdi:waypoint x="130.0" y="293.0"></omgdi:waypoint>
+        <omgdi:waypoint x="130.0" y="353.0"></omgdi:waypoint>
+        <omgdi:waypoint x="231.0" y="353.0"></omgdi:waypoint>
+        <omgdi:waypoint x="349.0" y="353.0"></omgdi:waypoint>
+        <omgdi:waypoint x="350.0" y="274.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow39" id="BPMNEdge_flow39">
+        <omgdi:waypoint x="721.0" y="483.0"></omgdi:waypoint>
+        <omgdi:waypoint x="720.0" y="557.0"></omgdi:waypoint>
+        <omgdi:waypoint x="798.0" y="557.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow40" id="BPMNEdge_flow40">
+        <omgdi:waypoint x="1175.0" y="483.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1174.0" y="557.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1240.0" y="557.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
