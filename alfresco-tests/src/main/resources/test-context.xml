@@ -66,6 +66,7 @@
 	<bean id="FileFolderService"
 		class="org.alfresco.mock.test.MockFileFolderService">
 		<property name="nodeService" ref="nodeService" />
+		<property name="namespaceService" ref="namespaceService" />
 	</bean>
 	<alias name="FileFolderService" alias="fileFolderService" />
 	<bean id="SearchService"

@@ -30,6 +30,8 @@ import org.activiti.engine.repository.Deployment;
 import org.alfresco.mock.NodeUtils;
 import org.alfresco.mock.ZipUtils;
 import org.alfresco.mock.test.MockContentService;
+import org.alfresco.model.ContentModel;
+import org.alfresco.repo.site.SiteModel;
 import org.alfresco.repo.workflow.activiti.ActivitiScriptNode;
 import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.model.FileFolderService;
@@ -37,6 +39,7 @@ import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.search.ResultSet;
 import org.alfresco.service.cmr.search.SearchService;
+import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -59,7 +62,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
 	protected NodeRef workspace;
 	protected NodeRef archive;
-	protected NodeRef site;
+	protected NodeRef sites;
 	protected ActivitiScriptNode bpmPackage;
 
 	public AbstractActivitiForm() {
@@ -75,7 +78,13 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 				.getFileFolderService();
 		SearchService searchService = activitiProcessEngineConfiguration.getServiceRegistry().getSearchService();
 		ServiceRegistry serviceRegistry = activitiProcessEngineConfiguration.getServiceRegistry();
-		// elimino i vecchi documenti
+		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
+		namespaceService.registerNamespace(NamespaceService.APP_MODEL_PREFIX, NamespaceService.APP_MODEL_1_0_URI);
+		namespaceService.registerNamespace(SiteModel.SITE_MODEL_PREFIX, SiteModel.SITE_MODEL_URL);
+		namespaceService.registerNamespace(NamespaceService.CONTENT_MODEL_PREFIX,
+				NamespaceService.CONTENT_MODEL_1_0_URI);
+
+		// remove the old documents
 		ResultSet nodes = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
 				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"*\"");
 		if (nodes.length() > 0)
@@ -89,14 +98,15 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 			e.printStackTrace();
 		}
 
-		// creo le directory iniziali per i pdv, gli rdv e il repository
+		// create the initial folders
 		NodeRef root = insertFolder(new NodeRef(new StoreRef("", ""), ""), ".");
 		workspace = insertFolder(root, StoreRef.PROTOCOL_WORKSPACE);
+		NodeRef companyHome = insertFolder(workspace, NamespaceService.APP_MODEL_PREFIX, "company_home");
 		archive = insertFolder(root, StoreRef.PROTOCOL_ARCHIVE);
-		site = insertFolder(workspace, "cm:Site");
-		NodeRef workflow = insertFolder(workspace, "sys:workflow");
-		NodeRef packages = insertFolder(workflow, "cm:packages");
-		NodeRef bpmPackageFolder = insertFolder(packages, "cm:pkg_919f220e-870a-4c56-ba11-5030ee5325f0");
+		sites = insertFolder(companyHome, SiteModel.SITE_MODEL_PREFIX, SiteModel.TYPE_SITES.getLocalName());
+		NodeRef workflow = insertFolder(workspace, "workflow");
+		NodeRef packages = insertFolder(workflow, "packages");
+		NodeRef bpmPackageFolder = insertFolder(packages, "pkg_919f220e-870a-4c56-ba11-5030ee5325f0");
 		bpmPackage = new MockActivitiScriptNode(bpmPackageFolder, serviceRegistry);
 		variables.put("bpm_package", bpmPackage);
 
@@ -125,6 +135,15 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	protected NodeRef insertFolder(NodeRef parent, String name) {
 		return NodeUtils.insertFolder(parent, name, ((ActivitiProcessEngineConfiguration) processEngineConfiguration)
 				.getServiceRegistry().getFileFolderService());
+	}
+
+	protected NodeRef insertFolder(NodeRef parent, String prefix, String localName) {
+		ServiceRegistry serviceRegistry = ((ActivitiProcessEngineConfiguration) processEngineConfiguration)
+				.getServiceRegistry();
+		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
+		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
+		QName qname = QName.createQName(prefix, localName, namespaceService);
+		return fileFolderService.create(parent, qname.getPrefixString(), ContentModel.TYPE_FOLDER).getNodeRef();
 	}
 
 	protected NodeRef insertDocument(NodeRef parent, String name, String text, Map<QName, Serializable> properties) {

@@ -367,4 +367,12 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		this.nodeService = nodeService;
 	}
 
+	public NamespaceService getNamespaceService() {
+		return namespaceService;
+	}
+
+	public void setNamespaceService(NamespaceService namespaceService) {
+		this.namespaceService = namespaceService;
+	}
+
 }

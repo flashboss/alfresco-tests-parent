@@ -30,7 +30,6 @@ import org.alfresco.service.cmr.repository.Path;
 import org.alfresco.service.cmr.repository.Path.Element;
 import org.alfresco.service.cmr.repository.StoreExistsException;
 import org.alfresco.service.cmr.repository.StoreRef;
-import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.service.namespace.QNamePattern;
 
@@ -102,7 +101,7 @@ public class MockNodeService implements NodeService, Serializable {
 		Path path = getPath(parentRef);
 		String pathStr = "";
 		if (path != null)
-			pathStr = path.toString() + File.separator + assocQName.getPrefixString();
+			pathStr = path.toString() + File.separator + assocQName.getLocalName();
 		else
 			pathStr = MockContentService.FOLDER_TEST;
 		StoreRef storeRef = StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
@@ -122,9 +121,7 @@ public class MockNodeService implements NodeService, Serializable {
 	public ChildAssociationRef createNode(NodeRef parentRef, QName assocTypeQName, QName assocQName,
 			QName nodeTypeQName, Map<QName, Serializable> properties)
 			throws InvalidNodeRefException, InvalidTypeException {
-		String nodeUUID = assocQName.getPrefixString();
-		if (!nodeUUID.contains(":"))
-			nodeUUID = NamespaceService.CONTENT_MODEL_PREFIX + ":" + nodeUUID;
+		String nodeUUID = assocQName.getLocalName();
 		Path path = getPath(parentRef);
 		String pathStr = "";
 		if (path != null)

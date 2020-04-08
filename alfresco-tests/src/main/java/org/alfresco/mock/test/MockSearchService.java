@@ -37,13 +37,12 @@ public class MockSearchService implements SearchService, Serializable {
 
 	@Override
 	public ResultSet query(StoreRef store, String language, String query) {
-		query = ISO9075.decode(query).trim();
 		MockNodeService nodeService = getNodeService();
 		List<ResultSetRow> rows = new ArrayList<ResultSetRow>();
 		List<NodeRef> nodeRefs = NodeUtils.sortByName(nodeService.getNodeRefs().keySet());
 		if (language.equals(SearchService.LANGUAGE_XPATH))
 			XPATHQuery(store, query, nodeRefs, rows);
-		else if (language.equals(SearchService.LANGUAGE_FTS_ALFRESCO))
+		else if (language.equals(SearchService.LANGUAGE_FTS_ALFRESCO) || language.equals(SearchService.LANGUAGE_LUCENE))
 			FCSQuery(store, query, nodeRefs, rows);
 		return new MockResultSet(rows);
 	}
@@ -409,6 +408,7 @@ public class MockSearchService implements SearchService, Serializable {
 	}
 
 	private void XPATHQuery(StoreRef store, String query, List<NodeRef> nodeRefs, List<ResultSetRow> rows) {
+		query = prepare(query, store);
 		String[] subpaths = getSubpaths(query);
 		int wildcardsNumber = 0;
 		String processQuery = query;
@@ -424,6 +424,7 @@ public class MockSearchService implements SearchService, Serializable {
 
 	private void FCSQuery(StoreRef store, String query, List<NodeRef> nodeRefs, List<ResultSetRow> rows) {
 		String path = getSegmentFromQuery(query, "PATH:\"");
+		path = prepare(path, store);
 		if (!path.startsWith(File.separator))
 			path = File.separator + path;
 		String[] subpaths = getSubpaths(path);
@@ -438,6 +439,28 @@ public class MockSearchService implements SearchService, Serializable {
 			if (hasType(type, nodeRef) && hasPath(store, path, subpaths, wildcardsNumber, nodeRef))
 				rows.add(new MockResultSetRow(nodeRef));
 		}
+	}
+
+	private String prepare(String query, StoreRef store) {
+		query = ISO9075.decode(query).trim();
+		String prefix = MockContentService.FOLDER_TEST;
+		if (store != null)
+			prefix = prefix + store.getProtocol();
+		int index = query.indexOf(prefix);
+		if (index >= 0)
+			query = query.substring(index + prefix.length());
+		String result = "";
+		String[] slashes = query.split(File.separator);
+		for (int i = 0; i < slashes.length; i++) {
+			String slashed = slashes[i];
+			if (slashed.contains(":"))
+				result += slashed.split(":")[1];
+			else
+				result += slashed;
+			result += File.separator;
+		}
+		result = result.substring(0, result.length() - 1);
+		return result;
 	}
 
 }
