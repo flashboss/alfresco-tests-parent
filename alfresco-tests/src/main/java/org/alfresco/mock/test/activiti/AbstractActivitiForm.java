@@ -50,14 +50,6 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.subethamail.smtp.server.SMTPServer;
 
-/**
- * Parent test case for all the tests of the application. It has the groups
- * constant names used for the test, the initial creation of the environment and
- * the final clean of teh environment
- * 
- * @author lucastancapiano
- *
- */
 public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
 	protected NodeRef workspace;
@@ -69,9 +61,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		super("test-module-context.xml");
 	}
 
-	/**
-	 * Inits the mail server and create the demo users and groups
-	 */
 	public void init(Map<String, Object> variables) {
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
 		FileFolderService fileFolderService = activitiProcessEngineConfiguration.getServiceRegistry()
@@ -118,9 +107,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		initDemoUsers(identityService);
 	}
 
-	/**
-	 * Ends the environment cleaning the database and stopping the mail server
-	 */
 	public void end() {
 		// CLEANING DB
 		deleteAllIdentities(identityService);
@@ -192,9 +178,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		processEngine = processEngineConfiguration.buildProcessEngine();
 	}
 
-	/**
-	 * The SMTP server to start to send the mails to the users.
-	 */
 	private SMTPServer smtpServer;
 
 	public SMTPServer getSmtpServer() {
@@ -205,9 +188,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		this.smtpServer = smtpServer;
 	}
 
-	/**
-	 * Starts the mail server
-	 */
 	public void startMailServer() {
 		MockMessageHandlerFactory myFactory = new MockMessageHandlerFactory();
 		smtpServer = new SMTPServer(myFactory);
@@ -215,28 +195,10 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		smtpServer.start();
 	}
 
-	/**
-	 * Stops the mail server
-	 */
 	public void stopMailServer() {
 		smtpServer.stop();
 	}
 
-	/**
-	 * Create the user
-	 * 
-	 * @param identityService The service to create the users
-	 * @param userId          Id of the user
-	 * @param firstName       First name of the user
-	 * @param lastName        Last name of the user
-	 * @param password        Password of the user to login
-	 * @param email           Email of the user. It will be used to receive the
-	 *                        messages
-	 * @param imageResource   Image available in the profile view of the user
-	 * @param groups          groups of the users. The user can be an admin, staff
-	 *                        or traveler
-	 * @param userInfo        Other custom properties for the user
-	 */
 	public void createUser(IdentityService identityService, String userId, String firstName, String lastName,
 			String password, String email, String imageResource, List<String> groups, List<String> userInfo) {
 
@@ -277,14 +239,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
 	}
 
-	/**
-	 * Create the group of the user
-	 * 
-	 * @param identityService The service to create the groups
-	 * @param groupId         Id of the group
-	 * @param type            Type of the group. It can be assignment for travelers
-	 *                        and staff or security role for admin and user
-	 */
 	public void createGroup(IdentityService identityService, String groupId, String type) {
 		if (identityService.createGroupQuery().groupId(groupId).count() == 0) {
 			Group newGroup = identityService.newGroup(groupId);
@@ -294,11 +248,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		}
 	}
 
-	/**
-	 * Delete all current users and groups from the database. To use only for tests
-	 * 
-	 * @param identityService The service to delete users and groups
-	 */
 	public void deleteAllIdentities(IdentityService identityService) {
 		List<User> users = identityService.createUserQuery().list();
 		for (User user : users) {
@@ -310,11 +259,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		}
 	}
 
-	/**
-	 * Delete all history of the workflows. To use only only for tests
-	 * 
-	 * @param historyService The service where delete all historical data
-	 */
 	public void deleteAllHistories(HistoryService historyService) {
 		List<HistoricProcessInstance> historicInstances = historyService.createHistoricProcessInstanceQuery().list();
 		for (HistoricProcessInstance historicProcessInstance : historicInstances)
@@ -325,11 +269,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 			}
 	}
 
-	/**
-	 * Delete all workflows. To use only for tests
-	 * 
-	 * @param repositoryService The service where delete all workflows.
-	 */
 	public void deleteAllIDeployments(RepositoryService repositoryService) {
 		List<Deployment> deployments = repositoryService.createDeploymentQuery().list();
 		for (Deployment deployment : deployments) {
@@ -337,27 +276,12 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		}
 	}
 
-	/**
-	 * Utility function to get a date through parameters
-	 * 
-	 * @param number A list of number representing in the order the year, month,
-	 *               day, hour and minutes. Year, month and day are mandatory. Hour
-	 *               and minutes are optional
-	 * @return The calculated date with the sent parameters
-	 */
 	public static Date getDate(int... number) {
 		Calendar c1 = getInstance();
 		c1.set(number[0], number[1], number[2], number.length > 3 ? number[3] : 0, number.length > 4 ? number[4] : 0);
 		return c1.getTime();
 	}
 
-	/**
-	 * Utility function to add hours on a date
-	 * 
-	 * @param date  The date where add the hours
-	 * @param hours The hours to add on the date
-	 * @return The calculated date with the hours to add
-	 */
 	public static Date addHours(Date date, int hours) {
 		Calendar cal = getInstance(); // creates calendar
 		cal.setTime(date); // sets calendar time/date
@@ -365,26 +289,11 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		return cal.getTime(); // returns new date object, one hour in the future
 	}
 
-	/**
-	 * Get a diff between two dates
-	 * 
-	 * @param date1    the oldest date
-	 * @param date2    the newest date
-	 * @param timeUnit the unit in which you want the diff
-	 * @return the diff value, in the provided unit
-	 */
 	public static long differenceBetween(Date date1, Date date2, TimeUnit timeUnit) {
 		long diffInMillies = date1.getTime() - date2.getTime();
 		return timeUnit.convert(diffInMillies, MILLISECONDS);
 	}
 
-	/**
-	 * Verify if the passed user is an admin
-	 * 
-	 * @param user            The user to verify
-	 * @param identityService The service where find the user informations
-	 * @return true if the user is an admin, false if a simple user
-	 */
 	public static boolean isAdmin(String user, IdentityService identityService) {
 		return identityService.createUserQuery().userId(Authentication.getAuthenticatedUserId()).memberOfGroup("admin")
 				.count() > 0;
