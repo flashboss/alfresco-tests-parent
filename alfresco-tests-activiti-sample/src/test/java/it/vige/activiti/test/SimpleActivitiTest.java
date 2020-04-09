@@ -63,7 +63,7 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 				.getNamespaceService();
 		namespaceService.registerNamespace("mcccont", SimpleModel.STARTING_URI);
 		String generationFolderName = "20191024_154711";
-		NodeRef site = insertFolder(sites, "conservazione-digitale-contratti-banca");
+		NodeRef site = insertFolder(sites, "simple-site");
 		NodeRef documentLibrary = insertFolder(site, "documentLibrary");
 		NodeRef pdv = insertFolder(documentLibrary, "pdv");
 		NodeRef pda = insertFolder(documentLibrary, "pda");
@@ -163,7 +163,7 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"pda/pdv_contratti_" + generationFolder.getId() + ".zip\"");
 		NodeRef createdNodeRef = resultQ.getNodeRef(0);
 		Assert.assertTrue("Aggiunto il file zip nella nuova cartella PDA", createdNodeRef.toString().endsWith(
-				"workspace/company_home/sites/conservazione-digitale-contratti-banca/documentLibrary/pda/pdv_contratti_"
+				"workspace/company_home/sites/simple-site/documentLibrary/pda/pdv_contratti_"
 						+ generationFolder.getId() + ".zip"));
 
 		// the file is inside the workflow/packages activiti folder
