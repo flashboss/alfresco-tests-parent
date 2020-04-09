@@ -72,9 +72,9 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		generationFolder = insertFolder(pdv, generationFolderName);
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
 		try {
-			properties.put(ContentModel.PROP_NAME, "pdv_contratti_" + generationFolderName + ".zip");
+			properties.put(ContentModel.PROP_NAME, "contracts_" + generationFolderName + ".zip");
 			properties.put(ContentModel.TYPE_BASE, QName.createQName("mcccont", "contrattiPdvCons", namespaceService));
-			insertZip(generationFolder, "pdv_contratti_" + generationFolderName + ".zip", "document", "text",
+			insertZip(generationFolder, "contracts_" + generationFolderName + ".zip", "document", "text",
 					properties);
 		} catch (IOException e) {
 		}
@@ -160,19 +160,19 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		// one file is created by the workflow
 		SearchService searchService = serviceRegistry.getSearchService();
 		ResultSet resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
-				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"pda/pdv_contratti_" + generationFolder.getId() + ".zip\"");
+				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"pda/contracts_" + generationFolder.getId() + ".zip\"");
 		NodeRef createdNodeRef = resultQ.getNodeRef(0);
-		Assert.assertTrue("Aggiunto il file zip nella nuova cartella PDA", createdNodeRef.toString().endsWith(
-				"workspace/company_home/sites/simple-site/documentLibrary/pda/pdv_contratti_"
+		Assert.assertTrue("Added a zip file in the PDA folder", createdNodeRef.toString().endsWith(
+				"workspace/company_home/sites/simple-site/documentLibrary/pda/contracts_"
 						+ generationFolder.getId() + ".zip"));
 
 		// the file is inside the workflow/packages activiti folder
 		resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, SearchService.LANGUAGE_FTS_ALFRESCO,
-				"PATH:\"pkg_919f220e-870a-4c56-ba11-5030ee5325f0/pdv_contratti_" + generationFolder.getId() + ".zip\"");
+				"PATH:\"pkg_919f220e-870a-4c56-ba11-5030ee5325f0/contracts_" + generationFolder.getId() + ".zip\"");
 		createdNodeRef = resultQ.getNodeRef(0);
-		Assert.assertTrue("File zip dentro la cartella di activiti",
+		Assert.assertTrue("File zip in the activiti folder",
 				createdNodeRef.toString()
-						.endsWith("workspace/workflow/packages/pkg_919f220e-870a-4c56-ba11-5030ee5325f0/pdv_contratti_"
+						.endsWith("workspace/workflow/packages/pkg_919f220e-870a-4c56-ba11-5030ee5325f0/contracts_"
 								+ generationFolder.getId() + ".zip"));
 
 		end();
