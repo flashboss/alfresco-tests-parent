@@ -33,7 +33,7 @@ import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.junit.Assert;
 
-import it.vige.activiti.ConservazioneModel;
+import it.vige.activiti.SimpleModel;
 
 public class SimpleActivitiTest extends AbstractActivitiForm {
 
@@ -61,15 +61,14 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
 		NamespaceService namespaceService = activitiProcessEngineConfiguration.getServiceRegistry()
 				.getNamespaceService();
-		namespaceService.registerNamespace("mcccont", ConservazioneModel.MCC_CONSERVAZIONE_URI);
+		namespaceService.registerNamespace("mcccont", SimpleModel.STARTING_URI);
 		String generationFolderName = "20191024_154711";
 		NodeRef site = insertFolder(sites, "conservazione-digitale-contratti-banca");
 		NodeRef documentLibrary = insertFolder(site, "documentLibrary");
 		NodeRef pdv = insertFolder(documentLibrary, "pdv");
 		NodeRef pda = insertFolder(documentLibrary, "pda");
-		insertFolder(documentLibrary, "ipda");
 		NodeService nodeService = activitiProcessEngineConfiguration.getServiceRegistry().getNodeService();
-		nodeService.setProperty(pda, ConservazioneModel.PROP_PDA_ID_COUNTER, 0);
+		nodeService.setProperty(pda, SimpleModel.PROP_PDA_ID_COUNTER, 0);
 		generationFolder = insertFolder(pdv, generationFolderName);
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
 		try {
@@ -79,9 +78,6 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 					properties);
 		} catch (IOException e) {
 		}
-		properties = new HashMap<QName, Serializable>();
-		properties.put(ContentModel.PROP_NAME, "ipdv_contratti_" + generationFolderName + ".xml");
-		insertDocument(generationFolder, "ipdv_contratti_" + generationFolderName + ".xml", "", properties);
 		// AUTHENTICATION
 		// Always reset authenticated user to avoid any mistakes
 		identityService.setAuthenticatedUserId(USER_NAME);

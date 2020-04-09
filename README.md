@@ -17,7 +17,11 @@ To start add the dependency in your project sdk amp:
 		<scope>test</scope>
    </dependency>
 ```
-create a junit test, for example:
+
+Simple test
+===========
+
+Create a junit test, for example:
 
 ```
 package it.vige.sample.test;
@@ -185,4 +189,7 @@ src -> test -> resources -> alfresco -> module -> test-module-context.xml
 </beans>
 ```
 
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/master/alfresco-tests-sample
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/master/alfresco-tests-sample.
+
+Activiti test
+===========

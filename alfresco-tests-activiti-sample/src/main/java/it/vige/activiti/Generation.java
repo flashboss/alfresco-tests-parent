@@ -36,8 +36,8 @@ public class Generation extends BaseJavaDelegate {
 		}
 		NodeRef ipdaFolderNodeRef = results.get(0);
 		logger.debug("Node found:" + ipdaFolderNodeRef.getId());
-		int pdaCounter = (int) nodeService.getProperty(ipdaFolderNodeRef, ConservazioneModel.PROP_PDA_ID_COUNTER);
-		nodeService.setProperty(ipdaFolderNodeRef, ConservazioneModel.PROP_PDA_ID_COUNTER, pdaCounter + 1);
+		int pdaCounter = (int) nodeService.getProperty(ipdaFolderNodeRef, SimpleModel.PROP_PDA_ID_COUNTER);
+		nodeService.setProperty(ipdaFolderNodeRef, SimpleModel.PROP_PDA_ID_COUNTER, pdaCounter + 1);
 		ActivitiScriptNode bpmPackage = (ActivitiScriptNode) execution.getVariable("bpm_package");
 		List<ChildAssociationRef> relatedPdVsChild = nodeService.getChildAssocs(bpmPackage.getNodeRef());
 		for (ChildAssociationRef relatedPdVChild : relatedPdVsChild) {

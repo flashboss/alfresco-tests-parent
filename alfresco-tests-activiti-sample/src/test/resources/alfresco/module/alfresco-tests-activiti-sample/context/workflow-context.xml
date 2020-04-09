@@ -11,18 +11,4 @@
 			<value>${mcc.contratti.pda.folder}</value>
 		</property>
 	</bean>
-	
-	<bean id="${project.artifactId}.workflowBootstrap" parent="workflowDeployer" depends-on="generation">
-		<property name="workflowDefinitions">
-			<list>
-				<props>
-					<prop key="engineId">activiti</prop>
-					<prop key="location">alfresco/module/${project.artifactId}/workflow/SimpleProcess.bpmn</prop>
-					<prop key="mimetype">text/xml</prop>
-					<prop key="redeploy">true</prop>
-				</props>
-			</list>
-		</property>
-	</bean>
-
 </beans>
