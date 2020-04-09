@@ -5,25 +5,40 @@ import static java.util.Arrays.asList;
 import java.io.IOException;
 import java.io.Serializable;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.activiti.engine.IdentityService;
+import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.task.Task;
+import org.activiti.engine.test.Deployment;
 import org.alfresco.mock.test.activiti.AbstractActivitiForm;
 import org.alfresco.mock.test.activiti.ActivitiProcessEngineConfiguration;
 import org.alfresco.mock.test.activiti.Initiator;
+import org.alfresco.mock.test.activiti.MockActivitiScriptNode;
 import org.alfresco.mock.test.script.MockLogger;
 import org.alfresco.model.ContentModel;
 import org.alfresco.repo.jscript.Search;
+import org.alfresco.repo.workflow.activiti.ActivitiScriptNodeList;
+import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
+import org.alfresco.service.cmr.repository.StoreRef;
+import org.alfresco.service.cmr.search.ResultSet;
+import org.alfresco.service.cmr.search.SearchService;
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
+import org.junit.Assert;
+
+import it.vige.activiti.ConservazioneModel;
 
 public class SimpleActivitiTest extends AbstractActivitiForm {
 
 	public final static String CONTRIBUTORS = "contributors";
+	public final static String ACTIVITY_KEY = "generationWorkflow";
 
 	/**
 	 * Default admin user to start the scheduler process
@@ -43,7 +58,6 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 	@Override
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
-		new SignIntegrationFactory().setSignIntegration(null);
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
 		NamespaceService namespaceService = activitiProcessEngineConfiguration.getServiceRegistry()
 				.getNamespaceService();
@@ -61,7 +75,8 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		try {
 			properties.put(ContentModel.PROP_NAME, "pdv_contratti_" + generationFolderName + ".zip");
 			properties.put(ContentModel.TYPE_BASE, QName.createQName("mcccont", "contrattiPdvCons", namespaceService));
-			insertZip(generationFolder, "pdv_contratti_" + generationFolderName + ".zip", "document", "text", properties);
+			insertZip(generationFolder, "pdv_contratti_" + generationFolderName + ".zip", "document", "text",
+					properties);
 		} catch (IOException e) {
 		}
 		properties = new HashMap<QName, Serializable>();
@@ -115,5 +130,55 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		for (String groupId : securityGroups) {
 			createGroup(identityService, groupId, "security-role");
 		}
+	}
+
+	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/SimpleProcess.bpmn" })
+	public void testWorkflow() throws ParseException {
+		Map<String, Object> variables = new HashMap<String, Object>();
+		init(variables);
+		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
+		ServiceRegistry serviceRegistry = activitiProcessEngineConfiguration.getServiceRegistry();
+
+		// Start process
+		variables.put("mccwf_endDatePdV", dateFormat.parse("Mar 16 00:00:00 CET 2020"));
+		MockActivitiScriptNode activitiScriptNode = new MockActivitiScriptNode(generationFolder, serviceRegistry);
+		ActivitiScriptNodeList activitiScriptNodeList = new ActivitiScriptNodeList();
+		activitiScriptNodeList.add(activitiScriptNode);
+		variables.put("mccwf_relatedPdVFolder", activitiScriptNodeList);
+		variables.put("mccwf_startDatePdV", dateFormat.parse("Mar 14 00:00:00 CET 2018"));
+		variables.put("bpm_workflowDescription", "mkkmkmkmk");
+		ProcessInstance instance = runtimeService.startProcessInstanceByKey(ACTIVITY_KEY, variables);
+
+		// execute the user task
+		List<Task> selectedPdV = taskService.createTaskQuery().taskDefinitionKey("selectedPdV")
+				.includeProcessVariables().list();
+		assertEquals(1, selectedPdV.size());
+		Task firstTask = selectedPdV.get(0);
+		taskService.complete(firstTask.getId());
+
+		// process terminated
+		instance = runtimeService.createProcessInstanceQuery().active().processInstanceId(instance.getId())
+				.singleResult();
+		Assert.assertNull(instance);
+
+		// one file is created by the workflow
+		SearchService searchService = serviceRegistry.getSearchService();
+		ResultSet resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
+				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"pda/pdv_contratti_" + generationFolder.getId() + ".zip\"");
+		NodeRef createdNodeRef = resultQ.getNodeRef(0);
+		Assert.assertTrue("Aggiunto il file zip nella nuova cartella PDA", createdNodeRef.toString().endsWith(
+				"workspace/company_home/sites/conservazione-digitale-contratti-banca/documentLibrary/pda/pdv_contratti_"
+						+ generationFolder.getId() + ".zip"));
+
+		// the file is inside the workflow/packages activiti folder
+		resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, SearchService.LANGUAGE_FTS_ALFRESCO,
+				"PATH:\"pkg_919f220e-870a-4c56-ba11-5030ee5325f0/pdv_contratti_" + generationFolder.getId() + ".zip\"");
+		createdNodeRef = resultQ.getNodeRef(0);
+		Assert.assertTrue("File zip dentro la cartella di activiti",
+				createdNodeRef.toString()
+						.endsWith("workspace/workflow/packages/pkg_919f220e-870a-4c56-ba11-5030ee5325f0/pdv_contratti_"
+								+ generationFolder.getId() + ".zip"));
+
+		end();
 	}
 }
