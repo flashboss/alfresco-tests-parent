@@ -35,11 +35,11 @@ import org.alfresco.service.namespace.QNamePattern;
 
 public class MockNodeService implements NodeService, Serializable {
 
-	private Map<NodeRef, Map<QName, Serializable>> sampleProperties = new HashMap<NodeRef, Map<QName, Serializable>>();
+	private static Map<NodeRef, Map<QName, Serializable>> sampleProperties = new HashMap<NodeRef, Map<QName, Serializable>>();
 
-	private Map<QName, Map<QName, Serializable>> sampleAspects = new HashMap<QName, Map<QName, Serializable>>();
+	private static Map<QName, Map<QName, Serializable>> sampleAspects = new HashMap<QName, Map<QName, Serializable>>();
 
-	private Map<NodeRef, File> nodeRefs = new HashMap<NodeRef, File>();
+	private static Map<NodeRef, File> nodeRefs = new HashMap<NodeRef, File>();
 
 	private final static QName PRIMARY_PARENT = QName.createQName("primary_parent");
 

@@ -12,7 +12,7 @@ import org.alfresco.service.namespace.NamespaceService;
 
 public class MockNamespaceService implements NamespaceService, Serializable {
 
-	private Map<String, String> prefixes = new HashMap<String, String>();
+	private static Map<String, String> prefixes = new HashMap<String, String>();
 
 	@Override
 	public String getNamespaceURI(String prefix) throws NamespaceException {
