@@ -18,7 +18,7 @@
 	</parent>
 	
 	<properties>
-		<alfresco.version>4.2.6.6</alfresco.version>
+		<alfresco.version>4.2.6.6.3</alfresco.version>
 		<maven.source.plugin.version>3.1.0</maven.source.plugin.version>
 		<maven.javadoc.plugin.version>3.1.1</maven.javadoc.plugin.version>
 		<maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
