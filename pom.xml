@@ -23,7 +23,7 @@
 	<scm>
 		<connection>svn:git:https://github.com/flashboss/alfresco-tests-parent.git</connection>
 		<developerConnection>svn:git:https://github.com/flashboss/alfresco-tests-parent.git</developerConnection>
-		<tag>6.2.0-ea</tag>
+		<tag>${project.version}</tag>
 		<url>svn:git:https://github.com/flashboss/alfresco-tests-parent.git</url>
 	</scm>
 	<developers>
@@ -39,5 +39,6 @@
 	<modules>
 		<module>alfresco-tests</module>
 		<module>alfresco-tests-sample</module>
+		<module>alfresco-tests-activiti-sample</module>
 	</modules>
 </project>

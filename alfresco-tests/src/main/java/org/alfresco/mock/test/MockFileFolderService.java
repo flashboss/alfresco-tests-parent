@@ -32,10 +32,13 @@ import org.alfresco.util.Pair;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class MockFileFolderService implements FileFolderService {
+public class MockFileFolderService implements FileFolderService, Serializable {
 
 	@Autowired
 	private NodeService nodeService;
+
+	@Autowired
+	private NamespaceService namespaceService;
 
 	@Override
 	public List<FileInfo> list(NodeRef contextNodeRef) {
@@ -123,8 +126,14 @@ public class MockFileFolderService implements FileFolderService {
 	@Override
 	public FileInfo moveFrom(NodeRef sourceNodeRef, NodeRef sourceParentRef, NodeRef targetParentRef, String newName)
 			throws FileExistsException, FileNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		File file = getNodeService().getNodeRefs().get(targetParentRef);
+		if (file.isFile()) {
+			file.delete();
+			file.mkdir();
+		}
+		String name = getNodeService().getNodeRefs().get(sourceNodeRef).getName();
+		NodeRef originalNode = nodeService.getChildByName(sourceParentRef, ContentModel.ASSOC_CONTAINS, name);
+		return move(originalNode, targetParentRef, newName);
 	}
 
 	@Override
@@ -154,8 +163,16 @@ public class MockFileFolderService implements FileFolderService {
 
 	@Override
 	public FileInfo create(NodeRef parentNodeRef, String name, QName typeQName) throws FileExistsException {
-		ChildAssociationRef association = nodeService.createNode(parentNodeRef, ContentModel.ASSOC_CONTAINS,
-				QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, name), typeQName);
+		if (!parentNodeRef.getId().isEmpty() && nodeService.getPrimaryParent(parentNodeRef) != null
+				&& !name.contains(":")) {
+			String prefix = NamespaceService.CONTENT_MODEL_PREFIX;
+			name = prefix + ":" + name;
+		}
+		QName assocQName = QName.createQName(name);
+		if (name.contains(":"))
+			assocQName = QName.createQName(name.split(":")[0], name.split(":")[1], namespaceService);
+		ChildAssociationRef association = nodeService.createNode(parentNodeRef, ContentModel.ASSOC_CONTAINS, assocQName,
+				typeQName);
 		return new MockFileInfo(association.getChildRef(), name, typeQName);
 	}
 
@@ -343,10 +360,6 @@ public class MockFileFolderService implements FileFolderService {
 
 	};
 
-	public MockNodeService getNodeService() {
-		return (MockNodeService) nodeService;
-	}
-
 	@Override
 	public PagingResults<FileInfo> list(NodeRef arg0, Set<QName> arg1, Set<QName> arg2, List<Pair<QName, Boolean>> arg3,
 			PagingRequest arg4) {
@@ -359,6 +372,22 @@ public class MockFileFolderService implements FileFolderService {
 			List<Pair<QName, Boolean>> arg4, List<FilterProp> arg5, PagingRequest arg6) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public MockNodeService getNodeService() {
+		return (MockNodeService) nodeService;
+	}
+
+	public void setNodeService(MockNodeService nodeService) {
+		this.nodeService = nodeService;
+	}
+
+	public NamespaceService getNamespaceService() {
+		return namespaceService;
+	}
+
+	public void setNamespaceService(NamespaceService namespaceService) {
+		this.namespaceService = namespaceService;
 	}
 
 }

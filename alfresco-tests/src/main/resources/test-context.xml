@@ -1,11 +1,13 @@
-<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
-
-<beans>
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<bean id="global-properties"
 		class="org.alfresco.config.JndiPropertiesFactoryBean">
 		<property name="locations">
 			<list>
-				<value>classpath*:alfresco/module/*/alfresco-global.properties</value>
+				<value>classpath*:alfresco/module/*/alfresco-global.properties
+				</value>
 				<value>classpath*:alfresco-global.properties</value>
 			</list>
 		</property>
@@ -53,21 +55,33 @@
 		</property>
 	</bean>
 	<bean id="contentService"
-		class="org.alfresco.mock.test.MockContentService" />
+		class="org.alfresco.mock.test.MockContentService">
+		<property name="nodeService" ref="nodeService" />
+		<property name="mimetypeService" ref="mimetypeService" />
+	</bean>
 	<alias name="contentService" alias="ContentService" />
 	<bean id="nodeService"
 		class="org.alfresco.mock.test.MockNodeService" />
 	<alias name="nodeService" alias="NodeService" />
 	<bean id="FileFolderService"
-		class="org.alfresco.mock.test.MockFileFolderService" />
+		class="org.alfresco.mock.test.MockFileFolderService">
+		<property name="nodeService" ref="nodeService" />
+		<property name="namespaceService" ref="namespaceService" />
+	</bean>
+	<alias name="FileFolderService" alias="fileFolderService" />
 	<bean id="SearchService"
-		class="org.alfresco.mock.test.MockSearchService" />
+		class="org.alfresco.mock.test.MockSearchService">
+		<property name="nodeService" ref="nodeService" />
+	</bean>
+	<alias name="SearchService" alias="searchService" />
 	<bean id="mimetypeService"
 		class="org.alfresco.mock.test.MockMimetypeService" />
 	<bean id="NodeLocatorService"
 		class="org.alfresco.mock.test.MockNodeLocatorService" />
 	<bean id="nodeLocatorService"
 		class="org.alfresco.mock.test.MockNodeLocatorService" />
+	<bean id="permissionService"
+		class="org.alfresco.mock.test.MockPermissionService" />
 	<bean id="baseJavaScriptExtension" abstract="true" />
 	<bean id="dictionaryModelBootstrap"
 		class="org.alfresco.repo.dictionary.DictionaryBootstrap"
@@ -91,11 +105,165 @@
 		<property name="nodeLocatorService">
 			<ref bean="NodeLocatorService" />
 		</property>
+		<property name="namespaceService">
+			<ref bean="NamespaceService" />
+		</property>
+		<property name="scriptService">
+			<ref bean="scriptService" />
+		</property>
+		<property name="mimetypeService">
+			<ref bean="MimetypeService" />
+		</property>
+		<property name="importerService">
+			<ref bean="ImporterService" />
+		</property>
+		<property name="permissionService">
+			<ref bean="permissionService" />
+		</property>
+		<property name="templateService">
+			<ref bean="templateService" />
+		</property>
+		<property name="transactionService">
+			<ref bean="transactionService" />
+		</property>
+		<property name="renditionService2">
+			<ref bean="renditionService2" />
+		</property>
+		<property name="solrFacetHelper">
+			<ref bean="solrFacetHelper" />
+		</property>
 	</bean>
 	<bean id="action-executer" abstract="true" />
-	<alias name="mimetypeService" alias="MimetypeService"/>
-	<bean id="ImporterService" class="org.alfresco.mock.test.MockImporterService" />
+	<alias name="mimetypeService" alias="MimetypeService" />
+	<bean id="ImporterService"
+		class="org.alfresco.mock.test.MockImporterService" />
+	<bean id="scriptService"
+		class="org.alfresco.mock.test.MockScriptService">
+		<property name="scriptProcessor" ref="javaScriptProcessor" />
+	</bean>
+	<bean id="NamespaceService"
+		class="org.alfresco.mock.test.MockNamespaceService" />
+	<bean id="templateService"
+		class="org.alfresco.mock.test.MockTemplateService" />
+	<bean id="transactionService"
+		class="org.alfresco.mock.test.MockTransactionService" />
+	<bean id="renditionService2"
+		class="org.alfresco.mock.test.MockRenditionService2" />
+	<bean id="solrFacetRawProperties"
+		class="org.springframework.beans.factory.config.ListFactoryBean">
+		<property name="sourceList">
+			<list />
+		</property>
+	</bean>
+	<bean id="solrFacetHelper"
+		class="org.alfresco.mock.test.MockSolrFacetHelper">
+		<constructor-arg index="0"
+			ref="solrFacetRawProperties" />
+	</bean>
+	<alias name="NamespaceService" alias="namespaceService" />
+	<alias name="ServiceRegistry" alias="services" />
+	<bean id="javaScriptProcessor"
+		class="org.alfresco.mock.test.MockScriptProcessor"
+		init-method="register">
+		<property name="name">
+			<value>javascript</value>
+		</property>
+		<property name="extension">
+			<value>js</value>
+		</property>
+		<!-- compile javascript and cache compiled scripts -->
+		<property name="compile">
+			<value>true</value>
+		</property>
+		<!-- allow sharing of sealed scopes for performance -->
+		<!-- disable to give each script it's own new scope which can be extended -->
+		<property name="shareSealedScopes">
+			<value>true</value>
+		</property>
+		<property name="scriptService">
+			<ref bean="scriptService" />
+		</property>
+		<!-- Creates ScriptNodes which require the ServiceRegistry -->
+		<property name="serviceRegistry">
+			<ref bean="ServiceRegistry" />
+		</property>
+		<property name="storeUrl">
+			<value>workspace://SpacesStore</value>
+		</property>
+		<property name="storePath">
+			<value>app:company_home</value>
+		</property>
+	</bean>
+	<bean id="searchScript" parent="baseJavaScriptExtension"
+		class="org.alfresco.mock.test.script.MockSearch">
+		<property name="extensionName">
+			<value>search</value>
+		</property>
+		<property
+			name="searchSubsystemSwitchableApplicationContextFactory">
+			<ref bean="Search" />
+		</property>
+		<property name="serviceRegistry">
+			<ref bean="ServiceRegistry" />
+		</property>
+		<property name="repositoryHelper">
+			<ref bean="repositoryHelper" />
+		</property>
+		<property name="storeUrl">
+			<value>workspace://SpacesStore</value>
+		</property>
+	</bean>
+	<bean id="loggerScript" parent="baseJavaScriptExtension"
+		class="org.alfresco.mock.test.script.MockLogger">
+		<property name="extensionName">
+			<value>logger</value>
+		</property>
+	</bean>
+	<bean id="repositoryHelper"
+		class="org.alfresco.repo.model.Repository">
+		<property name="namespaceService" ref="namespaceService" />
+		<property name="nodeService" ref="nodeService" />
+		<property name="fileFolderService" ref="FileFolderService" />
+		<property name="searchService" ref="searchService" />
+		<property name="companyHomeStore">
+			<value>workspace://SpacesStore</value>
+		</property>
+		<property name="companyHomePath">
+			<value>app:company_home</value>
+		</property>
+	</bean>
+	<bean id="Search"
+		class="org.alfresco.repo.management.subsystems.SwitchableApplicationContextFactory"
+		parent="abstractPropertyBackedBean">
+		<property name="autoStart">
+			<value>false</value>
+		</property>
+		<property name="category">
+			<value>Search</value>
+		</property>
+		<property name="sourceBeanName">
+			<value>lucene</value>
+		</property>
+		<property name="instancePath">
+			<list>
+				<value>manager</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="propertyBackedBeanRegistry"
+		class="org.alfresco.repo.management.subsystems.DefaultPropertyBackedBeanRegistry" />
+	<bean id="abstractPropertyBackedBean"
+		class="org.alfresco.repo.management.subsystems.AbstractPropertyBackedBean"
+		abstract="true">
+		<property name="registry">
+			<ref bean="propertyBackedBeanRegistry" />
+		</property>
+		<!-- Ensure that child application contexts propagate global default values -->
+		<property name="propertyDefaults">
+			<ref bean="global-properties" />
+		</property>
+	</bean>
 	<bean id="module.baseComponent" abstract="true" init-method="init">
-        <property name="serviceRegistry" ref="ServiceRegistry" />
-   </bean>
+		<property name="serviceRegistry" ref="ServiceRegistry" />
+	</bean>
 </beans>

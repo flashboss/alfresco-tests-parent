@@ -3,9 +3,12 @@ package org.alfresco.mock.test;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -30,13 +33,15 @@ import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.service.namespace.QNamePattern;
 
-public class MockNodeService implements NodeService {
+public class MockNodeService implements NodeService, Serializable {
 
-	private Map<NodeRef, Map<QName, Serializable>> sampleProperties = new HashMap<NodeRef, Map<QName, Serializable>>();
+	private static Map<NodeRef, Map<QName, Serializable>> sampleProperties = new HashMap<NodeRef, Map<QName, Serializable>>();
 
-	private Map<QName, Map<QName, Serializable>> sampleAspects = new HashMap<QName, Map<QName, Serializable>>();
+	private static Map<QName, Map<QName, Serializable>> sampleAspects = new HashMap<QName, Map<QName, Serializable>>();
 
-	private Map<NodeRef, File> nodeRefs = new HashMap<NodeRef, File>();
+	private static Map<NodeRef, File> nodeRefs = new HashMap<NodeRef, File>();
+
+	private final static QName PRIMARY_PARENT = QName.createQName("primary_parent");
 
 	@Override
 	public List<StoreRef> getStores() {
@@ -81,8 +86,7 @@ public class MockNodeService implements NodeService {
 
 	@Override
 	public NodeRef getRootNode(StoreRef storeRef) throws InvalidStoreRefException {
-		// TODO Auto-generated method stub
-		return null;
+		return nodeRefs.keySet().toArray(new NodeRef[0])[1];
 	}
 
 	@Override
@@ -94,18 +98,18 @@ public class MockNodeService implements NodeService {
 	@Override
 	public ChildAssociationRef createNode(NodeRef parentRef, QName assocTypeQName, QName assocQName,
 			QName nodeTypeQName) throws InvalidNodeRefException, InvalidTypeException {
-		String nodeUUID = assocQName.getLocalName();
 		Path path = getPath(parentRef);
 		String pathStr = "";
 		if (path != null)
-			pathStr = path.toString() + File.separator + nodeUUID;
+			pathStr = path.toString() + File.separator + assocQName.getLocalName();
 		else
 			pathStr = MockContentService.FOLDER_TEST;
 		StoreRef storeRef = StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
 		if (pathStr.contains(StoreRef.PROTOCOL_ARCHIVE))
 			storeRef = StoreRef.STORE_REF_ARCHIVE_SPACESSTORE;
 		NodeRef nodeRef = new NodeRef(storeRef + File.separator + pathStr);
-		setProperty(nodeRef, ContentModel.PROP_NAME, nodeUUID);
+		setProperty(nodeRef, ContentModel.PROP_NAME, assocQName.getLocalName());
+		setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
 		File file = new File(pathStr);
 		if (nodeTypeQName.equals(ContentModel.TYPE_FOLDER))
 			file.mkdir();
@@ -130,6 +134,7 @@ public class MockNodeService implements NodeService {
 		NodeRef nodeRef = new NodeRef(storeRef + File.separator + pathStr);
 		setProperties(nodeRef, properties);
 		File file = new File(pathStr);
+		setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
 		if (nodeTypeQName.equals(ContentModel.TYPE_FOLDER))
 			file.mkdir();
 		else
@@ -158,14 +163,16 @@ public class MockNodeService implements NodeService {
 
 	@Override
 	public QName getType(NodeRef nodeRef) throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-		return null;
+		Serializable object = getProperty(nodeRef, ContentModel.TYPE_BASE);
+		if (object instanceof QName)
+			return (QName) object;
+		else
+			return QName.createQName(object + "");
 	}
 
 	@Override
 	public void setType(NodeRef nodeRef, QName typeQName) throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-
+		setProperty(nodeRef, ContentModel.TYPE_BASE, typeQName);
 	}
 
 	@Override
@@ -192,19 +199,28 @@ public class MockNodeService implements NodeService {
 
 	@Override
 	public Set<QName> getAspects(NodeRef nodeRef) throws InvalidNodeRefException {
-		return sampleAspects.keySet();
+		return new HashSet<QName>(sampleAspects.keySet());
 	}
 
 	@Override
 	public void deleteNode(NodeRef nodeRef) throws InvalidNodeRefException {
+		nodeRefs.get(nodeRef).delete();
 		nodeRefs.remove(nodeRef);
 	}
 
 	@Override
 	public ChildAssociationRef addChild(NodeRef parentRef, NodeRef childRef, QName assocTypeQName, QName qname)
 			throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-		return null;
+		sampleProperties.get(childRef).put(PRIMARY_PARENT, this.getPrimaryParent(childRef).getParentRef());
+		ChildAssociationRef association = createNode(parentRef, ContentModel.ASSOC_CONTAINS, qname,
+				ContentModel.TYPE_CONTENT, getProperties(childRef));
+		try {
+			Files.copy(nodeRefs.get(childRef).toPath(), nodeRefs.get(association.getChildRef()).toPath(),
+					StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return association;
 	}
 
 	@Override
@@ -336,7 +352,10 @@ public class MockNodeService implements NodeService {
 
 	@Override
 	public NodeRef getChildByName(NodeRef nodeRef, QName assocTypeQName, String childName) {
-		// TODO Auto-generated method stub
+		List<ChildAssociationRef> children = getChildAssocs(nodeRef);
+		for (ChildAssociationRef ref : children)
+			if (ref.getChildRef().getId().equals(childName))
+				return ref.getChildRef();
 		return null;
 	}
 
@@ -349,8 +368,21 @@ public class MockNodeService implements NodeService {
 
 	@Override
 	public ChildAssociationRef getPrimaryParent(NodeRef nodeRef) throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-		return null;
+		NodeRef primaryParent = (NodeRef) sampleProperties.get(nodeRef).get(PRIMARY_PARENT);
+		NodeRef result = null;
+		if (primaryParent != null)
+			result = primaryParent;
+		else {
+			Set<NodeRef> nodes = nodeRefs.keySet();
+			String parentStr = nodeRef.toString().substring(0, nodeRef.toString().lastIndexOf("/"));
+			for (NodeRef nodeRefFromMap : nodes)
+				if (nodeRefFromMap.toString().equals(parentStr))
+					result = nodeRefFromMap;
+		}
+		QName childQName = QName.createQName((String) getProperty(nodeRef, ContentModel.PROP_NAME));
+		ChildAssociationRef childAssociationRef = new ChildAssociationRef(ContentModel.ASSOC_CONTAINS, result,
+				childQName, nodeRef, true, -1);
+		return childAssociationRef;
 	}
 
 	@Override

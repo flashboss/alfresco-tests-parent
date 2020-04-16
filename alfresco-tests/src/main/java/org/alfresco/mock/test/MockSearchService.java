@@ -1,14 +1,15 @@
 package org.alfresco.mock.test;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.alfresco.model.ContentModel;
+import org.alfresco.mock.NodeUtils;
 import org.alfresco.service.cmr.repository.ChildAssociationRef;
 import org.alfresco.service.cmr.repository.InvalidNodeRefException;
 import org.alfresco.service.cmr.repository.NodeRef;
@@ -26,10 +27,11 @@ import org.alfresco.service.cmr.search.SearchService;
 import org.alfresco.service.cmr.search.SpellCheckResult;
 import org.alfresco.service.namespace.NamespacePrefixResolver;
 import org.alfresco.service.namespace.QName;
+import org.alfresco.util.ISO9075;
 import org.alfresco.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class MockSearchService implements SearchService {
+public class MockSearchService implements SearchService, Serializable {
 
 	@Autowired
 	private NodeService nodeService;
@@ -38,20 +40,18 @@ public class MockSearchService implements SearchService {
 	public ResultSet query(StoreRef store, String language, String query) {
 		MockNodeService nodeService = getNodeService();
 		List<ResultSetRow> rows = new ArrayList<ResultSetRow>();
-		Collection<NodeRef> nodeRefs = nodeService.getNodeRefs().keySet();
-		for (NodeRef nodeRef : nodeRefs) {
-			String name = (String) nodeService.getProperty(nodeRef, ContentModel.PROP_NAME);
-			if (query.endsWith(name + "\"") || query.endsWith("\"*\""))
-				rows.add(new MockResultSetRow(nodeRef));
-		}
+		List<NodeRef> nodeRefs = NodeUtils.sortByName(nodeService.getNodeRefs().keySet());
+		if (language.equals(SearchService.LANGUAGE_XPATH))
+			XPATHQuery(store, query, nodeRefs, rows);
+		else if (language.equals(SearchService.LANGUAGE_FTS_ALFRESCO) || language.equals(SearchService.LANGUAGE_LUCENE))
+			FCSQuery(store, query, nodeRefs, rows);
 		return new MockResultSet(rows);
 	}
 
 	@Override
 	public ResultSet query(StoreRef store, String language, String query,
 			QueryParameterDefinition[] queryParameterDefinitions) {
-		// TODO Auto-generated method stub
-		return null;
+		return query(store, language, query);
 	}
 
 	@Override
@@ -69,8 +69,11 @@ public class MockSearchService implements SearchService {
 	public List<NodeRef> selectNodes(NodeRef contextNodeRef, String xpath, QueryParameterDefinition[] parameters,
 			NamespacePrefixResolver namespacePrefixResolver, boolean followAllParentLinks)
 			throws InvalidNodeRefException, XPathException {
-		// TODO Auto-generated method stub
-		return null;
+		List<NodeRef> result = new ArrayList<NodeRef>();
+		ResultSet resultSet = query(contextNodeRef.getStoreRef(), SearchService.LANGUAGE_XPATH, xpath, parameters);
+		for (ResultSetRow row : resultSet)
+			result.add(row.getNodeRef());
+		return result;
 	}
 
 	@Override
@@ -122,9 +125,19 @@ public class MockSearchService implements SearchService {
 		return (MockNodeService) nodeService;
 	}
 
+	public void setNodeService(MockNodeService nodeService) {
+		this.nodeService = nodeService;
+	}
+
 	public class MockResultSet implements ResultSet {
 
 		private List<ResultSetRow> rows;
+
+		private Map<NodeRef, List<Pair<String, List<String>>>> highLights = new HashMap<NodeRef, List<Pair<String, List<String>>>>();
+
+		private Map<String, Integer> facetQueries = new HashMap<String, Integer>();
+
+		private SpellCheckResult spellCheckResult = new SpellCheckResult(null, null, true);
 
 		public MockResultSet(List<ResultSetRow> rows) {
 			this.rows = rows;
@@ -242,20 +255,17 @@ public class MockSearchService implements SearchService {
 
 		@Override
 		public Map<String, Integer> getFacetQueries() {
-			// TODO Auto-generated method stub
-			return null;
+			return facetQueries;
 		}
 
 		@Override
 		public Map<NodeRef, List<Pair<String, List<String>>>> getHighlighting() {
-			// TODO Auto-generated method stub
-			return null;
+			return highLights;
 		}
 
 		@Override
 		public SpellCheckResult getSpellCheckResult() {
-			// TODO Auto-generated method stub
-			return null;
+			return spellCheckResult;
 		}
 	}
 
@@ -281,7 +291,7 @@ public class MockSearchService implements SearchService {
 
 		@Override
 		public Serializable getValue(QName qname) {
-			return nodeRef.getId();
+			return nodeService.getProperty(nodeRef, qname);
 		}
 
 		@Override
@@ -341,6 +351,138 @@ public class MockSearchService implements SearchService {
 			return null;
 		}
 
+	}
+
+	private String getSegmentFromQuery(String query, String segment) {
+		if (query.contains(segment)) {
+			query = query.substring(query.indexOf(segment) + 6);
+			query = query.substring(0, query.indexOf("\""));
+			return query;
+		}
+		return null;
+	}
+
+	private boolean hasType(String type, NodeRef nodeRef) {
+		if (type == null)
+			return true;
+		else {
+			QName typeNode = nodeService.getType(nodeRef);
+			String typeNodeStr = typeNode.getPrefixString();
+			return type.equals(typeNodeStr);
+		}
+	}
+
+	private boolean hasPath(StoreRef store, String path, String[] subpaths, int wildcardsNumber, NodeRef nodeRef) {
+		String nodepath = nodeRef.toString();
+		if (store == null)
+			return true;
+		else if (store != null && !nodepath.startsWith(store.toString()))
+			return false;
+		else if (store != null && nodepath.endsWith(MockContentService.FOLDER_TEST + store.getProtocol()))
+			return false;
+		nodepath = nodepath
+				.substring(nodepath.indexOf(MockContentService.FOLDER_TEST) + MockContentService.FOLDER_TEST.length());
+		String lastNodepath = "";
+		if (nodepath.indexOf(File.separator) >= 0) {
+			nodepath = nodepath.substring(nodepath.indexOf(File.separator));
+			lastNodepath = nodepath.substring(nodepath.lastIndexOf(File.separator));
+		} else
+			nodepath = "";
+		boolean result = true;
+		for (int i = 0; i < subpaths.length; i++) {
+			String subpath = subpaths[i];
+			result = result && nodepath.contains(subpath.replaceAll("//", ""));
+			if (result && i == subpaths.length - 1 && nodepath.indexOf(File.separator) >= 0
+					&& subpath.indexOf(File.separator) >= 0)
+				if (!subpath.endsWith(File.separator)) {
+					String nameSubpath = subpath.substring(subpath.lastIndexOf(File.separator));
+					result = result && lastNodepath.equals(nameSubpath);
+				} else if (path.endsWith("/*") && !path.endsWith("//*") && !path.equals("/*")
+						&& !subpath.equals(File.separator)) {
+					String nameSubpath = nodepath;
+					for (int j = 0; j < wildcardsNumber; j++)
+						nameSubpath = nameSubpath.substring(0, nameSubpath.lastIndexOf("/"));
+					result = result && (nameSubpath + "/").endsWith(subpath);
+				} else {
+					String firstLine = subpath.replaceAll("//", "");
+					String nameSubpath = firstLine.substring(firstLine.lastIndexOf(File.separator));
+					if (lastNodepath.equals(nameSubpath))
+						result = false;
+				}
+		}
+		return result;
+	}
+
+	private String[] getSubpaths(String path) {
+		String subpath = path;
+		String[] splittedPath = subpath.split("(\\*)|(//)");
+		if (path.endsWith("//*")) {
+			path = path.substring(0, path.length() - 3);
+			splittedPath[splittedPath.length - 1] = splittedPath[splittedPath.length - 1] + "//";
+		} else if (!path.equals(File.separator) && !path.equals("/*")) {
+			String lastPath = splittedPath[splittedPath.length - 1];
+			while (lastPath.equals(File.separator)) {
+				splittedPath = Arrays.copyOf(splittedPath, splittedPath.length - 1);
+				lastPath = splittedPath[splittedPath.length - 1];
+			}
+		}
+		return splittedPath;
+	}
+
+	private void XPATHQuery(StoreRef store, String query, List<NodeRef> nodeRefs, List<ResultSetRow> rows) {
+		query = prepare(query, store);
+		String[] subpaths = getSubpaths(query);
+		int wildcardsNumber = 0;
+		String processQuery = query;
+		while (processQuery.endsWith("/*")) {
+			wildcardsNumber++;
+			processQuery = processQuery.substring(0, processQuery.lastIndexOf("/*"));
+		}
+		for (NodeRef nodeRef : nodeRefs) {
+			if (hasPath(store, query, subpaths, wildcardsNumber, nodeRef))
+				rows.add(new MockResultSetRow(nodeRef));
+		}
+	}
+
+	private void FCSQuery(StoreRef store, String query, List<NodeRef> nodeRefs, List<ResultSetRow> rows) {
+		String path = getSegmentFromQuery(query, "PATH:\"");
+		path = prepare(path, store);
+		if (!path.startsWith(File.separator))
+			path = File.separator + path;
+		String[] subpaths = getSubpaths(path);
+		String type = getSegmentFromQuery(query, "TYPE:\"");
+		int wildcardsNumber = 0;
+		String processQuery = path;
+		while (processQuery.endsWith("/*")) {
+			wildcardsNumber++;
+			processQuery = processQuery.substring(0, processQuery.lastIndexOf("/*"));
+		}
+		for (NodeRef nodeRef : nodeRefs) {
+			if (hasType(type, nodeRef) && hasPath(store, path, subpaths, wildcardsNumber, nodeRef))
+				rows.add(new MockResultSetRow(nodeRef));
+		}
+	}
+
+	private String prepare(String query, StoreRef store) {
+		query = ISO9075.decode(query).trim();
+		String prefix = MockContentService.FOLDER_TEST;
+		if (store != null)
+			prefix = prefix + store.getProtocol();
+		int index = query.indexOf(prefix);
+		if (index >= 0)
+			query = query.substring(index + prefix.length());
+		String result = "";
+		String[] slashes = query.split(File.separator);
+		for (int i = 0; i < slashes.length; i++) {
+			String slashed = slashes[i];
+			if (slashed.contains(":"))
+				result += slashed.split(":")[1];
+			else
+				result += slashed;
+			result += File.separator;
+		}
+		result = result.substring(0, result.length() - 1);
+		return result;
 	}
 
 }
