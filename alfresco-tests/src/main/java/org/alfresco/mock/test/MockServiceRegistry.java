@@ -1,5 +1,9 @@
 package org.alfresco.mock.test;
 
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.util.Collection;
 
 import org.alfresco.repo.admin.SysAdminParams;
@@ -64,7 +68,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 
-public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
+public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, Externalizable {
 
 	private NodeService nodeService;
 
@@ -75,6 +79,24 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 	private FileFolderService fileFolderService;
 
 	private NodeLocatorService nodeLocatorService;
+
+	private NamespaceService namespaceService;
+
+	private ScriptService scriptService;
+
+	private MimetypeService mimetypeService;
+
+	private ImporterService importerService;
+
+	private PermissionService permissionService;
+
+	private TemplateService templateService;
+
+	private TransactionService transactionService;
+
+	private RenditionService2 renditionService2;
+
+	private SolrFacetHelper solrFacetHelper;
 
 	@Override
 	public Collection<QName> getServices() {
@@ -102,8 +124,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 
 	@Override
 	public TransactionService getTransactionService() {
-		// TODO Auto-generated method stub
-		return null;
+		return transactionService;
 	}
 
 	@Override
@@ -114,8 +135,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 
 	@Override
 	public NamespaceService getNamespaceService() {
-		// TODO Auto-generated method stub
-		return null;
+		return namespaceService;
 	}
 
 	@Override
@@ -136,8 +156,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 
 	@Override
 	public MimetypeService getMimetypeService() {
-		// TODO Auto-generated method stub
-		return null;
+		return mimetypeService;
 	}
 
 	@Override
@@ -188,14 +207,12 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 
 	@Override
 	public CategoryService getCategoryService() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ImporterService getImporterService() {
-		// TODO Auto-generated method stub
-		return null;
+		return importerService;
 	}
 
 	@Override
@@ -218,8 +235,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 
 	@Override
 	public PermissionService getPermissionService() {
-		// TODO Auto-generated method stub
-		return null;
+		return permissionService;
 	}
 
 	@Override
@@ -230,8 +246,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 
 	@Override
 	public TemplateService getTemplateService() {
-		// TODO Auto-generated method stub
-		return null;
+		return templateService;
 	}
 
 	@Override
@@ -241,8 +256,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 
 	@Override
 	public ScriptService getScriptService() {
-		// TODO Auto-generated method stub
-		return null;
+		return scriptService;
 	}
 
 	@Override
@@ -453,13 +467,72 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry {
 	@Override
 	public RenditionService2 getRenditionService2() {
 		// TODO Auto-generated method stub
-		return null;
+		return renditionService2;
 	}
 
 	@Override
 	public SolrFacetHelper getSolrFacetHelper() {
-		// TODO Auto-generated method stub
-		return null;
+		return solrFacetHelper;
+	}
+
+	public void setNamespaceService(NamespaceService namespaceService) {
+		this.namespaceService = namespaceService;
+	}
+
+	public void setMimetypeService(MimetypeService mimetypeService) {
+		this.mimetypeService = mimetypeService;
+	}
+
+	public void setScriptService(ScriptService scriptService) {
+		this.scriptService = scriptService;
+	}
+
+	public void setImporterService(ImporterService importerService) {
+		this.importerService = importerService;
+	}
+
+	public void setPermissionService(PermissionService permissionService) {
+		this.permissionService = permissionService;
+	}
+
+	public void setTemplateService(TemplateService templateService) {
+		this.templateService = templateService;
+	}
+
+	public void setTransactionService(TransactionService transactionService) {
+		this.transactionService = transactionService;
+	}
+
+	public void setRenditionService2(RenditionService2 renditionService2) {
+		this.renditionService2 = renditionService2;
+	}
+
+	public void setSolrFacetHelper(SolrFacetHelper solrFacetHelper) {
+		this.solrFacetHelper = solrFacetHelper;
+	}
+
+	@Override
+	public void writeExternal(ObjectOutput out) throws IOException {
+		out.writeObject(namespaceService);
+		out.writeObject(mimetypeService);
+		out.writeObject(scriptService);
+		out.writeObject(importerService);
+		out.writeObject(permissionService);
+		out.writeObject(templateService);
+		out.writeObject(transactionService);
+		out.writeObject(renditionService2);
+	}
+
+	@Override
+	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+		namespaceService = (NamespaceService) in.readObject();
+		mimetypeService = (MimetypeService) in.readObject();
+		scriptService = (ScriptService) in.readObject();
+		importerService = (ImporterService) in.readObject();
+		permissionService = (PermissionService) in.readObject();
+		templateService = (TemplateService) in.readObject();
+		transactionService = (TransactionService) in.readObject();
+		renditionService2 = (RenditionService2) in.readObject();
 	}
 
 }
