@@ -1,6 +1,9 @@
 package org.alfresco.mock.test;
 
-import java.io.Serializable;
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.util.Collection;
 
 import org.alfresco.repo.admin.SysAdminParams;
@@ -65,7 +68,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 
-public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, Serializable {
+public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, Externalizable {
 
 	private NodeService nodeService;
 
@@ -92,7 +95,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 	private TransactionService transactionService;
 
 	private RenditionService2 renditionService2;
-	
+
 	private SolrFacetHelper solrFacetHelper;
 
 	@Override
@@ -506,6 +509,30 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 
 	public void setSolrFacetHelper(SolrFacetHelper solrFacetHelper) {
 		this.solrFacetHelper = solrFacetHelper;
+	}
+
+	@Override
+	public void writeExternal(ObjectOutput out) throws IOException {
+		out.writeObject(namespaceService);
+		out.writeObject(mimetypeService);
+		out.writeObject(scriptService);
+		out.writeObject(importerService);
+		out.writeObject(permissionService);
+		out.writeObject(templateService);
+		out.writeObject(transactionService);
+		out.writeObject(renditionService2);
+	}
+
+	@Override
+	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+		namespaceService = (NamespaceService) in.readObject();
+		mimetypeService = (MimetypeService) in.readObject();
+		scriptService = (ScriptService) in.readObject();
+		importerService = (ImporterService) in.readObject();
+		permissionService = (PermissionService) in.readObject();
+		templateService = (TemplateService) in.readObject();
+		transactionService = (TransactionService) in.readObject();
+		renditionService2 = (RenditionService2) in.readObject();
 	}
 
 }
