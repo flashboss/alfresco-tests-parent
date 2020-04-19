@@ -8,7 +8,7 @@
 		<property name="namespaceService" ref="namespaceService" />
 		<property name="fileFolderService" ref="fileFolderService" />
 		<property name="pdaFolder">
-			<value>${mcc.contracts.pda.folder}</value>
+			<value>${my.contracts.pda.folder}</value>
 		</property>
 	</bean>
 </beans>
