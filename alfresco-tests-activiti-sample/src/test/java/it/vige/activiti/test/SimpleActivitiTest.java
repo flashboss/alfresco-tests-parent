@@ -61,7 +61,7 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
 		NamespaceService namespaceService = activitiProcessEngineConfiguration.getServiceRegistry()
 				.getNamespaceService();
-		namespaceService.registerNamespace("mcccont", SimpleModel.STARTING_URI);
+		namespaceService.registerNamespace("mycont", SimpleModel.STARTING_URI);
 		String generationFolderName = "20191024_154711";
 		NodeRef site = insertFolder(sites, "simple-site");
 		NodeRef documentLibrary = insertFolder(site, "documentLibrary");
@@ -73,7 +73,7 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
 		try {
 			properties.put(ContentModel.PROP_NAME, "contracts_" + generationFolderName + ".zip");
-			properties.put(ContentModel.TYPE_BASE, QName.createQName("mcccont", "contrattiPdvCons", namespaceService));
+			properties.put(ContentModel.TYPE_BASE, QName.createQName("mycont", "contractsPdvCons", namespaceService));
 			insertZip(generationFolder, "contracts_" + generationFolderName + ".zip", "document", "text",
 					properties);
 		} catch (IOException e) {
@@ -87,7 +87,7 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		variables.put("initiator", initiator);
 		variables.put("search", search);
 		variables.put("logger", logger);
-		variables.put("mccwf_starterPdA", "Human");
+		variables.put("mywf_starterPdA", "Human");
 	}
 
 	/**
@@ -136,12 +136,12 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		ServiceRegistry serviceRegistry = activitiProcessEngineConfiguration.getServiceRegistry();
 
 		// Start process
-		variables.put("mccwf_endDatePdV", dateFormat.parse("Mar 16 00:00:00 CET 2020"));
+		variables.put("mywf_endDatePdV", dateFormat.parse("Mar 16 00:00:00 CET 2020"));
 		MockActivitiScriptNode activitiScriptNode = new MockActivitiScriptNode(generationFolder, serviceRegistry);
 		ActivitiScriptNodeList activitiScriptNodeList = new ActivitiScriptNodeList();
 		activitiScriptNodeList.add(activitiScriptNode);
-		variables.put("mccwf_relatedPdVFolder", activitiScriptNodeList);
-		variables.put("mccwf_startDatePdV", dateFormat.parse("Mar 14 00:00:00 CET 2018"));
+		variables.put("mywf_relatedPdVFolder", activitiScriptNodeList);
+		variables.put("mywf_startDatePdV", dateFormat.parse("Mar 14 00:00:00 CET 2018"));
 		variables.put("bpm_workflowDescription", "mkkmkmkmk");
 		ProcessInstance instance = runtimeService.startProcessInstanceByKey(ACTIVITY_KEY, variables);
 
