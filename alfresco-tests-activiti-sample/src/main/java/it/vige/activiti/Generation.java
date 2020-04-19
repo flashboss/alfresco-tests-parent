@@ -44,7 +44,7 @@ public class Generation extends BaseJavaDelegate {
 			FileInfo fileInfo = fileFolderService.copy(relatedPdVChild.getChildRef(), ipdaFolderNodeRef, null);
 			logger.info(fileInfo);
 		}
-		execution.setVariable("mccwf_pdaId", pdaCounter);
+		execution.setVariable("mywf_pdaId", pdaCounter);
 	}
 
 	public void setPdaFolder(String pdaFolder) {

@@ -13,7 +13,7 @@
     <boundaryEvent id="boundaryerror1" name="Error" attachedToRef="PdASubProcess">
       <errorEventDefinition errorRef="subscriptionError"></errorEventDefinition>
     </boundaryEvent>
-    <startEvent id="alfrescoStartevent1" name="Alfresco start" activiti:formKey="mccwf:submitPdAProcessTask"></startEvent>
+    <startEvent id="alfrescoStartevent1" name="Alfresco start" activiti:formKey="mywf:submitPdAProcessTask"></startEvent>
     <sequenceFlow id="flow29" sourceRef="alfrescoStartevent1" targetRef="exclusivegateway4"></sequenceFlow>
     <serviceTask id="subscriptionErrorMailTask" name="Subscription Error Mail Task" activiti:class="org.alfresco.repo.workflow.activiti.script.AlfrescoScriptDelegate">
       <extensionElements>
@@ -22,7 +22,7 @@
                 mail.parameters.to = "euleon@gmail.com";
                 mail.parameters.subject = "send a workflow's email. second test! " + bpm_workflowDescription;
                 mail.parameters.ignore_send_failure = true;
-                mail.parameters.from = "mcc@gmail.com";
+                mail.parameters.from = "my@gmail.com";
                 mail.parameters.text = "2nd Test message! ";
                 mail.execute(bpm_package);]]></activiti:string>
         </activiti:field>
@@ -30,14 +30,14 @@
     </serviceTask>
     <endEvent id="endevent5" name="End"></endEvent>
     <sequenceFlow id="flow34" sourceRef="subscriptionErrorMailTask" targetRef="endevent5"></sequenceFlow>
-    <userTask id="selectedPdV" name="PdV Selezionati" activiti:candidateGroups="GROUP_conservatori" activiti:formKey="mccwf:submitSelectedPdVTask">
+    <userTask id="selectedPdV" name="PdV Selezionati" activiti:candidateGroups="GROUP_conservatori" activiti:formKey="mywf:submitSelectedPdVTask">
       <extensionElements>
         <activiti:taskListener event="create" class="org.alfresco.repo.workflow.activiti.tasklistener.ScriptTaskListener">
           <activiti:field name="script">
             <activiti:string><![CDATA[var userName = execution.getVariable('initiator').properties.userName;
             var userFirst = execution.getVariable('initiator').properties.firstName;
             var userLast = execution.getVariable('initiator').properties.lastName;
-            task.setVariable('mccwf_wfInitiator', userFirst + ' ' + userLast + ' (' + userName + ')' );]]></activiti:string>
+            task.setVariable('mywf_wfInitiator', userFirst + ' ' + userLast + ' (' + userName + ')' );]]></activiti:string>
           </activiti:field>
         </activiti:taskListener>
       </extensionElements>
@@ -59,9 +59,9 @@
 }
 
 var pdvsResult= new Array();
-var relatedPdVSFolder=execution.getVariable('mccwf_relatedPdVFolder');
-var startDatePdV=execution.getVariable('mccwf_startDatePdV');
-var endDatePdV=execution.getVariable('mccwf_endDatePdV');
+var relatedPdVSFolder=execution.getVariable('mywf_relatedPdVFolder');
+var startDatePdV=execution.getVariable('mywf_startDatePdV');
+var endDatePdV=execution.getVariable('mywf_endDatePdV');
 if (endDatePdV==null) {
 endDatePdV=new Date();
 }
@@ -69,7 +69,7 @@ var startDatePdVMillisecs = startDatePdV.getTime();
 var endDatePdVMillisecs = endDatePdV.getTime();    
 for each (var relatedPdVFolder in relatedPdVSFolder.toArray()){
 	var pdvFolderpath = relatedPdVFolder.qnamePath;
-	var pdvs=search.luceneSearch('TYPE:"mcccont:contrattiPdvCons" AND PATH:"'+ pdvFolderpath+'//*"');
+	var pdvs=search.luceneSearch('TYPE:"mycont:contractsPdvCons" AND PATH:"'+ pdvFolderpath+'//*"');
 	logger.log("Query:" + pdvFolderpath + "//*");
 	pdvsResult = arrayUnique(pdvsResult.concat(pdvs));
 	logger.log("ARRAYpdvs:");
@@ -85,7 +85,7 @@ bpmPackage.save();]]></activiti:string>
           </activiti:field>
         </activiti:executionListener>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${mccwf_starterPdA=='Human'}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${mywf_starterPdA=='Human'}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="flow37" sourceRef="selectedPdV" targetRef="PdASubProcess"></sequenceFlow>
     <sequenceFlow id="flow38" sourceRef="exclusivegateway4" targetRef="PdASubProcess"></sequenceFlow>
