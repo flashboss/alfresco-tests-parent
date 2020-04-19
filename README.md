@@ -4,16 +4,16 @@ A library to test the alfresco components. It offer mock file to execute unit an
 
 This version is for:
 
-- Java 7
-- ALfresco SDK 1.1.1
-- Alfresco enterprise 4.2.6.6
+- Java 8
+- ALfresco SDK 2.1.0
+- Alfresco enterprise 5.0.d
 
 To start add the dependency in your project sdk amp:
 ```
    <dependency>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests</artifactId>
-		<version>${alfresco.version}.3</version>
+		<version>${alfresco.version}.0</version>
 		<scope>test</scope>
    </dependency>
 ```
@@ -189,7 +189,7 @@ src -> test -> resources -> alfresco -> module -> test-module-context.xml
 </beans>
 ```
 
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/4.2.6.6.3/alfresco-tests-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/5.0.d/alfresco-tests-sample.
 
 Activiti test
 ===========
@@ -390,4 +390,4 @@ In your src/test/resources folder add the follow spring descriptor file test-mod
 </beans>
 ```
 
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/4.2.6.6.3/alfresco-tests-activiti-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/5.0.d/alfresco-tests-activiti-sample.
