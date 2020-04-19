@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
-  <process id="generationWorkflow" name="Workflow di Generazione PdA per Contratti Banca" isExecutable="true">
+  <process id="generationWorkflow" name="Generation Workflow" isExecutable="true">
     <subProcess id="PdASubProcess" name="PdA Sub Process">
       <startEvent id="startevent2" name="Start"></startEvent>
       <sequenceFlow id="flow11" sourceRef="startevent2" targetRef="pdaGenerationTask"></sequenceFlow>
       <endEvent id="endevent6" name="End"></endEvent>
-      <serviceTask id="pdaGenerationTask" name="Task di Generazione PdA" activiti:delegateExpression="${generation}"></serviceTask>
+      <serviceTask id="pdaGenerationTask" name="Generation Task" activiti:delegateExpression="${generation}"></serviceTask>
       <sequenceFlow id="flow41" sourceRef="pdaGenerationTask" targetRef="endevent6"></sequenceFlow>
     </subProcess>
     <endEvent id="endevent2" name="End"></endEvent>
@@ -30,7 +30,7 @@
     </serviceTask>
     <endEvent id="endevent5" name="End"></endEvent>
     <sequenceFlow id="flow34" sourceRef="subscriptionErrorMailTask" targetRef="endevent5"></sequenceFlow>
-    <userTask id="selectedPdV" name="PdV Selezionati" activiti:candidateGroups="GROUP_conservatori" activiti:formKey="mywf:submitSelectedPdVTask">
+    <userTask id="selectedPdV" name="Selected PdV" activiti:candidateGroups="GROUP_conservatori" activiti:formKey="mywf:submitSelectedPdVTask">
       <extensionElements>
         <activiti:taskListener event="create" class="org.alfresco.repo.workflow.activiti.tasklistener.ScriptTaskListener">
           <activiti:field name="script">
