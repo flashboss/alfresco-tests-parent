@@ -8,7 +8,7 @@ This version is for:
 - ALfresco SDK 4.1.0
 - Alfresco community 6.2.0-ea
 
-To start add the dependency in your project sdk amp:
+To start add the dependency in your project sdk module:
 ```
    <dependency>
 		<groupId>it.vige</groupId>
