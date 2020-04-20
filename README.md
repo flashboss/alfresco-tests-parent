@@ -189,7 +189,7 @@ src -> test -> resources -> alfresco -> module -> test-module-context.xml
 </beans>
 ```
 
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/5.0.d/alfresco-tests-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/5.1.g/alfresco-tests-sample.
 
 Activiti test
 ===========
@@ -390,4 +390,4 @@ In your src/test/resources folder add the follow spring descriptor file test-mod
 </beans>
 ```
 
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/5.0.d/alfresco-tests-activiti-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/5.1.g/alfresco-tests-activiti-sample.
