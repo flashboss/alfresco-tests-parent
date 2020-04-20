@@ -148,4 +148,10 @@ public class MockPermissionService implements PermissionService, Serializable {
 		return null;
 	}
 
+	@Override
+	public Set<String> getReadersDenied(Long aclId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

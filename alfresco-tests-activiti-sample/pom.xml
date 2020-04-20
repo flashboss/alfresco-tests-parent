@@ -4,16 +4,16 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>it.vige</groupId>
     <artifactId>alfresco-tests-activiti-sample</artifactId>
-    <name>Alfresco Tests Activiti sample</name>
-    <packaging>amp</packaging>
     <version>5.0.d.0</version>
+    <name>Alfresco Tests Activiti sample</name>
     <description>Simple AMP Activiti sample for tests</description>
+    <packaging>jar</packaging>
 
-	<parent>
-		<groupId>org.alfresco.maven</groupId>
-		<artifactId>alfresco-sdk-parent</artifactId>
-		<version>2.1.0</version>
-	</parent>
+    <parent>
+        <groupId>org.alfresco.maven</groupId>
+        <artifactId>alfresco-sdk-parent</artifactId>
+        <version>2.1.0</version>
+    </parent>
 
     <!-- 
         SDK properties have sensible defaults in the SDK parent,
@@ -21,11 +21,10 @@
         For more available properties see the alfresco-sdk-parent POM.
        -->
     <properties>
-		<alfresco.version>5.0.d</alfresco.version>
         <!-- The following are default values for data location and Alfresco Community version.
-             Uncomment if you need to change (Note. current default version for Enterprise edition is 5.1)
-          <alfresco.version>5.1.e</alfresco.version>
-          <alfresco.data.location>/absolute/path/to/alf_data_dev</alfresco.data.location> -->
+             Uncomment if you need to change (Note. current default version for Enterprise edition is 5.0.1)
+          <alfresco.version>5.0.d</alfresco.version>
+          <alfresco.data.location>alf_data_dev</alfresco.data.location> -->
 
         <!-- This control the root logging level for all apps uncomment and change, defaults to WARN
             <app.log.root.level>WARN</app.log.root.level>
@@ -64,36 +63,11 @@
             <groupId>${alfresco.groupId}</groupId>
             <artifactId>alfresco-repository</artifactId>
         </dependency>
-
-        <!-- If we are running tests then make the H2 Scripts available
-             Note. tests are skipped when you are running -Pamp-to-war -->
         <dependency>
-            <groupId>${alfresco.groupId}</groupId>
-            <artifactId>alfresco-repository</artifactId>
-            <version>${alfresco.version}</version>
-            <classifier>h2scripts</classifier>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>alfresco-tests</artifactId>
+            <version>${project.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.jasypt</groupId>
-            <artifactId>jasypt</artifactId>
-            <version>1.9.2</version>
-        </dependency>
-        
-		<dependency>
-			<groupId>it.vige</groupId>
-			<artifactId>alfresco-tests</artifactId>
-			<version>${project.version}</version>
-			<scope>test</scope>
-		</dependency>
-
     </dependencies>
 
     <profiles>
@@ -112,9 +86,23 @@
                 </dependency>
             </dependencies>
         </profile>
+
+        <!--
+            If the 'amp-to-war' profile is enabled then make sure to bring in the alfresco-rad module,
+            which has the H2 scripts and other RAD features.
+
+            TODO: TO INVESTIGATE: This dependency is already defined in the parent SDK pom in the 'amp-to-war' profile
+                  but this does not work, it is not include...
+            -->
+        <profile>
+            <id>amp-to-war</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.alfresco.maven</groupId>
+                    <artifactId>alfresco-rad</artifactId>
+                    <version>${maven.alfresco.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
     </profiles>
-	
-	<build>
-		<finalName>${project.artifactId}-${project.version}</finalName>
-	</build>
 </project>

@@ -11,11 +11,11 @@
 		This is a jar project based on mock classes to test fastly the alfresco applications
 	</description>
 	<url>http://www.vige.it</url>
-    <parent>
-        <groupId>org.alfresco.maven</groupId>
-        <artifactId>alfresco-sdk-parent</artifactId>
-        <version>2.1.0</version>
-    </parent>
+	<parent>
+		<groupId>org.alfresco.maven</groupId>
+		<artifactId>alfresco-sdk-parent</artifactId>
+		<version>2.1.0</version>
+	</parent>
 	
 	<properties>
 		<alfresco.version>5.0.d</alfresco.version>
@@ -93,6 +93,7 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.neethi</groupId>
@@ -100,14 +101,9 @@
 			<version>2.0.4</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.ws.commons.axiom</groupId>
-			<artifactId>axiom-api</artifactId>
-			<version>1.2.13</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.ws.commons.axiom</groupId>
-			<artifactId>axiom-impl</artifactId>
-			<version>1.2.13</version>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-core</artifactId>
+			<version>3.3.2</version>
 		</dependency>
 
 	</dependencies>

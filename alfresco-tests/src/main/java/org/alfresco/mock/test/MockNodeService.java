@@ -426,13 +426,6 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
-	public List<AssociationRef> getTargetAssocsByPropertyValue(NodeRef sourceRef, QNamePattern qnamePattern,
-			QName propertyQName, Serializable propertyValue) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<AssociationRef> getSourceAssocs(NodeRef targetRef, QNamePattern qnamePattern)
 			throws InvalidNodeRefException {
 		// TODO Auto-generated method stub

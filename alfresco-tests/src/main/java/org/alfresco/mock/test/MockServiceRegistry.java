@@ -3,25 +3,21 @@ package org.alfresco.mock.test;
 import java.io.Serializable;
 import java.util.Collection;
 
-import org.alfresco.cmis.CMISDictionaryService;
-import org.alfresco.cmis.CMISQueryService;
-import org.alfresco.cmis.CMISServices;
-import org.alfresco.mbeans.VirtServerRegistry;
+import org.alfresco.opencmis.dictionary.CMISDictionaryService;
+import org.alfresco.opencmis.search.CMISQueryService;
 import org.alfresco.repo.admin.SysAdminParams;
 import org.alfresco.repo.forms.FormService;
 import org.alfresco.repo.imap.ImapService;
 import org.alfresco.repo.lock.JobLockService;
 import org.alfresco.repo.nodelocator.NodeLocatorService;
+import org.alfresco.repo.search.impl.solr.facet.SolrFacetHelper;
+import org.alfresco.repo.search.impl.solr.facet.handler.FacetLabelDisplayHandlerRegistry;
 import org.alfresco.repo.transaction.RetryingTransactionHelper;
 import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.action.ActionService;
 import org.alfresco.service.cmr.admin.RepoAdminService;
 import org.alfresco.service.cmr.attributes.AttributeService;
 import org.alfresco.service.cmr.audit.AuditService;
-import org.alfresco.service.cmr.avm.AVMService;
-import org.alfresco.service.cmr.avm.deploy.DeploymentService;
-import org.alfresco.service.cmr.avm.locking.AVMLockingService;
-import org.alfresco.service.cmr.avmsync.AVMSyncService;
 import org.alfresco.service.cmr.blog.BlogService;
 import org.alfresco.service.cmr.calendar.CalendarService;
 import org.alfresco.service.cmr.coci.CheckOutCheckInService;
@@ -32,13 +28,11 @@ import org.alfresco.service.cmr.ml.ContentFilterLanguagesService;
 import org.alfresco.service.cmr.ml.EditionService;
 import org.alfresco.service.cmr.ml.MultilingualContentService;
 import org.alfresco.service.cmr.model.FileFolderService;
-import org.alfresco.service.cmr.module.ModuleService;
 import org.alfresco.service.cmr.notification.NotificationService;
 import org.alfresco.service.cmr.rating.RatingService;
 import org.alfresco.service.cmr.rendition.RenditionService;
 import org.alfresco.service.cmr.repository.ContentService;
 import org.alfresco.service.cmr.repository.CopyService;
-import org.alfresco.service.cmr.repository.CrossRepositoryCopyService;
 import org.alfresco.service.cmr.repository.MimetypeService;
 import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.cmr.repository.ScriptService;
@@ -64,10 +58,6 @@ import org.alfresco.service.descriptor.DescriptorService;
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.service.transaction.TransactionService;
-import org.alfresco.wcm.asset.AssetService;
-import org.alfresco.wcm.preview.PreviewURIService;
-import org.alfresco.wcm.sandbox.SandboxService;
-import org.alfresco.wcm.webproject.WebProjectService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -277,24 +267,6 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 	}
 
 	@Override
-	public AVMService getAVMService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public AVMService getAVMLockingAwareService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public AVMSyncService getAVMSyncService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public OwnableService getOwnableService() {
 		// TODO Auto-generated method stub
 		return null;
@@ -313,25 +285,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 	}
 
 	@Override
-	public CrossRepositoryCopyService getCrossRepositoryCopyService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public AttributeService getAttributeService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public AVMLockingService getAVMLockingService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public VirtServerRegistry getVirtServerRegistry() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -356,36 +310,6 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 
 	@Override
 	public TaggingService getTaggingService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public DeploymentService getDeploymentService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public WebProjectService getWebProjectService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public SandboxService getSandboxService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public AssetService getAssetService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PreviewURIService getPreviewURIService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -432,24 +356,6 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 	}
 
 	@Override
-	public CMISServices getCMISService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public CMISDictionaryService getCMISDictionaryService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public CMISQueryService getCMISQueryService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ImapService getImapService() {
 		// TODO Auto-generated method stub
 		return null;
@@ -475,12 +381,6 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 
 	@Override
 	public WebDavService getWebDavService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ModuleService getModuleService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -533,6 +433,30 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 
 	public void setTemplateService(TemplateService templateService) {
 		this.templateService = templateService;
+	}
+
+	@Override
+	public CMISDictionaryService getCMISDictionaryService() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CMISQueryService getCMISQueryService() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SolrFacetHelper getSolrFacetHelper() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FacetLabelDisplayHandlerRegistry getFacetLabelDisplayHandlerRegistry() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

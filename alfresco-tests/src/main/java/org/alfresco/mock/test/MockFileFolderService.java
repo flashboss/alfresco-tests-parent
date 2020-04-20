@@ -375,4 +375,11 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		this.namespaceService = namespaceService;
 	}
 
+	@Override
+	public PagingResults<FileInfo> list(NodeRef rootNodeRef, Set<QName> searchTypeQNames, Set<QName> ignoreAspectQNames,
+			List<Pair<QName, Boolean>> sortProps, PagingRequest pagingRequest) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
