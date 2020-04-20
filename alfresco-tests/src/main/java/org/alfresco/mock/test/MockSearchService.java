@@ -132,6 +132,10 @@ public class MockSearchService implements SearchService, Serializable {
 	public class MockResultSet implements ResultSet {
 
 		private List<ResultSetRow> rows;
+		
+		private Map<String, Integer> facetQueries = new HashMap<String, Integer>();
+		
+		private SpellCheckResult spellCheckResult = new SpellCheckResult(null, null, true);
 
 		public MockResultSet(List<ResultSetRow> rows) {
 			this.rows = rows;
@@ -249,14 +253,12 @@ public class MockSearchService implements SearchService, Serializable {
 
 		@Override
 		public Map<String, Integer> getFacetQueries() {
-			// TODO Auto-generated method stub
-			return null;
+			return facetQueries;
 		}
 
 		@Override
 		public SpellCheckResult getSpellCheckResult() {
-			// TODO Auto-generated method stub
-			return null;
+			return spellCheckResult;
 		}
 	}
 

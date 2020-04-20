@@ -121,6 +121,20 @@
 		<property name="templateService">
 			<ref bean="templateService" />
 		</property>
+		<property name="solrFacetHelper">
+			<ref bean="solrFacetHelper" />
+		</property>
+	</bean>
+	<bean id="solrFacetRawProperties"
+		class="org.springframework.beans.factory.config.ListFactoryBean">
+		<property name="sourceList">
+			<list />
+		</property>
+	</bean>
+	<bean id="solrFacetHelper"
+		class="org.alfresco.mock.test.MockSolrFacetHelper">
+		<constructor-arg index="0"
+			ref="solrFacetRawProperties" />
 	</bean>
 	<bean id="action-executer" abstract="true" />
 	<alias name="mimetypeService" alias="MimetypeService" />

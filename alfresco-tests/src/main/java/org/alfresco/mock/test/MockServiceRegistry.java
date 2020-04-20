@@ -1,6 +1,9 @@
 package org.alfresco.mock.test;
 
-import java.io.Serializable;
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.util.Collection;
 
 import org.alfresco.opencmis.dictionary.CMISDictionaryService;
@@ -62,7 +65,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 
-public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, Serializable {
+public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, Externalizable {
 
 	private NodeService nodeService;
 
@@ -85,6 +88,8 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 	private PermissionService permissionService;
 
 	private TemplateService templateService;
+
+	private SolrFacetHelper solrFacetHelper;
 
 	@Override
 	public Collection<QName> getServices() {
@@ -449,14 +454,37 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 
 	@Override
 	public SolrFacetHelper getSolrFacetHelper() {
-		// TODO Auto-generated method stub
-		return null;
+		return solrFacetHelper;
 	}
 
 	@Override
 	public FacetLabelDisplayHandlerRegistry getFacetLabelDisplayHandlerRegistry() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void setSolrFacetHelper(SolrFacetHelper solrFacetHelper) {
+		this.solrFacetHelper = solrFacetHelper;
+	}
+
+	@Override
+	public void writeExternal(ObjectOutput out) throws IOException {
+		out.writeObject(namespaceService);
+		out.writeObject(mimetypeService);
+		out.writeObject(scriptService);
+		out.writeObject(importerService);
+		out.writeObject(permissionService);
+		out.writeObject(templateService);
+	}
+
+	@Override
+	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+		namespaceService = (NamespaceService) in.readObject();
+		mimetypeService = (MimetypeService) in.readObject();
+		scriptService = (ScriptService) in.readObject();
+		importerService = (ImporterService) in.readObject();
+		permissionService = (PermissionService) in.readObject();
+		templateService = (TemplateService) in.readObject();
 	}
 
 }
