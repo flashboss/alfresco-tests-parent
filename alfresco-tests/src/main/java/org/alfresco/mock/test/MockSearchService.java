@@ -260,6 +260,12 @@ public class MockSearchService implements SearchService, Serializable {
 		public SpellCheckResult getSpellCheckResult() {
 			return spellCheckResult;
 		}
+
+		@Override
+		public Map<NodeRef, List<Pair<String, List<String>>>> getHighlighting() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 	}
 
 	public class MockResultSetRow implements ResultSetRow {

@@ -12,6 +12,7 @@ import java.util.Set;
 import org.alfresco.model.ContentModel;
 import org.alfresco.query.PagingRequest;
 import org.alfresco.query.PagingResults;
+import org.alfresco.repo.node.getchildren.FilterProp;
 import org.alfresco.service.cmr.model.FileExistsException;
 import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.model.FileFolderServiceType;
@@ -284,6 +285,20 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		return null;
 	}
 
+	@Override
+	public PagingResults<FileInfo> list(NodeRef rootNodeRef, Set<QName> searchTypeQNames, Set<QName> ignoreAspectQNames,
+			List<Pair<QName, Boolean>> sortProps, PagingRequest pagingRequest) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PagingResults<FileInfo> list(NodeRef arg0, Set<QName> arg1, Set<QName> arg2, Set<QName> arg3,
+			List<Pair<QName, Boolean>> arg4, List<FilterProp> arg5, PagingRequest arg6) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public class MockFileInfo implements FileInfo {
 
 		private NodeRef nodeRef;
@@ -373,13 +388,6 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
-	}
-
-	@Override
-	public PagingResults<FileInfo> list(NodeRef rootNodeRef, Set<QName> searchTypeQNames, Set<QName> ignoreAspectQNames,
-			List<Pair<QName, Boolean>> sortProps, PagingRequest pagingRequest) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
