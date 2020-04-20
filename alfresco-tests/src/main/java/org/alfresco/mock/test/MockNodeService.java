@@ -476,6 +476,13 @@ public class MockNodeService implements NodeService, Serializable {
 		return 0;
 	}
 
+	@Override
+	public List<AssociationRef> getTargetAssocsByPropertyValue(NodeRef sourceRef, QNamePattern qnamePattern,
+			QName propertyQName, Serializable propertyValue) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public class MockElement extends Path.Element {
 
 		private String path;
