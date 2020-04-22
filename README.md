@@ -6,7 +6,7 @@ This version is for:
 
 - Java 11
 - ALfresco SDK 4.1.0
-- Alfresco enterprise 6.1.0-ea
+- Alfresco community 6.1.0-ea
 
 To start add the dependency in your project sdk amp:
 ```
