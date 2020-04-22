@@ -5,7 +5,7 @@
     <groupId>it.vige</groupId>
     <artifactId>alfresco-tests-activiti-sample</artifactId>
     <name>Alfresco Tests Activiti sample</name>
-    <version>6.0.0-ea.0</version>
+    <version>6.1.0-ea.0</version>
     <description>Simple AMP Activiti sample for tests</description>
     <packaging>jar</packaging>
 
@@ -23,8 +23,8 @@
         <!-- Properties used in dependency declarations, you don't need to change these -->
         <alfresco.groupId>org.alfresco</alfresco.groupId>
         <alfresco.bomDependencyArtifactId>acs-community-packaging</alfresco.bomDependencyArtifactId>
-        <alfresco.platform.version>6.0.0-ea</alfresco.platform.version>
-        <alfresco.share.version>6.0.0</alfresco.share.version>
+        <alfresco.platform.version>6.1.0-ea</alfresco.platform.version>
+        <alfresco.share.version>6.1.0</alfresco.share.version>
 
         <!-- Docker images -->
         <docker.acs.image>alfresco/alfresco-content-repository-community</docker.acs.image>
@@ -51,7 +51,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -63,7 +62,6 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.5.2</version>
             <scope>test</scope>
         </dependency>
 

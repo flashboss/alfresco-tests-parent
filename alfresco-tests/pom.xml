@@ -13,13 +13,13 @@
 	<parent>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests-parent</artifactId>
-		<version>6.0.0-ea.0</version>
+		<version>6.1.0-ea.0</version>
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<alfresco.groupId>org.alfresco</alfresco.groupId>
-		<alfresco.platform.version>6.0.0-ea</alfresco.platform.version>
+		<alfresco.platform.version>6.1.0-ea</alfresco.platform.version>
 		<alfresco.bomDependencyArtifactId>acs-community-packaging</alfresco.bomDependencyArtifactId>
 		<maven.source.plugin.version>3.1.0</maven.source.plugin.version>
 		<maven.javadoc.plugin.version>3.1.1</maven.javadoc.plugin.version>
