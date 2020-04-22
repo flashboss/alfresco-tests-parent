@@ -6,7 +6,7 @@ This version is for:
 
 - Java 8
 - ALfresco SDK 3.1.0
-- Alfresco enterprise 5.2.f
+- Alfresco community 5.2.f
 
 To start add the dependency in your project sdk amp:
 ```
