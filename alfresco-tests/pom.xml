@@ -3,14 +3,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>alfresco-tests</artifactId>
-	<groupId>it.vige</groupId>
 	<name>Alfresco Tests</name>
-	<version>5.2.f.0</version>
 	<packaging>jar</packaging>
 	<description>
 		This is a jar project based on mock classes to test fastly the alfresco applications
 	</description>
 	<url>http://www.vige.it</url>
+	
+	<parent>
+		<groupId>it.vige</groupId>
+		<artifactId>alfresco-tests-parent</artifactId>
+		<version>5.2.f.0</version>
+	</parent>
 
     <properties>
 
