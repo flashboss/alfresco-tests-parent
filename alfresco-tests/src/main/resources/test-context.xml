@@ -249,11 +249,11 @@
 		class="org.alfresco.repo.management.subsystems.AbstractPropertyBackedBean"
 		abstract="true">
 		<property name="registry">
-			<ref local="propertyBackedBeanRegistry" />
+			<ref bean="propertyBackedBeanRegistry" />
 		</property>
 		<!-- Ensure that child application contexts propagate global default values -->
 		<property name="propertyDefaults">
-			<ref local="global-properties" />
+			<ref bean="global-properties" />
 		</property>
 	</bean>
 </beans>
