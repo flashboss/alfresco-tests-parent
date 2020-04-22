@@ -133,6 +133,8 @@ public class MockSearchService implements SearchService, Serializable {
 
 		private List<ResultSetRow> rows;
 		
+		private Map<NodeRef, List<Pair<String, List<String>>>> highLights = new HashMap<NodeRef, List<Pair<String, List<String>>>>();
+		
 		private Map<String, Integer> facetQueries = new HashMap<String, Integer>();
 		
 		private SpellCheckResult spellCheckResult = new SpellCheckResult(null, null, true);
@@ -263,8 +265,7 @@ public class MockSearchService implements SearchService, Serializable {
 
 		@Override
 		public Map<NodeRef, List<Pair<String, List<String>>>> getHighlighting() {
-			// TODO Auto-generated method stub
-			return null;
+			return highLights;
 		}
 	}
 

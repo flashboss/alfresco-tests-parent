@@ -121,6 +121,9 @@
 		<property name="templateService">
 			<ref bean="templateService" />
 		</property>
+		<property name="transactionService">
+			<ref bean="transactionService" />
+		</property>
 		<property name="solrFacetHelper">
 			<ref bean="solrFacetHelper" />
 		</property>
@@ -148,6 +151,8 @@
 		class="org.alfresco.mock.test.MockNamespaceService" />
 	<bean id="templateService"
 		class="org.alfresco.mock.test.MockTemplateService" />
+	<bean id="transactionService"
+		class="org.alfresco.mock.test.MockTransactionService" />
 	<alias name="NamespaceService" alias="namespaceService" />
 	<alias name="ServiceRegistry" alias="services" />
 	<bean id="javaScriptProcessor"

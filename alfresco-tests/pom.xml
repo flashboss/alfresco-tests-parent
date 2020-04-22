@@ -19,7 +19,6 @@
         <!-- Properties used in dependency declarations, you don't need to change these -->
         <alfresco.groupId>org.alfresco</alfresco.groupId>
         <alfresco.version>5.2.f</alfresco.version>
-        <alfresco.sdk.version>3.1.0</alfresco.sdk.version>
 
         <!-- Alfresco Platform webapp version, this is the original Alfresco webapp that will be
             customized and then deployed and run by the tomcat maven plugin when
@@ -43,14 +42,6 @@
             <groupId>${alfresco.groupId}</groupId>
             <artifactId>alfresco-repository</artifactId>
             <version>${alfresco.version}</version>
-        </dependency>
-
-        <!-- Bring in Alfresco RAD so we get access to AlfrescoTestRunner classes -->
-        <dependency>
-            <groupId>org.alfresco.maven</groupId>
-            <artifactId>alfresco-rad</artifactId>
-            <version>${alfresco.sdk.version}</version>
-            <scope>test</scope>
         </dependency>
 
         <!-- Bring in Spring Context so we can use ApplicationContext, ApplicationContextAware etc -->

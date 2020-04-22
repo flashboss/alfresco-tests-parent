@@ -92,6 +92,8 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 	private PermissionService permissionService;
 
 	private TemplateService templateService;
+	
+	private TransactionService transactionService;
 
 	private SolrFacetHelper solrFacetHelper;
 
@@ -121,8 +123,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 
 	@Override
 	public TransactionService getTransactionService() {
-		// TODO Auto-generated method stub
-		return null;
+		return transactionService;
 	}
 
 	@Override
@@ -400,50 +401,6 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 
 	}
 
-	public void setFileFolderService(FileFolderService fileFolderService) {
-		this.fileFolderService = fileFolderService;
-	}
-
-	public void setContentService(ContentService contentService) {
-		this.contentService = contentService;
-	}
-
-	public void setNodeService(NodeService nodeService) {
-		this.nodeService = nodeService;
-	}
-
-	public void setSearchService(SearchService searchService) {
-		this.searchService = searchService;
-	}
-
-	public void setNodeLocatorService(NodeLocatorService nodeLocatorService) {
-		this.nodeLocatorService = nodeLocatorService;
-	}
-
-	public void setNamespaceService(NamespaceService namespaceService) {
-		this.namespaceService = namespaceService;
-	}
-
-	public void setMimetypeService(MimetypeService mimetypeService) {
-		this.mimetypeService = mimetypeService;
-	}
-
-	public void setScriptService(ScriptService scriptService) {
-		this.scriptService = scriptService;
-	}
-
-	public void setImporterService(ImporterService importerService) {
-		this.importerService = importerService;
-	}
-
-	public void setPermissionService(PermissionService permissionService) {
-		this.permissionService = permissionService;
-	}
-
-	public void setTemplateService(TemplateService templateService) {
-		this.templateService = templateService;
-	}
-
 	@Override
 	public CMISDictionaryService getCMISDictionaryService() {
 		// TODO Auto-generated method stub
@@ -503,6 +460,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		out.writeObject(importerService);
 		out.writeObject(permissionService);
 		out.writeObject(templateService);
+		out.writeObject(transactionService);
 	}
 
 	@Override
@@ -513,6 +471,55 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		importerService = (ImporterService) in.readObject();
 		permissionService = (PermissionService) in.readObject();
 		templateService = (TemplateService) in.readObject();
+		transactionService = (TransactionService) in.readObject();
+	}
+
+	public void setFileFolderService(FileFolderService fileFolderService) {
+		this.fileFolderService = fileFolderService;
+	}
+
+	public void setContentService(ContentService contentService) {
+		this.contentService = contentService;
+	}
+
+	public void setNodeService(NodeService nodeService) {
+		this.nodeService = nodeService;
+	}
+
+	public void setSearchService(SearchService searchService) {
+		this.searchService = searchService;
+	}
+
+	public void setNodeLocatorService(NodeLocatorService nodeLocatorService) {
+		this.nodeLocatorService = nodeLocatorService;
+	}
+
+	public void setNamespaceService(NamespaceService namespaceService) {
+		this.namespaceService = namespaceService;
+	}
+
+	public void setMimetypeService(MimetypeService mimetypeService) {
+		this.mimetypeService = mimetypeService;
+	}
+
+	public void setScriptService(ScriptService scriptService) {
+		this.scriptService = scriptService;
+	}
+
+	public void setImporterService(ImporterService importerService) {
+		this.importerService = importerService;
+	}
+
+	public void setPermissionService(PermissionService permissionService) {
+		this.permissionService = permissionService;
+	}
+
+	public void setTemplateService(TemplateService templateService) {
+		this.templateService = templateService;
+	}
+
+	public void setTransactionService(TransactionService transactionService) {
+		this.transactionService = transactionService;
 	}
 
 }
