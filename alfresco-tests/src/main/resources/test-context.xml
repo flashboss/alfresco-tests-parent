@@ -193,6 +193,15 @@
 			<value>logger</value>
 		</property>
 	</bean>
+	<bean id="utilsScript" parent="baseJavaScriptExtension" class="org.alfresco.repo.jscript.ScriptUtils">
+        <property name="extensionName">
+            <value>utils</value>
+        </property>
+        <property name="serviceRegistry">
+            <ref bean="ServiceRegistry"/>
+        </property>
+        <property name="nodeService" ref="nodeService"/>
+    </bean>
 	<bean id="repositoryHelper"
 		class="org.alfresco.repo.model.Repository">
 		<property name="namespaceService" ref="namespaceService" />

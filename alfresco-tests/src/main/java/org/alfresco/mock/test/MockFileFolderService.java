@@ -118,6 +118,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	public FileInfo move(NodeRef sourceNodeRef, NodeRef targetParentRef, String newName)
 			throws FileExistsException, FileNotFoundException {
 		FileInfo fileInfo = copy(sourceNodeRef, targetParentRef, newName);
+		nodeService.setProperty(fileInfo.getNodeRef(), MockNodeService.PRIMARY_PARENT, targetParentRef);
 		delete(sourceNodeRef);
 		return fileInfo;
 	}
@@ -146,7 +147,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	public FileInfo copy(NodeRef sourceNodeRef, NodeRef targetParentRef, String newName)
 			throws FileExistsException, FileNotFoundException {
 		if (newName == null)
-			newName = sourceNodeRef.getId();
+			newName = nodeService.getPath(sourceNodeRef).last().getElementString();
 		QName assocQName = QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, newName);
 		ChildAssociationRef association = nodeService.createNode(targetParentRef, ContentModel.ASSOC_CONTAINS,
 				assocQName, ContentModel.TYPE_CONTENT, nodeService.getProperties(sourceNodeRef));

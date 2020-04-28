@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.alfresco.mock.NodeUtils;
 import org.alfresco.model.ContentModel;
 import org.alfresco.repo.tenant.TenantService;
 import org.alfresco.service.cmr.dictionary.InvalidAspectException;
@@ -37,11 +38,11 @@ public class MockNodeService implements NodeService, Serializable {
 
 	private static Map<NodeRef, Map<QName, Serializable>> sampleProperties = new HashMap<NodeRef, Map<QName, Serializable>>();
 
-	private static Map<QName, Map<QName, Serializable>> sampleAspects = new HashMap<QName, Map<QName, Serializable>>();
+	private static Map<NodeRef, Map<QName, Map<QName, Serializable>>> sampleAspects = new HashMap<NodeRef, Map<QName, Map<QName, Serializable>>>();
 
 	private static Map<NodeRef, File> nodeRefs = new HashMap<NodeRef, File>();
 
-	private final static QName PRIMARY_PARENT = QName.createQName("primary_parent");
+	public final static QName PRIMARY_PARENT = QName.createQName("primary_parent");
 
 	@Override
 	public List<StoreRef> getStores() {
@@ -98,23 +99,7 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public ChildAssociationRef createNode(NodeRef parentRef, QName assocTypeQName, QName assocQName,
 			QName nodeTypeQName) throws InvalidNodeRefException, InvalidTypeException {
-		Path path = getPath(parentRef);
-		String pathStr = "";
-		if (path != null)
-			pathStr = path.toString() + File.separator + assocQName.getLocalName();
-		else
-			pathStr = MockContentService.FOLDER_TEST;
-		StoreRef storeRef = StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
-		if (pathStr.contains(StoreRef.PROTOCOL_ARCHIVE))
-			storeRef = StoreRef.STORE_REF_ARCHIVE_SPACESSTORE;
-		NodeRef nodeRef = new NodeRef(storeRef + File.separator + pathStr);
-		setProperty(nodeRef, ContentModel.PROP_NAME, assocQName.getLocalName());
-		setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
-		File file = new File(pathStr);
-		if (nodeTypeQName.equals(ContentModel.TYPE_FOLDER))
-			file.mkdir();
-		nodeRefs.put(nodeRef, new File(pathStr));
-		return new ChildAssociationRef(assocTypeQName, parentRef, assocQName, nodeRef);
+		return createNode(parentRef, assocTypeQName, assocQName, nodeTypeQName, null);
 	}
 
 	@Override
@@ -131,8 +116,14 @@ public class MockNodeService implements NodeService, Serializable {
 		StoreRef storeRef = StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
 		if (pathStr.contains(StoreRef.PROTOCOL_ARCHIVE))
 			storeRef = StoreRef.STORE_REF_ARCHIVE_SPACESSTORE;
-		NodeRef nodeRef = new NodeRef(storeRef + File.separator + pathStr);
-		setProperties(nodeRef, properties);
+		NodeRef nodeRef = new NodeRef(storeRef, NodeUtils.generateUUID(pathStr));
+		if (properties == null) {
+			setProperty(nodeRef, ContentModel.PROP_NAME, assocQName.getLocalName());
+			setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
+		} else
+			setProperties(nodeRef, properties);
+		if (getProperty(nodeRef, PRIMARY_PARENT) == null)
+			setProperty(nodeRef, PRIMARY_PARENT, parentRef);
 		File file = new File(pathStr);
 		setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
 		if (nodeTypeQName.equals(ContentModel.TYPE_FOLDER))
@@ -178,9 +169,15 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public void addAspect(NodeRef nodeRef, QName aspectTypeQName, Map<QName, Serializable> aspectProperties)
 			throws InvalidNodeRefException, InvalidAspectException {
-		sampleAspects.put(aspectTypeQName, aspectProperties);
+		Map<QName, Map<QName, Serializable>> aspects = sampleAspects.get(nodeRef);
+		if (aspects == null) {
+			aspects = new HashMap<QName, Map<QName, Serializable>>();
+			sampleAspects.put(nodeRef, aspects);
+		}
+		aspects.put(aspectTypeQName, aspectProperties);
 		Map<QName, Serializable> properties = getNotNullProperties(nodeRef);
 		properties.putAll(aspectProperties);
+
 	}
 
 	@Override
@@ -199,7 +196,12 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public Set<QName> getAspects(NodeRef nodeRef) throws InvalidNodeRefException {
-		return new HashSet<QName>(sampleAspects.keySet());
+		Map<QName, Map<QName, Serializable>> aspects = sampleAspects.get(nodeRef);
+		if (aspects == null) {
+			aspects = new HashMap<QName, Map<QName, Serializable>>();
+			sampleAspects.put(nodeRef, aspects);
+		}
+		return new HashSet<QName>(aspects.keySet());
 	}
 
 	@Override
@@ -211,7 +213,6 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public ChildAssociationRef addChild(NodeRef parentRef, NodeRef childRef, QName assocTypeQName, QName qname)
 			throws InvalidNodeRefException {
-		sampleProperties.get(childRef).put(PRIMARY_PARENT, this.getPrimaryParent(childRef).getParentRef());
 		ChildAssociationRef association = createNode(parentRef, ContentModel.ASSOC_CONTAINS, qname,
 				ContentModel.TYPE_CONTENT, getProperties(childRef));
 		try {
@@ -283,6 +284,14 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public void setProperty(NodeRef nodeRef, QName qname, Serializable value) throws InvalidNodeRefException {
 		getNotNullProperties(nodeRef).put(qname, value);
+		if (qname.equals(ContentModel.PROP_NAME)) {
+			File file = nodeRefs.get(nodeRef);
+			if (file != null && !file.getName().equals(value)) {
+				File renamedFile = new File(file.getParent() + File.separator + value);
+				file.renameTo(renamedFile);
+				nodeRefs.put(nodeRef, renamedFile);
+			}
+		}
 	}
 
 	@Override
@@ -308,8 +317,8 @@ public class MockNodeService implements NodeService, Serializable {
 		List<ChildAssociationRef> result = new ArrayList<ChildAssociationRef>();
 		for (NodeRef node : nodeRefs.keySet()) {
 			Path path = getPath(node);
-			String parentId = path.get(path.size() - 2).toString();
-			if (nodeRef.getId().equals(parentId))
+			String parentPath = path.subPath(path.size() - 2).toString();
+			if (getPath(nodeRef).toString().equals(parentPath))
 				result.add(
 						new ChildAssociationRef(ContentModel.ASSOC_CONTAINS, nodeRef, ContentModel.TYPE_CONTENT, node));
 		}
@@ -353,9 +362,11 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public NodeRef getChildByName(NodeRef nodeRef, QName assocTypeQName, String childName) {
 		List<ChildAssociationRef> children = getChildAssocs(nodeRef);
-		for (ChildAssociationRef ref : children)
-			if (ref.getChildRef().getId().equals(childName))
+		for (ChildAssociationRef ref : children) {
+			String name = (String) getProperty(ref.getChildRef(), ContentModel.PROP_NAME);
+			if (name.equals(childName))
 				return ref.getChildRef();
+		}
 		return null;
 	}
 
@@ -368,17 +379,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public ChildAssociationRef getPrimaryParent(NodeRef nodeRef) throws InvalidNodeRefException {
-		NodeRef primaryParent = (NodeRef) sampleProperties.get(nodeRef).get(PRIMARY_PARENT);
-		NodeRef result = null;
-		if (primaryParent != null)
-			result = primaryParent;
-		else {
-			Set<NodeRef> nodes = nodeRefs.keySet();
-			String parentStr = nodeRef.toString().substring(0, nodeRef.toString().lastIndexOf("/"));
-			for (NodeRef nodeRefFromMap : nodes)
-				if (nodeRefFromMap.toString().equals(parentStr))
-					result = nodeRefFromMap;
-		}
+		NodeRef result = (NodeRef) getProperty(nodeRef, PRIMARY_PARENT);
 		QName childQName = QName.createQName((String) getProperty(nodeRef, ContentModel.PROP_NAME));
 		ChildAssociationRef childAssociationRef = new ChildAssociationRef(ContentModel.ASSOC_CONTAINS, result,
 				childQName, nodeRef, true, -1);
