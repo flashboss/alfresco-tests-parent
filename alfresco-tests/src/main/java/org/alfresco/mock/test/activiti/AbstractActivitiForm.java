@@ -30,7 +30,10 @@ import org.activiti.engine.repository.Deployment;
 import org.alfresco.mock.NodeUtils;
 import org.alfresco.mock.ZipUtils;
 import org.alfresco.mock.test.MockContentService;
+import org.alfresco.mock.test.script.MockLogger;
 import org.alfresco.model.ContentModel;
+import org.alfresco.repo.jscript.ScriptUtils;
+import org.alfresco.repo.jscript.Search;
 import org.alfresco.repo.site.SiteModel;
 import org.alfresco.repo.workflow.activiti.ActivitiScriptNode;
 import org.alfresco.service.ServiceRegistry;
@@ -56,6 +59,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	protected NodeRef archive;
 	protected NodeRef sites;
 	protected ActivitiScriptNode bpmPackage;
+	protected Initiator initiator = new Initiator();
 
 	public AbstractActivitiForm() {
 		super("test-module-context.xml");
@@ -105,6 +109,14 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		// TEST GROUPS AND USERS
 		initDemoGroups(identityService);
 		initDemoUsers(identityService);
+
+		Search search = activitiProcessEngineConfiguration.getSearchScript();
+		MockLogger logger = activitiProcessEngineConfiguration.getLoggerScript();
+		ScriptUtils utils = activitiProcessEngineConfiguration.getUtilsScript();
+		variables.put("initiator", initiator);
+		variables.put("search", search);
+		variables.put("logger", logger);
+		variables.put("utils", utils);
 	}
 
 	public void end() {
