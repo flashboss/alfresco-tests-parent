@@ -193,7 +193,7 @@
 			<value>logger</value>
 		</property>
 	</bean>
-	<bean id="utilsScript" parent="baseJavaScriptExtension" class="org.alfresco.repo.jscript.ScriptUtils">
+	<bean id="utilsScript" parent="baseJavaScriptExtension" class="org.alfresco.mock.test.script.MockUtils">
         <property name="extensionName">
             <value>utils</value>
         </property>
