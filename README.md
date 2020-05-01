@@ -4,7 +4,7 @@ A library to test the alfresco components. It offer mock file to execute unit an
 
 This version is for:
 
-- Java 8
+- Java 7
 - ALfresco SDK 2.2.0
 - Alfresco community 5.1.g
 
@@ -13,7 +13,7 @@ To start add the dependency in your project sdk amp:
    <dependency>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests</artifactId>
-		<version>${alfresco.version}.0</version>
+		<version>${alfresco.version}.1</version>
 		<scope>test</scope>
    </dependency>
 ```
