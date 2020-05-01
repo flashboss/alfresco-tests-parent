@@ -30,15 +30,17 @@ import org.activiti.engine.repository.Deployment;
 import org.alfresco.mock.NodeUtils;
 import org.alfresco.mock.ZipUtils;
 import org.alfresco.mock.test.MockContentService;
+import org.alfresco.mock.test.MockNodeService;
+import org.alfresco.mock.test.script.MockLogger;
 import org.alfresco.model.ContentModel;
+import org.alfresco.repo.jscript.ScriptUtils;
+import org.alfresco.repo.jscript.Search;
 import org.alfresco.repo.site.SiteModel;
 import org.alfresco.repo.workflow.activiti.ActivitiScriptNode;
 import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.StoreRef;
-import org.alfresco.service.cmr.search.ResultSet;
-import org.alfresco.service.cmr.search.SearchService;
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.apache.commons.io.FileUtils;
@@ -56,6 +58,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	protected NodeRef archive;
 	protected NodeRef sites;
 	protected ActivitiScriptNode bpmPackage;
+	protected Initiator initiator = new Initiator();
 
 	public AbstractActivitiForm() {
 		super("test-module-context.xml");
@@ -63,9 +66,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
 	public void init(Map<String, Object> variables) {
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
-		FileFolderService fileFolderService = activitiProcessEngineConfiguration.getServiceRegistry()
-				.getFileFolderService();
-		SearchService searchService = activitiProcessEngineConfiguration.getServiceRegistry().getSearchService();
 		ServiceRegistry serviceRegistry = activitiProcessEngineConfiguration.getServiceRegistry();
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
 		namespaceService.registerNamespace(NamespaceService.APP_MODEL_PREFIX, NamespaceService.APP_MODEL_1_0_URI);
@@ -74,11 +74,8 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 				NamespaceService.CONTENT_MODEL_1_0_URI);
 
 		// remove the old documents
-		ResultSet nodes = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
-				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"*\"");
-		if (nodes.length() > 0)
-			for (NodeRef node : nodes.getNodeRefs())
-				fileFolderService.delete(node);
+		MockNodeService nodeService = (MockNodeService) serviceRegistry.getNodeService();
+		nodeService.getNodeRefs().clear();
 		try {
 			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE));
 			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_ARCHIVE));
@@ -105,6 +102,14 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		// TEST GROUPS AND USERS
 		initDemoGroups(identityService);
 		initDemoUsers(identityService);
+
+		Search search = activitiProcessEngineConfiguration.getSearchScript();
+		MockLogger logger = activitiProcessEngineConfiguration.getLoggerScript();
+		ScriptUtils utils = activitiProcessEngineConfiguration.getUtilsScript();
+		variables.put("initiator", initiator);
+		variables.put("search", search);
+		variables.put("logger", logger);
+		variables.put("utils", utils);
 	}
 
 	public void end() {

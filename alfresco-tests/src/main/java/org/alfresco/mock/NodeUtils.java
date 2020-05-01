@@ -37,9 +37,8 @@ public class NodeUtils {
 			type = (QName) properties.get(ContentModel.TYPE_BASE);
 		if (type == null)
 			type = QName.createQName("cm", ContentModel.TYPE_CONTENT.getLocalName(), namespaceService);
-		NodeRef node = nodeService
-				.createNode(parent, ContentModel.ASSOC_CONTAINS,
-						QName.createQName(NamespaceService.CONTENT_MODEL_PREFIX, name, namespaceService), type, properties)
+		NodeRef node = nodeService.createNode(parent, ContentModel.ASSOC_CONTAINS,
+				QName.createQName(NamespaceService.CONTENT_MODEL_PREFIX, name, namespaceService), type, properties)
 				.getChildRef();
 		InputStream inputStream = new ByteArrayInputStream(text.getBytes());
 		ContentWriter writer = contentService.getWriter(node, ContentModel.PROP_CONTENT, true);
@@ -58,6 +57,10 @@ public class NodeUtils {
 			}
 		});
 		return Arrays.asList(nodeArray);
+	}
+
+	public static String generateUUID(String nodePath) {
+		return nodePath.hashCode() + "";
 	}
 
 }
