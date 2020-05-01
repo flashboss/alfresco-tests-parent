@@ -366,12 +366,10 @@ public class MockSearchService implements SearchService, Serializable {
 	}
 
 	private boolean hasPath(StoreRef store, String path, String[] subpaths, int wildcardsNumber, NodeRef nodeRef) {
-		String nodepath = nodeRef.toString();
+		String nodepath = nodeService.getPath(nodeRef).toString();
 		if (store == null)
 			return true;
-		else if (store != null && !nodepath.startsWith(store.toString()))
-			return false;
-		else if (store != null && nodepath.endsWith(MockContentService.FOLDER_TEST + store.getProtocol()))
+		else if (store != null && !nodepath.contains(MockContentService.FOLDER_TEST + store.getProtocol()))
 			return false;
 		nodepath = nodepath
 				.substring(nodepath.indexOf(MockContentService.FOLDER_TEST) + MockContentService.FOLDER_TEST.length());

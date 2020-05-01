@@ -21,6 +21,8 @@
 			ref="searchScript" />
 		<property name="loggerScript"
 			ref="loggerScript" />
+		<property name="utilsScript"
+			ref="utilsScript" />
 	</bean>
 	<import resource="classpath:test-context.xml" />
 	<import resource="classpath:alfresco/activiti-context.xml" />
