@@ -24,7 +24,6 @@ import org.alfresco.service.cmr.repository.ContentReader;
 import org.alfresco.service.cmr.repository.ContentWriter;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
-import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.util.Pair;
@@ -187,10 +186,9 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	public void delete(NodeRef nodeRef) {
 		List<NodeRef> toRemove = new ArrayList<NodeRef>();
 		Map<NodeRef, File> nodeRefs = getNodeService().getNodeRefs();
-		String pathParent = nodeRef.toString().replace(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE + File.separator, "")
-				+ File.separator;
+		String pathParent = nodeService.getPath(nodeRef).toString() + File.separator;
 		for (NodeRef node : nodeRefs.keySet()) {
-			String pathChild = node.toString().replace(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE + File.separator, "");
+			String pathChild = nodeService.getPath(node).toString();
 			if (pathChild.contains(pathParent))
 				toRemove.add(node);
 		}

@@ -87,7 +87,12 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public NodeRef getRootNode(StoreRef storeRef) throws InvalidStoreRefException {
-		return nodeRefs.keySet().toArray(new NodeRef[0])[1];
+		for (NodeRef nodeRef : nodeRefs.keySet()) {
+			String name = (String) getProperty(nodeRef, ContentModel.PROP_NAME);
+			if (name.equals(storeRef.getProtocol()))
+				return nodeRef;
+		}
+		return null;
 	}
 
 	@Override
