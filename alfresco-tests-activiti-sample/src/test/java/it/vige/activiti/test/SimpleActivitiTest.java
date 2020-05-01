@@ -43,17 +43,19 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 	/**
 	 * Default admin user to start the scheduler process
 	 */
-	protected final static String ADMIN_USER_NAME = "kermit";
+	private final static String ADMIN_USER_NAME = "kermit";
 	/**
 	 * Default traveler user to work with the reservations
 	 */
-	protected final static String USER_NAME = "gonzo";
+	private final static String USER_NAME = "gonzo";
 
-	protected final DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm:ss ZZZ yyyy");
+	private final DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm:ss ZZZ yyyy");
 
-	protected NodeRef generationFolder;
+	private NodeRef generationFolder;
 
-	protected Initiator initiator = new Initiator();
+	private Initiator initiator = new Initiator();
+
+	private String generationFolderName = "20191024_154711";
 
 	@Override
 	public void init(Map<String, Object> variables) {
@@ -62,7 +64,6 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		NamespaceService namespaceService = activitiProcessEngineConfiguration.getServiceRegistry()
 				.getNamespaceService();
 		namespaceService.registerNamespace("mycont", SimpleModel.STARTING_URI);
-		String generationFolderName = "20191024_154711";
 		NodeRef site = insertFolder(sites, "simple-site");
 		NodeRef documentLibrary = insertFolder(site, "documentLibrary");
 		NodeRef pdv = insertFolder(documentLibrary, "pdv");
@@ -74,8 +75,7 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		try {
 			properties.put(ContentModel.PROP_NAME, "contracts_" + generationFolderName + ".zip");
 			properties.put(ContentModel.TYPE_BASE, QName.createQName("mycont", "contractsPdvCons", namespaceService));
-			insertZip(generationFolder, "contracts_" + generationFolderName + ".zip", "document", "text",
-					properties);
+			insertZip(generationFolder, "contracts_" + generationFolderName + ".zip", "document", "text", properties);
 		} catch (IOException e) {
 		}
 		// AUTHENTICATION
@@ -159,21 +159,23 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 
 		// one file is created by the workflow
 		SearchService searchService = serviceRegistry.getSearchService();
+		NodeService nodeService = serviceRegistry.getNodeService();
 		ResultSet resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
-				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"pda/contracts_" + generationFolder.getId() + ".zip\"");
+				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"pda/contracts_" + generationFolderName + ".zip\"");
 		NodeRef createdNodeRef = resultQ.getNodeRef(0);
-		Assert.assertTrue("Added a zip file in the PDA folder", createdNodeRef.toString().endsWith(
-				"workspace/company_home/sites/simple-site/documentLibrary/pda/contracts_"
-						+ generationFolder.getId() + ".zip"));
+		String path = nodeService.getPath(createdNodeRef).toString();
+		Assert.assertTrue("Added a zip file in the PDA folder",
+				path.endsWith("workspace/company_home/sites/simple-site/documentLibrary/pda/contracts_"
+						+ generationFolderName + ".zip"));
 
 		// the file is inside the workflow/packages activiti folder
 		resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, SearchService.LANGUAGE_FTS_ALFRESCO,
-				"PATH:\"pkg_919f220e-870a-4c56-ba11-5030ee5325f0/contracts_" + generationFolder.getId() + ".zip\"");
+				"PATH:\"pkg_919f220e-870a-4c56-ba11-5030ee5325f0/contracts_" + generationFolderName + ".zip\"");
 		createdNodeRef = resultQ.getNodeRef(0);
+		path = nodeService.getPath(createdNodeRef).toString();
 		Assert.assertTrue("File zip in the activiti folder",
-				createdNodeRef.toString()
-						.endsWith("workspace/workflow/packages/pkg_919f220e-870a-4c56-ba11-5030ee5325f0/contracts_"
-								+ generationFolder.getId() + ".zip"));
+				path.endsWith("workspace/workflow/packages/pkg_919f220e-870a-4c56-ba11-5030ee5325f0/contracts_"
+						+ generationFolderName + ".zip"));
 
 		end();
 	}
