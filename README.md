@@ -13,7 +13,7 @@ To start add the dependency in your project sdk module:
    <dependency>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests</artifactId>
-		<version>${alfresco.version}.3</version>
+		<version>6.2.0-ea.3</version>
 		<scope>test</scope>
    </dependency>
 ```
