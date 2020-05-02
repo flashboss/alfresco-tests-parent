@@ -22,8 +22,6 @@ import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.repository.ContentService;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.StoreRef;
-import org.alfresco.service.cmr.search.ResultSet;
-import org.alfresco.service.cmr.search.SearchService;
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.apache.commons.codec.binary.Base64;
@@ -49,13 +47,8 @@ public abstract class AbstractForm {
 		namespaceService.registerNamespace(NamespaceService.CONTENT_MODEL_PREFIX,
 				NamespaceService.CONTENT_MODEL_1_0_URI);
 
-		SearchService searchService = serviceRegistry.getSearchService();
-		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
-		// delete the old documents
-		ResultSet nodes = searchService.query(null, SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"*\"");
-		if (nodes.length() > 0)
-			for (NodeRef node : nodes.getNodeRefs())
-				fileFolderService.delete(node);
+		MockNodeService nodeService = (MockNodeService) serviceRegistry.getNodeService();
+		nodeService.getNodeRefs().clear();
 		try {
 			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE));
 			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_ARCHIVE));

@@ -79,31 +79,31 @@ public class MockPermissionService implements PermissionService, Serializable {
 	@Override
 	public void deletePermissions(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void clearPermission(NodeRef nodeRef, String authority) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deletePermission(NodeRef nodeRef, String authority, String permission) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setPermission(NodeRef nodeRef, String authority, String permission, boolean allow) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setInheritParentPermissions(NodeRef nodeRef, boolean inheritParentPermissions) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -115,25 +115,25 @@ public class MockPermissionService implements PermissionService, Serializable {
 	@Override
 	public void setPermission(StoreRef storeRef, String authority, String permission, boolean allow) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deletePermission(StoreRef storeRef, String authority, String permission) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void clearPermission(StoreRef storeRef, String authority) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deletePermissions(StoreRef storeRef) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -149,15 +149,15 @@ public class MockPermissionService implements PermissionService, Serializable {
 	}
 
 	@Override
-	public Set<String> getReadersDenied(Long arg0) {
+	public Set<String> getReadersDenied(Long aclId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void setInheritParentPermissions(NodeRef arg0, boolean arg1, boolean arg2) {
+	public void setInheritParentPermissions(NodeRef nodeRef, boolean inheritParentPermissions, boolean asyncCall) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

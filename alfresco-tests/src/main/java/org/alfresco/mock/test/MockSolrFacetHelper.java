@@ -11,5 +11,4 @@ public class MockSolrFacetHelper extends SolrFacetHelper implements Serializable
 	public MockSolrFacetHelper(List<FacetQueryProvider> facetQueryProviders) {
 		super(facetQueryProviders);
 	}
-
 }
