@@ -1,4 +1,9 @@
 target
 .*
+<<<<<<< HEAD
 *.log
 *.log.*
+=======
+*.log*
+alf_data_dev
+>>>>>>> 44f2b9e93ba48e11355bf5ee424c8f9ee4fe5f62
