@@ -19,9 +19,7 @@ import org.alfresco.mock.test.activiti.AbstractActivitiForm;
 import org.alfresco.mock.test.activiti.ActivitiProcessEngineConfiguration;
 import org.alfresco.mock.test.activiti.Initiator;
 import org.alfresco.mock.test.activiti.MockActivitiScriptNode;
-import org.alfresco.mock.test.script.MockLogger;
 import org.alfresco.model.ContentModel;
-import org.alfresco.repo.jscript.Search;
 import org.alfresco.repo.workflow.activiti.ActivitiScriptNodeList;
 import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.repository.NodeRef;
@@ -82,12 +80,6 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		// AUTHENTICATION
 		// Always reset authenticated user to avoid any mistakes
 		identityService.setAuthenticatedUserId(USER_NAME);
-
-		Search search = activitiProcessEngineConfiguration.getSearchScript();
-		MockLogger logger = activitiProcessEngineConfiguration.getLoggerScript();
-		variables.put("initiator", initiator);
-		variables.put("search", search);
-		variables.put("logger", logger);
 		variables.put("mywf_starterPdA", "Human");
 	}
 
