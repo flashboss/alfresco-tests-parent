@@ -86,6 +86,8 @@
 		abstract="true" />
 	<bean id="dictionaryBootstrap"
 		class="org.alfresco.repo.dictionary.DictionaryBootstrap" />
+	<bean id="authenticationService"
+		class="org.alfresco.mock.test.MockAuthenticationService" />
 	<bean id="ServiceRegistry"
 		class="org.alfresco.mock.test.MockServiceRegistry">
 		<property name="nodeService">
@@ -120,6 +122,9 @@
 		</property>
 		<property name="templateService">
 			<ref bean="templateService" />
+		</property>
+		<property name="authenticationService">
+			<ref bean="authenticationService" />
 		</property>
 	</bean>
 	<bean id="action-executer" abstract="true" />
