@@ -16,7 +16,10 @@ import org.springframework.extensions.webscripts.TemplateProcessorRegistry;
 
 public class MockContainer implements Container {
 
+	private Map<String, Object> templateParameters = new HashMap<String, Object>();
 	private SearchPath searchPath = new SearchPath();
+	private ScriptProcessorRegistry scriptProcessorRegistry = new ScriptProcessorRegistry();
+	private TemplateProcessorRegistry templateProcessorRegistry = new MockTemplateProcessorRegistry();
 	private FormatRegistry formatRegistry = new FormatRegistry();
 	{
 		Map<String, String> formats = new HashMap<String, String>();
@@ -38,8 +41,7 @@ public class MockContainer implements Container {
 
 	@Override
 	public ScriptProcessorRegistry getScriptProcessorRegistry() {
-		// TODO Auto-generated method stub
-		return null;
+		return scriptProcessorRegistry;
 	}
 
 	@Override
@@ -56,14 +58,13 @@ public class MockContainer implements Container {
 
 	@Override
 	public TemplateProcessorRegistry getTemplateProcessorRegistry() {
-		// TODO Auto-generated method stub
-		return null;
+		return templateProcessorRegistry;
 	}
 
 	@Override
 	public Map<String, Object> getTemplateParameters() {
 		// TODO Auto-generated method stub
-		return null;
+		return templateParameters;
 	}
 
 	@Override

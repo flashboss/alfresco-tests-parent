@@ -18,8 +18,7 @@ public class MockDescription implements Description {
 
 	@Override
 	public String getId() {
-		// TODO Auto-generated method stub
-		return null;
+		return "test";
 	}
 
 	@Override

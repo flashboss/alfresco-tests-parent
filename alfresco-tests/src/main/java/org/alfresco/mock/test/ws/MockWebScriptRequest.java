@@ -1,22 +1,39 @@
 package org.alfresco.mock.test.ws;
 
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.extensions.surf.util.Content;
 import org.springframework.extensions.webscripts.Description.FormatStyle;
 import org.springframework.extensions.webscripts.Match;
 import org.springframework.extensions.webscripts.Runtime;
+import org.springframework.extensions.webscripts.WebScript;
 import org.springframework.extensions.webscripts.WebScriptRequest;
+import org.springframework.extensions.webscripts.servlet.FormData;
 
 public class MockWebScriptRequest implements WebScriptRequest {
 
 	private String format;
-	
-	public MockWebScriptRequest(String format) {
+	private FormData formData;
+	private Runtime runtime;
+	private Match serviceMatch;
+	private String[] parameterNames;
+	private String[] headerNames;
+
+	public MockWebScriptRequest(String format, FormData.FormField[] fields, WebScript webScript) {
 		this.format = format;
+		this.runtime = new MockRuntime();
+		HttpServletRequest httpServletRequest = new MockHttpServletRequest();
+		formData = new FormData(httpServletRequest);
+		serviceMatch = new Match(null, new HashMap<String, String>(), null, webScript);
+		parameterNames = new String[0];
+		headerNames = new String[0];
 	}
+
 	@Override
 	public Match getServiceMatch() {
-		// TODO Auto-generated method stub
-		return null;
+		return serviceMatch;
 	}
 
 	@Override
@@ -63,8 +80,7 @@ public class MockWebScriptRequest implements WebScriptRequest {
 
 	@Override
 	public String[] getParameterNames() {
-		// TODO Auto-generated method stub
-		return null;
+		return parameterNames;
 	}
 
 	@Override
@@ -81,8 +97,7 @@ public class MockWebScriptRequest implements WebScriptRequest {
 
 	@Override
 	public String[] getHeaderNames() {
-		// TODO Auto-generated method stub
-		return null;
+		return headerNames;
 	}
 
 	@Override
@@ -117,8 +132,7 @@ public class MockWebScriptRequest implements WebScriptRequest {
 
 	@Override
 	public Object parseContent() {
-		// TODO Auto-generated method stub
-		return null;
+		return formData;
 	}
 
 	@Override
@@ -158,8 +172,7 @@ public class MockWebScriptRequest implements WebScriptRequest {
 
 	@Override
 	public Runtime getRuntime() {
-		// TODO Auto-generated method stub
-		return null;
+		return runtime;
 	}
 
 }
