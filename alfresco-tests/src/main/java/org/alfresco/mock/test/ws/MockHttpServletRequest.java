@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.Locale;
 import java.util.Map;
@@ -19,27 +20,25 @@ public class MockHttpServletRequest implements HttpServletRequest {
 	private ServletInputStream servletInputStream = new ServletInputStream() {
 
 		int counter;
-		byte[] buffer = { 45, 45, 45, 45, 45, 45, 87, 101, 98, 75, 105, 116, 70, 111, 114, 109, 66, 111, 117, 110, 100,
-				97, 114, 121, 70, 85, 119, 119, 80, 81, 103, 118, 56, 65, 68, 50, 75, 90, 118, 82, 13, 10, 67, 111, 110,
-				116, 101, 110, 116, 45, 68, 105, 115, 112, 111, 115, 105, 116, 105, 111, 110, 58, 32, 102, 111, 114,
-				109, 45, 100, 97, 116, 97, 59, 32, 110, 97, 109, 101, 61, 34, 100, 97, 116, 101, 95, 109, 111, 100, 105,
-				102, 105, 101, 100, 34, 13, 10, 13, 10, 50, 48, 50, 48, 45, 48, 54, 45, 49, 57, 13, 10, 45, 45, 45, 45,
-				45, 45, 87, 101, 98, 75, 105, 116, 70, 111, 114, 109, 66, 111, 117, 110, 100, 97, 114, 121, 70, 85, 119,
-				119, 80, 81, 103, 118, 56, 65, 68, 50, 75, 90, 118, 82, 13, 10, 67, 111, 110, 116, 101, 110, 116, 45,
-				68, 105, 115, 112, 111, 115, 105, 116, 105, 111, 110, 58, 32, 102, 111, 114, 109, 45, 100, 97, 116, 97,
-				59, 32, 110, 97, 109, 101, 61, 34, 100, 97, 116, 101, 95, 110, 100, 103, 95, 115, 116, 97, 114, 116, 34,
-				13, 10, 13, 10, 49, 57, 55, 48, 45, 48, 49, 45, 48, 49, 13, 10, 45, 45, 45, 45, 45, 45, 87, 101, 98, 75,
-				105, 116, 70, 111, 114, 109, 66, 111, 117, 110, 100, 97, 114, 121, 70, 85, 119, 119, 80, 81, 103, 118,
-				56, 65, 68, 50, 75, 90, 118, 82, 13, 10, 67, 111, 110, 116, 101, 110, 116, 45, 68, 105, 115, 112, 111,
-				115, 105, 116, 105, 111, 110, 58, 32, 102, 111, 114, 109, 45, 100, 97, 116, 97, 59, 32, 110, 97, 109,
-				101, 61, 34, 100, 97, 116, 101, 95, 110, 100, 103, 95, 101, 110, 100, 34, 13, 10, 13, 10, 50, 48, 50,
-				48, 45, 48, 54, 45, 49, 57, 13, 10, 45, 45, 45, 45, 45, 45, 87, 101, 98, 75, 105, 116, 70, 111, 114,
-				109, 66, 111, 117, 110, 100, 97, 114, 121, 70, 85, 119, 119, 80, 81, 103, 118, 56, 65, 68, 50, 75, 90,
-				118, 82, 13, 10, 67, 111, 110, 116, 101, 110, 116, 45, 68, 105, 115, 112, 111, 115, 105, 116, 105, 111,
-				110, 58, 32, 102, 111, 114, 109, 45, 100, 97, 116, 97, 59, 32, 110, 97, 109, 101, 61, 34, 99, 111, 100,
-				105, 99, 101, 110, 100, 103, 34, 13, 10, 13, 10, 78, 68, 71, 45, 50, 48, 49, 53, 55, 55, 50, 54, 13, 10,
-				45, 45, 45, 45, 45, 45, 87, 101, 98, 75, 105, 116, 70, 111, 114, 109, 66, 111, 117, 110, 100, 97, 114,
-				121, 70, 85, 119, 119, 80, 81, 103, 118, 56, 65, 68, 50, 75, 90, 118, 82, 45, 45, 13, 10 };
+		byte[] head = "------WebKitFormBoundaryFUwwPQgv8AD2KZvR".getBytes();
+		byte[] field1 = getField("date_modified");
+		byte[] value1 = "2020-06-19".getBytes();
+		byte[] field2 = getField("date_ndg_start");
+		byte[] value2 = "1970-01-01".getBytes();
+		byte[] field3 = getField("date_ndg_end");
+		byte[] value3 = "2020-06-19".getBytes();
+		byte[] field4 = getField("codicendg");
+		byte[] value4 = "NDG-20157726".getBytes();
+
+		byte[] result1 = concatAll(head, new byte[] { 13, 10 }, field1, new byte[] { 13, 10 }, new byte[] { 13, 10 },
+				value1, new byte[] { 13, 10 });
+		byte[] result2 = concatAll(result1, head, new byte[] { 13, 10 }, field2, new byte[] { 13, 10 },
+				new byte[] { 13, 10 }, value2, new byte[] { 13, 10 });
+		byte[] result3 = concatAll(result2, head, new byte[] { 13, 10 }, field3, new byte[] { 13, 10 },
+				new byte[] { 13, 10 }, value3, new byte[] { 13, 10 });
+		byte[] result4 = concatAll(result3, head, new byte[] { 13, 10 }, field4, new byte[] { 13, 10 },
+				new byte[] { 13, 10 }, value4, new byte[] { 13, 10 });
+		byte[] buffer = concatAll(result4, head, new byte[] { 45, 45, 13, 10 });
 
 		@Override
 		public int read() throws IOException {
@@ -375,6 +374,25 @@ public class MockHttpServletRequest implements HttpServletRequest {
 	public boolean isRequestedSessionIdFromUrl() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	private byte[] getField(String field) {
+		String contentDisposition = "Content-Disposition: form-data; name=\"" + field + "\"";
+		return contentDisposition.getBytes();
+	}
+
+	private byte[] concatAll(byte[] first, byte[]... rest) {
+		int totalLength = first.length;
+		for (byte[] array : rest) {
+			totalLength += array.length;
+		}
+		byte[] result = Arrays.copyOf(first, totalLength);
+		int offset = first.length;
+		for (byte[] array : rest) {
+			System.arraycopy(array, 0, result, offset, array.length);
+			offset += array.length;
+		}
+		return result;
 	}
 
 }
