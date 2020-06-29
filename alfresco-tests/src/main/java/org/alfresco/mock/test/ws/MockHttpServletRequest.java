@@ -49,7 +49,7 @@ public class MockHttpServletRequest implements HttpServletRequest {
 			} else if (counter >= 483) {
 				result = -1;
 			} else
-				result = buffer[counter];new String(buffer);
+				result = buffer[counter];
 			counter++;
 			return result;
 		}
