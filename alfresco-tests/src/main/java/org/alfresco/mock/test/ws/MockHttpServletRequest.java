@@ -17,28 +17,11 @@ import javax.servlet.http.HttpSession;
 
 public class MockHttpServletRequest implements HttpServletRequest {
 
+	byte[] buffer = new byte[0];
+
 	private ServletInputStream servletInputStream = new ServletInputStream() {
 
 		int counter;
-		byte[] head = "------WebKitFormBoundaryFUwwPQgv8AD2KZvR".getBytes();
-		byte[] field1 = getField("date_modified");
-		byte[] value1 = "2020-06-19".getBytes();
-		byte[] field2 = getField("date_ndg_start");
-		byte[] value2 = "1970-01-01".getBytes();
-		byte[] field3 = getField("date_ndg_end");
-		byte[] value3 = "2020-06-19".getBytes();
-		byte[] field4 = getField("codicendg");
-		byte[] value4 = "NDG-20157726".getBytes();
-
-		byte[] result1 = concatAll(head, new byte[] { 13, 10 }, field1, new byte[] { 13, 10 }, new byte[] { 13, 10 },
-				value1, new byte[] { 13, 10 });
-		byte[] result2 = concatAll(result1, head, new byte[] { 13, 10 }, field2, new byte[] { 13, 10 },
-				new byte[] { 13, 10 }, value2, new byte[] { 13, 10 });
-		byte[] result3 = concatAll(result2, head, new byte[] { 13, 10 }, field3, new byte[] { 13, 10 },
-				new byte[] { 13, 10 }, value3, new byte[] { 13, 10 });
-		byte[] result4 = concatAll(result3, head, new byte[] { 13, 10 }, field4, new byte[] { 13, 10 },
-				new byte[] { 13, 10 }, value4, new byte[] { 13, 10 });
-		byte[] buffer = concatAll(result4, head, new byte[] { 45, 45, 13, 10 });
 
 		@Override
 		public int read() throws IOException {
@@ -53,6 +36,15 @@ public class MockHttpServletRequest implements HttpServletRequest {
 			return result;
 		}
 	};
+
+	public MockHttpServletRequest(Map<String, String> fields) {
+		byte[] head = "------WebKitFormBoundaryFUwwPQgv8AD2KZvR".getBytes();
+		for (String key : fields.keySet()) {
+			buffer = concatAll(buffer, head, new byte[] { 13, 10 }, getField(key), new byte[] { 13, 10 },
+					new byte[] { 13, 10 }, fields.get(key).getBytes(), new byte[] { 13, 10 });
+		}
+		buffer = concatAll(buffer, head, new byte[] { 45, 45, 13, 10 });
+	}
 
 	@Override
 	public Object getAttribute(String name) {
