@@ -46,7 +46,7 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 	@Autowired
 	private PreviousWSSample pregressoWSSample;
 
-	private DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmm");
+	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	private NodeRef repository;
 
 	@Before
