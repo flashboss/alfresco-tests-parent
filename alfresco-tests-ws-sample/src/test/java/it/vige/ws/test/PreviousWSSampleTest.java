@@ -78,9 +78,9 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 		Map<String, String> fields = new HashMap<String, String>();
 		{
 			fields.put("date_modified", dataModifica);
-			fields.put("date_wssample_start", "1970-01-01");
-			fields.put("date_wssample_end", dataModifica);
-			fields.put("codicewssample", CARTELLA_WSSAMPLE);
+			fields.put("date_ws_end", dataModifica);
+			fields.put("codicews", CARTELLA_WSSAMPLE);
+			fields.put("date_ws_start", "1970-01-01");
 		}
 		WebScriptRequest webScriptRequest = new MockWebScriptRequest("json", null, pregressoWSSample, fields);
 		pregressoWSSample.execute(webScriptRequest, new MockWebScriptResponse());

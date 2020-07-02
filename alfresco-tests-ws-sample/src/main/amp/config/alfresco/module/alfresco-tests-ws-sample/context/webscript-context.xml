@@ -3,9 +3,7 @@
 
 <beans>
 
-	<!-- WebScript del pregresso -->
-
-	<bean id="webscript.it.mcc.pregressowssample.post"
+	<bean id="webscript.it.mcc.previouswssample.post"
 		class="it.vige.ws.PreviousWSSample" parent="webscript">
 
 		<property name="serviceRegistry">

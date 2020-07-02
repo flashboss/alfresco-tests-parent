@@ -75,13 +75,13 @@ public class PreviousWSSample extends DeclarativeWebScript {
 					case "date_modified":
 						dateModify = dateFormat.parse(field.getValue());
 						break;
-					case "date_wssample_start":
+					case "date_ws_start":
 						dateWSSampleStart = dateFormat.parse(field.getValue());
 						break;
-					case "date_wssample_end":
+					case "date_ws_end":
 						dateWSSampleEnd = dateFormat.parse(field.getValue());
 						break;
-					case "codicewssample":
+					case "codicews":
 						String codiceWSSample = field.getValue();
 						folderWSSamples.add(nodeService.getChildByName(rootNode, ContentModel.ASSOC_CONTAINS, codiceWSSample));
 						break;
@@ -92,7 +92,7 @@ public class PreviousWSSample extends DeclarativeWebScript {
 						aggiorna = true;
 						status.setRedirect(true);
 						status.setCode(Status.STATUS_MOVED_PERMANENTLY);
-						status.setLocation("pregressowssample?date_wssample_start=" + dateFormat.format(dateWSSampleStart)
+						status.setLocation("previouswssample?date_wssample_start=" + dateFormat.format(dateWSSampleStart)
 								+ "&date_wssample_end=" + dateFormat.format(dateWSSampleEnd) + "&date_modified="
 								+ dateFormat.format(dateModify));
 						break;
