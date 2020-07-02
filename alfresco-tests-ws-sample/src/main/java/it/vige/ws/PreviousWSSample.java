@@ -34,7 +34,7 @@ public class PreviousWSSample extends DeclarativeWebScript {
 
 	private String conservazioneFolderTemplate;
 
-	private String repositoryFolderTemplateWSSamples;
+	private String repositoryFolderTemplateWSSample;
 
 	private String documentiWSSampleFolderTemplate;
 
@@ -135,7 +135,7 @@ public class PreviousWSSample extends DeclarativeWebScript {
 	private List<NodeRef> getPosizionidaConservareAsNodeRef(DateTime dateFrom, DateTime dateTo) {
 		ResultSet folderRs = serviceRegistry.getSearchService().query(this.storeRef,
 				SearchService.LANGUAGE_FTS_ALFRESCO,
-				repositoryFolderTemplateWSSamples.replace("{wsSampleFrom}", fmt.format(dateFrom.toDate())).replace("{wsSampleTo}",
+				repositoryFolderTemplateWSSample.replace("{wsSampleFrom}", fmt.format(dateFrom.toDate())).replace("{wsSampleTo}",
 						fmt.format(dateTo.toDate())));
 		if (folderRs.length() < 1) {
 			return null;
@@ -192,8 +192,8 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		this.conservazioneFolderTemplate = conservazioneFolderTemplate;
 	}
 
-	public void setRepositoryFolderTemplateWSSamples(String repositoryFolderTemplateWSSamples) {
-		this.repositoryFolderTemplateWSSamples = repositoryFolderTemplateWSSamples;
+	public void setRepositoryFolderTemplateWSSample(String repositoryFolderTemplateWSSample) {
+		this.repositoryFolderTemplateWSSample = repositoryFolderTemplateWSSample;
 	}
 
 	public void setDocumentiWSSampleFolderTemplate(String documentiWSSampleFolderTemplate) {
