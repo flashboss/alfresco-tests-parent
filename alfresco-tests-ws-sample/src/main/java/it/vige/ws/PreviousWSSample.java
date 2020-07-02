@@ -92,8 +92,8 @@ public class PreviousWSSample extends DeclarativeWebScript {
 						aggiorna = true;
 						status.setRedirect(true);
 						status.setCode(Status.STATUS_MOVED_PERMANENTLY);
-						status.setLocation("previouswssample?date_wssample_start=" + dateFormat.format(dateWSSampleStart)
-								+ "&date_wssample_end=" + dateFormat.format(dateWSSampleEnd) + "&date_modified="
+						status.setLocation("previouswssample?date_ws_start=" + dateFormat.format(dateWSSampleStart)
+								+ "&date_ws_end=" + dateFormat.format(dateWSSampleEnd) + "&date_modified="
 								+ dateFormat.format(dateModify));
 						break;
 					}
@@ -178,10 +178,10 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		NodeService nodeService = serviceRegistry.getNodeService();
 		if (!nodeService.hasAspect(folderWSSample, WSSampleModel.ASPECT_WSSAMPLEFOLDER)) {
 			Map<QName, Serializable> aspectProperties = new HashMap<QName, Serializable>();
-			aspectProperties.put(WSSampleModel.PROP_DATA_CEDACRI, dateModify);
+			aspectProperties.put(WSSampleModel.PROP_UPDATE_PROPERTY, dateModify);
 			nodeService.addAspect(folderWSSample, WSSampleModel.ASPECT_WSSAMPLEFOLDER, aspectProperties);
 		} else
-			nodeService.setProperty(folderWSSample, WSSampleModel.PROP_DATA_CEDACRI, dateModify);
+			nodeService.setProperty(folderWSSample, WSSampleModel.PROP_UPDATE_PROPERTY, dateModify);
 	}
 
 	public void setServiceRegistry(ServiceRegistry serviceRegistry) {

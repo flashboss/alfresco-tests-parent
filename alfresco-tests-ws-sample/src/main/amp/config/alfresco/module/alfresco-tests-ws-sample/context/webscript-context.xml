@@ -10,13 +10,13 @@
 			<ref bean="ServiceRegistry" />
 		</property>
 		<property name="conservazioneFolderTemplate">
-			<value><![CDATA[PATH:"/app:company_home/st:sites/cm:medio-credito-centrale/cm:documentLibrary/cm:repository"]]></value>
+			<value><![CDATA[PATH:"/app:company_home/st:sites/cm:bank-site/cm:documentLibrary/cm:repository"]]></value>
 		</property>
 		<property name="repositoryFolderTemplateWSSample">
-			<value><![CDATA[PATH:"/app:company_home/st:sites/cm:medio-credito-centrale/cm:documentLibrary/cm:repository/*" AND (-ASPECT:"mccpb:wssamplefolder" OR @mccpb\:data_cedacri:[{wssampleFrom} TO {wssampleTo}])]]></value>
+			<value><![CDATA[PATH:"/app:company_home/st:sites/cm:bank-site/cm:documentLibrary/cm:repository/*" AND (-ASPECT:"mccpb:wssamplefolder" OR @mccpb\:update_property_date:[{wssampleFrom} TO {wssampleTo}])]]></value>
 		</property>
 		<property name="documentiWSSampleFolderTemplate">
-			<value><![CDATA[PATH:"/app:company_home/st:sites/cm:medio-credito-centrale/cm:documentLibrary/cm:repository/cm:{nomeWSSampleFolder}//*" AND TYPE:"mccpb:pbPdvCons"]]></value>
+			<value><![CDATA[PATH:"/app:company_home/st:sites/cm:bank-site/cm:documentLibrary/cm:repository/cm:{nomeWSSampleFolder}//*" AND TYPE:"mccpb:pbPdvCons"]]></value>
 		</property>
 	</bean>
 </beans>

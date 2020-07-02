@@ -44,7 +44,7 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 	private final static String dataModifica = "2020-06-19";
 
 	@Autowired
-	private PreviousWSSample pregressoWSSample;
+	private PreviousWSSample previousWSSample;
 
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	private NodeRef repository;
@@ -55,19 +55,19 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
 		namespaceService.registerNamespace("mccpb", WSSampleModel.PBPDV_NAMESPACE);
 
-		// creo le directory iniziali per i pdv, gli rdv e il repository
-		NodeRef site = insertFolder(sites, "conservazione-digitale-medio-credito-centrale");
+		// Creating initial folders and sites
+		NodeRef site = insertFolder(sites, "digital-conservation");
 		insertFolder(site, "documentLibrary");
 
-		NodeRef medioCreditoCentrale = insertFolder(sites, "medio-credito-centrale");
-		NodeRef medioCreditoCentraleDL = insertFolder(medioCreditoCentrale, "documentLibrary");
-		repository = insertFolder(medioCreditoCentraleDL, "repository");
+		NodeRef bankSite = insertFolder(sites, "bank-site");
+		NodeRef bankSiteDL = insertFolder(bankSite, "documentLibrary");
+		repository = insertFolder(bankSiteDL, "repository");
 		insertFolder(repository, CARTELLA_WSSAMPLE);
 	}
 
 	@Override
 	protected DeclarativeWebScript getDeclarativeWebScript() {
-		return pregressoWSSample;
+		return previousWSSample;
 	}
 
 	@Test
@@ -82,20 +82,20 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 			fields.put("codicews", CARTELLA_WSSAMPLE);
 			fields.put("date_ws_start", "1970-01-01");
 		}
-		WebScriptRequest webScriptRequest = new MockWebScriptRequest("json", null, pregressoWSSample, fields);
-		pregressoWSSample.execute(webScriptRequest, new MockWebScriptResponse());
+		WebScriptRequest webScriptRequest = new MockWebScriptRequest("json", null, previousWSSample, fields);
+		previousWSSample.execute(webScriptRequest, new MockWebScriptResponse());
 
-		// Verifico la cancellazione dei file
+		// Verify
 		List<NodeRef> nodeRefs = searchService
 				.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, SearchService.LANGUAGE_XPATH, CARTELLA_WSSAMPLE)
 				.getNodeRefs();
 		NodeRef result = nodeRefs.get(0);
 		Set<QName> aspects = nodeService.getAspects(result);
-		Assert.assertEquals("Un aspetto per la cartella", 1, aspects.size());
+		Assert.assertEquals("One aspect for the folder", 1, aspects.size());
 		QName aspect = aspects.iterator().next();
-		Assert.assertEquals("Aggiunto l'aspetto per i folder WS Sample", WSSampleModel.ASPECT_WSSAMPLEFOLDER, aspect);
-		Date dataCedacri = (Date) nodeService.getProperty(result, WSSampleModel.PROP_DATA_CEDACRI);
-		Assert.assertEquals("Aggiunta la data cedacri", dataModifica, dateFormat.format(dataCedacri));
+		Assert.assertEquals("Added an aspect to the WS Sample folder", WSSampleModel.ASPECT_WSSAMPLEFOLDER, aspect);
+		Date dataCedacri = (Date) nodeService.getProperty(result, WSSampleModel.PROP_UPDATE_PROPERTY);
+		Assert.assertEquals("Added the date property", dataModifica, dateFormat.format(dataCedacri));
 	}
 
 }
