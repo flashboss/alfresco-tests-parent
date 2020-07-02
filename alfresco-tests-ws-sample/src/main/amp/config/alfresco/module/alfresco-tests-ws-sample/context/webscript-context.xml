@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<beans>
+
+	<!-- Webscript di carica valori per le liste a tendina per il pregresso 
+		WS sample doc -->
+	<bean id="webscript.it.mcc.pregressowssample.get"
+		class="it.mcc.repo.pmibanca.webscript.ListValueDB" parent="webscript">
+	</bean>
+
+	<!-- WebScript del pregresso -->
+
+	<bean id="webscript.it.mcc.pregressowssample.post"
+		class="it.mcc.repo.pmibanca.webscript.PreviousWSSample" parent="webscript">
+
+		<property name="serviceRegistry">
+			<ref bean='serviceRegistry' />
+		</property>
+		<property name="conservazioneFolderTemplate">
+			<value><![CDATA[PATH:"/app:company_home/st:sites/cm:medio-credito-centrale/cm:documentLibrary/cm:repository"]]></value>
+		</property>
+		<property name="repositoryFolderTemplateWSSample">
+			<value><![CDATA[PATH:"/app:company_home/st:sites/cm:medio-credito-centrale/cm:documentLibrary/cm:repository/*" AND (-ASPECT:"mccpb:wssamplefolder" OR @mccpb\:data_cedacri:[{wssampleFrom} TO {wssampleTo}])]]></value>
+		</property>
+		<property name="documentiWSSampleFolderTemplate">
+			<value><![CDATA[PATH:"/app:company_home/st:sites/cm:medio-credito-centrale/cm:documentLibrary/cm:repository/cm:{nomeWSSampleFolder}//*" AND TYPE:"mccpb:pbPdvCons"]]></value>
+		</property>
+	</bean>
+</beans>

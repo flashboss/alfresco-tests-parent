@@ -1,0 +1,203 @@
+package it.vige.ws;
+
+import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.alfresco.model.ContentModel;
+import org.alfresco.service.ServiceRegistry;
+import org.alfresco.service.cmr.repository.NodeRef;
+import org.alfresco.service.cmr.repository.NodeService;
+import org.alfresco.service.cmr.repository.StoreRef;
+import org.alfresco.service.cmr.search.ResultSet;
+import org.alfresco.service.cmr.search.ResultSetRow;
+import org.alfresco.service.cmr.search.SearchService;
+import org.alfresco.service.cmr.security.AuthenticationService;
+import org.alfresco.service.namespace.QName;
+import org.joda.time.DateTime;
+import org.springframework.extensions.webscripts.Cache;
+import org.springframework.extensions.webscripts.DeclarativeWebScript;
+import org.springframework.extensions.webscripts.Status;
+import org.springframework.extensions.webscripts.WebScriptRequest;
+import org.springframework.extensions.webscripts.servlet.FormData;
+
+import net.sf.acegisecurity.providers.ProviderNotFoundException;
+
+public class PreviousWSSample extends DeclarativeWebScript {
+
+	private ServiceRegistry serviceRegistry;
+
+	private String conservazioneFolderTemplate;
+
+	private String repositoryFolderTemplateWSSamples;
+
+	private String documentiWSSampleFolderTemplate;
+
+	private StoreRef storeRef = new StoreRef(StoreRef.PROTOCOL_WORKSPACE, "SpacesStore");
+
+	private SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+
+	@Override
+	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
+
+		// -- 1 -- INIZIALIZZAZIONE VARIABILI
+		Map<String, Object> model = new HashMap<String, Object>();
+		NodeRef rootNode = null;
+		Date dateModify = null;
+		Date dateWSSampleStart = null;
+		Date dateWSSampleEnd = null;
+		Boolean automatico = false;
+		Boolean aggiorna = false;
+		List<NodeRef> folderWSSamples = new ArrayList<NodeRef>();
+		try {
+
+			// -- 2 -- AUTENTICAZIONE
+			AuthenticationService authenticationService = serviceRegistry.getAuthenticationService();
+			String currentUser = authenticationService.getCurrentUserName();
+
+			if (currentUser != null) {
+				// -- 3 -- ESTRAZIONE METADATI DAL FORM
+				FormData form = (FormData) req.parseContent();
+				FormData.FormField[] fields = form.getFields();
+				NodeService nodeService = serviceRegistry.getNodeService();
+				rootNode = getConservazioneFolder();
+				if (rootNode == null) {
+					redirectStatus(status, "La cartella 'cm:repository' nel sito 'Medio CreditoCentrale' non esiste");
+				}
+				DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				for (FormData.FormField field : fields) {
+					switch (field.getName()) {
+					case "date_modified":
+						dateModify = dateFormat.parse(field.getValue());
+						break;
+					case "date_wssample_start":
+						dateWSSampleStart = dateFormat.parse(field.getValue());
+						break;
+					case "date_wssample_end":
+						dateWSSampleEnd = dateFormat.parse(field.getValue());
+						break;
+					case "codicewssample":
+						String codiceWSSample = field.getValue();
+						folderWSSamples.add(nodeService.getChildByName(rootNode, ContentModel.ASSOC_CONTAINS, codiceWSSample));
+						break;
+					case "automatico":
+						automatico = field.getValue().equals("on") ? true : false;
+						break;
+					case "aggiorna":
+						aggiorna = true;
+						status.setRedirect(true);
+						status.setCode(Status.STATUS_MOVED_PERMANENTLY);
+						status.setLocation("pregressowssample?date_wssample_start=" + dateFormat.format(dateWSSampleStart)
+								+ "&date_wssample_end=" + dateFormat.format(dateWSSampleEnd) + "&date_modified="
+								+ dateFormat.format(dateModify));
+						break;
+					}
+				}
+
+				if (!aggiorna) {
+					if (folderWSSamples.isEmpty())
+						folderWSSamples = getPosizionidaConservareAsNodeRef(new DateTime(dateWSSampleStart.getTime()),
+								new DateTime(dateWSSampleEnd.getTime()));
+
+					// -- 4 -- AGGIORNAMENTO DELLA DATA MODIFICA SULLE CARTELLA WS Sample
+					for (NodeRef folderWSSample : folderWSSamples) {
+						Date dataAggiornamento = dateModify;
+						if (automatico)
+							dataAggiornamento = getLastDocumentDateForWSSample(folderWSSample);
+						aggiornaAspettoWSSample(folderWSSample, dataAggiornamento);
+					}
+				}
+			}
+		} catch (ProviderNotFoundException ex1) {
+			model.put("errore", "Utente non autenticato");
+		} catch (Exception ex2) {
+			model.put("errore", "ERRORE nell' aggiornamento della cartella");
+		}
+
+		model.put("node", rootNode);
+
+		// -- 7 -- FINE WEBSCRIPT
+
+		return model;
+	}
+
+	private void redirectStatus(Status status, String message) {
+		status.setCode(500);
+		status.setMessage(message);
+		status.setRedirect(true);
+	}
+
+	private List<NodeRef> getPosizionidaConservareAsNodeRef(DateTime dateFrom, DateTime dateTo) {
+		ResultSet folderRs = serviceRegistry.getSearchService().query(this.storeRef,
+				SearchService.LANGUAGE_FTS_ALFRESCO,
+				repositoryFolderTemplateWSSamples.replace("{wsSampleFrom}", fmt.format(dateFrom.toDate())).replace("{wsSampleTo}",
+						fmt.format(dateTo.toDate())));
+		if (folderRs.length() < 1) {
+			return null;
+		}
+		List<NodeRef> praticheFolderList = new ArrayList<>(folderRs.length());
+		for (ResultSetRow pratiche : folderRs) {
+			praticheFolderList.add(pratiche.getNodeRef());
+		}
+		return praticheFolderList;
+	}
+
+	private NodeRef getConservazioneFolder() {
+		ResultSet folderRs = serviceRegistry.getSearchService().query(this.storeRef,
+				SearchService.LANGUAGE_FTS_ALFRESCO, conservazioneFolderTemplate);
+		if (folderRs.length() < 1) {
+			return null;
+		}
+		return folderRs.getNodeRef(0);
+	}
+
+	private Date getLastDocumentDateForWSSample(NodeRef folderWSSample) {
+		NodeService nodeService = serviceRegistry.getNodeService();
+		SearchService searchService = serviceRegistry.getSearchService();
+		String folderWSSampleName = (String) nodeService.getProperty(folderWSSample, ContentModel.PROP_NAME);
+		ResultSet folderRs = searchService.query(this.storeRef, SearchService.LANGUAGE_FTS_ALFRESCO,
+				documentiWSSampleFolderTemplate.replace("{nomeWSSampleFolder}", folderWSSampleName));
+		if (folderRs.length() < 1) {
+			return null;
+		}
+		Date date = null;
+		for (ResultSetRow documento : folderRs) {
+			Date dDate = (Date) nodeService.getProperty(documento.getNodeRef(), ContentModel.PROP_MODIFIED);
+			if (date == null || date.compareTo(dDate) < 0)
+				date = dDate;
+		}
+		return date;
+	}
+
+	private void aggiornaAspettoWSSample(NodeRef folderWSSample, Date dateModify) {
+		NodeService nodeService = serviceRegistry.getNodeService();
+		if (!nodeService.hasAspect(folderWSSample, WSSampleModel.ASPECT_WSSAMPLEFOLDER)) {
+			Map<QName, Serializable> aspectProperties = new HashMap<QName, Serializable>();
+			aspectProperties.put(WSSampleModel.PROP_DATA_CEDACRI, dateModify);
+			nodeService.addAspect(folderWSSample, WSSampleModel.ASPECT_WSSAMPLEFOLDER, aspectProperties);
+		} else
+			nodeService.setProperty(folderWSSample, WSSampleModel.PROP_DATA_CEDACRI, dateModify);
+	}
+
+	public void setServiceRegistry(ServiceRegistry serviceRegistry) {
+		this.serviceRegistry = serviceRegistry;
+	}
+
+	public void setConservazioneFolderTemplate(String conservazioneFolderTemplate) {
+		this.conservazioneFolderTemplate = conservazioneFolderTemplate;
+	}
+
+	public void setRepositoryFolderTemplateWSSamples(String repositoryFolderTemplateWSSamples) {
+		this.repositoryFolderTemplateWSSamples = repositoryFolderTemplateWSSamples;
+	}
+
+	public void setDocumentiWSSampleFolderTemplate(String documentiWSSampleFolderTemplate) {
+		this.documentiWSSampleFolderTemplate = documentiWSSampleFolderTemplate;
+	}
+
+}
