@@ -18,7 +18,7 @@ import org.alfresco.service.cmr.repository.NodeRef;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
-public class MockActionService implements ActionService {
+public class MockActionService implements ActionService, Serializable {
 
 	@Autowired
 	private ApplicationContext appContext;
