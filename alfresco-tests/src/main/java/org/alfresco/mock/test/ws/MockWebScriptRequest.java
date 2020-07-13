@@ -21,11 +21,13 @@ public class MockWebScriptRequest implements WebScriptRequest {
 	private Match serviceMatch;
 	private String[] parameterNames;
 	private String[] headerNames;
+	private HttpServletRequest httpServletRequest;
 
-	public MockWebScriptRequest(String format, FormData.FormField[] fields, WebScript webScript, Map<String, String> requestFields) {
+	public MockWebScriptRequest(String format, FormData.FormField[] fields, WebScript webScript,
+			Map<String, String> requestFields) {
 		this.format = format;
 		this.runtime = new MockRuntime();
-		HttpServletRequest httpServletRequest = new MockHttpServletRequest(requestFields);
+		httpServletRequest = new MockHttpServletRequest(requestFields);
 		formData = new FormData(httpServletRequest);
 		serviceMatch = new Match(null, new HashMap<String, String>(), null, webScript);
 		parameterNames = new String[0];
@@ -86,8 +88,7 @@ public class MockWebScriptRequest implements WebScriptRequest {
 
 	@Override
 	public String getParameter(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return httpServletRequest.getParameter(name);
 	}
 
 	@Override

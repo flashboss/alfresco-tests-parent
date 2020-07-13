@@ -352,7 +352,7 @@ public class MockSearchService implements SearchService, Serializable {
 
 	private boolean hasPath(StoreRef store, String path, String[] subpaths, int wildcardsNumber, NodeRef nodeRef) {
 		String nodepath = nodeService.getPath(nodeRef).toString();
-		if (store == null)
+		if (store == null || path == null)
 			return true;
 		else if (store != null && !nodepath.contains(MockContentService.FOLDER_TEST + store.getProtocol()))
 			return false;
@@ -390,19 +390,22 @@ public class MockSearchService implements SearchService, Serializable {
 	}
 
 	private String[] getSubpaths(String path) {
-		String subpath = path;
-		String[] splittedPath = subpath.split("(\\*)|(//)");
-		if (path.endsWith("//*")) {
-			path = path.substring(0, path.length() - 3);
-			splittedPath[splittedPath.length - 1] = splittedPath[splittedPath.length - 1] + "//";
-		} else if (!path.equals(File.separator) && !path.equals("/*")) {
-			String lastPath = splittedPath[splittedPath.length - 1];
-			while (lastPath.equals(File.separator)) {
-				splittedPath = Arrays.copyOf(splittedPath, splittedPath.length - 1);
-				lastPath = splittedPath[splittedPath.length - 1];
+		if (path != null) {
+			String subpath = path;
+			String[] splittedPath = subpath.split("(\\*)|(//)");
+			if (path.endsWith("//*")) {
+				path = path.substring(0, path.length() - 3);
+				splittedPath[splittedPath.length - 1] = splittedPath[splittedPath.length - 1] + "//";
+			} else if (!path.equals(File.separator) && !path.equals("/*")) {
+				String lastPath = splittedPath[splittedPath.length - 1];
+				while (lastPath.equals(File.separator)) {
+					splittedPath = Arrays.copyOf(splittedPath, splittedPath.length - 1);
+					lastPath = splittedPath[splittedPath.length - 1];
+				}
 			}
-		}
-		return splittedPath;
+			return splittedPath;
+		} else
+			return null;
 	}
 
 	private void XPATHQuery(StoreRef store, String query, List<NodeRef> nodeRefs, List<ResultSetRow> rows) {
@@ -422,17 +425,20 @@ public class MockSearchService implements SearchService, Serializable {
 
 	private void FCSQuery(StoreRef store, String query, List<NodeRef> nodeRefs, List<ResultSetRow> rows) {
 		String path = getSegmentFromQuery(query, "PATH:\"");
-		path = prepare(path, store);
-		if (!path.startsWith(File.separator))
-			path = File.separator + path;
+		if (path != null) {
+			path = prepare(path, store);
+			if (!path.startsWith(File.separator))
+				path = File.separator + path;
+		}
+		String processQuery = path;
 		String[] subpaths = getSubpaths(path);
 		String type = getSegmentFromQuery(query, "TYPE:\"");
 		int wildcardsNumber = 0;
-		String processQuery = path;
-		while (processQuery.endsWith("/*")) {
-			wildcardsNumber++;
-			processQuery = processQuery.substring(0, processQuery.lastIndexOf("/*"));
-		}
+		if (processQuery != null)
+			while (processQuery.endsWith("/*")) {
+				wildcardsNumber++;
+				processQuery = processQuery.substring(0, processQuery.lastIndexOf("/*"));
+			}
 		for (NodeRef nodeRef : nodeRefs) {
 			if (hasType(type, nodeRef) && hasPath(store, path, subpaths, wildcardsNumber, nodeRef))
 				rows.add(new MockResultSetRow(nodeRef));

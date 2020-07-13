@@ -17,7 +17,8 @@ import javax.servlet.http.HttpSession;
 
 public class MockHttpServletRequest implements HttpServletRequest {
 
-	byte[] buffer = new byte[0];
+	private byte[] buffer = new byte[0];
+	private Map<String, String> fields;
 
 	private ServletInputStream servletInputStream = new ServletInputStream() {
 
@@ -44,6 +45,7 @@ public class MockHttpServletRequest implements HttpServletRequest {
 					new byte[] { 13, 10 }, fields.get(key).getBytes(), new byte[] { 13, 10 });
 		}
 		buffer = concatAll(buffer, head, new byte[] { 45, 45, 13, 10 });
+		this.fields = fields;
 	}
 
 	@Override
@@ -88,8 +90,7 @@ public class MockHttpServletRequest implements HttpServletRequest {
 
 	@Override
 	public String getParameter(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return fields.get(name);
 	}
 
 	@Override

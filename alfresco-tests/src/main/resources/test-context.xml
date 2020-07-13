@@ -62,6 +62,8 @@
 	<alias name="contentService" alias="ContentService" />
 	<bean id="nodeService"
 		class="org.alfresco.mock.test.MockNodeService" />
+	<bean id="actionService"
+		class="org.alfresco.mock.test.MockActionService" />
 	<alias name="nodeService" alias="NodeService" />
 	<bean id="FileFolderService"
 		class="org.alfresco.mock.test.MockFileFolderService">
@@ -160,6 +162,9 @@
 		</property>
 		<property name="authorityService">
 			<ref bean="AuthorityService" />
+		</property>
+		<property name="actionService">
+			<ref bean="actionService" />
 		</property>
 	</bean>
 	<bean id="action-executer" abstract="true" />

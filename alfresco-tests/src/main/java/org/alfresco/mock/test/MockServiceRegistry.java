@@ -111,6 +111,8 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 	private PersonService personService;
 	
 	private AuthorityService authorityService;
+	
+	private ActionService actionService;
 
 	@Override
 	public Collection<QName> getServices() {
@@ -240,8 +242,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 
 	@Override
 	public ActionService getActionService() {
-		// TODO Auto-generated method stub
-		return null;
+		return actionService;
 	}
 
 	@Override
@@ -574,6 +575,10 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 
 	public void setAuthorityService(AuthorityService authorityService) {
 		this.authorityService = authorityService;
+	}
+
+	public void setActionService(ActionService actionService) {
+		this.actionService = actionService;
 	}
 
 }
