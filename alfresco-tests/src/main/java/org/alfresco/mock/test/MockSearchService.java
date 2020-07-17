@@ -61,7 +61,16 @@ public class MockSearchService implements SearchService, Serializable {
 
 	@Override
 	public ResultSet query(SearchParameters searchParameters) {
-		return query(searchParameters.getStores().get(0), searchParameters.getLanguage(), searchParameters.getQuery());
+		ResultSet resultSet = query(searchParameters.getStores().get(0), searchParameters.getLanguage(),
+				searchParameters.getQuery());
+		int maxItems = searchParameters.getMaxItems();
+		if (maxItems > -1) {
+			List<ResultSetRow> rows = new ArrayList<ResultSetRow>();
+			for (int i = 0; i < maxItems; i++)
+				rows.add(new MockResultSetRow(resultSet.getNodeRef(i)));
+			resultSet = new MockResultSet(rows);
+		}
+		return resultSet;
 	}
 
 	@Override
@@ -143,8 +152,7 @@ public class MockSearchService implements SearchService, Serializable {
 
 		@Override
 		public long getNumberFound() {
-			// TODO Auto-generated method stub
-			return 0;
+			return rows.size();
 		}
 
 		@Override
