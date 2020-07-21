@@ -238,7 +238,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		File file = getNodeService().getNodeRefs().get(nodeRef);
 		if (file.isDirectory())
 			qname = ContentModel.TYPE_FOLDER;
-		return new MockFileInfo(nodeRef, file.getParentFile().getName(), qname);
+		return new MockFileInfo(nodeRef, file.getName(), qname);
 	}
 
 	@Override
