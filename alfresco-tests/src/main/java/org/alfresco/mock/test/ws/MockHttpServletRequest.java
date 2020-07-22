@@ -27,9 +27,9 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		@Override
 		public int read() throws IOException {
 			int result;
-			if (counter >= buffer.length && counter < 483) {
+			if (counter >= buffer.length && counter < buffer.length + 1) {
 				result = 0;
-			} else if (counter >= 483) {
+			} else if (counter >= buffer.length + 1) {
 				result = -1;
 			} else
 				result = buffer[counter];
