@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.alfresco.mock.NodeUtils;
+import org.alfresco.model.ContentModel;
 import org.alfresco.service.cmr.repository.ChildAssociationRef;
 import org.alfresco.service.cmr.repository.InvalidNodeRefException;
 import org.alfresco.service.cmr.repository.NodeRef;
@@ -341,7 +342,7 @@ public class MockSearchService implements SearchService, Serializable {
 
 	private String getSegmentFromQuery(String query, String segment) {
 		if (query.contains(segment)) {
-			query = query.substring(query.indexOf(segment) + 6);
+			query = query.substring(query.indexOf(segment) + segment.length());
 			query = query.substring(0, query.indexOf("\""));
 			return query;
 		}
@@ -355,6 +356,15 @@ public class MockSearchService implements SearchService, Serializable {
 			QName typeNode = nodeService.getType(nodeRef);
 			String typeNodeStr = typeNode.getPrefixString();
 			return type.equals(typeNodeStr);
+		}
+	}
+
+	private boolean hasName(String name, NodeRef nodeRef) {
+		if (name == null)
+			return true;
+		else {
+			String value = (String) nodeService.getProperty(nodeRef, ContentModel.PROP_NAME);
+			return name.equals(value);
 		}
 	}
 
@@ -441,6 +451,7 @@ public class MockSearchService implements SearchService, Serializable {
 		String processQuery = path;
 		String[] subpaths = getSubpaths(path);
 		String type = getSegmentFromQuery(query, "TYPE:\"");
+		String name = getSegmentFromQuery(query, "=@cm:name:\"");
 		int wildcardsNumber = 0;
 		if (processQuery != null)
 			while (processQuery.endsWith("/*")) {
@@ -448,7 +459,8 @@ public class MockSearchService implements SearchService, Serializable {
 				processQuery = processQuery.substring(0, processQuery.lastIndexOf("/*"));
 			}
 		for (NodeRef nodeRef : nodeRefs) {
-			if (hasType(type, nodeRef) && hasPath(store, path, subpaths, wildcardsNumber, nodeRef))
+			if (hasType(type, nodeRef) && hasName(name, nodeRef)
+					&& hasPath(store, path, subpaths, wildcardsNumber, nodeRef))
 				rows.add(new MockResultSetRow(nodeRef));
 		}
 	}

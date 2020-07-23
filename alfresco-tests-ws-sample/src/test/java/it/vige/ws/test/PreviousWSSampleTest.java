@@ -1,6 +1,7 @@
 package it.vige.ws.test;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,8 +33,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.tradeshift.test.remote.Remote;
 import com.tradeshift.test.remote.RemoteTestRunner;
 
-import it.vige.ws.WSSampleModel;
 import it.vige.ws.PreviousWSSample;
+import it.vige.ws.WSSampleModel;
 
 @RunWith(RemoteTestRunner.class)
 @Remote(runnerClass = SpringJUnit4ClassRunner.class)
@@ -75,7 +76,7 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 
 		SearchService searchService = serviceRegistry.getSearchService();
 		NodeService nodeService = serviceRegistry.getNodeService();
-		Map<String, String> fields = new HashMap<String, String>();
+		Map<String, Serializable> fields = new HashMap<String, Serializable>();
 		{
 			fields.put("date_modified", dataModifica);
 			fields.put("date_ws_end", dataModifica);

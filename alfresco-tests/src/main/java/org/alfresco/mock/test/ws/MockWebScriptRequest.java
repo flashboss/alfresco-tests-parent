@@ -1,5 +1,6 @@
 package org.alfresco.mock.test.ws;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +25,7 @@ public class MockWebScriptRequest implements WebScriptRequest {
 	private HttpServletRequest httpServletRequest;
 
 	public MockWebScriptRequest(String format, FormData.FormField[] fields, WebScript webScript,
-			Map<String, String> requestFields) {
+			Map<String, Serializable> requestFields) {
 		this.format = format;
 		this.runtime = new MockRuntime();
 		httpServletRequest = new MockHttpServletRequest(requestFields);

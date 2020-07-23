@@ -1,11 +1,15 @@
 package org.alfresco.mock.test.ws;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -18,7 +22,7 @@ import javax.servlet.http.HttpSession;
 public class MockHttpServletRequest implements HttpServletRequest {
 
 	private byte[] buffer = new byte[0];
-	private Map<String, String> fields;
+	private Map<String, Serializable> fields;
 
 	private ServletInputStream servletInputStream = new ServletInputStream() {
 
@@ -38,11 +42,26 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		}
 	};
 
-	public MockHttpServletRequest(Map<String, String> fields) {
+	public MockHttpServletRequest(Map<String, Serializable> fields) {
 		byte[] head = "------WebKitFormBoundaryFUwwPQgv8AD2KZvR".getBytes();
 		for (String key : fields.keySet()) {
-			buffer = concatAll(buffer, head, new byte[] { 13, 10 }, getField(key), new byte[] { 13, 10 },
-					new byte[] { 13, 10 }, fields.get(key).getBytes(), new byte[] { 13, 10 });
+			byte[] vbytes = new byte[0];
+			byte[] kbytes = getField(key, null);
+			Serializable value = fields.get(key);
+			if (value instanceof File) {
+				try {
+					File fvalue = (File) value;
+					vbytes = Files.readAllBytes(fvalue.toPath());
+					Map<String, String> parameters = new HashMap<String, String>();
+					parameters.put("filename", fvalue.getName());
+					kbytes = getField(key, parameters);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else
+				vbytes = ((String) value).getBytes();
+			buffer = concatAll(buffer, head, new byte[] { 13, 10 }, kbytes, new byte[] { 13, 10 },
+					new byte[] { 13, 10 }, vbytes, new byte[] { 13, 10 });
 		}
 		buffer = concatAll(buffer, head, new byte[] { 45, 45, 13, 10 });
 		this.fields = fields;
@@ -90,7 +109,13 @@ public class MockHttpServletRequest implements HttpServletRequest {
 
 	@Override
 	public String getParameter(String name) {
-		return fields.get(name);
+		Serializable value = fields.get(name);
+		if (value == null)
+			return null;
+		else if (value instanceof File)
+			return ((File) value).getName();
+		else
+			return value + "";
 	}
 
 	@Override
@@ -369,8 +394,11 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return false;
 	}
 
-	private byte[] getField(String field) {
+	private byte[] getField(Serializable field, Map<String, String> parameters) {
 		String contentDisposition = "Content-Disposition: form-data; name=\"" + field + "\"";
+		if (parameters != null)
+			for (String parameter : parameters.keySet())
+				contentDisposition += "; " + parameter + "=\"" + parameters.get(parameter) + "\"";
 		return contentDisposition.getBytes();
 	}
 
