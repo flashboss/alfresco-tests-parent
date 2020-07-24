@@ -1,11 +1,10 @@
 package org.alfresco.mock.test.ws;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
-import java.nio.file.Files;
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.Enumeration;
@@ -19,10 +18,17 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.alfresco.model.ContentModel;
+import org.alfresco.service.ServiceRegistry;
+import org.alfresco.service.cmr.repository.ContentService;
+import org.alfresco.service.cmr.repository.NodeRef;
+import org.alfresco.service.cmr.repository.NodeService;
+
 public class MockHttpServletRequest implements HttpServletRequest {
 
 	private byte[] buffer = new byte[0];
 	private Map<String, Serializable> fields;
+	private ServiceRegistry serviceRegistry;
 
 	private ServletInputStream servletInputStream = new ServletInputStream() {
 
@@ -42,20 +48,27 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		}
 	};
 
-	public MockHttpServletRequest(Map<String, Serializable> fields) {
+	public MockHttpServletRequest(Map<String, Serializable> fields, ServiceRegistry serviceRegistry) {
+		this.serviceRegistry = serviceRegistry;
 		byte[] head = "------WebKitFormBoundaryFUwwPQgv8AD2KZvR".getBytes();
 		for (String key : fields.keySet()) {
 			byte[] vbytes = new byte[0];
 			byte[] kbytes = getField(key, null);
 			Serializable value = fields.get(key);
-			if (value instanceof File) {
+			if (value instanceof NodeRef) {
+				NodeService nodeService = serviceRegistry.getNodeService();
 				try {
-					File fvalue = (File) value;
-					vbytes = Files.readAllBytes(fvalue.toPath());
+					NodeRef fvalue = (NodeRef) value;
+					ContentService contentService = serviceRegistry.getContentService();
+					InputStream stream = contentService.getReader(fvalue, ContentModel.PROP_CONTENT)
+							.getContentInputStream();
+					vbytes = new byte[stream.available()];
+					stream.read(vbytes);
 					Map<String, String> parameters = new HashMap<String, String>();
-					parameters.put("filename", fvalue.getName());
+					String name = (String) nodeService.getProperty(fvalue, ContentModel.PROP_NAME);
+					parameters.put("filename", name);
 					kbytes = getField(key, parameters);
-				} catch (IOException e) {
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			} else
@@ -109,11 +122,12 @@ public class MockHttpServletRequest implements HttpServletRequest {
 
 	@Override
 	public String getParameter(String name) {
+		NodeService nodeService = serviceRegistry.getNodeService();
 		Serializable value = fields.get(name);
 		if (value == null)
 			return null;
-		else if (value instanceof File)
-			return ((File) value).getName();
+		else if (value instanceof NodeRef)
+			return (String) nodeService.getProperty((NodeRef) value, ContentModel.PROP_NAME);
 		else
 			return value + "";
 	}

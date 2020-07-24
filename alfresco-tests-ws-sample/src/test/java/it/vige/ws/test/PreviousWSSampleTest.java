@@ -83,7 +83,8 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 			fields.put("codicews", CARTELLA_WSSAMPLE);
 			fields.put("date_ws_start", "1970-01-01");
 		}
-		WebScriptRequest webScriptRequest = new MockWebScriptRequest("json", null, previousWSSample, fields);
+		WebScriptRequest webScriptRequest = new MockWebScriptRequest("json", null, previousWSSample, fields,
+				serviceRegistry);
 		previousWSSample.execute(webScriptRequest, new MockWebScriptResponse());
 
 		// Verify

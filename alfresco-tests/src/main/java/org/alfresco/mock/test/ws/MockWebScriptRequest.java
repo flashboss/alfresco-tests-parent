@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.alfresco.service.ServiceRegistry;
 import org.springframework.extensions.surf.util.Content;
 import org.springframework.extensions.webscripts.Description.FormatStyle;
 import org.springframework.extensions.webscripts.Match;
@@ -25,10 +26,10 @@ public class MockWebScriptRequest implements WebScriptRequest {
 	private HttpServletRequest httpServletRequest;
 
 	public MockWebScriptRequest(String format, FormData.FormField[] fields, WebScript webScript,
-			Map<String, Serializable> requestFields) {
+			Map<String, Serializable> requestFields, ServiceRegistry serviceRegistry) {
 		this.format = format;
 		this.runtime = new MockRuntime();
-		httpServletRequest = new MockHttpServletRequest(requestFields);
+		httpServletRequest = new MockHttpServletRequest(requestFields, serviceRegistry);
 		formData = new FormData(httpServletRequest);
 		serviceMatch = new Match(null, new HashMap<String, String>(), null, webScript);
 		parameterNames = new String[0];
