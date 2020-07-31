@@ -195,8 +195,7 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public boolean hasAspect(NodeRef nodeRef, QName aspectTypeQName)
 			throws InvalidNodeRefException, InvalidAspectException {
-		// TODO Auto-generated method stub
-		return false;
+		return getAspects(nodeRef).contains(aspectTypeQName);
 	}
 
 	@Override
