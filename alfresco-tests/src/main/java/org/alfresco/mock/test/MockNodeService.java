@@ -188,8 +188,12 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public void removeAspect(NodeRef nodeRef, QName aspectTypeQName)
 			throws InvalidNodeRefException, InvalidAspectException {
-		// TODO Auto-generated method stub
-
+		Map<QName, Map<QName, Serializable>> aspects = sampleAspects.get(nodeRef);
+		Map<QName, Serializable> properties = sampleProperties.get(nodeRef);
+		Map<QName, Serializable> aspectProperties = aspects.get(aspectTypeQName);
+		for (QName qname : aspectProperties.keySet())
+			properties.remove(qname);
+		aspects.remove(aspectTypeQName);
 	}
 
 	@Override
