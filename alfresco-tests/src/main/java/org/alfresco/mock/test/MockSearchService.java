@@ -47,7 +47,7 @@ public class MockSearchService implements SearchService, Serializable {
 		if (language.equals(SearchService.LANGUAGE_XPATH))
 			XPATHQuery(store, query, nodeRefs, rows);
 		else if (language.equals(SearchService.LANGUAGE_FTS_ALFRESCO) || language.equals(SearchService.LANGUAGE_LUCENE))
-			FCSQuery(store, query, nodeRefs, rows);
+			FTSQuery(store, query, nodeRefs, rows);
 		return new MockResultSet(rows);
 	}
 
@@ -347,8 +347,9 @@ public class MockSearchService implements SearchService, Serializable {
 		String[] segments = query.split(" (?i)AND | (?i)OR ");
 		for (String segm : segments) {
 			String seg = segm.trim();
-			if (!seg.startsWith("PATH:") && !seg.startsWith("(PATH:") && !seg.startsWith("TYPE:")
-					&& !seg.startsWith("-") && !seg.startsWith("(-") && !seg.contains("[")) {
+			if (!seg.startsWith("PATH:") && !seg.substring(1, seg.length()).startsWith("PATH:")
+					&& !seg.startsWith("TYPE:") && !seg.startsWith("-") && !seg.startsWith("(-")
+					&& !seg.contains("[")) {
 				String[] splitted = seg.split(":");
 				String uri = namespaceService
 						.getNamespaceURI(splitted[0].replaceAll("@", "").replaceAll("=", "").replaceAll("\\\\", ""));
@@ -463,7 +464,7 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 	}
 
-	private void FCSQuery(StoreRef store, String query, List<NodeRef> nodeRefs, List<ResultSetRow> rows) {
+	private void FTSQuery(StoreRef store, String query, List<NodeRef> nodeRefs, List<ResultSetRow> rows) {
 		String path = getSegmentFromQuery(query, "PATH:\"");
 		if (path != null) {
 			path = prepare(path, store);
