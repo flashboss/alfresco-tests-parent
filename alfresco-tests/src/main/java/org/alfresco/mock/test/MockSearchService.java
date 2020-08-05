@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.alfresco.mock.NodeUtils;
-import org.alfresco.model.ContentModel;
 import org.alfresco.service.cmr.repository.ChildAssociationRef;
 import org.alfresco.service.cmr.repository.InvalidNodeRefException;
 import org.alfresco.service.cmr.repository.NodeRef;
@@ -26,6 +25,7 @@ import org.alfresco.service.cmr.search.SearchParameters;
 import org.alfresco.service.cmr.search.SearchParameters.Operator;
 import org.alfresco.service.cmr.search.SearchService;
 import org.alfresco.service.namespace.NamespacePrefixResolver;
+import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.util.ISO9075;
 import org.alfresco.util.Pair;
@@ -35,6 +35,9 @@ public class MockSearchService implements SearchService, Serializable {
 
 	@Autowired
 	private NodeService nodeService;
+
+	@Autowired
+	private NamespaceService namespaceService;
 
 	@Override
 	public ResultSet query(StoreRef store, String language, String query) {
@@ -340,6 +343,22 @@ public class MockSearchService implements SearchService, Serializable {
 
 	}
 
+	private MockProperty getPropertyFromQuery(String query) {
+		String[] segments = query.split(" (?i)AND | (?i)OR ");
+		for (String segm : segments) {
+			String seg = segm.trim();
+			if (!seg.startsWith("PATH:") && !seg.startsWith("(PATH:") && !seg.startsWith("TYPE:")
+					&& !seg.startsWith("-") && !seg.startsWith("(-") && !seg.contains("[")) {
+				String[] splitted = seg.split(":");
+				String uri = namespaceService
+						.getNamespaceURI(splitted[0].replaceAll("@", "").replaceAll("=", "").replaceAll("\\\\", ""));
+				QName key = QName.createQName(uri, splitted[1]);
+				return new MockProperty(key, splitted[2].replaceAll("\"", ""));
+			}
+		}
+		return null;
+	}
+
 	private String getSegmentFromQuery(String query, String segment) {
 		if (query.contains(segment)) {
 			query = query.substring(query.indexOf(segment) + segment.length());
@@ -359,12 +378,15 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 	}
 
-	private boolean hasName(String name, NodeRef nodeRef) {
-		if (name == null)
+	private boolean hasProperty(MockProperty property, NodeRef nodeRef) {
+		if (property == null)
 			return true;
 		else {
-			String value = (String) nodeService.getProperty(nodeRef, ContentModel.PROP_NAME);
-			return name.equals(value);
+			Object value = (Object) nodeService.getProperty(nodeRef, property.getQname());
+			if (value instanceof String || value == null)
+				return property.getValue().equals(value);
+			else
+				return true;
 		}
 	}
 
@@ -451,7 +473,7 @@ public class MockSearchService implements SearchService, Serializable {
 		String processQuery = path;
 		String[] subpaths = getSubpaths(path);
 		String type = getSegmentFromQuery(query, "TYPE:\"");
-		String name = getSegmentFromQuery(query, "=@cm:name:\"");
+		MockProperty property = getPropertyFromQuery(query);
 		int wildcardsNumber = 0;
 		if (processQuery != null)
 			while (processQuery.endsWith("/*")) {
@@ -459,7 +481,7 @@ public class MockSearchService implements SearchService, Serializable {
 				processQuery = processQuery.substring(0, processQuery.lastIndexOf("/*"));
 			}
 		for (NodeRef nodeRef : nodeRefs) {
-			if (hasType(type, nodeRef) && hasName(name, nodeRef)
+			if (hasType(type, nodeRef) && hasProperty(property, nodeRef)
 					&& hasPath(store, path, subpaths, wildcardsNumber, nodeRef))
 				rows.add(new MockResultSetRow(nodeRef));
 		}
@@ -485,6 +507,25 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 		result = result.substring(0, result.length() - 1);
 		return result;
+	}
+
+	private class MockProperty {
+
+		private QName qname;
+		private String value;
+
+		public MockProperty(QName qname, String value) {
+			this.qname = qname;
+			this.value = value;
+		}
+
+		public QName getQname() {
+			return qname;
+		}
+
+		public String getValue() {
+			return value;
+		}
 	}
 
 }
