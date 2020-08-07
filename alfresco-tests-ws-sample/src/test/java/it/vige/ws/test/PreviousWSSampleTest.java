@@ -25,7 +25,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.extensions.webscripts.DeclarativeWebScript;
+import org.springframework.extensions.webscripts.AbstractWebScript;
 import org.springframework.extensions.webscripts.WebScriptRequest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -67,7 +67,7 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 	}
 
 	@Override
-	protected DeclarativeWebScript getDeclarativeWebScript() {
+	protected AbstractWebScript getAbstractWebScript() {
 		return previousWSSample;
 	}
 

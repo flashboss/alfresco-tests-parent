@@ -6,8 +6,8 @@ import java.text.SimpleDateFormat;
 import org.alfresco.mock.test.AbstractForm;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.extensions.webscripts.AbstractWebScript;
 import org.springframework.extensions.webscripts.Container;
-import org.springframework.extensions.webscripts.DeclarativeWebScript;
 import org.springframework.extensions.webscripts.Description;
 
 public abstract class AbstractWSForm extends AbstractForm {
@@ -20,12 +20,12 @@ public abstract class AbstractWSForm extends AbstractForm {
 	
 	protected DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmm");
 
-	protected abstract DeclarativeWebScript getDeclarativeWebScript();
+	protected abstract AbstractWebScript getAbstractWebScript();
 
 	@Before
 	public void init() {
 		super.init();
-		getDeclarativeWebScript().init(container, description);
+		getAbstractWebScript().init(container, description);
 	}
 
 }
