@@ -131,6 +131,7 @@ public class MockNodeService implements NodeService, Serializable {
 			setProperty(nodeRef, PRIMARY_PARENT, parentRef);
 		File file = new File(pathStr);
 		setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
+		setProperty(nodeRef, ContentModel.PROP_NODE_UUID, nodeRef.getId());
 		if (nodeTypeQName.equals(ContentModel.TYPE_FOLDER))
 			file.mkdir();
 		else
