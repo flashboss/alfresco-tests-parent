@@ -64,8 +64,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public boolean exists(StoreRef storeRef) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override

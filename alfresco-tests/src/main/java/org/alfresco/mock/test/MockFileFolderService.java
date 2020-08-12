@@ -53,8 +53,9 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	@Override
 	public PagingResults<FileInfo> list(NodeRef contextNodeRef, boolean files, boolean folders,
 			Set<QName> ignoreTypeQNames, List<Pair<QName, Boolean>> sortProps, PagingRequest pagingRequest) {
-		// TODO Auto-generated method stub
-		return null;
+		List<FileInfo> result = list(contextNodeRef);
+		PagingResults<FileInfo> pagingResults = new MockPagingResults<FileInfo>(result);
+		return pagingResults;
 	}
 
 	@Override
