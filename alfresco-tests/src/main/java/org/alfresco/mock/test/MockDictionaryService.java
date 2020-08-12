@@ -2,6 +2,7 @@ package org.alfresco.mock.test;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -98,8 +99,7 @@ public class MockDictionaryService implements DictionaryService, Serializable {
 
 	@Override
 	public TypeDefinition getType(QName name) {
-		// TODO Auto-generated method stub
-		return null;
+		return new MockTypeDefinition(name);
 	}
 
 	@Override
@@ -164,8 +164,9 @@ public class MockDictionaryService implements DictionaryService, Serializable {
 
 	@Override
 	public Map<QName, PropertyDefinition> getPropertyDefs(QName className) {
-		// TODO Auto-generated method stub
-		return null;
+		Map<QName, PropertyDefinition> propertyDefs = new HashMap<QName, PropertyDefinition>();
+		propertyDefs.put(className, new MockPropertyDefinition(className));
+		return propertyDefs;
 	}
 
 	@Override

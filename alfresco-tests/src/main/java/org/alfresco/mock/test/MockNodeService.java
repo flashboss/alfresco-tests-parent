@@ -337,8 +337,7 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef, QNamePattern typeQNamePattern,
 			QNamePattern qnamePattern) throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-		return null;
+		return getChildAssocs(nodeRef);
 	}
 
 	@Override
