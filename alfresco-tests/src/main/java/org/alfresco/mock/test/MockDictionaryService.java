@@ -140,8 +140,7 @@ public class MockDictionaryService implements DictionaryService, Serializable {
 
 	@Override
 	public AspectDefinition getAspect(QName name) {
-		// TODO Auto-generated method stub
-		return null;
+		return new MockAspectDefinition(name);
 	}
 
 	@Override

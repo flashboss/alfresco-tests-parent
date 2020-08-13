@@ -146,8 +146,8 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public ChildAssociationRef moveNode(NodeRef nodeToMoveRef, NodeRef newParentRef, QName assocTypeQName,
 			QName assocQName) throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-		return null;
+		deleteNode(nodeToMoveRef);
+		return createNode(newParentRef, ContentModel.ASSOC_CONTAINS, assocQName, assocTypeQName);
 	}
 
 	@Override

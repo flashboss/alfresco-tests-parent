@@ -1,6 +1,7 @@
 package org.alfresco.mock.test;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -17,7 +18,7 @@ import org.alfresco.service.namespace.QName;
 public class MockAspectDefinition implements AspectDefinition, Serializable {
 
 	private QName name;
-	
+
 	public MockAspectDefinition(QName name) {
 		this.name = name;
 	}
@@ -83,8 +84,7 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 
 	@Override
 	public Map<QName, PropertyDefinition> getProperties() {
-		// TODO Auto-generated method stub
-		return null;
+		return new HashMap<QName, PropertyDefinition>();
 	}
 
 	@Override

@@ -222,15 +222,15 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 
 	@Override
 	public FileInfo resolveNamePath(NodeRef rootNodeRef, List<String> pathElements) throws FileNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		return resolveNamePath(rootNodeRef, pathElements, false);
 	}
 
 	@Override
 	public FileInfo resolveNamePath(NodeRef rootNodeRef, List<String> pathElements, boolean mustExist)
 			throws FileNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		String pathName = pathElements.get(0);
+		NodeRef nodeRef = nodeService.getChildByName(rootNodeRef, ContentModel.ASSOC_CONTAINS, pathName);
+		return getFileInfo(nodeRef);
 	}
 
 	@Override
