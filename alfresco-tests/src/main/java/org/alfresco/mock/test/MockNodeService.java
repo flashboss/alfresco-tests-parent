@@ -31,6 +31,7 @@ import org.alfresco.service.cmr.repository.Path;
 import org.alfresco.service.cmr.repository.Path.Element;
 import org.alfresco.service.cmr.repository.StoreExistsException;
 import org.alfresco.service.cmr.repository.StoreRef;
+import org.alfresco.service.cmr.security.AccessPermission;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.service.namespace.QNamePattern;
 
@@ -39,6 +40,8 @@ public class MockNodeService implements NodeService, Serializable {
 	private static Map<NodeRef, Map<QName, Serializable>> sampleProperties = new HashMap<NodeRef, Map<QName, Serializable>>();
 
 	private static Map<NodeRef, Map<QName, Map<QName, Serializable>>> sampleAspects = new HashMap<NodeRef, Map<QName, Map<QName, Serializable>>>();
+
+	private static Map<NodeRef, Set<AccessPermission>> samplePermissions = new HashMap<NodeRef, Set<AccessPermission>>();
 
 	private static Map<NodeRef, File> nodeRefs = new HashMap<NodeRef, File>();
 
@@ -241,8 +244,9 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public void removeChild(NodeRef parentRef, NodeRef childRef) throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-
+		NodeRef parent = getPrimaryParent(childRef).getParentRef();
+		if (parent.equals(parentRef))
+			deleteNode(childRef);
 	}
 
 	@Override
@@ -327,8 +331,7 @@ public class MockNodeService implements NodeService, Serializable {
 			Path path = getPath(node);
 			String parentPath = path.subPath(path.size() - 2).toString();
 			if (getPath(nodeRef).toString().equals(parentPath))
-				result.add(
-						new ChildAssociationRef(ContentModel.ASSOC_CONTAINS, nodeRef, ContentModel.TYPE_CONTENT, node));
+				result.add(new ChildAssociationRef(ContentModel.ASSOC_CONTAINS, nodeRef, getType(node), node));
 		}
 		return result;
 	}
@@ -522,6 +525,23 @@ public class MockNodeService implements NodeService, Serializable {
 
 	public Map<NodeRef, File> getNodeRefs() {
 		return nodeRefs;
+	}
+
+	public String getPermissions() {
+		return samplePermissions + "";
+	}
+
+	public Set<AccessPermission> getPermissions(NodeRef nodeRef) {
+		return samplePermissions.get(nodeRef);
+	}
+
+	public void setPermission(NodeRef nodeRef, AccessPermission accessPermission) {
+		Set<AccessPermission> permissions = samplePermissions.get(nodeRef);
+		if (permissions == null) {
+			permissions = new HashSet<AccessPermission>();
+			samplePermissions.put(nodeRef, permissions);
+		}
+		permissions.add(accessPermission);
 	}
 
 }

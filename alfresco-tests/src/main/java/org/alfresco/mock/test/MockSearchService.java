@@ -351,8 +351,8 @@ public class MockSearchService implements SearchService, Serializable {
 					&& !seg.startsWith("TYPE:") && !seg.startsWith("-") && !seg.startsWith("(-")
 					&& !seg.contains("[")) {
 				String[] splitted = seg.split(":");
-				String uri = namespaceService
-						.getNamespaceURI(splitted[0].replaceAll("@", "").replaceAll("=", "").replaceAll("\\\\", ""));
+				String uri = namespaceService.getNamespaceURI(splitted[0].replaceAll("@", "").replaceAll("=", "")
+						.replaceAll("\\+", "").replaceAll("\\\\", ""));
 				QName key = QName.createQName(uri, splitted[1]);
 				return new MockProperty(key, splitted[2].replaceAll("\"", ""));
 			}

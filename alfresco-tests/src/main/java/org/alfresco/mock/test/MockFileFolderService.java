@@ -44,7 +44,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		List<ChildAssociationRef> associationRefs = nodeService.getChildAssocs(contextNodeRef);
 		for (ChildAssociationRef associationRef : associationRefs) {
 			FileInfo fileInfo = new MockFileInfo(associationRef.getChildRef(), associationRef.getQName().getLocalName(),
-					associationRef.getTypeQName());
+					associationRef.getQName());
 			result.add(fileInfo);
 		}
 		return result;
@@ -61,26 +61,34 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	@Override
 	public PagingResults<FileInfo> list(NodeRef contextNodeRef, boolean files, boolean folders, String pattern,
 			Set<QName> ignoreTypeQNames, List<Pair<QName, Boolean>> sortProps, PagingRequest pagingRequest) {
-		// TODO Auto-generated method stub
-		return null;
+		return list(contextNodeRef, files, folders, ignoreTypeQNames, sortProps, pagingRequest);
 	}
 
 	@Override
 	public List<FileInfo> listFiles(NodeRef contextNodeRef) {
-		// TODO Auto-generated method stub
-		return null;
+		List<FileInfo> allFiles = list(contextNodeRef);
+		List<FileInfo> onlyFiles = new ArrayList<FileInfo>();
+		for (FileInfo fileInfo : allFiles) {
+			if (!fileInfo.isFolder())
+				onlyFiles.add(fileInfo);
+		}
+		return onlyFiles;
 	}
 
 	@Override
 	public List<FileInfo> listFolders(NodeRef contextNodeRef) {
-		// TODO Auto-generated method stub
-		return null;
+		List<FileInfo> allFiles = list(contextNodeRef);
+		List<FileInfo> onlyFolders = new ArrayList<FileInfo>();
+		for (FileInfo fileInfo : allFiles) {
+			if (fileInfo.isFolder())
+				onlyFolders.add(fileInfo);
+		}
+		return onlyFolders;
 	}
 
 	@Override
 	public List<FileInfo> listDeepFolders(NodeRef contextNodeRef, SubFolderFilter filter) {
-		// TODO Auto-generated method stub
-		return null;
+		return recursiveDeepFolders(contextNodeRef, filter, new ArrayList<FileInfo>());
 	}
 
 	@Override
@@ -373,6 +381,15 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
+	}
+
+	private List<FileInfo> recursiveDeepFolders(NodeRef contextNodeRef, SubFolderFilter filter, List<FileInfo> result) {
+		List<FileInfo> folders = listFolders(contextNodeRef);
+		result.addAll(folders);
+		for (FileInfo fileInfo : folders) {
+			return recursiveDeepFolders(fileInfo.getNodeRef(), filter, result);
+		}
+		return result;
 	}
 
 }
