@@ -1,7 +1,10 @@
 package org.alfresco.mock.test;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.alfresco.query.PagingRequest;
@@ -12,6 +15,8 @@ import org.alfresco.service.cmr.security.AuthorityService;
 import org.alfresco.service.cmr.security.AuthorityType;
 
 public class MockAuthorityService implements AuthorityService, Serializable {
+
+	private List<String> authorities = new ArrayList<String>();
 
 	@Override
 	public boolean hasAdminAuthority() {
@@ -51,20 +56,17 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 
 	@Override
 	public Set<String> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
+		return convertListToSet(authorities);
 	}
 
 	@Override
 	public Set<String> getAuthoritiesForUser(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		return getAuthorities();
 	}
 
 	@Override
 	public Set<String> getAllAuthorities(AuthorityType type) {
-		// TODO Auto-generated method stub
-		return null;
+		return getAuthorities();
 	}
 
 	@Override
@@ -77,14 +79,13 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 	@Override
 	public PagingResults<String> getAuthorities(AuthorityType type, String zoneName, String displayNameFilter,
 			boolean sortByDisplayName, boolean sortAscending, PagingRequest pagingRequest) {
-		// TODO Auto-generated method stub
-		return null;
+		PagingResults<String> authorities = new MockPagingResults<String>(this.authorities);
+		return authorities;
 	}
 
 	@Override
 	public Set<String> getAllRootAuthorities(AuthorityType type) {
-		// TODO Auto-generated method stub
-		return null;
+		return getAuthorities();
 	}
 
 	@Override
@@ -102,32 +103,31 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 
 	@Override
 	public void addAuthority(String parentName, String childName) {
-		// TODO Auto-generated method stub
-		
+		authorities.add(childName);
 	}
 
 	@Override
 	public void addAuthority(Collection<String> parentNames, String childName) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void removeAuthority(String parentName, String childName) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteAuthority(String name) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteAuthority(String name, boolean cascade) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -176,7 +176,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 	@Override
 	public void setAuthorityDisplayName(String authorityName, String authorityDisplayName) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -218,13 +218,13 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 	@Override
 	public void addAuthorityToZones(String authorityName, Set<String> zones) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void removeAuthorityFromZones(String authorityName, Set<String> zones) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -238,6 +238,18 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 			String displayNamePattern, String zoneName) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	private static <T> Set<T> convertListToSet(List<T> list) {
+		// create an empty set
+		Set<T> set = new HashSet<>();
+
+		// Add each element of list into the set
+		for (T t : list)
+			set.add(t);
+
+		// return the set
+		return set;
 	}
 
 }

@@ -3,6 +3,7 @@ package org.alfresco.mock.test;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -88,7 +89,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 
 	@Override
 	public List<FileInfo> listDeepFolders(NodeRef contextNodeRef, SubFolderFilter filter) {
-		return recursiveDeepFolders(contextNodeRef, filter, new ArrayList<FileInfo>());
+		return recursiveDeep(contextNodeRef, filter, new ArrayList<FileInfo>(), false);
 	}
 
 	@Override
@@ -118,8 +119,23 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 
 	@Override
 	public FileInfo rename(NodeRef fileFolderRef, String newName) throws FileExistsException, FileNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			Map<NodeRef, File> nodeRefs = ((MockNodeService) nodeService).getNodeRefs();
+			List<FileInfo> children = recursiveDeep(fileFolderRef, null, new ArrayList<FileInfo>(), true);
+			File file = nodeRefs.get(fileFolderRef);
+			String oldName = "/" + file.getName() + "/";
+			Files.move(file.toPath(), file.toPath().resolveSibling(newName));
+			nodeService.setProperty(fileFolderRef, ContentModel.PROP_NAME, newName);
+			for (FileInfo fileInfo : children) {
+				File fileChild = nodeRefs.get(fileInfo.getNodeRef());
+				nodeRefs.put(fileInfo.getNodeRef(),
+						new File(fileChild.getAbsolutePath().replaceAll(oldName, "/" + newName + "/")));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		FileInfo fileInfo = new MockFileInfo(fileFolderRef, newName, nodeService.getType(fileFolderRef));
+		return fileInfo;
 	}
 
 	@Override
@@ -383,11 +399,16 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		this.namespaceService = namespaceService;
 	}
 
-	private List<FileInfo> recursiveDeepFolders(NodeRef contextNodeRef, SubFolderFilter filter, List<FileInfo> result) {
-		List<FileInfo> folders = listFolders(contextNodeRef);
-		result.addAll(folders);
-		for (FileInfo fileInfo : folders) {
-			return recursiveDeepFolders(fileInfo.getNodeRef(), filter, result);
+	private List<FileInfo> recursiveDeep(NodeRef contextNodeRef, SubFolderFilter filter, List<FileInfo> result,
+			boolean withFiles) {
+		List<FileInfo> nodes = null;
+		if (withFiles)
+			nodes = list(contextNodeRef);
+		else
+			nodes = listFolders(contextNodeRef);
+		result.addAll(nodes);
+		for (FileInfo fileInfo : nodes) {
+			return recursiveDeep(fileInfo.getNodeRef(), filter, result, withFiles);
 		}
 		return result;
 	}

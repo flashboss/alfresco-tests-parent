@@ -468,6 +468,8 @@ public class MockSearchService implements SearchService, Serializable {
 		String path = getSegmentFromQuery(query, "PATH:\"");
 		if (path != null) {
 			path = prepare(path, store);
+			if (path.endsWith("."))
+				path = path.substring(0, path.lastIndexOf(".")) + "*";
 			if (!path.startsWith(File.separator))
 				path = File.separator + path;
 		}
