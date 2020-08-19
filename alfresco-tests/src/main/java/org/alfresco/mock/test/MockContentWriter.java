@@ -12,6 +12,7 @@ import java.util.Locale;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import org.alfresco.repo.content.filestore.FileContentReader;
 import org.alfresco.service.cmr.repository.ContentData;
 import org.alfresco.service.cmr.repository.ContentIOException;
 import org.alfresco.service.cmr.repository.ContentReader;
@@ -95,7 +96,7 @@ public class MockContentWriter implements ContentWriter {
 
 	@Override
 	public ContentReader getReader() throws ContentIOException {
-		return new MockContentReader(file);
+		return new FileContentReader(file);
 	}
 
 	@Override

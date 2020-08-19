@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import org.alfresco.repo.content.filestore.FileContentReader;
 import org.alfresco.repo.content.transform.ContentTransformer;
 import org.alfresco.service.cmr.dictionary.InvalidTypeException;
 import org.alfresco.service.cmr.repository.ContentIOException;
@@ -52,7 +53,7 @@ public class MockContentService implements ContentService, Serializable {
 	public ContentReader getReader(NodeRef nodeRef, QName propertyQName)
 			throws InvalidNodeRefException, InvalidTypeException {
 		File file = getNodeService().getNodeRefs().get(nodeRef);
-		ContentReader contentReader = new MockContentReader(file);
+		ContentReader contentReader = new FileContentReader(file);
 		String[] splittedFile = file.getName().split("\\.");
 		String extension = null;
 		if (splittedFile.length > 1) {

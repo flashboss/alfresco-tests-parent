@@ -13,6 +13,7 @@ import java.util.Set;
 import org.alfresco.model.ContentModel;
 import org.alfresco.query.PagingRequest;
 import org.alfresco.query.PagingResults;
+import org.alfresco.repo.content.filestore.FileContentReader;
 import org.alfresco.service.cmr.model.FileExistsException;
 import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.model.FileFolderServiceType;
@@ -269,7 +270,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	@Override
 	public ContentReader getReader(NodeRef nodeRef) {
 		File file = getNodeService().getNodeRefs().get(nodeRef);
-		return new MockContentReader(file);
+		return new FileContentReader(file);
 	}
 
 	@Override
