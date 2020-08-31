@@ -18,8 +18,8 @@ public class MockNodeLocatorService implements NodeLocatorService, Serializable 
 	@Override
 	public NodeRef getNode(String locatorName, NodeRef source, Map<String, Serializable> params) {
 		if (params != null && params.get("query") != null)
-			return searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, SearchService.LANGUAGE_XPATH,
-					params.get("query") + "").getNodeRef(0);
+			return searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, locatorName, params.get("query") + "")
+					.getNodeRef(0);
 		else
 			return null;
 	}

@@ -23,8 +23,7 @@ public class MockTransactionService implements TransactionService, Serializable 
 
 	@Override
 	public UserTransaction getUserTransaction() {
-		// TODO Auto-generated method stub
-		return null;
+		return new MockUserTransaction();
 	}
 
 	@Override

@@ -1,4 +1,5 @@
 target
 .*
-*.log*
 alf_data_dev
+*.log
+*.log.*
