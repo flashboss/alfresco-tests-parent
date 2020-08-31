@@ -4,14 +4,19 @@ import java.io.Serializable;
 import java.util.Set;
 
 import org.alfresco.service.cmr.repository.NodeRef;
+import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.security.AccessPermission;
 import org.alfresco.service.cmr.security.AccessStatus;
 import org.alfresco.service.cmr.security.PermissionContext;
 import org.alfresco.service.cmr.security.PermissionService;
 import org.alfresco.service.namespace.QName;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class MockPermissionService implements PermissionService, Serializable {
+
+	@Autowired
+	private NodeService nodeService;
 
 	@Override
 	public String getOwnerAuthority() {
@@ -27,14 +32,12 @@ public class MockPermissionService implements PermissionService, Serializable {
 
 	@Override
 	public String getAllPermission() {
-		// TODO Auto-generated method stub
-		return null;
+		return ((MockNodeService) nodeService).getPermissions();
 	}
 
 	@Override
 	public Set<AccessPermission> getPermissions(NodeRef nodeRef) {
-		// TODO Auto-generated method stub
-		return null;
+		return ((MockNodeService) nodeService).getPermissions(nodeRef);
 	}
 
 	@Override
@@ -96,8 +99,8 @@ public class MockPermissionService implements PermissionService, Serializable {
 
 	@Override
 	public void setPermission(NodeRef nodeRef, String authority, String permission, boolean allow) {
-		// TODO Auto-generated method stub
-
+		AccessPermission accessPermission = new MockAccessPermission(permission, authority);
+		((MockNodeService) nodeService).setPermission(nodeRef, accessPermission);
 	}
 
 	@Override

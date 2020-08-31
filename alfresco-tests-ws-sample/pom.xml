@@ -3,11 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>it.vige</groupId>
-    <artifactId>alfresco-tests-sample</artifactId>
+    <artifactId>alfresco-tests-ws-sample</artifactId>
+    <name>Alfresco Tests ws sample</name>
     <version>6.2.0-ea.4</version>
-    <name>alfresco-tests-sample JAR Module</name>
-    <description>Platform/Repo JAR Module (to be included in the alfresco.war)</description>
-    <packaging>jar</packaging>
+    <description>Simple JAR sample for tests</description>
 
     <!-- 
         SDK properties have sensible defaults in the SDK parent,

@@ -3,8 +3,6 @@ package org.alfresco.mock.test;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -31,14 +29,18 @@ import org.alfresco.service.cmr.repository.Path;
 import org.alfresco.service.cmr.repository.Path.Element;
 import org.alfresco.service.cmr.repository.StoreExistsException;
 import org.alfresco.service.cmr.repository.StoreRef;
+import org.alfresco.service.cmr.security.AccessPermission;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.service.namespace.QNamePattern;
+import org.apache.commons.io.FileUtils;
 
 public class MockNodeService implements NodeService, Serializable {
 
 	private static Map<NodeRef, Map<QName, Serializable>> sampleProperties = new HashMap<NodeRef, Map<QName, Serializable>>();
 
 	private static Map<NodeRef, Map<QName, Map<QName, Serializable>>> sampleAspects = new HashMap<NodeRef, Map<QName, Map<QName, Serializable>>>();
+
+	private static Map<NodeRef, Set<AccessPermission>> samplePermissions = new HashMap<NodeRef, Set<AccessPermission>>();
 
 	private static Map<NodeRef, File> nodeRefs = new HashMap<NodeRef, File>();
 
@@ -64,8 +66,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public boolean exists(StoreRef storeRef) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -131,14 +132,8 @@ public class MockNodeService implements NodeService, Serializable {
 			setProperty(nodeRef, PRIMARY_PARENT, parentRef);
 		File file = new File(pathStr);
 		setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
-		if (nodeTypeQName.equals(ContentModel.TYPE_FOLDER))
-			file.mkdir();
-		else
-			try {
-				file.createNewFile();
-			} catch (IOException ex) {
-				throw new InvalidNodeRefException(nodeRef);
-			}
+		setProperty(nodeRef, ContentModel.PROP_NODE_UUID, nodeRef.getId());
+		file.mkdir();
 		nodeRefs.put(nodeRef, new File(pathStr));
 		return new ChildAssociationRef(assocTypeQName, parentRef, assocQName, nodeRef);
 	}
@@ -146,8 +141,8 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public ChildAssociationRef moveNode(NodeRef nodeToMoveRef, NodeRef newParentRef, QName assocTypeQName,
 			QName assocQName) throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-		return null;
+		deleteNode(nodeToMoveRef);
+		return createNode(newParentRef, ContentModel.ASSOC_CONTAINS, assocQName, assocTypeQName);
 	}
 
 	@Override
@@ -188,15 +183,18 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public void removeAspect(NodeRef nodeRef, QName aspectTypeQName)
 			throws InvalidNodeRefException, InvalidAspectException {
-		// TODO Auto-generated method stub
-
+		Map<QName, Map<QName, Serializable>> aspects = sampleAspects.get(nodeRef);
+		Map<QName, Serializable> properties = sampleProperties.get(nodeRef);
+		Map<QName, Serializable> aspectProperties = aspects.get(aspectTypeQName);
+		for (QName qname : aspectProperties.keySet())
+			properties.remove(qname);
+		aspects.remove(aspectTypeQName);
 	}
 
 	@Override
 	public boolean hasAspect(NodeRef nodeRef, QName aspectTypeQName)
 			throws InvalidNodeRefException, InvalidAspectException {
-		// TODO Auto-generated method stub
-		return false;
+		return getAspects(nodeRef).contains(aspectTypeQName);
 	}
 
 	@Override
@@ -221,8 +219,7 @@ public class MockNodeService implements NodeService, Serializable {
 		ChildAssociationRef association = createNode(parentRef, ContentModel.ASSOC_CONTAINS, qname,
 				ContentModel.TYPE_CONTENT, getProperties(childRef));
 		try {
-			Files.copy(nodeRefs.get(childRef).toPath(), nodeRefs.get(association.getChildRef()).toPath(),
-					StandardCopyOption.REPLACE_EXISTING);
+			FileUtils.copyDirectory(nodeRefs.get(childRef), nodeRefs.get(association.getChildRef()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -238,8 +235,9 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public void removeChild(NodeRef parentRef, NodeRef childRef) throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-
+		NodeRef parent = getPrimaryParent(childRef).getParentRef();
+		if (parent.equals(parentRef))
+			deleteNode(childRef);
 	}
 
 	@Override
@@ -292,8 +290,14 @@ public class MockNodeService implements NodeService, Serializable {
 		if (qname.equals(ContentModel.PROP_NAME)) {
 			File file = nodeRefs.get(nodeRef);
 			if (file != null && !file.getName().equals(value)) {
+				File fileContent = new File(file.getAbsolutePath() + File.separator + file.getName());
 				File renamedFile = new File(file.getParent() + File.separator + value);
-				file.renameTo(renamedFile);
+				File renamedFileContent = new File(fileContent.getParent() + File.separator + value);
+				if (file.exists()) {
+					if (fileContent.exists())
+						fileContent.renameTo(renamedFileContent);
+					file.renameTo(renamedFile);
+				}
 				nodeRefs.put(nodeRef, renamedFile);
 			}
 		}
@@ -324,8 +328,7 @@ public class MockNodeService implements NodeService, Serializable {
 			Path path = getPath(node);
 			String parentPath = path.subPath(path.size() - 2).toString();
 			if (getPath(nodeRef).toString().equals(parentPath))
-				result.add(
-						new ChildAssociationRef(ContentModel.ASSOC_CONTAINS, nodeRef, ContentModel.TYPE_CONTENT, node));
+				result.add(new ChildAssociationRef(ContentModel.ASSOC_CONTAINS, nodeRef, getType(node), node));
 		}
 		return result;
 	}
@@ -333,8 +336,7 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef, QNamePattern typeQNamePattern,
 			QNamePattern qnamePattern) throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-		return null;
+		return getChildAssocs(nodeRef);
 	}
 
 	@Override
@@ -520,6 +522,23 @@ public class MockNodeService implements NodeService, Serializable {
 
 	public Map<NodeRef, File> getNodeRefs() {
 		return nodeRefs;
+	}
+
+	public String getPermissions() {
+		return samplePermissions + "";
+	}
+
+	public Set<AccessPermission> getPermissions(NodeRef nodeRef) {
+		return samplePermissions.get(nodeRef);
+	}
+
+	public void setPermission(NodeRef nodeRef, AccessPermission accessPermission) {
+		Set<AccessPermission> permissions = samplePermissions.get(nodeRef);
+		if (permissions == null) {
+			permissions = new HashSet<AccessPermission>();
+			samplePermissions.put(nodeRef, permissions);
+		}
+		permissions.add(accessPermission);
 	}
 
 }
