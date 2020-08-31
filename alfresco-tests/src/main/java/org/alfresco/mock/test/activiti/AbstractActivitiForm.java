@@ -72,6 +72,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		namespaceService.registerNamespace(SiteModel.SITE_MODEL_PREFIX, SiteModel.SITE_MODEL_URL);
 		namespaceService.registerNamespace(NamespaceService.CONTENT_MODEL_PREFIX,
 				NamespaceService.CONTENT_MODEL_1_0_URI);
+		namespaceService.registerNamespace(NamespaceService.SYSTEM_MODEL_PREFIX, NamespaceService.SYSTEM_MODEL_1_0_URI);
 
 		// remove the old documents
 		MockNodeService nodeService = (MockNodeService) serviceRegistry.getNodeService();
