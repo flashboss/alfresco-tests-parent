@@ -62,6 +62,8 @@
 	<alias name="contentService" alias="ContentService" />
 	<bean id="nodeService"
 		class="org.alfresco.mock.test.MockNodeService" />
+	<bean id="actionService"
+		class="org.alfresco.mock.test.MockActionService" />
 	<alias name="nodeService" alias="NodeService" />
 	<bean id="FileFolderService"
 		class="org.alfresco.mock.test.MockFileFolderService">
@@ -80,12 +82,28 @@
 		class="org.alfresco.mock.test.MockNodeLocatorService" />
 	<bean id="permissionService"
 		class="org.alfresco.mock.test.MockPermissionService" />
+	<bean id="TransactionService"
+		class="org.alfresco.mock.test.MockTransactionService" />
 	<bean id="baseJavaScriptExtension" abstract="true" />
 	<bean id="dictionaryModelBootstrap"
 		class="org.alfresco.repo.dictionary.DictionaryBootstrap"
 		abstract="true" />
 	<bean id="dictionaryBootstrap"
 		class="org.alfresco.repo.dictionary.DictionaryBootstrap" />
+	<bean id="authenticationService"
+		class="org.alfresco.mock.test.MockAuthenticationService" />
+	<bean id="DictionaryService"
+		class="org.alfresco.mock.test.MockDictionaryService" />
+	<bean id="VersionService"
+		class="org.alfresco.mock.test.MockVersionService" />
+	<bean id="CopyService"
+		class="org.alfresco.mock.test.MockCopyService" />
+	<bean id="SiteService"
+		class="org.alfresco.mock.test.MockSiteService" />
+	<bean id="PersonService"
+		class="org.alfresco.mock.test.MockPersonService" />
+	<bean id="AuthorityService"
+		class="org.alfresco.mock.test.MockAuthorityService" />
 	<bean id="ServiceRegistry"
 		class="org.alfresco.mock.test.MockServiceRegistry">
 		<property name="nodeService">
@@ -124,6 +142,33 @@
 		<property name="solrFacetHelper">
 			<ref bean="solrFacetHelper" />
 		</property>
+		<property name="transactionService">
+			<ref bean="TransactionService" />
+		</property>
+		<property name="authenticationService">
+			<ref bean="authenticationService" />
+		</property>
+		<property name="dictionaryService">
+			<ref bean="DictionaryService" />
+		</property>
+		<property name="versionService">
+			<ref bean="VersionService" />
+		</property>
+		<property name="copyService">
+			<ref bean="CopyService" />
+		</property>
+		<property name="siteService">
+			<ref bean="SiteService" />
+		</property>
+		<property name="personService">
+			<ref bean="PersonService" />
+		</property>
+		<property name="authorityService">
+			<ref bean="AuthorityService" />
+		</property>
+		<property name="actionService">
+			<ref bean="actionService" />
+		</property>
 	</bean>
 	<bean id="solrFacetRawProperties"
 		class="org.springframework.beans.factory.config.ListFactoryBean">
@@ -138,6 +183,8 @@
 	</bean>
 	<bean id="action-executer" abstract="true" />
 	<alias name="mimetypeService" alias="MimetypeService" />
+	<alias name="authenticationService" alias="AuthenticationService" />
+	<alias name="permissionService" alias="PermissionService" />
 	<bean id="ImporterService"
 		class="org.alfresco.mock.test.MockImporterService" />
 	<bean id="scriptService"

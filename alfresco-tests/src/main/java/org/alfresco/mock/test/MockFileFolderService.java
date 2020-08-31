@@ -3,6 +3,7 @@ package org.alfresco.mock.test;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.Set;
 import org.alfresco.model.ContentModel;
 import org.alfresco.query.PagingRequest;
 import org.alfresco.query.PagingResults;
+import org.alfresco.repo.content.filestore.FileContentReader;
 import org.alfresco.service.cmr.model.FileExistsException;
 import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.model.FileFolderServiceType;
@@ -44,7 +46,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		List<ChildAssociationRef> associationRefs = nodeService.getChildAssocs(contextNodeRef);
 		for (ChildAssociationRef associationRef : associationRefs) {
 			FileInfo fileInfo = new MockFileInfo(associationRef.getChildRef(), associationRef.getQName().getLocalName(),
-					associationRef.getTypeQName());
+					associationRef.getQName());
 			result.add(fileInfo);
 		}
 		return result;
@@ -53,33 +55,42 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	@Override
 	public PagingResults<FileInfo> list(NodeRef contextNodeRef, boolean files, boolean folders,
 			Set<QName> ignoreTypeQNames, List<Pair<QName, Boolean>> sortProps, PagingRequest pagingRequest) {
-		// TODO Auto-generated method stub
-		return null;
+		List<FileInfo> result = list(contextNodeRef);
+		PagingResults<FileInfo> pagingResults = new MockPagingResults<FileInfo>(result);
+		return pagingResults;
 	}
 
 	@Override
 	public PagingResults<FileInfo> list(NodeRef contextNodeRef, boolean files, boolean folders, String pattern,
 			Set<QName> ignoreTypeQNames, List<Pair<QName, Boolean>> sortProps, PagingRequest pagingRequest) {
-		// TODO Auto-generated method stub
-		return null;
+		return list(contextNodeRef, files, folders, ignoreTypeQNames, sortProps, pagingRequest);
 	}
 
 	@Override
 	public List<FileInfo> listFiles(NodeRef contextNodeRef) {
-		// TODO Auto-generated method stub
-		return null;
+		List<FileInfo> allFiles = list(contextNodeRef);
+		List<FileInfo> onlyFiles = new ArrayList<FileInfo>();
+		for (FileInfo fileInfo : allFiles) {
+			if (!fileInfo.isFolder())
+				onlyFiles.add(fileInfo);
+		}
+		return onlyFiles;
 	}
 
 	@Override
 	public List<FileInfo> listFolders(NodeRef contextNodeRef) {
-		// TODO Auto-generated method stub
-		return null;
+		List<FileInfo> allFiles = list(contextNodeRef);
+		List<FileInfo> onlyFolders = new ArrayList<FileInfo>();
+		for (FileInfo fileInfo : allFiles) {
+			if (fileInfo.isFolder())
+				onlyFolders.add(fileInfo);
+		}
+		return onlyFolders;
 	}
 
 	@Override
 	public List<FileInfo> listDeepFolders(NodeRef contextNodeRef, SubFolderFilter filter) {
-		// TODO Auto-generated method stub
-		return null;
+		return recursiveDeep(contextNodeRef, filter, new ArrayList<FileInfo>(), false);
 	}
 
 	@Override
@@ -109,8 +120,23 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 
 	@Override
 	public FileInfo rename(NodeRef fileFolderRef, String newName) throws FileExistsException, FileNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			Map<NodeRef, File> nodeRefs = ((MockNodeService) nodeService).getNodeRefs();
+			List<FileInfo> children = recursiveDeep(fileFolderRef, null, new ArrayList<FileInfo>(), true);
+			File file = nodeRefs.get(fileFolderRef);
+			String oldName = "/" + file.getName() + "/";
+			Files.move(file.toPath(), file.toPath().resolveSibling(newName));
+			nodeService.setProperty(fileFolderRef, ContentModel.PROP_NAME, newName);
+			for (FileInfo fileInfo : children) {
+				File fileChild = nodeRefs.get(fileInfo.getNodeRef());
+				nodeRefs.put(fileInfo.getNodeRef(),
+						new File(fileChild.getAbsolutePath().replaceAll(oldName, "/" + newName + "/")));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		FileInfo fileInfo = new MockFileInfo(fileFolderRef, newName, nodeService.getType(fileFolderRef));
+		return fileInfo;
 	}
 
 	@Override
@@ -153,7 +179,12 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		File source = getNodeService().getNodeRefs().get(sourceNodeRef);
 		File target = getNodeService().getNodeRefs().get(targetParentRef);
 		try {
-			FileUtils.copyFile(source, new File(target + File.separator + newName));
+			File newDir = new File(target + File.separator + newName);
+			FileUtils.copyDirectory(source, newDir);
+			File oldFile = new File(newDir + File.separator + source.getName());
+			File newFile = new File(newDir + File.separator + newName);
+			if (oldFile.exists() && !newFile.exists())
+				FileUtils.moveFile(oldFile, newFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -197,10 +228,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 			File file = nodeRefs.get(nodeRef);
 			if (file != null)
 				if (!(file.getPath() + "/").equals(MockContentService.FOLDER_TEST))
-					if (file.isDirectory())
-						FileUtils.deleteDirectory(file);
-					else
-						file.delete();
+					FileUtils.deleteDirectory(file);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -221,30 +249,37 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 
 	@Override
 	public FileInfo resolveNamePath(NodeRef rootNodeRef, List<String> pathElements) throws FileNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		return resolveNamePath(rootNodeRef, pathElements, false);
 	}
 
 	@Override
 	public FileInfo resolveNamePath(NodeRef rootNodeRef, List<String> pathElements, boolean mustExist)
 			throws FileNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		NodeRef nodeRef = null;
+		NodeRef parent = rootNodeRef;
+		for (String path : pathElements) {
+			nodeRef = nodeService.getChildByName(parent, ContentModel.ASSOC_CONTAINS, path);
+			if (nodeRef == null)
+				return null;
+			parent = nodeRef;
+		}
+		return getFileInfo(nodeRef);
 	}
 
 	@Override
 	public FileInfo getFileInfo(NodeRef nodeRef) {
 		QName qname = ContentModel.TYPE_CONTENT;
 		File file = getNodeService().getNodeRefs().get(nodeRef);
-		if (file.isDirectory())
+		if (!new File(file + File.separator + file.getName()).exists())
 			qname = ContentModel.TYPE_FOLDER;
-		return new MockFileInfo(nodeRef, file.getParentFile().getName(), qname);
+		return new MockFileInfo(nodeRef, file.getName(), qname);
 	}
 
 	@Override
 	public ContentReader getReader(NodeRef nodeRef) {
 		File file = getNodeService().getNodeRefs().get(nodeRef);
-		return new MockContentReader(file);
+		File content = new File(file.getAbsolutePath() + File.separator + file.getName());
+		return new FileContentReader(content);
 	}
 
 	@Override
@@ -379,6 +414,20 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 			List<Pair<QName, Boolean>> sortProps, PagingRequest pagingRequest) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	private List<FileInfo> recursiveDeep(NodeRef contextNodeRef, SubFolderFilter filter, List<FileInfo> result,
+			boolean withFiles) {
+		List<FileInfo> nodes = null;
+		if (withFiles)
+			nodes = list(contextNodeRef);
+		else
+			nodes = listFolders(contextNodeRef);
+		result.addAll(nodes);
+		for (FileInfo fileInfo : nodes) {
+			return recursiveDeep(fileInfo.getNodeRef(), filter, result, withFiles);
+		}
+		return result;
 	}
 
 }

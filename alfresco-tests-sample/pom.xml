@@ -5,7 +5,7 @@
     <groupId>it.vige</groupId>
     <artifactId>alfresco-tests-sample</artifactId>
     <version>5.0.d.2</version>
-    <name>alfresco-tests-sample Platform/Repository JAR Module</name>
+    <name>Alfresco Tests sample JAR Module</name>
     <description>Platform/Repo JAR Module (to be included in the alfresco.war)</description>
     <packaging>jar</packaging>
 

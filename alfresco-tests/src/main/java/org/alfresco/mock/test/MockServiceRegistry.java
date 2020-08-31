@@ -91,6 +91,24 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 
 	private SolrFacetHelper solrFacetHelper;
 
+	private TransactionService transactionService;
+
+	private DictionaryService dictionaryService;
+
+	private MutableAuthenticationService authenticationService;
+
+	private VersionService versionService;
+	
+	private CopyService copyService;
+	
+	private SiteService siteService;
+	
+	private PersonService personService;
+	
+	private AuthorityService authorityService;
+	
+	private ActionService actionService;
+
 	@Override
 	public Collection<QName> getServices() {
 		// TODO Auto-generated method stub
@@ -117,8 +135,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 
 	@Override
 	public TransactionService getTransactionService() {
-		// TODO Auto-generated method stub
-		return null;
+		return transactionService;
 	}
 
 	@Override
@@ -134,8 +151,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 
 	@Override
 	public MutableAuthenticationService getAuthenticationService() {
-		// TODO Auto-generated method stub
-		return null;
+		return authenticationService;
 	}
 
 	@Override
@@ -166,8 +182,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 
 	@Override
 	public VersionService getVersionService() {
-		// TODO Auto-generated method stub
-		return null;
+		return versionService;
 	}
 
 	@Override
@@ -184,13 +199,12 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 
 	@Override
 	public DictionaryService getDictionaryService() {
-		return null;
+		return dictionaryService;
 	}
 
 	@Override
 	public CopyService getCopyService() {
-		// TODO Auto-generated method stub
-		return null;
+		return copyService;
 	}
 
 	@Override
@@ -223,8 +237,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 
 	@Override
 	public ActionService getActionService() {
-		// TODO Auto-generated method stub
-		return null;
+		return actionService;
 	}
 
 	@Override
@@ -234,8 +247,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 
 	@Override
 	public AuthorityService getAuthorityService() {
-		// TODO Auto-generated method stub
-		return null;
+		return authorityService;
 	}
 
 	@Override
@@ -279,14 +291,12 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 
 	@Override
 	public PersonService getPersonService() {
-		// TODO Auto-generated method stub
-		return null;
+		return personService;
 	}
 
 	@Override
 	public SiteService getSiteService() {
-		// TODO Auto-generated method stub
-		return null;
+		return siteService;
 	}
 
 	@Override
@@ -485,6 +495,42 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		importerService = (ImporterService) in.readObject();
 		permissionService = (PermissionService) in.readObject();
 		templateService = (TemplateService) in.readObject();
+	}
+	
+	public void setAuthenticationService(MutableAuthenticationService authenticationService) {
+		this.authenticationService = authenticationService;
+	}
+
+	public void setTransactionService(TransactionService transactionService) {
+		this.transactionService = transactionService;
+	}
+
+	public void setDictionaryService(DictionaryService dictionaryService) {
+		this.dictionaryService = dictionaryService;
+	}
+
+	public void setVersionService(VersionService versionService) {
+		this.versionService = versionService;
+	}
+
+	public void setCopyService(CopyService copyService) {
+		this.copyService = copyService;
+	}
+
+	public void setSiteService(SiteService siteService) {
+		this.siteService = siteService;
+	}
+
+	public void setPersonService(PersonService personService) {
+		this.personService = personService;
+	}
+
+	public void setAuthorityService(AuthorityService authorityService) {
+		this.authorityService = authorityService;
+	}
+
+	public void setActionService(ActionService actionService) {
+		this.actionService = actionService;
 	}
 
 }
