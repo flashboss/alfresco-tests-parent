@@ -3,8 +3,6 @@ package org.alfresco.mock.test;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -34,6 +32,7 @@ import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.security.AccessPermission;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.service.namespace.QNamePattern;
+import org.apache.commons.io.FileUtils;
 
 public class MockNodeService implements NodeService, Serializable {
 
@@ -134,14 +133,7 @@ public class MockNodeService implements NodeService, Serializable {
 		File file = new File(pathStr);
 		setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
 		setProperty(nodeRef, ContentModel.PROP_NODE_UUID, nodeRef.getId());
-		if (nodeTypeQName.equals(ContentModel.TYPE_FOLDER))
-			file.mkdir();
-		else
-			try {
-				file.createNewFile();
-			} catch (IOException ex) {
-				throw new InvalidNodeRefException(nodeRef);
-			}
+		file.mkdir();
 		nodeRefs.put(nodeRef, new File(pathStr));
 		return new ChildAssociationRef(assocTypeQName, parentRef, assocQName, nodeRef);
 	}
@@ -227,8 +219,7 @@ public class MockNodeService implements NodeService, Serializable {
 		ChildAssociationRef association = createNode(parentRef, ContentModel.ASSOC_CONTAINS, qname,
 				ContentModel.TYPE_CONTENT, getProperties(childRef));
 		try {
-			Files.copy(nodeRefs.get(childRef).toPath(), nodeRefs.get(association.getChildRef()).toPath(),
-					StandardCopyOption.REPLACE_EXISTING);
+			FileUtils.copyDirectory(nodeRefs.get(childRef), nodeRefs.get(association.getChildRef()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -299,8 +290,14 @@ public class MockNodeService implements NodeService, Serializable {
 		if (qname.equals(ContentModel.PROP_NAME)) {
 			File file = nodeRefs.get(nodeRef);
 			if (file != null && !file.getName().equals(value)) {
+				File fileContent = new File(file.getAbsolutePath() + File.separator + file.getName());
 				File renamedFile = new File(file.getParent() + File.separator + value);
-				file.renameTo(renamedFile);
+				File renamedFileContent = new File(fileContent.getParent() + File.separator + value);
+				if (file.exists()) {
+					if (fileContent.exists())
+						fileContent.renameTo(renamedFileContent);
+					file.renameTo(renamedFile);
+				}
 				nodeRefs.put(nodeRef, renamedFile);
 			}
 		}

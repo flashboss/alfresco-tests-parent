@@ -179,7 +179,12 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		File source = getNodeService().getNodeRefs().get(sourceNodeRef);
 		File target = getNodeService().getNodeRefs().get(targetParentRef);
 		try {
-			FileUtils.copyFile(source, new File(target + File.separator + newName));
+			File newDir = new File(target + File.separator + newName);
+			FileUtils.copyDirectory(source, newDir);
+			File oldFile = new File(newDir + File.separator + source.getName());
+			File newFile = new File(newDir + File.separator + newName);
+			if (oldFile.exists() && !newFile.exists())
+				FileUtils.moveFile(oldFile, newFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -223,10 +228,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 			File file = nodeRefs.get(nodeRef);
 			if (file != null)
 				if (!(file.getPath() + "/").equals(MockContentService.FOLDER_TEST))
-					if (file.isDirectory())
-						FileUtils.deleteDirectory(file);
-					else
-						file.delete();
+					FileUtils.deleteDirectory(file);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -253,8 +255,14 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	@Override
 	public FileInfo resolveNamePath(NodeRef rootNodeRef, List<String> pathElements, boolean mustExist)
 			throws FileNotFoundException {
-		String pathName = pathElements.get(0);
-		NodeRef nodeRef = nodeService.getChildByName(rootNodeRef, ContentModel.ASSOC_CONTAINS, pathName);
+		NodeRef nodeRef = null;
+		NodeRef parent = rootNodeRef;
+		for (String path : pathElements) {
+			nodeRef = nodeService.getChildByName(parent, ContentModel.ASSOC_CONTAINS, path);
+			if (nodeRef == null)
+				return null;
+			parent = nodeRef;
+		}
 		return getFileInfo(nodeRef);
 	}
 
@@ -262,7 +270,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	public FileInfo getFileInfo(NodeRef nodeRef) {
 		QName qname = ContentModel.TYPE_CONTENT;
 		File file = getNodeService().getNodeRefs().get(nodeRef);
-		if (file.isDirectory())
+		if (!new File(file + File.separator + file.getName()).exists())
 			qname = ContentModel.TYPE_FOLDER;
 		return new MockFileInfo(nodeRef, file.getName(), qname);
 	}
@@ -270,7 +278,8 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	@Override
 	public ContentReader getReader(NodeRef nodeRef) {
 		File file = getNodeService().getNodeRefs().get(nodeRef);
-		return new FileContentReader(file);
+		File content = new File(file.getAbsolutePath() + File.separator + file.getName());
+		return new FileContentReader(content);
 	}
 
 	@Override

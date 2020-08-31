@@ -8,6 +8,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.channels.FileChannel;
 import java.nio.channels.WritableByteChannel;
+import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Locale;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -27,7 +31,14 @@ public class MockContentWriter implements ContentWriter {
 	private String mimetype;
 
 	public MockContentWriter(File file) {
-		this.file = file;
+		Path filePath = Paths.get(file.getAbsolutePath() + File.separator + file.getName());
+		try {
+			this.file = Files.createFile(filePath).toFile();
+		} catch (FileAlreadyExistsException faee) {
+			this.file = filePath.toFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override

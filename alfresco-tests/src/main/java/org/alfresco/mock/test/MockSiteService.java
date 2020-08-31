@@ -10,14 +10,21 @@ import org.alfresco.repo.node.getchildren.FilterProp;
 import org.alfresco.repo.site.SiteMembership;
 import org.alfresco.service.cmr.model.FileInfo;
 import org.alfresco.service.cmr.repository.NodeRef;
+import org.alfresco.service.cmr.repository.StoreRef;
+import org.alfresco.service.cmr.search.ResultSet;
+import org.alfresco.service.cmr.search.SearchService;
 import org.alfresco.service.cmr.site.SiteInfo;
 import org.alfresco.service.cmr.site.SiteMemberInfo;
 import org.alfresco.service.cmr.site.SiteService;
 import org.alfresco.service.cmr.site.SiteVisibility;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.util.Pair;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class MockSiteService implements SiteService, Serializable {
+
+	@Autowired
+	private SearchService searchService;
 
 	@Override
 	public SiteInfo createSite(String sitePreset, String shortName, String title, String description,
@@ -97,14 +104,16 @@ public class MockSiteService implements SiteService, Serializable {
 
 	@Override
 	public SiteInfo getSite(String shortName) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultSet resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
+				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"company_home/sites/" + shortName + "\"");
+		NodeRef result = resultQ.getNodeRef(0);
+		SiteInfo siteInfo = new MockSiteInfo(result);
+		return siteInfo;
 	}
 
 	@Override
 	public SiteInfo getSite(NodeRef nodeRef) {
-		// TODO Auto-generated method stub
-		return null;
+		return new MockSiteInfo(nodeRef);
 	}
 
 	@Override
@@ -122,20 +131,20 @@ public class MockSiteService implements SiteService, Serializable {
 	@Override
 	public void updateSite(SiteInfo siteInfo) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteSite(String shortName) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void listMembers(String shortName, String nameFilter, String roleFilter, boolean collapseGroups,
 			SiteMembersCallback callback) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -180,13 +189,13 @@ public class MockSiteService implements SiteService, Serializable {
 	@Override
 	public void setMembership(String shortName, String authorityName, String role) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void removeMembership(String shortName, String authorityName) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -247,7 +256,7 @@ public class MockSiteService implements SiteService, Serializable {
 	@Override
 	public void cleanSitePermissions(NodeRef relocatedNode, SiteInfo containingSite) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

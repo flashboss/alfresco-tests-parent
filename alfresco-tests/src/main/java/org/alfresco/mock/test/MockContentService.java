@@ -53,7 +53,8 @@ public class MockContentService implements ContentService, Serializable {
 	public ContentReader getReader(NodeRef nodeRef, QName propertyQName)
 			throws InvalidNodeRefException, InvalidTypeException {
 		File file = getNodeService().getNodeRefs().get(nodeRef);
-		ContentReader contentReader = new FileContentReader(file);
+		File content = new File(file.getAbsolutePath() + File.separator + file.getName());
+		ContentReader contentReader = new FileContentReader(content);
 		String[] splittedFile = file.getName().split("\\.");
 		String extension = null;
 		if (splittedFile.length > 1) {

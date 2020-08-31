@@ -16,6 +16,8 @@ import org.alfresco.service.namespace.QName;
 
 public class MockVersionService implements VersionService, Serializable {
 
+	private VersionHistory versionHistory = new MockVersionHistory();
+	
 	@Override
 	public StoreRef getVersionStoreReference() {
 		// TODO Auto-generated method stub
@@ -57,8 +59,7 @@ public class MockVersionService implements VersionService, Serializable {
 
 	@Override
 	public VersionHistory getVersionHistory(NodeRef nodeRef) throws AspectMissingException {
-		// TODO Auto-generated method stub
-		return null;
+		return versionHistory;
 	}
 
 	@Override
