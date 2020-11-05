@@ -393,9 +393,7 @@ In your src/test/resources folder add the follow spring descriptor file test-mod
 	<import resource="classpath:alfresco/module/${project.artifactId}/module-context.xml" />
 </beans>
 ```
-
 You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/6.1.0-ea/alfresco-tests-activiti-sample.
-
 
 Webscript test
 ===========
