@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests-parent</artifactId>
-		<version>6.1.0-ea.2</version>
+		<version>6.1.0-ea.3</version>
 	</parent>
 
 	<properties>
