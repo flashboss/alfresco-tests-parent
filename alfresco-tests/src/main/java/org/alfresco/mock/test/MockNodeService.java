@@ -209,8 +209,12 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public void deleteNode(NodeRef nodeRef) throws InvalidNodeRefException {
-		nodeRefs.get(nodeRef).delete();
-		nodeRefs.remove(nodeRef);
+		try {
+			FileUtils.deleteDirectory(nodeRefs.get(nodeRef));
+			nodeRefs.remove(nodeRef);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
