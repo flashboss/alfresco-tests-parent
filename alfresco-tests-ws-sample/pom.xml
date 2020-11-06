@@ -5,7 +5,7 @@
     <groupId>it.vige</groupId>
     <artifactId>alfresco-tests-ws-sample</artifactId>
     <name>Alfresco Tests ws sample</name>
-    <version>6.2.0-ea.4</version>
+    <version>6.2.0-ea.5</version>
     <description>Simple JAR sample for tests</description>
 
     <!-- 
@@ -50,7 +50,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
             <scope>test</scope>
         </dependency>
         <dependency>
