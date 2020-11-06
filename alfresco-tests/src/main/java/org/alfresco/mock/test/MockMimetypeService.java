@@ -27,6 +27,10 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 			return MimetypeMap.MIMETYPE_ACP;
 		else if (extension != null && extension.equals("zip"))
 			return MimetypeMap.MIMETYPE_ZIP;
+		else if (extension != null && extension.equals("pdf"))
+			return MimetypeMap.MIMETYPE_PDF;
+		else if (extension != null && extension.equals("txt"))
+			return MimetypeMap.MIMETYPE_TEXT_PLAIN;
 		else
 			return null;
 	}
@@ -69,7 +73,10 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 
 	@Override
 	public String guessMimetype(String filename) {
-		return getMimetype(filename);
+		String extension = null;
+		if (filename != null && filename.contains("."))
+			extension = filename.substring(filename.lastIndexOf(".") + 1);
+		return getMimetype(extension);
 	}
 
 	@Override

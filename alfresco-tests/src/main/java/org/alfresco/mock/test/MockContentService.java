@@ -55,12 +55,7 @@ public class MockContentService implements ContentService, Serializable {
 		File file = getNodeService().getNodeRefs().get(nodeRef);
 		File content = new File(file.getAbsolutePath() + File.separator + file.getName());
 		ContentReader contentReader = new FileContentReader(content);
-		String[] splittedFile = file.getName().split("\\.");
-		String extension = null;
-		if (splittedFile.length > 1) {
-			extension = splittedFile[1];
-			contentReader.setMimetype(mimetypeService.guessMimetype(extension));
-		}
+		contentReader.setMimetype(mimetypeService.guessMimetype(file.getName()));
 		return contentReader;
 	}
 
