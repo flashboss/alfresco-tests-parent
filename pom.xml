@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests-parent</artifactId>
-	<version>6.2.0-ea.7</version>
+	<version>6.2.0-ea.6</version>
 	<name>Alfresco tests parent</name>
 	<description>Alfresco tests parent pom</description>
 	<packaging>pom</packaging>
