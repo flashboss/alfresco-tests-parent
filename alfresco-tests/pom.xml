@@ -2,19 +2,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests</artifactId>
+	<version>6.1.0-ea.4</version>
 	<name>Alfresco Tests</name>
 	<packaging>jar</packaging>
 	<description>
 		This is a jar project based on mock classes to test fastly the alfresco applications
 	</description>
-	<url>http://www.vige.it</url>
-
-	<parent>
-		<groupId>it.vige</groupId>
-		<artifactId>alfresco-tests-parent</artifactId>
-		<version>6.1.0-ea.4</version>
-	</parent>
+	<url>http://alfresco-tests.vige.it</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,6 +21,32 @@
 		<maven.javadoc.plugin.version>3.1.1</maven.javadoc.plugin.version>
 		<maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
 	</properties>
+
+	<organization>
+		<name>Vige</name>
+		<url>http://www.vige.it</url>
+	</organization>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+	<scm>
+		<connection>svn:git:https://github.com/flashboss/alfresco-tests-parent.git</connection>
+		<developerConnection>svn:git:https://github.com/flashboss/alfresco-tests-parent.git</developerConnection>
+		<tag>${project.version}</tag>
+		<url>svn:git:https://github.com/flashboss/alfresco-tests-parent.git</url>
+	</scm>
+	<developers>
+		<developer>
+			<id>flashboss</id>
+			<name>Luca Stancapiano</name>
+			<organization>vige</organization>
+			<organizationUrl>http://www.vige.it</organizationUrl>
+			<url>http://www.vige.it</url>
+		</developer>
+	</developers>
 
 	<!-- Alfresco Maven Repositories -->
 	<repositories>
