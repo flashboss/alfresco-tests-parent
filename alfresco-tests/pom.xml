@@ -4,13 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests</artifactId>
-	<version>5.2.f.4</version>
+	<version>5.2.f.5</version>
 	<name>Alfresco Tests</name>
 	<packaging>jar</packaging>
 	<description>
 		This is a jar project based on mock classes to test fastly the alfresco applications
 	</description>
-	<url>http://www.vige.it</url>
+	<url>http://alfresco-tests.vige.it</url>
 
     <properties>
 
