@@ -10,7 +10,7 @@
 	<description>
 		This is a jar project based on mock classes to test fastly the alfresco applications
 	</description>
-	<url>http://www.vige.it</url>
+	<url>http://alfresco-tests.vige.it</url>
 	
 	<parent>
 		<groupId>org.alfresco.maven</groupId>
