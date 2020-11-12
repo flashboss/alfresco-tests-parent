@@ -5,11 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests-parent</artifactId>
-	<version>6.2.0-ea.5</version>
+	<version>6.2.0-ea.7</version>
 	<name>Alfresco tests parent</name>
 	<description>Alfresco tests parent pom</description>
 	<packaging>pom</packaging>
-
+	
 	<organization>
 		<name>Vige</name>
 		<url>http://www.vige.it</url>
@@ -41,4 +41,5 @@
 		<module>alfresco-tests-activiti-sample</module>
         <module>alfresco-tests-ws-sample</module>
 	</modules>
+	
 </project>
