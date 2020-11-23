@@ -6,7 +6,7 @@
     <artifactId>alfresco-tests-activiti-sample</artifactId>
     <name>Alfresco Tests Activiti sample</name>
     <packaging>amp</packaging>
-    <version>4.2.6.6.8</version>
+    <version>4.2.6.6.9</version>
     <description>Simple AMP Activiti sample for tests</description>
 
 	<parent>
