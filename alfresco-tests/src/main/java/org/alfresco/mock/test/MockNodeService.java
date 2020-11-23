@@ -127,7 +127,7 @@ public class MockNodeService implements NodeService, Serializable {
 			setProperty(nodeRef, ContentModel.PROP_NAME, assocQName.getLocalName());
 			setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
 		} else
-			setProperties(nodeRef, properties);
+			setProperties(nodeRef, new HashMap<>(properties));
 		if (getProperty(nodeRef, PRIMARY_PARENT) == null)
 			setProperty(nodeRef, PRIMARY_PARENT, parentRef);
 		File file = new File(pathStr);
