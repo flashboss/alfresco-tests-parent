@@ -28,6 +28,11 @@ public class NodeUtils {
 
 	public static NodeRef insertDocument(NodeRef parent, String name, String text, Map<QName, Serializable> properties,
 			ServiceRegistry serviceRegistry) {
+		return insertDocument(parent, name, text.getBytes(), properties, serviceRegistry);
+	}
+
+	public static NodeRef insertDocument(NodeRef parent, String name, byte[] text, Map<QName, Serializable> properties,
+			ServiceRegistry serviceRegistry) {
 		NodeService nodeService = serviceRegistry.getNodeService();
 		ContentService contentService = serviceRegistry.getContentService();
 		MimetypeService mimetypeService = serviceRegistry.getMimetypeService();
@@ -40,7 +45,7 @@ public class NodeUtils {
 		NodeRef node = nodeService.createNode(parent, ContentModel.ASSOC_CONTAINS,
 				QName.createQName(NamespaceService.CONTENT_MODEL_PREFIX, name, namespaceService), type, properties)
 				.getChildRef();
-		InputStream inputStream = new ByteArrayInputStream(text.getBytes());
+		InputStream inputStream = new ByteArrayInputStream(text);
 		ContentWriter writer = contentService.getWriter(node, ContentModel.PROP_CONTENT, true);
 		writer.setMimetype(mimetypeService.getMimetype(mimetypeService.getExtension(name)));
 		writer.putContent(inputStream);
