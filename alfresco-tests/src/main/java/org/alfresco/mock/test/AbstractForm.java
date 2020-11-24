@@ -82,6 +82,10 @@ public abstract class AbstractForm {
 		return NodeUtils.insertDocument(parent, name, text, properties, serviceRegistry);
 	}
 
+	protected NodeRef insertDocument(NodeRef parent, String name, byte[] text, Map<QName, Serializable> properties) {
+		return NodeUtils.insertDocument(parent, name, text, properties, serviceRegistry);
+	}
+
 	protected NodeRef insertZip(NodeRef parent, String zipName, String entryName, String text,
 			Map<QName, Serializable> properties) throws IOException {
 		return ZipUtils.insertZip(parent, zipName, entryName, text, properties, serviceRegistry);
