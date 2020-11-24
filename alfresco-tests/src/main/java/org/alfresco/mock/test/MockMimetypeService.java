@@ -16,7 +16,7 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	@Override
 	public String getExtension(String mimetype) {
 		if (mimetype.indexOf(".") >= 0)
-			return mimetype.substring(mimetype.lastIndexOf("."));
+			return mimetype.substring(mimetype.lastIndexOf(".") + 1);
 		else
 			return null;
 	}
@@ -31,6 +31,8 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 			return MimetypeMap.MIMETYPE_PDF;
 		else if (extension != null && extension.equals("txt"))
 			return MimetypeMap.MIMETYPE_TEXT_PLAIN;
+		else if (extension != null && extension.equals("p7m"))
+			return "application/x-pkcs7-mime";
 		else
 			return null;
 	}
