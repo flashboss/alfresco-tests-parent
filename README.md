@@ -1,6 +1,6 @@
 Tests
 =============
-A library to test the alfresco components. It offer mock file to execute unit and integration tests in a faster mode, avoiding to start the alfresco server.
+A library to test the alfresco components. It offers mock files to execute unit and integration tests in a faster mode, avoiding to start the alfresco server.
 
 This version is for:
 
