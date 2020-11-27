@@ -17,7 +17,7 @@ To start add the dependency in your project sdk module:
 		<scope>test</scope>
    </dependency>
 ```
-Old versions are available too. Here the list of the library versions:
+Old versions are available too. Here the list of the library versions sorted by Alfresco distribution:
 - 6.1.0-ea.5
 - 6.0.0-ea.5
 - 5.2.f.5
