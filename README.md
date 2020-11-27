@@ -18,12 +18,12 @@ To start add the dependency in your project sdk module:
    </dependency>
 ```
 Old versions are available too. Here the list of the library versions:
-6.1.0-ea.5
-6.0.0-ea.5
-5.2.f.5
-5.1.g.4
-5.0.d.4
-4.2.6.6.9
+- 6.1.0-ea.5
+- 6.0.0-ea.5
+- 5.2.f.5
+- 5.1.g.4
+- 5.0.d.4
+- 4.2.6.6.9
 
 Create a junit test, for example:
 
