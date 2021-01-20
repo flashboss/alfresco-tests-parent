@@ -13,17 +13,17 @@ To start add the dependency in your project sdk module:
    <dependency>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests</artifactId>
-		<version>6.2.0-ea.7</version>
+		<version>6.2.0-ea.8</version>
 		<scope>test</scope>
    </dependency>
 ```
 Old versions are available too. Here the list of the library versions sorted by Alfresco distribution:
-- 6.1.0-ea.5
-- 6.0.0-ea.5
-- 5.2.f.5
-- 5.1.g.4
-- 5.0.d.4
-- 4.2.6.6.9
+- 6.1.0-ea.6
+- 6.0.0-ea.7
+- 5.2.f.6
+- 5.1.g.5
+- 5.0.d.5
+- 4.2.6.6.10
 
 Create a junit test, for example:
 
@@ -192,7 +192,7 @@ src -> test -> resources -> alfresco -> module -> test-module-context.xml
 		resource="classpath:alfresco/module/${project.artifactId}/context/service-context.xml" />
 </beans>
 ```
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/6.2.0-ea/alfresco-tests-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/master/alfresco-tests-sample.
 
 Activiti test
 ===========
@@ -392,7 +392,7 @@ In your src/test/resources folder add the follow spring descriptor file test-mod
 	<import resource="classpath:alfresco/module/${project.artifactId}/module-context.xml" />
 </beans>
 ```
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/6.2.0-ea/alfresco-tests-activiti-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/master/alfresco-tests-activiti-sample.
 
 Webscript test
 ===========
@@ -516,4 +516,4 @@ In your src/test/resources folder add the follow spring descriptor file test-mod
 		resource="classpath:alfresco/module/${project.artifactId}/context/webscript-context.xml" />
 </beans>
 ```
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/6.2.0-ea/alfresco-tests-ws-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/master/alfresco-tests-ws-sample.
