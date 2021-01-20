@@ -347,6 +347,10 @@ public class MockSearchService implements SearchService, Serializable {
 		String[] segments = query.split(" (?i)AND | (?i)OR ");
 		for (String segm : segments) {
 			String seg = segm.trim();
+			if (seg.startsWith("(") && seg.endsWith(")")) {
+				seg = seg.replaceFirst("\\(", "");
+				seg = seg.substring(0, seg.length() - 1);
+			}
 			if (!seg.startsWith("PATH:") && !seg.substring(1, seg.length()).startsWith("PATH:")
 					&& !seg.startsWith("TYPE:") && !seg.startsWith("-") && !seg.startsWith("(-")
 					&& !seg.contains("[")) {

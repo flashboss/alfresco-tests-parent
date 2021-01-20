@@ -182,6 +182,7 @@
 	<bean id="templateService"
 		class="org.alfresco.mock.test.MockTemplateService" />
 	<alias name="NamespaceService" alias="namespaceService" />
+	<alias name="VersionService" alias="versionService" />
 	<alias name="ServiceRegistry" alias="services" />
 	<bean id="javaScriptProcessor"
 		class="org.alfresco.mock.test.MockScriptProcessor"
