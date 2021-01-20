@@ -25,13 +25,16 @@ public class MockWebScriptRequest implements WebScriptRequest {
 	private String[] headerNames;
 	private HttpServletRequest httpServletRequest;
 
-	public MockWebScriptRequest(String format, FormData.FormField[] fields, WebScript webScript,
+	public MockWebScriptRequest(String format, Map<String, String> templateVars, WebScript webScript,
 			Map<String, Serializable> requestFields, ServiceRegistry serviceRegistry) {
+
 		this.format = format;
 		this.runtime = new MockRuntime();
 		httpServletRequest = new MockHttpServletRequest(requestFields, serviceRegistry);
 		formData = new FormData(httpServletRequest);
-		serviceMatch = new Match(null, new HashMap<String, String>(), null, webScript);
+		if (templateVars == null)
+			templateVars = new HashMap<String, String>();
+		serviceMatch = new Match(null, templateVars, null, webScript);
 		parameterNames = new String[0];
 		headerNames = new String[0];
 	}
