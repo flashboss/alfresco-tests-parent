@@ -27,6 +27,7 @@ public class MockWebScriptRequest implements WebScriptRequest {
 
 	public MockWebScriptRequest(String format, Map<String, String> templateVars, WebScript webScript,
 			Map<String, Serializable> requestFields, ServiceRegistry serviceRegistry) {
+
 		this.format = format;
 		this.runtime = new MockRuntime();
 		httpServletRequest = new MockHttpServletRequest(requestFields, serviceRegistry);

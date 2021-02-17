@@ -41,7 +41,7 @@ import it.vige.ws.WSSampleModel;
 @ContextConfiguration("classpath:test-module-context.xml")
 public class PreviousWSSampleTest extends AbstractWSForm {
 
-	private final static String CARTELLA_WSSAMPLE = "WSSAMPLE-20157726";
+	private final static String FOLDER_WSSAMPLE = "WSSAMPLE-20157726";
 	private final static String dataModifica = "2020-06-19";
 
 	@Autowired
@@ -54,7 +54,7 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 	public void init() {
 		super.init();
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
-		namespaceService.registerNamespace("mccpb", WSSampleModel.PBPDV_NAMESPACE);
+		namespaceService.registerNamespace("vigepb", WSSampleModel.PBPDV_NAMESPACE);
 
 		// Creating initial folders and sites
 		NodeRef site = insertFolder(sites, "digital-conservation");
@@ -63,7 +63,7 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 		NodeRef bankSite = insertFolder(sites, "bank-site");
 		NodeRef bankSiteDL = insertFolder(bankSite, "documentLibrary");
 		repository = insertFolder(bankSiteDL, "repository");
-		insertFolder(repository, CARTELLA_WSSAMPLE);
+		insertFolder(repository, FOLDER_WSSAMPLE);
 	}
 
 	@Override
@@ -80,7 +80,7 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 		{
 			fields.put("date_modified", dataModifica);
 			fields.put("date_ws_end", dataModifica);
-			fields.put("codicews", CARTELLA_WSSAMPLE);
+			fields.put("codicews", FOLDER_WSSAMPLE);
 			fields.put("date_ws_start", "1970-01-01");
 		}
 		WebScriptRequest webScriptRequest = new MockWebScriptRequest("json", null, previousWSSample, fields,
@@ -89,15 +89,15 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 
 		// Verify
 		List<NodeRef> nodeRefs = searchService
-				.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, SearchService.LANGUAGE_XPATH, CARTELLA_WSSAMPLE)
+				.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, SearchService.LANGUAGE_XPATH, FOLDER_WSSAMPLE)
 				.getNodeRefs();
 		NodeRef result = nodeRefs.get(0);
 		Set<QName> aspects = nodeService.getAspects(result);
 		Assert.assertEquals("One aspect for the folder", 1, aspects.size());
 		QName aspect = aspects.iterator().next();
 		Assert.assertEquals("Added an aspect to the WS Sample folder", WSSampleModel.ASPECT_WSSAMPLEFOLDER, aspect);
-		Date dataCedacri = (Date) nodeService.getProperty(result, WSSampleModel.PROP_UPDATE_PROPERTY);
-		Assert.assertEquals("Added the date property", dataModifica, dateFormat.format(dataCedacri));
+		Date dateCedra = (Date) nodeService.getProperty(result, WSSampleModel.PROP_UPDATE_PROPERTY);
+		Assert.assertEquals("Added the date property", dataModifica, dateFormat.format(dateCedra));
 	}
 
 }
