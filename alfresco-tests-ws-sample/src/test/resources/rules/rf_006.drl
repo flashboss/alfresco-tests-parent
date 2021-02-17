@@ -1,0 +1,315 @@
+package it.vige.ws.drools
+
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.XWPFTableCell;
+import org.apache.poi.xwpf.usermodel.XWPFTableRow;
+import java.util.List;
+import it.vige.ws.templateManager.drools.DocParam;
+
+rule "rf_006"
+    when
+       $docParam : DocParam(  $doc : doc, $jsonMap : jsonMap, $converter : converter )
+    then
+		for (XWPFParagraph p : $doc.getParagraphs()) {
+
+		    // if the paragraph does not contain the placeholder it is skipped.
+            String ptext = p.getText();
+
+            if (!ptext.contains("${")) {
+                continue;
+            }
+			List<XWPFRun> runs = p.getRuns();
+			for (XWPFRun r : runs) {
+
+                String runText = r.getText(0);
+
+                if (runText == null || !runText.contains("${")) {
+                    continue;
+                }
+
+
+					$converter.replace(r, "${cognome}",
+							"rf_006:anagrafeDichiarante:anagrafe:cognome");
+					$converter.replace(r, "${nome}",
+							"rf_006:anagrafeDichiarante:anagrafe:nome");
+					$converter.replaceMultivalue(r, "${sesso|",
+							"rf_006:anagrafeDichiarante:anagrafe:sesso");
+
+					$converter.replace(r, "${codiceFiscale}",
+							"rf_006:anagrafeDichiarante:anagrafe:codiceFiscale");
+					$converter.replace(r, "${luogoNascita}",
+							"rf_006:anagrafeDichiarante:nascita:luogoNascita");
+					$converter.replaceDate(r, "${dataNascita}",
+							"rf_006:anagrafeDichiarante:nascita:dataNascita");
+					$converter.replace(r, "${indirizzoResidenza}",
+							"rf_006:anagrafeDichiarante:residenza:indirizzo");
+					$converter.replace(r, "${cap}",
+							"rf_006:anagrafeDichiarante:residenza:cap");
+					$converter.replace(r, "${comune}",
+							"rf_006:anagrafeDichiarante:residenza:comune");
+					$converter.replace(r, "${provincia}",
+							"rf_006:anagrafeDichiarante:residenza:prov");
+					$converter.replace(r, "${nazione}",
+							"rf_006:anagrafeDichiarante:residenza:nazione");
+					$converter.replace(r, "${indirizzoDomicilio}",
+							"rf_006:anagrafeDichiarante:domicilio:indirizzo");
+					$converter.replace(r, "${capDomicilio}",
+							"rf_006:anagrafeDichiarante:domicilio:cap");
+					$converter.replace(r, "${capComune}",
+							"rf_006:anagrafeDichiarante:domicilio:comune");
+					$converter.replace(r, "${provinciaDomicilio}",
+							"rf_006:anagrafeDichiarante:domicilio:prov");
+					$converter.replace(r, "${nazioneDomicilio}",
+							"rf_006:anagrafeDichiarante:domicilio:nazione");
+					$converter.replace(r, "${cittadinanza1}",
+							"rf_006:anagrafeDichiarante:anagrafe:cittadinanza1");
+					$converter.replace(r, "${cittadinanza2}",
+							"rf_006:anagrafeDichiarante:anagrafe:getCittadinanza2");
+					$converter.replace(r, "${tipoDocumento}",
+							"rf_006:anagrafeDichiarante:documentoIdentita:tipo");
+					$converter.replace(r, "${numeroDocumento}",
+							"rf_006:anagrafeDichiarante:documentoIdentita:numero");
+					$converter.replace(r, "${rilasciatoDa}",
+							"rf_006:anagrafeDichiarante:documentoIdentita:rilasciatoDa");
+					$converter.replaceDate(r, "${dataDocumento}",
+							"rf_006:anagrafeDichiarante:documentoIdentita:dataRilascio");
+					$converter.replaceDate(r, "${scadenzaDocumento}",
+							"rf_006:anagrafeDichiarante:documentoIdentita:scadenza");
+
+					$converter.replaceMultivalue(r, "${ruolo|",
+							"rf_006:ruoloDichiarante:ruolo:ruolo");
+
+					$converter.replace(r, "${denominazioneSociale}",
+							"rf_006:anagrafeAzienda:denominazioneSocialeAzienda");
+					$converter.replace(r, "${cfAzienda}",
+							"rf_006:anagrafeAzienda:cfAzienda");
+
+					$converter.replace(r, "${titolareCognome1}",
+							"rf_006:anagrafeTitolareEffettivo_1:anagrafe:cognome");
+					$converter.replace(r, "${titolareNome1}",
+							"rf_006:anagrafeTitolareEffettivo_1:anagrafe:nome");
+					$converter.replaceMultivalue(r, "${titSesso1|",
+							"rf_006:anagrafeTitolareEffettivo_1:anagrafe:sesso");
+					$converter.replaceMultivalue(r, "${titolareSesso1|",
+							"rf_006:anagrafeTitolareEffettivo_1:anagrafe:sesso");
+					$converter.replace(r, "${titolareCodiceFiscale1}",
+							"rf_006:anagrafeTitolareEffettivo_1:anagrafe:codiceFiscale");
+					$converter.replace(r, "${titolareLuogoNascita1}",
+							"rf_006:anagrafeTitolareEffettivo_1:nascita:luogoNascita");
+					$converter.replaceDate(r, "${titolareDataNascita1}",
+							"rf_006:anagrafeTitolareEffettivo_1:nascita:dataNascita");
+					$converter.replace(r, "${titolareIndirizzoResidenza1}",
+							"rf_006:anagrafeTitolareEffettivo_1:residenza:indirizzo");
+					$converter.replace(r, "${titolareCapResidenza1}",
+							"rf_006:anagrafeTitolareEffettivo_1:residenza:cap");
+					$converter.replace(r, "${titolareComuneResidenza1}",
+							"rf_006:anagrafeTitolareEffettivo_1:residenza:comune");
+					$converter.replace(r, "${titolareProvResidenza1}",
+							"rf_006:anagrafeTitolareEffettivo_1:residenza:prov");
+					$converter.replace(r, "${titolareNazioneResidenza1}",
+							"rf_006:anagrafeTitolareEffettivo_1:residenza:nazione");
+					$converter.replace(r, "${titolareDomicilioIndirizzo1}",
+							"rf_006:anagrafeTitolareEffettivo_1:domicilio:indirizzo");
+					$converter.replace(r, "${titolareDomicilioCap1}",
+							"rf_006:anagrafeTitolareEffettivo_1:domicilio:cap");
+					$converter.replace(r, "${titolareDomicilioComune1}",
+							"rf_006:anagrafeTitolareEffettivo_1:domicilio:comune");
+					$converter.replace(r, "${titolareDomicilioProv1}",
+							"rf_006:anagrafeTitolareEffettivo_1:domicilio:prov");
+					$converter.replace(r, "${titolareDomicilioNazione1}",
+							"rf_006:anagrafeTitolareEffettivo_1:domicilio:nazione");
+					$converter.replace(r, "${titolareCittadinanza1}",
+							"rf_006:anagrafeTitolareEffettivo_1:anagrafe:cittadinanza1");
+					$converter.replace(r, "${titolareGetCittadinanza1}",
+							"rf_006:anagrafeTitolareEffettivo_1:anagrafe:getCittadinanza2");
+					$converter.replace(r, "${titolareTipoDoc1}",
+							"rf_006:anagrafeTitolareEffettivo_1:documentoIdentita:tipo");
+					$converter.replace(r, "${titolareNumeroDoc1}",
+							"rf_006:anagrafeTitolareEffettivo_1:documentoIdentita:numero");
+					$converter.replace(r, "${titolareRilasciatoda1}",
+							"rf_006:anagrafeTitolareEffettivo_1:documentoIdentita:rilasciatoDa");
+					$converter.replace(r, "${titolarerilasciatoluogo1}",
+							"rf_006:anagrafeTitolareEffettivo_1:documentoIdentita:luogoRilascio");
+					$converter.replaceDate(r, "${titolareRilasciatodata1}",
+							"rf_006:anagrafeTitolareEffettivo_1:documentoIdentita:dataRilascio");
+					$converter.replaceDate(r, "${titolareScadenza1}",
+							"rf_006:anagrafeTitolareEffettivo_1:documentoIdentita:scadenza");
+					$converter.replace(r, "${signLegal1}",
+							"rf_006:anagrafeDichiarante:documentoIdentita:signLegRappr");
+					$converter.replace(r, "${signClerk1}",
+							"rf_006:anagrafeDichiarante:documentoIdentita:signClerk");
+
+
+					$converter.replace(r, "${titolareCognome2}",
+							"rf_006:anagrafeTitolareEffettivo_2:anagrafe:cognome");
+					$converter.replace(r, "${titolareNome2}",
+							"rf_006:anagrafeTitolareEffettivo_2:anagrafe:nome");
+					$converter.replaceMultivalue(r, "${titolareSesso2|",
+							"rf_006:anagrafeTitolareEffettivo_2:anagrafe:sesso");
+					$converter.replaceMultivalue(r, "${titolareSesso2|",
+							"rf_006:anagrafeTitolareEffettivo_2:anagrafe:sesso");
+					$converter.replace(r, "${titolareCodiceFiscale2}",
+							"rf_006:anagrafeTitolareEffettivo_2:anagrafe:codiceFiscale");
+					$converter.replace(r, "${titolareLuogoNascita2}",
+							"rf_006:anagrafeTitolareEffettivo_2:nascita:luogoNascita");
+					$converter.replaceDate(r, "${titolareDataNascita2}",
+							"rf_006:anagrafeTitolareEffettivo_2:nascita:dataNascita");
+					$converter.replace(r, "${titolareIndirizzoResidenza2}",
+							"rf_006:anagrafeTitolareEffettivo_2:residenza:indirizzo");
+					$converter.replace(r, "${titolareCapResidenza2}",
+							"rf_006:anagrafeTitolareEffettivo_2:residenza:cap");
+					$converter.replace(r, "${titolareComuneResidenza2}",
+							"rf_006:anagrafeTitolareEffettivo_2:residenza:comune");
+					$converter.replace(r, "${titolareProvResidenza2}",
+							"rf_006:anagrafeTitolareEffettivo_2:residenza:prov");
+					$converter.replace(r, "${titolareNazioneResidenza2}",
+							"rf_006:anagrafeTitolareEffettivo_2:residenza:nazione");
+					$converter.replace(r, "${titolareDomicilioIndirizzo2}",
+							"rf_006:anagrafeTitolareEffettivo_2:domicilio:indirizzo");
+					$converter.replace(r, "${titolareDomicilioCap2}",
+							"rf_006:anagrafeTitolareEffettivo_2:domicilio:cap");
+					$converter.replace(r, "${titolareDomicilioComune2}",
+							"rf_006:anagrafeTitolareEffettivo_2:domicilio:comune");
+					$converter.replace(r, "${titolareDomicilioProv2}",
+							"rf_006:anagrafeTitolareEffettivo_2:domicilio:prov");
+					$converter.replace(r, "${titolareDomicilioNazione2}",
+							"rf_006:anagrafeTitolareEffettivo_2:domicilio:nazione");
+					$converter.replace(r, "${titolareCittadinanza2}",
+							"rf_006:anagrafeTitolareEffettivo_2:anagrafe:cittadinanza2");
+					$converter.replace(r, "${titolareGetCittadinanza2}",
+							"rf_006:anagrafeTitolareEffettivo_2:anagrafe:getCittadinanza2");
+					$converter.replace(r, "${titolareTipoDoc2}",
+							"rf_006:anagrafeTitolareEffettivo_2:documentoIdentita:tipo");
+					$converter.replace(r, "${titolareNumeroDoc2}",
+							"rf_006:anagrafeTitolareEffettivo_2:documentoIdentita:numero");
+					$converter.replace(r, "${titolareRilasciatoda2}",
+							"rf_006:anagrafeTitolareEffettivo_2:documentoIdentita:rilasciatoDa");
+					$converter.replace(r, "${titolarerilasciatoluogo2}",
+							"rf_006:anagrafeTitolareEffettivo_2:documentoIdentita:luogoRilascio");
+					$converter.replaceDate(r, "${titolareRilasciatodata2}",
+							"rf_006:anagrafeTitolareEffettivo_2:documentoIdentita:dataRilascio");
+					$converter.replaceDate(r, "${titolareScadenza2}",
+							"rf_006:anagrafeTitolareEffettivo_2:documentoIdentita:scadenza");
+					$converter.replace(r, "${signLegal2}",
+							"rf_006:anagrafeDichiarante:documentoIdentita:signLegRappr");
+					$converter.replace(r, "${signClerk2}",
+							"rf_006:anagrafeDichiarante:documentoIdentita:signClerk");
+
+					$converter.replace(r, "${titolareCognome3}",
+							"rf_006:anagrafeTitolareEffettivo_3:anagrafe:cognome");
+					$converter.replace(r, "${titolareNome3}",
+							"rf_006:anagrafeTitolareEffettivo_3:anagrafe:nome");
+					$converter.replaceMultivalue(r, "${titolareSesso3|",
+							"rf_006:anagrafeTitolareEffettivo_3:anagrafe:sesso");
+					$converter.replaceMultivalue(r, "${titolareSesso3|",
+							"rf_006:anagrafeTitolareEffettivo_3:anagrafe:sesso");
+					$converter.replace(r, "${titolareCodiceFiscale3}",
+							"rf_006:anagrafeTitolareEffettivo_3:anagrafe:codiceFiscale");
+					$converter.replace(r, "${titolareLuogoNascita3}",
+							"rf_006:anagrafeTitolareEffettivo_3:nascita:luogoNascita");
+					$converter.replaceDate(r, "${titolareDataNascita3}",
+							"rf_006:anagrafeTitolareEffettivo_3:nascita:dataNascita");
+					$converter.replace(r, "${titolareIndirizzoResidenza3}",
+							"rf_006:anagrafeTitolareEffettivo_3:residenza:indirizzo");
+					$converter.replace(r, "${titolareCapResidenza3}",
+							"rf_006:anagrafeTitolareEffettivo_3:residenza:cap");
+					$converter.replace(r, "${titolareComuneResidenza3}",
+							"rf_006:anagrafeTitolareEffettivo_3:residenza:comune");
+					$converter.replace(r, "${titolareProvResidenza3}",
+							"rf_006:anagrafeTitolareEffettivo_3:residenza:prov");
+					$converter.replace(r, "${titolareNazioneResidenza3}",
+							"rf_006:anagrafeTitolareEffettivo_3:residenza:nazione");
+					$converter.replace(r, "${titolareDomicilioIndirizzo3}",
+							"rf_006:anagrafeTitolareEffettivo_3:domicilio:indirizzo");
+					$converter.replace(r, "${titolareDomicilioCap3}",
+							"rf_006:anagrafeTitolareEffettivo_3:domicilio:cap");
+					$converter.replace(r, "${titolareDomicilioComune3}",
+							"rf_006:anagrafeTitolareEffettivo_3:domicilio:comune");
+					$converter.replace(r, "${titolareDomicilioProv3}",
+							"rf_006:anagrafeTitolareEffettivo_3:domicilio:prov");
+					$converter.replace(r, "${titolareDomicilioNazione3}",
+							"rf_006:anagrafeTitolareEffettivo_3:domicilio:nazione");
+					$converter.replace(r, "${titolareCittadinanza3}",
+							"rf_006:anagrafeTitolareEffettivo_3:anagrafe:cittadinanza3");
+					$converter.replace(r, "${titolareGetCittadinanza3}",
+							"rf_006:anagrafeTitolareEffettivo_3:anagrafe:getCittadinanza3");
+					$converter.replace(r, "${titolareTipoDoc3}",
+							"rf_006:anagrafeTitolareEffettivo_3:documentoIdentita:tipo");
+					$converter.replace(r, "${titolareNumeroDoc3}",
+							"rf_006:anagrafeTitolareEffettivo_3:documentoIdentita:numero");
+					$converter.replace(r, "${titolareRilasciatoda3}",
+							"rf_006:anagrafeTitolareEffettivo_3:documentoIdentita:rilasciatoDa");
+					$converter.replace(r, "${titolarerilasciatoluogo3}",
+							"rf_006:anagrafeTitolareEffettivo_3:documentoIdentita:luogoRilascio");
+					$converter.replaceDate(r, "${titolareRilasciatodata3}",
+							"rf_006:anagrafeTitolareEffettivo_3:documentoIdentita:dataRilascio");
+					$converter.replaceDate(r, "${titolareScadenza3}",
+							"rf_006:anagrafeTitolareEffettivo_3:documentoIdentita:scadenza");
+					$converter.replace(r, "${signLegal3}",
+							"rf_006:anagrafeDichiarante:documentoIdentita:signLegRappr");
+					$converter.replace(r, "${signClerk3}",
+							"rf_006:anagrafeDichiarante:documentoIdentita:signClerk");
+
+
+					$converter.replace(r, "${titolareCognome4}",
+							"rf_006:anagrafeTitolareEffettivo_4:anagrafe:cognome");
+					$converter.replace(r, "${titolareNome4}",
+							"rf_006:anagrafeTitolareEffettivo_4:anagrafe:nome");
+					$converter.replaceMultivalue(r, "${titolareSesso4|",
+							"rf_006:anagrafeTitolareEffettivo_4:anagrafe:sesso");
+					$converter.replaceMultivalue(r, "${titolareSesso4|",
+							"rf_006:anagrafeTitolareEffettivo_4:anagrafe:sesso");
+					$converter.replace(r, "${titolareCodiceFiscale4}",
+							"rf_006:anagrafeTitolareEffettivo_4:anagrafe:codiceFiscale");
+					$converter.replace(r, "${titolareLuogoNascita4}",
+							"rf_006:anagrafeTitolareEffettivo_4:nascita:luogoNascita");
+					$converter.replaceDate(r, "${titolareDataNascita4}",
+							"rf_006:anagrafeTitolareEffettivo_4:nascita:dataNascita");
+					$converter.replace(r, "${titolareIndirizzoResidenza4}",
+							"rf_006:anagrafeTitolareEffettivo_4:residenza:indirizzo");
+					$converter.replace(r, "${titolareCapResidenza4}",
+							"rf_006:anagrafeTitolareEffettivo_4:residenza:cap");
+					$converter.replace(r, "${titolareComuneResidenza4}",
+							"rf_006:anagrafeTitolareEffettivo_4:residenza:comune");
+					$converter.replace(r, "${titolareProvResidenza4}",
+							"rf_006:anagrafeTitolareEffettivo_4:residenza:prov");
+					$converter.replace(r, "${titolareNazioneResidenza4}",
+							"rf_006:anagrafeTitolareEffettivo_4:residenza:nazione");
+					$converter.replace(r, "${titolareDomicilioIndirizzo4}",
+							"rf_006:anagrafeTitolareEffettivo_4:domicilio:indirizzo");
+					$converter.replace(r, "${titolareDomicilioCap4}",
+							"rf_006:anagrafeTitolareEffettivo_4:domicilio:cap");
+					$converter.replace(r, "${titolareDomicilioComune4}",
+							"rf_006:anagrafeTitolareEffettivo_4:domicilio:comune");
+					$converter.replace(r, "${titolareDomicilioProv4}",
+							"rf_006:anagrafeTitolareEffettivo_4:domicilio:prov");
+					$converter.replace(r, "${titolareDomicilioNazione4}",
+							"rf_006:anagrafeTitolareEffettivo_4:domicilio:nazione");
+					$converter.replace(r, "${titolareCittadinanza4}",
+							"rf_006:anagrafeTitolareEffettivo_4:anagrafe:cittadinanza4");
+					$converter.replace(r, "${titolareGetCittadinanza4}",
+							"rf_006:anagrafeTitolareEffettivo_4:anagrafe:getCittadinanza4");
+					$converter.replace(r, "${titolareTipoDoc4}",
+							"rf_006:anagrafeTitolareEffettivo_4:documentoIdentita:tipo");
+					$converter.replace(r, "${titolareNumeroDoc4}",
+							"rf_006:anagrafeTitolareEffettivo_4:documentoIdentita:numero");
+					$converter.replace(r, "${titolareRilasciatoda4}",
+							"rf_006:anagrafeTitolareEffettivo_4:documentoIdentita:rilasciatoDa");
+					$converter.replace(r, "${titolarerilasciatoluogo4}",
+							"rf_006:anagrafeTitolareEffettivo_4:documentoIdentita:luogoRilascio");
+					$converter.replaceDate(r, "${titolareRilasciatodata4}",
+							"rf_006:anagrafeTitolareEffettivo_4:documentoIdentita:dataRilascio");
+					$converter.replaceDate(r, "${titolareScadenza4}",
+							"rf_006:anagrafeTitolareEffettivo_4:documentoIdentita:scadenza");
+					$converter.replace(r, "${signLegal4}",
+							"rf_006:anagrafeDichiarante:documentoIdentita:signLegRappr");
+					$converter.replace(r, "${signClerk4}",
+							"rf_006:anagrafeDichiarante:documentoIdentita:signClerk");
+
+
+				}
+			}
+
+end

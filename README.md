@@ -13,7 +13,7 @@ To start add the dependency in your project sdk amp:
    <dependency>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests</artifactId>
-		<version>${alfresco.version}.6</version>
+		<version>${alfresco.version}.7</version>
 		<scope>test</scope>
    </dependency>
 ```
@@ -189,11 +189,7 @@ src -> test -> resources -> alfresco -> module -> test-module-context.xml
 </beans>
 ```
 
-<<<<<<< HEAD
 You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/6.1.0-ea/alfresco-tests-sample.
-=======
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/6.0.0-ea/alfresco-tests-sample.
->>>>>>> 0dc937df58f5b90177e61a3c741ac217fe5feac9
 
 Activiti test
 ===========
