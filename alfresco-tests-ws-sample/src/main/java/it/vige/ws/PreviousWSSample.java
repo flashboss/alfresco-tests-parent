@@ -36,7 +36,7 @@ public class PreviousWSSample extends DeclarativeWebScript {
 
 	private String repositoryFolderTemplateWSSample;
 
-	private String documentiWSSampleFolderTemplate;
+	private String documentsWSSampleFolderTemplate;
 
 	private StoreRef storeRef = new StoreRef(StoreRef.PROTOCOL_WORKSPACE, "SpacesStore");
 
@@ -45,7 +45,7 @@ public class PreviousWSSample extends DeclarativeWebScript {
 	@Override
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
-		// -- 1 -- INIZIALIZZAZIONE VARIABILI
+		// -- 1 -- VARIABLE INITIALIZATION
 		Map<String, Object> model = new HashMap<String, Object>();
 		NodeRef rootNode = null;
 		Date dateModify = null;
@@ -56,18 +56,18 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		List<NodeRef> folderWSSamples = new ArrayList<NodeRef>();
 		try {
 
-			// -- 2 -- AUTENTICAZIONE
+			// -- 2 -- AUTENTICATION
 			AuthenticationService authenticationService = serviceRegistry.getAuthenticationService();
 			String currentUser = authenticationService.getCurrentUserName();
 
 			if (currentUser != null) {
-				// -- 3 -- ESTRAZIONE METADATI DAL FORM
+				// -- 3 -- METADATA EXTRACTION FROM THE FORM
 				FormData form = (FormData) req.parseContent();
 				FormData.FormField[] fields = form.getFields();
 				NodeService nodeService = serviceRegistry.getNodeService();
 				rootNode = getConservazioneFolder();
 				if (rootNode == null) {
-					redirectStatus(status, "La cartella 'cm:repository' nel sito 'Medio CreditoCentrale' non esiste");
+					redirectStatus(status, "Folder 'cm:repository' in the site 'Sample Banck' doesn't exit");
 				}
 				DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 				for (FormData.FormField field : fields) {
@@ -104,7 +104,7 @@ public class PreviousWSSample extends DeclarativeWebScript {
 						folderWSSamples = getPosizionidaConservareAsNodeRef(new DateTime(dateWSSampleStart.getTime()),
 								new DateTime(dateWSSampleEnd.getTime()));
 
-					// -- 4 -- AGGIORNAMENTO DELLA DATA MODIFICA SULLE CARTELLA WS Sample
+					// -- 4 -- UPDATE OF THE MODIFICATION DATE ON THE WS Sample FOLDER
 					for (NodeRef folderWSSample : folderWSSamples) {
 						Date dataAggiornamento = dateModify;
 						if (automatico)
@@ -114,14 +114,14 @@ public class PreviousWSSample extends DeclarativeWebScript {
 				}
 			}
 		} catch (ProviderNotFoundException ex1) {
-			model.put("errore", "Utente non autenticato");
+			model.put("errore", "User not authenticated");
 		} catch (Exception ex2) {
-			model.put("errore", "ERRORE nell' aggiornamento della cartella");
+			model.put("errore", "ERROR in updating the folder");
 		}
 
 		model.put("node", rootNode);
 
-		// -- 7 -- FINE WEBSCRIPT
+		// -- 7 -- END WEBSCRIPT
 
 		return model;
 	}
@@ -161,7 +161,7 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		SearchService searchService = serviceRegistry.getSearchService();
 		String folderWSSampleName = (String) nodeService.getProperty(folderWSSample, ContentModel.PROP_NAME);
 		ResultSet folderRs = searchService.query(this.storeRef, SearchService.LANGUAGE_FTS_ALFRESCO,
-				documentiWSSampleFolderTemplate.replace("{nomeWSSampleFolder}", folderWSSampleName));
+				documentsWSSampleFolderTemplate.replace("{nomeWSSampleFolder}", folderWSSampleName));
 		if (folderRs.length() < 1) {
 			return null;
 		}
@@ -196,8 +196,8 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		this.repositoryFolderTemplateWSSample = repositoryFolderTemplateWSSample;
 	}
 
-	public void setDocumentiWSSampleFolderTemplate(String documentiWSSampleFolderTemplate) {
-		this.documentiWSSampleFolderTemplate = documentiWSSampleFolderTemplate;
+	public void setDocumentsWSSampleFolderTemplate(String documentsWSSampleFolderTemplate) {
+		this.documentsWSSampleFolderTemplate = documentsWSSampleFolderTemplate;
 	}
 
 }
