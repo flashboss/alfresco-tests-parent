@@ -67,6 +67,23 @@
             <artifactId>alfresco-tests</artifactId>
             <version>${project.version}</version>
         </dependency>
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-decisiontables</artifactId>
+			<version>6.5.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>okhttp</artifactId>
+			<version>3.10.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>11.0.2</version>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
 
     <profiles>
