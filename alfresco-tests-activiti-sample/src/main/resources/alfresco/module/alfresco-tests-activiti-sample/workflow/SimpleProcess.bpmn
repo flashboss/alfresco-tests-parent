@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
   <process id="generationWorkflow" name="Generation Workflow" isExecutable="true">
-    <subProcess id="PdASubProcess" name="PdA Sub Process">
+    <subProcess id="RaRSubProcess" name="RaR Sub Process">
       <startEvent id="startevent2" name="Start"></startEvent>
-      <sequenceFlow id="flow11" sourceRef="startevent2" targetRef="pdaGenerationTask"></sequenceFlow>
+      <sequenceFlow id="flow11" sourceRef="startevent2" targetRef="rarGenerationTask"></sequenceFlow>
       <endEvent id="endevent6" name="End"></endEvent>
-      <serviceTask id="pdaGenerationTask" name="Generation Task" activiti:delegateExpression="${generation}"></serviceTask>
-      <sequenceFlow id="flow41" sourceRef="pdaGenerationTask" targetRef="endevent6"></sequenceFlow>
+      <serviceTask id="rarGenerationTask" name="Generation Task" activiti:delegateExpression="${generation}"></serviceTask>
+      <sequenceFlow id="flow41" sourceRef="rarGenerationTask" targetRef="endevent6"></sequenceFlow>
     </subProcess>
     <endEvent id="endevent2" name="End"></endEvent>
-    <sequenceFlow id="flow13" sourceRef="PdASubProcess" targetRef="endevent2"></sequenceFlow>
-    <boundaryEvent id="boundaryerror1" name="Error" attachedToRef="PdASubProcess">
+    <sequenceFlow id="flow13" sourceRef="RaRSubProcess" targetRef="endevent2"></sequenceFlow>
+    <boundaryEvent id="boundaryerror1" name="Error" attachedToRef="RaRSubProcess">
       <errorEventDefinition errorRef="subscriptionError"></errorEventDefinition>
     </boundaryEvent>
-    <startEvent id="alfrescoStartevent1" name="Alfresco start" activiti:formKey="mywf:submitPdAProcessTask"></startEvent>
+    <startEvent id="alfrescoStartevent1" name="Alfresco start" activiti:formKey="mywf:submitRaRProcessTask"></startEvent>
     <sequenceFlow id="flow29" sourceRef="alfrescoStartevent1" targetRef="exclusivegateway4"></sequenceFlow>
     <serviceTask id="subscriptionErrorMailTask" name="Subscription Error Mail Task" activiti:class="org.alfresco.repo.workflow.activiti.script.AlfrescoScriptDelegate">
       <extensionElements>
@@ -30,7 +30,7 @@
     </serviceTask>
     <endEvent id="endevent5" name="End"></endEvent>
     <sequenceFlow id="flow34" sourceRef="subscriptionErrorMailTask" targetRef="endevent5"></sequenceFlow>
-    <userTask id="selectedPdV" name="Selected PdV" activiti:candidateGroups="GROUP_conservatori" activiti:formKey="mywf:submitSelectedPdVTask">
+    <userTask id="selectedSaS" name="Selected SaS" activiti:candidateGroups="GROUP_conservatori" activiti:formKey="mywf:submitSelectedSaSTask">
       <extensionElements>
         <activiti:taskListener event="create" class="org.alfresco.repo.workflow.activiti.tasklistener.ScriptTaskListener">
           <activiti:field name="script">
@@ -43,7 +43,7 @@
       </extensionElements>
     </userTask>
     <exclusiveGateway id="exclusivegateway4" name="Exclusive Gateway"></exclusiveGateway>
-    <sequenceFlow id="flow36" sourceRef="exclusivegateway4" targetRef="selectedPdV">
+    <sequenceFlow id="flow36" sourceRef="exclusivegateway4" targetRef="selectedSaS">
       <extensionElements>
         <activiti:executionListener event="take" class="org.alfresco.repo.workflow.activiti.listener.ScriptExecutionListener">
           <activiti:field name="script">
@@ -58,42 +58,42 @@
     return a;
 }
 
-var pdvsResult= new Array();
-var relatedPdVSFolder=execution.getVariable('mywf_relatedPdVFolder');
-var startDatePdV=execution.getVariable('mywf_startDatePdV');
-var endDatePdV=execution.getVariable('mywf_endDatePdV');
-if (endDatePdV==null) {
-endDatePdV=new Date();
+var sassResult= new Array();
+var relatedSaSSFolder=execution.getVariable('mywf_relatedSaSFolder');
+var startDateSaS=execution.getVariable('mywf_startDateSaS');
+var endDateSaS=execution.getVariable('mywf_endDateSaS');
+if (endDateSaS==null) {
+endDateSaS=new Date();
 }
-var startDatePdVMillisecs = startDatePdV.getTime(); 
-var endDatePdVMillisecs = endDatePdV.getTime();    
-for each (var relatedPdVFolder in relatedPdVSFolder.toArray()){
-	var pdvFolderpath = relatedPdVFolder.qnamePath;
-	var pdvs=search.luceneSearch('TYPE:"mycont:contractsPdvCons" AND PATH:"'+ pdvFolderpath+'//*"');
-	logger.log("Query:" + pdvFolderpath + "//*");
-	pdvsResult = arrayUnique(pdvsResult.concat(pdvs));
-	logger.log("ARRAYpdvs:");
-	logger.log(pdvsResult);
+var startDateSaSMillisecs = startDateSaS.getTime(); 
+var endDateSaSMillisecs = endDateSaS.getTime();    
+for each (var relatedSaSFolder in relatedSaSSFolder.toArray()){
+	var sasFolderpath = relatedSaSFolder.qnamePath;
+	var sass=search.luceneSearch('TYPE:"mycont:contractsPdvCons" AND PATH:"'+ sasFolderpath+'//*"');
+	logger.log("Query:" + sasFolderpath + "//*");
+	sassResult = arrayUnique(sassResult.concat(sass));
+	logger.log("ARRAYsass:");
+	logger.log(sassResult);
 }
 var bpmPackage = execution.getVariable('bpm_package');
-logger.log("Nodi da inserire in var workflow:");
-for each (pdv in pdvsResult) {
-	logger.log(pdv);
-	bpmPackage.addNode(pdv);
+logger.log("Nodes to be included in var workflow:");
+for each (sas in sassResult) {
+	logger.log(sas);
+	bpmPackage.addNode(sas);
 }
 bpmPackage.save();]]></activiti:string>
           </activiti:field>
         </activiti:executionListener>
       </extensionElements>
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${mywf_starterPdA=='Human'}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${mywf_starterRaR=='Human'}]]></conditionExpression>
     </sequenceFlow>
-    <sequenceFlow id="flow37" sourceRef="selectedPdV" targetRef="PdASubProcess"></sequenceFlow>
-    <sequenceFlow id="flow38" sourceRef="exclusivegateway4" targetRef="PdASubProcess"></sequenceFlow>
+    <sequenceFlow id="flow37" sourceRef="selectedSaS" targetRef="RaRSubProcess"></sequenceFlow>
+    <sequenceFlow id="flow38" sourceRef="exclusivegateway4" targetRef="RaRSubProcess"></sequenceFlow>
     <sequenceFlow id="flow39" sourceRef="boundaryerror1" targetRef="subscriptionErrorMailTask"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_generationWorkflow">
     <bpmndi:BPMNPlane bpmnElement="generationWorkflow" id="BPMNPlane_generationWorkflow">
-      <bpmndi:BPMNShape bpmnElement="PdASubProcess" id="BPMNShape_PdASubProcess">
+      <bpmndi:BPMNShape bpmnElement="RaRSubProcess" id="BPMNShape_RaRSubProcess">
         <omgdc:Bounds height="171.0" width="421.0" x="350.0" y="140.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="startevent2" id="BPMNShape_startevent2">
@@ -102,7 +102,7 @@ bpmPackage.save();]]></activiti:string>
       <bpmndi:BPMNShape bpmnElement="endevent6" id="BPMNShape_endevent6">
         <omgdc:Bounds height="35.0" width="35.0" x="660.0" y="228.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="pdaGenerationTask" id="BPMNShape_pdaGenerationTask">
+      <bpmndi:BPMNShape bpmnElement="rarGenerationTask" id="BPMNShape_rarGenerationTask">
         <omgdc:Bounds height="55.0" width="131.0" x="460.0" y="200.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="boundaryerror1" id="BPMNShape_boundaryerror1">
@@ -120,7 +120,7 @@ bpmPackage.save();]]></activiti:string>
       <bpmndi:BPMNShape bpmnElement="endevent5" id="BPMNShape_endevent5">
         <omgdc:Bounds height="35.0" width="35.0" x="870.0" y="360.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="selectedPdV" id="BPMNShape_selectedPdV">
+      <bpmndi:BPMNShape bpmnElement="selectedSaS" id="BPMNShape_selectedSaS">
         <omgdc:Bounds height="55.0" width="105.0" x="180.0" y="246.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="exclusivegateway4" id="BPMNShape_exclusivegateway4">

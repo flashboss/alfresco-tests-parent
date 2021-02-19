@@ -66,11 +66,11 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		namespaceService.registerNamespace("mycont", SimpleModel.STARTING_URI);
 		NodeRef site = insertFolder(sites, "simple-site");
 		NodeRef documentLibrary = insertFolder(site, "documentLibrary");
-		NodeRef pdv = insertFolder(documentLibrary, "pdv");
-		NodeRef pda = insertFolder(documentLibrary, "pda");
+		NodeRef sas = insertFolder(documentLibrary, "sas");
+		NodeRef rar = insertFolder(documentLibrary, "rar");
 		NodeService nodeService = activitiProcessEngineConfiguration.getServiceRegistry().getNodeService();
-		nodeService.setProperty(pda, SimpleModel.PROP_PDA_ID_COUNTER, 0);
-		generationFolder = insertFolder(pdv, generationFolderName);
+		nodeService.setProperty(rar, SimpleModel.PROP_RAR_ID_COUNTER, 0);
+		generationFolder = insertFolder(sas, generationFolderName);
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
 		try {
 			properties.put(ContentModel.PROP_NAME, "contracts_" + generationFolderName + ".zip");
@@ -87,7 +87,7 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		variables.put("initiator", initiator);
 		variables.put("search", search);
 		variables.put("logger", logger);
-		variables.put("mywf_starterPdA", "Human");
+		variables.put("mywf_starterRaR", "Human");
 	}
 
 	/**
@@ -136,20 +136,20 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		ServiceRegistry serviceRegistry = activitiProcessEngineConfiguration.getServiceRegistry();
 
 		// Start process
-		variables.put("mywf_endDatePdV", dateFormat.parse("Mar 16 00:00:00 CET 2020"));
+		variables.put("mywf_endDateSaS", dateFormat.parse("Mar 16 00:00:00 CET 2020"));
 		MockActivitiScriptNode activitiScriptNode = new MockActivitiScriptNode(generationFolder, serviceRegistry);
 		ActivitiScriptNodeList activitiScriptNodeList = new ActivitiScriptNodeList();
 		activitiScriptNodeList.add(activitiScriptNode);
-		variables.put("mywf_relatedPdVFolder", activitiScriptNodeList);
-		variables.put("mywf_startDatePdV", dateFormat.parse("Mar 14 00:00:00 CET 2018"));
+		variables.put("mywf_relatedSaSFolder", activitiScriptNodeList);
+		variables.put("mywf_startDateSaS", dateFormat.parse("Mar 14 00:00:00 CET 2018"));
 		variables.put("bpm_workflowDescription", "mkkmkmkmk");
 		ProcessInstance instance = runtimeService.startProcessInstanceByKey(ACTIVITY_KEY, variables);
 
 		// execute the user task
-		List<Task> selectedPdV = taskService.createTaskQuery().taskDefinitionKey("selectedPdV")
+		List<Task> selectedSaS = taskService.createTaskQuery().taskDefinitionKey("selectedSaS")
 				.includeProcessVariables().list();
-		assertEquals(1, selectedPdV.size());
-		Task firstTask = selectedPdV.get(0);
+		assertEquals(1, selectedSaS.size());
+		Task firstTask = selectedSaS.get(0);
 		taskService.complete(firstTask.getId());
 
 		// process terminated
@@ -161,11 +161,11 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		SearchService searchService = serviceRegistry.getSearchService();
 		NodeService nodeService = serviceRegistry.getNodeService();
 		ResultSet resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
-				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"pda/contracts_" + generationFolderName + ".zip\"");
+				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"rar/contracts_" + generationFolderName + ".zip\"");
 		NodeRef createdNodeRef = resultQ.getNodeRef(0);
 		String path = nodeService.getPath(createdNodeRef).toString();
-		Assert.assertTrue("Added a zip file in the PDA folder",
-				path.endsWith("workspace/company_home/sites/simple-site/documentLibrary/pda/contracts_"
+		Assert.assertTrue("Added a zip file in the RAR folder",
+				path.endsWith("workspace/company_home/sites/simple-site/documentLibrary/rar/contracts_"
 						+ generationFolderName + ".zip"));
 
 		// the file is inside the workflow/packages activiti folder
