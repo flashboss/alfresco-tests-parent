@@ -21,7 +21,7 @@ public class Generation extends BaseJavaDelegate {
 
 	private static Log logger = LogFactory.getLog(Generation.class);
 
-	private String pdaFolder;
+	private String rarFolder;
 	private NodeService nodeService;
 	private SearchService searchService;
 	private NamespaceService namespaceService;
@@ -30,25 +30,25 @@ public class Generation extends BaseJavaDelegate {
 	public void execute(DelegateExecution execution) throws Exception {
 		logger.debug("Generation start");
 		NodeRef rootNodeRef = nodeService.getRootNode(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE);
-		List<NodeRef> results = searchService.selectNodes(rootNodeRef, pdaFolder, null, namespaceService, false);
+		List<NodeRef> results = searchService.selectNodes(rootNodeRef, rarFolder, null, namespaceService, false);
 		if (results.size() == 0) {
-			throw new AlfrescoRuntimeException(pdaFolder);
+			throw new AlfrescoRuntimeException(rarFolder);
 		}
-		NodeRef ipdaFolderNodeRef = results.get(0);
-		logger.debug("Node found:" + ipdaFolderNodeRef.getId());
-		int pdaCounter = (int) nodeService.getProperty(ipdaFolderNodeRef, SimpleModel.PROP_PDA_ID_COUNTER);
-		nodeService.setProperty(ipdaFolderNodeRef, SimpleModel.PROP_PDA_ID_COUNTER, pdaCounter + 1);
+		NodeRef irarFolderNodeRef = results.get(0);
+		logger.debug("Node found:" + irarFolderNodeRef.getId());
+		int rarCounter = (int) nodeService.getProperty(irarFolderNodeRef, SimpleModel.PROP_RAR_ID_COUNTER);
+		nodeService.setProperty(irarFolderNodeRef, SimpleModel.PROP_RAR_ID_COUNTER, rarCounter + 1);
 		ActivitiScriptNode bpmPackage = (ActivitiScriptNode) execution.getVariable("bpm_package");
-		List<ChildAssociationRef> relatedPdVsChild = nodeService.getChildAssocs(bpmPackage.getNodeRef());
-		for (ChildAssociationRef relatedPdVChild : relatedPdVsChild) {
-			FileInfo fileInfo = fileFolderService.copy(relatedPdVChild.getChildRef(), ipdaFolderNodeRef, null);
+		List<ChildAssociationRef> relatedSaSsChild = nodeService.getChildAssocs(bpmPackage.getNodeRef());
+		for (ChildAssociationRef relatedSaSChild : relatedSaSsChild) {
+			FileInfo fileInfo = fileFolderService.copy(relatedSaSChild.getChildRef(), irarFolderNodeRef, null);
 			logger.info(fileInfo);
 		}
-		execution.setVariable("mywf_pdaId", pdaCounter);
+		execution.setVariable("mywf_rarId", rarCounter);
 	}
 
-	public void setPdaFolder(String pdaFolder) {
-		this.pdaFolder = pdaFolder;
+	public void setRarFolder(String rarFolder) {
+		this.rarFolder = rarFolder;
 	}
 
 	public void setNodeService(NodeService nodeService) {
