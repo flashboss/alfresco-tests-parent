@@ -19,7 +19,6 @@ import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 
 import it.vige.common.ConservationModel;
-import it.vige.nam.SignIntegrationFactory;
 
 public class ComplexAbstractForm extends AbstractActivitiForm {
 
@@ -43,7 +42,6 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 	@Override
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
-		new SignIntegrationFactory().setSignIntegration(null);
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
 		NamespaceService namespaceService = activitiProcessEngineConfiguration.getServiceRegistry()
 				.getNamespaceService();
