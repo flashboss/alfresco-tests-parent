@@ -44,15 +44,15 @@ public class SignIntegrationBigService extends Service {
 	}
 
 	public SignIntegrationBigService(WebServiceFeature... features) {
-		super(WSDL_LOCATION, SERVICE, features);
+		super(WSDL_LOCATION, SERVICE);
 	}
 
 	public SignIntegrationBigService(URL wsdlLocation, WebServiceFeature... features) {
-		super(wsdlLocation, SERVICE, features);
+		super(wsdlLocation, SERVICE);
 	}
 
 	public SignIntegrationBigService(URL wsdlLocation, QName serviceName, WebServiceFeature... features) {
-		super(wsdlLocation, serviceName, features);
+		super(wsdlLocation, serviceName);
 	}
 
 	/**
