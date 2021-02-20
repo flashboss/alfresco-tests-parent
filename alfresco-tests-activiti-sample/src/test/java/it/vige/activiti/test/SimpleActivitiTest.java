@@ -80,7 +80,7 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		// AUTHENTICATION
 		// Always reset authenticated user to avoid any mistakes
 		identityService.setAuthenticatedUserId(USER_NAME);
-		variables.put("mywf_starterPdA", "Human");
+		variables.put("mywf_starterRaR", "Human");
 	}
 
 	/**

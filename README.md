@@ -260,9 +260,9 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		NodeRef site = insertFolder(sites, "simple-site");
 		NodeRef documentLibrary = insertFolder(site, "documentLibrary");
 		NodeRef pdv = insertFolder(documentLibrary, "pdv");
-		NodeRef pda = insertFolder(documentLibrary, "pda");
+		NodeRef rar = insertFolder(documentLibrary, "rar");
 		NodeService nodeService = activitiProcessEngineConfiguration.getServiceRegistry().getNodeService();
-		nodeService.setProperty(pda, SimpleModel.PROP_PDA_ID_COUNTER, 0);
+		nodeService.setProperty(rar, SimpleModel.PROP_RAR_ID_COUNTER, 0);
 		generationFolder = insertFolder(pdv, generationFolderName);
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
 		try {
@@ -281,7 +281,7 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		variables.put("initiator", initiator);
 		variables.put("search", search);
 		variables.put("logger", logger);
-		variables.put("mccwf_starterPdA", "Human");
+		variables.put("mccwf_starterRaR", "Human");
 	}
 
 	/**
@@ -354,10 +354,10 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		// one file is created by the workflow
 		SearchService searchService = serviceRegistry.getSearchService();
 		ResultSet resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
-				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"pda/contracts_" + generationFolder.getId() + ".zip\"");
+				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"rar/contracts_" + generationFolder.getId() + ".zip\"");
 		NodeRef createdNodeRef = resultQ.getNodeRef(0);
-		Assert.assertTrue("Added a zip file in the PDA folder", createdNodeRef.toString().endsWith(
-				"workspace/company_home/sites/simple-site/documentLibrary/pda/contracts_"
+		Assert.assertTrue("Added a zip file in the RAR folder", createdNodeRef.toString().endsWith(
+				"workspace/company_home/sites/simple-site/documentLibrary/rar/contracts_"
 						+ generationFolder.getId() + ".zip"));
 
 		// the file is inside the workflow/packages activiti folder
