@@ -1,6 +1,8 @@
 package org.alfresco.mock.test.ws;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
@@ -23,6 +25,7 @@ import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.repository.ContentService;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
+import org.apache.commons.io.FileUtils;
 
 public class MockHttpServletRequest implements HttpServletRequest {
 
@@ -70,6 +73,19 @@ public class MockHttpServletRequest implements HttpServletRequest {
 					kbytes = getField(key, parameters);
 				} catch (Exception e) {
 					e.printStackTrace();
+				}
+			} else if (value instanceof File) {
+				File file = (File) value;
+				try (InputStream stream = new FileInputStream(file)) {
+					vbytes = new byte[stream.available()];
+					stream.read(vbytes);
+					Map<String, String> parameters = new HashMap<String, String>();
+					String name = file.getName();
+					parameters.put("filename", name);
+					kbytes = getField(key, parameters);
+					vbytes = FileUtils.readFileToByteArray(file);
+				} catch (Exception ex) {
+					ex.printStackTrace();
 				}
 			} else
 				vbytes = ((String) value).getBytes();

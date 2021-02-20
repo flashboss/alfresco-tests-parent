@@ -2,13 +2,70 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean id="generation" class="it.vige.activiti.Generation"  parent="baseJavaDelegate" depends-on="activitiBeanRegistry">
+	<bean id="generation" class="it.vige.activiti.Generation"
+		parent="baseJavaDelegate" depends-on="activitiBeanRegistry">
 		<property name="nodeService" ref="nodeService" />
 		<property name="searchService" ref="searchService" />
 		<property name="namespaceService" ref="namespaceService" />
 		<property name="fileFolderService" ref="fileFolderService" />
-		<property name="pdaFolder">
-			<value>${my.contracts.pda.folder}</value>
+		<property name="rarFolder">
+			<value>${my.contracts.rar.folder}</value>
+		</property>
+	</bean>
+
+	<bean id="complexRaRGeneration"
+		class="it.vige.alfresco.complexrar.delegate.ComplexRaRGeneration"
+		parent="baseJavaDelegate" depends-on="activitiBeanRegistry">
+		<property name="complexHashUtil" ref="complexHashUtil" />
+		<property name="nodeService" ref="nodeService" />
+		<property name="searchService" ref="searchService" />
+		<property name="namespaceService" ref="namespaceService" />
+		<property name="rarFolder">
+			<value>${vige.complex.rar.folder}</value>
+		</property>
+	</bean>
+	
+	<bean id="complexRaRCheck" class="it.vige.alfresco.complexrar.delegate.ComplexRaRCheck"  parent="baseJavaDelegate" depends-on="activitiBeanRegistry">
+		<property name="nodeService" ref="nodeService" />
+	</bean>
+	
+	<bean id="complexIRaRGeneration" class="it.vige.alfresco.complexrar.delegate.ComplexIRaRGeneration"  parent="baseJavaDelegate" depends-on="activitiBeanRegistry">
+		<property name="nodeService" ref="nodeService" />
+		<property name="templateService" ref="templateService" />
+		<property name="contentService" ref="contentService" />
+		<property name="namespaceService" ref="namespaceService" />
+		<property name="searchService" ref="searchService" />
+		<property name="irarFolder">
+			<value>${vige.complex.irar.folder}</value>
+		</property>
+		<property name="irarTemplate">
+			<value>/alfresco/extension/templates/rar/IRaR.ftl</value>
+		</property>
+	</bean>
+	
+	<bean id="complexIRaRLabeling" class="it.vige.alfresco.complexrar.delegate.ComplexIRaRLabeling"  parent="baseJavaDelegate" depends-on="activitiBeanRegistry"/>
+	
+	<bean id="complexIRaRSubscription" class="it.vige.alfresco.complexrar.delegate.ComplexIRaRSubscription"  parent="baseJavaDelegate" depends-on="activitiBeanRegistry,signService">
+		<property name="signService" ref="signService" />
+	</bean>
+
+	<bean id="complexRaRStoring" class="it.vige.alfresco.complexrar.delegate.ComplexRaRStoring"  parent="baseJavaDelegate" depends-on="activitiBeanRegistry">
+		<property name="fileFolderService" ref="fileFolderService" />
+		<property name="nodeService" ref="nodeService" />
+		<property name="searchService" ref="searchService" />
+		<property name="namespaceService" ref="namespaceService" />
+		<property name="rarFolder">
+			<value>${vige.complex.rar.folder}</value>
+		</property>
+	</bean>
+	
+	<bean id="complexRaRCleaner" class="it.vige.alfresco.complexrar.delegate.ComplexRaRCleaner"  parent="baseJavaDelegate" depends-on="activitiBeanRegistry" />
+	
+	<bean id="complexHashUtil" class="it.vige.alfresco.complexrar.util.ComplexHashUtil">
+		<property name="nodeService" ref="nodeService" />
+		<property name="contentService" ref="contentService" />
+		<property name="hashType">
+			<value>SHA-256</value>
 		</property>
 	</bean>
 </beans>

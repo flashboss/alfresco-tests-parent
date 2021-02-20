@@ -4,5 +4,5 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<import resource="classpath:test-ws-context.xml" />
 	<import
-		resource="classpath:alfresco/module/${project.artifactId}/context/webscript-context.xml" />
+		resource="classpath:alfresco/module/${project.artifactId}/module-context.xml" />
 </beans>

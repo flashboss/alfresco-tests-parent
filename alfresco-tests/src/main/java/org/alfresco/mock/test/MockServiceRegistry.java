@@ -103,15 +103,15 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 	private MutableAuthenticationService authenticationService;
 
 	private VersionService versionService;
-	
+
 	private CopyService copyService;
-	
+
 	private SiteService siteService;
-	
+
 	private PersonService personService;
-	
+
 	private AuthorityService authorityService;
-	
+
 	private ActionService actionService;
 
 	@Override
@@ -472,6 +472,55 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		// TODO Auto-generated method stub
 		return null;
 	}
+		
+	public void writeExternal(ObjectOutput out) throws IOException {
+		out.writeObject(namespaceService);
+		out.writeObject(mimetypeService);
+		out.writeObject(scriptService);
+		out.writeObject(importerService);
+		out.writeObject(permissionService);
+		out.writeObject(templateService);
+		out.writeObject(nodeService);
+		out.writeObject(actionService);
+		out.writeObject(authenticationService);
+		out.writeObject(authorityService);
+		out.writeObject(contentService);
+		out.writeObject(copyService);
+		out.writeObject(dictionaryService);
+		out.writeObject(fileFolderService);
+		out.writeObject(nodeLocatorService);
+		out.writeObject(personService);
+		out.writeObject(searchService);
+		out.writeObject(siteService);
+		out.writeObject(transactionService);
+		out.writeObject(versionService);
+		out.writeObject(renditionService2);
+	}
+
+	@Override
+	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+		namespaceService = (NamespaceService) in.readObject();
+		mimetypeService = (MimetypeService) in.readObject();
+		scriptService = (ScriptService) in.readObject();
+		importerService = (ImporterService) in.readObject();
+		permissionService = (PermissionService) in.readObject();
+		templateService = (TemplateService) in.readObject();
+		nodeService = (NodeService) in.readObject();
+		actionService = (ActionService) in.readObject();
+		authenticationService = (MutableAuthenticationService) in.readObject();
+		authorityService = (AuthorityService) in.readObject();
+		contentService = (ContentService) in.readObject();
+		copyService = (CopyService) in.readObject();
+		dictionaryService = (DictionaryService) in.readObject();
+		fileFolderService = (FileFolderService) in.readObject();
+		nodeLocatorService = (NodeLocatorService) in.readObject();
+		personService = (PersonService) in.readObject();
+		searchService = (SearchService) in.readObject();
+		siteService = (SiteService) in.readObject();
+		transactionService = (TransactionService) in.readObject();
+		versionService = (VersionService) in.readObject();
+		renditionService2 = (RenditionService2) in.readObject();
+	}
 
 	@Override
 	public RenditionService2 getRenditionService2() {
@@ -507,7 +556,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 	public void setTemplateService(TemplateService templateService) {
 		this.templateService = templateService;
 	}
-	
+
 	public void setAuthenticationService(MutableAuthenticationService authenticationService) {
 		this.authenticationService = authenticationService;
 	}
@@ -522,30 +571,6 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 
 	public void setSolrFacetHelper(SolrFacetHelper solrFacetHelper) {
 		this.solrFacetHelper = solrFacetHelper;
-	}
-
-	@Override
-	public void writeExternal(ObjectOutput out) throws IOException {
-		out.writeObject(namespaceService);
-		out.writeObject(mimetypeService);
-		out.writeObject(scriptService);
-		out.writeObject(importerService);
-		out.writeObject(permissionService);
-		out.writeObject(templateService);
-		out.writeObject(transactionService);
-		out.writeObject(renditionService2);
-	}
-
-	@Override
-	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-		namespaceService = (NamespaceService) in.readObject();
-		mimetypeService = (MimetypeService) in.readObject();
-		scriptService = (ScriptService) in.readObject();
-		importerService = (ImporterService) in.readObject();
-		permissionService = (PermissionService) in.readObject();
-		templateService = (TemplateService) in.readObject();
-		transactionService = (TransactionService) in.readObject();
-		renditionService2 = (RenditionService2) in.readObject();
 	}
 	
 	public void setDictionaryService(DictionaryService dictionaryService) {
