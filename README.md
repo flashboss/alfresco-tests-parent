@@ -5,7 +5,7 @@ A library to test the alfresco components. It offers mock files to execute unit 
 This version is for:
 
 - Java 11
-- ALfresco SDK 4.2.0
+- ALfresco SDK 4.2.0-SNAPSHOT
 - Alfresco community 7.0.0-A20
 
 To start add the dependency in your project sdk module:
@@ -184,7 +184,7 @@ src -> test -> resources -> alfresco -> module -> test-module-context.xml
 		resource="classpath:alfresco/module/${project.artifactId}/context/service-context.xml" />
 </beans>
 ```
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/6.2.0-ea/alfresco-tests-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/7.0.0-A20/alfresco-tests-sample.
 
 Activiti test
 ===========
@@ -384,7 +384,7 @@ In your src/test/resources folder add the follow spring descriptor file test-mod
 	<import resource="classpath:alfresco/module/${project.artifactId}/module-context.xml" />
 </beans>
 ```
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/6.2.0-ea/alfresco-tests-activiti-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/7.0.0-A20/alfresco-tests-activiti-sample.
 
 Webscript test
 ===========
@@ -508,4 +508,4 @@ In your src/test/resources folder add the follow spring descriptor file test-mod
 		resource="classpath:alfresco/module/${project.artifactId}/context/webscript-context.xml" />
 </beans>
 ```
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/6.2.0-ea/alfresco-tests-ws-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/7.0.0-A20/alfresco-tests-ws-sample.

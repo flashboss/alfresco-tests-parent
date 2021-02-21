@@ -85,12 +85,6 @@ public class MockModelDefinition implements ModelDefinition, Serializable {
 	}
 
 	@Override
-	public String getAnalyserResourceBundleName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public DictionaryDAO getDictionaryDAO() {
 		// TODO Auto-generated method stub
 		return null;

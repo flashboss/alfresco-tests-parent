@@ -7,6 +7,7 @@ import java.util.Map;
 import org.alfresco.query.PagingRequest;
 import org.alfresco.query.PagingResults;
 import org.alfresco.repo.node.getchildren.FilterProp;
+import org.alfresco.repo.site.SiteGroupMembership;
 import org.alfresco.repo.site.SiteMembership;
 import org.alfresco.service.cmr.model.FileInfo;
 import org.alfresco.service.cmr.repository.NodeRef;
@@ -292,6 +293,20 @@ public class MockSiteService implements SiteService, Serializable {
 
 	@Override
 	public List<SiteMembership> listSiteMemberships(String userName, int size) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void listMembers(String shortName, String nameFilter, String roleFilter, boolean includeUsers,
+			boolean includeGroups, boolean expandGroups, SiteMembersCallback callback) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public PagingResults<SiteGroupMembership> listGroupMembersPaged(String shortName,
+			List<Pair<SortFields, Boolean>> sortProps, PagingRequest pagingRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}
