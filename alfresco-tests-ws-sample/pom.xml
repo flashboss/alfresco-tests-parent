@@ -6,7 +6,7 @@
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests-ws-sample</artifactId>
 	<name>Alfresco Tests ws sample</name>
-	<version>6.2.0-ea.10</version>
+	<version>7.0.0-A20.0</version>
 	<description>Simple JAR sample for tests</description>
 
 	<!-- SDK properties have sensible defaults in the SDK parent, but you can 
@@ -14,7 +14,7 @@
 		properties see the alfresco-sdk-parent POM. -->
 	<properties>
 		<!-- Alfresco Maven Plugin version to use -->
-		<alfresco.sdk.version>4.1.0</alfresco.sdk.version>
+		<alfresco.sdk.version>4.2.0</alfresco.sdk.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -22,7 +22,7 @@
 			these -->
 		<alfresco.groupId>org.alfresco</alfresco.groupId>
 		<alfresco.bomDependencyArtifactId>acs-community-packaging</alfresco.bomDependencyArtifactId>
-		<alfresco.platform.version>6.2.0-ea</alfresco.platform.version>
+		<alfresco.platform.version>7.0.0-A20</alfresco.platform.version>
 		<alfresco.share.version>6.2.0</alfresco.share.version>
 
 		<!-- Docker images -->
