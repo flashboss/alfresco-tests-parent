@@ -23,7 +23,7 @@
 		<alfresco.groupId>org.alfresco</alfresco.groupId>
 		<alfresco.bomDependencyArtifactId>acs-community-packaging</alfresco.bomDependencyArtifactId>
 		<alfresco.platform.version>7.0.0-A20</alfresco.platform.version>
-		<alfresco.share.version>6.2.0</alfresco.share.version>
+		<alfresco.share.version>7.0.0-M3</alfresco.share.version>
 
 		<!-- Docker images -->
 		<docker.acs.image>alfresco/alfresco-content-repository-community</docker.acs.image>
