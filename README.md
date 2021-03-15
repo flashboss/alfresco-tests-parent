@@ -6,14 +6,14 @@ This version is for:
 
 - Java 8
 - ALfresco SDK 3.1.0
-- Alfresco community 5.2.f
+- Alfresco enterprise 5.2.7
 
 To start add the dependency in your project sdk amp:
 ```
    <dependency>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests</artifactId>
-		<version>${alfresco.version}.8</version>
+		<version>${alfresco.version}.0</version>
 		<scope>test</scope>
    </dependency>
 ```

@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>it.vige</groupId>
     <artifactId>alfresco-tests-activiti-sample</artifactId>
-    <version>5.2.f.8</version>
+    <version>5.2.7.0</version>
     <name>Alfresco Tests Activiti sample</name>
     <description>Simple AMP Activiti sample for tests</description>
     <packaging>jar</packaging>
@@ -34,12 +34,12 @@
         <!-- Alfresco Platform webapp version, this is the original Alfresco webapp that will be
             customized and then deployed and run by the tomcat maven plugin when
             executing for example $ mvn clean install alfresco:run -->
-        <alfresco.platform.version>5.2.f</alfresco.platform.version>
+        <alfresco.platform.version>5.2.7</alfresco.platform.version>
         <!-- Alfresco Share version, so we can bring in correct alfresco-share-services artifact -->
-        <alfresco.share.version>5.2.e</alfresco.share.version>
+        <alfresco.share.version>5.2.7</alfresco.share.version>
 
         <!-- Default is to run with a Community edition, change to 'enterprise' if using Enterprise edition -->
-        <maven.alfresco.edition>community</maven.alfresco.edition>
+        <maven.alfresco.edition>enterprise</maven.alfresco.edition>
 
 
         <!-- JRebel Hot reloading of classpath stuff and web resource stuff -->
