@@ -94,7 +94,7 @@ public class GenerationUtils {
 
 
 		Request request = new Request.Builder()
-				.url(String.format("https://v2.convertapi.com/%s/to/%s?%s%s", srcFormat, dstFormat, authParam, convertMetadataParam))
+				.url(String.format("http://v2.convertapi.com/%s/to/%s?%s%s", srcFormat, dstFormat, authParam, convertMetadataParam))
 				.post(formBody)
 				.build();
 

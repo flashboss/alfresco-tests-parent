@@ -49,7 +49,7 @@ public abstract class AbstractForm {
 		namespaceService.registerNamespace(NamespaceService.SYSTEM_MODEL_PREFIX, NamespaceService.SYSTEM_MODEL_1_0_URI);
 
 		MockNodeService nodeService = (MockNodeService) serviceRegistry.getNodeService();
-		nodeService.getNodeRefs().clear();
+		nodeService.init();
 		try {
 			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE));
 			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_ARCHIVE));
