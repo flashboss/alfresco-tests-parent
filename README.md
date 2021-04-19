@@ -5,7 +5,7 @@ A library to test the alfresco components. It offers mock files to execute unit 
 This version is for:
 
 - Java 7
-- ALfresco SDK 1.1.1
+- Alfresco SDK 1.1.1
 - Alfresco enterprise 4.2.6.6
 
 To start add the dependency in your project sdk amp:
