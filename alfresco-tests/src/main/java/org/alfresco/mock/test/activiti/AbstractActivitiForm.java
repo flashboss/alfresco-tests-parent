@@ -76,7 +76,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
 		// remove the old documents
 		MockNodeService nodeService = (MockNodeService) serviceRegistry.getNodeService();
-		nodeService.getNodeRefs().clear();
+		nodeService.init();
 		try {
 			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE));
 			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_ARCHIVE));
