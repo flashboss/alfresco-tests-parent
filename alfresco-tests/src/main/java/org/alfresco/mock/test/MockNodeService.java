@@ -521,6 +521,13 @@ public class MockNodeService implements NodeService, Serializable {
 		return nodeRefs;
 	}
 
+	public void init() {
+		sampleAspects.clear();
+		sampleProperties.clear();
+		samplePermissions.clear();
+		nodeRefs.clear();
+	}
+
 	public String getPermissions() {
 		return samplePermissions + "";
 	}
