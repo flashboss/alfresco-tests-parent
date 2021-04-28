@@ -69,7 +69,7 @@ public class MockSearchService implements SearchService, Serializable {
 		ResultSet resultSet = query(searchParameters.getStores().get(0), searchParameters.getLanguage(),
 				searchParameters.getQuery());
 		int maxItems = searchParameters.getMaxItems();
-		if (maxItems > -1) {
+		if (maxItems > -1 && resultSet.length() > maxItems) {
 			List<ResultSetRow> rows = new ArrayList<ResultSetRow>();
 			for (int i = 0; i < maxItems; i++)
 				rows.add(new MockResultSetRow(resultSet.getNodeRef(i)));
