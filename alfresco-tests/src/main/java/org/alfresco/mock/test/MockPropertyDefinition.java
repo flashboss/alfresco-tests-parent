@@ -135,24 +135,6 @@ public class MockPropertyDefinition implements PropertyDefinition, Serializable 
 	}
 
 	@Override
-	public String getAnalyserResourceBundleName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String resolveAnalyserClassName(Locale locale) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String resolveAnalyserClassName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public String getTitle(MessageLookup messageLookup, Locale locale) {
 		// TODO Auto-generated method stub
 		return null;

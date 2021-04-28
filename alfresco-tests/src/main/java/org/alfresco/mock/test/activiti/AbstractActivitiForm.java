@@ -45,9 +45,9 @@ import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.subethamail.smtp.server.SMTPServer;
@@ -172,9 +172,9 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 					if (!bName.equals(simpleClassName) && parentName != null && parentName.equals("baseJavaDelegate")) {
 						beanFactory.registerAlias(bName, simpleClassName);
 					}
-					if (className.equals(PropertyPlaceholderConfigurer.class.getName())) {
+					if (className.equals(PropertySourcesPlaceholderConfigurer.class.getName())) {
 						Object bean = beanFactory.getBean(bName);
-						PropertyPlaceholderConfigurer propertyPlaceholderConfigurer = (PropertyPlaceholderConfigurer) bean;
+						PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer = (PropertySourcesPlaceholderConfigurer) bean;
 						propertyPlaceholderConfigurer.postProcessBeanFactory(beanFactory);
 					}
 				}

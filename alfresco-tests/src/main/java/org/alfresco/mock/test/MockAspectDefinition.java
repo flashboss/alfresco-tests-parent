@@ -130,12 +130,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 	}
 
 	@Override
-	public String getAnalyserResourceBundleName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ClassDefinition getParentClassDefinition() {
 		// TODO Auto-generated method stub
 		return null;

@@ -19,7 +19,7 @@ import org.alfresco.service.namespace.QName;
 public class MockTypeDefinition implements TypeDefinition {
 
 	private QName defaultAspect;
-	
+
 	public MockTypeDefinition(QName defaultAspect) {
 		this.defaultAspect = defaultAspect;
 	}
@@ -130,12 +130,6 @@ public class MockTypeDefinition implements TypeDefinition {
 		List<AspectDefinition> aspectDefinitions = new ArrayList<AspectDefinition>();
 		aspectDefinitions.add(new MockAspectDefinition(defaultAspect));
 		return aspectDefinitions;
-	}
-
-	@Override
-	public String getAnalyserResourceBundleName() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

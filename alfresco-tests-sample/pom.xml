@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>it.vige</groupId>
     <artifactId>alfresco-tests-sample</artifactId>
-    <version>6.2.0-ea.10</version>
+    <version>7.0.0-A20.2</version>
     <name>alfresco Tests action sample</name>
     <description>Platform/Repo JAR Module (to be included in the alfresco.war)</description>
     <packaging>jar</packaging>
@@ -16,15 +16,15 @@
        -->
     <properties>
         <!-- Alfresco Maven Plugin version to use -->
-        <alfresco.sdk.version>4.1.0</alfresco.sdk.version>
+        <alfresco.sdk.version>4.2.0</alfresco.sdk.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- Properties used in dependency declarations, you don't need to change these -->
         <alfresco.groupId>org.alfresco</alfresco.groupId>
         <alfresco.bomDependencyArtifactId>acs-community-packaging</alfresco.bomDependencyArtifactId>
-        <alfresco.platform.version>6.2.0-ea</alfresco.platform.version>
-        <alfresco.share.version>6.2.0</alfresco.share.version>
+        <alfresco.platform.version>7.0.0-A20</alfresco.platform.version>
+        <alfresco.share.version>7.0.0-M3</alfresco.share.version>
 
         <!-- Docker images -->
         <docker.acs.image>alfresco/alfresco-content-repository-community</docker.acs.image>
@@ -77,6 +77,12 @@
 			<groupId>it.vige</groupId>
 			<artifactId>alfresco-tests</artifactId>
 			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+        
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 

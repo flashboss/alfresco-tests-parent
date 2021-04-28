@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests</artifactId>
-	<version>6.2.0-ea.10</version>
+	<version>7.0.0-A20.2</version>
 	<name>Alfresco Tests</name>
 	<packaging>jar</packaging>
 	<description>
@@ -15,7 +15,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<alfresco.groupId>org.alfresco</alfresco.groupId>
-		<alfresco.platform.version>6.2.0-ea</alfresco.platform.version>
+		<alfresco.platform.version>7.0.0-A20</alfresco.platform.version>
 		<alfresco.bomDependencyArtifactId>acs-community-packaging</alfresco.bomDependencyArtifactId>
 		<maven.source.plugin.version>3.1.0</maven.source.plugin.version>
 		<maven.javadoc.plugin.version>3.1.1</maven.javadoc.plugin.version>
@@ -130,7 +130,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>3.2.17.RELEASE</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.tradeshift</groupId>

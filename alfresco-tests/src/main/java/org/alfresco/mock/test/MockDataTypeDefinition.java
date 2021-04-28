@@ -1,7 +1,6 @@
 package org.alfresco.mock.test;
 
 import java.io.Serializable;
-import java.util.Locale;
 
 import org.alfresco.service.cmr.dictionary.DataTypeDefinition;
 import org.alfresco.service.cmr.dictionary.ModelDefinition;
@@ -47,31 +46,7 @@ public class MockDataTypeDefinition implements DataTypeDefinition, Serializable 
 	}
 
 	@Override
-	public String getAnalyserResourceBundleName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public String getJavaClassName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getDefaultAnalyserClassName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String resolveAnalyserClassName(Locale locale) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String resolveAnalyserClassName() {
 		// TODO Auto-generated method stub
 		return null;
 	}

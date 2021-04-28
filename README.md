@@ -5,25 +5,27 @@ A library to test the alfresco components. It offers mock files to execute unit 
 This version is for:
 
 - Java 11
-- Alfresco SDK 4.1.0
-- Alfresco community 6.2.0-ea
+- Alfresco SDK 4.2.0
+- Alfresco community 7.0.0-A20
 
 To start add the dependency in your project sdk module:
 ```
    <dependency>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests</artifactId>
-		<version>6.2.0-ea.10</version>
+		<version>7.0.0-A20.2</version>
 		<scope>test</scope>
    </dependency>
 ```
 Old versions are available too. Here the list of the library versions sorted by Alfresco distribution:
-- 6.1.0-ea.7
-- 6.0.0-ea.8
-- 5.2.f.7
-- 5.1.g.6
-- 5.0.d.6
-- 4.2.6.6.11
+- 7.0.0-A20.2
+- 6.1.0-ea.8
+- 6.0.0-ea.9
+- 5.2.7.2
+- 5.2.f.8
+- 5.1.g.7
+- 5.0.d.7
+- 4.2.6.6.13
 
 Create a junit test, for example:
 
