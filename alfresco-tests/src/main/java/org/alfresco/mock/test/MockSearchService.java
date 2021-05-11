@@ -410,9 +410,15 @@ public class MockSearchService implements SearchService, Serializable {
 			return true;
 		else {
 			Object value = (Object) nodeService.getProperty(nodeRef, property.getQname());
-			if (value instanceof String || value == null)
-				return property.getValue().equals(value);
-			else
+			if (value instanceof String || value == null) {
+				String pattern = property.getValue();
+				String[] subpatterns = pattern.split("\\*");
+				if (subpatterns.length > 1)
+					for (String subpattern : subpatterns)
+						if (value != null && ((String) value).contains(subpattern))
+							return true;
+				return pattern.equals(value);
+			} else
 				return true;
 		}
 	}
