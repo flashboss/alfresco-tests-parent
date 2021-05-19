@@ -177,6 +177,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		QName assocQName = QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, newName);
 		ChildAssociationRef association = nodeService.createNode(targetParentRef, ContentModel.ASSOC_CONTAINS,
 				assocQName, ContentModel.TYPE_CONTENT, nodeService.getProperties(sourceNodeRef));
+		recursiveCopy(sourceNodeRef, association.getChildRef());
 		File source = getNodeService().getNodeRefs().get(sourceNodeRef);
 		File target = getNodeService().getNodeRefs().get(targetParentRef);
 		try {
@@ -423,7 +424,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	private List<FileInfo> recursiveDeep(NodeRef contextNodeRef, SubFolderFilter filter, List<FileInfo> result,
 			boolean withFiles) {
 		List<FileInfo> nodes = null;
@@ -436,6 +437,19 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 			return recursiveDeep(fileInfo.getNodeRef(), filter, result, withFiles);
 		}
 		return result;
+	}
+
+	private void recursiveCopy(NodeRef sourceNodeRef, NodeRef targetParentRef) {
+		List<ChildAssociationRef> children = nodeService.getChildAssocs(sourceNodeRef);
+		for (ChildAssociationRef child : children) {
+			File file = ((MockNodeService) nodeService).getNodeRefs().get(child.getChildRef());
+			if (!file.isFile()) {
+				ChildAssociationRef result = nodeService.createNode(targetParentRef, ContentModel.ASSOC_CONTAINS,
+						QName.createQName("" + nodeService.getProperty(child.getChildRef(), ContentModel.PROP_NAME)),
+						ContentModel.TYPE_CONTENT, nodeService.getProperties(sourceNodeRef));
+				recursiveCopy(child.getChildRef(), result.getChildRef());
+			}
+		}
 	}
 
 }
