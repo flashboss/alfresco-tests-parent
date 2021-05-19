@@ -18,14 +18,14 @@ To start add the dependency in your project sdk module:
    </dependency>
 ```
 Old versions are available too. Here the list of the library versions sorted by Alfresco distribution:
-- 7.0.0-A20.3
-- 6.1.0-ea.9
-- 6.0.0-ea.10
-- 5.2.7.3
-- 5.2.f.9
-- 5.1.g.8
-- 5.0.d.8
-- 4.2.6.6.14
+- 6.2.0-ea.13
+- 6.1.0-ea.11
+- 6.0.0-ea.13
+- 5.2.7.4
+- 5.2.f.11
+- 5.1.g.10
+- 5.0.d.10
+- 4.2.6.6.15
 
 Create a junit test, for example:
 
