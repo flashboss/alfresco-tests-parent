@@ -27,6 +27,16 @@ Old versions are available too. Here the list of the library versions sorted by 
 - 5.0.d.10
 - 4.2.6.6.15
 
+In the same pom add the test resources under the 'build' tag after the 'resources' tag:
+```
+   <testResources>
+               <!-- Filter the test resource files in this project and do property substitutions -->
+               <testResource>
+                   <directory>src/test/resources</directory>
+                   <filtering>true</filtering>
+               </testResource>
+   </testResources>
+```
 Create a junit test, for example:
 
 ```
