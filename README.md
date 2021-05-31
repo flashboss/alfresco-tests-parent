@@ -18,6 +18,17 @@ To start add the dependency in your project sdk amp:
    </dependency>
 ```
 
+In the same pom add the test resources under the 'build' tag after the 'resources' tag:
+```
+   <testResources>
+               <!-- Filter the test resource files in this project and do property substitutions -->
+               <testResource>
+                   <directory>src/test/resources</directory>
+                   <filtering>true</filtering>
+               </testResource>
+   </testResources>
+```
+
 Simple test
 ===========
 
