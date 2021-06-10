@@ -74,6 +74,7 @@
 	<bean id="SearchService"
 		class="org.alfresco.mock.test.MockSearchService">
 		<property name="nodeService" ref="nodeService" />
+		<property name="namespaceService" ref="namespaceService" />
 	</bean>
 	<alias name="SearchService" alias="searchService" />
 	<bean id="mimetypeService"
