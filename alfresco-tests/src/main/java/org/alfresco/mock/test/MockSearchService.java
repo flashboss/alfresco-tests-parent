@@ -142,6 +142,10 @@ public class MockSearchService implements SearchService, Serializable {
 		this.nodeService = nodeService;
 	}
 
+	public void setNamespaceService(NamespaceService namespaceService) {
+		this.namespaceService = namespaceService;
+	}
+
 	public class MockResultSet implements ResultSet {
 
 		private List<ResultSetRow> rows;
