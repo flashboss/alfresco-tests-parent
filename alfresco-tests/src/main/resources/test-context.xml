@@ -106,7 +106,11 @@
 	<bean id="PersonService"
 		class="org.alfresco.mock.test.MockPersonService" />
 	<bean id="AuthorityService"
-		class="org.alfresco.mock.test.MockAuthorityService" />
+		class="org.alfresco.mock.test.MockAuthorityService">
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>
+	</bean>
 	<bean id="ServiceRegistry"
 		class="org.alfresco.mock.test.MockServiceRegistry">
 		<property name="nodeService">

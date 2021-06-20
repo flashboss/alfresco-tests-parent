@@ -1,22 +1,39 @@
 package org.alfresco.mock.test;
 
+import static org.alfresco.model.ContentModel.ASSOC_CONTAINS;
+import static org.alfresco.model.ContentModel.TYPE_CONTENT;
+import static org.alfresco.model.ContentModel.TYPE_FOLDER;
+import static org.alfresco.service.cmr.repository.StoreRef.PROTOCOL_WORKSPACE;
+import static org.alfresco.service.namespace.NamespaceService.CONTENT_MODEL_1_0_URI;
+import static org.alfresco.service.namespace.QName.createQName;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.alfresco.query.PagingRequest;
 import org.alfresco.query.PagingResults;
 import org.alfresco.repo.security.authority.AuthorityInfo;
 import org.alfresco.service.cmr.repository.NodeRef;
+import org.alfresco.service.cmr.repository.NodeService;
+import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.security.AuthorityService;
 import org.alfresco.service.cmr.security.AuthorityType;
+import org.alfresco.service.namespace.QName;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class MockAuthorityService implements AuthorityService, Serializable {
 
-	private List<String> authorities = new ArrayList<String>();
+	private final static String GROUP_PREFIX = "GROUP_";
+
+	@Autowired
+	private NodeService nodeService;
+
+	private Map<String, NodeRef> authorityNodes = new HashMap<String, NodeRef>();
 
 	@Override
 	public boolean hasAdminAuthority() {
@@ -56,7 +73,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 
 	@Override
 	public Set<String> getAuthorities() {
-		return convertListToSet(authorities);
+		return authorityNodes.keySet();
 	}
 
 	@Override
@@ -79,7 +96,9 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 	@Override
 	public PagingResults<String> getAuthorities(AuthorityType type, String zoneName, String displayNameFilter,
 			boolean sortByDisplayName, boolean sortAscending, PagingRequest pagingRequest) {
-		PagingResults<String> authorities = new MockPagingResults<String>(this.authorities);
+		List<String> mainList = new ArrayList<String>();
+		mainList.addAll(authorityNodes.keySet());
+		PagingResults<String> authorities = new MockPagingResults<String>(mainList);
 		return authorities;
 	}
 
@@ -90,26 +109,32 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 
 	@Override
 	public String createAuthority(AuthorityType type, String shortName) {
-		// TODO Auto-generated method stub
-		return null;
+		return createAuthority(type, shortName, null, null);
 	}
 
 	@Override
 	public String createAuthority(AuthorityType type, String shortName, String authorityDisplayName,
 			Set<String> authorityZones) {
-		// TODO Auto-generated method stub
-		return null;
+		String name = getName(null, shortName);
+		NodeRef root = nodeService.getRootNode(new StoreRef(PROTOCOL_WORKSPACE, "SpacesStore"));
+		NodeRef system = nodeService.getChildByName(root, TYPE_FOLDER, "system");
+		NodeRef authorities = nodeService.getChildByName(system, TYPE_FOLDER, "authorities");
+		QName assocQName = createQName(CONTENT_MODEL_1_0_URI, name);
+		NodeRef node = nodeService.createNode(authorities, ASSOC_CONTAINS, assocQName, TYPE_CONTENT).getChildRef();
+		authorityNodes.put(name, node);
+		return name;
 	}
 
 	@Override
 	public void addAuthority(String parentName, String childName) {
-		authorities.add(childName);
+		createAuthority(null, childName);
 	}
 
 	@Override
 	public void addAuthority(Collection<String> parentNames, String childName) {
-		// TODO Auto-generated method stub
-
+		if (parentNames != null)
+			for (String parentName : parentNames)
+				addAuthority(parentName, childName);
 	}
 
 	@Override
@@ -151,20 +176,17 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 
 	@Override
 	public String getShortName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return name.replaceAll(GROUP_PREFIX, "");
 	}
 
 	@Override
 	public String getName(AuthorityType type, String shortName) {
-		// TODO Auto-generated method stub
-		return null;
+		return GROUP_PREFIX + shortName;
 	}
 
 	@Override
 	public boolean authorityExists(String name) {
-		// TODO Auto-generated method stub
-		return false;
+		return authorityNodes.get(name) != null;
 	}
 
 	@Override
@@ -181,8 +203,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 
 	@Override
 	public NodeRef getAuthorityNodeRef(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return authorityNodes.get(name);
 	}
 
 	@Override
@@ -240,16 +261,8 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		return null;
 	}
 
-	private static <T> Set<T> convertListToSet(List<T> list) {
-		// create an empty set
-		Set<T> set = new HashSet<>();
-
-		// Add each element of list into the set
-		for (T t : list)
-			set.add(t);
-
-		// return the set
-		return set;
+	public void setNodeService(NodeService nodeService) {
+		this.nodeService = nodeService;
 	}
 
 }
