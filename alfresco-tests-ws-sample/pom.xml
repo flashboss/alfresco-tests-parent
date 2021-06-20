@@ -5,7 +5,7 @@
     <groupId>it.vige</groupId>
     <artifactId>alfresco-tests-ws-sample</artifactId>
     <name>Alfresco Tests ws sample</name>
-    <version>5.1.g.12</version>
+    <version>5.1.g.13</version>
     <description>Simple AMP sample for tests</description>
 
     <parent>
