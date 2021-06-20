@@ -132,7 +132,9 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 
 	@Override
 	public void addAuthority(Collection<String> parentNames, String childName) {
-		addAuthority(new ArrayList<>(), childName);
+		if (parentNames != null)
+			for (String parentName : parentNames)
+				addAuthority(parentName, childName);
 	}
 
 	@Override
