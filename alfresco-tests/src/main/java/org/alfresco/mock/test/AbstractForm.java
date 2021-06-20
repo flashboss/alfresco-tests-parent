@@ -62,8 +62,10 @@ public abstract class AbstractForm {
 		NodeRef root = insertFolder(new NodeRef(new StoreRef("", ""), ""), ".");
 		workspace = insertFolder(root, StoreRef.PROTOCOL_WORKSPACE);
 		NodeRef companyHome = insertFolder(workspace, NamespaceService.APP_MODEL_PREFIX, "company_home");
+		NodeRef system = insertFolder(workspace, NamespaceService.SYSTEM_MODEL_PREFIX, "system");
 		archive = insertFolder(root, StoreRef.PROTOCOL_ARCHIVE);
 		sites = insertFolder(companyHome, SiteModel.SITE_MODEL_PREFIX, SiteModel.TYPE_SITES.getLocalName());
+		insertFolder(system, SiteModel.SITE_MODEL_PREFIX, "authorities");
 	}
 
 	protected NodeRef insertFolder(NodeRef parent, String name) {
