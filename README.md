@@ -38,6 +38,11 @@ In the same pom add the test resources under the 'build' tag after the 'resource
                </testResource>
    </testResources>
 ```
+
+<a href="https://youtu.be/pyIsJ0VnF74"> Here </a> you can find the presentation of the project
+
+<a href="https://youtu.be/Ji0ZlLV2bk4"> Here </a> 5 minutes to show a java sample in Eclipse
+
 Create a junit test, for example:
 
 ```
