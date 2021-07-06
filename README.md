@@ -22,7 +22,7 @@ Old versions are available too. Here the list of the library versions sorted by 
 - 6.1.0-ea.13
 - 6.0.2-ea.2
 - 6.0.0-ea.15
-- 5.2.7.4
+- 5.2.7.7
 - 5.2.f.13
 - 5.1.g.12
 - 5.0.d.12
