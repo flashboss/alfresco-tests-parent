@@ -11,9 +11,11 @@ import org.alfresco.service.namespace.QName;
 public class MockSiteInfo implements SiteInfo, Serializable {
 
 	private NodeRef nodeRef;
-	
-	public MockSiteInfo(NodeRef nodeRef) {
+	private String shortName;
+
+	public MockSiteInfo(NodeRef nodeRef, String shortName) {
 		this.nodeRef = nodeRef;
+		this.shortName = shortName;
 	}
 	
 	@Override
@@ -29,8 +31,7 @@ public class MockSiteInfo implements SiteInfo, Serializable {
 
 	@Override
 	public String getShortName() {
-		// TODO Auto-generated method stub
-		return null;
+		return shortName;
 	}
 
 	@Override
