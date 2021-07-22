@@ -1,5 +1,13 @@
 package org.alfresco.mock.test;
 
+import static org.alfresco.model.ContentModel.ASSOC_CONTAINS;
+import static org.alfresco.model.ContentModel.TYPE_FOLDER;
+import static org.alfresco.service.cmr.repository.StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
+import static org.alfresco.service.cmr.search.SearchService.LANGUAGE_FTS_ALFRESCO;
+import static org.alfresco.service.cmr.site.SiteVisibility.PUBLIC;
+import static org.alfresco.service.namespace.NamespaceService.CONTENT_MODEL_1_0_URI;
+import static org.alfresco.service.namespace.QName.createQName;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +17,9 @@ import org.alfresco.query.PagingResults;
 import org.alfresco.repo.node.getchildren.FilterProp;
 import org.alfresco.repo.site.SiteMembership;
 import org.alfresco.service.cmr.model.FileInfo;
+import org.alfresco.service.cmr.repository.ChildAssociationRef;
 import org.alfresco.service.cmr.repository.NodeRef;
+import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.search.ResultSet;
 import org.alfresco.service.cmr.search.SearchService;
@@ -26,11 +36,19 @@ public class MockSiteService implements SiteService, Serializable {
 	@Autowired
 	private SearchService searchService;
 
+	@Autowired
+	private NodeService nodeService;
+
 	@Override
 	public SiteInfo createSite(String sitePreset, String shortName, String title, String description,
 			boolean isPublic) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultSet resultQ = searchService.query(STORE_REF_WORKSPACE_SPACESSTORE, LANGUAGE_FTS_ALFRESCO,
+				"PATH:\"company_home/sites");
+		NodeRef result = resultQ.getNodeRef(0);
+		QName assocQName = createQName(CONTENT_MODEL_1_0_URI, shortName);
+		ChildAssociationRef nodeRef = nodeService.createNode(result, ASSOC_CONTAINS, assocQName, TYPE_FOLDER);
+		SiteInfo siteInfo = new MockSiteInfo(nodeRef.getChildRef());
+		return siteInfo;
 	}
 
 	@Override
@@ -42,15 +60,13 @@ public class MockSiteService implements SiteService, Serializable {
 	@Override
 	public SiteInfo createSite(String sitePreset, String shortName, String title, String description,
 			SiteVisibility visibility) {
-		// TODO Auto-generated method stub
-		return null;
+		return createSite(sitePreset, shortName, title, description, visibility == PUBLIC);
 	}
 
 	@Override
 	public SiteInfo createSite(String sitePreset, String shortName, String title, String description,
 			SiteVisibility visibility, QName siteType) {
-		// TODO Auto-generated method stub
-		return null;
+		return createSite(sitePreset, shortName, title, description, visibility == PUBLIC);
 	}
 
 	@Override
@@ -98,8 +114,8 @@ public class MockSiteService implements SiteService, Serializable {
 
 	@Override
 	public SiteInfo getSite(String shortName) {
-		ResultSet resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
-				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"company_home/sites/" + shortName + "\"");
+		ResultSet resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, LANGUAGE_FTS_ALFRESCO,
+				"PATH:\"company_home/sites/" + shortName + "\"");
 		NodeRef result = resultQ.getNodeRef(0);
 		SiteInfo siteInfo = new MockSiteInfo(result);
 		return siteInfo;
@@ -294,6 +310,14 @@ public class MockSiteService implements SiteService, Serializable {
 	public List<SiteMembership> listSiteMemberships(String userName, int size) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void setSearchService(SearchService searchService) {
+		this.searchService = searchService;
+	}
+
+	public void setNodeService(NodeService nodeService) {
+		this.nodeService = nodeService;
 	}
 
 }
