@@ -84,7 +84,9 @@
 	<bean id="nodeLocatorService"
 		class="org.alfresco.mock.test.MockNodeLocatorService" />
 	<bean id="permissionService"
-		class="org.alfresco.mock.test.MockPermissionService" />
+		class="org.alfresco.mock.test.MockPermissionService">
+        <property name="nodeService" ref="nodeService"/>
+	</bean>
 	<bean id="TransactionService"
 		class="org.alfresco.mock.test.MockTransactionService" />
 	<bean id="baseJavaScriptExtension" abstract="true" />
@@ -102,7 +104,10 @@
 	<bean id="CopyService"
 		class="org.alfresco.mock.test.MockCopyService" />
 	<bean id="SiteService"
-		class="org.alfresco.mock.test.MockSiteService" />
+		class="org.alfresco.mock.test.MockSiteService">
+        <property name="searchService" ref="searchService"/>
+        <property name="nodeService" ref="nodeService"/>
+	</bean>
 	<bean id="PersonService"
 		class="org.alfresco.mock.test.MockPersonService" />
 	<bean id="AuthorityService"
