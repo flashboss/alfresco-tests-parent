@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import org.alfresco.model.ContentModel;
 import org.alfresco.query.PagingRequest;
 import org.alfresco.query.PagingResults;
 import org.alfresco.repo.node.getchildren.FilterProp;
@@ -43,11 +44,11 @@ public class MockSiteService implements SiteService, Serializable {
 	public SiteInfo createSite(String sitePreset, String shortName, String title, String description,
 			boolean isPublic) {
 		ResultSet resultQ = searchService.query(STORE_REF_WORKSPACE_SPACESSTORE, LANGUAGE_FTS_ALFRESCO,
-				"PATH:\"company_home/sites");
+				"PATH:\"company_home/sites\"");
 		NodeRef result = resultQ.getNodeRef(0);
 		QName assocQName = createQName(CONTENT_MODEL_1_0_URI, shortName);
 		ChildAssociationRef nodeRef = nodeService.createNode(result, ASSOC_CONTAINS, assocQName, TYPE_FOLDER);
-		SiteInfo siteInfo = new MockSiteInfo(nodeRef.getChildRef());
+		SiteInfo siteInfo = new MockSiteInfo(nodeRef.getChildRef(), shortName);
 		return siteInfo;
 	}
 
@@ -117,13 +118,13 @@ public class MockSiteService implements SiteService, Serializable {
 		ResultSet resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, LANGUAGE_FTS_ALFRESCO,
 				"PATH:\"company_home/sites/" + shortName + "\"");
 		NodeRef result = resultQ.getNodeRef(0);
-		SiteInfo siteInfo = new MockSiteInfo(result);
+		SiteInfo siteInfo = new MockSiteInfo(result, shortName);
 		return siteInfo;
 	}
 
 	@Override
 	public SiteInfo getSite(NodeRef nodeRef) {
-		return new MockSiteInfo(nodeRef);
+		return new MockSiteInfo(nodeRef, nodeService.getProperty(nodeRef, ContentModel.PROP_NAME) + "");
 	}
 
 	@Override
