@@ -1,6 +1,7 @@
 package org.alfresco.mock.test;
 
 import static org.alfresco.model.ContentModel.ASSOC_CONTAINS;
+import static org.alfresco.model.ContentModel.PROP_NAME;
 import static org.alfresco.model.ContentModel.TYPE_FOLDER;
 import static org.alfresco.service.cmr.repository.StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
 import static org.alfresco.service.cmr.search.SearchService.LANGUAGE_FTS_ALFRESCO;
@@ -47,7 +48,7 @@ public class MockSiteService implements SiteService, Serializable {
 		NodeRef result = resultQ.getNodeRef(0);
 		QName assocQName = createQName(CONTENT_MODEL_1_0_URI, shortName);
 		ChildAssociationRef nodeRef = nodeService.createNode(result, ASSOC_CONTAINS, assocQName, TYPE_FOLDER);
-		SiteInfo siteInfo = new MockSiteInfo(nodeRef.getChildRef());
+		SiteInfo siteInfo = new MockSiteInfo(nodeRef.getChildRef(), shortName);
 		return siteInfo;
 	}
 
@@ -117,13 +118,13 @@ public class MockSiteService implements SiteService, Serializable {
 		ResultSet resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, LANGUAGE_FTS_ALFRESCO,
 				"PATH:\"company_home/sites/" + shortName + "\"");
 		NodeRef result = resultQ.getNodeRef(0);
-		SiteInfo siteInfo = new MockSiteInfo(result);
+		SiteInfo siteInfo = new MockSiteInfo(result, shortName);
 		return siteInfo;
 	}
 
 	@Override
 	public SiteInfo getSite(NodeRef nodeRef) {
-		return new MockSiteInfo(nodeRef);
+		return new MockSiteInfo(nodeRef, nodeService.getProperty(nodeRef, PROP_NAME) + "");
 	}
 
 	@Override

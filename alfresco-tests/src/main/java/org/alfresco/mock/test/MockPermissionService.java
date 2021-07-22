@@ -163,4 +163,8 @@ public class MockPermissionService implements PermissionService, Serializable {
 		
 	}
 
+	public void setNodeService(NodeService nodeService) {
+		this.nodeService = nodeService;
+	}
+
 }
