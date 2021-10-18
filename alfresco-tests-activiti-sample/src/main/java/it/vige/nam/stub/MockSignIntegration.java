@@ -94,7 +94,7 @@ public class MockSignIntegration implements SignIntegration {
 		String bufferStr = new String(buffer);
 		String decodedBufferStr = "";
 		try {
-			decodedBufferStr = com.adobe.xmp.impl.Base64.decode(bufferStr);
+			decodedBufferStr = com.adobe.internal.xmp.impl.Base64.decode(bufferStr);
 		} catch (IllegalArgumentException ex) {
 			decodedBufferStr = "";
 		}

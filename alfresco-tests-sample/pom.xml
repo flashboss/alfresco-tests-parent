@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>it.vige</groupId>
     <artifactId>alfresco-tests-sample</artifactId>
-    <version>6.2.0-ea.16</version>
+    <version>6.2.2.0</version>
     <name>alfresco Tests action sample</name>
     <description>Platform/Repo JAR Module (to be included in the alfresco.war)</description>
     <packaging>jar</packaging>
@@ -22,9 +22,9 @@
 
         <!-- Properties used in dependency declarations, you don't need to change these -->
         <alfresco.groupId>org.alfresco</alfresco.groupId>
-        <alfresco.bomDependencyArtifactId>acs-community-packaging</alfresco.bomDependencyArtifactId>
-        <alfresco.platform.version>6.2.0-ea</alfresco.platform.version>
-        <alfresco.share.version>6.2.0</alfresco.share.version>
+        <alfresco.bomDependencyArtifactId>acs-packaging</alfresco.bomDependencyArtifactId>
+        <alfresco.platform.version>6.2.2</alfresco.platform.version>
+        <alfresco.share.version>6.2.2</alfresco.share.version>
 
         <!-- Docker images -->
         <docker.acs.image>alfresco/alfresco-content-repository-community</docker.acs.image>
@@ -41,6 +41,7 @@
         <postgres.port>5555</postgres.port>
         <!-- This parameter is only required for those cases in which ACS is not exposed in http://localhost:8080/alfresco (i.e. Windows Docker) -->
         <test.acs.endpoint.path></test.acs.endpoint.path>
+		<maven.alfresco.edition>enterprise</maven.alfresco.edition>
 
     </properties>
 

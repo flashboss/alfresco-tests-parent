@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.alfresco.repo.rendition2.RenditionDefinitionRegistry2;
 import org.alfresco.repo.rendition2.RenditionService2;
+import org.alfresco.repo.rendition2.TransformDefinition;
 import org.alfresco.service.cmr.repository.ChildAssociationRef;
 import org.alfresco.service.cmr.repository.NodeRef;
 
@@ -38,6 +39,12 @@ public class MockRenditionService2 implements RenditionService2, Serializable {
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void transform(NodeRef sourceNodeRef, TransformDefinition transformDefinition) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

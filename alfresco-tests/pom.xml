@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests</artifactId>
-	<version>6.2.0-ea.16</version>
+	<version>6.2.2.0</version>
 	<name>Alfresco Tests</name>
 	<packaging>jar</packaging>
 	<description>
@@ -15,8 +15,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<alfresco.groupId>org.alfresco</alfresco.groupId>
-		<alfresco.platform.version>6.2.0-ea</alfresco.platform.version>
-		<alfresco.bomDependencyArtifactId>acs-community-packaging</alfresco.bomDependencyArtifactId>
+		<alfresco.platform.version>6.2.2</alfresco.platform.version>
+		<alfresco.bomDependencyArtifactId>acs-packaging</alfresco.bomDependencyArtifactId>
 		<maven.source.plugin.version>3.1.0</maven.source.plugin.version>
 		<maven.javadoc.plugin.version>3.1.1</maven.javadoc.plugin.version>
 		<maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
@@ -145,12 +145,10 @@
 		<dependency>
 			<groupId>org.apache.ws.commons.axiom</groupId>
 			<artifactId>axiom-api</artifactId>
-			<version>1.2.13</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.ws.commons.axiom</groupId>
 			<artifactId>axiom-impl</artifactId>
-			<version>1.2.13</version>
 		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
