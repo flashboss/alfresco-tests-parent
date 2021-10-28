@@ -2,7 +2,6 @@ package org.alfresco.mock.test;
 
 import java.io.File;
 import java.io.Serializable;
-import java.util.Date;
 
 import org.alfresco.repo.content.filestore.FileContentReader;
 import org.alfresco.service.cmr.dictionary.InvalidTypeException;
@@ -85,7 +84,19 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	@Override
-	public DirectAccessUrl getDirectAccessUrl(NodeRef nodeRef, Date expiresAt) {
+	public boolean isContentDirectUrlEnabled() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isContentDirectUrlEnabled(NodeRef nodeRef) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public DirectAccessUrl requestContentDirectUrl(NodeRef nodeRef, boolean attachment, Long validFor) {
 		// TODO Auto-generated method stub
 		return null;
 	}
