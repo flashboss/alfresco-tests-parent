@@ -43,7 +43,7 @@ public class MockSiteService implements SiteService, Serializable {
 	public SiteInfo createSite(String sitePreset, String shortName, String title, String description,
 			boolean isPublic) {
 		ResultSet resultQ = searchService.query(STORE_REF_WORKSPACE_SPACESSTORE, LANGUAGE_FTS_ALFRESCO,
-				"PATH:\"company_home/sites");
+				"PATH:\"company_home/sites\"");
 		NodeRef result = resultQ.getNodeRef(0);
 		QName assocQName = createQName(CONTENT_MODEL_1_0_URI, shortName);
 		ChildAssociationRef nodeRef = nodeService.createNode(result, ASSOC_CONTAINS, assocQName, TYPE_FOLDER);
