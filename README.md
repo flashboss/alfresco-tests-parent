@@ -16,6 +16,11 @@ To start add the dependency in your project sdk module:
 		<version>7.1.0.2</version>
 		<scope>test</scope>
    </dependency>
+   <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-test</artifactId>
+		<scope>test</scope>
+   </dependency>
 ```
 
 In the same pom add the test resources under the 'build' tag after the 'resources' tag:
@@ -145,7 +150,7 @@ public class BackupAction extends ActionExecuterAbstractBase {
 ```
 Here the configuration of the action:
 
-src -> main -> amp -> config -> alfresco -> module -> alfresco-tests-sample -> module-context.xml
+src -> main -> resources -> alfresco -> module -> alfresco-tests-sample -> module-context.xml
 
 ```
 <?xml version='1.0' encoding='UTF-8'?>
@@ -176,7 +181,7 @@ src -> main -> resources -> alfresco -> module -> alfresco-tests-sample -> conte
 
 Before to start your test remember to add a alfresco-global.properties with the variables of the action to test:
 
-src -> test -> resources -> alfresco -> module -> alfresco-tests-sample -> alfresco-global.properties
+src -> main -> resources -> alfresco -> module -> alfresco-tests-sample -> alfresco-global.properties
 
 ```
 backup.extension=bak
@@ -184,7 +189,7 @@ backup.extension=bak
 
 and the spring descriptor to connect to the action:
 
-src -> test -> resources -> alfresco -> module -> test-module-context.xml
+src -> test -> resources -> alfresco -> test-module-context.xml
 
 ```
 <!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
@@ -195,7 +200,7 @@ src -> test -> resources -> alfresco -> module -> test-module-context.xml
 		resource="classpath:alfresco/module/${project.artifactId}/context/service-context.xml" />
 </beans>
 ```
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/7.0.0-A20/alfresco-tests-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/7.1.0.2/alfresco-tests-sample.
 
 Activiti test
 ===========
@@ -395,7 +400,7 @@ In your src/test/resources folder add the follow spring descriptor file test-mod
 	<import resource="classpath:alfresco/module/${project.artifactId}/module-context.xml" />
 </beans>
 ```
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/7.0.0-A20/alfresco-tests-activiti-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/7.1.0.2/alfresco-tests-activiti-sample.
 
 Webscript test
 ===========
@@ -519,4 +524,4 @@ In your src/test/resources folder add the follow spring descriptor file test-mod
 		resource="classpath:alfresco/module/${project.artifactId}/context/webscript-context.xml" />
 </beans>
 ```
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/7.0.0-A20/alfresco-tests-ws-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/7.1.0.2/alfresco-tests-ws-sample.

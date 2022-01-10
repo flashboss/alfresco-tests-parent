@@ -13,8 +13,8 @@ import java.util.Set;
 import org.alfresco.model.ContentModel;
 import org.alfresco.query.PagingRequest;
 import org.alfresco.query.PagingResults;
-import org.alfresco.repo.node.getchildren.FilterProp;
 import org.alfresco.repo.content.filestore.FileContentReader;
+import org.alfresco.repo.node.getchildren.FilterProp;
 import org.alfresco.service.cmr.model.FileExistsException;
 import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.model.FileFolderServiceType;
@@ -187,7 +187,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 			File newFile = new File(newDir + File.separator + newName);
 			if (oldFile.exists() && !newFile.exists())
 				FileUtils.moveFile(oldFile, newFile);
-		} catch (IOException e) {
+		} catch (IOException | IllegalArgumentException e) {
 			e.printStackTrace();
 		}
 		return new MockFileInfo(association.getChildRef(), newName, ContentModel.TYPE_CONTENT);
