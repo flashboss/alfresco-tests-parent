@@ -13,7 +13,12 @@ To start add the dependency in your project sdk module:
    <dependency>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests</artifactId>
-		<version>7.1.0.1</version>
+		<version>7.1.0.2</version>
+		<scope>test</scope>
+   </dependency>
+   <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-test</artifactId>
 		<scope>test</scope>
    </dependency>
 ```
@@ -161,7 +166,7 @@ public class BackupAction extends ActionExecuterAbstractBase {
 ```
 Here the configuration of the action:
 
-src -> main -> amp -> config -> alfresco -> module -> alfresco-tests-sample -> module-context.xml
+src -> main -> resources -> alfresco -> module -> alfresco-tests-sample -> module-context.xml
 
 ```
 <?xml version='1.0' encoding='UTF-8'?>
@@ -192,7 +197,7 @@ src -> main -> resources -> alfresco -> module -> alfresco-tests-sample -> conte
 
 Before to start your test remember to add a alfresco-global.properties with the variables of the action to test:
 
-src -> test -> resources -> alfresco -> module -> alfresco-tests-sample -> alfresco-global.properties
+src -> main -> resources -> alfresco -> module -> alfresco-tests-sample -> alfresco-global.properties
 
 ```
 backup.extension=bak
@@ -200,7 +205,7 @@ backup.extension=bak
 
 and the spring descriptor to connect to the action:
 
-src -> test -> resources -> alfresco -> module -> test-module-context.xml
+src -> test -> resources -> alfresco -> test-module-context.xml
 
 ```
 <!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
