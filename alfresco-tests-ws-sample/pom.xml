@@ -6,7 +6,7 @@
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests-ws-sample</artifactId>
 	<name>Alfresco Tests ws sample</name>
-	<version>7.1.0.2</version>
+	<version>7.1.0.3</version>
 	<description>Simple JAR sample for tests</description>
 
 	<!-- SDK properties have sensible defaults in the SDK parent, but you can 
@@ -77,11 +77,6 @@
 			<groupId>it.vige</groupId>
 			<artifactId>alfresco-tests</artifactId>
 			<version>${project.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

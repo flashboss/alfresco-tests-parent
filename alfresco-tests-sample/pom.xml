@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>it.vige</groupId>
     <artifactId>alfresco-tests-sample</artifactId>
-    <version>7.1.0.2</version>
+    <version>7.1.0.3</version>
     <name>alfresco Tests action sample</name>
     <description>Platform/Repo JAR Module (to be included in the alfresco.war)</description>
     <packaging>jar</packaging>
@@ -77,12 +77,6 @@
 			<groupId>it.vige</groupId>
 			<artifactId>alfresco-tests</artifactId>
 			<version>${project.version}</version>
-			<scope>test</scope>
-		</dependency>
-        
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 

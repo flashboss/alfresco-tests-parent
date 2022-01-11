@@ -13,12 +13,7 @@ To start add the dependency in your project sdk module:
    <dependency>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests</artifactId>
-		<version>7.1.0.2</version>
-		<scope>test</scope>
-   </dependency>
-   <dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-test</artifactId>
+		<version>7.1.0.3</version>
 		<scope>test</scope>
    </dependency>
 ```
