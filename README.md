@@ -16,11 +16,6 @@ To start add the dependency in your project sdk module:
 		<version>7.1.0.3</version>
 		<scope>test</scope>
    </dependency>
-   <dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-test</artifactId>
-		<scope>test</scope>
-   </dependency>
 ```
 
 In the same pom add the test resources under the 'build' tag after the 'resources' tag:
