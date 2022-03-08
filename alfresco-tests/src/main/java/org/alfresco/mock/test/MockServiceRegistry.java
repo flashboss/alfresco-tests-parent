@@ -106,6 +106,8 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 	
 	private CopyService copyService;
 	
+	private CheckOutCheckInService checkOutCheckInService;
+	
 	private SiteService siteService;
 	
 	private PersonService personService;
@@ -214,8 +216,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 
 	@Override
 	public CheckOutCheckInService getCheckOutCheckInService() {
-		// TODO Auto-generated method stub
-		return null;
+		return checkOutCheckInService;
 	}
 
 	@Override
@@ -563,6 +564,10 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 
 	public void setCopyService(CopyService copyService) {
 		this.copyService = copyService;
+	}
+
+	public void setCheckOutCheckInService(CheckOutCheckInService checkOutCheckInService) {
+		this.checkOutCheckInService = checkOutCheckInService;
 	}
 
 	public void setSiteService(SiteService siteService) {
