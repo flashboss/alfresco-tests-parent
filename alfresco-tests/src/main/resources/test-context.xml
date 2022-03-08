@@ -167,6 +167,9 @@
 		<property name="copyService">
 			<ref bean="CopyService" />
 		</property>
+		<property name="checkOutCheckInService">
+			<ref bean="CheckOutCheckInService" />
+		</property>
 		<property name="siteService">
 			<ref bean="SiteService" />
 		</property>
