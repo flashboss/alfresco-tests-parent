@@ -46,10 +46,6 @@
 		<property name="signService" ref="signService" />
 		<property name="generationUtil" ref="generationUtil" />
 
-		<property name="pdfConvSecret">
-			<value>${vige.externalservice.pdf.secret}</value>
-		</property>
-
 		<property name="listaFirmatari">
 			<map>
 				<entry key="${vige.sign.key1}">

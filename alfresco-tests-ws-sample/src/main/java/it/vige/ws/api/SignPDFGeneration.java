@@ -1,6 +1,5 @@
 package it.vige.ws.api;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -39,7 +38,6 @@ import org.springframework.extensions.webscripts.servlet.FormData.FormField;
 import it.vige.ws.bean.Signer;
 import it.vige.ws.dom.VigeWSContentModel;
 import it.vige.ws.service.SignService;
-import it.vige.ws.templateManager.drools.DroolsConverterImpl;
 import it.vige.ws.utils.GenerationUtils;
 
 public class SignPDFGeneration extends DeclarativeWebScript {
@@ -49,7 +47,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	private SignService signService;
 	private GenerationUtils generationUtil;
 
-	private String pdfConvSecret;
 	private String generateCedra;
 
 	private HashMap<String, Signer> signerList;
@@ -244,9 +241,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	private void creaPratica(NodeRef destinazioneNodeRef, JSONObject dati, Map<String, String> metadata, int index) {
 
 		final String codiceTemplate = metadata.get("codiceTemplate");
-
-		final Map<String, String> parsedTemplateJson = generationUtil.parseJsonObject(metadata.get("codiceTemplate"),
-				dati);
 		final NodeRef droolsFileNodeRef = generationUtil.getRegolaDrools(metadata.get("codiceTemplate"));
 
 		// retrieve the template
@@ -255,14 +249,9 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 
 		logger.info("successfully retrieved model and rule");
 
-		final DroolsConverterImpl converter = new DroolsConverterImpl();
-
 		try (final InputStream modelloIS = fileFolderService.getReader(modelloNR).getContentInputStream();
 				final InputStream droolsIS = fileFolderService.getReader(droolsFileNodeRef).getContentInputStream();
-				final ByteArrayOutputStream fillResultIS = converter.fillTemplate(modelloIS, droolsIS,
-						parsedTemplateJson, metadata.get("nomeFile"));
-				final InputStream conversionResult = generationUtil.convertToPdf(pdfConvSecret, fillResultIS,
-						metadata.get("nomeFile"))) {
+				final InputStream conversionResult = generationUtil.convertToPdf(metadata.get("nomeFile"))) {
 			// fill the template
 
 			logger.info("document compilation and conversion completed");
@@ -289,8 +278,9 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 			final String docName = (index < 0 ? codiceTemplate : codiceTemplate + "_" + index) + ".pdf";
 
 			if ("S".equals(metadata.get("signDoc")))
-				generationUtil.saveDocument(destinazioneNodeRef, docName, signService.signPADES(conversionResult,
-						metadata.get("signUser"), metadata.get("signPassword")), props);
+				generationUtil.saveDocument(destinazioneNodeRef, docName,
+						signService.signPADES(conversionResult, metadata.get("signUser"), metadata.get("signPassword")),
+						props);
 			else
 				generationUtil.saveDocument(destinazioneNodeRef, docName, conversionResult, props);
 
@@ -333,14 +323,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 
 	public void setGenerationUtil(GenerationUtils generationUtil) {
 		this.generationUtil = generationUtil;
-	}
-
-	public String getPdfConvSecret() {
-		return pdfConvSecret;
-	}
-
-	public void setPdfConvSecret(String pdfConvSecret) {
-		this.pdfConvSecret = pdfConvSecret;
 	}
 
 	public String getGenerateCeda() {

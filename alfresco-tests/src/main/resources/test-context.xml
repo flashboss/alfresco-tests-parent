@@ -54,6 +54,9 @@
 			<value>6</value>
 		</property>
 	</bean>
+	<bean id="checkOutCheckInService"
+		class="org.alfresco.mock.test.MockCheckOutCheckInService" />
+	<alias name="checkOutCheckInService" alias="CheckOutCheckInService" />
 	<bean id="contentService"
 		class="org.alfresco.mock.test.MockContentService">
 		<property name="nodeService" ref="nodeService" />

@@ -70,6 +70,7 @@ public class SignPDFGenerationTest extends AbstractWSForm {
 	@Before
 	public void init() {
 		super.init();
+		System.setProperty("https.protocols", "SSLv3,TLSv1,TLSv1.1,TLSv1.2");
 		templateVars = new HashMap<String, String>();
 		templateVars.put("idpartner", ID_PARTNER);
 		templateVars.put("idpratica", ID_PRATICA);
