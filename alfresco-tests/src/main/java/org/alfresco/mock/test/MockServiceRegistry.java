@@ -101,6 +101,8 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 
 	private CopyService copyService;
 
+	private CheckOutCheckInService checkOutCheckInService;
+
 	private SiteService siteService;
 
 	private PersonService personService;
@@ -209,8 +211,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 
 	@Override
 	public CheckOutCheckInService getCheckOutCheckInService() {
-		// TODO Auto-generated method stub
-		return null;
+		return checkOutCheckInService;
 	}
 
 	@Override
@@ -491,6 +492,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		out.writeObject(authorityService);
 		out.writeObject(contentService);
 		out.writeObject(copyService);
+		out.writeObject(checkOutCheckInService);
 		out.writeObject(dictionaryService);
 		out.writeObject(fileFolderService);
 		out.writeObject(nodeLocatorService);
@@ -515,6 +517,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		authorityService = (AuthorityService) in.readObject();
 		contentService = (ContentService) in.readObject();
 		copyService = (CopyService) in.readObject();
+		checkOutCheckInService = (CheckOutCheckInService) in.readObject();
 		dictionaryService = (DictionaryService) in.readObject();
 		fileFolderService = (FileFolderService) in.readObject();
 		nodeLocatorService = (NodeLocatorService) in.readObject();
@@ -543,6 +546,10 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 
 	public void setCopyService(CopyService copyService) {
 		this.copyService = copyService;
+	}
+
+	public void setCheckOutCheckInService(CheckOutCheckInService checkOutCheckInService) {
+		this.checkOutCheckInService = checkOutCheckInService;
 	}
 
 	public void setSiteService(SiteService siteService) {
