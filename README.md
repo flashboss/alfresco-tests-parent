@@ -19,6 +19,7 @@ To start add the dependency in your project sdk module:
 ```
 Old versions are available too. Here the list of the library versions sorted by Alfresco distribution:
 - 7.0.0-A20.9
+- 6.2.2.2
 - 6.2.0-ea.18
 - 6.1.0-ea.16
 - 6.0.2-ea.5
