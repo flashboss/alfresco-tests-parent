@@ -64,7 +64,9 @@
 	</bean>
 	<alias name="contentService" alias="ContentService" />
 	<bean id="nodeService"
-		class="org.alfresco.mock.test.MockNodeService" />
+		class="org.alfresco.mock.test.MockNodeService">
+		<property name="namespaceService" ref="namespaceService" />
+	</bean>
 	<bean id="actionService"
 		class="org.alfresco.mock.test.MockActionService" />
 	<alias name="nodeService" alias="NodeService" />
