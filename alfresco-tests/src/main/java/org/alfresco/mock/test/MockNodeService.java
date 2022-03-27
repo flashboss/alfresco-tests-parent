@@ -30,9 +30,11 @@ import org.alfresco.service.cmr.repository.Path.Element;
 import org.alfresco.service.cmr.repository.StoreExistsException;
 import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.security.AccessPermission;
+import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.service.namespace.QNamePattern;
 import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class MockNodeService implements NodeService, Serializable {
 
@@ -45,7 +47,10 @@ public class MockNodeService implements NodeService, Serializable {
 	private static Map<NodeRef, File> nodeRefs = new HashMap<NodeRef, File>();
 
 	public final static QName PRIMARY_PARENT = QName.createQName("primary_parent");
-
+	
+	@Autowired
+	private NamespaceService namespaceService;
+	
 	@Override
 	public List<StoreRef> getStores() {
 		// TODO Auto-generated method stub
@@ -290,6 +295,12 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public void setProperty(NodeRef nodeRef, QName qname, Serializable value) throws InvalidNodeRefException {
+		if (value instanceof QName) {
+			QName qValue = (QName) value;
+			Collection<String> prefixes = namespaceService.getPrefixes(qValue.getNamespaceURI());
+			if (!qValue.toPrefixString().contains(":") && !prefixes.isEmpty())
+				value = QName.createQName(prefixes.toArray(new String[0])[0], qValue.getLocalName(), namespaceService);
+		}
 		getNotNullProperties(nodeRef).put(qname, value);
 		if (qname.equals(ContentModel.PROP_NAME)) {
 			File file = nodeRefs.get(nodeRef);
@@ -550,6 +561,10 @@ public class MockNodeService implements NodeService, Serializable {
 			samplePermissions.put(nodeRef, permissions);
 		}
 		permissions.add(accessPermission);
+	}
+
+	public void setNamespaceService(NamespaceService namespaceService) {
+		this.namespaceService = namespaceService;
 	}
 
 }
