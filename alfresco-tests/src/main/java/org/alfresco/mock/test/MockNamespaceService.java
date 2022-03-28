@@ -24,9 +24,9 @@ public class MockNamespaceService implements NamespaceService, Serializable {
 	@Override
 	public Collection<String> getPrefixes(String namespaceURI) throws NamespaceException {
 		List<String> results = new ArrayList<String>();
-		for (String namespaceURIFromPrefixes : prefixes.values())
-			if (namespaceURIFromPrefixes.equals(namespaceURI))
-				results.add(namespaceURIFromPrefixes);
+		for (String prefix : prefixes.keySet())
+			if (prefixes.get(prefix).equals(namespaceURI))
+				results.add(prefix);
 		return results;
 	}
 
