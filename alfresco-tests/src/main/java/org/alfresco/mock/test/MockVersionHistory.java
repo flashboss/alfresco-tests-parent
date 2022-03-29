@@ -16,14 +16,12 @@ public class MockVersionHistory implements VersionHistory, Serializable {
 
 	@Override
 	public Version getRootVersion() {
-		// TODO Auto-generated method stub
-		return null;
+		return versions.toArray(new Version[0])[0];
 	}
 
 	@Override
 	public Version getHeadVersion() {
-		// TODO Auto-generated method stub
-		return null;
+		return versions.toArray(new Version[0])[versions.size() - 1];
 	}
 
 	@Override
