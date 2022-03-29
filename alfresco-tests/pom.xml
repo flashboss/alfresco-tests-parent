@@ -5,7 +5,7 @@
 	<artifactId>alfresco-tests</artifactId>
 	<groupId>it.vige</groupId>
 	<name>Alfresco Tests</name>
-	<version>5.0.d.16</version>
+	<version>5.0.d.17</version>
 	<packaging>jar</packaging>
 	<description>
 		This is a jar project based on mock classes to test fastly the alfresco applications
