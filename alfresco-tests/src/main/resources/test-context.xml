@@ -70,28 +70,30 @@
 	<bean id="actionService"
 		class="org.alfresco.mock.test.MockActionService" />
 	<alias name="nodeService" alias="NodeService" />
-	<bean id="FileFolderService"
+	<bean id="fileFolderService"
 		class="org.alfresco.mock.test.MockFileFolderService">
 		<property name="nodeService" ref="nodeService" />
 		<property name="namespaceService" ref="namespaceService" />
 	</bean>
-	<alias name="FileFolderService" alias="fileFolderService" />
-	<bean id="SearchService"
+	<alias name="fileFolderService" alias="FileFolderService" />
+	<bean id="searchService"
 		class="org.alfresco.mock.test.MockSearchService">
 		<property name="nodeService" ref="nodeService" />
 		<property name="namespaceService" ref="namespaceService" />
 	</bean>
-	<alias name="SearchService" alias="searchService" />
+	<alias name="searchService" alias="SearchService" />
 	<bean id="mimetypeService"
 		class="org.alfresco.mock.test.MockMimetypeService" />
-	<bean id="NodeLocatorService"
+	<bean id="nodeLocatorService"
 		class="org.alfresco.mock.test.MockNodeLocatorService" />
+	<alias name="nodeLocatorService" alias="NodeLocatorService" />
 	<bean id="permissionService"
 		class="org.alfresco.mock.test.MockPermissionService">
         <property name="nodeService" ref="nodeService"/>
     </bean>
-	<bean id="TransactionService"
+	<bean id="transactionService"
 		class="org.alfresco.mock.test.MockTransactionService" />
+	<alias name="transactionService" alias="TransactionService" />
 	<bean id="baseJavaScriptExtension" abstract="true" />
 	<bean id="dictionaryModelBootstrap"
 		class="org.alfresco.repo.dictionary.DictionaryBootstrap"
@@ -100,25 +102,30 @@
 		class="org.alfresco.repo.dictionary.DictionaryBootstrap" />
 	<bean id="authenticationService"
 		class="org.alfresco.mock.test.MockAuthenticationService" />
-	<bean id="DictionaryService"
+	<bean id="dictionaryService"
 		class="org.alfresco.mock.test.MockDictionaryService" />
-	<bean id="VersionService"
+	<alias name="dictionaryService" alias="DictionaryService" />
+	<bean id="versionService"
 		class="org.alfresco.mock.test.MockVersionService" />
-	<bean id="CopyService"
+	<bean id="copyService"
 		class="org.alfresco.mock.test.MockCopyService" />
-	<bean id="SiteService"
+	<alias name="copyService" alias="CopyService" />
+	<bean id="siteService"
 		class="org.alfresco.mock.test.MockSiteService">
-        <property name="searchService" ref="searchService"/>
-        <property name="nodeService" ref="nodeService"/>
+		<property name="searchService" ref="searchService" />
+		<property name="nodeService" ref="nodeService" />
 	</bean>
-	<bean id="PersonService"
+	<alias name="siteService" alias="SiteService" />
+	<bean id="personService"
 		class="org.alfresco.mock.test.MockPersonService" />
-	<bean id="AuthorityService"
+	<alias name="personService" alias="PersonService" />
+	<bean id="authorityService"
 		class="org.alfresco.mock.test.MockAuthorityService">
 		<property name="nodeService">
 			<ref bean="NodeService" />
 		</property>
 	</bean>
+	<alias name="authorityService" alias="AuthorityService" />
 	<bean id="ServiceRegistry"
 		class="org.alfresco.mock.test.MockServiceRegistry">
 		<property name="nodeService">
@@ -203,20 +210,19 @@
 	<alias name="mimetypeService" alias="MimetypeService" />
 	<alias name="authenticationService" alias="AuthenticationService" />
 	<alias name="permissionService" alias="PermissionService" />
-	<bean id="ImporterService"
+	<bean id="importerService"
 		class="org.alfresco.mock.test.MockImporterService" />
+	<alias name="importerService" alias="ImporterService" />
 	<bean id="scriptService"
 		class="org.alfresco.mock.test.MockScriptService">
 		<property name="scriptProcessor" ref="javaScriptProcessor" />
 	</bean>
-	<bean id="NamespaceService"
+	<bean id="namespaceService"
 		class="org.alfresco.mock.test.MockNamespaceService" />
 	<bean id="templateService"
 		class="org.alfresco.mock.test.MockTemplateService" />
-	<bean id="transactionService"
-		class="org.alfresco.mock.test.MockTransactionService" />
-	<alias name="NamespaceService" alias="namespaceService" />
-	<alias name="VersionService" alias="versionService" />
+	<alias name="namespaceService" alias="NamespaceService" />
+	<alias name="versionService" alias="VersionService" />
 	<alias name="ServiceRegistry" alias="services" />
 	<bean id="javaScriptProcessor"
 		class="org.alfresco.mock.test.MockScriptProcessor"
@@ -297,7 +303,7 @@
 			<value>app:company_home</value>
 		</property>
 	</bean>
-	<bean id="Search"
+	<bean id="search"
 		class="org.alfresco.repo.management.subsystems.SwitchableApplicationContextFactory"
 		parent="abstractPropertyBackedBean">
 		<property name="autoStart">
@@ -315,6 +321,7 @@
 			</list>
 		</property>
 	</bean>
+	<alias name="search" alias="Search" />
 	<bean id="propertyBackedBeanRegistry"
 		class="org.alfresco.repo.management.subsystems.DefaultPropertyBackedBeanRegistry" />
 	<bean id="abstractPropertyBackedBean"
@@ -328,4 +335,6 @@
 			<ref local="global-properties" />
 		</property>
 	</bean>
+	<bean id="spacesStoreImporter"
+		class="org.alfresco.mock.test.MockImporterBootstrap" />
 </beans>
