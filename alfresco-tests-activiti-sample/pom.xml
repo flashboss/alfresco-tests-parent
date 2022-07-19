@@ -6,7 +6,7 @@
     <artifactId>alfresco-tests-activiti-sample</artifactId>
     <name>Alfresco Tests Activiti sample</name>
     <packaging>amp</packaging>
-    <version>4.2.6.6.23</version>
+    <version>4.2.8.0</version>
     <description>Simple AMP Activiti sample for tests</description>
 
 	<parent>
@@ -21,7 +21,7 @@
         For more available properties see the alfresco-sdk-parent POM.
        -->
     <properties>
-		<alfresco.version>4.2.6.6</alfresco.version>
+		<alfresco.version>4.2.8</alfresco.version>
         <!-- The following are default values for data location and Alfresco Community version.
              Uncomment if you need to change (Note. current default version for Enterprise edition is 5.1)
           <alfresco.version>5.1.e</alfresco.version>

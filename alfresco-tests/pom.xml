@@ -5,7 +5,7 @@
 	<artifactId>alfresco-tests</artifactId>
 	<groupId>it.vige</groupId>
 	<name>Alfresco Tests</name>
-	<version>4.2.6.6.23</version>
+	<version>4.2.8.0</version>
 	<packaging>jar</packaging>
 	<description>
 		This is a jar project based on mock classes to test fastly the alfresco applications
@@ -18,7 +18,7 @@
 	</parent>
 	
 	<properties>
-		<alfresco.version>4.2.6.6</alfresco.version>
+		<alfresco.version>4.2.8</alfresco.version>
 		<maven.source.plugin.version>3.1.0</maven.source.plugin.version>
 		<maven.javadoc.plugin.version>3.1.1</maven.javadoc.plugin.version>
 		<maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
