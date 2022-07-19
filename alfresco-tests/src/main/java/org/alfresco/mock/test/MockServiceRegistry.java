@@ -116,6 +116,8 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 	
 	private ActionService actionService;
 
+	private RetryingTransactionHelper retryingTransactionHelper;
+
 	@Override
 	public Collection<QName> getServices() {
 		// TODO Auto-generated method stub
@@ -147,7 +149,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 
 	@Override
 	public RetryingTransactionHelper getRetryingTransactionHelper() {
-		return new RetryingTransactionHelper();
+		return retryingTransactionHelper;
 	}
 
 	@Override
@@ -583,6 +585,10 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 
 	public void setActionService(ActionService actionService) {
 		this.actionService = actionService;
+	}
+
+	public void setRetryingTransactionHelper(RetryingTransactionHelper retryingTransactionHelper) {
+		this.retryingTransactionHelper = retryingTransactionHelper;
 	}
 
 }

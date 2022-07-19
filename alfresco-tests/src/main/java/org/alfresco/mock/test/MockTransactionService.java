@@ -6,9 +6,13 @@ import javax.transaction.UserTransaction;
 
 import org.alfresco.repo.transaction.RetryingTransactionHelper;
 import org.alfresco.service.transaction.TransactionService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class MockTransactionService implements TransactionService, Serializable {
 
+	@Autowired
+	private RetryingTransactionHelper retryingTransactionHelper;
+	
 	@Override
 	public boolean getAllowWrite() {
 		// TODO Auto-generated method stub
@@ -58,8 +62,11 @@ public class MockTransactionService implements TransactionService, Serializable 
 
 	@Override
 	public RetryingTransactionHelper getRetryingTransactionHelper() {
-		// TODO Auto-generated method stub
-		return new RetryingTransactionHelper();
+		return retryingTransactionHelper;
+	}
+
+	public void setRetryingTransactionHelper(RetryingTransactionHelper retryingTransactionHelper) {
+		this.retryingTransactionHelper = retryingTransactionHelper;
 	}
 
 }
