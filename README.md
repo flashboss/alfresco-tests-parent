@@ -28,6 +28,7 @@ Old versions are available too. Here the list of the library versions sorted by 
 - 5.2.f.18
 - 5.1.g.17
 - 5.0.d.17
+- 4.2.8.0
 - 4.2.6.6.22
 
 In the same pom add the test resources under the 'build' tag after the 'resources' tag:
