@@ -7,9 +7,6 @@ import org.springframework.context.ApplicationEvent;
 import org.springframework.extensions.surf.util.AbstractLifecycleBean;
 
 public class MockImporterBootstrap extends AbstractLifecycleBean {
-	
-    private boolean useExistingStore = false;
-    private List<Properties> bootstrapViews;
 
 	@Override
 	protected void onBootstrap(ApplicationEvent event) {
@@ -25,12 +22,14 @@ public class MockImporterBootstrap extends AbstractLifecycleBean {
 	
     public void setUseExistingStore(boolean useExistingStore)
     {
-        this.useExistingStore = useExistingStore;
+    	// TODO Auto-generated method stub
+    	
     }
     
     public void setBootstrapViews(List<Properties> bootstrapViews)
     {
-        this.bootstrapViews = bootstrapViews;
+    	// TODO Auto-generated method stub
+    	
     }
 
 }
