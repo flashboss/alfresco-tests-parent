@@ -337,4 +337,5 @@
 	</bean>
 	<bean id="spacesStoreImporter"
 		class="org.alfresco.mock.test.MockImporterBootstrap" />
+    <bean id="quickShareService" class="org.alfresco.repo.quickshare.QuickShareServiceImpl" />
 </beans>
