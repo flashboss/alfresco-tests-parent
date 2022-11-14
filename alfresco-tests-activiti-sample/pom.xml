@@ -5,7 +5,7 @@
     <groupId>it.vige</groupId>
     <artifactId>alfresco-tests-activiti-sample</artifactId>
     <name>Alfresco Tests Activiti sample</name>
-    <version>7.1.0.8</version>
+    <version>7.1.0.9</version>
     <description>Simple AMP Activiti sample for tests</description>
     <packaging>jar</packaging>
 
