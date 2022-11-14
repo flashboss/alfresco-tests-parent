@@ -6,7 +6,7 @@
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests-ws-sample</artifactId>
 	<name>Alfresco Tests ws sample</name>
-	<version>7.2.0.1</version>
+	<version>7.2.1.0</version>
 	<description>Simple JAR sample for tests</description>
 	<prerequisites>
 		<maven>3.3.0</maven>
@@ -26,7 +26,7 @@
         <!-- Properties used in dependency declarations, you don't need to change these -->
         <alfresco.groupId>org.alfresco</alfresco.groupId>
         <alfresco.bomDependencyArtifactId>acs-packaging</alfresco.bomDependencyArtifactId>
-        <alfresco.platform.version>7.2.0</alfresco.platform.version>
+        <alfresco.platform.version>7.2.1</alfresco.platform.version>
 
         <!-- JRebel Hot reloading of classpath stuff and web resource stuff -->
         <jrebel.version>1.1.8</jrebel.version>
