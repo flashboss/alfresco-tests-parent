@@ -43,7 +43,7 @@ public class SimpleTest extends AbstractForm {
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
 		properties.put(ContentModel.PROP_NAME, documentName);
 		properties.put(ContentModel.PROP_DESCRIPTION, documentName);
-		String content = new String(com.adobe.xmp.impl.Base64.encode(documentName));
+		String content = new String(com.adobe.internal.xmp.impl.Base64.encode(documentName));
 		insertDocument(workspace, documentName, content, properties);
 
 		// verify the document is created
