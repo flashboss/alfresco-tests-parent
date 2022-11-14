@@ -47,4 +47,10 @@ public class MockRenditionService2 implements RenditionService2, Serializable {
 		
 	}
 
+	@Override
+	public void clearRenditionContentDataInTransaction(NodeRef renditionNode) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

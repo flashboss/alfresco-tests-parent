@@ -101,4 +101,17 @@ public class MockContentService implements ContentService, Serializable {
 		return null;
 	}
 
+	@Override
+	public boolean isContentDirectUrlEnabled(NodeRef nodeRef, QName propertyQName) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public DirectAccessUrl requestContentDirectUrl(NodeRef nodeRef, QName propertyQName, boolean attachment,
+			Long validFor) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
