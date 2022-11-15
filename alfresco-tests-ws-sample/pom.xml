@@ -6,7 +6,7 @@
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests-ws-sample</artifactId>
 	<name>Alfresco Tests ws sample</name>
-	<version>7.2.1.0</version>
+	<version>7.3.0.0</version>
 	<description>Simple JAR sample for tests</description>
 	<prerequisites>
 		<maven>3.3.0</maven>
@@ -26,13 +26,14 @@
         <!-- Properties used in dependency declarations, you don't need to change these -->
         <alfresco.groupId>org.alfresco</alfresco.groupId>
         <alfresco.bomDependencyArtifactId>acs-packaging</alfresco.bomDependencyArtifactId>
-        <alfresco.platform.version>7.2.1</alfresco.platform.version>
+        <alfresco.platform.version>7.3.0</alfresco.platform.version>
 
         <!-- JRebel Hot reloading of classpath stuff and web resource stuff -->
         <jrebel.version>1.1.8</jrebel.version>
 		
 		<!-- This parameter is only required for those cases in which ACS is not exposed in http://localhost:8080/alfresco (i.e. Windows Docker) -->
         <test.acs.endpoint.path/>
+        <drools.version>8.30.0.Final</drools.version>
 
     </properties>
 
@@ -76,7 +77,13 @@
 		<dependency>
 			<groupId>org.drools</groupId>
 			<artifactId>drools-decisiontables</artifactId>
-			<version>6.5.0.Final</version>
+			<version>${drools.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-mvel</artifactId>
+			<version>${drools.version}</version>
 		</dependency>
 		
 		<dependency>
@@ -229,7 +236,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.0</version>
 				<configuration>
-					<release>11</release>
+					<release>17</release>
 				</configuration>
 			</plugin>
 
@@ -384,7 +391,7 @@
 		<profile>
 			<id>java11</id>
 			<activation>
-				<jdk>[11.0,)</jdk>
+				<jdk>[11.0,17)</jdk>
 			</activation>
 			<build>
 				<plugins>
@@ -394,6 +401,24 @@
 						<version>3.8.0</version>
 						<configuration>
 							<release>11</release>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>java17</id>
+			<activation>
+				<jdk>[17,)</jdk>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>3.8.0</version>
+						<configuration>
+							<release>17</release>
 						</configuration>
 					</plugin>
 				</plugins>

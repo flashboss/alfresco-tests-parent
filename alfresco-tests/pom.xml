@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests</artifactId>
-	<version>7.2.1.0</version>
+	<version>7.3.0.0</version>
 	<name>Alfresco Tests</name>
 	<packaging>jar</packaging>
 	<description>
@@ -15,7 +15,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<alfresco.groupId>org.alfresco</alfresco.groupId>
-		<alfresco.platform.version>7.2.1</alfresco.platform.version>
+		<alfresco.platform.version>7.3.0</alfresco.platform.version>
 		<alfresco.bomDependencyArtifactId>acs-packaging</alfresco.bomDependencyArtifactId>
 		<maven.source.plugin.version>3.1.0</maven.source.plugin.version>
 		<maven.javadoc.plugin.version>3.1.1</maven.javadoc.plugin.version>
@@ -182,7 +182,7 @@
 		<profile>
 			<id>java11</id>
 			<activation>
-				<jdk>[11.0,)</jdk>
+				<jdk>[11.0,17)</jdk>
 			</activation>
 			<build>
 				<plugins>
@@ -192,6 +192,24 @@
 						<version>3.8.0</version>
 						<configuration>
 							<release>11</release>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>java17</id>
+			<activation>
+				<jdk>[17,)</jdk>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<version>3.8.0</version>
+						<configuration>
+							<release>17</release>
 						</configuration>
 					</plugin>
 				</plugins>
