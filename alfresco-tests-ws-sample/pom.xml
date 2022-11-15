@@ -33,6 +33,7 @@
 		
 		<!-- This parameter is only required for those cases in which ACS is not exposed in http://localhost:8080/alfresco (i.e. Windows Docker) -->
         <test.acs.endpoint.path/>
+        <drools.version>8.30.0.Final</drools.version>
 
     </properties>
 
@@ -76,7 +77,13 @@
 		<dependency>
 			<groupId>org.drools</groupId>
 			<artifactId>drools-decisiontables</artifactId>
-			<version>6.5.0.Final</version>
+			<version>${drools.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-mvel</artifactId>
+			<version>${drools.version}</version>
 		</dependency>
 		
 		<dependency>
