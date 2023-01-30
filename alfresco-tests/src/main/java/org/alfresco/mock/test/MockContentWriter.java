@@ -2,6 +2,7 @@ package org.alfresco.mock.test;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -130,20 +131,22 @@ public class MockContentWriter implements ContentWriter {
 
 	@Override
 	public OutputStream getContentOutputStream() throws ContentIOException {
-		// TODO Auto-generated method stub
-		return null;
+		try (FileOutputStream fom = new FileOutputStream(file)) {
+			return fom;
+		} catch (IOException e) {
+			throw new ContentIOException(e.getMessage(), e);
+		}
 	}
 
 	@Override
 	public void putContent(ContentReader reader) throws ContentIOException {
-		// TODO Auto-generated method stub
-
+		putContent(reader.getContentInputStream());
 	}
 
 	@Override
 	public void putContent(InputStream is) throws ContentIOException {
-		try {
-			IOUtils.copy(is, new FileOutputStream(file));
+		try (FileOutputStream fom = new FileOutputStream(file)) {
+			IOUtils.copy(is, fom);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -151,8 +154,11 @@ public class MockContentWriter implements ContentWriter {
 
 	@Override
 	public void putContent(File file) throws ContentIOException {
-		// TODO Auto-generated method stub
-
+		try (FileInputStream fim = new FileInputStream(file)) {
+			putContent(fim);
+		} catch (IOException e) {
+			throw new ContentIOException(e.getMessage(), e);
+		}
 	}
 
 	@Override
