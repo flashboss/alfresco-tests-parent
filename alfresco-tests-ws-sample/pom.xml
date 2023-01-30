@@ -20,7 +20,7 @@
 		override the properties below to use another version. For more available 
 		properties see the alfresco-sdk-parent POM. -->
 	<properties>
-		<alfresco.version>4.2.6.6</alfresco.version>
+		<alfresco.version>4.2.c</alfresco.version>
 		<!-- The following are default values for data location and Alfresco Community 
 			version. Uncomment if you need to change (Note. current default version for 
 			Enterprise edition is 5.1) <alfresco.version>5.1.e</alfresco.version> <alfresco.data.location>/absolute/path/to/alf_data_dev</alfresco.data.location> -->
