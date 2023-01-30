@@ -131,8 +131,11 @@ public class MockContentWriter implements ContentWriter {
 
 	@Override
 	public OutputStream getContentOutputStream() throws ContentIOException {
-		// TODO Auto-generated method stub
-		return null;
+		try (FileOutputStream fom = new FileOutputStream(file)) {
+			return fom;
+		} catch (IOException e) {
+			throw new ContentIOException(e.getMessage(), e);
+		}
 	}
 
 	@Override
