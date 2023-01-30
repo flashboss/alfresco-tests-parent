@@ -2,6 +2,8 @@ package org.alfresco.mock.test;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -151,8 +153,11 @@ public class MockContentWriter implements ContentWriter {
 
 	@Override
 	public void putContent(File file) throws ContentIOException {
-		// TODO Auto-generated method stub
-
+		try {
+			putContent(new FileInputStream(file));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override

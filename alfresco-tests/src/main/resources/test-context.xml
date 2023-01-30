@@ -109,7 +109,12 @@
 		class="org.alfresco.mock.test.MockDictionaryService" />
 	<alias name="dictionaryService" alias="DictionaryService" />
 	<bean id="versionService"
-		class="org.alfresco.mock.test.MockVersionService" />
+		class="org.alfresco.mock.test.MockVersionService">
+		<property name="nodeService" ref="nodeService" />
+		<property name="mimetypeService" ref="mimetypeService" />
+		<property name="contentService" ref="contentService" />
+		<property name="namespaceService" ref="namespaceService" />
+	</bean>
 	<bean id="copyService"
 		class="org.alfresco.mock.test.MockCopyService" />
 	<alias name="copyService" alias="CopyService" />
