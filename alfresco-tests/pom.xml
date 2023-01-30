@@ -71,6 +71,12 @@
 		<dependency>
 			<groupId>${alfresco.groupId}</groupId>
 			<artifactId>alfresco-repository</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.social</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<!-- If we are running tests then make the H2 Scripts available Note. tests 

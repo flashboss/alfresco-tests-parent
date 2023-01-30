@@ -70,6 +70,12 @@
         <dependency>
             <groupId>${alfresco.groupId}</groupId>
             <artifactId>alfresco-repository</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.social</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
         </dependency>
 
         <!-- If we are running tests then make the H2 Scripts available
@@ -87,6 +93,18 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        
+		<dependency>
+			<groupId>${alfresco.groupId}</groupId>
+			<artifactId>alfresco-repository</artifactId>
+			<classifier>config</classifier>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.social</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
         <dependency>
             <groupId>org.jasypt</groupId>
