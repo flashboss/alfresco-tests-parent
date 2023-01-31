@@ -31,8 +31,8 @@ import org.alfresco.mock.ZipUtils;
 import org.alfresco.mock.test.MockContentService;
 import org.alfresco.mock.test.MockNodeService;
 import org.alfresco.mock.test.script.MockLogger;
+import org.alfresco.mock.test.script.MockUtils;
 import org.alfresco.model.ContentModel;
-import org.alfresco.repo.jscript.ScriptUtils;
 import org.alfresco.repo.jscript.Search;
 import org.alfresco.repo.site.SiteModel;
 import org.alfresco.repo.workflow.activiti.ActivitiScriptNode;
@@ -107,7 +107,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
 		Search search = activitiProcessEngineConfiguration.getSearchScript();
 		MockLogger logger = activitiProcessEngineConfiguration.getLoggerScript();
-		ScriptUtils utils = activitiProcessEngineConfiguration.getUtilsScript();
+		MockUtils utils = activitiProcessEngineConfiguration.getUtilsScript();
 		variables.put("initiator", initiator);
 		variables.put("search", search);
 		variables.put("logger", logger);

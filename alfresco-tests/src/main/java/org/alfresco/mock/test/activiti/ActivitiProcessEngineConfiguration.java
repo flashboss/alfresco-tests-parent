@@ -2,7 +2,7 @@ package org.alfresco.mock.test.activiti;
 
 import org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration;
 import org.alfresco.mock.test.script.MockLogger;
-import org.alfresco.repo.jscript.ScriptUtils;
+import org.alfresco.mock.test.script.MockUtils;
 import org.alfresco.repo.jscript.Search;
 import org.alfresco.service.ServiceRegistry;
 
@@ -11,7 +11,7 @@ public class ActivitiProcessEngineConfiguration extends StandaloneProcessEngineC
 	private ServiceRegistry serviceRegistry;
 	private Search searchScript;
 	private MockLogger loggerScript;
-	private ScriptUtils utilsScript;
+	private MockUtils utilsScript;
 
 	public ServiceRegistry getServiceRegistry() {
 		return serviceRegistry;
@@ -37,11 +37,11 @@ public class ActivitiProcessEngineConfiguration extends StandaloneProcessEngineC
 		this.loggerScript = loggerScript;
 	}
 
-	public ScriptUtils getUtilsScript() {
+	public MockUtils getUtilsScript() {
 		return utilsScript;
 	}
 
-	public void setUtilsScript(ScriptUtils utilsScript) {
+	public void setUtilsScript(MockUtils utilsScript) {
 		this.utilsScript = utilsScript;
 	}
 }
