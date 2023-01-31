@@ -44,15 +44,13 @@ public class WorkflowDeleteTest extends ComplexAbstractForm {
 		ProcessInstance instance = runtimeService.startProcessInstanceByKey(ACTIVITY_KEY, variables);
 
 		// I click on the completed task
-		List<Task> selectedSaS = taskService.createTaskQuery().taskDefinitionKey("selectedSaS")
-				.includeProcessVariables().list();
+		List<Task> selectedSaS = taskService.createTaskQuery().taskDefinitionKey("selectedSaS").list();
 		assertEquals(1, selectedSaS.size());
 		Task firstTask = selectedSaS.get(0);
 		taskService.complete(firstTask.getId());
 
 		// I execute the cancellation
-		List<Task> rarReview = taskService.createTaskQuery().taskDefinitionKey("rarReview").includeProcessVariables()
-				.list();
+		List<Task> rarReview = taskService.createTaskQuery().taskDefinitionKey("rarReview").list();
 		assertEquals(1, rarReview.size());
 		Task secondTask = rarReview.get(0);
 		Map<String, String> secondTaskLocalVariables = new HashMap<String, String>();
@@ -71,8 +69,7 @@ public class WorkflowDeleteTest extends ComplexAbstractForm {
 		// I verify that no zip and xml are created in the new rar folder
 		String generationFolderName = (String) nodeService.getProperty(generationFolder, ContentModel.PROP_NAME);
 		ResultSet resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
-				SearchService.LANGUAGE_FTS_ALFRESCO,
-				"PATH:\"RAR_00000/sas_complex_" + generationFolderName + ".zip\"");
+				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"RAR_00000/sas_complex_" + generationFolderName + ".zip\"");
 		NodeRef createdNodeRef = resultQ.getNodeRef(0);
 		Assert.assertNull("Added zip file to new RAR folder", createdNodeRef);
 		resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, SearchService.LANGUAGE_FTS_ALFRESCO,
@@ -94,8 +91,8 @@ public class WorkflowDeleteTest extends ComplexAbstractForm {
 				"PATH:\"" + generationFolderName + "\"");
 		createdNodeRef = resultQ.getNodeRef(0);
 		Assert.assertTrue("Folder inside store",
-				nodeService.getPath(createdNodeRef).toString().endsWith(
-						"workspace/company_home/sites/digital-conservation-complex-bank/documentLibrary/sas/"
+				nodeService.getPath(createdNodeRef).toString()
+						.endsWith("workspace/company_home/sites/digital-conservation-complex-bank/documentLibrary/sas/"
 								+ generationFolderName));
 		Assert.assertTrue("Empty folder inside store", !nodeService.getChildAssocs(createdNodeRef).isEmpty());
 

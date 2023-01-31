@@ -1,8 +1,6 @@
 package org.alfresco.mock.test;
 
-import java.io.InputStream;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -88,12 +86,6 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	}
 
 	@Override
-	public String guessMimetype(String filename, InputStream input) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public String getMimetypeIfNotMatches(ContentReader reader) {
 		// TODO Auto-generated method stub
 		return null;
@@ -101,12 +93,6 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 
 	@Override
 	public ContentCharsetFinder getContentCharsetFinder() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Collection<String> getMimetypes(String extension) {
 		// TODO Auto-generated method stub
 		return null;
 	}

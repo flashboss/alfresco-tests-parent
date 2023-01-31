@@ -267,8 +267,8 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 			props.put(VigeWSContentModel.CODICE_DOC, codiceTemplate);
 			props.put(VigeWSContentModel.NOME_FILE, metadata.get("nomeFile"));
 
-			DateTime dataCreazionePratica = DateTime.parse(metadata.get("dataCreazionePratica"),
-					DateTimeFormat.forPattern(datePattern));
+			DateTime dataCreazionePratica = DateTimeFormat.forPattern(datePattern)
+					.parseDateTime(metadata.get("dataCreazionePratica"));
 			props.put(VigeWSContentModel.DATA_CREAZIONE_PRATICA, dataCreazionePratica.toDate());
 
 			// set the flag for self-generation

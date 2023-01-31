@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import org.activiti.engine.ActivitiObjectNotFoundException;
 import org.activiti.engine.HistoryService;
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.RepositoryService;
@@ -270,11 +269,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	public void deleteAllHistories(HistoryService historyService) {
 		List<HistoricProcessInstance> historicInstances = historyService.createHistoricProcessInstanceQuery().list();
 		for (HistoricProcessInstance historicProcessInstance : historicInstances)
-			try {
 				historyService.deleteHistoricProcessInstance(historicProcessInstance.getId());
-			} catch (ActivitiObjectNotFoundException ex) {
-
-			}
 	}
 
 	public void deleteAllIDeployments(RepositoryService repositoryService) {

@@ -243,12 +243,6 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	}
 
 	@Override
-	public List<String> getNameOnlyPath(NodeRef rootNodeRef, NodeRef nodeRef) throws FileNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public FileInfo resolveNamePath(NodeRef rootNodeRef, List<String> pathElements) throws FileNotFoundException {
 		return resolveNamePath(rootNodeRef, pathElements, false);
 	}
@@ -297,24 +291,6 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 
 	@Override
 	public FileFolderServiceType getType(QName typeQName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean isHidden(NodeRef nodeRef) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void setHidden(NodeRef nodeRef, boolean isHidden) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public List<FileInfo> toFileInfoList(List<NodeRef> nodeRefs) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -274,10 +274,9 @@
         <property name="serviceRegistry">
             <ref bean="ServiceRegistry"/>
         </property>
-        <property name="nodeService" ref="nodeService"/>
     </bean>
 	<bean id="repositoryHelper"
-		class="org.alfresco.repo.model.Repository">
+		class="org.alfresco.mock.test.MockRepository">
 		<property name="namespaceService" ref="namespaceService" />
 		<property name="nodeService" ref="nodeService" />
 		<property name="fileFolderService" ref="FileFolderService" />

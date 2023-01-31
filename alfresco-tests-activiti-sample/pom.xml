@@ -67,6 +67,19 @@
         <!-- Following dependencies are needed for compiling Java code in src/main/java;
              <scope>provided</scope> is inherited for each of the following;
              for more info, please refer to alfresco-platform-distribution POM -->
+		<dependency>
+			<groupId>org.springframework.extensions.surf</groupId>
+			<artifactId>spring-surf-core-configservice</artifactId>
+			<version>1.2.0-M23</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.extensions.surf</groupId>
+			<artifactId>spring-webscripts-api</artifactId>
+			<version>1.2.0-M23</version>
+			<scope>provided</scope>
+		</dependency>
+		
         <dependency>
             <groupId>${alfresco.groupId}</groupId>
             <artifactId>alfresco-repository</artifactId>
@@ -89,22 +102,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
-        <!-- If we are running tests then make the H2 Scripts available
-             Note. tests are skipped when you are running -Pamp-to-war -->
-        <dependency>
-            <groupId>${alfresco.groupId}</groupId>
-            <artifactId>alfresco-repository</artifactId>
-            <version>${alfresco.version}</version>
-            <classifier>h2scripts</classifier>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
 
         <dependency>
             <groupId>org.jasypt</groupId>

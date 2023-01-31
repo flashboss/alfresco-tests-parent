@@ -144,8 +144,8 @@ public class DroolsConverterImpl {
 	}
 
 	/**
-	 * Convert a single template based on the drools rule file and
-	 * information extracted from the json
+	 * Convert a single template based on the drools rule file and information
+	 * extracted from the json
 	 * 
 	 * @param templateIS
 	 * @param droolsRuleIS
@@ -182,14 +182,12 @@ public class DroolsConverterImpl {
 		ByteArrayOutputStream templateOs = new ByteArrayOutputStream();
 
 		/* Imposto i metadati del documento */
-		try (XWPFWordExtractor word = new XWPFWordExtractor(template)) {
-
-			CoreProperties info = word.getCoreProperties();
-			info.setTitle(nomeFile);
-			info.setSubjectProperty(nomeFile);
-			info.setCreator("Sample Bank - http://www.vige.it/");
-			template.write(templateOs);
-		}
+		XWPFWordExtractor word = new XWPFWordExtractor(template);
+		CoreProperties info = word.getCoreProperties();
+		info.setTitle(nomeFile);
+		info.setSubjectProperty(nomeFile);
+		info.setCreator("Sample Bank - http://www.vige.it/");
+		template.write(templateOs);
 
 		logger.info("template compilation completed");
 

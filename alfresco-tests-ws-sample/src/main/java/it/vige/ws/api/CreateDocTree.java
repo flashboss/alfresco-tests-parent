@@ -26,8 +26,8 @@ import org.springframework.extensions.webscripts.DeclarativeWebScript;
 import org.springframework.extensions.webscripts.Status;
 import org.springframework.extensions.webscripts.WebScriptRequest;
 
-import it.vige.ws.dom.VigeWSContentModel;
 import it.vige.ws.dom.DocVigeWS;
+import it.vige.ws.dom.VigeWSContentModel;
 
 public class CreateDocTree extends DeclarativeWebScript {
 
@@ -64,7 +64,7 @@ public class CreateDocTree extends DeclarativeWebScript {
                 = req.getParameter("ragioneSocialeAzienda")!=null?req.getParameter("ragioneSocialeAzienda"):"";
         final String dataCreazionePratica
                 = req.getParameter("dataCreazionePratica")!=null?req.getParameter("dataCreazionePratica"):"";
-        DateTime dtCreazionePratica = DateTime.parse(dataCreazionePratica, DateTimeFormat.forPattern(datePattern));
+        DateTime dtCreazionePratica = DateTimeFormat.forPattern(datePattern).parseDateTime(dataCreazionePratica);
 
         // get the metadata for the pratica
         if (descConvenzione.isEmpty() ||

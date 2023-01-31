@@ -159,11 +159,6 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		@Override
-		public long getNumberFound() {
-			return rows.size();
-		}
-
-		@Override
 		public NodeRef getNodeRef(int n) {
 			if (rows.size() <= n)
 				return null;

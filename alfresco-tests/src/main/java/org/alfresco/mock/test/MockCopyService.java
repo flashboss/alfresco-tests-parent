@@ -81,11 +81,4 @@ public class MockCopyService implements CopyService, Serializable {
 		return null;
 	}
 
-	@Override
-	public String getTopLevelNodeNewName(NodeRef sourceNodeRef, NodeRef targetParentRef, QName assocTypeQName,
-			QName assocQName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

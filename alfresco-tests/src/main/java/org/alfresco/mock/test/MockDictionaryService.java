@@ -3,7 +3,6 @@ package org.alfresco.mock.test;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 import org.alfresco.service.cmr.dictionary.AspectDefinition;
@@ -18,30 +17,6 @@ import org.alfresco.service.cmr.dictionary.TypeDefinition;
 import org.alfresco.service.namespace.QName;
 
 public class MockDictionaryService implements DictionaryService, Serializable {
-
-	@Override
-	public String getMessage(String messageKey) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getMessage(String messageKey, Locale locale) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getMessage(String messageKey, Object... params) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getMessage(String messageKey, Locale locale, Object... params) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public Collection<QName> getAllModels() {

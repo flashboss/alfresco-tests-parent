@@ -8,7 +8,6 @@ import java.util.Set;
 import org.alfresco.query.PagingRequest;
 import org.alfresco.query.PagingResults;
 import org.alfresco.service.cmr.repository.NodeRef;
-import org.alfresco.service.cmr.security.NoSuchPersonException;
 import org.alfresco.service.cmr.security.PersonService;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.util.Pair;
@@ -22,19 +21,7 @@ public class MockPersonService implements PersonService, Serializable {
 	}
 
 	@Override
-	public NodeRef getPersonOrNull(String userName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public NodeRef getPerson(String userName, boolean autoCreateHomeFolderAndMissingPersonIfAllowed) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PersonInfo getPerson(NodeRef personRef) throws NoSuchPersonException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -54,7 +41,7 @@ public class MockPersonService implements PersonService, Serializable {
 	@Override
 	public void setCreateMissingPeople(boolean createMissing) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -66,14 +53,14 @@ public class MockPersonService implements PersonService, Serializable {
 	@Override
 	public void setPersonProperties(String userName, Map<QName, Serializable> properties) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setPersonProperties(String userName, Map<QName, Serializable> properties,
 			boolean autoCreateHomeFolder) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -97,25 +84,19 @@ public class MockPersonService implements PersonService, Serializable {
 	@Override
 	public void notifyPerson(String userName, String password) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deletePerson(String userName) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deletePerson(NodeRef personRef) {
 		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void deletePerson(NodeRef personRef, boolean deleteAuthentication) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -133,14 +114,6 @@ public class MockPersonService implements PersonService, Serializable {
 
 	@Override
 	public PagingResults<PersonInfo> getPeople(List<Pair<QName, String>> stringPropFilters, boolean filterIgnoreCase,
-			List<Pair<QName, Boolean>> sortProps, PagingRequest pagingRequest) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PagingResults<PersonInfo> getPeople(String pattern, List<QName> filterStringProps,
-			Set<QName> inclusiveAspects, Set<QName> exclusiveAspects, boolean includeAdministraotrs,
 			List<Pair<QName, Boolean>> sortProps, PagingRequest pagingRequest) {
 		// TODO Auto-generated method stub
 		return null;

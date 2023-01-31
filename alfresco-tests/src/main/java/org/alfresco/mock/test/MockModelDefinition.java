@@ -8,7 +8,6 @@ import java.util.Date;
 import org.alfresco.repo.dictionary.DictionaryDAO;
 import org.alfresco.service.cmr.dictionary.ModelDefinition;
 import org.alfresco.service.cmr.dictionary.NamespaceDefinition;
-import org.alfresco.service.cmr.i18n.MessageLookup;
 import org.alfresco.service.namespace.QName;
 
 public class MockModelDefinition implements ModelDefinition, Serializable {
@@ -22,12 +21,6 @@ public class MockModelDefinition implements ModelDefinition, Serializable {
 	@Override
 	public QName getName() {
 		return name;
-	}
-
-	@Override
-	public String getDescription(MessageLookup messageLookup) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -92,6 +85,12 @@ public class MockModelDefinition implements ModelDefinition, Serializable {
 
 	@Override
 	public DictionaryDAO getDictionaryDAO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getDescription() {
 		// TODO Auto-generated method stub
 		return null;
 	}

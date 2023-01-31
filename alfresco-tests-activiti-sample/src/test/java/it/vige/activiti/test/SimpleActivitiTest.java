@@ -146,8 +146,7 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		ProcessInstance instance = runtimeService.startProcessInstanceByKey(ACTIVITY_KEY, variables);
 
 		// execute the user task
-		List<Task> selectedSaS = taskService.createTaskQuery().taskDefinitionKey("selectedSaS")
-				.includeProcessVariables().list();
+		List<Task> selectedSaS = taskService.createTaskQuery().taskDefinitionKey("selectedSaS").list();
 		assertEquals(1, selectedSaS.size());
 		Task firstTask = selectedSaS.get(0);
 		taskService.complete(firstTask.getId());

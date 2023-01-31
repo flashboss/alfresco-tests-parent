@@ -44,13 +44,11 @@ public class WorkflowNotHumanTest extends ComplexAbstractForm {
 		ProcessInstance instance = runtimeService.startProcessInstanceByKey(ACTIVITY_KEY, variables);
 
 		// The selected SaS is not carried out
-		List<Task> selectedSaS = taskService.createTaskQuery().taskDefinitionKey("selectedSaS")
-				.includeProcessVariables().list();
+		List<Task> selectedSaS = taskService.createTaskQuery().taskDefinitionKey("selectedSaS").list();
 		assertEquals(0, selectedSaS.size());
 
 		// Execute continue
-		List<Task> rarReview = taskService.createTaskQuery().taskDefinitionKey("rarReview").includeProcessVariables()
-				.list();
+		List<Task> rarReview = taskService.createTaskQuery().taskDefinitionKey("rarReview").list();
 		assertEquals(1, rarReview.size());
 		Task secondTask = rarReview.get(0);
 		Map<String, String> secondTaskLocalVariables = new HashMap<String, String>();
@@ -59,8 +57,7 @@ public class WorkflowNotHumanTest extends ComplexAbstractForm {
 		taskService.complete(secondTask.getId());
 
 		// Execute subscription
-		List<Task> irarSubscription = taskService.createTaskQuery().taskDefinitionKey("irarSubscription")
-				.includeProcessVariables().list();
+		List<Task> irarSubscription = taskService.createTaskQuery().taskDefinitionKey("irarSubscription").list();
 		assertEquals(1, irarSubscription.size());
 		Task thirdTask = irarSubscription.get(0);
 		Map<String, String> thirdTaskLocalVariables = new HashMap<String, String>();
@@ -80,8 +77,7 @@ public class WorkflowNotHumanTest extends ComplexAbstractForm {
 		// I verify that the two files in the new rar folder have not been created
 		String generationFolderName = (String) nodeService.getProperty(generationFolder, ContentModel.PROP_NAME);
 		ResultSet resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
-				SearchService.LANGUAGE_FTS_ALFRESCO,
-				"PATH:\"RAR_00000/sas_complex_" + generationFolderName + ".zip\"");
+				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"RAR_00000/sas_complex_" + generationFolderName + ".zip\"");
 		NodeRef createdNodeRef = resultQ.getNodeRef(0);
 		Assert.assertNull("Added zip file to new RAR folder", createdNodeRef);
 		resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, SearchService.LANGUAGE_FTS_ALFRESCO,
@@ -94,8 +90,8 @@ public class WorkflowNotHumanTest extends ComplexAbstractForm {
 				"PATH:\"" + generationFolderName + "\"");
 		createdNodeRef = resultQ.getNodeRef(0);
 		Assert.assertTrue("Folder inside store",
-				nodeService.getPath(createdNodeRef).toString().endsWith(
-						"workspace/company_home/sites/digital-conservation-complex-bank/documentLibrary/sas/"
+				nodeService.getPath(createdNodeRef).toString()
+						.endsWith("workspace/company_home/sites/digital-conservation-complex-bank/documentLibrary/sas/"
 								+ generationFolderName));
 		Assert.assertTrue("Empty folder inside store", !nodeService.getChildAssocs(createdNodeRef).isEmpty());
 
@@ -109,10 +105,9 @@ public class WorkflowNotHumanTest extends ComplexAbstractForm {
 		resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, SearchService.LANGUAGE_FTS_ALFRESCO,
 				"PATH:\"IRaR_00000.xml." + SignConstants.P7M_EXTENSION + "\"");
 		createdNodeRef = resultQ.getNodeRef(0);
-		Assert.assertTrue("XML signed in the new rar folder",
-				nodeService.getPath(createdNodeRef).toString().endsWith(
-						"workspace/company_home/sites/digital-conservation-complex-bank/documentLibrary/rar/RAR_00000/IRaR_00000.xml."
-								+ SignConstants.P7M_EXTENSION));
+		Assert.assertTrue("XML signed in the new rar folder", nodeService.getPath(createdNodeRef).toString().endsWith(
+				"workspace/company_home/sites/digital-conservation-complex-bank/documentLibrary/rar/RAR_00000/IRaR_00000.xml."
+						+ SignConstants.P7M_EXTENSION));
 
 		end();
 	}

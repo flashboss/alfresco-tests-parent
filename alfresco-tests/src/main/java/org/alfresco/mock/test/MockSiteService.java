@@ -16,8 +16,6 @@ import org.alfresco.model.ContentModel;
 import org.alfresco.query.PagingRequest;
 import org.alfresco.query.PagingResults;
 import org.alfresco.repo.node.getchildren.FilterProp;
-import org.alfresco.repo.site.SiteMembership;
-import org.alfresco.service.cmr.model.FileInfo;
 import org.alfresco.service.cmr.repository.ChildAssociationRef;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
@@ -50,12 +48,6 @@ public class MockSiteService implements SiteService, Serializable {
 		ChildAssociationRef nodeRef = nodeService.createNode(result, ASSOC_CONTAINS, assocQName, TYPE_FOLDER);
 		SiteInfo siteInfo = new MockSiteInfo(nodeRef.getChildRef(), shortName);
 		return siteInfo;
-	}
-
-	@Override
-	public boolean canAddMember(String shortName, String authorityName, String role) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override
@@ -128,18 +120,6 @@ public class MockSiteService implements SiteService, Serializable {
 	}
 
 	@Override
-	public String getSiteShortName(NodeRef nodeRef) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean hasSite(String shortName) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public void updateSite(SiteInfo siteInfo) {
 		// TODO Auto-generated method stub
 
@@ -147,13 +127,6 @@ public class MockSiteService implements SiteService, Serializable {
 
 	@Override
 	public void deleteSite(String shortName) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void listMembers(String shortName, String nameFilter, String roleFilter, boolean collapseGroups,
-			SiteMembersCallback callback) {
 		// TODO Auto-generated method stub
 
 	}
@@ -174,13 +147,6 @@ public class MockSiteService implements SiteService, Serializable {
 	@Override
 	public List<SiteMemberInfo> listMembersInfo(String shortName, String nameFilter, String roleFilter, int size,
 			boolean collapseGroups) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PagingResults<SiteMembership> listMembersPaged(String shortName, boolean collapseGroups,
-			List<Pair<SortFields, Boolean>> sortProps, PagingRequest pagingRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -218,12 +184,6 @@ public class MockSiteService implements SiteService, Serializable {
 
 	@Override
 	public NodeRef getContainer(String shortName, String componentId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PagingResults<FileInfo> listContainers(String shortName, PagingRequest pagingRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -271,32 +231,7 @@ public class MockSiteService implements SiteService, Serializable {
 	}
 
 	@Override
-	public PagingResults<SiteMembership> listSitesPaged(String userName, List<Pair<SortFields, Boolean>> sortProps,
-			PagingRequest pagingRequest) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String resolveSite(String group) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public String getMembersRole(String shortName, String authorityName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int countAuthoritiesWithRole(String shortName, String role) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public List<SiteMembership> listSiteMemberships(String userName, int size) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -356,13 +356,6 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef, QNamePattern typeQNamePattern,
-			QNamePattern qnamePattern, int maxResults, boolean preload) throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef, QNamePattern typeQNamePattern,
 			QNamePattern qnamePattern, boolean preload) throws InvalidNodeRefException {
 		// TODO Auto-generated method stub
 		return null;
@@ -444,13 +437,6 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public List<AssociationRef> getTargetAssocs(NodeRef sourceRef, QNamePattern qnamePattern)
 			throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<AssociationRef> getTargetAssocsByPropertyValue(NodeRef sourceRef, QNamePattern qnamePattern,
-			QName propertyQName, Serializable propertyValue) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -565,6 +551,13 @@ public class MockNodeService implements NodeService, Serializable {
 
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
+	}
+
+	@Override
+	public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef, QName typeQName, QName qname, int maxResults,
+			boolean preload) throws InvalidNodeRefException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

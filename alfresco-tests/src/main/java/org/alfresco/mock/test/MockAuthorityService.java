@@ -17,7 +17,6 @@ import java.util.Set;
 
 import org.alfresco.query.PagingRequest;
 import org.alfresco.query.PagingResults;
-import org.alfresco.repo.security.authority.AuthorityInfo;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.cmr.repository.StoreRef;
@@ -60,18 +59,6 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 	}
 
 	@Override
-	public long countUsers() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public long countGroups() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public Set<String> getAuthorities() {
 		return authorityNodes.keySet();
 	}
@@ -84,13 +71,6 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 	@Override
 	public Set<String> getAllAuthorities(AuthorityType type) {
 		return getAuthorities();
-	}
-
-	@Override
-	public PagingResults<AuthorityInfo> getAuthoritiesInfo(AuthorityType type, String zoneName,
-			String displayNameFilter, String sortBy, boolean sortAscending, PagingRequest pagingRequest) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

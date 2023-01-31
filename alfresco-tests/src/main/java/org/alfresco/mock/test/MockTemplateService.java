@@ -2,7 +2,6 @@ package org.alfresco.mock.test;
 
 import java.io.Serializable;
 import java.io.Writer;
-import java.util.Locale;
 import java.util.Map;
 
 import org.alfresco.service.cmr.repository.NodeRef;
@@ -34,13 +33,6 @@ public class MockTemplateService implements TemplateService, Serializable {
 	public void processTemplate(String engine, String template, Object model, Writer out) throws TemplateException {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public String processTemplate(String engine, String templateRef, Object model, Locale locale)
-			throws TemplateException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
