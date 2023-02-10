@@ -39,7 +39,6 @@
 	<modules>
 		<module>alfresco-tests</module>
 		<module>alfresco-tests-sample</module>
-		<module>alfresco-tests-activiti-sample</module>
         <module>alfresco-tests-ws-sample</module>
 	</modules>
 </project>
