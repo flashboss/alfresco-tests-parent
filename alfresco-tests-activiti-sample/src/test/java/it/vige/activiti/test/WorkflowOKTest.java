@@ -122,7 +122,7 @@ public class WorkflowOKTest extends ComplexAbstractForm {
 		createdNodeRef = resultQ.getNodeRef(0);
 		Assert.assertTrue("XML signed in the new rar folder",
 				nodeService.getPath(createdNodeRef).toString().endsWith(
-						"workspace/company_home/sites/digital-conservation-complex-bank/documentLibrary/rar/RAR_00000/IRaR_00000.xml."
+						"workspace/SpacesStore/company_home/sites/digital-conservation-complex-bank/documentLibrary/rar/RAR_00000/IRaR_00000.xml."
 								+ SignConstants.P7M_EXTENSION));
 
 		end();

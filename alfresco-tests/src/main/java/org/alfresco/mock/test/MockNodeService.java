@@ -45,7 +45,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	private static Map<NodeRef, Set<AccessPermission>> samplePermissions = new HashMap<NodeRef, Set<AccessPermission>>();
 
-	private static Map<NodeRef, File> nodeRefs = new HashMap<NodeRef, File>();
+	private static Map<NodeRef, File> nodeRefs = new FilteredHashMap();
 
 	public final static QName PRIMARY_PARENT = QName.createQName("primary_parent");
 	
