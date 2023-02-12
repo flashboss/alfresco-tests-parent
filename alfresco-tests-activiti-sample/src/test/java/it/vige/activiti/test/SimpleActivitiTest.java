@@ -158,7 +158,7 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		NodeRef createdNodeRef = resultQ.getNodeRef(0);
 		String path = nodeService.getPath(createdNodeRef).toString();
 		Assert.assertTrue("Added a zip file in the RAR folder",
-				path.endsWith("workspace/company_home/sites/simple-site/documentLibrary/rar/contracts_"
+				path.endsWith("workspace/SpacesStore/company_home/sites/simple-site/documentLibrary/rar/contracts_"
 						+ generationFolderName + ".zip"));
 
 		// the file is inside the workflow/packages activiti folder
@@ -167,7 +167,7 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		createdNodeRef = resultQ.getNodeRef(0);
 		path = nodeService.getPath(createdNodeRef).toString();
 		Assert.assertTrue("File zip in the activiti folder",
-				path.endsWith("workspace/workflow/packages/pkg_919f220e-870a-4c56-ba11-5030ee5325f0/contracts_"
+				path.endsWith("workspace/SpacesStore/workflow/packages/pkg_919f220e-870a-4c56-ba11-5030ee5325f0/contracts_"
 						+ generationFolderName + ".zip"));
 
 		end();

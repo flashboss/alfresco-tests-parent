@@ -95,7 +95,7 @@ public class WorkflowNotHumanTest extends ComplexAbstractForm {
 		createdNodeRef = resultQ.getNodeRef(0);
 		Assert.assertTrue("Folder inside store",
 				nodeService.getPath(createdNodeRef).toString().endsWith(
-						"workspace/company_home/sites/digital-conservation-complex-bank/documentLibrary/sas/"
+						"workspace/SpacesStore/company_home/sites/digital-conservation-complex-bank/documentLibrary/sas/"
 								+ generationFolderName));
 		Assert.assertTrue("Empty folder inside store", !nodeService.getChildAssocs(createdNodeRef).isEmpty());
 
@@ -111,7 +111,7 @@ public class WorkflowNotHumanTest extends ComplexAbstractForm {
 		createdNodeRef = resultQ.getNodeRef(0);
 		Assert.assertTrue("XML signed in the new rar folder",
 				nodeService.getPath(createdNodeRef).toString().endsWith(
-						"workspace/company_home/sites/digital-conservation-complex-bank/documentLibrary/rar/RAR_00000/IRaR_00000.xml."
+						"workspace/SpacesStore/company_home/sites/digital-conservation-complex-bank/documentLibrary/rar/RAR_00000/IRaR_00000.xml."
 								+ SignConstants.P7M_EXTENSION));
 
 		end();
