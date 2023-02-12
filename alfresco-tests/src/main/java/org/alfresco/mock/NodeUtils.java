@@ -1,5 +1,10 @@
 package org.alfresco.mock;
 
+import static org.alfresco.mock.test.MockContentService.FOLDER_TEST;
+import static org.alfresco.service.cmr.repository.StoreRef.PROTOCOL_ARCHIVE;
+import static org.alfresco.service.cmr.repository.StoreRef.PROTOCOL_WORKSPACE;
+import static org.alfresco.service.cmr.repository.StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.Serializable;
@@ -52,6 +57,18 @@ public class NodeUtils {
 		return node;
 	}
 
+	public static NodeRef insertVersion(NodeRef nodeRef, String name, String text, String version, VersionType versionType,
+			ServiceRegistry serviceRegistry) {
+		VersionService versionService = serviceRegistry.getVersionService();
+		Map<String, Serializable> versionProperties = new HashMap<String, Serializable>();
+		versionProperties.put(Version2Model.PROP_QNAME_VERSION_LABEL.getLocalName(), version);
+		versionProperties.put(Version2Model.PROP_VERSION_TYPE, versionType.name());
+		versionProperties.put(ContentModel.PROP_CONTENT.getLocalName(), text.getBytes());
+		versionProperties.put(ContentModel.PROP_NAME.getLocalName(), name);
+		Version versionRef = versionService.createVersion(nodeRef, versionProperties);
+		return versionRef.getFrozenStateNodeRef();
+	}
+
 	public static List<NodeRef> sortByName(Set<NodeRef> nodeRefs) {
 		NodeRef[] nodeArray = nodeRefs.toArray(new NodeRef[0]);
 		Arrays.sort(nodeArray, new Comparator<NodeRef>() {
@@ -65,7 +82,11 @@ public class NodeUtils {
 	}
 
 	public static String generateUUID(String nodePath) {
-		return nodePath.hashCode() + "";
+		if (nodePath.equals(FOLDER_TEST + PROTOCOL_WORKSPACE))
+			return FOLDER_TEST + PROTOCOL_WORKSPACE.hashCode() + "";
+		if (nodePath.equals(FOLDER_TEST + PROTOCOL_ARCHIVE))
+			return FOLDER_TEST + PROTOCOL_ARCHIVE.hashCode() + "";
+		return nodePath.replaceAll("/" + STORE_REF_WORKSPACE_SPACESSTORE.getIdentifier(), "").hashCode() + "";
 	}
 
 }

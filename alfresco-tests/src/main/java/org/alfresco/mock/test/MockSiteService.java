@@ -1,7 +1,6 @@
 package org.alfresco.mock.test;
 
 import static org.alfresco.model.ContentModel.ASSOC_CONTAINS;
-import static org.alfresco.model.ContentModel.PROP_NAME;
 import static org.alfresco.model.ContentModel.TYPE_FOLDER;
 import static org.alfresco.service.cmr.repository.StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
 import static org.alfresco.service.cmr.search.SearchService.LANGUAGE_FTS_ALFRESCO;

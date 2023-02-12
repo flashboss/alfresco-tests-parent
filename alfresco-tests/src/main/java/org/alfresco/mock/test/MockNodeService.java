@@ -44,7 +44,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	private static Map<NodeRef, Set<AccessPermission>> samplePermissions = new HashMap<NodeRef, Set<AccessPermission>>();
 
-	private static Map<NodeRef, File> nodeRefs = new HashMap<NodeRef, File>();
+	private static Map<NodeRef, File> nodeRefs = new FilteredHashMap();
 
 	public final static QName PRIMARY_PARENT = QName.createQName("primary_parent");
 
@@ -94,8 +94,8 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public NodeRef getRootNode(StoreRef storeRef) throws InvalidStoreRefException {
 		for (NodeRef nodeRef : nodeRefs.keySet()) {
-			String name = (String) getProperty(nodeRef, ContentModel.PROP_NAME);
-			if (name.equals(storeRef.getProtocol()))
+			String path = getPath(nodeRef).toString();
+			if (path.endsWith(storeRef.getProtocol() + "/" + storeRef.getIdentifier()))
 				return nodeRef;
 		}
 		return null;
@@ -122,11 +122,26 @@ public class MockNodeService implements NodeService, Serializable {
 		String pathStr = "";
 		if (path != null)
 			pathStr = path.toString() + File.separator + nodeUUID;
-		else
+		else if (path == null && assocQName.getLocalName().equals(StoreRef.PROTOCOL_ARCHIVE))
+			pathStr = MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_ARCHIVE;
+		else if (path == null && assocQName.getLocalName().equals(StoreRef.PROTOCOL_WORKSPACE))
+			pathStr = MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE;
+		else if (parentRef.getStoreRef().getProtocol().equals(StoreRef.PROTOCOL_ARCHIVE)
+				&& assocQName.getLocalName().equals(StoreRef.STORE_REF_ARCHIVE_SPACESSTORE.getIdentifier()))
+			pathStr = MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_ARCHIVE + "/" + assocQName.getLocalName();
+		else if (parentRef.getStoreRef().getProtocol().equals(StoreRef.PROTOCOL_WORKSPACE)
+				&& assocQName.getLocalName().equals(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE.getIdentifier()))
+			pathStr = MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE + "/" + assocQName.getLocalName();
+		else if (parentRef.getStoreRef().getProtocol().equals(StoreRef.PROTOCOL_WORKSPACE)
+				&& assocQName.getLocalName().equals(Version2Model.STORE_ID))
+			pathStr = MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE + "/" + assocQName.getLocalName();
+		else if (path == null)
 			pathStr = MockContentService.FOLDER_TEST;
 		StoreRef storeRef = StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
 		if (pathStr.contains(StoreRef.PROTOCOL_ARCHIVE))
 			storeRef = StoreRef.STORE_REF_ARCHIVE_SPACESSTORE;
+		if (pathStr.contains(StoreRef.PROTOCOL_WORKSPACE + "/" + Version2Model.STORE_ID))
+			storeRef = new StoreRef(StoreRef.PROTOCOL_WORKSPACE, Version2Model.STORE_ID);
 		NodeRef nodeRef = new NodeRef(storeRef, NodeUtils.generateUUID(pathStr));
 		if (properties == null) {
 			setProperty(nodeRef, ContentModel.PROP_NAME, assocQName.getLocalName());

@@ -10,6 +10,21 @@ import org.alfresco.service.cmr.version.VersionType;
 
 public class MockVersion implements Version {
 
+	private Map<String, Serializable> versionProperties;
+	private NodeRef frozenStateNodeRef;
+	private NodeRef versionedNodeRef;
+
+	public MockVersion() {
+		versionProperties = new HashMap<String, Serializable>();
+	}
+
+	public MockVersion(NodeRef frozenStateNodeRef, NodeRef versionedNodeRef,
+			Map<String, Serializable> versionProperties) {
+		this.frozenStateNodeRef = frozenStateNodeRef;
+		this.versionedNodeRef = versionedNodeRef;
+		this.versionProperties = versionProperties;
+	}
+
 	@Override
 	public Date getCreatedDate() {
 		// TODO Auto-generated method stub
@@ -35,8 +50,7 @@ public class MockVersion implements Version {
 
 	@Override
 	public String getVersionLabel() {
-		// TODO Auto-generated method stub
-		return null;
+		return (String) versionProperties.get(Version2Model.PROP_QNAME_VERSION_LABEL.getLocalName());
 	}
 
 	@Override
@@ -53,26 +67,22 @@ public class MockVersion implements Version {
 
 	@Override
 	public Map<String, Serializable> getVersionProperties() {
-		// TODO Auto-generated method stub
-		return null;
+		return versionProperties;
 	}
 
 	@Override
 	public Serializable getVersionProperty(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return versionProperties.get(name);
 	}
 
 	@Override
 	public NodeRef getVersionedNodeRef() {
-		// TODO Auto-generated method stub
-		return null;
+		return versionedNodeRef;
 	}
 
 	@Override
 	public NodeRef getFrozenStateNodeRef() {
-		// TODO Auto-generated method stub
-		return null;
+		return frozenStateNodeRef;
 	}
 
 }

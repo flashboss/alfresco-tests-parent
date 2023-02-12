@@ -4,6 +4,7 @@ import static java.util.Calendar.HOUR_OF_DAY;
 import static java.util.Calendar.getInstance;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static org.activiti.engine.impl.util.IoUtil.readInputStream;
+import static org.alfresco.service.cmr.repository.StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
 
 import java.io.File;
 import java.io.IOException;
@@ -54,11 +55,11 @@ import org.subethamail.smtp.server.SMTPServer;
 
 public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
-	protected NodeRef workspace;
+	protected NodeRef spacesStore;
 	protected NodeRef archive;
 	protected NodeRef sites;
 	protected ActivitiScriptNode bpmPackage;
-	protected Initiator initiator = new Initiator();
+	protected Initiator initiator;
 
 	public AbstractActivitiForm() {
 		super("test-module-context.xml");
@@ -76,7 +77,9 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
 		// remove the old documents
 		MockNodeService nodeService = (MockNodeService) serviceRegistry.getNodeService();
+		MockVersionService versionService = (MockVersionService) serviceRegistry.getVersionService();
 		nodeService.init();
+		versionService.init();
 		try {
 			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE));
 			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_ARCHIVE));
@@ -85,15 +88,17 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 			e.printStackTrace();
 		}
 
+		initiator = new Initiator();
 		// create the initial folders
 		NodeRef root = insertFolder(new NodeRef(new StoreRef("", ""), ""), ".");
-		workspace = insertFolder(root, StoreRef.PROTOCOL_WORKSPACE);
-		NodeRef companyHome = insertFolder(workspace, NamespaceService.APP_MODEL_PREFIX, "company_home");
-		NodeRef system = insertFolder(workspace, NamespaceService.SYSTEM_MODEL_PREFIX, "system");
+		NodeRef workspaceRoot = insertFolder(root, StoreRef.PROTOCOL_WORKSPACE);
+		spacesStore = insertFolder(workspaceRoot, NamespaceService.APP_MODEL_PREFIX, STORE_REF_WORKSPACE_SPACESSTORE.getIdentifier());
+		NodeRef companyHome = insertFolder(spacesStore, NamespaceService.APP_MODEL_PREFIX, "company_home");
+		NodeRef system = insertFolder(spacesStore, NamespaceService.SYSTEM_MODEL_PREFIX, "system");
 		archive = insertFolder(root, StoreRef.PROTOCOL_ARCHIVE);
 		sites = insertFolder(companyHome, SiteModel.SITE_MODEL_PREFIX, SiteModel.TYPE_SITES.getLocalName());
 		insertFolder(system, SiteModel.SITE_MODEL_PREFIX, "authorities");
-		NodeRef workflow = insertFolder(workspace, "workflow");
+		NodeRef workflow = insertFolder(spacesStore, "workflow");
 		NodeRef packages = insertFolder(workflow, "packages");
 		NodeRef bpmPackageFolder = insertFolder(packages, "pkg_919f220e-870a-4c56-ba11-5030ee5325f0");
 		bpmPackage = new MockActivitiScriptNode(bpmPackageFolder, serviceRegistry);
