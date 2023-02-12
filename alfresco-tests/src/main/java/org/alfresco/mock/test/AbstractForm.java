@@ -1,5 +1,10 @@
 package org.alfresco.mock.test;
 
+import static org.alfresco.service.cmr.repository.StoreRef.PROTOCOL_ARCHIVE;
+import static org.alfresco.service.cmr.repository.StoreRef.PROTOCOL_WORKSPACE;
+import static org.alfresco.service.cmr.repository.StoreRef.STORE_REF_ARCHIVE_SPACESSTORE;
+import static org.alfresco.service.cmr.repository.StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,11 +22,13 @@ import org.alfresco.mock.NodeUtils;
 import org.alfresco.mock.ZipUtils;
 import org.alfresco.model.ContentModel;
 import org.alfresco.repo.site.SiteModel;
+import org.alfresco.repo.version.Version2Model;
 import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.repository.ContentService;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.StoreRef;
+import org.alfresco.service.cmr.version.VersionType;
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.apache.commons.codec.binary.Base64;
@@ -34,7 +41,7 @@ public abstract class AbstractForm {
 	@Autowired
 	protected ServiceRegistry serviceRegistry;
 
-	protected NodeRef workspace;
+	protected NodeRef spacesStore;
 	protected NodeRef archive;
 	protected NodeRef sites;
 	protected Date today;
@@ -49,10 +56,12 @@ public abstract class AbstractForm {
 		namespaceService.registerNamespace(NamespaceService.SYSTEM_MODEL_PREFIX, NamespaceService.SYSTEM_MODEL_1_0_URI);
 
 		MockNodeService nodeService = (MockNodeService) serviceRegistry.getNodeService();
+		MockVersionService versionService = (MockVersionService) serviceRegistry.getVersionService();
 		nodeService.init();
+		versionService.init();
 		try {
-			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE));
-			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_ARCHIVE));
+			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + PROTOCOL_WORKSPACE));
+			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + PROTOCOL_ARCHIVE));
 			FileUtils.deleteDirectory(ZipUtils.TEMP_DIR);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -60,10 +69,14 @@ public abstract class AbstractForm {
 
 		// creo le directory iniziali per i pdv, gli rdv e il repository
 		NodeRef root = insertFolder(new NodeRef(new StoreRef("", ""), ""), ".");
-		workspace = insertFolder(root, StoreRef.PROTOCOL_WORKSPACE);
-		NodeRef companyHome = insertFolder(workspace, NamespaceService.APP_MODEL_PREFIX, "company_home");
-		NodeRef system = insertFolder(workspace, NamespaceService.SYSTEM_MODEL_PREFIX, "system");
-		archive = insertFolder(root, StoreRef.PROTOCOL_ARCHIVE);
+		NodeRef workspaceRoot = insertFolder(root, PROTOCOL_WORKSPACE);
+		spacesStore = insertFolder(workspaceRoot, NamespaceService.APP_MODEL_PREFIX,
+				STORE_REF_WORKSPACE_SPACESSTORE.getIdentifier());
+		insertFolder(workspaceRoot, NamespaceService.APP_MODEL_PREFIX, Version2Model.STORE_ID);
+		NodeRef companyHome = insertFolder(spacesStore, NamespaceService.APP_MODEL_PREFIX, "company_home");
+		NodeRef system = insertFolder(spacesStore, NamespaceService.SYSTEM_MODEL_PREFIX, "system");
+		NodeRef archiveRoot = insertFolder(root, PROTOCOL_ARCHIVE);
+		archive = insertFolder(archiveRoot, STORE_REF_ARCHIVE_SPACESSTORE.getIdentifier());
 		sites = insertFolder(companyHome, SiteModel.SITE_MODEL_PREFIX, SiteModel.TYPE_SITES.getLocalName());
 		insertFolder(system, SiteModel.SITE_MODEL_PREFIX, "authorities");
 	}
@@ -86,6 +99,10 @@ public abstract class AbstractForm {
 
 	protected NodeRef insertDocument(NodeRef parent, String name, byte[] text, Map<QName, Serializable> properties) {
 		return NodeUtils.insertDocument(parent, name, text, properties, serviceRegistry);
+	}
+
+	protected NodeRef insertVersion(NodeRef nodeRef, String name, String text, String version, VersionType versionType) {
+		return NodeUtils.insertVersion(nodeRef, name, text, version, versionType, serviceRegistry);
 	}
 
 	protected NodeRef insertZip(NodeRef parent, String zipName, String entryName, String text,
