@@ -1,7 +1,6 @@
 package org.alfresco.mock.test;
 
 import static org.alfresco.model.ContentModel.ASSOC_CONTAINS;
-import static org.alfresco.model.ContentModel.PROP_NAME;
 import static org.alfresco.model.ContentModel.TYPE_FOLDER;
 import static org.alfresco.service.cmr.repository.StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
 import static org.alfresco.service.cmr.search.SearchService.LANGUAGE_FTS_ALFRESCO;
@@ -13,6 +12,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import org.alfresco.model.ContentModel;
 import org.alfresco.query.PagingRequest;
 import org.alfresco.query.PagingResults;
 import org.alfresco.repo.node.getchildren.FilterProp;
@@ -124,7 +124,7 @@ public class MockSiteService implements SiteService, Serializable {
 
 	@Override
 	public SiteInfo getSite(NodeRef nodeRef) {
-		return new MockSiteInfo(nodeRef, nodeService.getProperty(nodeRef, PROP_NAME) + "");
+		return new MockSiteInfo(nodeRef, nodeService.getProperty(nodeRef, ContentModel.PROP_NAME) + "");
 	}
 
 	@Override
