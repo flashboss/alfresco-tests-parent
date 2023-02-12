@@ -41,7 +41,7 @@ public class MockUtils extends BaseScopableProcessorExtension implements Seriali
      * @param s     String to pad with leading zero '0' characters
      * @param len   Length to pad to
      * 
-     * @return padded string or the original if already at >=len characters 
+     * @return padded string or the original if already at len characters 
      */
     public String pad(String s, int len)
     {
