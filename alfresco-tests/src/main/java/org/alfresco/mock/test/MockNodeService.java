@@ -45,7 +45,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	private static Map<NodeRef, Set<AccessPermission>> samplePermissions = new HashMap<NodeRef, Set<AccessPermission>>();
 
-	private static Map<NodeRef, File> nodeRefs = new HashMap<NodeRef, File>();
+	private static Map<NodeRef, File> nodeRefs = new FilteredHashMap();
 
 	public final static QName PRIMARY_PARENT = QName.createQName("primary_parent");
 	
@@ -95,8 +95,8 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public NodeRef getRootNode(StoreRef storeRef) throws InvalidStoreRefException {
 		for (NodeRef nodeRef : nodeRefs.keySet()) {
-			String name = (String) getProperty(nodeRef, ContentModel.PROP_NAME);
-			if (name.equals(storeRef.getProtocol()))
+			String path = getPath(nodeRef).toString();
+			if (path.endsWith(storeRef.getProtocol() + "/" + storeRef.getIdentifier()))
 				return nodeRef;
 		}
 		return null;
