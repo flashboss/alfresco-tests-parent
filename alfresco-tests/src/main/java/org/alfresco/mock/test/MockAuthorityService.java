@@ -4,6 +4,7 @@ import static org.alfresco.model.ContentModel.ASSOC_CONTAINS;
 import static org.alfresco.model.ContentModel.TYPE_CONTENT;
 import static org.alfresco.model.ContentModel.TYPE_FOLDER;
 import static org.alfresco.service.cmr.repository.StoreRef.PROTOCOL_WORKSPACE;
+import static org.alfresco.service.cmr.repository.StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
 import static org.alfresco.service.namespace.NamespaceService.CONTENT_MODEL_1_0_URI;
 import static org.alfresco.service.namespace.QName.createQName;
 
@@ -96,7 +97,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 	public String createAuthority(AuthorityType type, String shortName, String authorityDisplayName,
 			Set<String> authorityZones) {
 		String name = getName(null, shortName);
-		NodeRef root = nodeService.getRootNode(new StoreRef(PROTOCOL_WORKSPACE, "SpacesStore"));
+		NodeRef root = nodeService.getRootNode(new StoreRef(PROTOCOL_WORKSPACE, STORE_REF_WORKSPACE_SPACESSTORE.getIdentifier()));
 		NodeRef system = nodeService.getChildByName(root, TYPE_FOLDER, "system");
 		NodeRef authorities = nodeService.getChildByName(system, TYPE_FOLDER, "authorities");
 		QName assocQName = createQName(CONTENT_MODEL_1_0_URI, name);
