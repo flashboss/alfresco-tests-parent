@@ -32,6 +32,7 @@ import org.alfresco.mock.NodeUtils;
 import org.alfresco.mock.ZipUtils;
 import org.alfresco.mock.test.MockContentService;
 import org.alfresco.mock.test.MockNodeService;
+import org.alfresco.mock.test.MockVersionService;
 import org.alfresco.mock.test.script.MockLogger;
 import org.alfresco.model.ContentModel;
 import org.alfresco.repo.jscript.ScriptUtils;

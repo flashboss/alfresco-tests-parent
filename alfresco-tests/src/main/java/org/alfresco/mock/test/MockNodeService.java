@@ -14,6 +14,7 @@ import java.util.Set;
 import org.alfresco.mock.NodeUtils;
 import org.alfresco.model.ContentModel;
 import org.alfresco.repo.tenant.TenantService;
+import org.alfresco.repo.version.Version2Model;
 import org.alfresco.service.cmr.dictionary.InvalidAspectException;
 import org.alfresco.service.cmr.dictionary.InvalidTypeException;
 import org.alfresco.service.cmr.repository.AssociationExistsException;

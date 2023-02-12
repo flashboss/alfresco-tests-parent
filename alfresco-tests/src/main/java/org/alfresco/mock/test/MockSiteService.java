@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import org.alfresco.model.ContentModel;
 import org.alfresco.query.PagingRequest;
 import org.alfresco.query.PagingResults;
 import org.alfresco.repo.node.getchildren.FilterProp;
@@ -123,7 +124,7 @@ public class MockSiteService implements SiteService, Serializable {
 
 	@Override
 	public SiteInfo getSite(NodeRef nodeRef) {
-		return new MockSiteInfo(nodeRef, nodeService.getProperty(nodeRef, PROP_NAME) + "");
+		return new MockSiteInfo(nodeRef, nodeService.getProperty(nodeRef, ContentModel.PROP_NAME) + "");
 	}
 
 	@Override
