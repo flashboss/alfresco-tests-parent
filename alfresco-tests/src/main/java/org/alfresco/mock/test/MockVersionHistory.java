@@ -10,9 +10,6 @@ import org.alfresco.service.cmr.version.VersionHistory;
 public class MockVersionHistory implements VersionHistory, Serializable {
 
 	private Collection<Version> versions = new ArrayList<Version>();
-	{
-		versions.add(new MockVersion());
-	}
 
 	@Override
 	public Version getRootVersion() {

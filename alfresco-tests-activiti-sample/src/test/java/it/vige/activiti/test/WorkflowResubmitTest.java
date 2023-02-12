@@ -96,14 +96,14 @@ public class WorkflowResubmitTest extends ComplexAbstractForm {
 		NodeRef createdNodeRef = resultQ.getNodeRef(0);
 		Assert.assertTrue("Added zip file to new RAR folder",
 				nodeService.getPath(createdNodeRef).toString().endsWith(
-						"workspace/company_home/sites/digital-conservation-complex-bank/documentLibrary/rar/RAR_00001/sas_complex_"
+						"workspace/SpacesStore/company_home/sites/digital-conservation-complex-bank/documentLibrary/rar/RAR_00001/sas_complex_"
 								+ generationFolderName + ".zip"));
 		resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, SearchService.LANGUAGE_FTS_ALFRESCO,
 				"PATH:\"RAR_00001/isas_complex_" + generationFolderName + ".xml\"");
 		createdNodeRef = resultQ.getNodeRef(0);
 		Assert.assertTrue("Added xml file in new RAR folder",
 				nodeService.getPath(createdNodeRef).toString().endsWith(
-						"workspace/company_home/sites/digital-conservation-complex-bank/documentLibrary/rar/RAR_00001/isas_complex_"
+						"workspace/SpacesStore/company_home/sites/digital-conservation-complex-bank/documentLibrary/rar/RAR_00001/isas_complex_"
 								+ generationFolderName + ".xml"));
 
 		// check that there is an empty folder inside sas
@@ -112,7 +112,7 @@ public class WorkflowResubmitTest extends ComplexAbstractForm {
 		createdNodeRef = resultQ.getNodeRef(0);
 		Assert.assertTrue("Folder inside store",
 				nodeService.getPath(createdNodeRef).toString().endsWith(
-						"workspace/company_home/sites/digital-conservation-complex-bank/documentLibrary/sas/"
+						"workspace/SpacesStore/company_home/sites/digital-conservation-complex-bank/documentLibrary/sas/"
 								+ generationFolderName));
 		Assert.assertTrue("Empty folder inside store", nodeService.getChildAssocs(createdNodeRef).isEmpty());
 
@@ -122,7 +122,7 @@ public class WorkflowResubmitTest extends ComplexAbstractForm {
 		createdNodeRef = resultQ.getNodeRef(0);
 		Assert.assertTrue("Zip file inside activiti folder",
 				nodeService.getPath(createdNodeRef).toString()
-						.endsWith("workspace/workflow/packages/pkg_919f220e-870a-4c56-ba11-5030ee5325f0/sas_complex_"
+						.endsWith("workspace/SpacesStore/workflow/packages/pkg_919f220e-870a-4c56-ba11-5030ee5325f0/sas_complex_"
 								+ generationFolderName + ".zip"));
 
 		// I verify that a signed xml is created in the new rar folder
@@ -130,7 +130,7 @@ public class WorkflowResubmitTest extends ComplexAbstractForm {
 				"PATH:\"IRaR_00001.xml." + SignConstants.P7M_EXTENSION + "\"");
 		createdNodeRef = resultQ.getNodeRef(0);
 		Assert.assertTrue("XML signed in the new rar folder", nodeService.getPath(createdNodeRef).toString().endsWith(
-				"workspace/company_home/sites/digital-conservation-complex-bank/documentLibrary/rar/RAR_00001/IRaR_00001.xml."
+				"workspace/SpacesStore/company_home/sites/digital-conservation-complex-bank/documentLibrary/rar/RAR_00001/IRaR_00001.xml."
 						+ SignConstants.P7M_EXTENSION));
 
 		end();
