@@ -14,6 +14,7 @@ import java.util.Set;
 import org.alfresco.mock.NodeUtils;
 import org.alfresco.model.ContentModel;
 import org.alfresco.repo.tenant.TenantService;
+import org.alfresco.repo.version.Version2Model;
 import org.alfresco.service.cmr.dictionary.InvalidAspectException;
 import org.alfresco.service.cmr.dictionary.InvalidTypeException;
 import org.alfresco.service.cmr.repository.AssociationExistsException;
@@ -94,8 +95,8 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public NodeRef getRootNode(StoreRef storeRef) throws InvalidStoreRefException {
 		for (NodeRef nodeRef : nodeRefs.keySet()) {
-			String name = (String) getProperty(nodeRef, ContentModel.PROP_NAME);
-			if (name.equals(storeRef.getProtocol()))
+			String path = getPath(nodeRef).toString();
+			if (path.endsWith(storeRef.getProtocol() + "/" + storeRef.getIdentifier()))
 				return nodeRef;
 		}
 		return null;
@@ -122,7 +123,20 @@ public class MockNodeService implements NodeService, Serializable {
 		String pathStr = "";
 		if (path != null)
 			pathStr = path.toString() + File.separator + nodeUUID;
-		else
+		else if (path == null && assocQName.getLocalName().equals(StoreRef.PROTOCOL_ARCHIVE))
+			pathStr = MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_ARCHIVE;
+		else if (path == null && assocQName.getLocalName().equals(StoreRef.PROTOCOL_WORKSPACE))
+			pathStr = MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE;
+		else if (parentRef.getStoreRef().getProtocol().equals(StoreRef.PROTOCOL_ARCHIVE)
+				&& assocQName.getLocalName().equals(StoreRef.STORE_REF_ARCHIVE_SPACESSTORE.getIdentifier()))
+			pathStr = MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_ARCHIVE + "/" + assocQName.getLocalName();
+		else if (parentRef.getStoreRef().getProtocol().equals(StoreRef.PROTOCOL_WORKSPACE)
+				&& assocQName.getLocalName().equals(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE.getIdentifier()))
+			pathStr = MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE + "/" + assocQName.getLocalName();
+		else if (parentRef.getStoreRef().getProtocol().equals(StoreRef.PROTOCOL_WORKSPACE)
+				&& assocQName.getLocalName().equals(Version2Model.STORE_ID))
+			pathStr = MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE + "/" + assocQName.getLocalName();
+		else if (path == null)
 			pathStr = MockContentService.FOLDER_TEST;
 		StoreRef storeRef = StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
 		if (pathStr.contains(StoreRef.PROTOCOL_ARCHIVE))
