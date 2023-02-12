@@ -115,8 +115,8 @@ public class MockSiteService implements SiteService, Serializable {
 
 	@Override
 	public SiteInfo getSite(String shortName) {
-		ResultSet resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
-				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"company_home/sites/" + shortName + "\"");
+		ResultSet resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, LANGUAGE_FTS_ALFRESCO,
+				"PATH:\"company_home/sites/" + shortName + "\"");
 		NodeRef result = resultQ.getNodeRef(0);
 		SiteInfo siteInfo = new MockSiteInfo(result, shortName);
 		return siteInfo;

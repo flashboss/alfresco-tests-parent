@@ -86,7 +86,7 @@ public class WorkflowDeleteTest extends ComplexAbstractForm {
 		createdNodeRef = resultQ.getNodeRef(0);
 		Assert.assertTrue("Zip file inside activiti folder",
 				nodeService.getPath(createdNodeRef).toString()
-						.endsWith("workspace/workflow/packages/pkg_919f220e-870a-4c56-ba11-5030ee5325f0/sas_complex_"
+						.endsWith("workspace/SpacesStore/workflow/packages/pkg_919f220e-870a-4c56-ba11-5030ee5325f0/sas_complex_"
 								+ generationFolderName + ".zip"));
 
 		// I check that there are no empty folders left inside sas
@@ -95,7 +95,7 @@ public class WorkflowDeleteTest extends ComplexAbstractForm {
 		createdNodeRef = resultQ.getNodeRef(0);
 		Assert.assertTrue("Folder inside store",
 				nodeService.getPath(createdNodeRef).toString().endsWith(
-						"workspace/company_home/sites/digital-conservation-complex-bank/documentLibrary/sas/"
+						"workspace/SpacesStore/company_home/sites/digital-conservation-complex-bank/documentLibrary/sas/"
 								+ generationFolderName));
 		Assert.assertTrue("Empty folder inside store", !nodeService.getChildAssocs(createdNodeRef).isEmpty());
 
