@@ -1,20 +1,25 @@
 package org.alfresco.mock.test;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 import java.util.List;
 import java.util.Properties;
 
+import org.slf4j.Logger;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.extensions.surf.util.AbstractLifecycleBean;
 
 public class MockImporterBootstrap extends AbstractLifecycleBean {
+	
+	private Logger logger = getLogger(getClass());
 	
     private boolean useExistingStore = false;
     private List<Properties> bootstrapViews;
 
 	@Override
 	protected void onBootstrap(ApplicationEvent event) {
-		// TODO Auto-generated method stub
-		
+		logger.debug(useExistingStore + "");
+		logger.debug(bootstrapViews + "");
 	}
 
 	@Override
