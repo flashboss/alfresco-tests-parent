@@ -362,7 +362,8 @@ public class MockSearchService implements SearchService, Serializable {
 
 	}
 
-	private MockProperty getPropertyFromQuery(String query) {
+	private List<MockProperty> getPropertiesFromQuery(String query) {
+		List<MockProperty> properties = new ArrayList<MockProperty>();
 		String[] segments = query.split(" (?i)AND | (?i)OR ");
 		for (String segm : segments) {
 			String seg = segm.trim();
@@ -371,16 +372,37 @@ public class MockSearchService implements SearchService, Serializable {
 				seg = seg.substring(0, seg.length() - 1);
 			}
 			if (!seg.startsWith("PATH:") && !seg.substring(1, seg.length()).startsWith("PATH:")
-					&& !seg.startsWith("TYPE:") && !seg.startsWith("-") && !seg.startsWith("(-")
-					&& !seg.contains("[")) {
+					&& !seg.startsWith("TYPE:") && !seg.contains("[") && !seg.startsWith("ASPECT:")
+					&& !seg.startsWith("(ASPECT:") && !seg.startsWith("-ASPECT:") && !seg.startsWith("(-ASPECT:")) {
 				String[] splitted = seg.split(":");
 				String uri = namespaceService.getNamespaceURI(splitted[0].replaceAll("@", "").replaceAll("=", "")
 						.replaceAll("\\+", "").replaceAll("\\\\", ""));
 				QName key = QName.createQName(uri, splitted[1]);
-				return new MockProperty(key, splitted[2].replaceAll("\"", ""));
+				properties.add(
+						new MockProperty(key, splitted[2].replaceAll("\"", ""), seg.startsWith("-") || seg.startsWith("(-") ? true : false));
 			}
 		}
-		return null;
+		return properties;
+	}
+
+	private List<MockAspect> getAspectsFromQuery(String query) {
+		List<MockAspect> aspects = new ArrayList<MockAspect>();
+		String[] segments = query.split(" (?i)AND | (?i)OR ");
+		for (String segm : segments) {
+			String seg = segm.trim();
+			if (seg.startsWith("(") && seg.endsWith(")")) {
+				seg = seg.replaceFirst("\\(", "");
+				seg = seg.substring(0, seg.length() - 1);
+			}
+			if (seg.startsWith("ASPECT:") || seg.startsWith("(ASPECT:") || seg.startsWith("-ASPECT:") || seg.startsWith("(-ASPECT:")) {
+				String[] splitted = seg.split(":");
+				String uri = namespaceService.getNamespaceURI(splitted[1].replaceAll("@", "").replaceAll("=", "")
+						.replaceAll("\\+", "").replaceAll("\\\\", "").replaceAll("\"", ""));
+				QName key = QName.createQName(uri, splitted[2].replaceAll("\"", ""));
+				aspects.add(new MockAspect(key, seg.startsWith("-ASPECT:") || seg.startsWith("(-ASPECT:") ? true : false));
+			}
+		}
+		return aspects;
 	}
 
 	private String getSegmentFromQuery(String query, String segment) {
@@ -402,22 +424,56 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 	}
 
-	private boolean hasProperty(MockProperty property, NodeRef nodeRef) {
-		if (property == null)
+	private boolean hasProperties(List<MockProperty> properties, NodeRef nodeRef) {
+		List<Boolean> results = new ArrayList<Boolean>();
+		if (properties.isEmpty())
 			return true;
-		else {
+		for (MockProperty property : properties) {
 			Object value = (Object) nodeService.getProperty(nodeRef, property.getQname());
 			if (value instanceof String || value == null) {
 				String pattern = property.getValue();
 				String[] subpatterns = pattern.split("\\*");
+				boolean result = false;
 				if (subpatterns.length > 1)
 					for (String subpattern : subpatterns)
 						if (value != null && ((String) value).contains(subpattern))
-							return true;
-				return pattern.equals(value);
-			} else
-				return true;
+							if (!property.isToDelete()) {
+								results.add(true);
+								result = true;
+							}
+				if (!result) {
+					result = pattern.equals(value);
+					if (!property.isToDelete())
+						results.add(result);
+					else
+						results.add(!result);
+				}
+			} else if (!property.isToDelete())
+				results.add(true);
+			else
+				results.add(false);
 		}
+		boolean result = true;
+		for (boolean rs : results)
+			result = result && rs;
+		return result;
+	}
+
+	private boolean hasAspects(List<MockAspect> aspects, NodeRef nodeRef) {
+		List<Boolean> results = new ArrayList<Boolean>();
+		if (aspects.isEmpty())
+			return true;
+		for (MockAspect aspect : aspects) {
+			boolean result = nodeService.hasAspect(nodeRef, aspect.getQname());
+			if (aspect.isToDelete())
+				results.add(!result);
+			else
+				results.add(result);
+		}
+		boolean result = true;
+		for (boolean rs : results)
+			result = result && rs;
+		return result;
 	}
 
 	private boolean hasPath(StoreRef store, String path, String[] subpaths, int wildcardsNumber, NodeRef nodeRef) {
@@ -505,7 +561,8 @@ public class MockSearchService implements SearchService, Serializable {
 		String processQuery = path;
 		String[] subpaths = getSubpaths(path);
 		String type = getSegmentFromQuery(query, "TYPE:\"");
-		MockProperty property = getPropertyFromQuery(query);
+		List<MockProperty> properties = getPropertiesFromQuery(query);
+		List<MockAspect> aspects = getAspectsFromQuery(query);
 		int wildcardsNumber = 0;
 		if (processQuery != null)
 			while (processQuery.endsWith("/*")) {
@@ -513,7 +570,7 @@ public class MockSearchService implements SearchService, Serializable {
 				processQuery = processQuery.substring(0, processQuery.lastIndexOf("/*"));
 			}
 		for (NodeRef nodeRef : nodeRefs) {
-			if (hasType(type, nodeRef) && hasProperty(property, nodeRef)
+			if (hasType(type, nodeRef) && hasProperties(properties, nodeRef) && hasAspects(aspects, nodeRef)
 					&& hasPath(store, path, subpaths, wildcardsNumber, nodeRef))
 				rows.add(new MockResultSetRow(nodeRef));
 		}
@@ -545,10 +602,12 @@ public class MockSearchService implements SearchService, Serializable {
 
 		private QName qname;
 		private String value;
+		private boolean toDelete;
 
-		public MockProperty(QName qname, String value) {
+		public MockProperty(QName qname, String value, boolean toDelete) {
 			this.qname = qname;
 			this.value = value;
+			this.toDelete = toDelete;
 		}
 
 		public QName getQname() {
@@ -557,6 +616,29 @@ public class MockSearchService implements SearchService, Serializable {
 
 		public String getValue() {
 			return value;
+		}
+
+		public boolean isToDelete() {
+			return toDelete;
+		}
+	}
+
+	private class MockAspect {
+
+		private QName qname;
+		private boolean toDelete;
+
+		public MockAspect(QName qname, boolean toDelete) {
+			this.qname = qname;
+			this.toDelete = toDelete;
+		}
+
+		public QName getQname() {
+			return qname;
+		}
+
+		public boolean isToDelete() {
+			return toDelete;
 		}
 	}
 
