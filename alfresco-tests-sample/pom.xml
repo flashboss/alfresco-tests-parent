@@ -9,7 +9,7 @@
     <description>Platform/Repo JAR Module (to be included in the alfresco.war)</description>
     <packaging>jar</packaging>
 	<prerequisites>
-		<maven>3.3.0</maven>
+		<maven>3.8.0</maven>
 	</prerequisites>
 
     <!-- 
