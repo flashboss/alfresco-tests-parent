@@ -3,11 +3,12 @@ package it.vige.ws.service;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 public class SignService {
 
-	private final Logger logger = Logger.getLogger(SignService.class);
+	private final Log logger = LogFactory.getLog(SignService.class);
 
 	public SignedDocumentReportBean verifica(byte[] contentToVerify) throws Exception {
 

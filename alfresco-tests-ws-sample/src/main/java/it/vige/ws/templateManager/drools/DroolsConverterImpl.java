@@ -18,7 +18,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.poi.ooxml.POIXMLProperties.CoreProperties;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -37,7 +38,7 @@ import org.springframework.extensions.webscripts.WebScriptException;
  */
 public class DroolsConverterImpl {
 
-	Logger logger = Logger.getLogger("FILE2");
+	Log logger = LogFactory.getLog("FILE2");
 
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	private DateFormat convertedDateFormat = new SimpleDateFormat("dd/MM/yyyy");

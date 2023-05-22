@@ -18,7 +18,8 @@ import org.alfresco.service.cmr.search.ResultSet;
 import org.alfresco.service.cmr.search.SearchService;
 import org.alfresco.service.namespace.QName;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.springframework.extensions.webscripts.Cache;
@@ -26,12 +27,12 @@ import org.springframework.extensions.webscripts.DeclarativeWebScript;
 import org.springframework.extensions.webscripts.Status;
 import org.springframework.extensions.webscripts.WebScriptRequest;
 
-import it.vige.ws.dom.VigeWSContentModel;
 import it.vige.ws.dom.DocVigeWS;
+import it.vige.ws.dom.VigeWSContentModel;
 
 public class CreateDocTree extends DeclarativeWebScript {
 
-    private Logger logger = Logger.getLogger(CreateDocTree.class);
+    private Log logger = LogFactory.getLog(CreateDocTree.class);
 
     private SearchService searchService;
     private FileFolderService fileFolderService;

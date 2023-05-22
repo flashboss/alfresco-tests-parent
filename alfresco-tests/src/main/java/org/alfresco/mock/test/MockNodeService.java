@@ -583,4 +583,10 @@ public class MockNodeService implements NodeService, Serializable {
 		this.namespaceService = namespaceService;
 	}
 
+	@Override
+	public List<String> findAssocsNotLinkedByTwoOtherAssocs(NodeRef parent) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
