@@ -28,7 +28,8 @@ import org.alfresco.service.cmr.search.SearchService;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.util.ISO9075;
 import org.apache.commons.codec.binary.Base64;
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDDocumentInformation;
 import org.joda.time.DateTime;
@@ -49,7 +50,7 @@ import okhttp3.ResponseBody;
 
 public class GenerationUtils {
 
-	private Logger logger = Logger.getLogger(GenerationUtils.class);
+	private Log logger = LogFactory.getLog(GenerationUtils.class);
 
 	private SearchService searchService;
 	private FileFolderService fileFolderService;

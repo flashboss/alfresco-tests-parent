@@ -1,7 +1,5 @@
 package it.vige.ws.test;
 
-import static org.apache.log4j.Logger.getLogger;
-
 import java.io.IOException;
 import java.io.Serializable;
 import java.text.ParseException;
@@ -15,7 +13,8 @@ import org.alfresco.mock.test.ws.MockWebScriptResponse;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.search.SearchService;
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,7 +35,7 @@ import it.vige.ws.api.CreateDocTree;
 @ContextConfiguration("classpath:test-module-context.xml")
 public class CreateDocTreeTest extends AbstractWSForm {
 
-	private final static Logger logger = getLogger(CreateDocTreeTest.class);
+	private final static Log logger = LogFactory.getLog(CreateDocTreeTest.class);
 	private final static String ID_PARTNER = "prova";
 	private final static String ID_PRATICA = "prova";
 	private final static String FOLDER_WSSAMPLE = "/sites/vige-site/documentLibrary/Questions/" + ID_PARTNER + "/1970/01/"

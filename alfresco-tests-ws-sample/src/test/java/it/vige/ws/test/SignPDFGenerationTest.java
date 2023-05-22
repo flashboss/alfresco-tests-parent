@@ -1,7 +1,5 @@
 package it.vige.ws.test;
 
-import static org.apache.log4j.Logger.getLogger;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,7 +20,8 @@ import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.search.SearchService;
 import org.alfresco.service.namespace.QName;
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,7 +44,7 @@ import it.vige.ws.dom.VigeWSContentModel;
 @ContextConfiguration("classpath:test-module-context.xml")
 public class SignPDFGenerationTest extends AbstractWSForm {
 
-	private final static Logger logger = getLogger(SignPDFGenerationTest.class);
+	private final static Log logger = LogFactory.getLog(SignPDFGenerationTest.class);
 	private final static String ID_PARTNER = "prova";
 	private final static String ID_PRATICA = "prova";
 	private final static String DRL_NAME = "rf_006";

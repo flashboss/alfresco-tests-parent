@@ -22,7 +22,8 @@ import org.alfresco.service.cmr.version.VersionService;
 import org.alfresco.service.namespace.QName;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -40,7 +41,7 @@ import it.vige.ws.service.SignedDocumentReportBean;
 
 public class UploadDoc extends DeclarativeWebScript {
 
-	private Logger logger = Logger.getLogger(UploadDoc.class);
+	private Log logger = LogFactory.getLog(UploadDoc.class);
 
 	FileFolderService fileFolderService;
 	SearchService searchService;

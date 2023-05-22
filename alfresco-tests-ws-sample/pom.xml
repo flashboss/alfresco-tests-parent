@@ -26,14 +26,14 @@
         <!-- Properties used in dependency declarations, you don't need to change these -->
         <alfresco.groupId>org.alfresco</alfresco.groupId>
         <alfresco.bomDependencyArtifactId>acs-packaging</alfresco.bomDependencyArtifactId>
-        <alfresco.platform.version>7.3.0</alfresco.platform.version>
+        <alfresco.platform.version>7.4.0</alfresco.platform.version>
 
         <!-- JRebel Hot reloading of classpath stuff and web resource stuff -->
         <jrebel.version>1.1.8</jrebel.version>
 		
 		<!-- This parameter is only required for those cases in which ACS is not exposed in http://localhost:8080/alfresco (i.e. Windows Docker) -->
         <test.acs.endpoint.path/>
-        <drools.version>8.30.0.Final</drools.version>
+        <drools.version>8.38.0.Final</drools.version>
 
     </properties>
 
@@ -78,6 +78,12 @@
 			<groupId>org.drools</groupId>
 			<artifactId>drools-decisiontables</artifactId>
 			<version>${drools.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		
 		<dependency>

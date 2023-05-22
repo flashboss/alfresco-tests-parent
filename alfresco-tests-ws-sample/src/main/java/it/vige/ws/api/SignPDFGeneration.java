@@ -19,7 +19,8 @@ import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.namespace.QName;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.json.simple.JSONArray;
@@ -54,7 +55,7 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 
 	private final String datePattern = "yyyy-MM-dd HH:mm:ss";
 
-	private Logger logger = Logger.getLogger(SignPDFGeneration.class);
+	private Log logger = LogFactory.getLog(SignPDFGeneration.class);
 
 	@SuppressWarnings("unchecked")
 	@Override
