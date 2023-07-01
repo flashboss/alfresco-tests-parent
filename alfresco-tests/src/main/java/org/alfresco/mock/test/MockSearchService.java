@@ -380,13 +380,15 @@ public class MockSearchService implements SearchService, Serializable {
 			}
 			if (!seg.startsWith("PATH:") && !seg.substring(1, seg.length()).startsWith("PATH:")
 					&& !seg.startsWith("TYPE:") && !seg.contains("[") && !seg.startsWith("ASPECT:")
-					&& !seg.startsWith("(ASPECT:") && !seg.startsWith("-ASPECT:") && !seg.startsWith("(-ASPECT:")) {
+					&& !seg.startsWith("(ASPECT:") && !seg.startsWith("-ASPECT:") && !seg.startsWith("(-ASPECT:")
+					&& !seg.toLowerCase().startsWith("not aspect:") && !seg.toLowerCase().startsWith("(not aspect:")) {
 				String[] splitted = seg.split(":");
-				String uri = namespaceService.getNamespaceURI(splitted[0].replaceAll("@", "").replaceAll("=", "")
-						.replaceAll("\\+", "").replaceAll("\\\\", ""));
+				String uri = namespaceService.getNamespaceURI(splitted[0].replaceAll("(?i)not @", "")
+						.replaceAll("@", "").replaceAll("=", "").replaceAll("\\+", "").replaceAll("\\\\", ""));
 				QName key = QName.createQName(uri, splitted[1]);
-				properties.add(
-						new MockProperty(key, splitted[2].replaceAll("\"", ""), seg.startsWith("-") || seg.startsWith("(-") ? true : false));
+				properties.add(new MockProperty(key, splitted[2].replaceAll("\"", "").replaceAll("\\\\", ""),
+						seg.startsWith("-") || seg.startsWith("(-") || seg.toLowerCase().startsWith("not")
+								|| seg.toLowerCase().startsWith("(not") ? true : false));
 			}
 		}
 		return properties;
@@ -401,12 +403,17 @@ public class MockSearchService implements SearchService, Serializable {
 				seg = seg.replaceFirst("\\(", "");
 				seg = seg.substring(0, seg.length() - 1);
 			}
-			if (seg.startsWith("ASPECT:") || seg.startsWith("(ASPECT:") || seg.startsWith("-ASPECT:") || seg.startsWith("(-ASPECT:")) {
+			if (seg.startsWith("ASPECT:") || seg.startsWith("(ASPECT:") || seg.startsWith("-ASPECT:")
+					|| seg.startsWith("(-ASPECT:") || seg.toLowerCase().startsWith("not aspect:")
+					|| seg.toLowerCase().startsWith("(not aspect:")) {
 				String[] splitted = seg.split(":");
 				String uri = namespaceService.getNamespaceURI(splitted[1].replaceAll("@", "").replaceAll("=", "")
 						.replaceAll("\\+", "").replaceAll("\\\\", "").replaceAll("\"", ""));
 				QName key = QName.createQName(uri, splitted[2].replaceAll("\"", ""));
-				aspects.add(new MockAspect(key, seg.startsWith("-ASPECT:") || seg.startsWith("(-ASPECT:") ? true : false));
+				aspects.add(new MockAspect(key,
+						seg.startsWith("-ASPECT:") || seg.startsWith("(-ASPECT:")
+								|| seg.toLowerCase().startsWith("not aspect:")
+								|| seg.toLowerCase().startsWith("(not aspect:") ? true : false));
 			}
 		}
 		return aspects;
