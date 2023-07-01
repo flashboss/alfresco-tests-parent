@@ -59,6 +59,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	protected NodeRef spacesStore;
 	protected NodeRef archive;
 	protected NodeRef sites;
+	protected NodeRef shared;
 	protected ActivitiScriptNode bpmPackage;
 	protected Initiator initiator;
 
@@ -98,6 +99,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		NodeRef system = insertFolder(spacesStore, NamespaceService.SYSTEM_MODEL_PREFIX, "system");
 		archive = insertFolder(root, StoreRef.PROTOCOL_ARCHIVE);
 		sites = insertFolder(companyHome, SiteModel.SITE_MODEL_PREFIX, SiteModel.TYPE_SITES.getLocalName());
+		shared = insertFolder(companyHome, NamespaceService.APP_MODEL_PREFIX, "shared");
 		insertFolder(system, SiteModel.SITE_MODEL_PREFIX, "authorities");
 		NodeRef workflow = insertFolder(spacesStore, "workflow");
 		NodeRef packages = insertFolder(workflow, "packages");
