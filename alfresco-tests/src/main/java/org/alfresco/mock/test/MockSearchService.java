@@ -377,13 +377,16 @@ public class MockSearchService implements SearchService, Serializable {
 				seg = seg.substring(0, seg.length() - 1);
 			}
 			if (seg.startsWith("ASPECT:") || seg.startsWith("(ASPECT:") || seg.startsWith("-ASPECT:")
-					|| seg.startsWith("(-ASPECT:")) {
+					|| seg.startsWith("(-ASPECT:") || seg.toLowerCase().startsWith("not aspect:")
+					|| seg.toLowerCase().startsWith("(not aspect:")) {
 				String[] splitted = seg.split(":");
 				String uri = namespaceService.getNamespaceURI(splitted[1].replaceAll("@", "").replaceAll("=", "")
 						.replaceAll("\\+", "").replaceAll("\\\\", "").replaceAll("\"", ""));
 				QName key = QName.createQName(uri, splitted[2].replaceAll("\"", ""));
-				aspects.add(
-						new MockAspect(key, seg.startsWith("-ASPECT:") || seg.startsWith("(-ASPECT:") ? true : false));
+				aspects.add(new MockAspect(key,
+						seg.startsWith("-ASPECT:") || seg.startsWith("(-ASPECT:")
+								|| seg.toLowerCase().startsWith("not aspect:")
+								|| seg.toLowerCase().startsWith("(not aspect:") ? true : false));
 			}
 		}
 		return aspects;
