@@ -44,6 +44,7 @@ public abstract class AbstractForm {
 	protected NodeRef spacesStore;
 	protected NodeRef archive;
 	protected NodeRef sites;
+	protected NodeRef shared;
 	protected Date today;
 	protected String todayStr;
 
@@ -78,6 +79,7 @@ public abstract class AbstractForm {
 		NodeRef archiveRoot = insertFolder(root, PROTOCOL_ARCHIVE);
 		archive = insertFolder(archiveRoot, STORE_REF_ARCHIVE_SPACESSTORE.getIdentifier());
 		sites = insertFolder(companyHome, SiteModel.SITE_MODEL_PREFIX, SiteModel.TYPE_SITES.getLocalName());
+		shared = insertFolder(companyHome, NamespaceService.APP_MODEL_PREFIX, "shared");
 		insertFolder(system, SiteModel.SITE_MODEL_PREFIX, "authorities");
 	}
 
