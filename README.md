@@ -13,7 +13,7 @@ To start add the dependency in your project sdk amp:
    <dependency>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests</artifactId>
-		<version>${alfresco.version}.3</version>
+		<version>${alfresco.version}.4</version>
 		<scope>test</scope>
    </dependency>
 ```
@@ -189,7 +189,7 @@ src -> test -> resources -> alfresco -> module -> test-module-context.xml
 </beans>
 ```
 
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/4.2.c.3.3/alfresco-tests-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/4.2.c.4.3/alfresco-tests-sample.
 
 Webscript test
 ===========
@@ -313,5 +313,5 @@ In your src/test/resources folder add the follow spring descriptor file test-mod
 		resource="classpath:alfresco/module/${project.artifactId}/context/webscript-context.xml" />
 </beans>
 ```
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/4.2.c.3/alfresco-tests-ws-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/4.2.c.4/alfresco-tests-ws-sample.
 
