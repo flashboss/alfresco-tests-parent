@@ -13,7 +13,7 @@ To start add the dependency in your project sdk amp:
    <dependency>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests</artifactId>
-		<version>${alfresco.version}.19</version>
+		<version>${alfresco.version}.20</version>
 		<scope>test</scope>
    </dependency>
 ```
@@ -200,7 +200,7 @@ src -> test -> resources -> alfresco -> module -> test-module-context.xml
 </beans>
 ```
 
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/5.2.7.19/alfresco-tests-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/5.2.7.20/alfresco-tests-sample.
 
 Activiti test
 ===========
@@ -400,7 +400,7 @@ In your src/test/resources folder add the follow spring descriptor file test-mod
 	<import resource="classpath:alfresco/module/${project.artifactId}/module-context.xml" />
 </beans>
 ```
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/5.2.7.19/alfresco-tests-activiti-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/5.2.7.20/alfresco-tests-activiti-sample.
 
 Webscript test
 ===========
@@ -524,4 +524,4 @@ In your src/test/resources folder add the follow spring descriptor file test-mod
 		resource="classpath:alfresco/module/${project.artifactId}/context/webscript-context.xml" />
 </beans>
 ```
-You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/5.2.7.19/alfresco-tests-ws-sample.
+You can find a complete sample in https://github.com/flashboss/alfresco-tests-parent/tree/5.2.7.20/alfresco-tests-ws-sample.
