@@ -25,6 +25,7 @@ import org.alfresco.service.cmr.repository.ChildAssociationRef;
 import org.alfresco.service.cmr.repository.ContentData;
 import org.alfresco.service.cmr.repository.ContentReader;
 import org.alfresco.service.cmr.repository.ContentWriter;
+import org.alfresco.service.cmr.repository.InvalidNodeRefException;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.namespace.NamespaceService;
@@ -272,6 +273,8 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	public FileInfo getFileInfo(NodeRef nodeRef) {
 		QName qname = ContentModel.TYPE_CONTENT;
 		File file = getNodeService().getNodeRefs().get(nodeRef);
+		if (file == null)
+			throw new InvalidNodeRefException(nodeRef);
 		if (!new File(file + File.separator + file.getName()).exists())
 			qname = ContentModel.TYPE_FOLDER;
 		return new MockFileInfo(nodeRef, file.getName(), qname);
