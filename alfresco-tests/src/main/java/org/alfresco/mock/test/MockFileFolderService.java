@@ -283,7 +283,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	@Override
 	public ContentWriter getWriter(NodeRef nodeRef) {
 		File file = getNodeService().getNodeRefs().get(nodeRef);
-		return new MockContentWriter(file);
+		return new MockContentWriter(file, nodeRef, nodeService);
 	}
 
 	@Override
