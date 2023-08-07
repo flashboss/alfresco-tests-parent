@@ -289,7 +289,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	@Override
 	public ContentWriter getWriter(NodeRef nodeRef) {
 		File file = getNodeService().getNodeRefs().get(nodeRef);
-		return new MockContentWriter(file);
+		return new MockContentWriter(file, nodeRef, nodeService);
 	}
 
 	@Override
@@ -433,7 +433,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		}
 		return result;
 	}
-	
+
 	private void recursiveCopy(NodeRef sourceNodeRef, NodeRef targetParentRef) {
 		List<ChildAssociationRef> children = nodeService.getChildAssocs(sourceNodeRef);
 		for (ChildAssociationRef child : children) {
