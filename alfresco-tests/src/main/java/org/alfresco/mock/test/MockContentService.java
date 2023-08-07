@@ -63,7 +63,7 @@ public class MockContentService implements ContentService, Serializable {
 	public ContentWriter getWriter(NodeRef nodeRef, QName propertyQName, boolean update)
 			throws InvalidNodeRefException, InvalidTypeException {
 		File file = getNodeService().getNodeRefs().get(nodeRef);
-		return new MockContentWriter(file);
+		return new MockContentWriter(file, nodeRef, nodeService);
 	}
 
 	@Override
