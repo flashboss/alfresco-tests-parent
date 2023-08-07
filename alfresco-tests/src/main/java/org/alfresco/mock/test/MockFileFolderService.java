@@ -188,7 +188,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 			File newFile = new File(newDir + File.separator + newName);
 			if (oldFile.exists() && !newFile.exists())
 				FileUtils.moveFile(oldFile, newFile);
-		} catch (IOException | IllegalArgumentException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return new MockFileInfo(association.getChildRef(), newName, ContentModel.TYPE_CONTENT);
@@ -290,7 +290,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	@Override
 	public ContentWriter getWriter(NodeRef nodeRef) {
 		File file = getNodeService().getNodeRefs().get(nodeRef);
-		return new MockContentWriter(file);
+		return new MockContentWriter(file, nodeRef, nodeService);
 	}
 
 	@Override
@@ -319,6 +319,13 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 
 	@Override
 	public List<FileInfo> toFileInfoList(List<NodeRef> nodeRefs) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PagingResults<FileInfo> list(NodeRef arg0, Set<QName> arg1, Set<QName> arg2, Set<QName> arg3,
+			List<Pair<QName, Boolean>> arg4, List<FilterProp> arg5, PagingRequest arg6) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -397,13 +404,6 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		}
 
 	};
-
-	@Override
-	public PagingResults<FileInfo> list(NodeRef arg0, Set<QName> arg1, Set<QName> arg2, Set<QName> arg3,
-			List<Pair<QName, Boolean>> arg4, List<FilterProp> arg5, PagingRequest arg6) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public MockNodeService getNodeService() {
 		return (MockNodeService) nodeService;
