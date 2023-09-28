@@ -2,10 +2,12 @@ package org.alfresco.mock.test;
 
 import static org.alfresco.model.ContentModel.ASSOC_CONTAINS;
 import static org.alfresco.model.ContentModel.PROP_CONTENT;
+import static org.alfresco.model.ContentModel.PROP_CREATED;
 import static org.alfresco.model.ContentModel.PROP_NAME;
 import static org.alfresco.model.ContentModel.PROP_VERSION_LABEL;
 import static org.alfresco.model.ContentModel.PROP_VERSION_TYPE;
 import static org.alfresco.model.ContentModel.TYPE_CONTENT;
+import static org.alfresco.repo.version.Version2Model.PROP_QNAME_FROZEN_MODIFIED;
 import static org.alfresco.repo.version.Version2Model.PROP_QNAME_FROZEN_NODE_REF;
 import static org.alfresco.repo.version.Version2Model.PROP_QNAME_VERSIONED_NODE_ID;
 import static org.alfresco.repo.version.Version2Model.STORE_ID;
@@ -15,6 +17,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -100,6 +103,7 @@ public class MockVersionService implements VersionService, Serializable {
 		if (parentVersion == null) {
 			properties.put(PROP_QNAME_VERSIONED_NODE_ID, nodeRef.getId());
 			properties.put(PROP_NAME, nodeRef.getId());
+			properties.put(PROP_CREATED, new Date());
 			parentVersion = nodeService.createNode(versionStore, ASSOC_CONTAINS,
 					QName.createQName(NamespaceService.CONTENT_MODEL_PREFIX, nodeRef.getId(), namespaceService),
 					TYPE_CONTENT, properties).getChildRef();
@@ -109,6 +113,7 @@ public class MockVersionService implements VersionService, Serializable {
 		properties.put(PROP_QNAME_FROZEN_NODE_REF, nodeRef.getId());
 		properties.put(PROP_VERSION_LABEL, version);
 		properties.put(PROP_VERSION_TYPE, versionType);
+		properties.put(PROP_QNAME_FROZEN_MODIFIED, new Date());
 		NodeRef versionedNode = nodeService.createNode(parentVersion, ASSOC_CONTAINS,
 				QName.createQName(NamespaceService.CONTENT_MODEL_PREFIX, name, namespaceService), TYPE_CONTENT,
 				properties).getChildRef();
