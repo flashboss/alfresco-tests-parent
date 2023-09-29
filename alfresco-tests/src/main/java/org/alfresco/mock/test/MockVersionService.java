@@ -114,6 +114,7 @@ public class MockVersionService implements VersionService, Serializable {
 		properties.put(PROP_VERSION_LABEL, version);
 		properties.put(PROP_VERSION_TYPE, versionType);
 		properties.put(PROP_QNAME_FROZEN_MODIFIED, new Date());
+		properties.put(PROP_CREATED, new Date());
 		NodeRef versionedNode = nodeService.createNode(parentVersion, ASSOC_CONTAINS,
 				QName.createQName(NamespaceService.CONTENT_MODEL_PREFIX, name, namespaceService), TYPE_CONTENT,
 				properties).getChildRef();
