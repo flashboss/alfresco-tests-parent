@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -147,6 +148,7 @@ public class MockNodeService implements NodeService, Serializable {
 		if (properties == null) {
 			setProperty(nodeRef, ContentModel.PROP_NAME, assocQName.getLocalName());
 			setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
+			setProperty(nodeRef, ContentModel.PROP_CREATED, new Date());
 		} else
 			setProperties(nodeRef, new HashMap<>(properties));
 		if (getProperty(nodeRef, PRIMARY_PARENT) == null)
@@ -367,7 +369,10 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef, QNamePattern typeQNamePattern,
 			QNamePattern qnamePattern) throws InvalidNodeRefException {
-		return getChildAssocs(nodeRef);
+		if (typeQNamePattern != null && typeQNamePattern.equals(Version2Model.CHILD_QNAME_VERSION_HISTORIES))
+			return getVersionHistory(nodeRef);
+		else
+			return getChildAssocs(nodeRef);
 	}
 
 	@Override
@@ -549,6 +554,17 @@ public class MockNodeService implements NodeService, Serializable {
 			sampleProperties.put(nodeRef, properties);
 		}
 		return properties;
+	}
+
+	private List<ChildAssociationRef> getVersionHistory(NodeRef nodeRef) {
+		List<ChildAssociationRef> list = new ArrayList<ChildAssociationRef>();
+		for (NodeRef node : nodeRefs.keySet()) {
+			Serializable prop = getProperty(node, Version2Model.PROP_QNAME_VERSIONED_NODE_ID);
+			if (prop != null && prop.equals(nodeRef.getId()))
+				list.add(new ChildAssociationRef(Version2Model.CHILD_QNAME_VERSION_HISTORIES, nodeRef,
+						ContentModel.TYPE_CONTENT, node));
+		}
+		return list;
 	}
 
 	public Map<NodeRef, File> getNodeRefs() {

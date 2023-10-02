@@ -7,11 +7,14 @@ import static org.alfresco.model.ContentModel.PROP_NAME;
 import static org.alfresco.model.ContentModel.PROP_VERSION_LABEL;
 import static org.alfresco.model.ContentModel.PROP_VERSION_TYPE;
 import static org.alfresco.model.ContentModel.TYPE_CONTENT;
+import static org.alfresco.repo.version.Version2Model.CHILD_QNAME_VERSIONS;
+import static org.alfresco.repo.version.Version2Model.CHILD_QNAME_VERSION_HISTORIES;
 import static org.alfresco.repo.version.Version2Model.PROP_QNAME_FROZEN_MODIFIED;
 import static org.alfresco.repo.version.Version2Model.PROP_QNAME_FROZEN_NODE_REF;
 import static org.alfresco.repo.version.Version2Model.PROP_QNAME_VERSIONED_NODE_ID;
 import static org.alfresco.repo.version.Version2Model.STORE_ID;
 import static org.alfresco.service.cmr.repository.StoreRef.PROTOCOL_WORKSPACE;
+import static org.alfresco.service.namespace.NamespaceService.CONTENT_MODEL_PREFIX;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -22,7 +25,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.alfresco.model.ContentModel;
 import org.alfresco.repo.version.Version2Model;
 import org.alfresco.repo.version.VersionServicePolicies.CalculateVersionLabelPolicy;
 import org.alfresco.service.cmr.repository.AspectMissingException;
@@ -104,8 +106,8 @@ public class MockVersionService implements VersionService, Serializable {
 			properties.put(PROP_QNAME_VERSIONED_NODE_ID, nodeRef.getId());
 			properties.put(PROP_NAME, nodeRef.getId());
 			properties.put(PROP_CREATED, new Date());
-			parentVersion = nodeService.createNode(versionStore, ASSOC_CONTAINS,
-					QName.createQName(NamespaceService.CONTENT_MODEL_PREFIX, nodeRef.getId(), namespaceService),
+			parentVersion = nodeService.createNode(versionStore, CHILD_QNAME_VERSION_HISTORIES,
+					QName.createQName(CONTENT_MODEL_PREFIX, nodeRef.getId(), namespaceService),
 					TYPE_CONTENT, properties).getChildRef();
 		}
 		properties = new HashMap<QName, Serializable>();
@@ -115,11 +117,11 @@ public class MockVersionService implements VersionService, Serializable {
 		properties.put(PROP_VERSION_TYPE, versionType);
 		properties.put(PROP_QNAME_FROZEN_MODIFIED, new Date());
 		properties.put(PROP_CREATED, new Date());
-		NodeRef versionedNode = nodeService.createNode(parentVersion, ASSOC_CONTAINS,
-				QName.createQName(NamespaceService.CONTENT_MODEL_PREFIX, name, namespaceService), TYPE_CONTENT,
+		NodeRef versionedNode = nodeService.createNode(parentVersion, CHILD_QNAME_VERSIONS,
+				QName.createQName(CONTENT_MODEL_PREFIX, name, namespaceService), TYPE_CONTENT,
 				properties).getChildRef();
 		inputStream = new ByteArrayInputStream(text);
-		writer = contentService.getWriter(versionedNode, ContentModel.PROP_CONTENT, true);
+		writer = contentService.getWriter(versionedNode, PROP_CONTENT, true);
 		writer.setMimetype(mimetypeService.getMimetype(mimetypeService.getExtension(name)));
 		writer.putContent(inputStream);
 		MockVersion mockVersion = new MockVersion(versionedNode, nodeRef, versionProperties);
