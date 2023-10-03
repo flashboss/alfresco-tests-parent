@@ -369,10 +369,7 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef, QNamePattern typeQNamePattern,
 			QNamePattern qnamePattern) throws InvalidNodeRefException {
-		if (typeQNamePattern != null && typeQNamePattern.equals(Version2Model.CHILD_QNAME_VERSION_HISTORIES))
-			return getVersionHistory(nodeRef);
-		else
-			return getChildAssocs(nodeRef);
+		return getChildAssocs(nodeRef);
 	}
 
 	@Override
@@ -554,17 +551,6 @@ public class MockNodeService implements NodeService, Serializable {
 			sampleProperties.put(nodeRef, properties);
 		}
 		return properties;
-	}
-
-	private List<ChildAssociationRef> getVersionHistory(NodeRef nodeRef) {
-		List<ChildAssociationRef> list = new ArrayList<ChildAssociationRef>();
-		for (NodeRef node : nodeRefs.keySet()) {
-			Serializable prop = getProperty(node, Version2Model.PROP_QNAME_VERSIONED_NODE_ID);
-			if (prop != null && prop.equals(nodeRef.getId()))
-				list.add(new ChildAssociationRef(Version2Model.CHILD_QNAME_VERSION_HISTORIES, nodeRef,
-						ContentModel.TYPE_CONTENT, node));
-		}
-		return list;
 	}
 
 	public Map<NodeRef, File> getNodeRefs() {
