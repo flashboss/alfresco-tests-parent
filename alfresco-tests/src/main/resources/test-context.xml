@@ -351,7 +351,27 @@
 	</bean>
 	<bean id="spacesStoreImporter"
 		class="org.alfresco.mock.test.MockImporterBootstrap" />
-	<bean id="policyComponent" class="org.alfresco.mock.test.MockPolicyComponent" />
-    <bean id="quickShareService" class="org.alfresco.repo.quickshare.QuickShareServiceImpl" />
-		
+	<bean id="policyComponent"
+		class="org.alfresco.mock.test.MockPolicyComponent" />
+	<bean id="quickShareService"
+		class="org.alfresco.repo.quickshare.QuickShareServiceImpl" />
+	<bean id="jobLockService"
+		class="org.alfresco.mock.test.MockJobLockServiceImpl">
+	</bean>
+	<alias name="jobLockService" alias="JobLockService" />
+	<bean id="TransferService2"
+		class="org.alfresco.mock.test.MockTransferServiceImpl2" />
+	<bean id="NodeCrawlerFactory"
+		class="org.alfresco.repo.transfer.StandardNodeCrawlerFactoryImpl">
+		<constructor-arg ref="ServiceRegistry" />
+	</bean>
+	<bean id="actionTrackingService"
+		class="org.alfresco.repo.action.ActionTrackingServiceImpl" />
+	<bean id="replicationDefinitionPersister"
+		class="org.alfresco.mock.test.MockReplicationDefinitionPersisterImpl" />
+	<bean id="replicationParams"
+		class="org.alfresco.repo.replication.ReplicationParamsImpl" />
+	<bean id="transferService"
+		class="org.alfresco.repo.transfer.TransferServiceImpl" />
+	<alias name="transferService" alias="TransferService" />
 </beans>
