@@ -19,7 +19,7 @@ import org.alfresco.service.namespace.QName;
 public class MockTypeDefinition implements TypeDefinition {
 
 	private QName defaultAspect;
-	
+
 	public MockTypeDefinition(QName defaultAspect) {
 		this.defaultAspect = defaultAspect;
 	}

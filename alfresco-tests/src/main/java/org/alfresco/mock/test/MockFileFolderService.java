@@ -244,12 +244,6 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	}
 
 	@Override
-	public List<String> getNameOnlyPath(NodeRef rootNodeRef, NodeRef nodeRef) throws FileNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public FileInfo resolveNamePath(NodeRef rootNodeRef, List<String> pathElements) throws FileNotFoundException {
 		return resolveNamePath(rootNodeRef, pathElements, false);
 	}
@@ -438,6 +432,12 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 				recursiveCopy(child.getChildRef(), result.getChildRef());
 			}
 		}
+	}
+
+	@Override
+	public List<String> getNameOnlyPath(NodeRef rootNodeRef, NodeRef nodeRef) throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
