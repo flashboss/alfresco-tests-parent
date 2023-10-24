@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -51,7 +52,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Autowired
 	private NamespaceService namespaceService;
-	
+
 	@Override
 	public List<StoreRef> getStores() {
 		// TODO Auto-generated method stub
@@ -147,6 +148,7 @@ public class MockNodeService implements NodeService, Serializable {
 		if (properties == null) {
 			setProperty(nodeRef, ContentModel.PROP_NAME, assocQName.getLocalName());
 			setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
+			setProperty(nodeRef, ContentModel.PROP_CREATED, new Date());
 		} else
 			setProperties(nodeRef, new HashMap<>(properties));
 		if (getProperty(nodeRef, PRIMARY_PARENT) == null)
