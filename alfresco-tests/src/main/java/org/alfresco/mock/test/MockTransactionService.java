@@ -58,8 +58,7 @@ public class MockTransactionService implements TransactionService, Serializable 
 
 	@Override
 	public RetryingTransactionHelper getRetryingTransactionHelper() {
-		// TODO Auto-generated method stub
-		return null;
+		return new MockRetryingTransactionHelper();
 	}
 
 }

@@ -169,8 +169,7 @@ public class MockDictionaryService implements DictionaryService, Serializable {
 
 	@Override
 	public AssociationDefinition getAssociation(QName associationName) {
-		// TODO Auto-generated method stub
-		return null;
+		return new MockAssociationDefinition();
 	}
 
 	@Override
