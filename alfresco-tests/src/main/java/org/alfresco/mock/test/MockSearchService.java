@@ -149,9 +149,9 @@ public class MockSearchService implements SearchService, Serializable {
 	public class MockResultSet implements ResultSet {
 
 		private List<ResultSetRow> rows;
-		
+
 		private Map<String, Integer> facetQueries = new HashMap<String, Integer>();
-		
+
 		private SpellCheckResult spellCheckResult = new SpellCheckResult(null, null, true);
 
 		public MockResultSet(List<ResultSetRow> rows) {

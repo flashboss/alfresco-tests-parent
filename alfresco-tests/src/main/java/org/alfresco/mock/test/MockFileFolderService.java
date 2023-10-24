@@ -419,7 +419,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	private List<FileInfo> recursiveDeep(NodeRef contextNodeRef, SubFolderFilter filter, List<FileInfo> result,
 			boolean withFiles) {
 		List<FileInfo> nodes = null;

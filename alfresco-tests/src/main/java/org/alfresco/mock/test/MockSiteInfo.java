@@ -18,7 +18,7 @@ public class MockSiteInfo implements SiteInfo, Serializable {
 		this.nodeRef = nodeRef;
 		this.shortName = shortName;
 	}
-	
+
 	@Override
 	public NodeRef getNodeRef() {
 		return nodeRef;
@@ -44,7 +44,7 @@ public class MockSiteInfo implements SiteInfo, Serializable {
 	@Override
 	public void setTitle(String title) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -56,13 +56,13 @@ public class MockSiteInfo implements SiteInfo, Serializable {
 	@Override
 	public void setDescription(String description) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setIsPublic(boolean isPublic) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -80,7 +80,7 @@ public class MockSiteInfo implements SiteInfo, Serializable {
 	@Override
 	public void setVisibility(SiteVisibility visibility) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -104,7 +104,7 @@ public class MockSiteInfo implements SiteInfo, Serializable {
 	@Override
 	public void setCreatedDate(Date createdDate) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -116,7 +116,7 @@ public class MockSiteInfo implements SiteInfo, Serializable {
 	@Override
 	public void setLastModifiedDate(Date lastModifiedDate) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
