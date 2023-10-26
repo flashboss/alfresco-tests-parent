@@ -6,7 +6,7 @@
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests-ws-sample</artifactId>
 	<name>Alfresco Tests ws sample</name>
-	<version>7.1.0.14</version>
+	<version>7.1.0.15</version>
 	<description>Simple JAR sample for tests</description>
 
 	<!-- SDK properties have sensible defaults in the SDK parent, but you can 
