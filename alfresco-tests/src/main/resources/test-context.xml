@@ -367,4 +367,10 @@
 	<bean id="transferService"
 		class="org.alfresco.repo.transfer.TransferServiceImpl" />
 	<alias name="transferService" alias="TransferService" />
+	<bean id="TaggingService"
+		class="org.alfresco.mock.test.MockTaggingService" />
+	<bean id="alienProcessor"
+		class="org.alfresco.repo.transfer.AlienProcessorImpl" />
+	<bean id="CategoryService"
+		class="org.alfresco.mock.test.MockCategoryService" />
 </beans>
