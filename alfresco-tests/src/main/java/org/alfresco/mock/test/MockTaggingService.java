@@ -1,6 +1,8 @@
 package org.alfresco.mock.test;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.alfresco.query.PagingRequest;
 import org.alfresco.query.PagingResults;
@@ -182,6 +184,25 @@ public class MockTaggingService implements TaggingService{
 
 	@Override
 	public List<Pair<String, Integer>> findTaggedNodesAndCountByTagName(StoreRef storeRef) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Map<NodeRef, Long> getTags(StoreRef storeRef, List<String> parameterIncludes, Pair<String, Boolean> sorting,
+			Collection<String> exactNamesFilter, Collection<String> alikeNamesFilter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long findCountByTagName(StoreRef storeRef, String name) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Map<String, Long> calculateCount(StoreRef storeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
