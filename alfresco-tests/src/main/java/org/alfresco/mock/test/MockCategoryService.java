@@ -46,13 +46,6 @@ public class MockCategoryService implements CategoryService {
 	}
 
 	@Override
-	public PagingResults<ChildAssociationRef> getRootCategories(StoreRef storeRef, QName aspectName,
-			PagingRequest pagingRequest, boolean sortByName, String filter) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Collection<ChildAssociationRef> getRootCategories(StoreRef storeRef, QName aspectName, String filter) {
 		// TODO Auto-generated method stub
 		return null;
