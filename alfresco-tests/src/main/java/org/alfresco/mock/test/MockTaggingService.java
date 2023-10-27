@@ -180,10 +180,4 @@ public class MockTaggingService implements TaggingService{
 		return null;
 	}
 
-	@Override
-	public List<Pair<String, Integer>> findTaggedNodesAndCountByTagName(StoreRef storeRef) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
