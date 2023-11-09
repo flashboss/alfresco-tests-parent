@@ -33,7 +33,7 @@ Old versions are available too. Here the list of the library versions sorted by 
 - 5.2.f.26
 - 5.1.g.25
 - 5.0.d.25
-- 4.2.8.6
+- 4.2.8.7
 - 4.2.6.6.28
 - 4.2.c.5
 
