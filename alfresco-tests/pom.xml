@@ -11,17 +11,15 @@
 		This is a jar project based on mock classes to test fastly the alfresco applications
 	</description>
 	<url>http://alfresco-tests.vige.it</url>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<alfresco.groupId>org.alfresco</alfresco.groupId>
-		<alfresco.platform.version>7.4.0</alfresco.platform.version>
+		<alfresco.platform.version>23.1.0</alfresco.platform.version>
 		<alfresco.bomDependencyArtifactId>acs-packaging</alfresco.bomDependencyArtifactId>
 		<maven.source.plugin.version>3.1.0</maven.source.plugin.version>
 		<maven.javadoc.plugin.version>3.1.1</maven.javadoc.plugin.version>
 		<maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
 	</properties>
-	
 	<organization>
 		<name>Vige</name>
 		<url>http://www.vige.it</url>
@@ -47,7 +45,6 @@
 			<url>http://www.vige.it</url>
 		</developer>
 	</developers>
-
 	<!-- Alfresco Maven Repositories -->
 	<repositories>
 		<repository>
@@ -69,7 +66,6 @@
 			<url>https://artifacts.alfresco.com/nexus/content/groups/private</url>
 		</repository>
 	</repositories>
-
 	<pluginRepositories>
 		<pluginRepository>
 			<id>alfresco-plugin-public</id>
@@ -84,7 +80,6 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-
 	<!-- Here we realize the connection with the Alfresco selected platform 
 		(e.g.version and edition) -->
 	<dependencyManagement>
@@ -103,7 +98,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
 	<dependencies>
 		<!-- Following dependencies are needed for compiling Java code in src/main/java; 
 			<scope>provided</scope> is inherited for each of the following; for more 
@@ -144,21 +138,22 @@
 		<dependency>
 			<groupId>org.apache.ws.commons.axiom</groupId>
 			<artifactId>axiom-api</artifactId>
-			<version>1.2.13</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.ws.commons.axiom</groupId>
 			<artifactId>axiom-impl</artifactId>
-			<version>1.2.13</version>
 		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.4.200</version>
 		</dependency>
-
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
-
 	<profiles>
 		<profile>
 			<id>java8</id>
@@ -276,5 +271,4 @@
 			</distributionManagement>
 		</profile>
 	</profiles>
-
 </project>
