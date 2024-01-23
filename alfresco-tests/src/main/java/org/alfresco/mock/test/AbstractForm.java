@@ -13,9 +13,6 @@ import java.security.MessageDigest;
 import java.util.Date;
 import java.util.Map;
 
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.JAXBElement;
-import jakarta.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 
 import org.alfresco.mock.NodeUtils;
@@ -35,6 +32,10 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.Unmarshaller;
 
 public abstract class AbstractForm {
 
@@ -103,7 +104,8 @@ public abstract class AbstractForm {
 		return NodeUtils.insertDocument(parent, name, text, properties, serviceRegistry);
 	}
 
-	protected NodeRef insertVersion(NodeRef nodeRef, String name, String text, String version, VersionType versionType) {
+	protected NodeRef insertVersion(NodeRef nodeRef, String name, String text, String version,
+			VersionType versionType) {
 		return NodeUtils.insertVersion(nodeRef, name, text, version, versionType, serviceRegistry);
 	}
 
