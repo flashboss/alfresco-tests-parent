@@ -377,4 +377,24 @@
 		class="org.alfresco.repo.transfer.AlienProcessorImpl" />
 	<bean id="CategoryService"
 		class="org.alfresco.mock.test.MockCategoryService" />
+	<bean id="scheduledPersistedActionService"
+		class="org.alfresco.mock.test.MockScheduledPersistedActionService" />
+	<bean name="immutableSingletonCache"
+		class="org.alfresco.mock.test.MockTransactionalCache" />
+	<bean name="descriptorService"
+		class="org.alfresco.mock.test.MockDescriptorService" />
+	<alias name="descriptorService" alias="DescriptorService" />
+	<bean id="transferTransmitter"
+		class="org.alfresco.repo.transfer.HttpClientTransmitterImpl" />
+	<bean id="transferManifestNodeFactory"
+		class="org.alfresco.repo.transfer.manifest.TransferManifestNodeFactoryImpl" />
+	<bean id="tenantService"
+		class="org.alfresco.repo.tenant.SingleTServiceImpl" />
+	<bean id="ruleService"
+		class="org.alfresco.mock.test.MockRuleService" />
+	<alias name="ruleService" alias="RuleService" />
+	<bean id="policyBehaviourFilter"
+		class="org.alfresco.repo.policy.BehaviourFilterImpl" />
+	<bean id="transferProgressMonitor"
+		class="org.alfresco.repo.transfer.LoggingTransferProgressMonitorImpl" />
 </beans>
