@@ -72,6 +72,7 @@ public class MockPolicyComponent implements PolicyComponent {
 	}
 
 	@Override
+	@SuppressWarnings("all")
 	public BehaviourDefinition bindPropertyBehaviour(QName policy, QName className,
 			QName propertyName, Behaviour behaviour) {
 		// TODO Auto-generated method stub
@@ -79,6 +80,7 @@ public class MockPolicyComponent implements PolicyComponent {
 	}
 
 	@Override
+	@SuppressWarnings("all")
 	public BehaviourDefinition bindPropertyBehaviour(QName policy, QName className,
 			Behaviour behaviour) {
 		// TODO Auto-generated method stub
@@ -93,6 +95,7 @@ public class MockPolicyComponent implements PolicyComponent {
 	}
 
 	@Override
+	@SuppressWarnings("all")
 	public BehaviourDefinition bindAssociationBehaviour(QName policy, QName className,
 			QName assocName, Behaviour behaviour) {
 		// TODO Auto-generated method stub
@@ -100,6 +103,7 @@ public class MockPolicyComponent implements PolicyComponent {
 	}
 
 	@Override
+	@SuppressWarnings("all")
 	public BehaviourDefinition bindAssociationBehaviour(QName policy, QName className,
 			Behaviour behaviour) {
 		// TODO Auto-generated method stub
