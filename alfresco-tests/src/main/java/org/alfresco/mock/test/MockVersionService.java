@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.alfresco.repo.version.Version2Model;
-import org.alfresco.repo.version.Version2Model;
 import org.alfresco.repo.version.VersionServicePolicies.CalculateVersionLabelPolicy;
 import org.alfresco.service.cmr.repository.AspectMissingException;
 import org.alfresco.service.cmr.repository.ContentService;
