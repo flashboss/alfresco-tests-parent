@@ -71,6 +71,7 @@
 	<bean id="actionService"
 		class="org.alfresco.mock.test.MockActionService" />
 	<alias name="nodeService" alias="NodeService" />
+	<alias name="actionService" alias="ActionService" />
 	<bean id="fileFolderService"
 		class="org.alfresco.mock.test.MockFileFolderService">
 		<property name="nodeService" ref="nodeService" />
