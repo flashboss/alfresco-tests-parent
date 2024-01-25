@@ -114,4 +114,11 @@ public class MockContentService implements ContentService, Serializable {
 		return null;
 	}
 
+	@Override
+	public DirectAccessUrl requestContentDirectUrl(NodeRef nodeRef, QName propertyQName, boolean attachment,
+			Long validFor, String fileName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

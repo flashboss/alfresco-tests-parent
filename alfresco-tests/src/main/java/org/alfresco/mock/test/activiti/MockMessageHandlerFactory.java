@@ -57,11 +57,13 @@ public class MockMessageHandlerFactory implements MessageHandlerFactory {
 		/**
 		 * Prints the body of the message
 		 */
-		public void data(InputStream data) throws IOException {
+		public String data(InputStream data) throws IOException {
+			String result = this.convertStreamToString(data);
 			logger.info("MAIL DATA");
 			logger.info("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
-			logger.info(this.convertStreamToString(data));
+			logger.info(result);
 			logger.info("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
+			return result;
 		}
 
 		/**

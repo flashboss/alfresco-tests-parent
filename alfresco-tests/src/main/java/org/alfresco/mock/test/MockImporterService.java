@@ -21,8 +21,8 @@ import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.google.gdata.util.common.base.Charsets;
-import com.google.gdata.util.common.io.CharStreams;
+import com.google.common.base.Charsets;
+import com.google.common.io.CharStreams;
 
 public class MockImporterService implements ImporterService, Serializable {
 
