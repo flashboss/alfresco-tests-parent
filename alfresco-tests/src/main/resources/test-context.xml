@@ -56,7 +56,8 @@
 	</bean>
 	<bean id="checkOutCheckInService"
 		class="org.alfresco.mock.test.MockCheckOutCheckInService" />
-	<alias name="checkOutCheckInService" alias="CheckOutCheckInService" />
+	<alias name="checkOutCheckInService"
+		alias="CheckOutCheckInService" />
 	<bean id="contentService"
 		class="org.alfresco.mock.test.MockContentService">
 		<property name="nodeService" ref="nodeService" />
@@ -70,6 +71,7 @@
 	<bean id="actionService"
 		class="org.alfresco.mock.test.MockActionService" />
 	<alias name="nodeService" alias="NodeService" />
+	<alias name="actionService" alias="ActionService" />
 	<bean id="fileFolderService"
 		class="org.alfresco.mock.test.MockFileFolderService">
 		<property name="nodeService" ref="nodeService" />
@@ -89,7 +91,7 @@
 	<alias name="nodeLocatorService" alias="NodeLocatorService" />
 	<bean id="permissionService"
 		class="org.alfresco.mock.test.MockPermissionService">
-        <property name="nodeService" ref="nodeService"/>
+		<property name="nodeService" ref="nodeService" />
 	</bean>
 	<bean id="transactionService"
 		class="org.alfresco.mock.test.MockTransactionService" />
@@ -112,8 +114,8 @@
 	<alias name="copyService" alias="CopyService" />
 	<bean id="siteService"
 		class="org.alfresco.mock.test.MockSiteService">
-        <property name="searchService" ref="searchService"/>
-        <property name="nodeService" ref="nodeService"/>
+		<property name="searchService" ref="searchService" />
+		<property name="nodeService" ref="nodeService" />
 	</bean>
 	<alias name="siteService" alias="SiteService" />
 	<bean id="personService"
