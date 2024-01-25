@@ -56,7 +56,8 @@
 	</bean>
 	<bean id="checkOutCheckInService"
 		class="org.alfresco.mock.test.MockCheckOutCheckInService" />
-	<alias name="checkOutCheckInService" alias="CheckOutCheckInService" />
+	<alias name="checkOutCheckInService"
+		alias="CheckOutCheckInService" />
 	<bean id="contentService"
 		class="org.alfresco.mock.test.MockContentService">
 		<property name="nodeService" ref="nodeService" />
@@ -70,6 +71,7 @@
 	<bean id="actionService"
 		class="org.alfresco.mock.test.MockActionService" />
 	<alias name="nodeService" alias="NodeService" />
+	<alias name="actionService" alias="ActionService" />
 	<bean id="fileFolderService"
 		class="org.alfresco.mock.test.MockFileFolderService">
 		<property name="nodeService" ref="nodeService" />
@@ -272,14 +274,15 @@
 			<value>logger</value>
 		</property>
 	</bean>
-	<bean id="utilsScript" parent="baseJavaScriptExtension" class="org.alfresco.mock.test.script.MockUtils">
-        <property name="extensionName">
-            <value>utils</value>
-        </property>
-        <property name="serviceRegistry">
-            <ref bean="ServiceRegistry"/>
-        </property>
-    </bean>
+	<bean id="utilsScript" parent="baseJavaScriptExtension"
+		class="org.alfresco.mock.test.script.MockUtils">
+		<property name="extensionName">
+			<value>utils</value>
+		</property>
+		<property name="serviceRegistry">
+			<ref bean="ServiceRegistry" />
+		</property>
+	</bean>
 	<bean id="repositoryHelper"
 		class="org.alfresco.mock.test.MockRepository">
 		<property name="namespaceService" ref="namespaceService" />
