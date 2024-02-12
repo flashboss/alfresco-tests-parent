@@ -188,7 +188,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 			File newFile = new File(newDir + File.separator + newName);
 			if (oldFile.exists() && !newFile.exists())
 				FileUtils.moveFile(oldFile, newFile);
-		} catch (IOException e) {
+		} catch (IOException | IllegalArgumentException e) {
 			e.printStackTrace();
 		}
 		return new MockFileInfo(association.getChildRef(), newName, ContentModel.TYPE_CONTENT);
