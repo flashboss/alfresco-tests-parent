@@ -6,14 +6,14 @@ This version is for:
 
 - Java 17
 - Alfresco SDK 4.6.0
-- Alfresco community 7.4.1.3
+- Alfresco community 7.4.1.1
 
 To start add the dependency in your project sdk module:
 ```
    <dependency>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests</artifactId>
-		<version>7.4.1.3.2</version>
+		<version>7.4.1.1.0</version>
 		<scope>test</scope>
    </dependency>
 ```
