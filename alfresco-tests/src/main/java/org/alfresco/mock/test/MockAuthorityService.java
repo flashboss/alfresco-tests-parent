@@ -25,6 +25,7 @@ import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.security.AuthorityService;
 import org.alfresco.service.cmr.security.AuthorityType;
 import org.alfresco.service.namespace.QName;
+import org.alfresco.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class MockAuthorityService implements AuthorityService, Serializable {
@@ -264,6 +265,32 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
+	}
+
+	@Override
+	public String createAuthority(AuthorityType type, String shortName, Map<QName, Serializable> properties) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String createAuthority(AuthorityType type, String shortName, String authorityDisplayName,
+			Set<String> authorityZones, Map<QName, Serializable> properties) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Pair<String, String> getAuthorityDisplayNameAndDescription(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setAuthorityDisplayNameAndDescription(String authorityName, String authorityDisplayName,
+			String description) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

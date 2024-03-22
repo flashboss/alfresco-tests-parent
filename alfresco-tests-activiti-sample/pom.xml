@@ -4,7 +4,7 @@
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests-activiti-sample</artifactId>
 	<name>Alfresco Tests Activiti sample</name>
-	<version>23.1.0.2</version>
+	<version>23.2.1.0</version>
 	<description>Simple AMP Activiti sample for tests</description>
 	<packaging>jar</packaging>
 	<prerequisites>
@@ -16,14 +16,14 @@
 		properties see the alfresco-sdk-parent POM. -->
 	<properties>
 		<!-- Alfresco Maven Plugin version to use -->
-		<alfresco.sdk.version>4.7.0</alfresco.sdk.version>
+		<alfresco.sdk.version>4.8.0</alfresco.sdk.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- Properties used in dependency declarations, you don't need to change these -->
 		<alfresco.groupId>org.alfresco</alfresco.groupId>
 		<alfresco.bomDependencyArtifactId>acs-packaging</alfresco.bomDependencyArtifactId>
-		<alfresco.platform.version>23.1.0</alfresco.platform.version>
+		<alfresco.platform.version>23.2.1</alfresco.platform.version>
 
 		<!-- JRebel Hot reloading of classpath stuff and web resource stuff -->
 		<jrebel.version>1.1.8</jrebel.version>
@@ -252,51 +252,63 @@
 
 			<!-- Compress JavaScript files and store as *-min.js -->
 			<plugin>
-				<groupId>net.alchim31.maven</groupId>
-				<artifactId>yuicompressor-maven-plugin</artifactId>
-				<version>1.5.1</version>
+				<groupId>com.github.blutorange</groupId>
+				<artifactId>closure-compiler-maven-plugin</artifactId>
+				<version>2.28.0</version>
 				<executions>
 					<!-- Compress the JS files under the assembly folder -->
 					<execution>
 						<id>compress-assembly</id>
+						<phase>generate-resources</phase>
 						<goals>
-							<goal>compress</goal>
+							<goal>minify</goal>
 						</goals>
-
 						<configuration>
-							<sourceDirectory>${project.basedir}/src/main/assembly/web</sourceDirectory>
-							<outputDirectory>${project.basedir}/src/main/assembly/web</outputDirectory>
+							<baseSourceDir>${project.basedir}/src/main/assembly</baseSourceDir>
+							<baseTargetDir>${project.basedir}/src/main/assembly</baseTargetDir>
+							<sourceDir>web</sourceDir>
+							<targetDir>web</targetDir>
+							<skipMerge>true</skipMerge>
+							<includes>
+								<include>**/*.js</include>
+							</includes>
 							<excludes>
 								<exclude>**/webscripts/**</exclude>
 								<exclude>**/site-webscripts/**</exclude>
 								<exclude>**/META-INF/**</exclude>
 								<exclude>**/*.lib.js</exclude>
 								<exclude>**/*.css</exclude>
-								<exclude>**/*-min.js</exclude>
-								<exclude>**/*-min.css</exclude>
+								<exclude>**/*.min.js</exclude>
+								<exclude>**/*.min.css</exclude>
 							</excludes>
 							<force>true</force>
-							<jswarn>false</jswarn>
 						</configuration>
 					</execution>
-
 					<!-- Compress the JS files under the resources folder -->
 					<execution>
 						<id>compress-resources</id>
+						<phase>generate-resources</phase>
 						<goals>
-							<goal>compress</goal>
+							<goal>minify</goal>
 						</goals>
 						<configuration>
+							<baseSourceDir>${project.basedir}/src/main</baseSourceDir>
+							<baseTargetDir>${project.basedir}/src/main</baseTargetDir>
+							<sourceDir>resources</sourceDir>
+							<targetDir>resources</targetDir>
+							<skipMerge>true</skipMerge>
+							<includes>
+								<include>**/*.js</include>
+							</includes>
 							<excludes>
 								<exclude>**/webscripts/**</exclude>
 								<exclude>**/site-webscripts/**</exclude>
 								<exclude>**/*.lib.js</exclude>
 								<exclude>**/*.css</exclude>
-								<exclude>**/*-min.js</exclude>
-								<exclude>**/*-min.css</exclude>
+								<exclude>**/*.min.js</exclude>
+								<exclude>**/*.min.css</exclude>
 							</excludes>
 							<force>true</force>
-							<jswarn>false</jswarn>
 						</configuration>
 					</execution>
 				</executions>
@@ -334,17 +346,6 @@
 					<alwaysGenerate>true</alwaysGenerate>
 				</configuration>
 
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<skipTests>${skipTests}</skipTests>
-					<excludes>
-						<exclude>**/*RemoteWSTest.java</exclude>
-					</excludes>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -426,6 +427,10 @@
 		<repository>
 			<id>alfresco-private-repository</id>
 			<url>https://artifacts.alfresco.com/nexus/content/groups/private</url>
+		</repository>
+		<repository>
+			<id>alfresco-internal</id>
+			<url>https://artifacts.alfresco.com/nexus/content/groups/internal</url>
 		</repository>
 	</repositories>
 
