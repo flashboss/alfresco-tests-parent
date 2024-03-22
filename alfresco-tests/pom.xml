@@ -19,6 +19,7 @@
 		<maven.source.plugin.version>3.1.0</maven.source.plugin.version>
 		<maven.javadoc.plugin.version>3.1.1</maven.javadoc.plugin.version>
 		<maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
+		<velocity.version>1.1.3</velocity.version>
 	</properties>
 	<organization>
 		<name>Vige</name>
@@ -149,6 +150,36 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.vdubus</groupId>
+				<artifactId>velocity-maven-plugin</artifactId>
+				<version>${velocity.version}</version>
+				<executions>
+					<execution>
+						<id>Generate source velocity</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>velocity</goal>
+						</goals>
+						<configuration>
+							<removeExtension>.vm</removeExtension>
+							<templateFiles>
+								<directory>src/main/resources</directory>
+								<includes>
+									<include>**/*.vm</include>
+								</includes>
+							</templateFiles>
+							<templateValues>
+								<test>testValue</test>
+							</templateValues>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 	<profiles>
 		<profile>
 			<id>java8</id>

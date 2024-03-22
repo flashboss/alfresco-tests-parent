@@ -1,0 +1,18 @@
+#set($interface = $tool.class.getClassLoader().loadClass("org.alfresco.service.namespace.NamespaceService"))
+#set($packageName = "com.example.generated")
+#set($className = "GeneratedClass")
+
+package $packageName;
+
+public class $className implements $interface {
+    #foreach($method in $interface.getDeclaredMethods())
+        public $method.getReturnType().getSimpleName() $method.getName()() {
+            // Aggiungi qui l'implementazione del metodo se necessario
+            #if ($method.getReturnType().equals("void"))
+                // Implementazione del metodo per il tipo di ritorno void
+            #else
+                // Implementazione del metodo per tipi di ritorno diversi da void
+            #end
+        }
+    #end
+}
