@@ -24,6 +24,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.alfresco.repo.version.Version2Model;
 import org.alfresco.repo.version.VersionServicePolicies.CalculateVersionLabelPolicy;
@@ -107,8 +108,12 @@ public class MockVersionService implements VersionService, Serializable {
 			properties.put(PROP_NAME, nodeRef.getId());
 			properties.put(PROP_CREATED, new Date());
 			parentVersion = nodeService.createNode(versionStore, CHILD_QNAME_VERSION_HISTORIES,
-					QName.createQName(CONTENT_MODEL_PREFIX, nodeRef.getId(), namespaceService),
-					TYPE_CONTENT, properties).getChildRef();
+					QName.createQName(CONTENT_MODEL_PREFIX, nodeRef.getId(), namespaceService), TYPE_CONTENT,
+					properties).getChildRef();
+			try {
+				TimeUnit.MILLISECONDS.sleep(1);
+			} catch (InterruptedException e) {
+			}
 		}
 		properties = new HashMap<QName, Serializable>();
 		properties.put(PROP_NAME, name);
@@ -117,9 +122,10 @@ public class MockVersionService implements VersionService, Serializable {
 		properties.put(PROP_VERSION_TYPE, versionType);
 		properties.put(PROP_QNAME_FROZEN_MODIFIED, new Date());
 		properties.put(PROP_CREATED, new Date());
-		NodeRef versionedNode = nodeService.createNode(parentVersion, CHILD_QNAME_VERSIONS,
-				QName.createQName(CONTENT_MODEL_PREFIX, name, namespaceService), TYPE_CONTENT,
-				properties).getChildRef();
+		NodeRef versionedNode = nodeService
+				.createNode(parentVersion, CHILD_QNAME_VERSIONS,
+						QName.createQName(CONTENT_MODEL_PREFIX, name, namespaceService), TYPE_CONTENT, properties)
+				.getChildRef();
 		inputStream = new ByteArrayInputStream(text);
 		writer = contentService.getWriter(versionedNode, PROP_CONTENT, true);
 		writer.setMimetype(mimetypeService.getMimetype(mimetypeService.getExtension(name)));
