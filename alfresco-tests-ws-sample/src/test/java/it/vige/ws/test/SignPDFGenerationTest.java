@@ -1,6 +1,6 @@
 package it.vige.ws.test;
 
-import static org.apache.log4j.Logger.getLogger;
+import static org.springframework.extensions.webscripts.Status.STATUS_OK;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +22,8 @@ import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.search.SearchService;
 import org.alfresco.service.namespace.QName;
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,7 +46,7 @@ import it.vige.ws.dom.VigeWSContentModel;
 @ContextConfiguration("classpath:test-module-context.xml")
 public class SignPDFGenerationTest extends AbstractWSForm {
 
-	private final static Logger logger = getLogger(SignPDFGenerationTest.class);
+	private final static Log logger = LogFactory.getLog(SignPDFGenerationTest.class);
 	private final static String ID_PARTNER = "prova";
 	private final static String ID_PRATICA = "prova";
 	private final static String DRL_NAME = "rf_006";
@@ -117,7 +118,8 @@ public class SignPDFGenerationTest extends AbstractWSForm {
 		}
 		WebScriptRequest webScriptRequest = new MockWebScriptRequest("json", templateVars, signPDFGeneration, fields,
 				serviceRegistry);
-		signPDFGeneration.execute(webScriptRequest, new MockWebScriptResponse());
+		MockWebScriptResponse webScriptResponse = new MockWebScriptResponse();
+		signPDFGeneration.execute(webScriptRequest, webScriptResponse);
 
 		// Verify
 		List<NodeRef> nodeRefs = searchService
@@ -135,6 +137,8 @@ public class SignPDFGenerationTest extends AbstractWSForm {
 				Assert.assertEquals("The document has the name of the file", ID_DOC, idDoc);
 			}
 		}
+		Map<String, Object> model = webScriptResponse.getModel();
+		Assert.assertEquals("Status ok", STATUS_OK + "", model.get("status").toString());
 		logger.debug("end test");
 	}
 }

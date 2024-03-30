@@ -1,6 +1,7 @@
 package org.alfresco.mock.test.ws;
 
 import java.io.Writer;
+import java.util.Map;
 
 import org.springframework.extensions.webscripts.TemplateProcessor;
 
@@ -13,15 +14,16 @@ public class MockTemplateProcessor implements TemplateProcessor {
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public void process(String template, Object model, Writer out) {
-		// TODO Auto-generated method stub
-		
+		if (model instanceof Map)
+			((MockWriter) out).setModel((Map<String, Object>) model);
 	}
 
 	@Override
 	public void processString(String template, Object model, Writer out) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -33,7 +35,7 @@ public class MockTemplateProcessor implements TemplateProcessor {
 	@Override
 	public void reset() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
