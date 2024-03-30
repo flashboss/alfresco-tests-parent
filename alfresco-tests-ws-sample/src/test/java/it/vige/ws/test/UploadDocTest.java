@@ -1,5 +1,7 @@
 package it.vige.ws.test;
 
+import static org.springframework.extensions.webscripts.Status.STATUS_CREATED;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
@@ -107,7 +109,8 @@ public class UploadDocTest extends AbstractWSForm {
 		}
 		WebScriptRequest webScriptRequest = new MockWebScriptRequest("json", templateVars, uploadDoc, fields,
 				serviceRegistry);
-		uploadDoc.execute(webScriptRequest, new MockWebScriptResponse());
+		MockWebScriptResponse webScriptResponse = new MockWebScriptResponse();
+		uploadDoc.execute(webScriptRequest, webScriptResponse);
 
 		// Verify
 		List<NodeRef> nodeRefs = searchService
@@ -148,6 +151,8 @@ public class UploadDocTest extends AbstractWSForm {
 				properties.get(VigeWSContentModel.DATA_EMISSIONE_DOC));
 		Assert.assertEquals("Deadline date", dateFormat.parse(DATA_SCADENZA),
 				properties.get(VigeWSContentModel.DATA_SCADENZA_DOC));
+		Map<String, Object> model = webScriptResponse.getModel();
+		Assert.assertEquals("Status ok", STATUS_CREATED + "", model.get("status").toString());
 
 		logger.debug("end test");
 	}
