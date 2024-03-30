@@ -3,6 +3,7 @@ package org.alfresco.mock.test.ws;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Writer;
+import java.util.Map;
 
 import org.springframework.extensions.webscripts.Cache;
 import org.springframework.extensions.webscripts.Runtime;
@@ -10,27 +11,7 @@ import org.springframework.extensions.webscripts.WebScriptResponse;
 
 public class MockWebScriptResponse implements WebScriptResponse {
 
-	private Writer mockWriter = new Writer() {
-
-		@Override
-		public void write(char[] cbuf, int off, int len) throws IOException {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void flush() throws IOException {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void close() throws IOException {
-			// TODO Auto-generated method stub
-
-		}
-
-	};
+	private MockWriter mockWriter = new MockWriter();
 
 	@Override
 	public void setStatus(int status) {
@@ -118,7 +99,11 @@ public class MockWebScriptResponse implements WebScriptResponse {
 	@Override
 	public void reset(String arg0) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	public Map<String, Object> getModel() {
+		return mockWriter.getModel();
 	}
 
 }
