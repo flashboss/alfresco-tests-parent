@@ -60,6 +60,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	protected NodeRef archive;
 	protected NodeRef sites;
 	protected NodeRef shared;
+	protected NodeRef companyHome;
 	protected ActivitiScriptNode bpmPackage;
 	protected Initiator initiator;
 
@@ -94,8 +95,9 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		// create the initial folders
 		NodeRef root = insertFolder(new NodeRef(new StoreRef("", ""), ""), ".");
 		NodeRef workspaceRoot = insertFolder(root, StoreRef.PROTOCOL_WORKSPACE);
-		spacesStore = insertFolder(workspaceRoot, NamespaceService.APP_MODEL_PREFIX, STORE_REF_WORKSPACE_SPACESSTORE.getIdentifier());
-		NodeRef companyHome = insertFolder(spacesStore, NamespaceService.APP_MODEL_PREFIX, "company_home");
+		spacesStore = insertFolder(workspaceRoot, NamespaceService.APP_MODEL_PREFIX,
+				STORE_REF_WORKSPACE_SPACESSTORE.getIdentifier());
+		companyHome = insertFolder(spacesStore, NamespaceService.APP_MODEL_PREFIX, "company_home");
 		NodeRef system = insertFolder(spacesStore, NamespaceService.SYSTEM_MODEL_PREFIX, "system");
 		archive = insertFolder(root, StoreRef.PROTOCOL_ARCHIVE);
 		sites = insertFolder(companyHome, SiteModel.SITE_MODEL_PREFIX, SiteModel.TYPE_SITES.getLocalName());
