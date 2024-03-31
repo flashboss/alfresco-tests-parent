@@ -24,6 +24,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.alfresco.repo.version.Version2Model;
 import org.alfresco.repo.version.VersionServicePolicies.CalculateVersionLabelPolicy;
@@ -109,6 +110,10 @@ public class MockVersionService implements VersionService, Serializable {
 			parentVersion = nodeService.createNode(versionStore, CHILD_QNAME_VERSION_HISTORIES,
 					QName.createQName(CONTENT_MODEL_PREFIX, nodeRef.getId(), namespaceService),
 					TYPE_CONTENT, properties).getChildRef();
+			try {
+				TimeUnit.MILLISECONDS.sleep(1);
+			} catch (InterruptedException e) {
+			}
 		}
 		properties = new HashMap<QName, Serializable>();
 		properties.put(PROP_NAME, name);
