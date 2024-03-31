@@ -47,6 +47,7 @@ public abstract class AbstractForm {
 	protected NodeRef shared;
 	protected Date today;
 	protected String todayStr;
+	protected NodeRef companyHome;
 
 	public void init() {
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
@@ -74,7 +75,7 @@ public abstract class AbstractForm {
 		spacesStore = insertFolder(workspaceRoot, NamespaceService.APP_MODEL_PREFIX,
 				STORE_REF_WORKSPACE_SPACESSTORE.getIdentifier());
 		insertFolder(workspaceRoot, NamespaceService.APP_MODEL_PREFIX, Version2Model.STORE_ID);
-		NodeRef companyHome = insertFolder(spacesStore, NamespaceService.APP_MODEL_PREFIX, "company_home");
+		companyHome = insertFolder(spacesStore, NamespaceService.APP_MODEL_PREFIX, "company_home");
 		NodeRef system = insertFolder(spacesStore, NamespaceService.SYSTEM_MODEL_PREFIX, "system");
 		NodeRef archiveRoot = insertFolder(root, PROTOCOL_ARCHIVE);
 		archive = insertFolder(archiveRoot, STORE_REF_ARCHIVE_SPACESSTORE.getIdentifier());
@@ -103,7 +104,8 @@ public abstract class AbstractForm {
 		return NodeUtils.insertDocument(parent, name, text, properties, serviceRegistry);
 	}
 
-	protected NodeRef insertVersion(NodeRef nodeRef, String name, String text, String version, VersionType versionType) {
+	protected NodeRef insertVersion(NodeRef nodeRef, String name, String text, String version,
+			VersionType versionType) {
 		return NodeUtils.insertVersion(nodeRef, name, text, version, versionType, serviceRegistry);
 	}
 
