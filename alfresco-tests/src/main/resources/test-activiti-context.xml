@@ -24,6 +24,16 @@
 		<property name="utilsScript"
 			ref="utilsScript" />
 	</bean>
+	<bean id="moduleProperties"
+		class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="localOverride" value="false" />
+		<property name="locations">
+			<list>
+				<value>classpath:alfresco/extension/*.properties</value>
+			</list>
+		</property>
+	</bean>
 	<import resource="classpath:test-context.xml" />
 	<import resource="classpath:alfresco/activiti-context.xml" />
 </beans>
