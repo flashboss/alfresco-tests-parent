@@ -13,7 +13,7 @@ To start add the dependency in your project sdk module:
    <dependency>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests</artifactId>
-		<version>23.2.1.0</version>
+		<version>23.2.1.1</version>
 		<scope>test</scope>
    </dependency>
 ```
@@ -433,6 +433,7 @@ Create a junit test in an webscript project after added the alfresco-tests libra
 ```
 package it.vige.ws.test;
 
+import static org.springframework.extensions.webscripts.Status.STATUS_OK;
 import java.io.IOException;
 import java.io.Serializable;
 import java.text.DateFormat;
@@ -518,7 +519,8 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 		}
 		WebScriptRequest webScriptRequest = new MockWebScriptRequest("json", null, previousWSSample, fields,
 				serviceRegistry);
-		previousWSSample.execute(webScriptRequest, new MockWebScriptResponse());
+		MockWebScriptResponse webScriptResponse = new MockWebScriptResponse();
+		previousWSSample.execute(webScriptRequest, webScriptResponse);
 
 		// Verify
 		List<NodeRef> nodeRefs = searchService
@@ -531,6 +533,8 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 		Assert.assertEquals("Added an aspect to the WS Sample folder", WSSampleModel.ASPECT_WSSAMPLEFOLDER, aspect);
 		Date dataCedacri = (Date) nodeService.getProperty(result, WSSampleModel.PROP_UPDATE_PROPERTY);
 		Assert.assertEquals("Added the date property", dataModifica, dateFormat.format(dataCedacri));
+		Map<String, Object> model = webScriptResponse.getModel();
+		Assert.assertEquals("Status ok", STATUS_OK + "", model.get("status").toString());
 	}
 
 }

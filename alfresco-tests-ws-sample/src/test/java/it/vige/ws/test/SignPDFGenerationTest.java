@@ -1,5 +1,7 @@
 package it.vige.ws.test;
 
+import static org.springframework.extensions.webscripts.Status.STATUS_OK;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -116,7 +118,8 @@ public class SignPDFGenerationTest extends AbstractWSForm {
 		}
 		WebScriptRequest webScriptRequest = new MockWebScriptRequest("json", templateVars, signPDFGeneration, fields,
 				serviceRegistry);
-		signPDFGeneration.execute(webScriptRequest, new MockWebScriptResponse());
+		MockWebScriptResponse webScriptResponse = new MockWebScriptResponse();
+		signPDFGeneration.execute(webScriptRequest, webScriptResponse);
 
 		// Verify
 		List<NodeRef> nodeRefs = searchService
@@ -134,6 +137,8 @@ public class SignPDFGenerationTest extends AbstractWSForm {
 				Assert.assertEquals("The document has the name of the file", ID_DOC, idDoc);
 			}
 		}
+		Map<String, Object> model = webScriptResponse.getModel();
+		Assert.assertEquals("Status ok", STATUS_OK + "", model.get("status").toString());
 		logger.debug("end test");
 	}
 }
