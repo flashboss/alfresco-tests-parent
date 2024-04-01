@@ -12,13 +12,15 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.alfresco.model.ContentModel;
 import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.repository.ChildAssociationRef;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.namespace.QName;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -294,7 +296,7 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 
 		} catch (Exception e) {
 			logger.info("Document generation error: " + e.getMessage());
-			throw new WebScriptException(500, e.getMessage());
+			throw new WebScriptException(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
 		}
 
 		logger.info("End Crea pratica.");
