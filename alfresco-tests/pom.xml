@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests</artifactId>
-	<version>5.2.f.30</version>
+	<version>5.2.g.0</version>
 	<name>Alfresco Tests</name>
 	<packaging>jar</packaging>
 	<description>
@@ -18,12 +18,7 @@
 
         <!-- Properties used in dependency declarations, you don't need to change these -->
         <alfresco.groupId>org.alfresco</alfresco.groupId>
-        <alfresco.version>5.2.f</alfresco.version>
-
-        <!-- Alfresco Platform webapp version, this is the original Alfresco webapp that will be
-            customized and then deployed and run by the tomcat maven plugin when
-            executing for example $ mvn clean install alfresco:run -->
-        <alfresco.platform.version>5.2.f</alfresco.platform.version>
+        <alfresco.version>5.2.g</alfresco.version>
 
         <!-- Compile with Java 7, default is 5 -->
         <maven.compiler.source>1.8</maven.compiler.source>

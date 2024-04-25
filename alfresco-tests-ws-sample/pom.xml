@@ -5,7 +5,7 @@
     <groupId>it.vige</groupId>
     <artifactId>alfresco-tests-ws-sample</artifactId>
     <name>Alfresco Tests ws sample</name>
-    <version>5.2.f.30</version>
+    <version>5.2.g.0</version>
     <description>Simple JAR sample for tests</description>
     <properties>
         <!-- Alfresco Maven Plugin version to use -->
@@ -32,9 +32,9 @@
         <!-- Alfresco Platform webapp version, this is the original Alfresco webapp that will be
             customized and then deployed and run by the tomcat maven plugin when
             executing for example $ mvn clean install alfresco:run -->
-        <alfresco.platform.version>5.2.f</alfresco.platform.version>
+        <alfresco.platform.version>5.2.g</alfresco.platform.version>
         <!-- Alfresco Share version, so we can bring in correct alfresco-share-services artifact -->
-        <alfresco.share.version>5.2.e</alfresco.share.version>
+        <alfresco.share.version>5.2.f</alfresco.share.version>
 
         <!-- Default is to run with a Community edition, change to 'enterprise' if using Enterprise edition -->
         <maven.alfresco.edition>community</maven.alfresco.edition>
