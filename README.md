@@ -62,9 +62,6 @@ import com.tradeshift.test.remote.RemoteTestRunner;
 
 import it.vige.sample.BackupAction;
 
-@RunWith(RemoteTestRunner.class)
-@Remote(runnerClass = SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:test-module-context.xml")
 public class SimpleTest extends AbstractForm {
 
 	@Autowired
@@ -447,9 +444,6 @@ import com.tradeshift.test.remote.RemoteTestRunner;
 import it.vige.ws.PreviousWSSample;
 import it.vige.ws.WSSampleModel;
 
-@RunWith(RemoteTestRunner.class)
-@Remote(runnerClass = SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:test-module-context.xml")
 public class PreviousWSSampleTest extends AbstractWSForm {
 
 	private final static String CARTELLA_WSSAMPLE = "WSSAMPLE-20157726";
