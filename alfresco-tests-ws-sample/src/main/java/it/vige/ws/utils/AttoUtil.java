@@ -80,29 +80,7 @@ public class AttoUtil {
 	public static final QName PROP_PRIMO_FIRMATARIO_QNAME = QName.createQName(CRL_ATTI_MODEL, PROP_PRIMO_FIRMATARIO);
 	public static final QName PROP_IS_PRIMO_FIRMATARIO_QNAME = QName.createQName(CRL_ATTI_MODEL,
 			PROP_IS_PRIMO_FIRMATARIO);
-
-	public static final QName PROP_IS_FIRMATARIO_POPOLARE_QNAME = QName.createQName(CRL_ATTI_MODEL,
-			PROP_IS_FIRMATARIO_POPOLARE);
-	public static final QName PROP_NOME_FIRMATARIO_QNAME = QName.createQName(CRL_ATTI_MODEL, PROP_NOME_FIRMATARIO);
-	public static final QName PROP_FIRMATARI_QNAME = QName.createQName(CRL_ATTI_MODEL, PROP_FIRMATARI);
-	public static final QName PROP_DATA_NOMINA_RELATORE_QNAME = QName.createQName(CRL_ATTI_MODEL,
-			PROP_DATA_NOMINA_RELATORE);
-	public static final QName PROP_DATA_USCITA_RELATORE_QNAME = QName.createQName(CRL_ATTI_MODEL,
-			PROP_DATA_USCITA_RELATORE);
-	
-	public static final QName ESITO_VOTO_PASSAGGIO_AULA_QNAME = QName.createQName(CRL_ATTI_MODEL,
-			ESITO_VOTO_PASSAGGIO_AULA);
-
-	public static final QName DATA_SEDUTA_PASSAGGIO_AULA_QNAME = QName.createQName(CRL_ATTI_MODEL,
-			DATA_SEDUTA_PASSAGGIO_AULA);
-	public static final QName PROP_TIPOLOGIA_QNAME = QName.createQName(CRL_ATTI_MODEL, PROP_TIPOLOGIA);
-
-	public static final QName PROP_PUBBLICO_QNAME = QName.createQName(CRL_ATTI_MODEL, PROP_PUBBLICO);
-
-	public static final QName PROP_PUBBLICO_OPENDATA_QNAME = QName.createQName(CRL_ATTI_MODEL, PROP_PUBBLICO_OPENDATA);
-
-	public static final QName PROP_DATA_LR_QNAME = QName.createQName(CRL_ATTI_MODEL, PROP_DATA_LR);
-
+			
 	public SearchService getSearchService() {
 		return searchService;
 	}
