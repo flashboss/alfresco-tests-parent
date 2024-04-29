@@ -62,7 +62,6 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>(11);
 		properties.put(ContentModel.PROP_NAME, name);
 		properties.put(ActUtil.PROP_NUMERO_ATTO_QNAME, Integer.parseInt(name));
-		properties.put(ActUtil.PROP_TIPO_INIZIATIVA_QNAME, "01_ATTO DI INIZIATIVA CONSILIARE");
 		properties.put(ActUtil.PROP_NUMERO_ATTO_QNAME, Integer.parseInt(name));
 		properties.put(ActUtil.PROP_OGGETTO_ATTO_QNAME, name);
 		properties.put(ActUtil.PROP_LEGISLATURA_QNAME, "XII");

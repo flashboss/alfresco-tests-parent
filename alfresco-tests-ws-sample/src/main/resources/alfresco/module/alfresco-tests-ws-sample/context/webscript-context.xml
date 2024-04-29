@@ -106,15 +106,11 @@
 		parent="webscript">
 		<property name="nodeService" ref="NodeService" />
 		<property name="namespaceService" ref="namespaceService" />
-		<property name="dictionaryService" ref="dictionaryService" />
 		<property name="searchService" ref="searchService" />
 		<property name="openDataCommand" ref="openDataCommand" />
 		<property name="overHeadings">
 			<value>
 				id_atto,legislatura,tipo_atto,n_atto,oggetto,data_presentazione,stato,primo_firmatario,firmatari,primo_promotore,tutti_promotori,tipo_iniziativa,tipo_chiusura,abbinamenti,com_referente_co_referente_redigente_o_deliberante,data_assegnazione_referente,relatore_referente,data_nomina_relatore_referente,esito_votazione_com_referente_o_redigente_o_deliberante,data_votazione_com_commissione_referente_o_redigente_o_deliberante,commissioni_consultive,esito_votazione_aula,data_votazione_aula,n_dcr,burl,data_burl,n_lr,data_lr,ids_lr,link_testo_atto_com_referente,link_testo_votazione_aula,link_atto_bancadati,link_testo_relazione_illustrativa,link_testo_scheda_istruttoria</value>
-		</property>
-		<property name="overDescriptions">
-			<value>ID ATTO</value>
 		</property>
 		<property name="modelProperties">
 			<!-- <value>crlatti:numeroAtto</value> -->
