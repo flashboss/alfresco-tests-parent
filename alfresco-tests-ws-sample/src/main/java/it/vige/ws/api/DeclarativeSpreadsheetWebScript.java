@@ -32,12 +32,6 @@ import org.springframework.extensions.webscripts.WebScriptException;
 import org.springframework.extensions.webscripts.WebScriptRequest;
 import org.springframework.extensions.webscripts.WebScriptResponse;
 
-/**
- * Parent of Declarative Webscripts that generate Excel files, usually based on
- * some sort of dictionary model.
- * 
- * @author Nick Burch, Jan Pfitzner
- */
 public abstract class DeclarativeSpreadsheetWebScript extends DeclarativeWebScript {
 
 	// Logger
