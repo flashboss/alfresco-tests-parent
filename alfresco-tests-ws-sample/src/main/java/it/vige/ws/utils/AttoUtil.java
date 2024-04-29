@@ -3,13 +3,6 @@ package it.vige.ws.utils;
 import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.cmr.search.SearchService;
 import org.alfresco.service.namespace.QName;
-
-/**
- * Classe che serve come DAO per ottenere la business logic che riguarda il ciclo di vita di un atto e tutti gli attori che sono coinvolti: commissioni, ...
- * Si trovano tutte le costanti per mappare il content model della Regione Lombardia
- * @author sourcesense
- *
- */
 public class AttoUtil {
 
 	private SearchService searchService;
@@ -18,18 +11,7 @@ public class AttoUtil {
 	public static final String CRL_ATTI_MODEL = "http://www.regione.lombardia.it/content/model/atti/1.0"; 
 	public static final String COMMISSIONE_TYPE = "commissione";
 	public static final String RELATORE_TYPE = "relatore";
-	public static final String PARERE_TYPE = "parere";
-	public static final String FIRMATARIO_TYPE = "firmatario";
-	public static final String TYPE_LEGISLATURA = "legislaturaAnagrafica";
-	public static final QName TYPE_ATTO = QName.createQName(CRL_ATTI_MODEL, "atto");
 	public static final QName TYPE_ATTO_PDL = QName.createQName(CRL_ATTI_MODEL, "attoPdl");
-	public static final QName TYPE_ATTO_EAC = QName.createQName(CRL_ATTI_MODEL, "attoEac");
-	public static final QName TYPE_AULA = QName.createQName(CRL_ATTI_MODEL, "aula");
-	public static final QName COMMISSIONE_TYPE_QNAME = QName.createQName(CRL_ATTI_MODEL, COMMISSIONE_TYPE);
-	public static final QName TYPE_RELATORE_QNAME = QName.createQName(CRL_ATTI_MODEL, RELATORE_TYPE);
-	public static final String ABBINAMENTO_TYPE = "abbinamento";
-	public static final String TYPE_TESTO = "testo";
-	public static final QName TYPE_TESTO_QNAME = QName.createQName(CRL_ATTI_MODEL, TYPE_TESTO);
 	public static final String TYPE_FIRMATARIO = "firmatario";
 	public static final QName TYPE_FIRMATARIO_QNAME = QName.createQName(CRL_ATTI_MODEL, TYPE_FIRMATARIO);
 	public static final String TYPE_ALLEGATO = "allegato";
@@ -48,16 +30,6 @@ public class AttoUtil {
 	public static final QName PROP_DATA_INIZIATIVA_ATTO_QNAME = QName.createQName(CRL_ATTI_MODEL, PROP_DATA_INIZIATIVA_ATTO);
 	public static final String PROP_DESCRIZIONE_INIZIATIVA = "descrizioneIniziativa";
 	public static final String PROP_TIPO_INIZIATIVA = "tipoIniziativa";
-	public static final String PROP_DATA_SCADENZA = "dataScadenza";
-	public static final String PROP_NUMERO_DGR = "numeroDgr";
-	public static final String PROP_DATA_DGR = "dataDgr";
-	public static final String PROP_NUMERO_DCR = "numeroDcr";
-	public static final String PROP_NUMERO_DCR_PASSAGIO_AULA = "numeroDcrPassaggioAula";
-	public static final String PROP_COMMISSIONI_REFERENTI = "commReferente";
-	public static final QName PROP_COMMISSIONI_REFERENTI_QNAME =  QName.createQName(CRL_ATTI_MODEL, PROP_COMMISSIONI_REFERENTI);
-	public static final String PROP_DATA_ASSEGNAZIONE_COMMISSIONI_REFERENTI = "dataAssegnazioneCommissioneReferente";
-	public static final QName PROP_DATA_ASSEGNAZIONE_COMMISSIONI_REFERENTI_QNAME =  QName.createQName(CRL_ATTI_MODEL, PROP_DATA_ASSEGNAZIONE_COMMISSIONI_REFERENTI);
-
 
 	public static final String PROP_COMMISSIONI_CONSULTIVE = "commConsultiva";
 	public static final QName PROP_COMMISSIONI_CONSULTIVE_QNAME = QName.createQName(CRL_ATTI_MODEL, PROP_COMMISSIONI_CONSULTIVE);
@@ -128,9 +100,6 @@ public class AttoUtil {
 	public static final QName PROP_PUBBLICO_QNAME = QName.createQName(CRL_ATTI_MODEL, PROP_PUBBLICO);
 
 	public static final QName PROP_PUBBLICO_OPENDATA_QNAME = QName.createQName(CRL_ATTI_MODEL, PROP_PUBBLICO_OPENDATA);
-
-	public static final QName PROP_NUMERO_DCR_PASSAGIO_AULA_QNAME = QName.createQName(CRL_ATTI_MODEL,
-			PROP_NUMERO_DCR_PASSAGIO_AULA);
 
 	public static final QName PROP_DATA_LR_QNAME = QName.createQName(CRL_ATTI_MODEL, PROP_DATA_LR);
 
