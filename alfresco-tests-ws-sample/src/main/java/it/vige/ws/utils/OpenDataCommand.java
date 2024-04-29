@@ -217,26 +217,6 @@ public class OpenDataCommand {
 
 				return "Ufficio di Presidenza";
 
-			} else if ("07_ATTO DI INIZIATIVA AUTONOMIE LOCALI".equals(tipoIniziativa)) {
-
-				return "Consiglio delle Autonomie locali";
-
-			} else if ("06_ATTO DI INIZIATIVA PRESIDENTE GIUNTA".equals(tipoIniziativa)) {
-
-				return "Presidente della Giunta";
-
-			} else if ("02_ATTO DI INIZIATIVA DI GIUNTA".equals(tipoIniziativa)) {
-
-				return "Giunta";
-
-			} else if ("04_ATTO DI INIZIATIVA COMMISSIONI".equals(tipoIniziativa)) {
-
-				return "Commissioni";
-
-			} else if ("08_ATTO DI ALTRA INIZIATIVA".equals(tipoIniziativa)) {
-
-				return "Altra Iniziativa";
-
 			}
 		}
 		return null;
@@ -461,59 +441,6 @@ public class OpenDataCommand {
 	}
 
 	/**
-	 * Ottiene il valore dell'esito della votazione della commissione dell'atto
-	 * verificando il valore della proprietà PROP_ESITO_VOTAZIONE_COMMISSIONE_QNAME.
-	 * 
-	 * @param item: atto dal quale trovare l'esito della votazione
-	 * @return String l'esito della votazione dell Commissione Referente.
-	 */
-	public String getEsitoVotazioneCommissioneReferente(NodeRef item) {
-		NodeRef commissione = getCommissioneReferente(item);
-		if (commissione != null) {
-			return (String) nodeService.getProperty(commissione, AttoUtil.PROP_ESITO_VOTAZIONE_COMMISSIONE_QNAME);
-		} else {
-			return null;
-		}
-	}
-
-	/**
-	 * Ottiene la data in cui è stata esguita la votazione verificando la proprietà:
-	 * PROP_DATA_VOTAZIONE
-	 * 
-	 * @param item atto dal quale ricavare la data della votazione.
-	 * @return Date la data della votazione.
-	 */
-	public Date getDataVotazioneCommissioneReferente(NodeRef item) {
-		NodeRef commissione = getCommissioneReferente(item);
-		if (commissione != null) {
-			return (Date) nodeService.getProperty(commissione, AttoUtil.PROP_DATA_VOTAZIONE);
-		} else {
-			return null;
-		}
-	}
-
-	/**
-	 * Trova l'aula di un atto dove si è svolto l'ultimo passaggio. Se non esiste
-	 * l'ultimo passaggio, il valoere è null.
-	 * 
-	 * @param attoNodeRef atto dal quale trovare l'aula.
-	 * @return NodeRef con il valore dell'aula. null se non esiste l'ultimo
-	 *         passaggio dell'atto.
-	 */
-	public NodeRef getAula(NodeRef attoNoderef) {
-		NodeRef passaggio = getUltimoPassaggio(attoNoderef);
-		if (passaggio != null) {
-			Set<QName> aulaFolderQnames = new HashSet<QName>(1, 1.0f);
-			aulaFolderQnames.add(AttoUtil.TYPE_AULA);
-			List<ChildAssociationRef> aulaList = nodeService.getChildAssocs(passaggio, aulaFolderQnames);
-			if ((aulaList != null) && (!aulaList.isEmpty())) {
-				return aulaList.get(0).getChildRef();
-			}
-		}
-		return null;
-	}
-
-	/**
 	 * 
 	 * Trova l'aula dell'atto a partire dal passaggio
 	 * 
@@ -530,55 +457,6 @@ public class OpenDataCommand {
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * Trova l'esito della votazione in aula di un atto analizzando la proprietà
-	 * ESITO_VOTO_PASSAGGIO_AULA_QNAME
-	 * 
-	 * @param NodeRef atto
-	 * @return String esito della votazione.
-	 */
-	public String getEsitoVotazioneAula(NodeRef item) {
-		NodeRef aula = getAula(item);
-		if (aula != null) {
-			return (String) nodeService.getProperty(aula, AttoUtil.ESITO_VOTO_PASSAGGIO_AULA_QNAME);
-		} else {
-			return null;
-		}
-	}
-
-	/**
-	 * Trova la data della votazione eseguita in aula
-	 * 
-	 * @param atto presuntamente votato in aula
-	 * @return Date la data della votazione in aula. Null se l'atto non è stato
-	 *         votato in aula.
-	 */
-	public Date getDataVotazioneAula(NodeRef item) {
-		NodeRef aula = getAula(item);
-		if (aula != null) {
-			return (Date) nodeService.getProperty(aula, AttoUtil.DATA_SEDUTA_PASSAGGIO_AULA_QNAME);
-		} else {
-			return null;
-		}
-	}
-
-	/**
-	 * Trova il numero DCR di passaggio in aula analizzando la proprietà
-	 * PROP_NUMERO_DCR_PASSAGIO_AULA_QNAME
-	 * 
-	 * @param item atto
-	 * @return String numero di passaggio in aula dell'atto. Null se l'atto non è
-	 *         andato in aula
-	 */
-	public String getNumeroDcrPassaggioAula(NodeRef item) {
-		NodeRef aula = getAula(item);
-		if (aula != null) {
-			return (String) nodeService.getProperty(aula, AttoUtil.PROP_NUMERO_DCR_PASSAGIO_AULA_QNAME);
-		} else {
-			return null;
-		}
 	}
 
 	/**

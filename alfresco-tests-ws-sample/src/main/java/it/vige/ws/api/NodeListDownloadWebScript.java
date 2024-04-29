@@ -218,59 +218,6 @@ public class NodeListDownloadWebScript extends DeclarativeSpreadsheetWebScript
 							val = openDataCommand.getLinkTestoAttoComReferente(item);
 							break;
 						}
-						case "{openDataCommand}linkTestoRelazioneIllustrativa": {
-							val = openDataCommand.getLinkTestoRelazioneIllustrativa(item);
-							break;
-						}
-						case "{openDataCommand}linkTestoSchedaIstruttoria": {
-							val = openDataCommand.getLinkTestoSchedaIstruttoria(item);
-							break;
-						}
-						case "{openDataCommand}getLinkVotoFinaleAula": {
-							val = openDataCommand.getLinkVotoFinaleAula(item);
-							break;
-						}
-						case "{openDataCommand}linkAtto": {
-							val = openDataCommand.getLinkAtto(item);
-							break;
-						}
-						case "{openDataCommand}getPrimoPromotore": {
-							val = openDataCommand.getPrimoPromotore(item);
-							break;
-						}
-						case "{openDataCommand}getTuttiPromotori": {
-							val = openDataCommand.getTuttiPromotori(item);
-							break;
-						}
-						case "{openDataCommand}getAbbinamenti": {
-							val = openDataCommand.getAbbinamenti(item);
-							break;
-						}
-						case "{openDataCommand}getEsitoVotazioneCommissioneReferente": {
-							val = openDataCommand.getEsitoVotazioneCommissioneReferente(item);
-							break;
-						}
-						case "{openDataCommand}getDataVotazioneCommissioneReferente": {
-							val = openDataCommand.getDataVotazioneCommissioneReferente(item);
-							break;
-						}
-						case "{openDataCommand}getEsitoVotazioneAula": {
-							val = openDataCommand.getEsitoVotazioneAula(item);
-							break;
-						}
-						case "{openDataCommand}getDataVotazioneAula": {
-							val = openDataCommand.getDataVotazioneAula(item);
-							break;
-						}
-						case "{openDataCommand}getNumeroDcrPassaggioAula": {
-							val = openDataCommand.getNumeroDcrPassaggioAula(item);
-							break;
-						}
-
-						case "{openDataCommand}getIdsLr": {
-							val = openDataCommand.getIdsLr(item);
-							break;
-						}
 
 					}
 
