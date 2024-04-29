@@ -7,8 +7,6 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.google.gdata.util.common.base.StringUtil;
-
 /**
  * Classe che fornisce tutti i metodi per ottenre l'informazione degli atti.
  * Mini API per atti collegata con la logica del concetto nodo di Alfresco.
@@ -27,31 +25,6 @@ public class OpenDataCommand {
 
 	public OpenDataCommand() {
 		super();
-	}
-
-	/**
-	 * Genera i ID - atto rappresentato da: tipoAtto + "-" + numeroAtto + "-" +
-	 * legislatura
-	 * 
-	 * @param nodeRef
-	 *                atto dal quale calcolare l'ID
-	 * @return String con l'ID atto.
-	 */
-	public String getIdAtto(NodeRef nodeRef) {
-		String idAtto = "";
-		try {
-			String tipoAtto = getTipoAtto(nodeRef);
-			if (StringUtils.isNotBlank(tipoAtto)) {
-				String legislatura = getLegislatura(nodeRef);
-				String numeroAtto = getNumeroAtto(nodeRef);
-				idAtto = tipoAtto.toLowerCase() + "-" + numeroAtto + "-" + legislatura;
-			} else {
-				logger.error("Impossibile generare idAtto");
-			}
-		} catch (Exception e) {
-			logger.error("Errore nella generazione del idAtto", e);
-		}
-		return idAtto;
 	}
 
 	/**
@@ -77,44 +50,6 @@ public class OpenDataCommand {
 			logger.error("Eccezione nel recuperare il tipo del atto", e);
 		}
 		return tipoAtto;
-	}
-
-	/**
-	 * Ottiene il nome della legislatura leggendo la proprietà del nodo
-	 * "legislatura"
-	 * 
-	 * @param nodeRef
-	 *                Nodo dal quale sapere la legislatura.
-	 * @return String legislatura dell'atto
-	 */
-	public String getLegislatura(NodeRef nodeRef) {
-		return (String) nodeService.getProperty(nodeRef, AttoUtil.PROP_LEGISLATURA_QNAME);
-	}
-
-	/**
-	 * Ottiene il numero dell'atto insieme alla estensione del medesimo.
-	 * 
-	 * @param nodeRef
-	 *                atto dal quale sapere il numero e la estensione (se esiste)
-	 * @return String con il numero di atto + la estensione (se esiste)
-	 */
-	public String getNumeroAtto(NodeRef nodeRef) {
-		int numeroAtto = (int) nodeService.getProperty(nodeRef, AttoUtil.PROP_NUMERO_ATTO_QNAME);
-		String estensioneAtto = getEstensioneAtto(nodeRef);
-		if (estensioneAtto == null)
-			estensioneAtto = StringUtil.EMPTY_STRING;
-		return numeroAtto + estensioneAtto;
-	}
-
-	/**
-	 * Ottiene la estensione di un atto.
-	 * 
-	 * @param nodeRef
-	 *                atto dal quale ottenere la estensione
-	 * @return Strin la estensione dell'atto.
-	 */
-	public String getEstensioneAtto(NodeRef nodeRef) {
-		return (String) nodeService.getProperty(nodeRef, AttoUtil.PROP_ESTENSIONE_ATTO_QNAME);
 	}
 
 	public void setNodeService(NodeService nodeService) {
