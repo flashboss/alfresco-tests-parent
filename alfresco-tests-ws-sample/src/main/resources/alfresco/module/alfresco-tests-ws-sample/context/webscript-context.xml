@@ -105,8 +105,6 @@
 		class="it.vige.ws.api.NodeListDownloadWebScript"
 		parent="webscript">
 		<property name="nodeService" ref="NodeService" />
-		<property name="contentService" ref="ContentService" />
-		<property name="personService" ref="PersonService" />
 		<property name="namespaceService" ref="namespaceService" />
 		<property name="dictionaryService" ref="dictionaryService" />
 		<property name="searchService" ref="searchService" />
