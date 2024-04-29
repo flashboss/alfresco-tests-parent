@@ -70,7 +70,7 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 		return insertDocument(PDL, name, "testbytes", properties);
 	}
 
-	private void addStatoAct(NodeRef document, NodeRef PDL) {
+	private void addStateAct(NodeRef document, NodeRef PDL) {
 		NodeService nodeService = serviceRegistry.getNodeService();
 		String name = (String) nodeService.getProperty(document, ContentModel.PROP_NAME);
 		String nameQ = name + "_target";
@@ -79,7 +79,7 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 		properties.put(ContentModel.TYPE_BASE, ActUtil.PROP_LEGISLATURE_QNAME);
 		NodeRef target = insertDocument(PDL, nameQ, "testbytes_target", properties);
 
-		nodeService.createAssociation(document, target, ActUtil.PROP_STATO_ACT_QNAME);
+		nodeService.createAssociation(document, target, ActUtil.PROP_STATE_ACT_QNAME);
 	}
 
 	@Override
@@ -90,7 +90,7 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 	@Test
 	public void execute() throws IOException {
 
-		addStatoAct(act, PDL);
+		addStateAct(act, PDL);
 		// execute ws
 		Map<String, Serializable> fields = new HashMap<String, Serializable>();
 		{
