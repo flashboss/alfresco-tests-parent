@@ -7,7 +7,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,7 +29,7 @@ import org.springframework.extensions.webscripts.AbstractWebScript;
 import org.springframework.extensions.webscripts.WebScriptRequest;
 
 import it.vige.ws.api.NodeListDownloadWebScript;
-import it.vige.ws.utils.AttoUtil;
+import it.vige.ws.utils.ActUtil;
 
 public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 
@@ -45,7 +44,7 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 		super.init();
 		// initialize repository with test nodes
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
-		namespaceService.registerNamespace("crlatti", AttoUtil.CRL_ATTI_MODEL);
+		namespaceService.registerNamespace("crlatti", ActUtil.CRL_ATTI_MODEL);
 		// NodeRef companyHome = insertFolder(spacesStore,
 		// NamespaceService.APP_MODEL_PREFIX, "company_home");
 		NodeRef crl = insertFolder(companyHome, "CRL");
@@ -62,12 +61,12 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 	private NodeRef createAtto(NodeRef PDL, String name) {
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>(11);
 		properties.put(ContentModel.PROP_NAME, name);
-		properties.put(AttoUtil.PROP_NUMERO_ATTO_QNAME, Integer.parseInt(name));
-		properties.put(AttoUtil.PROP_TIPO_INIZIATIVA_QNAME, "01_ATTO DI INIZIATIVA CONSILIARE");
-		properties.put(AttoUtil.PROP_NUMERO_ATTO_QNAME, Integer.parseInt(name));
-		properties.put(AttoUtil.PROP_OGGETTO_ATTO_QNAME, name);
-		properties.put(AttoUtil.PROP_LEGISLATURA_QNAME, "XII");
-		properties.put(ContentModel.TYPE_BASE, AttoUtil.TYPE_ATTO_PDL);
+		properties.put(ActUtil.PROP_NUMERO_ATTO_QNAME, Integer.parseInt(name));
+		properties.put(ActUtil.PROP_TIPO_INIZIATIVA_QNAME, "01_ATTO DI INIZIATIVA CONSILIARE");
+		properties.put(ActUtil.PROP_NUMERO_ATTO_QNAME, Integer.parseInt(name));
+		properties.put(ActUtil.PROP_OGGETTO_ATTO_QNAME, name);
+		properties.put(ActUtil.PROP_LEGISLATURA_QNAME, "XII");
+		properties.put(ContentModel.TYPE_BASE, ActUtil.TYPE_ATTO_PDL);
 
 		return insertDocument(PDL, name, "testbytes", properties);
 	}
@@ -78,10 +77,10 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 		String nameQ = name + "_target";
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>(11);
 		properties.put(ContentModel.PROP_NAME, nameQ);
-		properties.put(ContentModel.TYPE_BASE, AttoUtil.PROP_LEGISLATURA_QNAME);
+		properties.put(ContentModel.TYPE_BASE, ActUtil.PROP_LEGISLATURA_QNAME);
 		NodeRef target = insertDocument(PDL, nameQ, "testbytes_target", properties);
 
-		nodeService.createAssociation(document, target, AttoUtil.PROP_STATO_ATTO_QNAME);
+		nodeService.createAssociation(document, target, ActUtil.PROP_STATO_ATTO_QNAME);
 	}
 
 	@Override
