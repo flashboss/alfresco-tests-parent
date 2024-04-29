@@ -22,9 +22,9 @@ public class OpenDataCommand {
 	public boolean checkNodeCoreProps (NodeRef node) {
 		boolean result = false;
 		if (nodeService.exists(node) &&
-			StringUtils.isNotBlank((String) nodeService.getProperty(node, ActUtil.PROP_OGGETTO_ATTO_QNAME))&&
-			nodeService.getProperty(node, ActUtil.PROP_NUMERO_ATTO_QNAME)!=null && ((int) nodeService.getProperty(node, ActUtil.PROP_NUMERO_ATTO_QNAME)!=0) &&
-			StringUtils.isNotBlank((String) nodeService.getProperty(node, ActUtil.PROP_LEGISLATURA_QNAME))){
+			StringUtils.isNotBlank((String) nodeService.getProperty(node, ActUtil.PROP_OGGETTO_ACT_QNAME))&&
+			nodeService.getProperty(node, ActUtil.PROP_NUMERO_ACT_QNAME)!=null && ((int) nodeService.getProperty(node, ActUtil.PROP_NUMERO_ACT_QNAME)!=0) &&
+			StringUtils.isNotBlank((String) nodeService.getProperty(node, ActUtil.PROP_LEGISLATURE_QNAME))){
 				result = true;
 		} else {
 			logger.error("Il nodo non ha una proprietà necessaria, nodeRef: " + node.toString());

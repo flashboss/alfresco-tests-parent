@@ -101,7 +101,7 @@
 		</property>
 	</bean>
 
-	<bean id="webscript.crl.gestioneatti.exportExcel.list.get"
+	<bean id="webscript.crl.gestioneacts.exportExcel.list.get"
 		class="it.vige.ws.api.NodeListDownloadWebScript"
 		parent="webscript">
 		<property name="nodeService" ref="NodeService" />
@@ -110,13 +110,11 @@
 		<property name="openDataCommand" ref="openDataCommand" />
 		<property name="overHeadings">
 			<value>
-				id_atto,legislatura,tipo_atto,n_atto,oggetto,data_presentazione,stato,primo_firmatario,firmatari,primo_promotore,tutti_promotori,tipo_iniziativa,tipo_chiusura,abbinamenti,com_referente_co_referente_redigente_o_deliberante,data_assegnazione_referente,relatore_referente,data_nomina_relatore_referente,esito_votazione_com_referente_o_redigente_o_deliberante,data_votazione_com_commissione_referente_o_redigente_o_deliberante,commissioni_consultive,esito_votazione_aula,data_votazione_aula,n_dcr,burl,data_burl,n_lr,data_lr,ids_lr,link_testo_atto_com_referente,link_testo_votazione_aula,link_atto_bancadati,link_testo_relazione_illustrativa,link_testo_scheda_istruttoria</value>
+				id_act,legislature,tipo_act,n_act,oggetto,data_presentazione,stato,primo_firmatario,firmatari,primo_promotore,tutti_promotori,tipo_iniziativa,tipo_chiusura,abbinamenti,com_referente_co_referente_redigente_o_deliberante,data_assegnazione_referente,relatore_referente,data_nomina_relatore_referente,esito_votazione_com_referente_o_redigente_o_deliberante,data_votazione_com_commissione_referente_o_redigente_o_deliberante,commissioni_consultive,esito_votazione_aula,data_votazione_aula,n_dcr,burl,data_burl,n_lr,data_lr,ids_lr,link_testo_act_com_referente,link_testo_votazione_aula,link_act_bancadati,link_testo_relazione_illustrativa,link_testo_scheda_istruttoria</value>
 		</property>
 		<property name="modelProperties">
-			<!-- <value>crlatti:numeroAtto</value> -->
-			<!-- <value>cm:name,</value> -->
 			<value>
-				openDataCommand:getIdAtto,crlatti:legislatura,openDataCommand:getTipoAtto,openDataCommand:getNumeroAtto,crlatti:oggetto,crlatti:dataIniziativa,crlatti:statoAtto,openDataCommand:getPrimoFirmatario,openDataCommand:getTuttiFirmatari,openDataCommand:getPrimoPromotore,openDataCommand:getTuttiPromotori,crlatti:tipoIniziativa,crlatti:tipoChiusura,openDataCommand:getAbbinamenti,crlatti:commReferente,crlatti:dataAssegnazioneCommissioneReferente,openDataCommand:getRelatore,openDataCommand:getDataNominaRelatore,openDataCommand:getEsitoVotazioneCommissioneReferente,openDataCommand:getDataVotazioneCommissioneReferente,crlatti:commConsultiva,openDataCommand:getEsitoVotazioneAula,openDataCommand:getDataVotazioneAula,openDataCommand:getNumeroDcrPassaggioAula,crlatti:numeroPubblicazioneBURL,crlatti:dataPubblicazioneBURL,crlatti:numeroLr,crlatti:dataLr,openDataCommand:getIdsLr,openDataCommand:linkTestoAttoComReferente,openDataCommand:getLinkVotoFinaleAula,openDataCommand:linkAtto,openDataCommand:linkTestoRelazioneIllustrativa,openDataCommand:linkTestoSchedaIstruttoria</value>
+				openDataCommand:getIdAct,crlacts:legislature,openDataCommand:getTipoAct,openDataCommand:getNumeroAct,crlacts:oggetto,crlacts:dataIniziativa,crlacts:statoAct,openDataCommand:getPrimoFirmatario,openDataCommand:getTuttiFirmatari,openDataCommand:getPrimoPromotore,openDataCommand:getTuttiPromotori,crlacts:tipoIniziativa,crlacts:tipoChiusura,openDataCommand:getAbbinamenti,crlacts:commReferente,crlacts:dataAssegnazioneCommissioneReferente,openDataCommand:getRelatore,openDataCommand:getDataNominaRelatore,openDataCommand:getEsitoVotazioneCommissioneReferente,openDataCommand:getDataVotazioneCommissioneReferente,crlacts:commConsultiva,openDataCommand:getEsitoVotazioneAula,openDataCommand:getDataVotazioneAula,openDataCommand:getNumeroDcrPassaggioAula,crlacts:numeroPubblicazioneBURL,crlacts:dataPubblicazioneBURL,crlacts:numeroLr,crlacts:dataLr,openDataCommand:getIdsLr,openDataCommand:linkTestoActComReferente,openDataCommand:getLinkVotoFinaleAula,openDataCommand:linkAct,openDataCommand:linkTestoRelazioneIllustrativa,openDataCommand:linkTestoSchedaIstruttoria</value>
 		</property>
 		<property name="openDataDateFormat">
 			<value>${nga:opendata.excel.date.format}</value>

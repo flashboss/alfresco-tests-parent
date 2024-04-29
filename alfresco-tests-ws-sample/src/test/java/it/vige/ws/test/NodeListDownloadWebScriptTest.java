@@ -37,49 +37,49 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 	private NodeListDownloadWebScript nodeListDownloadWebScript;
 
 	private NodeRef PDL;
-	private NodeRef atto;
+	private NodeRef act;
 
 	@Before
 	public void init() {
 		super.init();
 		// initialize repository with test nodes
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
-		namespaceService.registerNamespace("crlatti", ActUtil.CRL_ATTI_MODEL);
+		namespaceService.registerNamespace("crlacts", ActUtil.CRL_ACTS_MODEL);
 		// NodeRef companyHome = insertFolder(spacesStore,
 		// NamespaceService.APP_MODEL_PREFIX, "company_home");
 		NodeRef crl = insertFolder(companyHome, "CRL");
-		NodeRef gestioneAtti = insertFolder(crl, "Gestione Atti");
-		NodeRef legislatura = insertFolder(gestioneAtti, "XII");
-		NodeRef anno = insertFolder(legislatura, "2024");
+		NodeRef gestioneActs = insertFolder(crl, "Gestione Acts");
+		NodeRef legislature = insertFolder(gestioneActs, "XII");
+		NodeRef anno = insertFolder(legislature, "2024");
 		NodeRef mese = insertFolder(anno, "1");
 		PDL = insertFolder(mese, "PDL");
 
-		atto = createAtto(PDL, "1");
+		act = createAct(PDL, "1");
 
 	}
 
-	private NodeRef createAtto(NodeRef PDL, String name) {
+	private NodeRef createAct(NodeRef PDL, String name) {
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>(11);
 		properties.put(ContentModel.PROP_NAME, name);
-		properties.put(ActUtil.PROP_NUMERO_ATTO_QNAME, Integer.parseInt(name));
-		properties.put(ActUtil.PROP_NUMERO_ATTO_QNAME, Integer.parseInt(name));
-		properties.put(ActUtil.PROP_OGGETTO_ATTO_QNAME, name);
-		properties.put(ActUtil.PROP_LEGISLATURA_QNAME, "XII");
-		properties.put(ContentModel.TYPE_BASE, ActUtil.TYPE_ATTO_PDL);
+		properties.put(ActUtil.PROP_NUMERO_ACT_QNAME, Integer.parseInt(name));
+		properties.put(ActUtil.PROP_NUMERO_ACT_QNAME, Integer.parseInt(name));
+		properties.put(ActUtil.PROP_OGGETTO_ACT_QNAME, name);
+		properties.put(ActUtil.PROP_LEGISLATURE_QNAME, "XII");
+		properties.put(ContentModel.TYPE_BASE, ActUtil.TYPE_ACT_PDL);
 
 		return insertDocument(PDL, name, "testbytes", properties);
 	}
 
-	private void addStatoAtto(NodeRef document, NodeRef PDL) {
+	private void addStatoAct(NodeRef document, NodeRef PDL) {
 		NodeService nodeService = serviceRegistry.getNodeService();
 		String name = (String) nodeService.getProperty(document, ContentModel.PROP_NAME);
 		String nameQ = name + "_target";
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>(11);
 		properties.put(ContentModel.PROP_NAME, nameQ);
-		properties.put(ContentModel.TYPE_BASE, ActUtil.PROP_LEGISLATURA_QNAME);
+		properties.put(ContentModel.TYPE_BASE, ActUtil.PROP_LEGISLATURE_QNAME);
 		NodeRef target = insertDocument(PDL, nameQ, "testbytes_target", properties);
 
-		nodeService.createAssociation(document, target, ActUtil.PROP_STATO_ATTO_QNAME);
+		nodeService.createAssociation(document, target, ActUtil.PROP_STATO_ACT_QNAME);
 	}
 
 	@Override
@@ -90,11 +90,11 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 	@Test
 	public void execute() throws IOException {
 
-		addStatoAtto(atto, PDL);
+		addStatoAct(act, PDL);
 		// execute ws
 		Map<String, Serializable> fields = new HashMap<String, Serializable>();
 		{
-			fields.put("type", "crlatti:attoPdl");
+			fields.put("type", "crlacts:actPdl");
 			fields.put("skipCount", "0");
 			fields.put("maxItems", "10");
 		}

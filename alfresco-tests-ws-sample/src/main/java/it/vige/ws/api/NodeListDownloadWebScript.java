@@ -221,7 +221,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		// Export the items
 		int rowNum = sheet.getLastRowNum()+1, colNum = 0;
 		for (NodeRef item : items) {
-			//Controllo per evitare template senza numero atto che mandano in errore il webscript
 			if (openDataCommand.checkNodeCoreProps(item)) {
 				Row r = sheet.createRow(rowNum);
 
