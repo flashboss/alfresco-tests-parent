@@ -197,26 +197,6 @@ public class NodeListDownloadWebScript extends DeclarativeSpreadsheetWebScript
 
 					Serializable val = nodeService.getProperty(item, prop);
 
-					switch (prop.toString()) {
-						case "{openDataCommand}getTipoAtto": {
-							val = openDataCommand.getTipoAtto(item);
-							break;
-						}
-						case "{openDataCommand}getIdAtto": {
-							val = openDataCommand.getIdAtto(item);
-							break;
-						}
-						case "{openDataCommand}getNumeroAtto": {
-							val = openDataCommand.getNumeroAtto(item);
-							break;
-						}
-						case "{openDataCommand}tipoIniziativa": {
-							val = openDataCommand.getTipoIniziativa(item);
-							break;
-						}
-
-					}
-
 					if (val == null) {
 						// Is it an association, or just missing?
 						List<AssociationRef> assocs = nodeService.getTargetAssocs(item, prop);
