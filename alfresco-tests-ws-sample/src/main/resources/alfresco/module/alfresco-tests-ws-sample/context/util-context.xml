@@ -20,15 +20,6 @@
 		<property name="placeholderSuffix" value="}" />
 	</bean>
 
-	<bean id="attoUtil" class="it.vige.ws.utils.AttoUtil">
-        <property name="searchService">
-            <ref bean="SearchService" />
-        </property>
-        <property name="nodeService">
-            <ref bean="NodeService" />
-        </property>
-    </bean>
-
 	<bean id="generationUtil" class="it.vige.ws.utils.GenerationUtils">
 		<property name="searchService" ref="searchService" />
 		<property name="fileFolderService" ref="fileFolderService" />
