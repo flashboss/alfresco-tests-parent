@@ -2,7 +2,6 @@ package it.vige.ws.utils;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,24 +11,15 @@ import org.alfresco.service.cmr.repository.ChildAssociationRef;
 import org.alfresco.service.cmr.repository.InvalidNodeRefException;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
-import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.repository.XPathException;
-import org.alfresco.service.cmr.search.ResultSet;
 import org.alfresco.service.cmr.search.SearchService;
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.time.DateFormatUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.google.gdata.util.common.base.StringUtil;
-
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 /**
  * Classe che fornisce tutti i metodi per ottenre l'informazione degli atti.
@@ -504,57 +494,6 @@ public class OpenDataCommand {
 		return null;
 	}
 
-	/**
-	 * Trova il link al testo dell'atto referente commissione. Seleziona i nodi che
-	 * abbiano la proprietà crlatti:pubblicoOpendata
-	 * 
-	 * @param attoNodeRef atto
-	 * @return String il link al testo dell'atto referente commissione.
-	 */
-	public String getLinkTestoAttoComReferente(NodeRef attoNodeRef) {
-		return trovaTestiByQuery(attoNodeRef, "*//*[@crlatti:tipologia='testo_atto_votato_commissione']");
-	}
-
-	/**
-	 * Trova il link al testo della relazione illustrativa dell'atto. Seleziona i
-	 * nodi che abbiano la proprietà crlatti:tipologiaTesto='Relazione Illustrativa'
-	 * 
-	 * @param attoNodeRef atto
-	 */
-	public String getLinkTestoRelazioneIllustrativa(NodeRef attoNodeRef) {
-		return trovaTestiByQuery(attoNodeRef,
-				"*//*[@crlatti:tipologiaTesto='testo_relazione_illustrativa_tecnico_finanziaria_esame_commissioni']");
-	}
-
-	/**
-	 * Trova il link al testo della scheda istruttoria dell'atto. Seleziona i nodi
-	 * che abbiano la proprietà crlatti:tipologiaTesto='Scheda Istruttoria'
-	 * 
-	 * @param attoNodeRef atto
-	 */
-	public String getLinkTestoSchedaIstruttoria(NodeRef attoNodeRef) {
-		return trovaTestiByQuery(attoNodeRef,
-				"*//*[@crlatti:tipologiaTesto='testo_scheda_istruttoria_progetto_legge_esame_commissioni']");
-	}
-
-	/**
-	 * Trova gli id LR cercando la proprietà PROP_NUMERO_LR_QNAME
-	 * 
-	 * @param item atto dal quale cercare PROP_NUMERO_LR_QNAME
-	 * @return String ID LR dell'atto item. "" Nel caso in cui non si trovi una
-	 *         proprietà PROP_NUMERO_LR_QNAME nel,nodo
-	 */
-	public String getIdsLr(NodeRef item) {
-		String idsLr = "";
-		Date dataLr = (Date) nodeService.getProperty(item, AttoUtil.PROP_DATA_LR_QNAME);
-		if (dataLr != null) {
-			String dateLrString = DateFormatUtils.format(dataLr, "yyyyMMdd");
-			String numeroLr = (String) nodeService.getProperty(item, AttoUtil.PROP_NUMERO_LR_QNAME);
-			idsLr = "lr00" + dateLrString + StringUtils.leftPad(numeroLr, 5, "0");
-		}
-		return idsLr;
-	}
-
 	public String buildSoapEnvelope(String nomeChiamata, String odAtto, String privateToken, String ambiente,
 			String url) {
 		StringBuilder xmlBuilder = new StringBuilder();
@@ -573,26 +512,6 @@ public class OpenDataCommand {
 			return null;
 		}
 		return xmlBuilder.toString();
-	}
-
-	@SuppressWarnings("deprecation")
-	public String executeOpenDataCall(String bodyString, String url) throws Exception {
-
-		OkHttpClient client = new OkHttpClient();
-
-		MediaType mediaType = MediaType.parse("text/xml");
-		RequestBody body = RequestBody.create(mediaType, bodyString);
-		Request request = new Request.Builder()
-				.url(url)
-				.post(body)
-				.addHeader("Content-Type", "text/xml")
-				.addHeader("Accept", "*/*")
-				.build();
-
-		Response response = client.newCall(request).execute();
-
-		return response.body().string();
-
 	}
 
 	private String buildMethodElement(String nomeChiamata, String odAtto, String privateToken, String ambiente) {
@@ -617,40 +536,6 @@ public class OpenDataCommand {
 			throw new IllegalArgumentException("Value cannot be null or empty for tag: " + tagName);
 		}
 		return "         <!--Optional:-->\n         <" + tagName + ">" + value + "</" + tagName + ">\n";
-	}
-
-	private String trovaTestiByQuery(NodeRef attoNodeRef, String query) {
-		if (StringUtils.isNotBlank(query)) {
-			try {
-				List<NodeRef> testiRelazioneIllustrativaNodeRefs = searchService.selectNodes(attoNodeRef, query, null,
-						this.namespaceService, false);
-
-				if (testiRelazioneIllustrativaNodeRefs.size() > 0) {
-					for (NodeRef testoRelazioneIllustrativaNodeRef : testiRelazioneIllustrativaNodeRefs) {
-						if (nodeService.getProperty(testoRelazioneIllustrativaNodeRef,
-								AttoUtil.PROP_PUBBLICO_OPENDATA_QNAME) != null &&
-								(Boolean) nodeService.getProperty(testoRelazioneIllustrativaNodeRef,
-										AttoUtil.PROP_PUBBLICO_OPENDATA_QNAME)) {
-
-							MessageFormat mf = new MessageFormat(this.linkVotoFinale);
-							String parameterFormatting[] = new String[] {
-									(String) nodeService.getProperty(testoRelazioneIllustrativaNodeRef,
-											ContentModel.PROP_NODE_UUID),
-									(String) nodeService.getProperty(testoRelazioneIllustrativaNodeRef,
-											ContentModel.PROP_NAME) };
-							return mf.format(parameterFormatting);
-						}
-					}
-				}
-			} catch (XPathException | InvalidNodeRefException e) {
-				logger.error("Eccezione nella ricerca dei testi dell'Atto", e);
-			} catch (IllegalArgumentException e) {
-				logger.error("Eccezione nella formattazione", e);
-			}
-		} else {
-			logger.error("Query non può essere null o stringa vuota");
-		}
-		return null;
 	}
 
 	public boolean checkNodeCoreProps (NodeRef node) {

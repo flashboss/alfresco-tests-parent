@@ -401,8 +401,6 @@ public class AttoUtil {
 	 */
 	public NodeRef getAula(NodeRef attoNodeRef) {
 
-		boolean isRelazioneScritta;
-
 		DynamicNamespacePrefixResolver namespacePrefixResolver = new DynamicNamespacePrefixResolver(null);
 		namespacePrefixResolver.registerNamespace(NamespaceService.SYSTEM_MODEL_PREFIX,
 				NamespaceService.SYSTEM_MODEL_1_0_URI);

@@ -7,12 +7,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.alfresco.repo.content.MimetypeMap;
 import org.alfresco.service.cmr.dictionary.DictionaryService;
-import org.alfresco.service.cmr.dictionary.PropertyDefinition;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.util.Pair;
@@ -166,49 +163,22 @@ public abstract class DeclarativeSpreadsheetWebScript extends DeclarativeWebScri
 	 */
 	public void generateSpreadsheet(/*Object resource,*/ String format, WebScriptRequest req, Status status,
 			Map<String, Object> model) throws IOException {
-		Pattern qnameMunger = Pattern.compile("([A-Z][a-z]+)([A-Z].*)");
 		List<NodeRef> resource = new ArrayList<NodeRef>();
 		List<Pair<QName, Boolean>> propertyDetails = buildPropertiesForHeader(resource, format, req);
 		String[] headings;
-		String[] descriptions;
 		boolean[] required = new boolean[propertyDetails.size()];
 		if (overHeadings.length == 0) {
 			headings = new String[propertyDetails.size()];
-			descriptions = new String[propertyDetails.size()];
 
 			for (int i = 0; i < headings.length; i++) {
 				Pair<QName, Boolean> property = propertyDetails.get(i);
 				if (property == null || property.getFirst() == null) {
 					headings[i] = "";
 					required[i] = false;
-				} else {
-					QName column = property.getFirst();
-					required[i] = property.getSecond();
- 
-					PropertyDefinition pd = dictionaryService.getProperty(column);
-					if (pd != null && pd.getTitle() != null) {
- 
-						headings[i] = pd.getTitle();
-						descriptions[i] = pd.getDescription();
-					} else {
- 
- 
- 
-						String raw = column.getLocalName();
-						raw = raw.substring(0, 1).toUpperCase() + raw.substring(1);
-
-						Matcher m = qnameMunger.matcher(raw);
-						if (m.matches()) {
-							headings[i] = m.group(1) + " " + m.group(2);
-						} else {
-							headings[i] = raw;
-						}
-					}
 				}
 			}
 		} else {
 			headings = overHeadings;
-			descriptions = overDescriptions;
 			for (int i = 0; i < propertyDetails.size(); i++) {
 				required[i] = false;
 			}

@@ -214,10 +214,6 @@ public class NodeListDownloadWebScript extends DeclarativeSpreadsheetWebScript
 							val = openDataCommand.getTipoIniziativa(item);
 							break;
 						}
-						case "{openDataCommand}linkTestoAttoComReferente": {
-							val = openDataCommand.getLinkTestoAttoComReferente(item);
-							break;
-						}
 
 					}
 
