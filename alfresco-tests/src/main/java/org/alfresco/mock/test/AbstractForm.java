@@ -18,6 +18,7 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 
+import org.alfresco.mock.ClasspathTestRunner;
 import org.alfresco.mock.NodeUtils;
 import org.alfresco.mock.ZipUtils;
 import org.alfresco.model.ContentModel;
@@ -34,8 +35,17 @@ import org.alfresco.service.namespace.QName;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
 
+import com.tradeshift.test.remote.Remote;
+import com.tradeshift.test.remote.RemoteTestRunner;
+
+
+@RunWith(RemoteTestRunner.class)
+@Remote(runnerClass = ClasspathTestRunner.class)
+@ContextConfiguration("classpath:test-module-context.xml")
 public abstract class AbstractForm {
 
 	@Autowired
@@ -50,6 +60,7 @@ public abstract class AbstractForm {
 	protected NodeRef companyHome;
 
 	public void init() {
+
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
 		namespaceService.registerNamespace(NamespaceService.APP_MODEL_PREFIX, NamespaceService.APP_MODEL_1_0_URI);
 		namespaceService.registerNamespace(SiteModel.SITE_MODEL_PREFIX, SiteModel.SITE_MODEL_URL);

@@ -11,9 +11,11 @@
 	language governing permissions and limitations under the License. -->
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 	<bean id="signService" class="it.vige.ws.service.SignService" />
 
+	<bean id="openDataCommand" class="it.vige.ws.utils.OpenDataCommand">
+		<property name="nodeService" ref="NodeService" />
+	</bean>
 </beans>

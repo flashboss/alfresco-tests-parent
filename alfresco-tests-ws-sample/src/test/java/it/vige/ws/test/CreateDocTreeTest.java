@@ -1,7 +1,7 @@
 package it.vige.ws.test;
 
-import static org.springframework.extensions.webscripts.Status.STATUS_OK;
 import static org.apache.log4j.Logger.getLogger;
+import static org.springframework.extensions.webscripts.Status.STATUS_OK;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -20,22 +20,13 @@ import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.extensions.webscripts.AbstractWebScript;
 import org.springframework.extensions.webscripts.WebScriptRequest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.tradeshift.test.remote.Remote;
-import com.tradeshift.test.remote.RemoteTestRunner;
 
 import it.vige.ws.api.CreateDocTree;
 import it.vige.ws.dom.DocVigeWS;
 
-@RunWith(RemoteTestRunner.class)
-@Remote(runnerClass = SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:test-module-context.xml")
 public class CreateDocTreeTest extends AbstractWSForm {
 
 	private final static Logger logger = getLogger(CreateDocTreeTest.class);
