@@ -24,6 +24,7 @@ public class MockContainer implements Container {
 	{
 		Map<String, String> formats = new HashMap<String, String>();
 		formats.put("json", MimetypeMap.MIMETYPE_JSON);
+		formats.put("xls", MimetypeMap.MIMETYPE_EXCEL);
 		formatRegistry.addFormats(null, formats);
 	}
 

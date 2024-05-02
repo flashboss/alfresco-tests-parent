@@ -16,4 +16,7 @@
 
 	<bean id="signService" class="it.vige.ws.service.SignService" />
 
+	<bean id="openDataCommand" class="it.vige.ws.utils.OpenDataCommand">
+		<property name="nodeService" ref="NodeService" />
+	</bean>
 </beans>

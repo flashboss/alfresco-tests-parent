@@ -51,9 +51,6 @@ import com.tradeshift.test.remote.RemoteTestRunner;
 
 import it.vige.sample.BackupAction;
 
-@RunWith(RemoteTestRunner.class)
-@Remote(runnerClass = SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:test-module-context.xml")
 public class SimpleTest extends AbstractForm {
 
 	@Autowired
