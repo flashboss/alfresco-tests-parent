@@ -21,7 +21,7 @@
 		<maven.javadoc.plugin.version>3.1.1</maven.javadoc.plugin.version>
 		<maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
 	</properties>
-	
+
 	<organization>
 		<name>Vige</name>
 		<url>http://www.vige.it</url>
@@ -84,6 +84,23 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven.source.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 	<!-- Here we realize the connection with the Alfresco selected platform 
 		(e.g.version and edition) -->
@@ -210,18 +227,6 @@
 			</activation>
 			<build>
 				<plugins>
-					<plugin>
-						<artifactId>maven-source-plugin</artifactId>
-						<version>${maven.source.plugin.version}</version>
-						<executions>
-							<execution>
-								<id>attach-sources</id>
-								<goals>
-									<goal>jar-no-fork</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
 					<plugin>
 						<artifactId>maven-javadoc-plugin</artifactId>
 						<version>${maven.javadoc.plugin.version}</version>
