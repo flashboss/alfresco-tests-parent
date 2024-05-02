@@ -509,7 +509,7 @@ public class MockSearchService implements SearchService, Serializable {
 			String subpath = subpaths[i];
 			result = result && nodepath.contains(subpath.replaceAll("//", ""));
 			if (result && i == subpaths.length - 1 && nodepath.indexOf(File.separator) >= 0
-					&& subpath.indexOf(File.separator) >= 0)
+					&& subpath.indexOf(File.separator) >= 0) {
 				if (!subpath.endsWith(File.separator)) {
 					String nameSubpath = subpath.substring(subpath.lastIndexOf(File.separator));
 					result = result && lastNodepath.equals(nameSubpath);
@@ -525,6 +525,13 @@ public class MockSearchService implements SearchService, Serializable {
 					if (lastNodepath.equals(nameSubpath))
 						result = false;
 				}
+			} else if (subpath.contains("name")) {
+				String name = subpath.substring(subpath.indexOf("'") + 1, subpath.lastIndexOf("'"));
+				if (nodepath.contains(name)) {
+					result = true;
+					return result;
+				}
+			}
 		}
 		return result;
 	}
