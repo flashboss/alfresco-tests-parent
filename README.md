@@ -34,8 +34,8 @@ Old versions are available too. Here the list of the library versions sorted by 
 - 6.0.2-ea.21
 - 6.0.0-ea.33
 - 5.2.7.29
-- 5.2.f.30
 - 5.2.g.0
+- 5.2.f.30
 - 5.1.g.29
 - 5.0.d.29
 - 4.2.8.12
