@@ -1,15 +1,5 @@
 target
 .*
-<<<<<<< HEAD
-<<<<<<< HEAD
-*.log
-*.log.*
-=======
-*.log*
-alf_data_dev
->>>>>>> 44f2b9e93ba48e11355bf5ee424c8f9ee4fe5f62
-=======
 alf_data_dev
 *.log
 *.log.*
->>>>>>> 8bfc4985dabe98953513cd0017c70ce56100632e
