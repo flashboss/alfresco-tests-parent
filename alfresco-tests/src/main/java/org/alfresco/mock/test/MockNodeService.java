@@ -48,6 +48,9 @@ public class MockNodeService implements NodeService, Serializable {
 
 	private static Map<NodeRef, File> nodeRefs = new FilteredHashMap();
 
+	private static Map<NodeRef, Map<QName, Set<NodeRef>>> srcAssociations = new HashMap<NodeRef, Map<QName, Set<NodeRef>>>();
+	private static Map<NodeRef, Map<QName, Set<NodeRef>>> trgAssociations = new HashMap<NodeRef, Map<QName, Set<NodeRef>>>();
+
 	public final static QName PRIMARY_PARENT = QName.createQName("primary_parent");
 	
 	@Autowired
@@ -158,6 +161,8 @@ public class MockNodeService implements NodeService, Serializable {
 		setProperty(nodeRef, ContentModel.PROP_NODE_UUID, nodeRef.getId());
 		file.mkdir();
 		nodeRefs.put(nodeRef, new File(pathStr));
+		srcAssociations.put(nodeRef, new HashMap<QName, Set<NodeRef>>());
+		trgAssociations.put(nodeRef, new HashMap<QName, Set<NodeRef>>());
 		return new ChildAssociationRef(assocTypeQName, parentRef, assocQName, nodeRef);
 	}
 
@@ -375,21 +380,24 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef, QNamePattern typeQNamePattern,
 			QNamePattern qnamePattern, int maxResults, boolean preload) throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-		return null;
+		return getChildAssocs(nodeRef, typeQNamePattern, qnamePattern, preload);
 	}
 
 	@Override
 	public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef, QNamePattern typeQNamePattern,
 			QNamePattern qnamePattern, boolean preload) throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-		return null;
+		return getChildAssocs(nodeRef, typeQNamePattern, qnamePattern);
 	}
 
 	@Override
 	public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef, Set<QName> childNodeTypeQNames) {
-		// TODO Auto-generated method stub
-		return null;
+		List<ChildAssociationRef> result = new ArrayList<ChildAssociationRef>();
+		List<ChildAssociationRef> children = getChildAssocs(nodeRef);
+		for (ChildAssociationRef child : children)
+			for (QName qname : childNodeTypeQNames)
+				if (getType(child.getChildRef()).equals(qname))
+					result.add(child);
+		return result;
 	}
 
 	@Override
@@ -436,20 +444,63 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public AssociationRef createAssociation(NodeRef sourceRef, NodeRef targetRef, QName assocTypeQName)
 			throws InvalidNodeRefException, AssociationExistsException {
-		// TODO Auto-generated method stub
-		return null;
+		Map<QName, Set<NodeRef>> srcQnameAssocs = srcAssociations.get(sourceRef);
+		Map<QName, Set<NodeRef>> trgQnameAssocs = trgAssociations.get(targetRef);
+		createAllAssociation(srcQnameAssocs, targetRef, assocTypeQName);
+		createAllAssociation(trgQnameAssocs, sourceRef, assocTypeQName);
+		return new AssociationRef(sourceRef, assocTypeQName, targetRef);
+	}
+
+	private void createAllAssociation(Map<QName, Set<NodeRef>> qnameAssocs, NodeRef nodeRef, QName assocTypeQName)
+			throws InvalidNodeRefException, AssociationExistsException {
+		Set<NodeRef> nodeRefs = qnameAssocs.get(assocTypeQName);
+		if (nodeRefs == null)
+			nodeRefs = new HashSet<NodeRef>();
+		if (nodeRefs.contains(nodeRef))
+			throw new AssociationExistsException(0l, 0l, assocTypeQName);
+		nodeRefs.add(nodeRef);
+		qnameAssocs.put(assocTypeQName, nodeRefs);
 	}
 
 	@Override
 	public void removeAssociation(NodeRef sourceRef, NodeRef targetRef, QName assocTypeQName)
 			throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
+		Map<QName, Set<NodeRef>> qnameSrcAssocs = srcAssociations.get(sourceRef);
+		Map<QName, Set<NodeRef>> qnameTrgAssocs = trgAssociations.get(targetRef);
+		removeAllAssociation(qnameSrcAssocs, targetRef, assocTypeQName);
+		removeAllAssociation(qnameTrgAssocs, sourceRef, assocTypeQName);
 
+	}
+
+	private void removeAllAssociation(Map<QName, Set<NodeRef>> qnameAssocs, NodeRef nodeRef, QName assocTypeQName)
+			throws InvalidNodeRefException {
+		Set<NodeRef> nodeRefs = qnameAssocs.get(assocTypeQName);
+		if (nodeRefs != null)
+			nodeRefs.remove(nodeRef);
 	}
 
 	@Override
 	public void setAssociations(NodeRef sourceRef, QName assocTypeQName, List<NodeRef> targetRefs) {
-		// TODO Auto-generated method stub
+		Map<QName, Set<NodeRef>> qnameAssocs = srcAssociations.get(sourceRef);
+		Set<NodeRef> nodeRefs = qnameAssocs.get(assocTypeQName);
+		if (nodeRefs == null)
+			nodeRefs = new HashSet<NodeRef>();
+		for (NodeRef node : targetRefs)
+			if (nodeRefs.contains(node))
+				throw new AssociationExistsException(0l, 0l, assocTypeQName);
+		nodeRefs.addAll(targetRefs);
+		qnameAssocs.put(assocTypeQName, nodeRefs);
+
+		for (NodeRef targetRef : targetRefs) {
+			qnameAssocs = trgAssociations.get(targetRef);
+			nodeRefs = qnameAssocs.get(assocTypeQName);
+			if (nodeRefs == null)
+				nodeRefs = new HashSet<NodeRef>();
+			if (nodeRefs.contains(sourceRef))
+				throw new AssociationExistsException(0l, 0l, assocTypeQName);
+			nodeRefs.add(sourceRef);
+			qnameAssocs.put(assocTypeQName, nodeRefs);
+		}
 
 	}
 
@@ -462,15 +513,29 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public List<AssociationRef> getTargetAssocs(NodeRef sourceRef, QNamePattern qnamePattern)
 			throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-		return null;
+		List<AssociationRef> assRefs = new ArrayList<AssociationRef>();
+		Map<QName, Set<NodeRef>> qnames = srcAssociations.get(sourceRef);
+		for (QName qname : qnames.keySet())
+			if (qnamePattern.isMatch(qname)) {
+				Set<NodeRef> targets = qnames.get(qname);
+				for (NodeRef nodeRef : targets)
+					assRefs.add(new AssociationRef(sourceRef, qname, nodeRef));
+			}
+		return assRefs;
 	}
 
 	@Override
 	public List<AssociationRef> getSourceAssocs(NodeRef targetRef, QNamePattern qnamePattern)
 			throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-		return null;
+		List<AssociationRef> assRefs = new ArrayList<AssociationRef>();
+		Map<QName, Set<NodeRef>> qnames = trgAssociations.get(targetRef);
+		for (QName qname : qnames.keySet())
+			if (qnamePattern.isMatch(qname)) {
+				Set<NodeRef> sources = qnames.get(qname);
+				for (NodeRef nodeRef : sources)
+					assRefs.add(new AssociationRef(nodeRef, qname, targetRef));
+			}
+		return assRefs;
 	}
 
 	@Override
