@@ -41,13 +41,9 @@ import org.alfresco.service.namespace.QName;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.tradeshift.test.remote.Remote;
-import com.tradeshift.test.remote.RemoteTestRunner;
 
 import it.vige.sample.BackupAction;
 
@@ -420,12 +416,12 @@ import org.alfresco.service.namespace.QName;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.extensions.webscripts.AbstractWebScript;
 import org.springframework.extensions.webscripts.WebScriptRequest;
 import it.vige.ws.PreviousWSSample;
 import it.vige.ws.WSSampleModel;
+
 public class PreviousWSSampleTest extends AbstractWSForm {
 
 	private final static String CARTELLA_WSSAMPLE = "WSSAMPLE-20157726";
