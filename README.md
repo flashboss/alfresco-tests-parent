@@ -13,7 +13,7 @@ To start add the dependency in your project sdk module:
    <dependency>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests</artifactId>
-		<version>23.2.1.1</version>
+		<version>23.2.1.2</version>
 		<scope>test</scope>
    </dependency>
 ```
@@ -76,19 +76,10 @@ import org.alfresco.service.namespace.QName;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.tradeshift.test.remote.Remote;
-import com.tradeshift.test.remote.RemoteTestRunner;
 
 import it.vige.sample.BackupAction;
 
-@RunWith(RemoteTestRunner.class)
-@Remote(runnerClass = SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:test-module-context.xml")
 public class SimpleTest extends AbstractForm {
 
 	@Autowired
@@ -457,22 +448,13 @@ import org.alfresco.service.namespace.QName;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.extensions.webscripts.AbstractWebScript;
 import org.springframework.extensions.webscripts.WebScriptRequest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.tradeshift.test.remote.Remote;
-import com.tradeshift.test.remote.RemoteTestRunner;
 
 import it.vige.ws.PreviousWSSample;
 import it.vige.ws.WSSampleModel;
 
-@RunWith(RemoteTestRunner.class)
-@Remote(runnerClass = SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:test-module-context.xml")
 public class PreviousWSSampleTest extends AbstractWSForm {
 
 	private final static String CARTELLA_WSSAMPLE = "WSSAMPLE-20157726";
