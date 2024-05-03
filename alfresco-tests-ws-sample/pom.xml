@@ -89,6 +89,12 @@
 			<version>3.10.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>20110211</version>
+		</dependency>
+		
         <!-- Bring in Alfresco RAD so we get access to AlfrescoTestRunner classes -->
         <dependency>
             <groupId>org.alfresco.maven</groupId>
