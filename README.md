@@ -13,33 +13,34 @@ To start add the dependency in your project sdk module:
    <dependency>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests</artifactId>
-		<version>23.2.1.2</version>
+		<version>23.2.1.3</version>
 		<scope>test</scope>
    </dependency>
 ```
 Old versions are available too. Here the list of the library versions sorted by Alfresco distribution:
-- 23.1.0.3
-- 7.4.1.3.3
-- 7.4.1.1.2
-- 7.4.0.1.8
-- 7.4.0.11
-- 7.3.0.14
-- 7.2.1.14
-- 7.2.0.13
-- 7.1.0.21
-- 7.0.0-A20.25
-- 6.2.2.18
-- 6.2.0-ea.32
-- 6.1.0-ea.30
-- 6.0.2-ea.20
-- 6.0.0-ea.32
-- 5.2.7.28
-- 5.2.f.29
-- 5.1.g.28
-- 5.0.d.28
-- 4.2.8.11
-- 4.2.6.6.31
-- 4.2.c.8
+- 23.1.0.4
+- 7.4.1.3.4
+- 7.4.1.1.3
+- 7.4.0.1.9
+- 7.4.0.12
+- 7.3.0.15
+- 7.2.1.15
+- 7.2.0.14
+- 7.1.0.22
+- 7.0.0-A20.26
+- 6.2.2.19
+- 6.2.0-ea.33
+- 6.1.0-ea.31
+- 6.0.2-ea.21
+- 6.0.0-ea.33
+- 5.2.7.29
+- 5.2.f.30
+- 5.2.g.0
+- 5.1.g.29
+- 5.0.d.29
+- 4.2.8.12
+- 4.2.6.6.32
+- 4.2.c.9
 
 In the same pom add the test resources under the 'build' tag after the 'resources' tag:
 ```
