@@ -11,16 +11,21 @@
 	language governing permissions and limitations under the License. -->
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-
+	<bean id="crl_gestione_acts_alfresco_properties"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:nga.properties" />
+		<property name="placeholderPrefix" value="${nga:" />
+		<property name="placeholderSuffix" value="}" />
+	</bean>
+	
 	<bean id="generationUtil" class="it.vige.ws.utils.GenerationUtils">
 		<property name="searchService" ref="searchService" />
 		<property name="fileFolderService" ref="fileFolderService" />
 		<property name="contentService" ref="contentService" />
 		<property name="nodeService" ref="nodeService" />
-		
+
 		<property name="modelliRootPath">
 			<value>${vige.alfresco.path.template}</value>
 		</property>
