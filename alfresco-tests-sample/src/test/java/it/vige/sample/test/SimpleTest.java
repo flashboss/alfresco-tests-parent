@@ -19,7 +19,6 @@ import org.alfresco.repo.action.ActionImpl;
 import org.alfresco.service.cmr.action.Action;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
-import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.search.ResultSet;
 import org.alfresco.service.cmr.search.SearchService;
 import org.alfresco.service.cmr.version.Version;
@@ -28,19 +27,10 @@ import org.alfresco.service.namespace.QName;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.tradeshift.test.remote.Remote;
-import com.tradeshift.test.remote.RemoteTestRunner;
 
 import it.vige.sample.BackupAction;
 
-@RunWith(RemoteTestRunner.class)
-@Remote(runnerClass = SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:test-module-context.xml")
 public class SimpleTest extends AbstractForm {
 
 	@Autowired
