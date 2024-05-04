@@ -5,7 +5,7 @@
 	<artifactId>alfresco-tests</artifactId>
 	<groupId>it.vige</groupId>
 	<name>Alfresco Tests</name>
-	<version>4.2.6.6.32</version>
+	<version>4.2.6.6.33</version>
 	<packaging>jar</packaging>
 	<description>
 		This is a jar project based on mock classes to test fastly the alfresco applications
@@ -111,13 +111,11 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>3.0.6.RELEASE</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.tradeshift</groupId>
 			<artifactId>junit-remote</artifactId>
 			<version>3</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
