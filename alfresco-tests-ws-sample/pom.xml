@@ -7,7 +7,7 @@
 	<artifactId>alfresco-tests-ws-sample</artifactId>
 	<name>Alfresco Tests ws sample</name>
 	<packaging>amp</packaging>
-	<version>4.2.8.12</version>
+	<version>4.2.8.13</version>
 	<description>Simple AMP sample for tests</description>
 
 	<parent>
