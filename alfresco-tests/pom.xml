@@ -165,6 +165,23 @@
 
 	</dependencies>
 
+	<build>
+		<plugins>
+			<plugin>
+		<artifactId>maven-source-plugin</artifactId>
+		<version>${maven.source.plugin.version}</version>
+		<executions>
+			<execution>
+				<id>attach-sources</id>
+				<goals>
+					<goal>jar-no-fork</goal>
+				</goals>
+			</execution>
+		</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 	<profiles>
 		<profile>
 			<id>java8</id>
@@ -181,28 +198,6 @@
 							<source>1.8</source>
 							<target>1.8</target>
 						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>java11</id>
-			<activation>
-				<jdk>[11.0,)</jdk>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>${maven.source.plugin.version}</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
 					</plugin>
 				</plugins>
 			</build>
