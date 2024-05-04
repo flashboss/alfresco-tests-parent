@@ -3,4 +3,3 @@ target
 alf_data_dev
 *.log
 *.log.*
-build_deploy_gpg.sh
