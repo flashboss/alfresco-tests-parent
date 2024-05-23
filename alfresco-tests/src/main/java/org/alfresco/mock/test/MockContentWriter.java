@@ -44,7 +44,7 @@ public class MockContentWriter implements ContentWriter {
 	public MockContentWriter(File file, NodeRef node, NodeService nodeService) {
 		this.node = node;
 		this.nodeService = nodeService;
-		Path filePath = Paths.get(file.getAbsolutePath() + File.separator + file.getName());
+		Path filePath = Paths.get(file.getAbsolutePath() + "/" + file.getName());
 		try {
 			this.file = Files.createFile(filePath).toFile();
 		} catch (FileAlreadyExistsException faee) {

@@ -36,9 +36,9 @@ public class ZipUtils {
 		ZipInputStream zis = new ZipInputStream(inputStream);
 		ZipEntry zipEntry = zis.getNextEntry();
 		while (zipEntry != null) {
-			String[] filePaths = zipEntry.getName().split(File.separator);
+			String[] filePaths = zipEntry.getName().split("/");
 			String fileName = filePaths[filePaths.length - 1];
-			File newFile = new File(targetDirectory + File.separator + fileName);
+			File newFile = new File(targetDirectory + "/" + fileName);
 			FileOutputStream fos = new FileOutputStream(newFile);
 			int len;
 			while ((len = zis.read(buffer)) > 0) {
