@@ -6,7 +6,7 @@
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests-ws-sample</artifactId>
 	<name>Alfresco Tests ws sample</name>
-	<version>23.2.1.2</version>
+	<version>23.2.1.4</version>
 	<description>Simple JAR sample for tests</description>
 	<prerequisites>
 		<maven>3.8.0</maven>
