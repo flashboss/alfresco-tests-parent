@@ -126,7 +126,7 @@ public class MockNodeService implements NodeService, Serializable {
 		Path path = getPath(parentRef);
 		String pathStr = "";
 		if (path != null)
-			pathStr = path.toString() + File.separator + nodeUUID;
+			pathStr = path.toString() + "/" + nodeUUID;
 		else if (path == null && assocQName.getLocalName().equals(StoreRef.PROTOCOL_ARCHIVE))
 			pathStr = MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_ARCHIVE;
 		else if (path == null && assocQName.getLocalName().equals(StoreRef.PROTOCOL_WORKSPACE))
@@ -328,9 +328,9 @@ public class MockNodeService implements NodeService, Serializable {
 		if (qname.equals(ContentModel.PROP_NAME)) {
 			File file = nodeRefs.get(nodeRef);
 			if (file != null && !file.getName().equals(value)) {
-				File fileContent = new File(file.getAbsolutePath() + File.separator + file.getName());
-				File renamedFile = new File(file.getParent() + File.separator + value);
-				File renamedFileContent = new File(fileContent.getParent() + File.separator + value);
+				File fileContent = new File(file.getAbsolutePath() + "/" + file.getName());
+				File renamedFile = new File(file.getParent() + "/" + value);
+				File renamedFileContent = new File(fileContent.getParent() + "/" + value);
 				if (file.exists()) {
 					if (fileContent.exists())
 						fileContent.renameTo(renamedFileContent);
@@ -543,7 +543,7 @@ public class MockNodeService implements NodeService, Serializable {
 		File file = nodeRefs.get(nodeRef);
 		if (file != null && file.exists()) {
 			Path path = new Path();
-			String[] paths = file.getPath().split(File.separator);
+			String[] paths = file.getPath().split("/");
 			for (String folder : paths)
 				path.append(new MockElement(folder));
 			return path;
