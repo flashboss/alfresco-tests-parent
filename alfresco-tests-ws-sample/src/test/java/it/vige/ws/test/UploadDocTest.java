@@ -103,7 +103,7 @@ public class UploadDocTest extends AbstractWSForm {
 		// Verify
 		List<NodeRef> nodeRefs = searchService
 				.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, SearchService.LANGUAGE_XPATH,
-						FOLDER_DROPZONE + File.separator + "d" + ID_PARTNER + "_" + ID_PRATICA + "_" + ID_DOC)
+						FOLDER_DROPZONE + "/" + "d" + ID_PARTNER + "_" + ID_PRATICA + "_" + ID_DOC)
 				.getNodeRefs();
 		NodeRef result = nodeRefs.get(0);
 		Assert.assertNotNull("The file was created", result);
