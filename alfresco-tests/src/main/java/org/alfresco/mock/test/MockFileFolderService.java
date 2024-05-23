@@ -182,10 +182,10 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		File source = getNodeService().getNodeRefs().get(sourceNodeRef);
 		File target = getNodeService().getNodeRefs().get(targetParentRef);
 		try {
-			File newDir = new File(target + File.separator + newName);
+			File newDir = new File(target + "/" + newName);
 			FileUtils.copyDirectory(source, newDir);
-			File oldFile = new File(newDir + File.separator + source.getName());
-			File newFile = new File(newDir + File.separator + newName);
+			File oldFile = new File(newDir + "/" + source.getName());
+			File newFile = new File(newDir + "/" + newName);
 			if (oldFile.exists() && !newFile.exists())
 				FileUtils.moveFile(oldFile, newFile);
 		} catch (IOException e) {
@@ -220,7 +220,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	public void delete(NodeRef nodeRef) {
 		List<NodeRef> toRemove = new ArrayList<NodeRef>();
 		Map<NodeRef, File> nodeRefs = getNodeService().getNodeRefs();
-		String pathParent = nodeService.getPath(nodeRef).toString() + File.separator;
+		String pathParent = nodeService.getPath(nodeRef).toString() + "/";
 		for (NodeRef node : nodeRefs.keySet()) {
 			String pathChild = nodeService.getPath(node).toString();
 			if (pathChild.contains(pathParent))
@@ -275,7 +275,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		File file = getNodeService().getNodeRefs().get(nodeRef);
 		if (file == null)
 			throw new InvalidNodeRefException(nodeRef);
-		if (!new File(file + File.separator + file.getName()).exists())
+		if (!new File(file + "/" + file.getName()).exists())
 			qname = ContentModel.TYPE_FOLDER;
 		return new MockFileInfo(nodeRef, file.getName(), qname);
 	}
@@ -283,7 +283,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	@Override
 	public ContentReader getReader(NodeRef nodeRef) {
 		File file = getNodeService().getNodeRefs().get(nodeRef);
-		File content = new File(file.getAbsolutePath() + File.separator + file.getName());
+		File content = new File(file.getAbsolutePath() + "/" + file.getName());
 		return new FileContentReader(content);
 	}
 
