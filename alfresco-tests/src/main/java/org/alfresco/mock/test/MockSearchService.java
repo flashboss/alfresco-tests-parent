@@ -1,6 +1,5 @@
 package org.alfresco.mock.test;
 
-import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -472,29 +471,29 @@ public class MockSearchService implements SearchService, Serializable {
 		nodepath = nodepath
 				.substring(nodepath.indexOf(MockContentService.FOLDER_TEST) + MockContentService.FOLDER_TEST.length());
 		String lastNodepath = "";
-		if (nodepath.indexOf(File.separator) >= 0) {
-			nodepath = nodepath.substring(nodepath.indexOf(File.separator));
-			lastNodepath = nodepath.substring(nodepath.lastIndexOf(File.separator));
+		if (nodepath.indexOf("/") >= 0) {
+			nodepath = nodepath.substring(nodepath.indexOf("/"));
+			lastNodepath = nodepath.substring(nodepath.lastIndexOf("/"));
 		} else
 			nodepath = "";
 		boolean result = true;
 		for (int i = 0; i < subpaths.length; i++) {
 			String subpath = subpaths[i];
 			result = result && nodepath.contains(subpath.replaceAll("//", ""));
-			if (result && i == subpaths.length - 1 && nodepath.indexOf(File.separator) >= 0
-					&& subpath.indexOf(File.separator) >= 0)
-				if (!subpath.endsWith(File.separator)) {
-					String nameSubpath = subpath.substring(subpath.lastIndexOf(File.separator));
+			if (result && i == subpaths.length - 1 && nodepath.indexOf("/") >= 0
+					&& subpath.indexOf("/") >= 0)
+				if (!subpath.endsWith("/")) {
+					String nameSubpath = subpath.substring(subpath.lastIndexOf("/"));
 					result = result && lastNodepath.equals(nameSubpath);
 				} else if (path.endsWith("/*") && !path.endsWith("//*") && !path.equals("/*")
-						&& !subpath.equals(File.separator)) {
+						&& !subpath.equals("/")) {
 					String nameSubpath = nodepath;
 					for (int j = 0; j < wildcardsNumber; j++)
 						nameSubpath = nameSubpath.substring(0, nameSubpath.lastIndexOf("/"));
 					result = result && (nameSubpath + "/").endsWith(subpath);
 				} else {
 					String firstLine = subpath.replaceAll("//", "");
-					String nameSubpath = firstLine.substring(firstLine.lastIndexOf(File.separator));
+					String nameSubpath = firstLine.substring(firstLine.lastIndexOf("/"));
 					if (lastNodepath.equals(nameSubpath))
 						result = false;
 				}
@@ -509,9 +508,9 @@ public class MockSearchService implements SearchService, Serializable {
 			if (path.endsWith("//*")) {
 				path = path.substring(0, path.length() - 3);
 				splittedPath[splittedPath.length - 1] = splittedPath[splittedPath.length - 1] + "//";
-			} else if (!path.equals(File.separator) && !path.equals("/*")) {
+			} else if (!path.equals("/") && !path.equals("/*")) {
 				String lastPath = splittedPath[splittedPath.length - 1];
-				while (lastPath.equals(File.separator)) {
+				while (lastPath.equals("/")) {
 					splittedPath = Arrays.copyOf(splittedPath, splittedPath.length - 1);
 					lastPath = splittedPath[splittedPath.length - 1];
 				}
@@ -542,8 +541,8 @@ public class MockSearchService implements SearchService, Serializable {
 			path = prepare(path, store);
 			if (path.endsWith("."))
 				path = path.substring(0, path.lastIndexOf(".")) + "*";
-			if (!path.startsWith(File.separator))
-				path = File.separator + path;
+			if (!path.startsWith("/"))
+				path = "/" + path;
 		}
 		String processQuery = path;
 		String[] subpaths = getSubpaths(path);
@@ -572,14 +571,14 @@ public class MockSearchService implements SearchService, Serializable {
 		if (index >= 0)
 			query = query.substring(index + prefix.length());
 		String result = "";
-		String[] slashes = query.split(File.separator);
+		String[] slashes = query.split("/");
 		for (int i = 0; i < slashes.length; i++) {
 			String slashed = slashes[i];
 			if (slashed.contains(":"))
 				result += slashed.split(":")[1];
 			else
 				result += slashed;
-			result += File.separator;
+			result += "/";
 		}
 		result = result.substring(0, result.length() - 1);
 		return result;
