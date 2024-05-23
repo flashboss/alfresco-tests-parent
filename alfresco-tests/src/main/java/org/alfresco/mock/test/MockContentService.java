@@ -49,7 +49,7 @@ public class MockContentService implements ContentService, Serializable {
 	public ContentReader getReader(NodeRef nodeRef, QName propertyQName)
 			throws InvalidNodeRefException, InvalidTypeException {
 		File file = getNodeService().getNodeRefs().get(nodeRef);
-		File content = new File(file.getAbsolutePath() + File.separator + file.getName());
+		File content = new File(file.getAbsolutePath() + "/" + file.getName());
 		ContentReader contentReader = new FileContentReader(content);
 		contentReader.setMimetype(mimetypeService.guessMimetype(file.getName()));
 		return contentReader;
