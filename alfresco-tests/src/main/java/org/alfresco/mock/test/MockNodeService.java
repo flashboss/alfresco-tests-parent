@@ -99,8 +99,8 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public NodeRef getRootNode(StoreRef storeRef) throws InvalidStoreRefException {
 		for (NodeRef nodeRef : nodeRefs.keySet()) {
-			String path = getPath(nodeRef).toString();
-			if (path.endsWith(storeRef.getProtocol() + "/" + storeRef.getIdentifier()))
+			String path = getPathAsString(nodeRef);
+			if (path != null && path.endsWith(storeRef.getProtocol() + "/" + storeRef.getIdentifier()))
 				return nodeRef;
 		}
 		return null;
@@ -126,7 +126,7 @@ public class MockNodeService implements NodeService, Serializable {
 		Path path = getPath(parentRef);
 		String pathStr = "";
 		if (path != null)
-			pathStr = path.toString() + "/" + nodeUUID;
+			pathStr = getPathAsString(parentRef) + "/" + nodeUUID;
 		else if (path == null && assocQName.getLocalName().equals(StoreRef.PROTOCOL_ARCHIVE))
 			pathStr = MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_ARCHIVE;
 		else if (path == null && assocQName.getLocalName().equals(StoreRef.PROTOCOL_WORKSPACE))
@@ -365,7 +365,7 @@ public class MockNodeService implements NodeService, Serializable {
 		for (NodeRef node : nodeRefs.keySet()) {
 			Path path = getPath(node);
 			String parentPath = path.subPath(path.size() - 2).toString();
-			if (getPath(nodeRef).toString().equals(parentPath))
+			if (getPathAsString(nodeRef).equals(parentPath))
 				result.add(new ChildAssociationRef(ContentModel.ASSOC_CONTAINS, nodeRef, getType(node), node));
 		}
 		return result;
@@ -543,11 +543,19 @@ public class MockNodeService implements NodeService, Serializable {
 		File file = nodeRefs.get(nodeRef);
 		if (file != null && file.exists()) {
 			Path path = new Path();
-			String[] paths = file.getPath().split("/");
+			String[] paths = file.getPath().replace("\\", "/").split("/");
 			for (String folder : paths)
 				path.append(new MockElement(folder));
 			return path;
 		} else
+			return null;
+	}
+
+	public String getPathAsString(NodeRef nodeRef) throws InvalidNodeRefException {
+		Path path = getPath(nodeRef);
+		if(path != null) {
+			return path.toString().replace("\\", "/");
+		}
 			return null;
 	}
 
