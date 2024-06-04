@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests</artifactId>
-	<version>6.0.2-ea.23</version>
+	<version>6.0.2-ea.24</version>
 	<name>Alfresco Tests</name>
 	<packaging>jar</packaging>
 	<description>
