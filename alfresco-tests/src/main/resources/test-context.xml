@@ -95,6 +95,7 @@
 	</bean>
 	<bean id="retryingTransactionHelper"
 		class="org.alfresco.mock.test.MockRetryingTransactionHelper" />
+	<alias name="retryingTransactionHelper" alias="RetryingTransactionHelper"/>
 	<bean id="transactionService"
 		class="org.alfresco.mock.test.MockTransactionService">
 		<property name="retryingTransactionHelper"
