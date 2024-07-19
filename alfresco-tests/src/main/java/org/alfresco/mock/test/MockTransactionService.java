@@ -9,6 +9,8 @@ import org.alfresco.service.transaction.TransactionService;
 
 public class MockTransactionService implements TransactionService, Serializable {
 
+	private RetryingTransactionHelper retryingTransactionHelper;
+
 	@Override
 	public boolean getAllowWrite() {
 		// TODO Auto-generated method stub
@@ -58,7 +60,11 @@ public class MockTransactionService implements TransactionService, Serializable 
 
 	@Override
 	public RetryingTransactionHelper getRetryingTransactionHelper() {
-		return new MockRetryingTransactionHelper();
+		return retryingTransactionHelper;
+	}
+
+	public void setRetryingTransactionHelper(RetryingTransactionHelper retryingTransactionHelper) {
+		this.retryingTransactionHelper = retryingTransactionHelper;
 	}
 
 }
