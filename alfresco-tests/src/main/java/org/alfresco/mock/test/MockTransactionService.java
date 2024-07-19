@@ -6,9 +6,11 @@ import javax.transaction.UserTransaction;
 
 import org.alfresco.repo.transaction.RetryingTransactionHelper;
 import org.alfresco.service.transaction.TransactionService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class MockTransactionService implements TransactionService, Serializable {
 
+	@Autowired
 	private RetryingTransactionHelper retryingTransactionHelper;
 
 	@Override
