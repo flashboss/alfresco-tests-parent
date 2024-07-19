@@ -96,6 +96,8 @@
 	<bean id="transactionService"
 		class="org.alfresco.mock.test.MockTransactionService" />
 	<alias name="transactionService" alias="TransactionService" />
+	<bean id="retryingTransactionHelper" class="org.alfresco.mock.test.MockRetryingTransactionHelper"/>
+	<alias name="retryingTransactionHelper" alias="RetryingTransactionHelper"/>
 	<bean id="baseJavaScriptExtension" abstract="true" />
 	<bean id="dictionaryModelBootstrap"
 		class="org.alfresco.repo.dictionary.DictionaryBootstrap"
