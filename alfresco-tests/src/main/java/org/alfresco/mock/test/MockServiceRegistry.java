@@ -146,8 +146,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 
 	@Override
 	public RetryingTransactionHelper getRetryingTransactionHelper() {
-		// TODO Auto-generated method stub
-		return null;
+		return transactionService.getRetryingTransactionHelper();
 	}
 
 	@Override
