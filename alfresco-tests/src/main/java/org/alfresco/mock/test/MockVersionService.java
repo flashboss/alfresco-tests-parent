@@ -17,6 +17,7 @@ import static org.alfresco.service.cmr.repository.StoreRef.PROTOCOL_WORKSPACE;
 import static org.alfresco.service.namespace.NamespaceService.CONTENT_MODEL_PREFIX;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.util.Collection;
@@ -87,21 +88,26 @@ public class MockVersionService implements VersionService, Serializable {
 	@Override
 	public Collection<Version> createVersion(NodeRef nodeRef, Map<String, Serializable> versionProperties,
 			boolean versionChildren) throws ReservedVersionNameException, AspectMissingException {
-		byte[] text = (byte[]) versionProperties.get(PROP_CONTENT.getLocalName());
-		String name = versionProperties.get(PROP_NAME.getLocalName()).toString();
-		InputStream inputStream = new ByteArrayInputStream(text);
-		ContentWriter writer = contentService.getWriter(nodeRef, PROP_CONTENT, true);
-		writer.setMimetype(mimetypeService.getMimetype(mimetypeService.getExtension(name)));
-		writer.putContent(inputStream);
-		String version = versionProperties.get(PROP_VERSION_LABEL.getLocalName()).toString();
-		String versionType = versionProperties.get(Version2Model.PROP_VERSION_TYPE).toString();
+		String name = versionProperties.getOrDefault(PROP_NAME.getLocalName(), System.currentTimeMillis()).toString();
+		byte[] text = (byte[]) versionProperties.getOrDefault(PROP_CONTENT.getLocalName(), new byte[]{});
+		if(text.length > 0){
+			try(InputStream inputStream = new ByteArrayInputStream(text)) {
+				ContentWriter writer = contentService.getWriter(nodeRef, PROP_CONTENT, true);
+				writer.setMimetype(mimetypeService.getMimetype(mimetypeService.getExtension(name)));
+				writer.putContent(inputStream);
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		String version = versionProperties.getOrDefault(PROP_VERSION_LABEL.getLocalName(), "").toString();
+		String versionType = versionProperties.getOrDefault(Version2Model.PROP_VERSION_TYPE, "").toString();
 		nodeService.setProperty(nodeRef, PROP_VERSION_LABEL, version);
-		nodeService.setProperty(nodeRef, PROP_VERSION_TYPE, versionProperties.get(Version2Model.PROP_VERSION_TYPE));
+		nodeService.setProperty(nodeRef, PROP_VERSION_TYPE, versionType);
 		VersionHistory versionHistory = versionHistories.get(nodeRef);
 		if (versionHistory == null)
 			versionHistory = new MockVersionHistory();
 		NodeRef versionStore = nodeService.getRootNode(new StoreRef(PROTOCOL_WORKSPACE, STORE_ID));
-		Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
+		Map<QName, Serializable> properties = new HashMap<>();
 		NodeRef parentVersion = nodeService.getChildByName(versionStore, ASSOC_CONTAINS, nodeRef.getId());
 		if (parentVersion == null) {
 			properties.put(PROP_QNAME_VERSIONED_NODE_ID, nodeRef.getId());
@@ -115,7 +121,7 @@ public class MockVersionService implements VersionService, Serializable {
 			} catch (InterruptedException e) {
 			}
 		}
-		properties = new HashMap<QName, Serializable>();
+		properties = new HashMap<>();
 		properties.put(PROP_NAME, name);
 		properties.put(PROP_QNAME_FROZEN_NODE_REF, nodeRef.getId());
 		properties.put(PROP_VERSION_LABEL, version);
@@ -126,10 +132,15 @@ public class MockVersionService implements VersionService, Serializable {
 				.createNode(parentVersion, CHILD_QNAME_VERSIONS,
 						QName.createQName(CONTENT_MODEL_PREFIX, name, namespaceService), TYPE_CONTENT, properties)
 				.getChildRef();
-		inputStream = new ByteArrayInputStream(text);
-		writer = contentService.getWriter(versionedNode, PROP_CONTENT, true);
-		writer.setMimetype(mimetypeService.getMimetype(mimetypeService.getExtension(name)));
-		writer.putContent(inputStream);
+		if(text.length > 0) {
+			try(InputStream inputStream = new ByteArrayInputStream(text)) {
+				ContentWriter writer = contentService.getWriter(versionedNode, PROP_CONTENT, true);
+				writer.setMimetype(mimetypeService.getMimetype(mimetypeService.getExtension(name)));
+				writer.putContent(inputStream);
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		}
 		MockVersion mockVersion = new MockVersion(versionedNode, nodeRef, versionProperties);
 		List<Version> list = (List<Version>) versionHistory.getAllVersions();
 		list.add(0, mockVersion);
