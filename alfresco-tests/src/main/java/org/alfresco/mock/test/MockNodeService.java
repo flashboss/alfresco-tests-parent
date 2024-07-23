@@ -159,6 +159,7 @@ public class MockNodeService implements NodeService, Serializable {
 		File file = new File(pathStr);
 		setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
 		setProperty(nodeRef, ContentModel.PROP_NODE_UUID, nodeRef.getId());
+		setProperty(nodeRef, ContentModel.PROP_NODE_DBID, Long.valueOf(nodeRef.getId().hashCode()));
 		file.mkdir();
 		nodeRefs.put(nodeRef, new File(pathStr));
 		srcAssociations.put(nodeRef, new HashMap<QName, Set<NodeRef>>());
@@ -557,10 +558,10 @@ public class MockNodeService implements NodeService, Serializable {
 		} else
 			return null;
 	}
-	
+
 	public String getPathAsString(NodeRef nodeRef) throws InvalidNodeRefException {
 		Path path = getPath(nodeRef);
-		if(path != null) {
+		if (path != null) {
 			return path.toString().replace("\\", "/");
 		}
 		return null;
