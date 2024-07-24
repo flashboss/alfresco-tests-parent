@@ -92,6 +92,7 @@
 	<bean id="permissionService"
 		class="org.alfresco.mock.test.MockPermissionService">
 		<property name="nodeService" ref="nodeService" />
+	</bean>
 	<bean id="transactionService"
 		class="org.alfresco.mock.test.MockTransactionService">
 		<property name="retryingTransactionHelper" ref="retryingTransactionHelper" />
