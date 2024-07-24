@@ -128,7 +128,7 @@
 		<dependency>
 			<groupId>com.tradeshift</groupId>
 			<artifactId>junit-remote</artifactId>
-			<version>3</version>
+			<version>.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.ws.commons.axiom</groupId>
