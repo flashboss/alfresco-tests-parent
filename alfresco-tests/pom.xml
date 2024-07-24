@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests</artifactId>
-	<version>23.2.1.5</version>
+	<version>23.2.1.6</version>
 	<name>Alfresco Tests</name>
 	<packaging>jar</packaging>
 	<description>
@@ -128,7 +128,7 @@
 		<dependency>
 			<groupId>com.tradeshift</groupId>
 			<artifactId>junit-remote</artifactId>
-			<version>3</version>
+			<version>.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.ws.commons.axiom</groupId>
