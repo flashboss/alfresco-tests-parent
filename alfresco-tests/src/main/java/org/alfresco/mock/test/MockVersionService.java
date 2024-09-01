@@ -87,14 +87,22 @@ public class MockVersionService implements VersionService, Serializable {
 	@Override
 	public Collection<Version> createVersion(NodeRef nodeRef, Map<String, Serializable> versionProperties,
 			boolean versionChildren) throws ReservedVersionNameException, AspectMissingException {
-		byte[] text = (byte[]) versionProperties.getOrDefault(PROP_CONTENT.getLocalName(), new byte[] {});
-		String name = versionProperties.getOrDefault(PROP_NAME.getLocalName(), System.currentTimeMillis()).toString();
+		byte[] text = (byte[]) versionProperties.get(PROP_CONTENT.getLocalName());
+		if (text == null)
+			text = new byte[] {};
+		String name = versionProperties.get(PROP_NAME.getLocalName()).toString();
+		if (name == null)
+			name = System.currentTimeMillis() + "";
 		InputStream inputStream = new ByteArrayInputStream(text);
 		ContentWriter writer = contentService.getWriter(nodeRef, PROP_CONTENT, true);
 		writer.setMimetype(mimetypeService.getMimetype(mimetypeService.getExtension(name)));
 		writer.putContent(inputStream);
-		String version = versionProperties.getOrDefault(PROP_VERSION_LABEL.getLocalName(), "").toString();
-		String versionType = versionProperties.getOrDefault(Version2Model.PROP_VERSION_TYPE, "").toString();
+		String version = versionProperties.get(PROP_VERSION_LABEL.getLocalName()).toString();
+		if (version == null)
+			version = "";
+		String versionType = versionProperties.get(Version2Model.PROP_VERSION_TYPE).toString();
+		if (versionType == null)
+			versionType = "";
 		nodeService.setProperty(nodeRef, PROP_VERSION_LABEL, version);
 		nodeService.setProperty(nodeRef, PROP_VERSION_TYPE, versionProperties.get(Version2Model.PROP_VERSION_TYPE));
 		VersionHistory versionHistory = versionHistories.get(nodeRef);
