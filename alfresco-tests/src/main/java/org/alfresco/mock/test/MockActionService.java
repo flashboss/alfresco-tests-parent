@@ -5,7 +5,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import org.alfresco.repo.action.RuntimeActionService;
+import org.alfresco.repo.action.evaluator.ActionConditionEvaluator;
+import org.alfresco.repo.action.executer.ActionExecuter;
 import org.alfresco.service.cmr.action.Action;
 import org.alfresco.service.cmr.action.ActionCondition;
 import org.alfresco.service.cmr.action.ActionConditionDefinition;
@@ -15,10 +19,11 @@ import org.alfresco.service.cmr.action.CompositeAction;
 import org.alfresco.service.cmr.action.CompositeActionCondition;
 import org.alfresco.service.cmr.action.ParameterConstraint;
 import org.alfresco.service.cmr.repository.NodeRef;
+import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
-public class MockActionService implements ActionService, Serializable {
+public class MockActionService implements ActionService, RuntimeActionService, Serializable {
 
 	@Autowired
 	private ApplicationContext appContext;
@@ -163,6 +168,53 @@ public class MockActionService implements ActionService, Serializable {
 	public void removeAllActions(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void postCommit() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'postCommit'");
+	}
+
+	@Override
+	public void registerActionConditionEvaluator(ActionConditionEvaluator actionConditionEvaluator) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void registerActionExecuter(ActionExecuter actionExecuter) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void registerParameterConstraint(ParameterConstraint parameterConstraint) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public Action createAction(NodeRef actionNodeRef) {
+		return null;
+	}
+
+	@Override
+	public NodeRef createActionNodeRef(Action action, NodeRef parentNodeRef, QName assocTypeName, QName assocName) {
+		return null;
+	}
+
+	@Override
+	public void saveActionImpl(NodeRef actionNodeRef, Action action) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void executeActionImpl(Action action, NodeRef actionedUponNodeRef, boolean checkConditions,
+			boolean executedAsynchronously, Set<String> actionChain) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void directActionExecution(Action action, NodeRef actionedUponNodeRef) {
+		// TODO Auto-generated method stub
 	}
 
 }
