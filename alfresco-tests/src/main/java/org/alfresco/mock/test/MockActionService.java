@@ -20,6 +20,7 @@ import org.alfresco.service.cmr.action.CompositeActionCondition;
 import org.alfresco.service.cmr.action.ParameterConstraint;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.namespace.QName;
+import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
@@ -215,6 +216,11 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 	@Override
 	public void directActionExecution(Action action, NodeRef actionedUponNodeRef) {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public boolean onLogException(Action action, Log logger, Throwable t, String message) {
+		return false;
 	}
 
 }
