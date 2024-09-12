@@ -18,29 +18,29 @@ To start add the dependency in your project sdk module:
    </dependency>
 ```
 Old versions are available too. Here the list of the library versions sorted by Alfresco distribution:
-- 23.1.0.9
-- 7.4.1.3.9
-- 7.4.1.1.8
-- 7.4.0.1.14
-- 7.4.0.17
-- 7.3.0.21
-- 7.2.1.20
-- 7.2.0.19
-- 7.1.0.27
-- 7.0.0-A20.31
-- 6.2.2.24
-- 6.2.0-ea.38
-- 6.1.0-ea.36
-- 6.0.2-ea.26
-- 6.0.0-ea.38
-- 5.2.7.34
-- 5.2.g.5
-- 5.2.f.35
-- 5.1.g.34
-- 5.0.d.34
-- 4.2.8.17
-- 4.2.6.6.37
-- 4.2.c.14
+- 23.1.0.10
+- 7.4.1.3.10
+- 7.4.1.1.9
+- 7.4.0.1.15
+- 7.4.0.16
+- 7.3.0.22
+- 7.2.1.21
+- 7.2.0.20
+- 7.1.0.28
+- 7.0.0-A20.32
+- 6.2.2.25
+- 6.2.0-ea.39
+- 6.1.0-ea.37
+- 6.0.2-ea.27
+- 6.0.0-ea.39
+- 5.2.7.35
+- 5.2.g.6
+- 5.2.f.36
+- 5.1.g.35
+- 5.0.d.35
+- 4.2.8.18
+- 4.2.6.6.38
+- 4.2.c.15
 
 In the same pom add the test resources under the 'build' tag after the 'resources' tag:
 ```
