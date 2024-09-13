@@ -23,7 +23,7 @@ Old versions are available too. Here the list of the library versions sorted by 
 - 7.4.1.1.9
 - 7.4.0.1.15
 - 7.4.0.18
-- 7.3.0.22
+- 7.3.0.21
 - 7.2.1.21
 - 7.2.0.20
 - 7.1.0.28
