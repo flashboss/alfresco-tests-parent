@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.alfresco.mock.NodeUtils;
+import org.alfresco.mock.test.MockNodeService.MockElement;
 import org.alfresco.model.ContentModel;
 import org.alfresco.repo.tenant.TenantService;
 import org.alfresco.repo.version.Version2Model;
@@ -27,6 +28,7 @@ import org.alfresco.service.cmr.repository.InvalidStoreRefException;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeRef.Status;
 import org.alfresco.service.cmr.repository.NodeService;
+import org.alfresco.service.cmr.repository.NodeService.FindNodeParameters;
 import org.alfresco.service.cmr.repository.Path;
 import org.alfresco.service.cmr.repository.Path.Element;
 import org.alfresco.service.cmr.repository.StoreExistsException;
@@ -52,6 +54,8 @@ public class MockNodeService implements NodeService, Serializable {
 	private static Map<NodeRef, Map<QName, Set<NodeRef>>> trgAssociations = new HashMap<NodeRef, Map<QName, Set<NodeRef>>>();
 
 	public final static QName PRIMARY_PARENT = QName.createQName("primary_parent");
+
+	private long countDbids;
 
 	@Autowired
 	private NamespaceService namespaceService;
@@ -159,7 +163,7 @@ public class MockNodeService implements NodeService, Serializable {
 		File file = new File(pathStr);
 		setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
 		setProperty(nodeRef, ContentModel.PROP_NODE_UUID, nodeRef.getId());
-		setProperty(nodeRef, ContentModel.PROP_NODE_DBID, Long.valueOf(nodeRef.getId().hashCode()));
+		setProperty(nodeRef, ContentModel.PROP_NODE_DBID, countDbids++);
 		file.mkdir();
 		nodeRefs.put(nodeRef, new File(pathStr));
 		srcAssociations.put(nodeRef, new HashMap<QName, Set<NodeRef>>());
