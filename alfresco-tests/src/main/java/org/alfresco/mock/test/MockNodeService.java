@@ -52,10 +52,12 @@ public class MockNodeService implements NodeService, Serializable {
 	private static Map<NodeRef, Map<QName, Set<NodeRef>>> trgAssociations = new HashMap<NodeRef, Map<QName, Set<NodeRef>>>();
 
 	public final static QName PRIMARY_PARENT = QName.createQName("primary_parent");
-	
+
 	@Autowired
 	private NamespaceService namespaceService;
-	
+
+	private long countDbids;
+
 	@Override
 	public List<StoreRef> getStores() {
 		// TODO Auto-generated method stub
@@ -159,7 +161,7 @@ public class MockNodeService implements NodeService, Serializable {
 		File file = new File(pathStr);
 		setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
 		setProperty(nodeRef, ContentModel.PROP_NODE_UUID, nodeRef.getId());
-		setProperty(nodeRef, ContentModel.PROP_NODE_DBID, Long.valueOf(nodeRef.getId().hashCode()));
+		setProperty(nodeRef, ContentModel.PROP_NODE_DBID, countDbids++);
 		file.mkdir();
 		nodeRefs.put(nodeRef, new File(pathStr));
 		srcAssociations.put(nodeRef, new HashMap<QName, Set<NodeRef>>());
