@@ -1,0 +1,322 @@
+./decrement_versions_ordered.sh: line 14: declare: -A: invalid option
+declare: usage: declare [-afFirtx] [-p] [name[=value] ...]
+==========================================
+Processing branch: 4.2.c
+==========================================
+Switched to branch '4.2.c'
+Your branch is up to date with 'origin/4.2.c'.
+Required Java version: 7
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home
+java version "1.7.0_80"
+Java(TM) SE Runtime Environment (build 1.7.0_80-b15)
+Java HotSpot(TM) 64-Bit Server VM (build 24.80-b11, mixed mode)
+Current version: 4.2.c.18
+New version: 4.2.c.17
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for it.vige:alfresco-tests:jar:4.2.c.17
+[WARNING] 'parent.relativePath' of POM it.vige:alfresco-tests:4.2.c.17 (/Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/pom.xml) points at it.vige:alfresco-tests-parent instead of org.alfresco.maven:alfresco-sdk-parent, please verify your project structure @ line 14, column 10
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Alfresco Tests                                                     [jar]
+[INFO] Alfresco Tests sample                                              [amp]
+[INFO] Alfresco Tests ws sample                                           [amp]
+[INFO] Alfresco tests parent                                              [pom]
+[INFO] 
+[INFO] -----------------------< it.vige:alfresco-tests >-----------------------
+[INFO] Building Alfresco Tests 4.2.c.17                                   [1/4]
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from maven-default-http-blocker: http://0.0.0.0/org/jvnet/staxex/stax-ex/maven-metadata.xml
+[WARNING] Could not transfer metadata org.jvnet.staxex:stax-ex/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): transfer failed for http://0.0.0.0/org/jvnet/staxex/stax-ex/maven-metadata.xml
+[WARNING] org.jvnet.staxex:stax-ex/maven-metadata.xmlfailed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata org.jvnet.staxex:stax-ex/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): transfer failed for http://0.0.0.0/org/jvnet/staxex/stax-ex/maven-metadata.xml
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ alfresco-tests ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.3.1:enforce (enforce-sdk-requirements) @ alfresco-tests ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ alfresco-tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] skip non existing resourceDirectory /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/amp
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ alfresco-tests ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 70 source files to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target/classes
+[INFO] -------------------------------------------------------------
+[WARNING] COMPILATION WARNING : 
+[INFO] -------------------------------------------------------------
+[WARNING] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockNodeService.java: Some input files use or override a deprecated API.
+[WARNING] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockNodeService.java: Recompile with -Xlint:deprecation for details.
+[WARNING] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockPolicyComponent.java: /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockPolicyComponent.java uses unchecked or unsafe operations.
+[WARNING] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockPolicyComponent.java: Recompile with -Xlint:unchecked for details.
+[INFO] 4 warnings 
+[INFO] -------------------------------------------------------------
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+  return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[514,40] incompatible types
+  required: java.util.List<org.alfresco.service.cmr.repository.NodeRef>
+  found:    java.util.ArrayList<capture#1 of ? extends java.lang.Object>
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[INFO] 13 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Alfresco tests parent 4.2.c.17:
+[INFO] 
+[INFO] Alfresco Tests ..................................... FAILURE [  8.556 s]
+[INFO] Alfresco Tests sample .............................. SKIPPED
+[INFO] Alfresco Tests ws sample ........................... SKIPPED
+[INFO] Alfresco tests parent .............................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.693 s
+[INFO] Finished at: 2025-12-02T16:37:09+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile (default-compile) on project alfresco-tests: Compilation failure: Compilation failure: 
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR]   return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[514,40] incompatible types
+[ERROR]   required: java.util.List<org.alfresco.service.cmr.repository.NodeRef>
+[ERROR]   found:    java.util.ArrayList<capture#1 of ? extends java.lang.Object>
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+==========================================
+ERROR: Compilation failed with new version for branch 4.2.c
+Please fix the compilation errors manually, then:
+1. Fix the errors in the code
+2. Run: mvn clean compile -DskipTests
+3. Run: git add -A && git commit --amend --no-edit
+4. Run: git push origin 4.2.c --force
+5. Run: git tag 4.2.c.17 && git push origin 4.2.c.17
+==========================================
+Current branch: 4.2.c
+New version: 4.2.c.17
+Changes have been committed but compilation failed.
+You are now on branch 4.2.c - fix errors and continue manually.
+==========================================
+Processing branch: 4.2.6.6
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests-sample/pom.xml
+	alfresco-tests-ws-sample/pom.xml
+	alfresco-tests/pom.xml
+	pom.xml
+Please commit your changes or stash them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 4.2.6.6
+==========================================
+Processing branch: 5.0.d
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests-sample/pom.xml
+	alfresco-tests-ws-sample/pom.xml
+	alfresco-tests/pom.xml
+	pom.xml
+Please commit your changes or stash them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 5.0.d
+==========================================
+Processing branch: 5.1.g
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests-sample/pom.xml
+	alfresco-tests-ws-sample/pom.xml
+	alfresco-tests/pom.xml
+	pom.xml
+Please commit your changes or stash them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 5.1.g
+==========================================
+Processing branch: 5.2.7
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests-sample/pom.xml
+	alfresco-tests-ws-sample/pom.xml
+	alfresco-tests/pom.xml
+	pom.xml
+Please commit your changes or stash them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 5.2.7
+==========================================
+Processing branch: 5.2.f
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests-sample/pom.xml
+	alfresco-tests-ws-sample/pom.xml
+	alfresco-tests/pom.xml
+	pom.xml
+Please commit your changes or stash them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 5.2.f
+==========================================
+Processing branch: 5.2.g
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests-sample/pom.xml
+	alfresco-tests-ws-sample/pom.xml
+	alfresco-tests/pom.xml
+	pom.xml
+Please commit your changes or stash them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 5.2.g
+==========================================
+Processing branch: 6.0.0-ea
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests-sample/pom.xml
+	alfresco-tests-ws-sample/pom.xml
+	alfresco-tests/pom.xml
+	pom.xml
+Please commit your changes or stash them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 6.0.0-ea
+==========================================
+Processing branch: 6.0.2-ea
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests-sample/pom.xml
+	alfresco-tests-ws-sample/pom.xml
+	alfresco-tests/pom.xml
+	pom.xml
+Please commit your changes or stash them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 6.0.2-ea
+==========================================
+Processing branch: 6.1.0-ea
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests-sample/pom.xml
+	alfresco-tests-ws-sample/pom.xml
+	alfresco-tests/pom.xml
+	pom.xml
+Please commit your changes or stash them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 6.1.0-ea
+==========================================
+Processing branch: 6.2.0-ea
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests-sample/pom.xml
+	alfresco-tests-ws-sample/pom.xml
+	alfresco-tests/pom.xml
+	pom.xml
+Please commit your changes or stash them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 6.2.0-ea
+==========================================
+Processing branch: 6.2.2
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests-sample/pom.xml
+	alfresco-tests-ws-sample/pom.xml
+	alfresco-tests/pom.xml
+	pom.xml
+Please commit your changes or stash them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 6.2.2
+==========================================
+Processing branch: 7.0.0-A20
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests-sample/pom.xml
+	alfresco-tests-ws-sample/pom.xml
+	alfresco-tests/pom.xml
+	pom.xml
+Please commit your changes or stash them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 7.0.0-A20
+==========================================
+Processing branch: 7.1.0
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests-sample/pom.xml
+	alfresco-tests-ws-sample/pom.xml
+	alfresco-tests/pom.xml
+	pom.xml
+Please commit your changes or stash them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 7.1.0
+==========================================
+Processing branch: 7.2.0
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests-sample/pom.xml
+	alfresco-tests-ws-sample/pom.xml
+	alfresco-tests/pom.xml
+	pom.xml
+Please commit your changes or stash them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 7.2.0
+==========================================
+Processing branch: 7.2.1
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests-sample/pom.xml
+	alfresco-tests-ws-sample/pom.xml
+	alfresco-tests/pom.xml
+	pom.xml
+Please commit your changes or stash them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 7.2.1
+==========================================
+Processing branch: 7.3.0
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests-sample/pom.xml
+	alfresco-tests-ws-sample/pom.xml
+	alfresco-tests/pom.xml
+	pom.xml
+Please commit your changes or stash them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 7.3.0
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests-sample/pom.xml
+	alfresco-tests-ws-sample/pom.xml
+	alfresco-tests/pom.xml
+	pom.xml
+Please commit your changes or stash them before you switch branches.
+Aborting
+==========================================
+All branches processed!
+==========================================
