@@ -188,11 +188,15 @@ process_branch() {
         return 1
     }
     
-    # Crea tag
-    git tag "$new_version" || {
-        echo "ERROR: Failed to create tag $new_version for branch $branch"
-        return 1
-    }
+    # Crea tag (se non esiste già)
+    if git rev-parse "$new_version" >/dev/null 2>&1; then
+        echo "Tag $new_version already exists, skipping creation"
+    else
+        git tag "$new_version" || {
+            echo "ERROR: Failed to create tag $new_version for branch $branch"
+            return 1
+        }
+    fi
     
     # Push tag
     git push origin "$new_version" || {
