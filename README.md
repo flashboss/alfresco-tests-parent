@@ -34,7 +34,7 @@ Latest versions for each branch (aligned with latest tags):
 - 7.4.0.1.16
 - 7.4.1.1.10
 - 7.4.1.3.11
-- 7.4.2.1.0
+- 7.4.2.1.1
 - 23.1.0.11
 
 To start add the dependency in your project sdk module:
