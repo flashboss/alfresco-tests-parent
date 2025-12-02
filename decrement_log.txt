@@ -1,0 +1,152 @@
+decrement_versions_ordered.sh: line 14: declare: -A: invalid option
+declare: usage: declare [-afFirtx] [-p] [name[=value] ...]
+==========================================
+Processing branch: 4.2.c
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java
+Please commit your changes or stash them before you switch branches.
+error: The following untracked working tree files would be overwritten by checkout:
+	decrement_log.txt
+	decrement_versions_ordered.sh
+Please move or remove them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 4.2.c
+==========================================
+Processing branch: 4.2.6.6
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java
+Please commit your changes or stash them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 4.2.6.6
+==========================================
+Processing branch: 5.0.d
+==========================================
+Already on '5.0.d'
+M	alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java
+Your branch is up to date with 'origin/5.0.d'.
+Required Java version: 8
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+java version "1.8.0_202"
+Java(TM) SE Runtime Environment (build 1.8.0_202-b08)
+Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
+Current version: 5.0.d.38
+New version: 5.0.d.37
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Updated: ./alfresco-tests-activiti-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for it.vige:alfresco-tests:jar:5.0.d.37
+[WARNING] 'parent.relativePath' of POM it.vige:alfresco-tests:5.0.d.37 (/Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/pom.xml) points at it.vige:alfresco-tests-parent instead of org.alfresco.maven:alfresco-sdk-parent, please verify your project structure @ line 15, column 10
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Alfresco Tests                                                     [jar]
+[INFO] Alfresco Tests sample JAR Module                                   [jar]
+[INFO] Alfresco Tests activiti sample                                     [jar]
+[INFO] Alfresco Tests ws sample                                           [jar]
+[INFO] Alfresco tests parent                                              [pom]
+[INFO] 
+[INFO] -----------------------< it.vige:alfresco-tests >-----------------------
+[INFO] Building Alfresco Tests 5.0.d.37                                   [1/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The POM for org.springframework:spring-web:jar:3.1.0.M2 is missing, no dependency information available
+[INFO] 
+[INFO] --- maven-clean-plugin:2.6.1:clean (default-clean) @ alfresco-tests ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.4:enforce (enforce-sdk-requirements) @ alfresco-tests ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.7:resources (default-resources) @ alfresco-tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] skip non existing resourceDirectory /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/amp
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.2:compile (default-compile) @ alfresco-tests ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 77 source files to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target/classes
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Some input files use or override a deprecated API.
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Recompile with -Xlint:deprecation for details.
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockPolicyComponent.java: /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockPolicyComponent.java uses unchecked or unsafe operations.
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockPolicyComponent.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] -------------------< it.vige:alfresco-tests-sample >--------------------
+[INFO] Building Alfresco Tests sample JAR Module 5.0.d.37                 [2/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.6.1:clean (default-clean) @ alfresco-tests-sample ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-sample/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.7:resources (default-resources) @ alfresco-tests-sample ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] skip non existing resourceDirectory /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-sample/src/main/amp
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.2:compile (default-compile) @ alfresco-tests-sample ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-sample/target/classes
+[INFO] 
+[INFO] ---------------< it.vige:alfresco-tests-activiti-sample >---------------
+[INFO] Building Alfresco Tests activiti sample 5.0.d.37                   [3/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.6.1:clean (default-clean) @ alfresco-tests-activiti-sample ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-activiti-sample/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.7:resources (default-resources) @ alfresco-tests-activiti-sample ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] skip non existing resourceDirectory /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-activiti-sample/src/main/amp
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.2:compile (default-compile) @ alfresco-tests-activiti-sample ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 125 source files to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-activiti-sample/target/classes
+[INFO] 
+[INFO] ------------------< it.vige:alfresco-tests-ws-sample >------------------
+[INFO] Building Alfresco Tests ws sample 5.0.d.37                         [4/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.6.1:clean (default-clean) @ alfresco-tests-ws-sample ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-ws-sample/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.7:resources (default-resources) @ alfresco-tests-ws-sample ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO] skip non existing resourceDirectory /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-ws-sample/src/main/amp
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.2:compile (default-compile) @ alfresco-tests-ws-sample ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 19 source files to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-ws-sample/target/classes
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-ws-sample/src/main/java/it/vige/ws/api/NodeListDownloadWebScript.java: /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-ws-sample/src/main/java/it/vige/ws/api/NodeListDownloadWebScript.java uses or overrides a deprecated API.
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-ws-sample/src/main/java/it/vige/ws/api/NodeListDownloadWebScript.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] -------------------< it.vige:alfresco-tests-parent >--------------------
+[INFO] Building Alfresco tests parent 5.0.d.37                            [5/5]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ alfresco-tests-parent ---
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Alfresco tests parent 5.0.d.37:
+[INFO] 
+[INFO] Alfresco Tests ..................................... SUCCESS [ 13.679 s]
+[INFO] Alfresco Tests sample JAR Module ................... SUCCESS [  0.908 s]
+[INFO] Alfresco Tests activiti sample ..................... SUCCESS [  2.775 s]
+[INFO] Alfresco Tests ws sample ........................... SUCCESS [  2.484 s]
+[INFO] Alfresco tests parent .............................. SUCCESS [  0.264 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  22.580 s
+[INFO] Finished at: 2025-12-02T19:18:51+01:00
+[INFO] ------------------------------------------------------------------------
+Compilation with new version successful!
