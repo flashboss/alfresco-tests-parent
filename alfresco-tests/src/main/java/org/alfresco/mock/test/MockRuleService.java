@@ -270,7 +270,6 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return rules != null && !rules.isEmpty();
 	}
 
-	@Override
 	public boolean hasNonInheritedRules(NodeRef nodeRef) {
 		// In a simplified mock, we consider all rules as non-inherited
 		return hasRules(nodeRef);

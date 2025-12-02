@@ -1,0 +1,1659 @@
+==========================================
+Processing branch: 4.2.c
+==========================================
+error: Your local changes to the following files would be overwritten by checkout:
+	decrement_versions_ordered.sh
+Please commit your changes or stash them before you switch branches.
+error: The following untracked working tree files would be overwritten by checkout:
+	decrement_log.txt
+Please move or remove them before you switch branches.
+Aborting
+ERROR: Failed to checkout branch 4.2.c
+==========================================
+Processing branch: 4.2.6.6
+==========================================
+Switched to branch '4.2.6.6'
+A	decrement_versions_ordered.sh
+Your branch is up to date with 'origin/4.2.6.6'.
+Required Java version: 7
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home
+java version "1.7.0_80"
+Java(TM) SE Runtime Environment (build 1.7.0_80-b15)
+Java HotSpot(TM) 64-Bit Server VM (build 24.80-b11, mixed mode)
+Current version: 4.2.6.6.41
+New version: 4.2.6.6.40
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Updated: ./alfresco-tests-activiti-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for it.vige:alfresco-tests:jar:4.2.6.6.40
+[WARNING] 'parent.relativePath' of POM it.vige:alfresco-tests:4.2.6.6.40 (/Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/pom.xml) points at it.vige:alfresco-tests-parent instead of org.alfresco.maven:alfresco-sdk-parent, please verify your project structure @ line 14, column 10
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Alfresco Tests                                                     [jar]
+[INFO] Alfresco Tests sample                                              [amp]
+[INFO] Alfresco Tests Activiti sample                                     [amp]
+[INFO] Alfresco Tests ws sample                                           [amp]
+[INFO] Alfresco tests parent                                              [pom]
+[INFO] 
+[INFO] -----------------------< it.vige:alfresco-tests >-----------------------
+[INFO] Building Alfresco Tests 4.2.6.6.40                                 [1/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from maven-default-http-blocker: http://0.0.0.0/org/jvnet/staxex/stax-ex/maven-metadata.xml
+[WARNING] Could not transfer metadata org.jvnet.staxex:stax-ex/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): transfer failed for http://0.0.0.0/org/jvnet/staxex/stax-ex/maven-metadata.xml
+[WARNING] org.jvnet.staxex:stax-ex/maven-metadata.xmlfailed to transfer from http://0.0.0.0/ during a previous attempt. This failure was cached in the local repository and resolution will not be reattempted until the update interval of maven-default-http-blocker has elapsed or updates are forced. Original error: Could not transfer metadata org.jvnet.staxex:stax-ex/maven-metadata.xml from/to maven-default-http-blocker (http://0.0.0.0/): transfer failed for http://0.0.0.0/org/jvnet/staxex/stax-ex/maven-metadata.xml
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ alfresco-tests ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.3.1:enforce (enforce-sdk-requirements) @ alfresco-tests ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ alfresco-tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] skip non existing resourceDirectory /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/amp
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ alfresco-tests ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 74 source files to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target/classes
+[INFO] -------------------------------------------------------------
+[WARNING] COMPILATION WARNING : 
+[INFO] -------------------------------------------------------------
+[WARNING] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockAspectDefinition.java: Some input files use or override a deprecated API.
+[WARNING] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockAspectDefinition.java: Recompile with -Xlint:deprecation for details.
+[WARNING] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockPolicyComponent.java: /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockPolicyComponent.java uses unchecked or unsafe operations.
+[WARNING] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockPolicyComponent.java: Recompile with -Xlint:unchecked for details.
+[INFO] 4 warnings 
+[INFO] -------------------------------------------------------------
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+  return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[514,40] incompatible types
+  required: java.util.List<org.alfresco.service.cmr.repository.NodeRef>
+  found:    java.util.ArrayList<capture#1 of ? extends java.lang.Object>
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[INFO] 13 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Alfresco tests parent 4.2.6.6.40:
+[INFO] 
+[INFO] Alfresco Tests ..................................... FAILURE [  9.057 s]
+[INFO] Alfresco Tests sample .............................. SKIPPED
+[INFO] Alfresco Tests Activiti sample ..................... SKIPPED
+[INFO] Alfresco Tests ws sample ........................... SKIPPED
+[INFO] Alfresco tests parent .............................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.265 s
+[INFO] Finished at: 2025-12-02T16:40:25+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile (default-compile) on project alfresco-tests: Compilation failure: Compilation failure: 
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR]   return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[514,40] incompatible types
+[ERROR]   required: java.util.List<org.alfresco.service.cmr.repository.NodeRef>
+[ERROR]   found:    java.util.ArrayList<capture#1 of ? extends java.lang.Object>
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+==========================================
+ERROR: Compilation failed with new version for branch 4.2.6.6
+Reverting version changes. Please fix compilation errors manually first.
+==========================================
+You are now on branch 4.2.6.6 - fix errors and re-run the script.
+==========================================
+Processing branch: 5.0.d
+==========================================
+Switched to branch '5.0.d'
+A	decrement_versions_ordered.sh
+Your branch is up to date with 'origin/5.0.d'.
+Required Java version: 8
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+java version "1.8.0_202"
+Java(TM) SE Runtime Environment (build 1.8.0_202-b08)
+Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
+Current version: 5.0.d.38
+New version: 5.0.d.37
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Updated: ./alfresco-tests-activiti-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for it.vige:alfresco-tests:jar:5.0.d.37
+[WARNING] 'parent.relativePath' of POM it.vige:alfresco-tests:5.0.d.37 (/Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/pom.xml) points at it.vige:alfresco-tests-parent instead of org.alfresco.maven:alfresco-sdk-parent, please verify your project structure @ line 15, column 10
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Alfresco Tests                                                     [jar]
+[INFO] Alfresco Tests sample JAR Module                                   [jar]
+[INFO] Alfresco Tests activiti sample                                     [jar]
+[INFO] Alfresco Tests ws sample                                           [jar]
+[INFO] Alfresco tests parent                                              [pom]
+[INFO] 
+[INFO] -----------------------< it.vige:alfresco-tests >-----------------------
+[INFO] Building Alfresco Tests 5.0.d.37                                   [1/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The POM for org.springframework:spring-web:jar:3.1.0.M2 is missing, no dependency information available
+[INFO] 
+[INFO] --- maven-clean-plugin:2.6.1:clean (default-clean) @ alfresco-tests ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.4:enforce (enforce-sdk-requirements) @ alfresco-tests ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.7:resources (default-resources) @ alfresco-tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] skip non existing resourceDirectory /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/amp
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.2:compile (default-compile) @ alfresco-tests ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 77 source files to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target/classes
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Some input files use or override a deprecated API.
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Recompile with -Xlint:deprecation for details.
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockPolicyComponent.java: /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockPolicyComponent.java uses unchecked or unsafe operations.
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockPolicyComponent.java: Recompile with -Xlint:unchecked for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+  return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[INFO] 12 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Alfresco tests parent 5.0.d.37:
+[INFO] 
+[INFO] Alfresco Tests ..................................... FAILURE [ 19.171 s]
+[INFO] Alfresco Tests sample JAR Module ................... SKIPPED
+[INFO] Alfresco Tests activiti sample ..................... SKIPPED
+[INFO] Alfresco Tests ws sample ........................... SKIPPED
+[INFO] Alfresco tests parent .............................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  22.413 s
+[INFO] Finished at: 2025-12-02T16:40:55+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.2:compile (default-compile) on project alfresco-tests: Compilation failure: Compilation failure: 
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR]   return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+==========================================
+ERROR: Compilation failed with new version for branch 5.0.d
+Reverting version changes. Please fix compilation errors manually first.
+==========================================
+You are now on branch 5.0.d - fix errors and re-run the script.
+==========================================
+Processing branch: 5.1.g
+==========================================
+Switched to branch '5.1.g'
+A	decrement_versions_ordered.sh
+Your branch is up to date with 'origin/5.1.g'.
+Required Java version: 8
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+java version "1.8.0_202"
+Java(TM) SE Runtime Environment (build 1.8.0_202-b08)
+Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
+Current version: 5.1.g.38
+New version: 5.1.g.37
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Updated: ./alfresco-tests-activiti-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for it.vige:alfresco-tests:jar:5.1.g.37
+[WARNING] 'parent.relativePath' of POM it.vige:alfresco-tests:5.1.g.37 (/Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/pom.xml) points at it.vige:alfresco-tests-parent instead of org.alfresco.maven:alfresco-sdk-parent, please verify your project structure @ line 15, column 10
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Alfresco Tests                                                     [jar]
+[INFO] alfresco-tests-sample Platform/Repository JAR Module               [jar]
+[INFO] Alfresco Tests Activiti sample                                     [jar]
+[INFO] Alfresco Tests ws sample                                           [jar]
+[INFO] Alfresco tests parent                                              [pom]
+[INFO] 
+[INFO] -----------------------< it.vige:alfresco-tests >-----------------------
+[INFO] Building Alfresco Tests 5.1.g.37                                   [1/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The POM for org.springframework:spring-web:jar:3.1.0.M2 is missing, no dependency information available
+[INFO] 
+[INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ alfresco-tests ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.4.1:enforce (enforce-sdk-requirements) @ alfresco-tests ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.7:resources (default-resources) @ alfresco-tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] skip non existing resourceDirectory /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/amp
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.5:compile (default-compile) @ alfresco-tests ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 77 source files to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target/classes
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Some input files use or override a deprecated API.
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Recompile with -Xlint:deprecation for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+  return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[514,40] incompatible types: java.util.ArrayList<? extends java.lang.Object> cannot be converted to java.util.List<org.alfresco.service.cmr.repository.NodeRef>
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[INFO] 13 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Alfresco tests parent 5.1.g.37:
+[INFO] 
+[INFO] Alfresco Tests ..................................... FAILURE [ 14.237 s]
+[INFO] alfresco-tests-sample Platform/Repository JAR Module SKIPPED
+[INFO] Alfresco Tests Activiti sample ..................... SKIPPED
+[INFO] Alfresco Tests ws sample ........................... SKIPPED
+[INFO] Alfresco tests parent .............................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.204 s
+[INFO] Finished at: 2025-12-02T16:41:19+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.5:compile (default-compile) on project alfresco-tests: Compilation failure: Compilation failure: 
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR]   return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[514,40] incompatible types: java.util.ArrayList<? extends java.lang.Object> cannot be converted to java.util.List<org.alfresco.service.cmr.repository.NodeRef>
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+==========================================
+ERROR: Compilation failed with new version for branch 5.1.g
+Reverting version changes. Please fix compilation errors manually first.
+==========================================
+You are now on branch 5.1.g - fix errors and re-run the script.
+==========================================
+Processing branch: 5.2.7
+==========================================
+Switched to branch '5.2.7'
+A	decrement_versions_ordered.sh
+Your branch is up to date with 'origin/5.2.7'.
+Required Java version: 8
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+java version "1.8.0_202"
+Java(TM) SE Runtime Environment (build 1.8.0_202-b08)
+Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
+Current version: 5.2.7.38
+New version: 5.2.7.37
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Updated: ./alfresco-tests-activiti-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Alfresco Tests                                                     [jar]
+[INFO] alfresco-tests-sample JAR Module                                   [jar]
+[INFO] Alfresco Tests Activiti sample                                     [jar]
+[INFO] Alfresco Tests ws sample                                           [jar]
+[INFO] Alfresco tests parent                                              [pom]
+[INFO] 
+[INFO] -----------------------< it.vige:alfresco-tests >-----------------------
+[INFO] Building Alfresco Tests 5.2.7.37                                   [1/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from alfresco-public: https://artifacts.alfresco.com/nexus/content/groups/public/org/alfresco/alfresco-core/6.24/alfresco-core-6.24.pom
+Downloading from alfresco-public-snapshots: https://artifacts.alfresco.com/nexus/content/groups/public-snapshots/org/alfresco/alfresco-core/6.24/alfresco-core-6.24.pom
+Downloading from alfresco-private-repository: https://artifacts.alfresco.com/nexus/content/groups/private/org/alfresco/alfresco-core/6.24/alfresco-core-6.24.pom
+Downloading from alfresco-public: https://artifacts.alfresco.com/nexus/content/groups/public/org/apache/tika/tika-core/1.6-20180308-alfresco-patched/tika-core-1.6-20180308-alfresco-patched.pom
+Downloading from alfresco-public-snapshots: https://artifacts.alfresco.com/nexus/content/groups/public-snapshots/org/apache/tika/tika-core/1.6-20180308-alfresco-patched/tika-core-1.6-20180308-alfresco-patched.pom
+Downloading from alfresco-private-repository: https://artifacts.alfresco.com/nexus/content/groups/private/org/apache/tika/tika-core/1.6-20180308-alfresco-patched/tika-core-1.6-20180308-alfresco-patched.pom
+Downloading from alfresco-public: https://artifacts.alfresco.com/nexus/content/groups/public/org/apache/tika/tika-parsers/1.6-20180308-alfresco-patched/tika-parsers-1.6-20180308-alfresco-patched.pom
+Downloading from alfresco-public-snapshots: https://artifacts.alfresco.com/nexus/content/groups/public-snapshots/org/apache/tika/tika-parsers/1.6-20180308-alfresco-patched/tika-parsers-1.6-20180308-alfresco-patched.pom
+Downloading from alfresco-private-repository: https://artifacts.alfresco.com/nexus/content/groups/private/org/apache/tika/tika-parsers/1.6-20180308-alfresco-patched/tika-parsers-1.6-20180308-alfresco-patched.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Alfresco tests parent 5.2.7.37:
+[INFO] 
+[INFO] Alfresco Tests ..................................... FAILURE [  9.999 s]
+[INFO] alfresco-tests-sample JAR Module ................... SKIPPED
+[INFO] Alfresco Tests Activiti sample ..................... SKIPPED
+[INFO] Alfresco Tests ws sample ........................... SKIPPED
+[INFO] Alfresco tests parent .............................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.945 s
+[INFO] Finished at: 2025-12-02T16:41:37+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal on project alfresco-tests: Could not resolve dependencies for project it.vige:alfresco-tests:jar:5.2.7.37: Failed to collect dependencies at org.alfresco:alfresco-repository:jar:5.2.7 -> org.alfresco:alfresco-legacy-lucene:jar:5.2.7 -> org.alfresco:alfresco-data-model:jar:6.28.9 -> org.alfresco:alfresco-core:jar:6.24: Failed to read artifact descriptor for org.alfresco:alfresco-core:jar:6.24: Could not transfer artifact org.alfresco:alfresco-core:pom:6.24 from/to alfresco-public (https://artifacts.alfresco.com/nexus/content/groups/public): transfer failed for https://artifacts.alfresco.com/nexus/content/groups/public/org/alfresco/alfresco-core/6.24/alfresco-core-6.24.pom: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException
+==========================================
+ERROR: Compilation failed with new version for branch 5.2.7
+Reverting version changes. Please fix compilation errors manually first.
+==========================================
+You are now on branch 5.2.7 - fix errors and re-run the script.
+==========================================
+Processing branch: 5.2.f
+==========================================
+Switched to branch '5.2.f'
+A	decrement_versions_ordered.sh
+Your branch is up to date with 'origin/5.2.f'.
+Required Java version: 8
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+java version "1.8.0_202"
+Java(TM) SE Runtime Environment (build 1.8.0_202-b08)
+Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
+Current version: 5.2.f.39
+New version: 5.2.f.38
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Updated: ./alfresco-tests-activiti-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Alfresco Tests                                                     [jar]
+[INFO] alfresco-tests-sample JAR Module                                   [jar]
+[INFO] Alfresco Tests Activiti sample                                     [jar]
+[INFO] Alfresco Tests ws sample                                           [jar]
+[INFO] Alfresco tests parent                                              [pom]
+[INFO] 
+[INFO] -----------------------< it.vige:alfresco-tests >-----------------------
+[INFO] Building Alfresco Tests 5.2.f.38                                   [1/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ alfresco-tests ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ alfresco-tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ alfresco-tests ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 77 source files to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target/classes
+[INFO] -------------------------------------------------------------
+[WARNING] COMPILATION WARNING : 
+[INFO] -------------------------------------------------------------
+[WARNING] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Some input files use or override a deprecated API.
+[WARNING] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Recompile with -Xlint:deprecation for details.
+[INFO] 2 warnings 
+[INFO] -------------------------------------------------------------
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+  return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[INFO] 12 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Alfresco tests parent 5.2.f.38:
+[INFO] 
+[INFO] Alfresco Tests ..................................... FAILURE [ 15.797 s]
+[INFO] alfresco-tests-sample JAR Module ................... SKIPPED
+[INFO] Alfresco Tests Activiti sample ..................... SKIPPED
+[INFO] Alfresco Tests ws sample ........................... SKIPPED
+[INFO] Alfresco tests parent .............................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  16.591 s
+[INFO] Finished at: 2025-12-02T16:42:01+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile (default-compile) on project alfresco-tests: Compilation failure: Compilation failure: 
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR]   return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+==========================================
+ERROR: Compilation failed with new version for branch 5.2.f
+Reverting version changes. Please fix compilation errors manually first.
+==========================================
+You are now on branch 5.2.f - fix errors and re-run the script.
+==========================================
+Processing branch: 5.2.g
+==========================================
+Switched to branch '5.2.g'
+A	decrement_versions_ordered.sh
+Your branch is up to date with 'origin/5.2.g'.
+Required Java version: 8
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+java version "1.8.0_202"
+Java(TM) SE Runtime Environment (build 1.8.0_202-b08)
+Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
+Current version: 5.2.g.9
+New version: 5.2.g.8
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Updated: ./alfresco-tests-activiti-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+Downloading from alfresco-public: https://artifacts.alfresco.com/nexus/content/groups/public/org/alfresco/alfresco-platform-distribution/5.2.g/alfresco-platform-distribution-5.2.g.pom
+Downloading from alfresco-private-repository: https://artifacts.alfresco.com/nexus/content/groups/private/org/alfresco/alfresco-platform-distribution/5.2.g/alfresco-platform-distribution-5.2.g.pom
+[ERROR] [ERROR] Some problems were encountered while processing the POMs:
+[ERROR] Non-resolvable import POM: Could not transfer artifact org.alfresco:alfresco-platform-distribution:pom:5.2.g from/to alfresco-public (https://artifacts.alfresco.com/nexus/content/groups/public): transfer failed for https://artifacts.alfresco.com/nexus/content/groups/public/org/alfresco/alfresco-platform-distribution/5.2.g/alfresco-platform-distribution-5.2.g.pom @ line 65, column 25
+[ERROR] 'dependencies.dependency.version' for junit:junit:jar is missing. @ line 76, column 15
+[ERROR] 'dependencies.dependency.version' for org.alfresco:alfresco-repository:jar is missing. @ line 82, column 21
+[ERROR] 'dependencies.dependency.version' for org.springframework:spring-context:jar is missing. @ line 96, column 21
+[ERROR] 'dependencies.dependency.version' for org.apache.httpcomponents:httpclient:jar is missing. @ line 103, column 21
+[ERROR] Non-resolvable import POM: org.alfresco:alfresco-platform-distribution:pom:5.2.g failed to transfer from https://artifacts.alfresco.com/nexus/content/groups/public during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of alfresco-public has elapsed or updates are forced. Original error: Could not transfer artifact org.alfresco:alfresco-platform-distribution:pom:5.2.g from/to alfresco-public (https://artifacts.alfresco.com/nexus/content/groups/public): transfer failed for https://artifacts.alfresco.com/nexus/content/groups/public/org/alfresco/alfresco-platform-distribution/5.2.g/alfresco-platform-distribution-5.2.g.pom @ line 65, column 25
+[ERROR] 'dependencies.dependency.version' for junit:junit:jar is missing. @ line 76, column 15
+[ERROR] 'dependencies.dependency.version' for org.alfresco:alfresco-repository:jar is missing. @ line 82, column 21
+[ERROR] 'dependencies.dependency.version' for org.springframework:spring-context:jar is missing. @ line 96, column 21
+[ERROR] 'dependencies.dependency.version' for org.apache.httpcomponents:httpclient:jar is missing. @ line 103, column 21
+[ERROR] Non-resolvable import POM: org.alfresco:alfresco-platform-distribution:pom:5.2.g failed to transfer from https://artifacts.alfresco.com/nexus/content/groups/public during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of alfresco-public has elapsed or updates are forced. Original error: Could not transfer artifact org.alfresco:alfresco-platform-distribution:pom:5.2.g from/to alfresco-public (https://artifacts.alfresco.com/nexus/content/groups/public): transfer failed for https://artifacts.alfresco.com/nexus/content/groups/public/org/alfresco/alfresco-platform-distribution/5.2.g/alfresco-platform-distribution-5.2.g.pom @ line 63, column 25
+[ERROR] 'dependencies.dependency.version' for junit:junit:jar is missing. @ line 74, column 15
+[ERROR] 'dependencies.dependency.version' for org.alfresco:alfresco-repository:jar is missing. @ line 80, column 21
+[ERROR] 'dependencies.dependency.version' for org.springframework:spring-context:jar is missing. @ line 94, column 21
+[ERROR] 'dependencies.dependency.version' for org.apache.httpcomponents:httpclient:jar is missing. @ line 101, column 21
+ @ 
+[ERROR] The build could not read 3 projects -> [Help 1]
+[ERROR]   
+[ERROR]   The project it.vige:alfresco-tests-sample:5.2.g.8 (/Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-sample/pom.xml) has 5 errors
+[ERROR]     Non-resolvable import POM: Could not transfer artifact org.alfresco:alfresco-platform-distribution:pom:5.2.g from/to alfresco-public (https://artifacts.alfresco.com/nexus/content/groups/public): transfer failed for https://artifacts.alfresco.com/nexus/content/groups/public/org/alfresco/alfresco-platform-distribution/5.2.g/alfresco-platform-distribution-5.2.g.pom @ line 65, column 25: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target -> [Help 2]
+[ERROR]     'dependencies.dependency.version' for junit:junit:jar is missing. @ line 76, column 15
+[ERROR]     'dependencies.dependency.version' for org.alfresco:alfresco-repository:jar is missing. @ line 82, column 21
+[ERROR]     'dependencies.dependency.version' for org.springframework:spring-context:jar is missing. @ line 96, column 21
+[ERROR]     'dependencies.dependency.version' for org.apache.httpcomponents:httpclient:jar is missing. @ line 103, column 21
+[ERROR]   
+[ERROR]   The project it.vige:alfresco-tests-activiti-sample:5.2.g.8 (/Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-activiti-sample/pom.xml) has 5 errors
+[ERROR]     Non-resolvable import POM: org.alfresco:alfresco-platform-distribution:pom:5.2.g failed to transfer from https://artifacts.alfresco.com/nexus/content/groups/public during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of alfresco-public has elapsed or updates are forced. Original error: Could not transfer artifact org.alfresco:alfresco-platform-distribution:pom:5.2.g from/to alfresco-public (https://artifacts.alfresco.com/nexus/content/groups/public): transfer failed for https://artifacts.alfresco.com/nexus/content/groups/public/org/alfresco/alfresco-platform-distribution/5.2.g/alfresco-platform-distribution-5.2.g.pom @ line 65, column 25 -> [Help 2]
+[ERROR]     'dependencies.dependency.version' for junit:junit:jar is missing. @ line 76, column 15
+[ERROR]     'dependencies.dependency.version' for org.alfresco:alfresco-repository:jar is missing. @ line 82, column 21
+[ERROR]     'dependencies.dependency.version' for org.springframework:spring-context:jar is missing. @ line 96, column 21
+[ERROR]     'dependencies.dependency.version' for org.apache.httpcomponents:httpclient:jar is missing. @ line 103, column 21
+[ERROR]   
+[ERROR]   The project it.vige:alfresco-tests-ws-sample:5.2.g.8 (/Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-ws-sample/pom.xml) has 5 errors
+[ERROR]     Non-resolvable import POM: org.alfresco:alfresco-platform-distribution:pom:5.2.g failed to transfer from https://artifacts.alfresco.com/nexus/content/groups/public during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of alfresco-public has elapsed or updates are forced. Original error: Could not transfer artifact org.alfresco:alfresco-platform-distribution:pom:5.2.g from/to alfresco-public (https://artifacts.alfresco.com/nexus/content/groups/public): transfer failed for https://artifacts.alfresco.com/nexus/content/groups/public/org/alfresco/alfresco-platform-distribution/5.2.g/alfresco-platform-distribution-5.2.g.pom @ line 63, column 25 -> [Help 2]
+[ERROR]     'dependencies.dependency.version' for junit:junit:jar is missing. @ line 74, column 15
+[ERROR]     'dependencies.dependency.version' for org.alfresco:alfresco-repository:jar is missing. @ line 80, column 21
+[ERROR]     'dependencies.dependency.version' for org.springframework:spring-context:jar is missing. @ line 94, column 21
+[ERROR]     'dependencies.dependency.version' for org.apache.httpcomponents:httpclient:jar is missing. @ line 101, column 21
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+[ERROR] [Help 2] http://cwiki.apache.org/confluence/display/MAVEN/UnresolvableModelException
+==========================================
+ERROR: Compilation failed with new version for branch 5.2.g
+Reverting version changes. Please fix compilation errors manually first.
+==========================================
+You are now on branch 5.2.g - fix errors and re-run the script.
+==========================================
+Processing branch: 6.0.0-ea
+==========================================
+Switched to branch '6.0.0-ea'
+A	decrement_versions_ordered.sh
+Your branch is up to date with 'origin/6.0.0-ea'.
+Required Java version: 8
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+java version "1.8.0_202"
+Java(TM) SE Runtime Environment (build 1.8.0_202-b08)
+Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
+Current version: 6.0.0-ea.42
+New version: 6.0.0-ea.41
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Updated: ./alfresco-tests-activiti-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Alfresco Tests                                                     [jar]
+[INFO] alfresco-tests-sample JAR Module                                   [jar]
+[INFO] Alfresco Tests Activiti sample                                     [jar]
+[INFO] Alfresco Tests ws sample                                           [jar]
+[INFO] Alfresco tests parent                                              [pom]
+[INFO] 
+[INFO] -----------------------< it.vige:alfresco-tests >-----------------------
+[INFO] Building Alfresco Tests 6.0.0-ea.41                                [1/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ alfresco-tests ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ alfresco-tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ alfresco-tests ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 77 source files to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target/classes
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Some input files use or override a deprecated API.
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Recompile with -Xlint:deprecation for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+  return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[INFO] 12 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Alfresco tests parent 6.0.0-ea.41:
+[INFO] 
+[INFO] Alfresco Tests ..................................... FAILURE [ 16.344 s]
+[INFO] alfresco-tests-sample JAR Module ................... SKIPPED
+[INFO] Alfresco Tests Activiti sample ..................... SKIPPED
+[INFO] Alfresco Tests ws sample ........................... SKIPPED
+[INFO] Alfresco tests parent .............................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.137 s
+[INFO] Finished at: 2025-12-02T16:42:34+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.0:compile (default-compile) on project alfresco-tests: Compilation failure: Compilation failure: 
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR]   return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+==========================================
+ERROR: Compilation failed with new version for branch 6.0.0-ea
+Reverting version changes. Please fix compilation errors manually first.
+==========================================
+You are now on branch 6.0.0-ea - fix errors and re-run the script.
+==========================================
+Processing branch: 6.0.2-ea
+==========================================
+Switched to branch '6.0.2-ea'
+A	decrement_versions_ordered.sh
+Your branch is up to date with 'origin/6.0.2-ea'.
+Required Java version: 8
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+java version "1.8.0_202"
+Java(TM) SE Runtime Environment (build 1.8.0_202-b08)
+Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
+Current version: 6.0.2-ea.30
+New version: 6.0.2-ea.29
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Updated: ./alfresco-tests-activiti-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Alfresco Tests                                                     [jar]
+[INFO] alfresco-tests-sample JAR Module                                   [jar]
+[INFO] Alfresco Tests Activiti sample                                     [jar]
+[INFO] Alfresco Tests ws sample                                           [jar]
+[INFO] Alfresco tests parent                                              [pom]
+[INFO] 
+[INFO] -----------------------< it.vige:alfresco-tests >-----------------------
+[INFO] Building Alfresco Tests 6.0.2-ea.29                                [1/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ alfresco-tests ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ alfresco-tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ alfresco-tests ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 77 source files to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target/classes
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Some input files use or override a deprecated API.
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Recompile with -Xlint:deprecation for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+  return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[INFO] 12 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Alfresco tests parent 6.0.2-ea.29:
+[INFO] 
+[INFO] Alfresco Tests ..................................... FAILURE [ 20.976 s]
+[INFO] alfresco-tests-sample JAR Module ................... SKIPPED
+[INFO] Alfresco Tests Activiti sample ..................... SKIPPED
+[INFO] Alfresco Tests ws sample ........................... SKIPPED
+[INFO] Alfresco tests parent .............................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  21.477 s
+[INFO] Finished at: 2025-12-02T16:43:00+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.0:compile (default-compile) on project alfresco-tests: Compilation failure: Compilation failure: 
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR]   return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+==========================================
+ERROR: Compilation failed with new version for branch 6.0.2-ea
+Reverting version changes. Please fix compilation errors manually first.
+==========================================
+You are now on branch 6.0.2-ea - fix errors and re-run the script.
+==========================================
+Processing branch: 6.1.0-ea
+==========================================
+Switched to branch '6.1.0-ea'
+A	decrement_versions_ordered.sh
+Your branch is up to date with 'origin/6.1.0-ea'.
+Required Java version: 11
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk-11.0.9.jdk/Contents/Home
+java version "11.0.9" 2020-10-20 LTS
+Java(TM) SE Runtime Environment 18.9 (build 11.0.9+7-LTS)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.9+7-LTS, mixed mode)
+Current version: 6.1.0-ea.40
+New version: 6.1.0-ea.39
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Updated: ./alfresco-tests-activiti-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Alfresco Tests                                                     [jar]
+[INFO] Alfresco Tests sample                                              [jar]
+[INFO] Alfresco Tests Activiti sample                                     [jar]
+[INFO] Alfresco Tests ws sample                                           [jar]
+[INFO] Alfresco tests parent                                              [pom]
+[INFO] 
+[INFO] -----------------------< it.vige:alfresco-tests >-----------------------
+[INFO] Building Alfresco Tests 6.1.0-ea.39                                [1/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ alfresco-tests ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ alfresco-tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ alfresco-tests ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 77 source files to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target/classes
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Some input files use or override a deprecated API.
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Recompile with -Xlint:deprecation for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+  return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[INFO] 12 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Alfresco tests parent 6.1.0-ea.39:
+[INFO] 
+[INFO] Alfresco Tests ..................................... FAILURE [ 19.545 s]
+[INFO] Alfresco Tests sample .............................. SKIPPED
+[INFO] Alfresco Tests Activiti sample ..................... SKIPPED
+[INFO] Alfresco Tests ws sample ........................... SKIPPED
+[INFO] Alfresco tests parent .............................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  20.379 s
+[INFO] Finished at: 2025-12-02T16:43:28+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.0:compile (default-compile) on project alfresco-tests: Compilation failure: Compilation failure: 
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR]   return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+==========================================
+ERROR: Compilation failed with new version for branch 6.1.0-ea
+Reverting version changes. Please fix compilation errors manually first.
+==========================================
+You are now on branch 6.1.0-ea - fix errors and re-run the script.
+==========================================
+Processing branch: 6.2.0-ea
+==========================================
+Switched to branch '6.2.0-ea'
+A	decrement_versions_ordered.sh
+Your branch is up to date with 'origin/6.2.0-ea'.
+Required Java version: 11
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk-11.0.9.jdk/Contents/Home
+java version "11.0.9" 2020-10-20 LTS
+Java(TM) SE Runtime Environment 18.9 (build 11.0.9+7-LTS)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.9+7-LTS, mixed mode)
+Current version: 6.2.0-ea.42
+New version: 6.2.0-ea.41
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Updated: ./alfresco-tests-activiti-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Alfresco Tests                                                     [jar]
+[INFO] alfresco Tests action sample                                       [jar]
+[INFO] Alfresco Tests Activiti sample                                     [jar]
+[INFO] Alfresco Tests ws sample                                           [jar]
+[INFO] Alfresco tests parent                                              [pom]
+[INFO] 
+[INFO] -----------------------< it.vige:alfresco-tests >-----------------------
+[INFO] Building Alfresco Tests 6.2.0-ea.41                                [1/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ alfresco-tests ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ alfresco-tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ alfresco-tests ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 78 source files to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target/classes
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Some input files use or override a deprecated API.
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Recompile with -Xlint:deprecation for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+  return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[INFO] 12 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Alfresco tests parent 6.2.0-ea.41:
+[INFO] 
+[INFO] Alfresco Tests ..................................... FAILURE [ 19.421 s]
+[INFO] alfresco Tests action sample ....................... SKIPPED
+[INFO] Alfresco Tests Activiti sample ..................... SKIPPED
+[INFO] Alfresco Tests ws sample ........................... SKIPPED
+[INFO] Alfresco tests parent .............................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  20.163 s
+[INFO] Finished at: 2025-12-02T16:43:56+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.0:compile (default-compile) on project alfresco-tests: Compilation failure: Compilation failure: 
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR]   return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+==========================================
+ERROR: Compilation failed with new version for branch 6.2.0-ea
+Reverting version changes. Please fix compilation errors manually first.
+==========================================
+You are now on branch 6.2.0-ea - fix errors and re-run the script.
+==========================================
+Processing branch: 6.2.2
+==========================================
+Switched to branch '6.2.2'
+A	decrement_versions_ordered.sh
+Your branch is up to date with 'origin/6.2.2'.
+Required Java version: 11
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk-11.0.9.jdk/Contents/Home
+java version "11.0.9" 2020-10-20 LTS
+Java(TM) SE Runtime Environment 18.9 (build 11.0.9+7-LTS)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.9+7-LTS, mixed mode)
+Current version: 6.2.2.28
+New version: 6.2.2.27
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Updated: ./alfresco-tests-activiti-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Alfresco Tests                                                     [jar]
+[INFO] alfresco Tests action sample                                       [jar]
+[INFO] Alfresco Tests Activiti sample                                     [jar]
+[INFO] Alfresco Tests ws sample                                           [jar]
+[INFO] Alfresco tests parent                                              [pom]
+[INFO] 
+[INFO] -----------------------< it.vige:alfresco-tests >-----------------------
+[INFO] Building Alfresco Tests 6.2.2.27                                   [1/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ alfresco-tests ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ alfresco-tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ alfresco-tests ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 78 source files to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target/classes
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Some input files use or override a deprecated API.
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Recompile with -Xlint:deprecation for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+  return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[INFO] 12 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Alfresco tests parent 6.2.2.27:
+[INFO] 
+[INFO] Alfresco Tests ..................................... FAILURE [ 19.190 s]
+[INFO] alfresco Tests action sample ....................... SKIPPED
+[INFO] Alfresco Tests Activiti sample ..................... SKIPPED
+[INFO] Alfresco Tests ws sample ........................... SKIPPED
+[INFO] Alfresco tests parent .............................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  19.926 s
+[INFO] Finished at: 2025-12-02T16:44:23+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.0:compile (default-compile) on project alfresco-tests: Compilation failure: Compilation failure: 
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR]   return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+==========================================
+ERROR: Compilation failed with new version for branch 6.2.2
+Reverting version changes. Please fix compilation errors manually first.
+==========================================
+You are now on branch 6.2.2 - fix errors and re-run the script.
+==========================================
+Processing branch: 7.0.0-A20
+==========================================
+Switched to branch '7.0.0-A20'
+A	decrement_versions_ordered.sh
+Your branch is up to date with 'origin/7.0.0-A20'.
+Required Java version: 11
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk-11.0.9.jdk/Contents/Home
+java version "11.0.9" 2020-10-20 LTS
+Java(TM) SE Runtime Environment 18.9 (build 11.0.9+7-LTS)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.9+7-LTS, mixed mode)
+Current version: 7.0.0-A20.35
+New version: 7.0.0-A20.34
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Updated: ./alfresco-tests-activiti-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+[ERROR] [ERROR] Some problems were encountered while processing the POMs:
+[ERROR] Non-resolvable import POM: org.alfresco:acs-community-packaging:pom:7.0.0-A20 was not found in https://artifacts.alfresco.com/nexus/content/groups/public during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of alfresco-public has elapsed or updates are forced @ line 97, column 16
+[ERROR] 'dependencies.dependency.version' for org.alfresco:alfresco-repository:jar is missing. @ line 111, column 15
+[ERROR] 'dependencies.dependency.version' for junit:junit:jar is missing. @ line 125, column 15
+[ERROR] 'dependencies.dependency.version' for org.springframework:spring-test:jar is missing. @ line 130, column 15
+[ERROR] Non-resolvable import POM: org.alfresco:acs-community-packaging:pom:7.0.0-A20 was not found in https://artifacts.alfresco.com/nexus/content/groups/public during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of alfresco-public has elapsed or updates are forced @ line 106, column 25
+[ERROR] 'dependencies.dependency.version' for junit:junit:jar is missing. @ line 51, column 21
+[ERROR] 'dependencies.dependency.version' for org.alfresco:alfresco-remote-api:jar is missing. @ line 70, column 21
+[ERROR] 'dependencies.dependency.version' for org.springframework:spring-test:jar is missing. @ line 83, column 15
+[ERROR] Non-resolvable import POM: org.alfresco:acs-community-packaging:pom:7.0.0-A20 was not found in https://artifacts.alfresco.com/nexus/content/groups/public during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of alfresco-public has elapsed or updates are forced @ line 102, column 16
+[ERROR] 'dependencies.dependency.version' for junit:junit:jar is missing. @ line 50, column 15
+[ERROR] 'dependencies.dependency.version' for org.apache.httpcomponents:httpclient:jar is missing. @ line 61, column 15
+[ERROR] 'dependencies.dependency.version' for org.alfresco:alfresco-remote-api:jar is missing. @ line 68, column 15
+[ERROR] Non-resolvable import POM: org.alfresco:acs-community-packaging:pom:7.0.0-A20 was not found in https://artifacts.alfresco.com/nexus/content/groups/public during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of alfresco-public has elapsed or updates are forced @ line 124, column 16
+[ERROR] 'dependencies.dependency.version' for junit:junit:jar is missing. @ line 51, column 15
+[ERROR] 'dependencies.dependency.version' for org.alfresco:alfresco-remote-api:jar is missing. @ line 70, column 15
+[ERROR] 'dependencies.dependency.version' for org.springframework:spring-test:jar is missing. @ line 82, column 15
+ @ 
+[ERROR] The build could not read 4 projects -> [Help 1]
+[ERROR]   
+[ERROR]   The project it.vige:alfresco-tests:7.0.0-A20.34 (/Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/pom.xml) has 4 errors
+[ERROR]     Non-resolvable import POM: org.alfresco:acs-community-packaging:pom:7.0.0-A20 was not found in https://artifacts.alfresco.com/nexus/content/groups/public during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of alfresco-public has elapsed or updates are forced @ line 97, column 16 -> [Help 2]
+[ERROR]     'dependencies.dependency.version' for org.alfresco:alfresco-repository:jar is missing. @ line 111, column 15
+[ERROR]     'dependencies.dependency.version' for junit:junit:jar is missing. @ line 125, column 15
+[ERROR]     'dependencies.dependency.version' for org.springframework:spring-test:jar is missing. @ line 130, column 15
+[ERROR]   
+[ERROR]   The project it.vige:alfresco-tests-sample:7.0.0-A20.34 (/Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-sample/pom.xml) has 4 errors
+[ERROR]     Non-resolvable import POM: org.alfresco:acs-community-packaging:pom:7.0.0-A20 was not found in https://artifacts.alfresco.com/nexus/content/groups/public during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of alfresco-public has elapsed or updates are forced @ line 106, column 25 -> [Help 2]
+[ERROR]     'dependencies.dependency.version' for junit:junit:jar is missing. @ line 51, column 21
+[ERROR]     'dependencies.dependency.version' for org.alfresco:alfresco-remote-api:jar is missing. @ line 70, column 21
+[ERROR]     'dependencies.dependency.version' for org.springframework:spring-test:jar is missing. @ line 83, column 15
+[ERROR]   
+[ERROR]   The project it.vige:alfresco-tests-activiti-sample:7.0.0-A20.34 (/Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-activiti-sample/pom.xml) has 4 errors
+[ERROR]     Non-resolvable import POM: org.alfresco:acs-community-packaging:pom:7.0.0-A20 was not found in https://artifacts.alfresco.com/nexus/content/groups/public during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of alfresco-public has elapsed or updates are forced @ line 102, column 16 -> [Help 2]
+[ERROR]     'dependencies.dependency.version' for junit:junit:jar is missing. @ line 50, column 15
+[ERROR]     'dependencies.dependency.version' for org.apache.httpcomponents:httpclient:jar is missing. @ line 61, column 15
+[ERROR]     'dependencies.dependency.version' for org.alfresco:alfresco-remote-api:jar is missing. @ line 68, column 15
+[ERROR]   
+[ERROR]   The project it.vige:alfresco-tests-ws-sample:7.0.0-A20.34 (/Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests-ws-sample/pom.xml) has 4 errors
+[ERROR]     Non-resolvable import POM: org.alfresco:acs-community-packaging:pom:7.0.0-A20 was not found in https://artifacts.alfresco.com/nexus/content/groups/public during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of alfresco-public has elapsed or updates are forced @ line 124, column 16 -> [Help 2]
+[ERROR]     'dependencies.dependency.version' for junit:junit:jar is missing. @ line 51, column 15
+[ERROR]     'dependencies.dependency.version' for org.alfresco:alfresco-remote-api:jar is missing. @ line 70, column 15
+[ERROR]     'dependencies.dependency.version' for org.springframework:spring-test:jar is missing. @ line 82, column 15
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+[ERROR] [Help 2] http://cwiki.apache.org/confluence/display/MAVEN/UnresolvableModelException
+==========================================
+ERROR: Compilation failed with new version for branch 7.0.0-A20
+Reverting version changes. Please fix compilation errors manually first.
+==========================================
+You are now on branch 7.0.0-A20 - fix errors and re-run the script.
+==========================================
+Processing branch: 7.1.0
+==========================================
+Switched to branch '7.1.0'
+A	decrement_versions_ordered.sh
+Your branch is up to date with 'origin/7.1.0'.
+Required Java version: 11
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk-11.0.9.jdk/Contents/Home
+java version "11.0.9" 2020-10-20 LTS
+Java(TM) SE Runtime Environment 18.9 (build 11.0.9+7-LTS)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.9+7-LTS, mixed mode)
+Current version: 7.1.0.31
+New version: 7.1.0.30
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Updated: ./alfresco-tests-activiti-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Alfresco Tests                                                     [jar]
+[INFO] alfresco Tests action sample                                       [jar]
+[INFO] Alfresco Tests Activiti sample                                     [jar]
+[INFO] Alfresco Tests ws sample                                           [jar]
+[INFO] Alfresco tests parent                                              [pom]
+[INFO] 
+[INFO] -----------------------< it.vige:alfresco-tests >-----------------------
+[INFO] Building Alfresco Tests 7.1.0.30                                   [1/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ alfresco-tests ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ alfresco-tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ alfresco-tests ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 78 source files to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target/classes
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Some input files use or override a deprecated API.
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Recompile with -Xlint:deprecation for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+  return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[INFO] 12 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Alfresco tests parent 7.1.0.30:
+[INFO] 
+[INFO] Alfresco Tests ..................................... FAILURE [ 20.917 s]
+[INFO] alfresco Tests action sample ....................... SKIPPED
+[INFO] Alfresco Tests Activiti sample ..................... SKIPPED
+[INFO] Alfresco Tests ws sample ........................... SKIPPED
+[INFO] Alfresco tests parent .............................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  21.717 s
+[INFO] Finished at: 2025-12-02T16:44:58+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.0:compile (default-compile) on project alfresco-tests: Compilation failure: Compilation failure: 
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR]   return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+==========================================
+ERROR: Compilation failed with new version for branch 7.1.0
+Reverting version changes. Please fix compilation errors manually first.
+==========================================
+You are now on branch 7.1.0 - fix errors and re-run the script.
+==========================================
+Processing branch: 7.2.0
+==========================================
+Switched to branch '7.2.0'
+A	decrement_versions_ordered.sh
+Your branch is up to date with 'origin/7.2.0'.
+Required Java version: 11
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk-11.0.9.jdk/Contents/Home
+java version "11.0.9" 2020-10-20 LTS
+Java(TM) SE Runtime Environment 18.9 (build 11.0.9+7-LTS)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.9+7-LTS, mixed mode)
+Current version: 7.2.0.23
+New version: 7.2.0.22
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Updated: ./alfresco-tests-activiti-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for it.vige:alfresco-tests-sample:jar:7.2.0.22
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ line 358, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for it.vige:alfresco-tests-activiti-sample:jar:7.2.0.22
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ line 339, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for it.vige:alfresco-tests-ws-sample:jar:7.2.0.22
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ line 351, column 12
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] The project it.vige:alfresco-tests-sample:jar:7.2.0.22 uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[WARNING] The project it.vige:alfresco-tests-activiti-sample:jar:7.2.0.22 uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[WARNING] The project it.vige:alfresco-tests-ws-sample:jar:7.2.0.22 uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Alfresco Tests                                                     [jar]
+[INFO] alfresco Tests action sample                                       [jar]
+[INFO] Alfresco Tests Activiti sample                                     [jar]
+[INFO] Alfresco Tests ws sample                                           [jar]
+[INFO] Alfresco tests parent                                              [pom]
+[INFO] 
+[INFO] -----------------------< it.vige:alfresco-tests >-----------------------
+[INFO] Building Alfresco Tests 7.2.0.22                                   [1/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ alfresco-tests ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ alfresco-tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ alfresco-tests ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 78 source files to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target/classes
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Some input files use or override a deprecated API.
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Recompile with -Xlint:deprecation for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+  return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[INFO] 12 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Alfresco tests parent 7.2.0.22:
+[INFO] 
+[INFO] Alfresco Tests ..................................... FAILURE [ 20.070 s]
+[INFO] alfresco Tests action sample ....................... SKIPPED
+[INFO] Alfresco Tests Activiti sample ..................... SKIPPED
+[INFO] Alfresco Tests ws sample ........................... SKIPPED
+[INFO] Alfresco tests parent .............................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  20.888 s
+[INFO] Finished at: 2025-12-02T16:45:26+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.0:compile (default-compile) on project alfresco-tests: Compilation failure: Compilation failure: 
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR]   return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+==========================================
+ERROR: Compilation failed with new version for branch 7.2.0
+Reverting version changes. Please fix compilation errors manually first.
+==========================================
+You are now on branch 7.2.0 - fix errors and re-run the script.
+==========================================
+Processing branch: 7.2.1
+==========================================
+Switched to branch '7.2.1'
+A	decrement_versions_ordered.sh
+Your branch is up to date with 'origin/7.2.1'.
+Required Java version: 11
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk-11.0.9.jdk/Contents/Home
+java version "11.0.9" 2020-10-20 LTS
+Java(TM) SE Runtime Environment 18.9 (build 11.0.9+7-LTS)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.9+7-LTS, mixed mode)
+Current version: 7.2.1.24
+New version: 7.2.1.23
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Updated: ./alfresco-tests-activiti-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for it.vige:alfresco-tests-sample:jar:7.2.1.23
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ line 358, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for it.vige:alfresco-tests-activiti-sample:jar:7.2.1.23
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ line 339, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for it.vige:alfresco-tests-ws-sample:jar:7.2.1.23
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ line 351, column 12
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] The project it.vige:alfresco-tests-sample:jar:7.2.1.23 uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[WARNING] The project it.vige:alfresco-tests-activiti-sample:jar:7.2.1.23 uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[WARNING] The project it.vige:alfresco-tests-ws-sample:jar:7.2.1.23 uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Alfresco Tests                                                     [jar]
+[INFO] alfresco Tests action sample                                       [jar]
+[INFO] Alfresco Tests Activiti sample                                     [jar]
+[INFO] Alfresco Tests ws sample                                           [jar]
+[INFO] Alfresco tests parent                                              [pom]
+[INFO] 
+[INFO] -----------------------< it.vige:alfresco-tests >-----------------------
+[INFO] Building Alfresco Tests 7.2.1.23                                   [1/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ alfresco-tests ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ alfresco-tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ alfresco-tests ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 78 source files to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target/classes
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Some input files use or override a deprecated API.
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Recompile with -Xlint:deprecation for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+  return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[INFO] 12 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Alfresco tests parent 7.2.1.23:
+[INFO] 
+[INFO] Alfresco Tests ..................................... FAILURE [ 20.245 s]
+[INFO] alfresco Tests action sample ....................... SKIPPED
+[INFO] Alfresco Tests Activiti sample ..................... SKIPPED
+[INFO] Alfresco Tests ws sample ........................... SKIPPED
+[INFO] Alfresco tests parent .............................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  20.954 s
+[INFO] Finished at: 2025-12-02T16:45:53+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.0:compile (default-compile) on project alfresco-tests: Compilation failure: Compilation failure: 
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[24,8] org.alfresco.mock.test.MockRuleService is not abstract and does not override abstract method saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[348,21] saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.mock.test.MockRuleService cannot implement saveRule(org.alfresco.service.cmr.repository.NodeRef,org.alfresco.service.cmr.rule.Rule) in org.alfresco.service.cmr.rule.RuleService
+[ERROR]   return type org.alfresco.service.cmr.rule.Rule is not compatible with void
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[318,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[324,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[336,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[347,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[496,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[517,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[522,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[528,9] method does not override or implement a method from a supertype
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[534,9] method does not override or implement a method from a supertype
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+==========================================
+ERROR: Compilation failed with new version for branch 7.2.1
+Reverting version changes. Please fix compilation errors manually first.
+==========================================
+You are now on branch 7.2.1 - fix errors and re-run the script.
+==========================================
+Processing branch: 7.3.0
+==========================================
+Switched to branch '7.3.0'
+A	decrement_versions_ordered.sh
+Your branch is up to date with 'origin/7.3.0'.
+Required Java version: 17
+Set JAVA_HOME to: /Library/Java/JavaVirtualMachines/jdk-17.0.1.jdk/Contents/Home
+java version "17.0.1" 2021-10-19 LTS
+Java(TM) SE Runtime Environment (build 17.0.1+12-LTS-39)
+Java HotSpot(TM) 64-Bit Server VM (build 17.0.1+12-LTS-39, mixed mode, sharing)
+Current version: 7.3.0.24
+New version: 7.3.0.23
+Updated: ./alfresco-tests/pom.xml
+Updated: ./pom.xml
+Updated: ./alfresco-tests-ws-sample/pom.xml
+Updated: ./alfresco-tests-sample/pom.xml
+Updated: ./alfresco-tests-activiti-sample/pom.xml
+Compiling with new version to verify it works...
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for it.vige:alfresco-tests-sample:jar:7.3.0.23
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ line 358, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for it.vige:alfresco-tests-activiti-sample:jar:7.3.0.23
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ line 339, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for it.vige:alfresco-tests-ws-sample:jar:7.3.0.23
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ line 358, column 12
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] The project it.vige:alfresco-tests-sample:jar:7.3.0.23 uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[WARNING] The project it.vige:alfresco-tests-activiti-sample:jar:7.3.0.23 uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[WARNING] The project it.vige:alfresco-tests-ws-sample:jar:7.3.0.23 uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Alfresco Tests                                                     [jar]
+[INFO] alfresco Tests action sample                                       [jar]
+[INFO] Alfresco Tests Activiti sample                                     [jar]
+[INFO] Alfresco Tests ws sample                                           [jar]
+[INFO] Alfresco tests parent                                              [pom]
+[INFO] 
+[INFO] -----------------------< it.vige:alfresco-tests >-----------------------
+[INFO] Building Alfresco Tests 7.3.0.23                                   [1/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ alfresco-tests ---
+[INFO] Deleting /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ alfresco-tests ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ alfresco-tests ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 78 source files to /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/target/classes
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Some input files use or override a deprecated API.
+[INFO] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockFileFolderService.java: Recompile with -Xlint:deprecation for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[INFO] 1 error
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Alfresco tests parent 7.3.0.23:
+[INFO] 
+[INFO] Alfresco Tests ..................................... FAILURE [ 21.682 s]
+[INFO] alfresco Tests action sample ....................... SKIPPED
+[INFO] Alfresco Tests Activiti sample ..................... SKIPPED
+[INFO] Alfresco Tests ws sample ........................... SKIPPED
+[INFO] Alfresco tests parent .............................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  22.382 s
+[INFO] Finished at: 2025-12-02T16:46:19+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.0:compile (default-compile) on project alfresco-tests: Compilation failure
+[ERROR] /Users/lucastancapiano/git/alfresco-tests-parent/alfresco-tests/src/main/java/org/alfresco/mock/test/MockRuleService.java:[273,9] method does not override or implement a method from a supertype
+[ERROR] 
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+==========================================
+ERROR: Compilation failed with new version for branch 7.3.0
+Reverting version changes. Please fix compilation errors manually first.
+==========================================
+You are now on branch 7.3.0 - fix errors and re-run the script.
+Switched to branch '23.2.1'
+A	decrement_versions_ordered.sh
+Your branch is up to date with 'origin/23.2.1'.
+==========================================
+All branches processed!
+==========================================
