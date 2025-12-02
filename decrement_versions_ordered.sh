@@ -79,11 +79,19 @@ process_branch() {
     echo "Processing branch: $branch"
     echo "=========================================="
     
+    # Pulisci file temporanei che potrebbero bloccare il checkout
+    rm -f decrement_log.txt /tmp/mvn_compile.log 2>/dev/null || true
+    
     # Checkout del branch
     git checkout "$branch" || {
         echo "ERROR: Failed to checkout branch $branch"
         return 1
     }
+    
+    # Copia gli script helper se non esistono
+    if [ ! -f "fix_mock_rule_service.sh" ] && [ -f "/tmp/fix_mock_rule_service.sh" ]; then
+        cp /tmp/fix_mock_rule_service.sh . && chmod +x fix_mock_rule_service.sh
+    fi
     
     # Legge la versione Java richiesta dal README
     local java_version=$(get_java_version_from_readme "README.md")
