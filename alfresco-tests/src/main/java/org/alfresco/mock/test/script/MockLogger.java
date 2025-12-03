@@ -7,6 +7,14 @@ import org.alfresco.repo.processor.BaseProcessorExtension;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+/**
+ * Mock implementation of the MockLogger class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockLogger extends BaseProcessorExtension implements Serializable {
 	
 	private static final Log logger = LogFactory.getLog(ScriptLogger.class);

@@ -32,6 +32,14 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 import it.vige.ws.PreviousWSSample;
 import it.vige.ws.WSSampleModel;
 
+/**
+ * Mock implementation of the PreviousWSSampleTest class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class PreviousWSSampleTest extends AbstractWSForm {
 
 	private final static String FOLDER_WSSAMPLE = "WSSAMPLE-20157726";

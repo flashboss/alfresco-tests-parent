@@ -47,13 +47,21 @@ import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.subethamail.smtp.server.SMTPServer;
 
+/**
+ * Abstract base class for Activiti workflow form-based tests.
+ * This class provides common functionality for testing Alfresco Activiti workflows
+ * using mock services without requiring a full server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
 	protected NodeRef spacesStore;
@@ -95,7 +103,8 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		// create the initial folders
 		NodeRef root = insertFolder(new NodeRef(new StoreRef("", ""), ""), ".");
 		NodeRef workspaceRoot = insertFolder(root, StoreRef.PROTOCOL_WORKSPACE);
-		spacesStore = insertFolder(workspaceRoot, NamespaceService.APP_MODEL_PREFIX, STORE_REF_WORKSPACE_SPACESSTORE.getIdentifier());
+		spacesStore = insertFolder(workspaceRoot, NamespaceService.APP_MODEL_PREFIX,
+				STORE_REF_WORKSPACE_SPACESSTORE.getIdentifier());
 		companyHome = insertFolder(spacesStore, NamespaceService.APP_MODEL_PREFIX, "company_home");
 		NodeRef system = insertFolder(spacesStore, NamespaceService.SYSTEM_MODEL_PREFIX, "system");
 		archive = insertFolder(root, StoreRef.PROTOCOL_ARCHIVE);
@@ -207,7 +216,8 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
 	public void startMailServer() {
 		MockMessageHandlerFactory myFactory = new MockMessageHandlerFactory();
-		smtpServer = SMTPServer.port(25000).messageHandlerFactory(myFactory).build();
+		smtpServer = new SMTPServer(myFactory);
+		smtpServer.setPort(25000);
 		smtpServer.start();
 	}
 

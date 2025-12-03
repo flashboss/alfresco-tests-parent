@@ -68,6 +68,14 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 
+/**
+ * Mock implementation of the MockServiceRegistry class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, Externalizable {
 
 	private NodeService nodeService;
@@ -116,11 +124,29 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 
 	private ActionService actionService;
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Collection<QName> getServices() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean isServiceProvided(QName service) {
@@ -128,11 +154,29 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Object getService(QName service) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public DescriptorService getDescriptorService() {
@@ -140,40 +184,112 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public TransactionService getTransactionService() {
 		return transactionService;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public RetryingTransactionHelper getRetryingTransactionHelper() {
 		return transactionService.getRetryingTransactionHelper();
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public NamespaceService getNamespaceService() {
 		return namespaceService;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public MutableAuthenticationService getAuthenticationService() {
 		return authenticationService;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public NodeService getNodeService() {
 		return nodeService;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public ContentService getContentService() {
 		return contentService;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public MimetypeService getMimetypeService() {
 		return mimetypeService;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public ContentFilterLanguagesService getContentFilterLanguagesService() {
@@ -181,15 +297,42 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public SearchService getSearchService() {
 		return searchService;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public VersionService getVersionService() {
 		return versionService;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public LockService getLockService() {
@@ -197,36 +340,99 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public JobLockService getJobLockService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public DictionaryService getDictionaryService() {
 		return dictionaryService;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public CopyService getCopyService() {
 		return copyService;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public CheckOutCheckInService getCheckOutCheckInService() {
 		return checkOutCheckInService;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public CategoryService getCategoryService() {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ImporterService getImporterService() {
 		return importerService;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public ExporterService getExporterService() {
@@ -234,41 +440,113 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public RuleService getRuleService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ActionService getActionService() {
 		return actionService;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public PermissionService getPermissionService() {
 		return permissionService;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public AuthorityService getAuthorityService() {
 		return authorityService;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public TemplateService getTemplateService() {
 		return templateService;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public FileFolderService getFileFolderService() {
 		return fileFolderService;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ScriptService getScriptService() {
 		return scriptService;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public WorkflowService getWorkflowService() {
@@ -276,11 +554,29 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public NotificationService getNotificationService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public AuditService getAuditService() {
@@ -288,21 +584,57 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public OwnableService getOwnableService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public PersonService getPersonService() {
 		return personService;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public SiteService getSiteService() {
 		return siteService;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public AttributeService getAttributeService() {
@@ -310,11 +642,29 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public MultilingualContentService getMultilingualContentService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public EditionService getEditionService() {
@@ -322,11 +672,29 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ThumbnailService getThumbnailService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public TaggingService getTaggingService() {
@@ -334,11 +702,29 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public FormService getFormService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public RenditionService getRenditionService() {
@@ -346,16 +732,43 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public RatingService getRatingService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public NodeLocatorService getNodeLocatorService() {
 		return nodeLocatorService;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public BlogService getBlogService() {
@@ -363,11 +776,29 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public CalendarService getCalendarService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public InvitationService getInvitationService() {
@@ -375,11 +806,29 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ImapService getImapService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public PublicServiceAccessService getPublicServiceAccessService() {
@@ -387,11 +836,29 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public RepoAdminService getRepoAdminService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public SysAdminParams getSysAdminParams() {
@@ -399,17 +866,44 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public WebDavService getWebDavService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ModuleService getModuleService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
@@ -437,11 +931,29 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		this.nodeLocatorService = nodeLocatorService;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public org.alfresco.opencmis.dictionary.CMISDictionaryService getCMISDictionaryService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public org.alfresco.opencmis.search.CMISQueryService getCMISQueryService() {
@@ -449,11 +961,29 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public DocumentLinkService getDocumentLinkService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public FacetLabelDisplayHandlerRegistry getFacetLabelDisplayHandlerRegistry() {
@@ -461,11 +991,29 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public MessageService getMessageService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public PolicyComponent getPolicyComponent() {
@@ -498,6 +1046,15 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		out.writeObject(renditionService2);
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
 		namespaceService = (NamespaceService) in.readObject();
@@ -524,11 +1081,29 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		renditionService2 = (RenditionService2) in.readObject();
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public RenditionService2 getRenditionService2() {
 		// TODO Auto-generated method stub
 		return renditionService2;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public SolrFacetHelper getSolrFacetHelper() {

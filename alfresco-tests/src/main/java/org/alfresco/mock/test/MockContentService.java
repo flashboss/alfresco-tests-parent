@@ -16,6 +16,14 @@ import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of the MockContentService class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockContentService implements ContentService, Serializable {
 
 	public final static String FOLDER_TEST = "./target/test-classes/";
@@ -26,11 +34,29 @@ public class MockContentService implements ContentService, Serializable {
 	@Autowired
 	private MimetypeService mimetypeService;
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public long getStoreTotalSpace() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public long getStoreFreeSpace() {
@@ -38,11 +64,29 @@ public class MockContentService implements ContentService, Serializable {
 		return 0;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ContentReader getRawReader(String contentUrl) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public ContentReader getReader(NodeRef nodeRef, QName propertyQName)
@@ -54,12 +98,30 @@ public class MockContentService implements ContentService, Serializable {
 		return contentReader;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ContentWriter getWriter(NodeRef nodeRef, QName propertyQName, boolean update)
 			throws InvalidNodeRefException, InvalidTypeException {
 		File file = getNodeService().getNodeRefs().get(nodeRef);
 		return new MockContentWriter(file, nodeRef, nodeService);
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public ContentWriter getTempWriter() {
@@ -83,11 +145,29 @@ public class MockContentService implements ContentService, Serializable {
 		this.nodeService = nodeService;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean isContentDirectUrlEnabled() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean isContentDirectUrlEnabled(NodeRef nodeRef) {
@@ -95,17 +175,44 @@ public class MockContentService implements ContentService, Serializable {
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public DirectAccessUrl requestContentDirectUrl(NodeRef nodeRef, boolean attachment, Long validFor) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean isContentDirectUrlEnabled(NodeRef nodeRef, QName propertyQName) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public DirectAccessUrl requestContentDirectUrl(NodeRef nodeRef, QName propertyQName, boolean attachment,

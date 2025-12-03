@@ -9,9 +9,26 @@ import org.springframework.extensions.webscripts.Cache;
 import org.springframework.extensions.webscripts.Runtime;
 import org.springframework.extensions.webscripts.WebScriptResponse;
 
+/**
+ * Mock implementation of the MockWebScriptResponse class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockWebScriptResponse implements WebScriptResponse {
 
 	private MockWriter mockWriter = new MockWriter();
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void setStatus(int status) {
@@ -19,11 +36,29 @@ public class MockWebScriptResponse implements WebScriptResponse {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void setHeader(String name, String value) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void addHeader(String name, String value) {
@@ -31,11 +66,29 @@ public class MockWebScriptResponse implements WebScriptResponse {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void setContentType(String contentType) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void setContentEncoding(String contentEncoding) {
@@ -43,16 +96,43 @@ public class MockWebScriptResponse implements WebScriptResponse {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void setCache(Cache cache) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Writer getWriter() throws IOException {
 		return mockWriter;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public OutputStream getOutputStream() throws IOException {
@@ -60,11 +140,29 @@ public class MockWebScriptResponse implements WebScriptResponse {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void reset() {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String encodeScriptUrl(String url) {
@@ -72,11 +170,29 @@ public class MockWebScriptResponse implements WebScriptResponse {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String encodeResourceUrl(String url) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getEncodeScriptUrlFunction(String name) {
@@ -84,17 +200,44 @@ public class MockWebScriptResponse implements WebScriptResponse {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getEncodeResourceUrlFunction(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Runtime getRuntime() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void reset(String arg0) {

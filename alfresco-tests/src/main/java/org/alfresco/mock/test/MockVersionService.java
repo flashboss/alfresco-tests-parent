@@ -43,6 +43,14 @@ import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of the MockVersionService class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockVersionService implements VersionService, Serializable {
 
 	@Autowired
@@ -59,11 +67,29 @@ public class MockVersionService implements VersionService, Serializable {
 
 	private Map<NodeRef, VersionHistory> versionHistories = new HashMap<NodeRef, VersionHistory>();
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public StoreRef getVersionStoreReference() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean isAVersion(NodeRef nodeRef) {
@@ -71,11 +97,29 @@ public class MockVersionService implements VersionService, Serializable {
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean isVersioned(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Version createVersion(NodeRef nodeRef, Map<String, Serializable> versionProperties)
@@ -83,6 +127,15 @@ public class MockVersionService implements VersionService, Serializable {
 		Collection<Version> versions = createVersion(nodeRef, versionProperties, true);
 		return versions.toArray(new Version[0])[versions.size() - 1];
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Collection<Version> createVersion(NodeRef nodeRef, Map<String, Serializable> versionProperties,
@@ -137,6 +190,15 @@ public class MockVersionService implements VersionService, Serializable {
 		return versionHistory.getAllVersions();
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Collection<Version> createVersion(Collection<NodeRef> nodeRefs, Map<String, Serializable> versionProperties)
 			throws ReservedVersionNameException, AspectMissingException {
@@ -144,10 +206,28 @@ public class MockVersionService implements VersionService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public VersionHistory getVersionHistory(NodeRef nodeRef) throws AspectMissingException {
 		return versionHistories.get(nodeRef);
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Version getCurrentVersion(NodeRef nodeRef) {
@@ -155,11 +235,29 @@ public class MockVersionService implements VersionService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void revert(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void revert(NodeRef nodeRef, boolean deep) {
@@ -167,11 +265,29 @@ public class MockVersionService implements VersionService, Serializable {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void revert(NodeRef nodeRef, Version version) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void revert(NodeRef nodeRef, Version version, boolean deep) {
@@ -179,11 +295,29 @@ public class MockVersionService implements VersionService, Serializable {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public NodeRef restore(NodeRef nodeRef, NodeRef parentNodeRef, QName assocTypeQName, QName assocQName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public NodeRef restore(NodeRef nodeRef, NodeRef parentNodeRef, QName assocTypeQName, QName assocQName,
@@ -192,11 +326,29 @@ public class MockVersionService implements VersionService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void deleteVersionHistory(NodeRef nodeRef) throws AspectMissingException {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void deleteVersion(NodeRef nodeRef, Version version) {
@@ -204,11 +356,29 @@ public class MockVersionService implements VersionService, Serializable {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void ensureVersioningEnabled(NodeRef nodeRef, Map<QName, Serializable> versionProperties) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void registerVersionLabelPolicy(QName typeQName, CalculateVersionLabelPolicy policy) {

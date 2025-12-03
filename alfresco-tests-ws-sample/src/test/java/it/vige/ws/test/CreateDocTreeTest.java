@@ -27,6 +27,14 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 import it.vige.ws.api.CreateDocTree;
 import it.vige.ws.dom.DocVigeWS;
 
+/**
+ * Mock implementation of the CreateDocTreeTest class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class CreateDocTreeTest extends AbstractWSForm {
 
 	private final static Log logger = LogFactory.getLog(CreateDocTreeTest.class);

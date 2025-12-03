@@ -9,6 +9,14 @@ import java.util.stream.Collectors;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.StoreRef;
 
+/**
+ * Mock implementation of the FilteredHashMap class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class FilteredHashMap extends HashMap<NodeRef, File> {
 
 	public FilteredHashMap(int initialCapacity, float loadFactor) {
@@ -28,6 +36,15 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 		removeFilteredValues();
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public File putIfAbsent(NodeRef key, File value) {
 		if (haveToAdd(value.getAbsolutePath()))
@@ -35,6 +52,15 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 		else
 			return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public File put(NodeRef key, File value) {
@@ -44,10 +70,28 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 			return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void putAll(Map<? extends NodeRef, ? extends File> m) {
 		super.putAll(filterMap(m));
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public File merge(NodeRef key, File value,
@@ -58,11 +102,29 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 			return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void replaceAll(BiFunction<? super NodeRef, ? super File, ? extends File> function) {
 		super.replaceAll(function);
 		removeFilteredValues();
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean replace(NodeRef key, File oldValue, File newValue) {
@@ -71,6 +133,15 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 		else
 			return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public File replace(NodeRef key, File value) {

@@ -1,5 +1,7 @@
 package it.vige.ws.test;
 
+import static org.springframework.extensions.webscripts.Status.STATUS_CREATED;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
@@ -32,6 +34,14 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 import it.vige.ws.api.UploadDoc;
 import it.vige.ws.dom.VigeWSContentModel;
 
+/**
+ * Mock implementation of the UploadDocTest class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class UploadDocTest extends AbstractWSForm {
 
 	private final static Log logger = LogFactory.getLog(UploadDocTest.class);
@@ -98,7 +108,8 @@ public class UploadDocTest extends AbstractWSForm {
 		}
 		WebScriptRequest webScriptRequest = new MockWebScriptRequest("json", templateVars, uploadDoc, fields,
 				serviceRegistry);
-		uploadDoc.execute(webScriptRequest, new MockWebScriptResponse());
+		MockWebScriptResponse webScriptResponse = new MockWebScriptResponse();
+		uploadDoc.execute(webScriptRequest, webScriptResponse);
 
 		// Verify
 		List<NodeRef> nodeRefs = searchService
@@ -139,6 +150,8 @@ public class UploadDocTest extends AbstractWSForm {
 				properties.get(VigeWSContentModel.DATA_EMISSIONE_DOC));
 		Assert.assertEquals("Deadline date", dateFormat.parse(DATA_SCADENZA),
 				properties.get(VigeWSContentModel.DATA_SCADENZA_DOC));
+		Map<String, Object> model = webScriptResponse.getModel();
+		Assert.assertEquals("Status ok", STATUS_CREATED + "", model.get("status").toString());
 
 		logger.debug("end test");
 	}

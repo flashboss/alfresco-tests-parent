@@ -33,6 +33,14 @@ import org.alfresco.service.namespace.QName;
 import org.alfresco.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of the MockSiteService class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockSiteService implements SiteService, Serializable {
 
 	@Autowired
@@ -40,6 +48,15 @@ public class MockSiteService implements SiteService, Serializable {
 
 	@Autowired
 	private NodeService nodeService;
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public SiteInfo createSite(String sitePreset, String shortName, String title, String description,
@@ -53,11 +70,29 @@ public class MockSiteService implements SiteService, Serializable {
 		return siteInfo;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean canAddMember(String shortName, String authorityName, String role) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public SiteInfo createSite(String sitePreset, String shortName, String title, String description,
@@ -65,11 +100,29 @@ public class MockSiteService implements SiteService, Serializable {
 		return createSite(sitePreset, shortName, title, description, visibility == PUBLIC);
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public SiteInfo createSite(String sitePreset, String shortName, String title, String description,
 			SiteVisibility visibility, QName siteType) {
 		return createSite(sitePreset, shortName, title, description, visibility == PUBLIC);
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean hasCreateSitePermissions() {
@@ -77,11 +130,29 @@ public class MockSiteService implements SiteService, Serializable {
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public List<SiteInfo> findSites(String filter, String sitePresetFilter, int size) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<SiteInfo> listSites(String filter, String sitePresetFilter, int size) {
@@ -89,17 +160,44 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public List<SiteInfo> listSites(String filter, String sitePresetFilter) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public List<SiteInfo> listSites(String userName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public PagingResults<SiteInfo> listSites(List<FilterProp> filterProps, List<Pair<QName, Boolean>> sortProps,
@@ -108,11 +206,29 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public List<SiteInfo> listSites(String userName, int size) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public SiteInfo getSite(String shortName) {
@@ -123,10 +239,28 @@ public class MockSiteService implements SiteService, Serializable {
 		return siteInfo;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public SiteInfo getSite(NodeRef nodeRef) {
 		return new MockSiteInfo(nodeRef, nodeService.getProperty(nodeRef, PROP_NAME) + "");
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getSiteShortName(NodeRef nodeRef) {
@@ -134,11 +268,29 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean hasSite(String shortName) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void updateSite(SiteInfo siteInfo) {
@@ -146,11 +298,29 @@ public class MockSiteService implements SiteService, Serializable {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void deleteSite(String shortName) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void listMembers(String shortName, String nameFilter, String roleFilter, boolean collapseGroups,
@@ -159,11 +329,29 @@ public class MockSiteService implements SiteService, Serializable {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Map<String, String> listMembers(String shortName, String nameFilter, String roleFilter, int size) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Map<String, String> listMembers(String shortName, String nameFilter, String roleFilter, int size,
@@ -172,12 +360,30 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public List<SiteMemberInfo> listMembersInfo(String shortName, String nameFilter, String roleFilter, int size,
 			boolean collapseGroups) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public PagingResults<SiteMembership> listMembersPaged(String shortName, boolean collapseGroups,
@@ -186,11 +392,29 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public SiteMemberInfo getMembersRoleInfo(String shortName, String authorityName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean isMember(String shortName, String authorityName) {
@@ -198,17 +422,44 @@ public class MockSiteService implements SiteService, Serializable {
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void setMembership(String shortName, String authorityName, String role) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void removeMembership(String shortName, String authorityName) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public NodeRef createContainer(String shortName, String componentId, QName containerType,
@@ -217,11 +468,29 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public NodeRef getContainer(String shortName, String componentId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public PagingResults<FileInfo> listContainers(String shortName, PagingRequest pagingRequest) {
@@ -229,11 +498,29 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean hasContainer(String shortName, String componentId) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<String> getSiteRoles() {
@@ -241,11 +528,29 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public List<String> getSiteRoles(String shortName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getSiteGroup(String shortName) {
@@ -253,11 +558,29 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getSiteRoleGroup(String shortName, String role) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public NodeRef getSiteRoot() {
@@ -265,11 +588,29 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void cleanSitePermissions(NodeRef relocatedNode, SiteInfo containingSite) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public PagingResults<SiteMembership> listSitesPaged(String userName, List<Pair<SortFields, Boolean>> sortProps,
@@ -278,11 +619,29 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String resolveSite(String group) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getMembersRole(String shortName, String authorityName) {
@@ -290,11 +649,29 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public int countAuthoritiesWithRole(String shortName, String role) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<SiteInfo> findSites(String filter, int size) {
@@ -302,11 +679,29 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean isSiteAdmin(String userName) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<SiteMembership> listSiteMemberships(String userName, int size) {
@@ -314,12 +709,30 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void listMembers(String shortName, String nameFilter, String roleFilter, boolean includeUsers,
 			boolean includeGroups, boolean expandGroups, SiteMembersCallback callback) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public PagingResults<SiteGroupMembership> listGroupMembersPaged(String shortName,

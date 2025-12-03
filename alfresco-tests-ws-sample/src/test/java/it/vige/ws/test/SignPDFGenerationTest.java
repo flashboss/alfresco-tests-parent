@@ -1,5 +1,7 @@
 package it.vige.ws.test;
 
+import static org.springframework.extensions.webscripts.Status.STATUS_OK;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,6 +36,14 @@ import com.google.common.io.ByteStreams;
 import it.vige.ws.api.SignPDFGeneration;
 import it.vige.ws.dom.VigeWSContentModel;
 
+/**
+ * Mock implementation of the SignPDFGenerationTest class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class SignPDFGenerationTest extends AbstractWSForm {
 
 	private final static Log logger = LogFactory.getLog(SignPDFGenerationTest.class);
@@ -108,7 +118,8 @@ public class SignPDFGenerationTest extends AbstractWSForm {
 		}
 		WebScriptRequest webScriptRequest = new MockWebScriptRequest("json", templateVars, signPDFGeneration, fields,
 				serviceRegistry);
-		signPDFGeneration.execute(webScriptRequest, new MockWebScriptResponse());
+		MockWebScriptResponse webScriptResponse = new MockWebScriptResponse();
+		signPDFGeneration.execute(webScriptRequest, webScriptResponse);
 
 		// Verify
 		List<NodeRef> nodeRefs = searchService
@@ -126,6 +137,8 @@ public class SignPDFGenerationTest extends AbstractWSForm {
 				Assert.assertEquals("The document has the name of the file", ID_DOC, idDoc);
 			}
 		}
+		Map<String, Object> model = webScriptResponse.getModel();
+		Assert.assertEquals("Status ok", STATUS_OK + "", model.get("status").toString());
 		logger.debug("end test");
 	}
 }
