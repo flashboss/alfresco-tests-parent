@@ -32,15 +32,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import it.vige.sample.BackupAction;
 
 /**
- * Mock implementation of the SimpleTest class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- * 
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the SimpleTest class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class SimpleTest extends AbstractForm {
 
+/**
+* The my action.
+ */
 	@Autowired
 	private BackupAction myAction;
 
@@ -58,8 +61,14 @@ public class SimpleTest extends AbstractForm {
 	private final static String version3Content = "new content 3";
 	private final static String version3Label = "2.0";
 
+/**
+* The document.
+ */
 	private NodeRef document;
 
+/**
+* Initializes the component.
+ */
 	@Before
 	public void init() {
 		super.init();
@@ -79,6 +88,9 @@ public class SimpleTest extends AbstractForm {
 		Assert.assertEquals("VALID.pdf is created", documentName, nodeName);
 	}
 
+/**
+* Performs execute.
+ */
 	@Test
 	public void execute() {
 
@@ -97,6 +109,9 @@ public class SimpleTest extends AbstractForm {
 
 	}
 
+/**
+* Performs versioned.
+ */
 	@Test
 	public void versioned() {
 		insertVersion(document, versionName, versionContent, versionLabel, MINOR);

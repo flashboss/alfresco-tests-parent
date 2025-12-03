@@ -12,24 +12,20 @@ import org.alfresco.service.cmr.repository.ContentReader;
 import org.alfresco.service.cmr.repository.MimetypeService;
 
 /**
- * Mock implementation of the MockMimetypeService class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- * 
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the MockMimetypeService class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class MockMimetypeService implements MimetypeService, Serializable {
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param mimetype the mimetype
+* @return the result
+ */
 	@Override
 	public String getExtension(String mimetype) {
 		if (mimetype.indexOf(".") >= 0)
@@ -38,15 +34,11 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 			return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param extension the extension
+* @return the result
+ */
 	@Override
 	public String getMimetype(String extension) {
 		if (extension != null && extension.equals("acp"))
@@ -63,105 +55,72 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 			return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public Map<String, String> getDisplaysByExtension() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public Map<String, String> getDisplaysByMimetype() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public Map<String, String> getExtensionsByMimetype() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public Map<String, String> getMimetypesByExtension() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param mimetype the mimetype
+* @return the result
+ */
 	@Override
 	public boolean isText(String mimetype) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public List<String> getMimetypes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param filename the filename
+* @return the result
+ */
 	@Override
 	public String guessMimetype(String filename) {
 		String extension = null;
@@ -170,75 +129,56 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 		return getMimetype(extension);
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param filename the filename
+* @param reader the reader
+* @return the result
+ */
 	@Override
 	public String guessMimetype(String filename, ContentReader reader) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param filename the filename
+* @param input the input
+* @return the result
+ */
 	@Override
 	public String guessMimetype(String filename, InputStream input) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param reader the reader
+* @return the result
+ */
 	@Override
 	public String getMimetypeIfNotMatches(ContentReader reader) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public ContentCharsetFinder getContentCharsetFinder() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param extension the extension
+* @return the result
+ */
 	@Override
 	public Collection<String> getMimetypes(String extension) {
 		// TODO Auto-generated method stub

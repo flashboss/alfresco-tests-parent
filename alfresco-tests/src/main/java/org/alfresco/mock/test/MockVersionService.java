@@ -44,83 +44,81 @@ import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Mock implementation of the MockVersionService class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- * 
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the MockVersionService class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class MockVersionService implements VersionService, Serializable {
 
+/**
+* The node service.
+ */
 	@Autowired
 	private NodeService nodeService;
 
+/**
+* The content service.
+ */
 	@Autowired
 	private ContentService contentService;
 
+/**
+* The mimetype service.
+ */
 	@Autowired
 	private MimetypeService mimetypeService;
 
+/**
+* The namespace service.
+ */
 	@Autowired
 	private NamespaceService namespaceService;
 
+/**
+* The version histories map.
+ */
 	private Map<NodeRef, VersionHistory> versionHistories = new HashMap<NodeRef, VersionHistory>();
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public StoreRef getVersionStoreReference() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param nodeRef the nodeRef
+* @return the result
+ */
 	@Override
 	public boolean isAVersion(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param nodeRef the nodeRef
+* @return the result
+ */
 	@Override
 	public boolean isVersioned(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param nodeRef the nodeRef
+* @return the result
+ */
 	@Override
 	public Version createVersion(NodeRef nodeRef, Map<String, Serializable> versionProperties)
 			throws ReservedVersionNameException, AspectMissingException {
@@ -128,15 +126,9 @@ public class MockVersionService implements VersionService, Serializable {
 		return versions.toArray(new Version[0])[versions.size() - 1];
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+ */
 	@Override
 	public Collection<Version> createVersion(NodeRef nodeRef, Map<String, Serializable> versionProperties,
 			boolean versionChildren) throws ReservedVersionNameException, AspectMissingException {
@@ -190,15 +182,11 @@ public class MockVersionService implements VersionService, Serializable {
 		return versionHistory.getAllVersions();
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param nodeRefs the nodeRefs
+* @return the result
+ */
 	@Override
 	public Collection<Version> createVersion(Collection<NodeRef> nodeRefs, Map<String, Serializable> versionProperties)
 			throws ReservedVersionNameException, AspectMissingException {
@@ -206,119 +194,89 @@ public class MockVersionService implements VersionService, Serializable {
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param nodeRef the nodeRef
+* @return the result
+* @throws AspectMissingException if an error occurs
+ */
 	@Override
 	public VersionHistory getVersionHistory(NodeRef nodeRef) throws AspectMissingException {
 		return versionHistories.get(nodeRef);
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param nodeRef the nodeRef
+* @return the result
+ */
 	@Override
 	public Version getCurrentVersion(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param nodeRef the nodeRef
+ */
 	@Override
 	public void revert(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param nodeRef the nodeRef
+* @param deep the deep
+ */
 	@Override
 	public void revert(NodeRef nodeRef, boolean deep) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param nodeRef the nodeRef
+* @param version the version
+ */
 	@Override
 	public void revert(NodeRef nodeRef, Version version) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param nodeRef the nodeRef
+* @param version the version
+* @param deep the deep
+ */
 	@Override
 	public void revert(NodeRef nodeRef, Version version, boolean deep) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param nodeRef the nodeRef
+* @param parentNodeRef the parentNodeRef
+* @param assocTypeQName the assocTypeQName
+* @param assocQName the assocQName
+* @return the result
+ */
 	@Override
 	public NodeRef restore(NodeRef nodeRef, NodeRef parentNodeRef, QName assocTypeQName, QName assocQName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+ */
 	@Override
 	public NodeRef restore(NodeRef nodeRef, NodeRef parentNodeRef, QName assocTypeQName, QName assocQName,
 			boolean deep) {
@@ -326,82 +284,84 @@ public class MockVersionService implements VersionService, Serializable {
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param nodeRef the nodeRef
+* @throws AspectMissingException if an error occurs
+ */
 	@Override
 	public void deleteVersionHistory(NodeRef nodeRef) throws AspectMissingException {
 		// TODO Auto-generated method stub
 
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param nodeRef the nodeRef
+* @param version the version
+ */
 	@Override
 	public void deleteVersion(NodeRef nodeRef, Version version) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param nodeRef the nodeRef
+ */
 	@Override
 	public void ensureVersioningEnabled(NodeRef nodeRef, Map<QName, Serializable> versionProperties) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param typeQName the typeQName
+* @param policy the policy
+ */
 	@Override
 	public void registerVersionLabelPolicy(QName typeQName, CalculateVersionLabelPolicy policy) {
 		// TODO Auto-generated method stub
 
 	}
 
+/**
+* Sets the node service.
+* @param nodeService the nodeService
+ */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+/**
+* Sets the content service.
+* @param contentService the contentService
+ */
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}
 
+/**
+* Sets the mimetype service.
+* @param mimetypeService the mimetypeService
+ */
 	public void setMimetypeService(MimetypeService mimetypeService) {
 		this.mimetypeService = mimetypeService;
 	}
 
+/**
+* Sets the namespace service.
+* @param namespaceService the namespaceService
+ */
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
 	}
 
+/**
+* Initializes the component.
+ */
 	public void init() {
 		versionHistories.clear();
 	}

@@ -15,24 +15,18 @@ import org.alfresco.service.cmr.transfer.TransferService2;
 import org.alfresco.service.cmr.transfer.TransferTarget;
 
 /**
- * Mock implementation of the MockTransferServiceImpl2 class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- * 
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the MockTransferServiceImpl2 class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class MockTransferServiceImpl2 implements TransferService2 {
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+ */
 	@Override
 	public TransferEndEvent transfer(String targetName, TransferDefinition definition,
 			Collection<TransferCallback> callback) throws TransferFailureException {
@@ -43,30 +37,24 @@ public class MockTransferServiceImpl2 implements TransferService2 {
 		return transferEndEvent;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param targetName the targetName
+* @param definition the definition
+* @return the result
+ */
 	@Override
 	public TransferEndEvent transfer(String targetName, TransferDefinition definition, TransferCallback... callbacks)
 			throws TransferFailureException {
 		return transfer(targetName, definition, Arrays.asList(callbacks));
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param targetName the targetName
+* @param definition the definition
+* @param callback the callback
+ */
 	@Override
 	public void transferAsync(String targetName, TransferDefinition definition, Collection<TransferCallback> callback)
 			throws TransferException {
@@ -74,15 +62,11 @@ public class MockTransferServiceImpl2 implements TransferService2 {
 		
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param targetName the targetName
+* @param definition the definition
+ */
 	@Override
 	public void transferAsync(String targetName, TransferDefinition definition, TransferCallback... callbacks)
 			throws TransferException {
@@ -90,30 +74,20 @@ public class MockTransferServiceImpl2 implements TransferService2 {
 		
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param target the target
+* @throws TransferException if an error occurs
+ */
 	@Override
 	public void verify(TransferTarget target) throws TransferException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+ */
 	@Override
 	public TransferTarget createAndSaveTransferTarget(String name, String title, String description,
 			String endpointProtocol, String endpointHost, int endpointPort, String endpointPath, String username,
@@ -122,135 +96,102 @@ public class MockTransferServiceImpl2 implements TransferService2 {
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param name the name
+* @return the result
+ */
 	@Override
 	public TransferTarget createTransferTarget(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+* @throws TransferException if an error occurs
+ */
 	@Override
 	public Set<TransferTarget> getTransferTargets() throws TransferException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param groupName the groupName
+* @return the result
+* @throws TransferException if an error occurs
+ */
 	@Override
 	public Set<TransferTarget> getTransferTargets(String groupName) throws TransferException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param name the name
+* @return the result
+* @throws TransferException if an error occurs
+ */
 	@Override
 	public TransferTarget getTransferTarget(String name) throws TransferException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param name the name
+* @return the result
+ */
 	@Override
 	public boolean targetExists(String name) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param name the name
+* @throws TransferException if an error occurs
+ */
 	@Override
 	public void deleteTransferTarget(String name) throws TransferException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param update the update
+* @return the result
+* @throws TransferException if an error occurs
+ */
 	@Override
 	public TransferTarget saveTransferTarget(TransferTarget update) throws TransferException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param name the name
+* @param enable the enable
+* @throws TransferException if an error occurs
+ */
 	@Override
 	public void enableTransferTarget(String name, boolean enable) throws TransferException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param transferId the transferId
+ */
 	@Override
 	public void cancelAsync(String transferId) {
 		// TODO Auto-generated method stub

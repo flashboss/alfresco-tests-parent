@@ -29,21 +29,33 @@ import org.springframework.extensions.webscripts.servlet.FormData;
 import net.sf.acegisecurity.providers.ProviderNotFoundException;
 
 /**
- * Mock implementation of the PreviousWSSample class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- * 
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the PreviousWSSample class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class PreviousWSSample extends DeclarativeWebScript {
 
+/**
+* The service registry.
+ */
 	private ServiceRegistry serviceRegistry;
 
+/**
+* The conservazione folder template.
+ */
 	private String conservazioneFolderTemplate;
 
+/**
+* The repository folder template ws sample.
+ */
 	private String repositoryFolderTemplateWSSample;
 
+/**
+* The documents ws sample folder template.
+ */
 	private String documentsWSSampleFolderTemplate;
 
 	private StoreRef storeRef = new StoreRef(StoreRef.PROTOCOL_WORKSPACE, "SpacesStore");
@@ -134,6 +146,11 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		return model;
 	}
 
+/**
+* Performs redirect status.
+* @param status the status
+* @param message the message
+ */
 	private void redirectStatus(Status status, String message) {
 		status.setCode(500);
 		status.setMessage(message);
@@ -155,6 +172,10 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		return praticheFolderList;
 	}
 
+/**
+* Gets the conservazione folder.
+* @return the result
+ */
 	private NodeRef getConservazioneFolder() {
 		ResultSet folderRs = serviceRegistry.getSearchService().query(this.storeRef,
 				SearchService.LANGUAGE_FTS_ALFRESCO, conservazioneFolderTemplate);
@@ -164,6 +185,11 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		return folderRs.getNodeRef(0);
 	}
 
+/**
+* Gets the last document date for ws sample.
+* @param folderWSSample the folderWSSample
+* @return the result
+ */
 	private Date getLastDocumentDateForWSSample(NodeRef folderWSSample) {
 		NodeService nodeService = serviceRegistry.getNodeService();
 		SearchService searchService = serviceRegistry.getSearchService();
@@ -182,6 +208,11 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		return date;
 	}
 
+/**
+* Performs aggiorna aspetto ws sample.
+* @param folderWSSample the folderWSSample
+* @param dateModify the dateModify
+ */
 	private void aggiornaAspettoWSSample(NodeRef folderWSSample, Date dateModify) {
 		NodeService nodeService = serviceRegistry.getNodeService();
 		if (!nodeService.hasAspect(folderWSSample, WSSampleModel.ASPECT_WSSAMPLEFOLDER)) {
@@ -192,18 +223,34 @@ public class PreviousWSSample extends DeclarativeWebScript {
 			nodeService.setProperty(folderWSSample, WSSampleModel.PROP_UPDATE_PROPERTY, dateModify);
 	}
 
+/**
+* Sets the service registry.
+* @param serviceRegistry the serviceRegistry
+ */
 	public void setServiceRegistry(ServiceRegistry serviceRegistry) {
 		this.serviceRegistry = serviceRegistry;
 	}
 
+/**
+* Sets the conservazione folder template.
+* @param conservazioneFolderTemplate the conservazioneFolderTemplate
+ */
 	public void setConservazioneFolderTemplate(String conservazioneFolderTemplate) {
 		this.conservazioneFolderTemplate = conservazioneFolderTemplate;
 	}
 
+/**
+* Sets the repository folder template ws sample.
+* @param repositoryFolderTemplateWSSample the repositoryFolderTemplateWSSample
+ */
 	public void setRepositoryFolderTemplateWSSample(String repositoryFolderTemplateWSSample) {
 		this.repositoryFolderTemplateWSSample = repositoryFolderTemplateWSSample;
 	}
 
+/**
+* Sets the documents ws sample folder template.
+* @param documentsWSSampleFolderTemplate the documentsWSSampleFolderTemplate
+ */
 	public void setDocumentsWSSampleFolderTemplate(String documentsWSSampleFolderTemplate) {
 		this.documentsWSSampleFolderTemplate = documentsWSSampleFolderTemplate;
 	}

@@ -4,6 +4,9 @@ import org.alfresco.service.namespace.QName;
 
 public abstract class VigeWSContentModel {
 
+/**
+* Constructs a new VigeWSContentModel instance.
+ */
     private VigeWSContentModel() { }
 
     public static final String VIGE_WS_NAMESPACE = "http://vige.it/model/alfresco-tests-vigews/1.0";
