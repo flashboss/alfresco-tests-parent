@@ -30,6 +30,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "timestampTSRVerify", propOrder = { "tsr", "content" })
+/**
+ * @author vige
+ */
 public class TimestampTSRVerify {
 
 	protected byte[] tsr;

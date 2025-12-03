@@ -11,6 +11,9 @@ import org.alfresco.service.cmr.dictionary.NamespaceDefinition;
 import org.alfresco.service.cmr.i18n.MessageLookup;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * @author vige
+ */
 public class MockModelDefinition implements ModelDefinition, Serializable {
 
 	private QName name;

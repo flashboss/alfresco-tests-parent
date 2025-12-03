@@ -30,6 +30,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "wsFaultBean", propOrder = { "error", "message" })
+/**
+ * @author vige
+ */
 public class WsFaultBean {
 
 	protected int error;

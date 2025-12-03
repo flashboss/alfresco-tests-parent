@@ -32,6 +32,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "verifyCAdESByAttachment", propOrder = { "inputDataHandler", "preferences" })
+/**
+ * @author vige
+ */
 public class VerifyCAdESByAttachment {
 
 	@XmlMimeType("application/octet-stream")

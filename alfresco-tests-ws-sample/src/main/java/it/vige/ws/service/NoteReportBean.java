@@ -1,5 +1,8 @@
 package it.vige.ws.service;
 
+/**
+ * @author vige
+ */
 public class NoteReportBean {
 
 	public int getType() {

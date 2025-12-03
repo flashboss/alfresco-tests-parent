@@ -30,6 +30,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "openSessionResponse", propOrder = { "_return" })
+/**
+ * @author vige
+ */
 public class OpenSessionResponse {
 
 	@XmlElement(name = "return")

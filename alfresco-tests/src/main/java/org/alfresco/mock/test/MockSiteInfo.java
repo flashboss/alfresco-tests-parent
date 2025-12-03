@@ -9,6 +9,9 @@ import org.alfresco.service.cmr.site.SiteInfo;
 import org.alfresco.service.cmr.site.SiteVisibility;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * @author vige
+ */
 public class MockSiteInfo implements SiteInfo, Serializable {
 
 	private NodeRef nodeRef;

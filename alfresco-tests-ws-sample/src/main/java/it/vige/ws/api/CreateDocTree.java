@@ -29,6 +29,9 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 import it.vige.ws.dom.DocVigeWS;
 import it.vige.ws.dom.VigeWSContentModel;
 
+/**
+ * @author vige
+ */
 public class CreateDocTree extends DeclarativeWebScript {
 
 	private Logger logger = Logger.getLogger(CreateDocTree.class);

@@ -29,6 +29,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "xAdESPreferences", propOrder = { "signElement" })
+/**
+ * @author vige
+ */
 public class XAdESPreferences extends SignPreferences {
 
 	protected String signElement;
