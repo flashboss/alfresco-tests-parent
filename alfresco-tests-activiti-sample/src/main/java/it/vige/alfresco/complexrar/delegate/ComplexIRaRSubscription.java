@@ -8,6 +8,9 @@ import org.apache.commons.logging.LogFactory;
 
 import it.vige.activiti.service.SignService;
 
+/**
+ * @author vige
+ */
 public class ComplexIRaRSubscription extends BaseJavaDelegate {
 
 	private static Log logger = LogFactory.getLog(ComplexIRaRSubscription.class);

@@ -1,5 +1,8 @@
 package it.vige.ws.bean;
 
+/**
+ * @author vige
+ */
 public class Signer {
 
 	private String username;

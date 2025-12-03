@@ -18,6 +18,9 @@ import java.util.List;
 
 import org.slf4j.Logger;
 
+/**
+ * @author vige
+ */
 public class ModuleClassLoader extends ClassLoader {
 
     private static final String SEPARATOR = "/";

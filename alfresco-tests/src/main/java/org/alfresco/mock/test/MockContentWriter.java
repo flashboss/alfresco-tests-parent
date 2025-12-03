@@ -29,6 +29,9 @@ import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
 import org.apache.commons.io.IOUtils;
 
+/**
+ * @author vige
+ */
 public class MockContentWriter implements ContentWriter {
 
 	private File file;

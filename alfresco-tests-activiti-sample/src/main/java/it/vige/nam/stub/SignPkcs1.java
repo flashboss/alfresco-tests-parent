@@ -31,6 +31,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signPkcs1", propOrder = { "credentials", "hash", "preferences" })
+/**
+ * @author vige
+ */
 public class SignPkcs1 {
 
 	protected Credentials credentials;

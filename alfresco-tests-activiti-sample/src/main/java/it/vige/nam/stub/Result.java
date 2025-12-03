@@ -28,6 +28,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "result")
 @XmlEnum
+/**
+ * @author vige
+ */
 public enum Result {
 
 	VALID, INVALID, UNDETERMINED, VALID_WITH_WARNINGS, INFORMATION;

@@ -30,6 +30,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "getCertificate", propOrder = { "username", "password" })
+/**
+ * @author vige
+ */
 public class GetCertificate {
 
 	protected String username;

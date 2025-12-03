@@ -31,6 +31,9 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 import it.vige.ws.api.NodeListDownloadWebScript;
 import it.vige.ws.utils.ActUtil;
 
+/**
+ * @author vige
+ */
 public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 
 	@Autowired

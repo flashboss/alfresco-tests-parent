@@ -13,6 +13,9 @@ import org.alfresco.service.cmr.security.PermissionService;
 import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * @author vige
+ */
 public class MockPermissionService implements PermissionService, Serializable {
 
 	@Autowired

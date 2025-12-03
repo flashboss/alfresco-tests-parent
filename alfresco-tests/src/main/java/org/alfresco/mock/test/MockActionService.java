@@ -24,6 +24,9 @@ import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
+/**
+ * @author vige
+ */
 public class MockActionService implements ActionService, RuntimeActionService, Serializable {
 
 	@Autowired

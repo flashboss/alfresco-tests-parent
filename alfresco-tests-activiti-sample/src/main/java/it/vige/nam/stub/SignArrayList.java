@@ -36,6 +36,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signArrayList", propOrder = { "username", "password", "bufferList", "adESPreferences" })
+/**
+ * @author vige
+ */
 public class SignArrayList {
 
 	protected String username;
