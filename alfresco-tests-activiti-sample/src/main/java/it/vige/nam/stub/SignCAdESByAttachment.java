@@ -30,7 +30,10 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  * 
- * 
+ *
+ *
+ * @author vige
+ 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signCAdESByAttachment", propOrder = { "credentials", "inputDataHandler", "cAdESPreferences" })

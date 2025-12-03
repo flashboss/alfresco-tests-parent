@@ -30,6 +30,9 @@ import static org.apache.pdfbox.io.IOUtils.toByteArray;
 
 /**
  * Author: Luca Stancapiano
+ *
+ * @author vige
+
  */
 public class DroolsConverterImpl {
 

@@ -28,7 +28,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * &lt;/complexType&gt;
  * </pre>
  * 
- * 
+ *
+ *
+ * @author vige
+ 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "verifyOnDate", propOrder = { "signedContent", "verifyDate" })

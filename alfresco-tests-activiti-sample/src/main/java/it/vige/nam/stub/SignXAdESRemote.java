@@ -28,7 +28,10 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  * 
- * 
+ *
+ *
+ * @author vige
+ 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signXAdESRemote", propOrder = { "credentials", "buffer", "xAdESPreferences" })

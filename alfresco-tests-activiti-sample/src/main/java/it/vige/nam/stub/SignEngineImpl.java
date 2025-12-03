@@ -22,7 +22,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction&gt;
  * &lt;/simpleType&gt;
  * </pre>
- * 
+ *
+ *
+ * @author vige
+ 
  */
 @XmlType(name = "signEngineImpl")
 @XmlEnum

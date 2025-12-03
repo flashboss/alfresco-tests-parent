@@ -13,6 +13,9 @@ import java.io.IOException;
 
 /**
  * Author: Luca Stancapiano
+ *
+ * @author vige
+
  */
 public class RuleRunner {
 
