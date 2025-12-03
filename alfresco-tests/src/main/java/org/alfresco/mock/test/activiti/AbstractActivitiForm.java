@@ -54,6 +54,14 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.subethamail.smtp.server.SMTPServer;
 
+/**
+ * Abstract base class for Activiti workflow form-based tests.
+ * This class provides common functionality for testing Alfresco Activiti workflows
+ * using mock services without requiring a full server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
 	protected NodeRef spacesStore;

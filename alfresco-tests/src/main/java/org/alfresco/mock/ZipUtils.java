@@ -26,6 +26,14 @@ import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of the ZipUtils class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class ZipUtils {
 
 	public final static File TEMP_DIR = new File(MockContentService.FOLDER_TEST + "temp");
@@ -53,6 +61,12 @@ public class ZipUtils {
 
 	public static String getZipEntryContent(File parent, final String documentName) throws IOException {
 		FileFilter fileFiler = new FileFilter() {
+			/**
+
+			 * {@inheritDoc}
+
+			 */
+
 			@Override
 			public boolean accept(File pathname) {
 				return pathname.getName().startsWith(documentName);

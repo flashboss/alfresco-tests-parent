@@ -41,6 +41,14 @@ import it.vige.ws.service.SignService;
 import it.vige.ws.templateManager.drools.DroolsConverterImpl;
 import it.vige.ws.utils.GenerationUtils;
 
+/**
+ * Mock implementation of the SignPDFGeneration class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class SignPDFGeneration extends DeclarativeWebScript {
 
 	private FileFolderService fileFolderService;
@@ -58,6 +66,12 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	private Log logger = LogFactory.getLog(SignPDFGeneration.class);
 
 	@SuppressWarnings("unchecked")
+	/**
+
+	 * {@inheritDoc}
+
+	 */
+
 	@Override
 	public Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 

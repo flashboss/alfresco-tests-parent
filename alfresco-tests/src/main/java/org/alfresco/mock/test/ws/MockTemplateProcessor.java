@@ -5,7 +5,24 @@ import java.util.Map;
 
 import org.springframework.extensions.webscripts.TemplateProcessor;
 
+/**
+ * Mock implementation of the MockTemplateProcessor class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockTemplateProcessor implements TemplateProcessor {
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean hasTemplate(String template) {
@@ -20,17 +37,44 @@ public class MockTemplateProcessor implements TemplateProcessor {
 			((MockWriter) out).setModel((Map<String, Object>) model);
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void processString(String template, Object model, Writer out) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getDefaultEncoding() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void reset() {

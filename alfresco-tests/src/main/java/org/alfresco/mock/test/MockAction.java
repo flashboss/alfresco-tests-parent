@@ -10,6 +10,14 @@ import org.alfresco.service.cmr.action.ActionCondition;
 import org.alfresco.service.cmr.action.ActionStatus;
 import org.alfresco.service.cmr.repository.NodeRef;
 
+/**
+ * Mock implementation of the MockAction class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockAction implements Action {
 
 	private String name;
@@ -25,20 +33,56 @@ public class MockAction implements Action {
 		this.params = params;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getId() {
 		return name;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Map<String, Serializable> getParameterValues() {
 		return params;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Serializable getParameterValue(String name) {
 		return params.get(name);
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void setParameterValues(Map<String, Serializable> parameterValues) {
@@ -46,11 +90,29 @@ public class MockAction implements Action {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void setParameterValue(String name, Serializable value) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public NodeRef getNodeRef() {
@@ -58,11 +120,29 @@ public class MockAction implements Action {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getActionDefinitionName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getTitle() {
@@ -70,11 +150,29 @@ public class MockAction implements Action {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void setTitle(String title) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getDescription() {
@@ -82,11 +180,29 @@ public class MockAction implements Action {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void setDescription(String description) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Boolean getTrackStatus() {
@@ -94,11 +210,29 @@ public class MockAction implements Action {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void setTrackStatus(Boolean trackStatus) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean getExecuteAsychronously() {
@@ -106,11 +240,29 @@ public class MockAction implements Action {
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void setExecuteAsynchronously(boolean executeAsynchronously) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Action getCompensatingAction() {
@@ -118,11 +270,29 @@ public class MockAction implements Action {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void setCompensatingAction(Action action) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Date getCreatedDate() {
@@ -130,11 +300,29 @@ public class MockAction implements Action {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getCreator() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Date getModifiedDate() {
@@ -142,11 +330,29 @@ public class MockAction implements Action {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getModifier() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean hasActionConditions() {
@@ -154,11 +360,29 @@ public class MockAction implements Action {
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public int indexOfActionCondition(ActionCondition actionCondition) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<ActionCondition> getActionConditions() {
@@ -166,11 +390,29 @@ public class MockAction implements Action {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ActionCondition getActionCondition(int index) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void addActionCondition(ActionCondition actionCondition) {
@@ -178,11 +420,29 @@ public class MockAction implements Action {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void addActionCondition(int index, ActionCondition actionCondition) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void setActionCondition(int index, ActionCondition actionCondition) {
@@ -190,11 +450,29 @@ public class MockAction implements Action {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void removeActionCondition(ActionCondition actionCondition) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void removeAllActionConditions() {
@@ -202,11 +480,29 @@ public class MockAction implements Action {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void addParameterValues(Map<String, Serializable> values) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Date getExecutionStartDate() {
@@ -214,17 +510,44 @@ public class MockAction implements Action {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Date getExecutionEndDate() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ActionStatus getExecutionStatus() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getExecutionFailureMessage() {

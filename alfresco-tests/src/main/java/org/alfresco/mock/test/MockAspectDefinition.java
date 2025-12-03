@@ -15,6 +15,14 @@ import org.alfresco.service.cmr.dictionary.PropertyDefinition;
 import org.alfresco.service.cmr.i18n.MessageLookup;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of the MockAspectDefinition class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockAspectDefinition implements AspectDefinition, Serializable {
 
 	private QName name;
@@ -23,10 +31,28 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		this.name = name;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ModelDefinition getModel() {
 		return new MockModelDefinition(name);
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public QName getName() {
@@ -34,11 +60,29 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getTitle() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getDescription() {
@@ -46,11 +90,29 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getTitle(MessageLookup messageLookup) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getDescription(MessageLookup messageLookup) {
@@ -58,11 +120,29 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public QName getParentName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean isAspect() {
@@ -70,11 +150,29 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Boolean getArchive() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Boolean getIncludedInSuperTypeQuery() {
@@ -82,10 +180,28 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Map<QName, PropertyDefinition> getProperties() {
 		return new HashMap<QName, PropertyDefinition>();
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Map<QName, Serializable> getDefaultValues() {
@@ -93,11 +209,29 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Map<QName, AssociationDefinition> getAssociations() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean isContainer() {
@@ -105,11 +239,29 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Map<QName, ChildAssociationDefinition> getChildAssociations() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<AspectDefinition> getDefaultAspects() {
@@ -117,17 +269,44 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Set<QName> getDefaultAspectNames() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public List<AspectDefinition> getDefaultAspects(boolean inherited) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public ClassDefinition getParentClassDefinition() {

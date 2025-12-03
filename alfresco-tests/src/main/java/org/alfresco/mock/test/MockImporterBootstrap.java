@@ -6,6 +6,14 @@ import java.util.Properties;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.extensions.surf.util.AbstractLifecycleBean;
 
+/**
+ * Mock implementation of the MockImporterBootstrap class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockImporterBootstrap extends AbstractLifecycleBean {
 
 	@Override

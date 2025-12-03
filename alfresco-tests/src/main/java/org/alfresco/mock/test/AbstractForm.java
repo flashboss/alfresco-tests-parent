@@ -42,7 +42,14 @@ import org.springframework.test.context.ContextConfiguration;
 import com.tradeshift.test.remote.Remote;
 import com.tradeshift.test.remote.RemoteTestRunner;
 
-
+/**
+ * Abstract base class for form-based tests.
+ * This class provides common functionality for testing Alfresco components
+ * using mock services without requiring a full server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 @RunWith(RemoteTestRunner.class)
 @Remote(runnerClass = ClasspathTestRunner.class)
 @ContextConfiguration("classpath:test-module-context.xml")
