@@ -29,6 +29,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "checkOTP", propOrder = { "credentials" })
+/**
+ * @author vige
+ */
 public class CheckOTP {
 
 	protected Credentials credentials;

@@ -33,6 +33,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "verifyPreferences", propOrder = { "nam", "pdfEncryptionPassword", "verifyOnDate" })
+/**
+ * @author vige
+ */
 public class VerifyPreferences {
 
 	protected boolean nam;

@@ -29,6 +29,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "checkFirstFactor", propOrder = { "credentials" })
+/**
+ * @author vige
+ */
 public class CheckFirstFactor {
 
 	protected Credentials credentials;

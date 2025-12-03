@@ -30,6 +30,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signPAdESRemoteResponse", propOrder = { "_return" })
+/**
+ * @author vige
+ */
 public class SignPAdESRemoteResponse {
 
 	@XmlElement(name = "return")

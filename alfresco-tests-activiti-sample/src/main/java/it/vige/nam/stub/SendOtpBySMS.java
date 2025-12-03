@@ -29,6 +29,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "sendOtpBySMS", propOrder = { "credentials" })
+/**
+ * @author vige
+ */
 public class SendOtpBySMS {
 
 	protected Credentials credentials;

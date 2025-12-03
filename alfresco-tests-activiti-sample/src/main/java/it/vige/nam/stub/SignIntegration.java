@@ -15,6 +15,9 @@ import javax.xml.ws.ResponseWrapper;
  */
 @WebService(targetNamespace = "http://service.ws.nam/", name = "SignIntegration")
 @XmlSeeAlso({ ObjectFactory.class })
+/**
+ * @author vige
+ */
 public interface SignIntegration {
 
 	@WebMethod

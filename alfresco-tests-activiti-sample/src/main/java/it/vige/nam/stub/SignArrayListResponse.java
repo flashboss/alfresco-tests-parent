@@ -33,6 +33,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signArrayListResponse", propOrder = { "_return" })
+/**
+ * @author vige
+ */
 public class SignArrayListResponse {
 
 	@XmlElement(name = "return")

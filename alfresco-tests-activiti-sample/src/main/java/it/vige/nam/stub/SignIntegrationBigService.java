@@ -14,6 +14,9 @@ import javax.xml.ws.WebServiceFeature;
  * 
  */
 @WebServiceClient(name = "SignIntegrationBigService", wsdlLocation = "classpath:wsdl/SignIntegrationBigServices.wsdl", targetNamespace = "http://service.ws.nam/")
+/**
+ * @author vige
+ */
 public class SignIntegrationBigService extends Service {
 
 	public final static URL WSDL_LOCATION;

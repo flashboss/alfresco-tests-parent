@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.Map;
 
+/**
+ * @author vige
+ */
 public class MockWriter extends Writer {
 
 	private Map<String, Object> model;

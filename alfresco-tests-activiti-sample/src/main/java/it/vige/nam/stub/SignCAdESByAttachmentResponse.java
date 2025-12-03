@@ -32,6 +32,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signCAdESByAttachmentResponse", propOrder = { "_return" })
+/**
+ * @author vige
+ */
 public class SignCAdESByAttachmentResponse {
 
 	@XmlElement(name = "return")

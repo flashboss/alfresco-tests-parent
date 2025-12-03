@@ -8,6 +8,9 @@ import org.alfresco.repo.workflow.activiti.ActivitiScriptNode;
 import org.alfresco.repo.workflow.activiti.BaseJavaDelegate;
 import org.mozilla.javascript.NativeArray;
 
+/**
+ * @author vige
+ */
 public class ComplexRaRCleaner extends BaseJavaDelegate {
 
 	@Override

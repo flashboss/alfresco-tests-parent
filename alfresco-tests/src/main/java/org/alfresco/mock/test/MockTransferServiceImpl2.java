@@ -14,6 +14,9 @@ import org.alfresco.service.cmr.transfer.TransferFailureException;
 import org.alfresco.service.cmr.transfer.TransferService2;
 import org.alfresco.service.cmr.transfer.TransferTarget;
 
+/**
+ * @author vige
+ */
 public class MockTransferServiceImpl2 implements TransferService2 {
 
 	@Override

@@ -9,6 +9,9 @@ import org.slf4j.Logger;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.extensions.surf.util.AbstractLifecycleBean;
 
+/**
+ * @author vige
+ */
 public class MockImporterBootstrap extends AbstractLifecycleBean {
 
 	private Logger logger = getLogger(getClass());
