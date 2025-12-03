@@ -30,6 +30,9 @@ import org.alfresco.service.cmr.version.VersionType;
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * @author vige
+ */
 public class NodeUtils {
 
 	public static NodeRef insertFolder(NodeRef parent, String name, FileFolderService fileFolderService) {

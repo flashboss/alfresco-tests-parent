@@ -10,6 +10,9 @@ import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.version.Version;
 import org.alfresco.service.cmr.version.VersionType;
 
+/**
+ * @author vige
+ */
 public class MockVersion implements Version {
 
 	private Map<String, Serializable> versionProperties;

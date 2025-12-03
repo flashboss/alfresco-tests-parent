@@ -35,6 +35,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signPreferences", propOrder = { "hashAlgorithm", "signEngineImpl", "signType", "withTimestamp" })
 @XmlSeeAlso({ CAdESPreferences.class })
+/**
+ * @author vige
+ */
 public class SignPreferences extends TimeStampPreferences {
 
 	protected String hashAlgorithm;

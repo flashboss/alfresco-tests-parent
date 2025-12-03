@@ -14,6 +14,9 @@ import org.springframework.extensions.webscripts.SearchPath;
 import org.springframework.extensions.webscripts.ServerModel;
 import org.springframework.extensions.webscripts.TemplateProcessorRegistry;
 
+/**
+ * @author vige
+ */
 public class MockContainer implements Container {
 
 	private Map<String, Object> templateParameters = new HashMap<String, Object>();

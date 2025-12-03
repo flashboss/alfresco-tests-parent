@@ -43,6 +43,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signerImage", propOrder = { "fieldName", "fontName", "fontSize", "height", "image", "imageFilename",
 		"imageURL", "location", "reason", "signerName", "textVisible", "width", "x", "y" })
+/**
+ * @author vige
+ */
 public class SignerImage {
 
 	protected String fieldName;

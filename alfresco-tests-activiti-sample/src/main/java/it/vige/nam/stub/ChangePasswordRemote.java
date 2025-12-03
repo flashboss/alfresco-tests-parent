@@ -30,6 +30,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "changePasswordRemote", propOrder = { "credentials", "newPassword" })
+/**
+ * @author vige
+ */
 public class ChangePasswordRemote {
 
 	protected Credentials credentials;

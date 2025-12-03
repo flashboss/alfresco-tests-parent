@@ -28,6 +28,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "changePasswordRemoteResponse")
+/**
+ * @author vige
+ */
 public class ChangePasswordRemoteResponse {
 
 }

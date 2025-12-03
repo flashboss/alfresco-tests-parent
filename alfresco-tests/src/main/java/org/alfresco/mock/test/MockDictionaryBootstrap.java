@@ -2,6 +2,9 @@ package org.alfresco.mock.test;
 
 import org.alfresco.repo.dictionary.DictionaryListener;
 
+/**
+ * @author vige
+ */
 public class MockDictionaryBootstrap implements DictionaryListener {
 
 	@Override
