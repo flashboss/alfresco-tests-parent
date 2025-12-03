@@ -6,6 +6,13 @@ import java.util.List;
 import org.alfresco.query.PagingResults;
 import org.alfresco.util.Pair;
 
+/**
+ * Mock implementation of PagingResults for testing purposes.
+ * Wraps a list of items for paginated queries.
+ * 
+ * @param <R> the type of items in the results
+ * @author vige
+ */
 public class MockPagingResults<R> implements PagingResults<R>, Serializable {
 
 	private List<R> files;

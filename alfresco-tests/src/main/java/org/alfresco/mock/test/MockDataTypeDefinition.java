@@ -8,6 +8,12 @@ import org.alfresco.service.cmr.dictionary.ModelDefinition;
 import org.alfresco.service.cmr.i18n.MessageLookup;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of DataTypeDefinition for testing purposes.
+ * Provides data type definition stub.
+ * 
+ * @author vige
+ */
 public class MockDataTypeDefinition implements DataTypeDefinition, Serializable {
 
 	@Override

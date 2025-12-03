@@ -7,6 +7,12 @@ import java.util.Collection;
 import org.alfresco.service.cmr.version.Version;
 import org.alfresco.service.cmr.version.VersionHistory;
 
+/**
+ * Mock implementation of VersionHistory for testing purposes.
+ * Maintains a collection of versions for a document.
+ * 
+ * @author vige
+ */
 public class MockVersionHistory implements VersionHistory, Serializable {
 
 	private Collection<Version> versions = new ArrayList<Version>();
