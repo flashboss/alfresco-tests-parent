@@ -23,6 +23,11 @@ import org.junit.Assert;
 import it.vige.activiti.ComplexAbstractForm;
 import it.vige.common.SignConstants;
 
+/**
+ * WorkflowNotHumanTest implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class WorkflowNotHumanTest extends ComplexAbstractForm {
 
 	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/ComplexRaRProcess.bpmn" })

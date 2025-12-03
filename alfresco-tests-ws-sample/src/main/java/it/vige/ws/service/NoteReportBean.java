@@ -1,5 +1,10 @@
 package it.vige.ws.service;
 
+/**
+ * NoteReportBean implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class NoteReportBean {
 
 	public int getType() {

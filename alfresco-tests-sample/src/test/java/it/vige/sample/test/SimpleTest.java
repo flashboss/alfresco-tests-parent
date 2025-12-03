@@ -31,6 +31,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import it.vige.sample.BackupAction;
 
+/**
+ * SimpleTest implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class SimpleTest extends AbstractForm {
 
 	@Autowired

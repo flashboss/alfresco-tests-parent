@@ -30,6 +30,11 @@ import org.mozilla.javascript.NativeArray;
 
 import it.vige.common.ConservationModel;
 
+/**
+ * ComplexIRaRGeneration implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class ComplexIRaRGeneration extends BaseJavaDelegate {
 
 	private static Log logger = LogFactory.getLog(ComplexIRaRGeneration.class);

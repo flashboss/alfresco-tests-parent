@@ -32,6 +32,11 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 import it.vige.ws.PreviousWSSample;
 import it.vige.ws.WSSampleModel;
 
+/**
+ * PreviousWSSampleTest implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class PreviousWSSampleTest extends AbstractWSForm {
 
 	private final static String FOLDER_WSSAMPLE = "WSSAMPLE-20157726";

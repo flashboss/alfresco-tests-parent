@@ -72,6 +72,11 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 
+/**
+ * Mock implementation of MockServiceRegistry for testing purposes.
+ *
+ * @author vige
+ */
 public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, Serializable {
 
 	private NodeService nodeService;

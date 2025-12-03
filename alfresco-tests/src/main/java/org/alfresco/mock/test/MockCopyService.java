@@ -16,6 +16,11 @@ import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of MockCopyService for testing purposes.
+ *
+ * @author vige
+ */
 public class MockCopyService implements CopyService, Serializable {
 
 	@Autowired

@@ -12,6 +12,11 @@ import org.alfresco.service.cmr.search.CategoryService;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.util.Pair;
 
+/**
+ * Mock implementation of MockCategoryService for testing purposes.
+ *
+ * @author vige
+ */
 public class MockCategoryService implements CategoryService {
 
 	@Override

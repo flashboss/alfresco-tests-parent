@@ -2,6 +2,11 @@ package it.vige.ws.dom;
 
 import org.joda.time.DateTime;
 
+/**
+ * DocVigeWS implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class DocVigeWS {
 
     private String idPratica;

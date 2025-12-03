@@ -1,5 +1,10 @@
 package it.vige.ws.bean;
 
+/**
+ * Signer implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class Signer {
 
 	private String username;

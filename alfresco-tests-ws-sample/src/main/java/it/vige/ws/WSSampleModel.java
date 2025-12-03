@@ -2,6 +2,11 @@ package it.vige.ws;
 
 import org.alfresco.service.namespace.QName;
 
+/**
+ * WSSampleModel implementation for testing purposes.
+ *
+ * @author vige
+ */
 public interface WSSampleModel {
 
 	String PBPDV_NAMESPACE = "http://www.vige.it/pb/conservation/model/1.0";

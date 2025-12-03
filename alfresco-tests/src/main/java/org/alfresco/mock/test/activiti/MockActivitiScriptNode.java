@@ -7,6 +7,11 @@ import org.alfresco.service.cmr.repository.NodeRef;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 
+/**
+ * Mock implementation of MockActivitiScriptNode for testing purposes.
+ *
+ * @author vige
+ */
 public class MockActivitiScriptNode extends ActivitiScriptNode {
 
 	public MockActivitiScriptNode(NodeRef nodeRef, ServiceRegistry services) {

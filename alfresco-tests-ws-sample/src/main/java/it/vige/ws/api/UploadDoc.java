@@ -40,6 +40,11 @@ import it.vige.ws.service.SignService;
 import it.vige.ws.service.NoteReportBean;
 import it.vige.ws.service.SignedDocumentReportBean;
 
+/**
+ * UploadDoc implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class UploadDoc extends DeclarativeWebScript {
 
 	private Logger logger = Logger.getLogger(UploadDoc.class);

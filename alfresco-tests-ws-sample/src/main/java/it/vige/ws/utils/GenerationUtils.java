@@ -32,6 +32,11 @@ import org.json.simple.JSONObject;
 
 import it.vige.ws.dom.VigeWSContentModel;
 
+/**
+ * GenerationUtils implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class GenerationUtils {
 
 	private Logger logger = Logger.getLogger(GenerationUtils.class);

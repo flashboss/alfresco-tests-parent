@@ -5,6 +5,11 @@ import org.alfresco.repo.workflow.activiti.BaseJavaDelegate;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+/**
+ * ComplexIRaRLabeling implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class ComplexIRaRLabeling extends BaseJavaDelegate {
 
 	private static Log logger = LogFactory.getLog(ComplexIRaRLabeling.class);

@@ -19,6 +19,11 @@ import org.subethamail.smtp.RejectException;
  * @author lucastancapiano
  *
  */
+/**
+ * Mock implementation of MockMessageHandlerFactory for testing purposes.
+ *
+ * @author vige
+ */
 public class MockMessageHandlerFactory implements MessageHandlerFactory {
 
 	private Logger logger = getLogger(getClass());

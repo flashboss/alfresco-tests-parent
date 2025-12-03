@@ -12,6 +12,11 @@ import org.apache.commons.io.IOUtils;
 
 import it.vige.common.SignConstants;
 
+/**
+ * SignService implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class SignService {
 
 	private ContentService contentService;

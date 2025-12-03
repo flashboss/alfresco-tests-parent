@@ -40,6 +40,11 @@ import it.vige.ws.dom.VigeWSContentModel;
 import it.vige.ws.service.SignService;
 import it.vige.ws.utils.GenerationUtils;
 
+/**
+ * SignPDFGeneration implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class SignPDFGeneration extends DeclarativeWebScript {
 
 	private FileFolderService fileFolderService;

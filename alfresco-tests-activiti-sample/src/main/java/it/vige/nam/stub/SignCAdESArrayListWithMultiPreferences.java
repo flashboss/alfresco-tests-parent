@@ -36,6 +36,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signCAdESArrayListWithMultiPreferences", propOrder = { "credentials", "bufferList",
 		"cAdESPreferences" })
+/**
+ * SignCAdESArrayListWithMultiPreferences implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class SignCAdESArrayListWithMultiPreferences {
 
 	protected Credentials credentials;

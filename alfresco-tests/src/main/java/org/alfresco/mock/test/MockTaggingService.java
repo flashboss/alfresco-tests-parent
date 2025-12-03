@@ -10,6 +10,11 @@ import org.alfresco.service.cmr.tagging.TagScope;
 import org.alfresco.service.cmr.tagging.TaggingService;
 import org.alfresco.util.Pair;
 
+/**
+ * Mock implementation of MockTaggingService for testing purposes.
+ *
+ * @author vige
+ */
 public class MockTaggingService implements TaggingService{
 
 	@Override

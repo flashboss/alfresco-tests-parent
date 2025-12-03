@@ -17,6 +17,11 @@ import org.alfresco.service.cmr.dictionary.PropertyDefinition;
 import org.alfresco.service.cmr.dictionary.TypeDefinition;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of MockDictionaryService for testing purposes.
+ *
+ * @author vige
+ */
 public class MockDictionaryService implements DictionaryService, Serializable {
 
 	@Override

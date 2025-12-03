@@ -46,6 +46,11 @@ import org.springframework.extensions.webscripts.WebScriptResponse;
 
 import it.vige.ws.utils.OpenDataCommand;
 
+/**
+ * NodeListDownloadWebScript implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class NodeListDownloadWebScript extends DeclarativeWebScript
 // implements InitializingBean
 {

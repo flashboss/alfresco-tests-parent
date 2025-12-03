@@ -27,6 +27,11 @@ import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
 import org.apache.commons.io.FileUtils;
 
+/**
+ * Mock implementation of MockHttpServletRequest for testing purposes.
+ *
+ * @author vige
+ */
 public class MockHttpServletRequest implements HttpServletRequest {
 
 	private byte[] buffer = new byte[0];

@@ -5,6 +5,11 @@ import java.io.InputStream;
 
 import org.apache.log4j.Logger;
 
+/**
+ * SignService implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class SignService {
 
 	private final Logger logger = Logger.getLogger(SignService.class);

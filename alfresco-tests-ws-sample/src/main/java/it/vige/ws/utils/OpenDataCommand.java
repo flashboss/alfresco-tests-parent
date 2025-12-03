@@ -5,6 +5,11 @@ import org.alfresco.service.cmr.repository.NodeService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+/**
+ * OpenDataCommand implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class OpenDataCommand {
 
 	private static Log logger = LogFactory.getLog(OpenDataCommand.class);

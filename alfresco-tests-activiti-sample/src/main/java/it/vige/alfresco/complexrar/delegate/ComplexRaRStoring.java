@@ -21,6 +21,11 @@ import org.apache.commons.logging.LogFactory;
 import it.vige.common.ConservationModel;
 import it.vige.common.SignConstants;
 
+/**
+ * ComplexRaRStoring implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class ComplexRaRStoring extends ComplexRaRGeneration {
 
 	private static Log logger = LogFactory.getLog(ComplexRaRStoring.class);

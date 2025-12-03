@@ -2,6 +2,11 @@ package it.vige.ws.dom;
 
 import org.alfresco.service.namespace.QName;
 
+/**
+ * VigeWSContentModel implementation for testing purposes.
+ *
+ * @author vige
+ */
 public abstract class VigeWSContentModel {
 
     private VigeWSContentModel() { }

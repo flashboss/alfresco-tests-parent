@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 import org.alfresco.repo.jscript.ScriptUtils;
 
+/**
+ * Mock implementation of MockUtils for testing purposes.
+ *
+ * @author vige
+ */
 public class MockUtils extends ScriptUtils implements Serializable {
 
 }

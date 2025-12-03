@@ -2,6 +2,11 @@ package it.vige.common;
 
 import org.alfresco.service.namespace.QName;
 
+/**
+ * ConservationModel implementation for testing purposes.
+ *
+ * @author vige
+ */
 public interface ConservationModel {
 	static final String VIGE_CONSERVATION_URI = "http://www.vige.it/model/content/conservation/1.0";
 	static final QName ASPECT_HASHABLE = QName.createQName(VIGE_CONSERVATION_URI, "hashable");

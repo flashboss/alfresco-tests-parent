@@ -35,6 +35,11 @@ import org.junit.Assert;
 
 import it.vige.activiti.SimpleModel;
 
+/**
+ * SimpleActivitiTest implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class SimpleActivitiTest extends AbstractActivitiForm {
 
 	public final static String CONTRIBUTORS = "contributors";

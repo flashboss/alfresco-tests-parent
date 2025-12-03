@@ -17,6 +17,11 @@ import org.alfresco.service.namespace.NamespaceService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+/**
+ * Generation implementation for testing purposes.
+ *
+ * @author vige
+ */
 public class Generation extends BaseJavaDelegate {
 
 	private static Log logger = LogFactory.getLog(Generation.class);
