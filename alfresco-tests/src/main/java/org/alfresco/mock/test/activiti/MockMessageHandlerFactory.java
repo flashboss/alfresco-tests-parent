@@ -23,6 +23,12 @@ public class MockMessageHandlerFactory implements MessageHandlerFactory {
 
 	private Logger logger = getLogger(getClass());
 
+	/**
+	 * Creates a new message handler.
+	 *
+	 * @param ctx the message context
+	 * @return the message handler
+	 */
 	public MessageHandler create(MessageContext ctx) {
 		return new Handler(ctx);
 	}
@@ -36,26 +42,41 @@ public class MockMessageHandlerFactory implements MessageHandlerFactory {
 	class Handler implements MessageHandler {
 		MessageContext ctx;
 
+		/**
+		 * Constructs a new Handler instance.
+		 *
+		 * @param ctx the message context
+		 */
 		public Handler(MessageContext ctx) {
 			this.ctx = ctx;
 		}
 
 		/**
-		 * Prints the from mail
+		 * Prints the from mail.
+		 *
+		 * @param from the from address
+		 * @throws RejectException if an error occurs
 		 */
 		public void from(String from) throws RejectException {
 			logger.info("FROM:" + from);
 		}
 
 		/**
-		 * Prints the recipient mail
+		 * Prints the recipient mail.
+		 *
+		 * @param recipient the recipient address
+		 * @throws RejectException if an error occurs
 		 */
 		public void recipient(String recipient) throws RejectException {
 			logger.info("RECIPIENT:" + recipient);
 		}
 
 		/**
-		 * Prints the body of the message
+		 * Prints the body of the message.
+		 *
+		 * @param data the data input stream
+		 * @return the message content as string
+		 * @throws IOException if an error occurs
 		 */
 		public String data(InputStream data) throws IOException {
 			String result = this.convertStreamToString(data);
@@ -67,7 +88,7 @@ public class MockMessageHandlerFactory implements MessageHandlerFactory {
 		}
 
 		/**
-		 * Prints if the message is created
+		 * Prints if the message is created.
 		 */
 		public void done() {
 			logger.info("Finished");

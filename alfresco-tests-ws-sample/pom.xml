@@ -3,14 +3,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>it.vige</groupId>
+        <artifactId>alfresco-tests-parent</artifactId>
+		<version>23.2.1.9</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests-ws-sample</artifactId>
 	<name>Alfresco Tests ws sample</name>
-	<version>23.2.1.8</version>
-	<description>Simple JAR sample for tests</description>
-	<prerequisites>
-		<maven>3.8.0</maven>
-	</prerequisites>
+    <description>Simple JAR sample for tests</description>
     <properties>
         <!-- Alfresco Maven Plugin version to use -->
         <alfresco.sdk.version>4.8.0</alfresco.sdk.version>

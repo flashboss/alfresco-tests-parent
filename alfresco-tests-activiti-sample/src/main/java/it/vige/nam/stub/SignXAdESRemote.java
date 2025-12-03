@@ -1,4 +1,3 @@
-
 package it.vige.nam.stub;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -7,13 +6,10 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per signXAdESRemote complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="signXAdESRemote"&gt;
  *   &lt;complexContent&gt;
@@ -27,74 +23,73 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signXAdESRemote", propOrder = { "credentials", "buffer", "xAdESPreferences" })
+@XmlType(
+    name = "signXAdESRemote",
+    propOrder = {"credentials", "buffer", "xAdESPreferences"})
 public class SignXAdESRemote {
 
-	protected Credentials credentials;
-	protected byte[] buffer;
-	@XmlElement(name = "XAdESPreferences")
-	protected XAdESPreferences xAdESPreferences;
+  /** The credentials. */
+  protected Credentials credentials;
 
-	/**
-	 * Recupera il valore della proprietà credentials.
-	 * 
-	 * @return possible object is {@link Credentials }
-	 * 
-	 */
-	public Credentials getCredentials() {
-		return credentials;
-	}
+  protected byte[] buffer;
 
-	/**
-	 * Imposta il valore della proprietà credentials.
-	 * 
-	 * @param value allowed object is {@link Credentials }
-	 * 
-	 */
-	public void setCredentials(Credentials value) {
-		this.credentials = value;
-	}
+  @XmlElement(name = "XAdESPreferences")
+  /** The x ad es preferences. */
+  protected XAdESPreferences xAdESPreferences;
 
-	/**
-	 * Recupera il valore della proprietà buffer.
-	 * 
-	 * @return possible object is byte[]
-	 */
-	public byte[] getBuffer() {
-		return buffer;
-	}
+  /**
+   * Recupera il valore della proprietà credentials.
+   *
+   * @return possible object is {@link Credentials }
+   */
+  public Credentials getCredentials() {
+    return credentials;
+  }
 
-	/**
-	 * Imposta il valore della proprietà buffer.
-	 * 
-	 * @param value allowed object is byte[]
-	 */
-	public void setBuffer(byte[] value) {
-		this.buffer = value;
-	}
+  /**
+   * Imposta il valore della proprietà credentials.
+   *
+   * @param value allowed object is {@link Credentials }
+   */
+  public void setCredentials(Credentials value) {
+    this.credentials = value;
+  }
 
-	/**
-	 * Recupera il valore della proprietà xAdESPreferences.
-	 * 
-	 * @return possible object is {@link XAdESPreferences }
-	 * 
-	 */
-	public XAdESPreferences getXAdESPreferences() {
-		return xAdESPreferences;
-	}
+  /**
+   * Recupera il valore della proprietà buffer.
+   *
+   * @return possible object is byte[]
+   */
+  public byte[] getBuffer() {
+    return buffer;
+  }
 
-	/**
-	 * Imposta il valore della proprietà xAdESPreferences.
-	 * 
-	 * @param value allowed object is {@link XAdESPreferences }
-	 * 
-	 */
-	public void setXAdESPreferences(XAdESPreferences value) {
-		this.xAdESPreferences = value;
-	}
+  /**
+   * Imposta il valore della proprietà buffer.
+   *
+   * @param value allowed object is byte[]
+   */
+  public void setBuffer(byte[] value) {
+    this.buffer = value;
+  }
 
+  /**
+   * Recupera il valore della proprietà xAdESPreferences.
+   *
+   * @return possible object is {@link XAdESPreferences }
+   */
+  public XAdESPreferences getXAdESPreferences() {
+    return xAdESPreferences;
+  }
+
+  /**
+   * Imposta il valore della proprietà xAdESPreferences.
+   *
+   * @param value allowed object is {@link XAdESPreferences }
+   */
+  public void setXAdESPreferences(XAdESPreferences value) {
+    this.xAdESPreferences = value;
+  }
 }

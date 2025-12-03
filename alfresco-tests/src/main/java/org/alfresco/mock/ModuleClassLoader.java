@@ -9,45 +9,69 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import org.slf4j.Logger;
 
+/**
+ * Mock implementation of the ModuleClassLoader class for testing purposes. This class provides a
+ * mock implementation that allows unit and integration tests to run without requiring a full
+ * Alfresco server instance.
+ *
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class ModuleClassLoader extends ClassLoader {
 
-    private static final String SEPARATOR = "/";
-    private static final String MODULE_PATH = "target/classes/alfresco/module";
-    private static final String MODULE_PATH_TEST = "target/test-classes/alfresco/module";
+  private static final String SEPARATOR = "/";
+  private static final String MODULE_PATH = "target/classes/alfresco/module";
+  private static final String MODULE_PATH_TEST = "target/test-classes/alfresco/module";
 
-    private Logger logger = getLogger(getClass());
+  private Logger logger = getLogger(getClass());
 
-    public ModuleClassLoader() {
-        super(currentThread()
-                .getContextClassLoader());
+  /** Constructs a new ModuleClassLoader instance. */
+  public ModuleClassLoader() {
+    super(currentThread().getContextClassLoader());
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @param name the name
+   * @return the result
+   */
+  @Override
+  public URL getResource(String name) {
+    URL url = super.getResource(name);
+    if (url == null && name != null && !name.contains(SEPARATOR)) {
+      url = find(MODULE_PATH_TEST, name);
+      if (url == null) url = find(MODULE_PATH, name);
     }
+    return url;
+  }
 
-    @Override
-    public URL getResource(String name) {
-        URL url = super.getResource(name);
-        if (url == null && name != null && !name.contains(SEPARATOR)) {
-            url = find(MODULE_PATH_TEST, name);
-            if (url == null)
-                url = find(MODULE_PATH, name);
-        }
-        return url;
+  /**
+   * Performs find.
+   *
+   * @param modulePath the modulePath
+   * @param searchTerm the searchTerm
+   * @return the result
+   */
+  public URL find(String modulePath, String searchTerm) {
+    URL pathResult = null;
+    URI directoryPath = new File(modulePath).toURI();
+    try {
+      Path pathRoot = Paths.get(directoryPath);
+      pathResult =
+          Files.find(
+                  pathRoot,
+                  Integer.MAX_VALUE,
+                  (path, attr) -> path.getFileName().toString().contains(searchTerm))
+              .findFirst()
+              .orElse(null)
+              .toUri()
+              .toURL();
+    } catch (Exception e) {
+      logger.warn(searchTerm + " not found in " + modulePath);
     }
-
-    public URL find(String modulePath, String searchTerm) {
-        URL pathResult = null;
-        URI directoryPath = new File(modulePath).toURI();
-        try {
-            Path pathRoot = Paths.get(directoryPath);
-            pathResult = Files.find(pathRoot, Integer.MAX_VALUE,
-                    (path, attr) -> path.getFileName().toString().contains(searchTerm))
-                    .findFirst()
-                    .orElse(null).toUri().toURL();
-        } catch (Exception e) {
-            logger.warn(searchTerm + " not found in " + modulePath);
-        }
-        return pathResult;
-    }
+    return pathResult;
+  }
 }

@@ -1,4 +1,3 @@
-
 package it.vige.nam.stub;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -6,13 +5,10 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per verify complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="verify"&gt;
  *   &lt;complexContent&gt;
@@ -24,31 +20,30 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "verify", propOrder = { "signedContent" })
+@XmlType(
+    name = "verify",
+    propOrder = {"signedContent"})
 public class Verify {
 
-	protected byte[] signedContent;
+  protected byte[] signedContent;
 
-	/**
-	 * Recupera il valore della proprietà signedContent.
-	 * 
-	 * @return possible object is byte[]
-	 */
-	public byte[] getSignedContent() {
-		return signedContent;
-	}
+  /**
+   * Recupera il valore della proprietà signedContent.
+   *
+   * @return possible object is byte[]
+   */
+  public byte[] getSignedContent() {
+    return signedContent;
+  }
 
-	/**
-	 * Imposta il valore della proprietà signedContent.
-	 * 
-	 * @param value allowed object is byte[]
-	 */
-	public void setSignedContent(byte[] value) {
-		this.signedContent = value;
-	}
-
+  /**
+   * Imposta il valore della proprietà signedContent.
+   *
+   * @param value allowed object is byte[]
+   */
+  public void setSignedContent(byte[] value) {
+    this.signedContent = value;
+  }
 }

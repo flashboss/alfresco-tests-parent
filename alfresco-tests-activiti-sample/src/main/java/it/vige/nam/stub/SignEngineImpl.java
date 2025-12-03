@@ -1,18 +1,15 @@
-
 package it.vige.nam.stub;
 
 import jakarta.xml.bind.annotation.XmlEnum;
 import jakarta.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per signEngineImpl.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * <p>
- * 
+ *
  * <pre>
  * &lt;simpleType name="signEngineImpl"&gt;
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
@@ -22,20 +19,19 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;/restriction&gt;
  * &lt;/simpleType&gt;
  * </pre>
- * 
  */
 @XmlType(name = "signEngineImpl")
 @XmlEnum
 public enum SignEngineImpl {
+  LOCAL,
+  STATIC,
+  DYNAMIC;
 
-	LOCAL, STATIC, DYNAMIC;
+  public String value() {
+    return name();
+  }
 
-	public String value() {
-		return name();
-	}
-
-	public static SignEngineImpl fromValue(String v) {
-		return valueOf(v);
-	}
-
+  public static SignEngineImpl fromValue(String v) {
+    return valueOf(v);
+  }
 }

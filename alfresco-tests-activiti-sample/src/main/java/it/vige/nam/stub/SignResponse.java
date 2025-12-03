@@ -1,4 +1,3 @@
-
 package it.vige.nam.stub;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -7,13 +6,10 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per signResponse complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="signResponse"&gt;
  *   &lt;complexContent&gt;
@@ -25,32 +21,31 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signResponse", propOrder = { "_return" })
+@XmlType(
+    name = "signResponse",
+    propOrder = {"_return"})
 public class SignResponse {
 
-	@XmlElement(name = "return")
-	protected byte[] _return;
+  @XmlElement(name = "return")
+  protected byte[] _return;
 
-	/**
-	 * Recupera il valore della proprietà return.
-	 * 
-	 * @return possible object is byte[]
-	 */
-	public byte[] getReturn() {
-		return _return;
-	}
+  /**
+   * Recupera il valore della proprietà return.
+   *
+   * @return possible object is byte[]
+   */
+  public byte[] getReturn() {
+    return _return;
+  }
 
-	/**
-	 * Imposta il valore della proprietà return.
-	 * 
-	 * @param value allowed object is byte[]
-	 */
-	public void setReturn(byte[] value) {
-		this._return = value;
-	}
-
+  /**
+   * Imposta il valore della proprietà return.
+   *
+   * @param value allowed object is byte[]
+   */
+  public void setReturn(byte[] value) {
+    this._return = value;
+  }
 }

@@ -1,4 +1,3 @@
-
 package it.vige.nam.stub;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -6,13 +5,10 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per checkOTP complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="checkOTP"&gt;
  *   &lt;complexContent&gt;
@@ -24,33 +20,31 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "checkOTP", propOrder = { "credentials" })
+@XmlType(
+    name = "checkOTP",
+    propOrder = {"credentials"})
 public class CheckOTP {
 
-	protected Credentials credentials;
+  /** The credentials. */
+  protected Credentials credentials;
 
-	/**
-	 * Recupera il valore della proprietà credentials.
-	 * 
-	 * @return possible object is {@link Credentials }
-	 * 
-	 */
-	public Credentials getCredentials() {
-		return credentials;
-	}
+  /**
+   * Recupera il valore della proprietà credentials.
+   *
+   * @return possible object is {@link Credentials }
+   */
+  public Credentials getCredentials() {
+    return credentials;
+  }
 
-	/**
-	 * Imposta il valore della proprietà credentials.
-	 * 
-	 * @param value allowed object is {@link Credentials }
-	 * 
-	 */
-	public void setCredentials(Credentials value) {
-		this.credentials = value;
-	}
-
+  /**
+   * Imposta il valore della proprietà credentials.
+   *
+   * @param value allowed object is {@link Credentials }
+   */
+  public void setCredentials(Credentials value) {
+    this.credentials = value;
+  }
 }

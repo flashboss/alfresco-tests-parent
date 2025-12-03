@@ -1,22 +1,21 @@
-
 package it.vige.nam.stub;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(
+    name = "signCAdESArrayList",
+    propOrder = {"username", "password", "bufferList", "cAdESPreferences"})
 /**
- * <p>
  * Classe Java per signCAdESArrayList complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="signCAdESArrayList"&gt;
  *   &lt;complexContent&gt;
@@ -31,105 +30,96 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signCAdESArrayList", propOrder = { "username", "password", "bufferList", "cAdESPreferences" })
 public class SignCAdESArrayList {
 
-	protected String username;
-	protected String password;
-	protected List<byte[]> bufferList;
-	@XmlElement(name = "CAdESPreferences")
-	protected CAdESPreferences cAdESPreferences;
+  /** The username. */
+  protected String username;
 
-	/**
-	 * Recupera il valore della proprietà username.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getUsername() {
-		return username;
-	}
+  /** The password. */
+  protected String password;
 
-	/**
-	 * Imposta il valore della proprietà username.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setUsername(String value) {
-		this.username = value;
-	}
+  protected List<byte[]> bufferList;
 
-	/**
-	 * Recupera il valore della proprietà password.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getPassword() {
-		return password;
-	}
+  @XmlElement(name = "CAdESPreferences")
+  /** The c ad es preferences. */
+  protected CAdESPreferences cAdESPreferences;
 
-	/**
-	 * Imposta il valore della proprietà password.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setPassword(String value) {
-		this.password = value;
-	}
+  /**
+   * Recupera il valore della proprietà username.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getUsername() {
+    return username;
+  }
 
-	/**
-	 * Gets the value of the bufferList property.
-	 * 
-	 * <p>
-	 * This accessor method returns a reference to the live list, not a snapshot.
-	 * Therefore any modification you make to the returned list will be present
-	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
-	 * for the bufferList property.
-	 * 
-	 * <p>
-	 * For example, to add a new item, do as follows:
-	 * 
-	 * <pre>
-	 * getBufferList().add(newItem);
-	 * </pre>
-	 * 
-	 * 
-	 * <p>
-	 * Objects of the following type(s) are allowed in the list byte[]
-	 * 
-	 */
-	public List<byte[]> getBufferList() {
-		if (bufferList == null) {
-			bufferList = new ArrayList<byte[]>();
-		}
-		return this.bufferList;
-	}
+  /**
+   * Imposta il valore della proprietà username.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setUsername(String value) {
+    this.username = value;
+  }
 
-	/**
-	 * Recupera il valore della proprietà cAdESPreferences.
-	 * 
-	 * @return possible object is {@link CAdESPreferences }
-	 * 
-	 */
-	public CAdESPreferences getCAdESPreferences() {
-		return cAdESPreferences;
-	}
+  /**
+   * Recupera il valore della proprietà password.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getPassword() {
+    return password;
+  }
 
-	/**
-	 * Imposta il valore della proprietà cAdESPreferences.
-	 * 
-	 * @param value allowed object is {@link CAdESPreferences }
-	 * 
-	 */
-	public void setCAdESPreferences(CAdESPreferences value) {
-		this.cAdESPreferences = value;
-	}
+  /**
+   * Imposta il valore della proprietà password.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setPassword(String value) {
+    this.password = value;
+  }
 
+  /**
+   * Gets the value of the bufferList property.
+   *
+   * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any
+   * modification you make to the returned list will be present inside the JAXB object. This is why
+   * there is not a <CODE>set</CODE> method for the bufferList property.
+   *
+   * <p>For example, to add a new item, do as follows:
+   *
+   * <pre>
+   * getBufferList().add(newItem);
+   * </pre>
+   *
+   * <p>Objects of the following type(s) are allowed in the list byte[]
+   *
+   * @return the result
+   */
+  public List<byte[]> getBufferList() {
+    if (bufferList == null) {
+      bufferList = new ArrayList<byte[]>();
+    }
+    return this.bufferList;
+  }
+
+  /**
+   * Recupera il valore della proprietà cAdESPreferences.
+   *
+   * @return possible object is {@link CAdESPreferences }
+   */
+  public CAdESPreferences getCAdESPreferences() {
+    return cAdESPreferences;
+  }
+
+  /**
+   * Imposta il valore della proprietà cAdESPreferences.
+   *
+   * @param value allowed object is {@link CAdESPreferences }
+   */
+  public void setCAdESPreferences(CAdESPreferences value) {
+    this.cAdESPreferences = value;
+  }
 }
