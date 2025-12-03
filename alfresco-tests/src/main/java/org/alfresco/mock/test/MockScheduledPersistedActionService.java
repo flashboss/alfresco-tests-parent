@@ -8,6 +8,9 @@ import org.alfresco.service.cmr.action.scheduled.ScheduledPersistedActionService
 import org.alfresco.service.cmr.repository.NodeRef;
 
 /**
+ * Mock implementation of the Alfresco ScheduledPersistedActionService for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
  * @author vige
  */
 public class MockScheduledPersistedActionService implements ScheduledPersistedActionService {

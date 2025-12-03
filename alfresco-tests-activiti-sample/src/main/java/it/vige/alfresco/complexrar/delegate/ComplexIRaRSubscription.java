@@ -9,6 +9,8 @@ import org.apache.commons.logging.LogFactory;
 import it.vige.activiti.service.SignService;
 
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class ComplexIRaRSubscription extends BaseJavaDelegate {

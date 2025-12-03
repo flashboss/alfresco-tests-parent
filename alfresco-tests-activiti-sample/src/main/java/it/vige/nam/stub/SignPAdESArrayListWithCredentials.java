@@ -36,6 +36,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signPAdESArrayListWithCredentials", propOrder = { "credentials", "bufferList", "pAdESPreferences" })
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class SignPAdESArrayListWithCredentials {

@@ -49,6 +49,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 		"hashAlgorithm", "index", "issuer", "serialNumber", "signatureAlgorithm", "signatureVerificationStatus",
 		"timestampCertData", "timestampCertificateStatus", "trustedListVerificationStatus" })
 /**
+ * Bean class for data transfer.
+ * 
  * @author vige
  */
 public class TimestampReportBean {

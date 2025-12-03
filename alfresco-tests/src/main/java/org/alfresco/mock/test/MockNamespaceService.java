@@ -11,6 +11,9 @@ import org.alfresco.service.namespace.NamespaceException;
 import org.alfresco.service.namespace.NamespaceService;
 
 /**
+ * Mock implementation of the Alfresco NamespaceService for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
  * @author vige
  */
 public class MockNamespaceService implements NamespaceService, Serializable {

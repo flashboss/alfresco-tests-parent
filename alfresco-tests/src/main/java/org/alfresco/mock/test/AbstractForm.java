@@ -47,6 +47,8 @@ import com.tradeshift.test.remote.RemoteTestRunner;
 @Remote(runnerClass = ClasspathTestRunner.class)
 @ContextConfiguration("classpath:test-module-context.xml")
 /**
+ * Abstract base class providing common functionality for tests.
+ * 
  * @author vige
  */
 public abstract class AbstractForm {
