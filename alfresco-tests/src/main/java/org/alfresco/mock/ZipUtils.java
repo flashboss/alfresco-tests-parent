@@ -145,7 +145,7 @@ public class ZipUtils {
 	public static NodeRef insertZip(NodeRef parent, String zipName, String entryName, String text,
 			Map<QName, Serializable> properties, ServiceRegistry serviceRegistry)
 			throws IOException {
-		NodeService nodeService = serviceRegistry.getNodeService(); 
+		NodeService nodeService = serviceRegistry.getNodeService();
 		ContentService contentService = serviceRegistry.getContentService();
 		QName type = null;
 		if (properties != null)

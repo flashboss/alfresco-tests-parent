@@ -33,7 +33,7 @@ public class ClasspathTestRunner extends SpringJUnit4ClassRunner {
     try {
       // Only load once to support parallel tests
       if (customClassLoader == null) {
-        
+
         customClassLoader = new ModuleClassLoader();
       }
       return forName(clazz.getName(), true, customClassLoader);

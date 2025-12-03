@@ -183,7 +183,7 @@ public class MockCategoryService implements CategoryService {
 	@Override
 	public void deleteClassification(StoreRef storeRef, QName aspectName) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -193,7 +193,7 @@ public class MockCategoryService implements CategoryService {
 	@Override
 	public void deleteCategory(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**

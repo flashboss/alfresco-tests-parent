@@ -97,7 +97,7 @@ public class MockPersonService implements PersonService, Serializable {
 	@Override
 	public void setCreateMissingPeople(boolean createMissing) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -117,7 +117,7 @@ public class MockPersonService implements PersonService, Serializable {
 	@Override
 	public void setPersonProperties(String userName, Map<QName, Serializable> properties) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -127,7 +127,7 @@ public class MockPersonService implements PersonService, Serializable {
 	public void setPersonProperties(String userName, Map<QName, Serializable> properties,
 			boolean autoCreateHomeFolder) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -169,7 +169,7 @@ public class MockPersonService implements PersonService, Serializable {
 	@Override
 	public void notifyPerson(String userName, String password) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -179,7 +179,7 @@ public class MockPersonService implements PersonService, Serializable {
 	@Override
 	public void deletePerson(String userName) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -189,7 +189,7 @@ public class MockPersonService implements PersonService, Serializable {
 	@Override
 	public void deletePerson(NodeRef personRef) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -200,7 +200,7 @@ public class MockPersonService implements PersonService, Serializable {
 	@Override
 	public void deletePerson(NodeRef personRef, boolean deleteAuthentication) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**

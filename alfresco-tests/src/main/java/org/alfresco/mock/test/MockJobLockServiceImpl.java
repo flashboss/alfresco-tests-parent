@@ -21,7 +21,7 @@ public class MockJobLockServiceImpl implements JobLockService {
 	@Override
 	public void getTransactionalLock(QName lockQName, long timeToLive) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -34,7 +34,7 @@ public class MockJobLockServiceImpl implements JobLockService {
 	@Override
 	public void getTransactionalLock(QName lockQName, long timeToLive, long retryWait, int retryCount) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -85,7 +85,7 @@ public class MockJobLockServiceImpl implements JobLockService {
 	@Override
 	public void refreshLock(String lockToken, QName lockQName, long timeToLive) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -98,7 +98,7 @@ public class MockJobLockServiceImpl implements JobLockService {
 	@Override
 	public void refreshLock(String lockToken, QName lockQName, long timeToLive, JobLockRefreshCallback callback) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -109,7 +109,7 @@ public class MockJobLockServiceImpl implements JobLockService {
 	@Override
 	public void releaseLock(String lockToken, QName lockQName) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**

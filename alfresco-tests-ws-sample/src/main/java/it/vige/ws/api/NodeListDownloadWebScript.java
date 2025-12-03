@@ -110,7 +110,7 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 * The search service.
  */
 	private SearchService searchService;
-	
+
 /**
 * Sets the over headings.
  */
@@ -439,7 +439,7 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 				}
 
 				rowNum++;
-			}		
+			}
 		}
 
 		// Sensible column widths please!
@@ -481,12 +481,12 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("success", Boolean.TRUE);
- 
+
 		String format = req.getFormat();
 		if ("csv".equals(format) || "xls".equals(format) || "xlsx".equals(format) || "excel".equals(format)) {
- 
+
 			//Object resource = identifyResource(format, req);
- 
+
 			try {
 				//generateSpreadsheet(resource, format, req, status, model);
 				generateSpreadsheet(format, req, status, model);
@@ -495,9 +495,9 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 				throw new WebScriptException(Status.STATUS_BAD_REQUEST, "Unable to generate template file", e);
 			}
 		}
- 
+
 		if (allowHtmlFallback()) {
- 
+
 			return model;
 		} else {
 			throw new WebScriptException("Web Script format '" + format + "' is not supported");
@@ -530,7 +530,7 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 				required[i] = false;
 			}
 		}
- 
+
 		List<QName> properties = new ArrayList<QName>(propertyDetails.size());
 		for (Pair<QName, Boolean> p : propertyDetails) {
 			QName qn = null;
@@ -543,7 +543,7 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		int num = 0;
 		int skipCount = Integer.parseInt(skipCountDef);
 		int iteration = 0;
-		int maxItems =  Integer.parseInt(maxItemsDef);		
+		int maxItems =  Integer.parseInt(maxItemsDef);
 		int maxLines = Integer.parseInt(maxLinesDef);
 		if (req.getParameter("maxItems")!=null) {
 			maxItems = Integer.parseInt(req.getParameter("maxItems"));
@@ -564,7 +564,7 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 			CSVPrinter csv = new CSVPrinter(sw, CSVFormat.EXCEL);
 			csv.print(headings);
 			csv.println();
-			
+
 			do {
 				resource = identifyResource(format, req, maxItems, skipCount);
 				num = resource.size();
@@ -574,9 +574,9 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 					logger.debug("Executing iteration of resources with num: " + num + " and skipCount: " + skipCount);
 					if (iteration==maxIterations)
 						logger.debug("Exiting because max iteration is reached");
-				}	
+				}
 				populateBody(resource, csv, properties);
-				
+
 			} while (num==maxItems & iteration<maxIterations);
 			//populateBody(resource, csv, properties);
 
@@ -585,18 +585,18 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 			Workbook wb;
 			if ("xlsx".equals(format)) {
 				wb = new XSSFWorkbook();
- 
+
 			} else {
 				wb = new HSSFWorkbook();
- 
+
 			}
- 
+
 			Sheet sheet = wb.createSheet("Export");
 			Row hr = sheet.createRow(0);
 			try {
 				sheet.createFreezePane(0, 1);
 			} catch (IndexOutOfBoundsException e) {
- 
+
 			}
 			Font fb = wb.createFont();
 			fb.setBold(true);
@@ -608,11 +608,11 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 			csReq.setFont(fb);
 			CellStyle csOpt = wb.createCellStyle();
 			csOpt.setFont(fi);
- 
+
 			for (int i = 0; i < headings.length; i++) {
 				Cell c = hr.createCell(i);
 				c.setCellValue(headings[i]);
- 
+
 				c.setCellStyle(csReq);
 
 				if (headings[i].length() == 0) {
@@ -621,7 +621,7 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 					sheet.setColumnWidth(i, 18 * 250);
 				}
 			}
-			
+
 			Map<String,CellStyle> style = generateStyleFromWB(wb);
 			do {
 				resource = identifyResource(format, req, maxItems, skipCount);
@@ -630,13 +630,13 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 					logger.debug("Executing iteration of resources with num: " + num + " and skipCount: " + skipCount);
 					if (iteration==maxIterations)
 						logger.debug("Exiting because iteration is: " + iteration);
-				}	
+				}
 				skipCount += num;
-				iteration ++;		
+				iteration ++;
 				sheet = populateBody(resource, wb, sheet, properties, style);
 			} while (num==maxItems & iteration<maxIterations);
 			//populateBody(resource, wb, sheet, properties);
- 
+
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			wb.write(baos);
 			model.put(MODEL_EXCEL, baos.toByteArray());
@@ -647,7 +647,7 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	protected Map<String, Object> createTemplateParameters(WebScriptRequest req, WebScriptResponse res,
 			Map<String, Object> customParams) {
 		Map<String, Object> model = super.createTemplateParameters(req, res, customParams);
- 
+
 		model.put("req", req);
 		model.put("res", res);
 		model.put("writeExcel", new WriteExcel(res, model, req.getFormat(), filenameBase));
@@ -688,23 +688,23 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
  */
 		public void write() throws IOException {
 			String filename = filenameBase + "." + format;
- 
+
 			if (!"csv".equals(format)) {
 				res.reset();
 			}
- 
+
 			res.addHeader("Content-Disposition", "attachment; filename=" + filename);
- 
+
 			if ("csv".equals(format)) {
 				res.getWriter().append((String) model.get(MODEL_CSV));
 			} else {
- 
+
 				if ("xlsx".equals(format)) {
 					res.setContentType(MimetypeMap.MIMETYPE_OPENXML_SPREADSHEET);
 				} else {
 					res.setContentType(MimetypeMap.MIMETYPE_EXCEL);
 				}
- 
+
 				byte[] excel = (byte[]) model.get(MODEL_EXCEL);
 				res.getOutputStream().write(excel);
 			}

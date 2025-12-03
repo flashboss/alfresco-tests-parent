@@ -81,7 +81,7 @@ public class MockScope implements Scriptable, Serializable {
 	@Override
 	public void put(String name, Scriptable start, Object value) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -93,7 +93,7 @@ public class MockScope implements Scriptable, Serializable {
 	@Override
 	public void put(int index, Scriptable start, Object value) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -103,7 +103,7 @@ public class MockScope implements Scriptable, Serializable {
 	@Override
 	public void delete(String name) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -113,7 +113,7 @@ public class MockScope implements Scriptable, Serializable {
 	@Override
 	public void delete(int index) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -133,7 +133,7 @@ public class MockScope implements Scriptable, Serializable {
 	@Override
 	public void setPrototype(Scriptable prototype) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -153,7 +153,7 @@ public class MockScope implements Scriptable, Serializable {
 	@Override
 	public void setParentScope(Scriptable parent) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**

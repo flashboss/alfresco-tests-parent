@@ -35,7 +35,7 @@ public class MockScheduledPersistedActionService implements ScheduledPersistedAc
 	@Override
 	public void saveSchedule(ScheduledPersistedAction schedule) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -45,7 +45,7 @@ public class MockScheduledPersistedActionService implements ScheduledPersistedAc
 	@Override
 	public void deleteSchedule(ScheduledPersistedAction schedule) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
