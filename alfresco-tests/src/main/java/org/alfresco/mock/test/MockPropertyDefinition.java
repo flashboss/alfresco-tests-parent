@@ -14,6 +14,14 @@ import org.alfresco.service.cmr.dictionary.PropertyDefinition;
 import org.alfresco.service.cmr.i18n.MessageLookup;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of the MockPropertyDefinition class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockPropertyDefinition implements PropertyDefinition, Serializable {
 
 	private QName name;
@@ -22,16 +30,43 @@ public class MockPropertyDefinition implements PropertyDefinition, Serializable 
 		this.name = name;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ModelDefinition getModel() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public QName getName() {
 		return name;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getTitle() {
@@ -39,11 +74,29 @@ public class MockPropertyDefinition implements PropertyDefinition, Serializable 
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getTitle(MessageLookup messageLookup) {
@@ -51,11 +104,29 @@ public class MockPropertyDefinition implements PropertyDefinition, Serializable 
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getDescription(MessageLookup messageLookup) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getDefaultValue() {
@@ -63,10 +134,28 @@ public class MockPropertyDefinition implements PropertyDefinition, Serializable 
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public DataTypeDefinition getDataType() {
 		return new MockDataTypeDefinition();
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public ClassDefinition getContainerClass() {
@@ -74,11 +163,29 @@ public class MockPropertyDefinition implements PropertyDefinition, Serializable 
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean isOverride() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean isMultiValued() {
@@ -86,11 +193,29 @@ public class MockPropertyDefinition implements PropertyDefinition, Serializable 
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean isMandatory() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean isMandatoryEnforced() {
@@ -98,11 +223,29 @@ public class MockPropertyDefinition implements PropertyDefinition, Serializable 
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean isProtected() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean isIndexed() {
@@ -110,11 +253,29 @@ public class MockPropertyDefinition implements PropertyDefinition, Serializable 
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean isStoredInIndex() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public IndexTokenisationMode getIndexTokenisationMode() {
@@ -122,11 +283,29 @@ public class MockPropertyDefinition implements PropertyDefinition, Serializable 
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean isIndexedAtomically() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<ConstraintDefinition> getConstraints() {
@@ -134,17 +313,44 @@ public class MockPropertyDefinition implements PropertyDefinition, Serializable 
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getTitle(MessageLookup messageLookup, Locale locale) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getDescription(MessageLookup messageLookup, Locale locale) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Facetable getFacetable() {

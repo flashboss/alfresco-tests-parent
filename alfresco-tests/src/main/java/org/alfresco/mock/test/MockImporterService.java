@@ -24,6 +24,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.google.gdata.util.common.base.Charsets;
 import com.google.gdata.util.common.io.CharStreams;
 
+/**
+ * Mock implementation of the MockImporterService class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockImporterService implements ImporterService, Serializable {
 
 	@Autowired
@@ -32,12 +40,30 @@ public class MockImporterService implements ImporterService, Serializable {
 	@Autowired
 	private ContentService contentService;
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void importView(Reader viewReader, Location location, ImporterBinding binding, ImporterProgress progress)
 			throws ImporterException {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void importView(ImportPackageHandler importHandler, Location location, ImporterBinding binding,

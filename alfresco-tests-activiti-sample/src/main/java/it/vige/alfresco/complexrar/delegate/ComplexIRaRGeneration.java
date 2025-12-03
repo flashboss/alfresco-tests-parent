@@ -30,6 +30,14 @@ import org.mozilla.javascript.NativeArray;
 
 import it.vige.common.ConservationModel;
 
+/**
+ * Mock implementation of the ComplexIRaRGeneration class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class ComplexIRaRGeneration extends BaseJavaDelegate {
 
 	private static Log logger = LogFactory.getLog(ComplexIRaRGeneration.class);
@@ -118,6 +126,15 @@ public class ComplexIRaRGeneration extends BaseJavaDelegate {
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {

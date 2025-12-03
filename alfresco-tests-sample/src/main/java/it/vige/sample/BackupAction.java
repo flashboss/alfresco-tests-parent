@@ -10,6 +10,14 @@ import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of the BackupAction class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class BackupAction extends ActionExecuterAbstractBase {
 
 	public static String DOCUMENT_NAME = "documentName";
@@ -18,6 +26,15 @@ public class BackupAction extends ActionExecuterAbstractBase {
 	private FileFolderService fileFolderService;
 
 	private String extension;
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void executeImpl(Action action, NodeRef actionedUponNodeRef) {
