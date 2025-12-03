@@ -3,6 +3,8 @@ package org.alfresco.mock.test.ws;
 import org.springframework.extensions.webscripts.Description.RequiredCache;
 
 /**
+ * Mock implementation of RequiredCache for testing purposes.
+ * 
  * @author vige
  */
 public class MockRequiredCache implements RequiredCache {

@@ -59,6 +59,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 		"signerCertificateNotBefore", "signerCertificateRevocationDate", "signerCertificateStatus", "subjectDN",
 		"timestampReportBeanList", "trustedSignatureDate" })
 /**
+ * Bean class for data transfer.
+ * 
  * @author vige
  */
 public class SignatureReportBean {

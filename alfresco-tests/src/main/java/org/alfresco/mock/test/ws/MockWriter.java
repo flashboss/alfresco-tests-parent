@@ -5,6 +5,8 @@ import java.io.Writer;
 import java.util.Map;
 
 /**
+ * Mock implementation of Writer for testing purposes.
+ * 
  * @author vige
  */
 public class MockWriter extends Writer {

@@ -5,6 +5,8 @@ import java.io.Serializable;
 import org.mozilla.javascript.Scriptable;
 
 /**
+ * Mock implementation of Scope for testing purposes.
+ * 
  * @author vige
  */
 public class MockScope implements Scriptable, Serializable {

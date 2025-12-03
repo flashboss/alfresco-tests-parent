@@ -55,6 +55,8 @@ import org.springframework.core.io.Resource;
 import org.subethamail.smtp.server.SMTPServer;
 
 /**
+ * Abstract base class providing common functionality for tests.
+ * 
  * @author vige
  */
 public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
