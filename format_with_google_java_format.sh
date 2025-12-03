@@ -18,7 +18,13 @@ if ! command -v google-java-format &> /dev/null; then
     exit 1
 fi
 
-echo "Using: $(google-java-format --version)"
+# Set Java 17 for google-java-format (requires Java 11+)
+export JAVA_HOME=$(/usr/libexec/java_home -v 17 2>/dev/null || /usr/libexec/java_home -v 11 2>/dev/null || /usr/libexec/java_home)
+export PATH="${JAVA_HOME}/bin:${PATH}"
+
+echo "Using Java: ${JAVA_HOME}"
+java -version 2>&1 | head -1
+echo "Using google-java-format: $(google-java-format --version 2>&1 | head -1)"
 echo ""
 
 # Format on base branch
@@ -33,19 +39,24 @@ echo "Formatting..."
 
 # Format all Java files
 COUNT=0
+SUCCESS=0
+FAILED=0
 for FILE in ${JAVA_FILES}; do
     if [ -f "${FILE}" ]; then
-        google-java-format -i "${FILE}" 2>/dev/null || {
+        if google-java-format -i "${FILE}" 2>/dev/null; then
+            SUCCESS=$((SUCCESS + 1))
+        else
+            FAILED=$((FAILED + 1))
             echo "  Warning: Failed to format ${FILE}"
-        }
+        fi
         COUNT=$((COUNT + 1))
         if [ $((COUNT % 50)) -eq 0 ]; then
-            echo "  Processed ${COUNT} files..."
+            echo "  Processed ${COUNT} files... (${SUCCESS} formatted, ${FAILED} failed)"
         fi
     fi
 done
 
-echo "  Processed ${COUNT} files total"
+echo "  Processed ${COUNT} files total (${SUCCESS} formatted, ${FAILED} failed)"
 echo ""
 
 # Commit formatting changes
@@ -125,4 +136,3 @@ git checkout "${BASE_BRANCH}"
 echo "=========================================="
 echo "All branches processed (no testing performed)"
 echo "=========================================="
-
