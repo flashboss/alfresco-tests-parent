@@ -40,24 +40,41 @@ import org.alfresco.service.namespace.QNamePattern;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of the NodeService for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ *
+ * @author lucastancapiano
+ */
 public class MockNodeService implements NodeService, Serializable {
 
+	/** Storage for node properties. */
 	private static Map<NodeRef, Map<QName, Serializable>> sampleProperties = new HashMap<NodeRef, Map<QName, Serializable>>();
 
+	/** Storage for node aspects. */
 	private static Map<NodeRef, Map<QName, Map<QName, Serializable>>> sampleAspects = new HashMap<NodeRef, Map<QName, Map<QName, Serializable>>>();
 
+	/** Storage for node permissions. */
 	private static Map<NodeRef, Set<AccessPermission>> samplePermissions = new HashMap<NodeRef, Set<AccessPermission>>();
 
+	/** Storage for node references to files. */
 	private static Map<NodeRef, File> nodeRefs = new FilteredHashMap();
 
+	/** Storage for source associations. */
 	private static Map<NodeRef, Map<QName, Set<NodeRef>>> srcAssociations = new HashMap<NodeRef, Map<QName, Set<NodeRef>>>();
+
+	/** Storage for target associations. */
 	private static Map<NodeRef, Map<QName, Set<NodeRef>>> trgAssociations = new HashMap<NodeRef, Map<QName, Set<NodeRef>>>();
 
+	/** The primary parent QName. */
 	public final static QName PRIMARY_PARENT = QName.createQName("primary_parent");
 
+	/** The namespace service. */
 	@Autowired
 	private NamespaceService namespaceService;
 
+	/** Counter for database IDs. */
 	private long countDbids;
 
 	@Override

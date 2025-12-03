@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 import org.alfresco.repo.transaction.RetryingTransactionHelper;
 
+/**
+ * Mock implementation of MockRetryingTransactionHelper for testing purposes.
+ *
+ * @author lucastancapiano
+ */
 public class MockRetryingTransactionHelper extends RetryingTransactionHelper implements Serializable {
 
 	@Override

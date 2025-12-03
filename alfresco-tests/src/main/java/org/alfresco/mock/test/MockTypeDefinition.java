@@ -15,6 +15,11 @@ import org.alfresco.service.cmr.dictionary.PropertyDefinition;
 import org.alfresco.service.cmr.dictionary.TypeDefinition;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of MockTypeDefinition for testing purposes.
+ *
+ * @author lucastancapiano
+ */
 public class MockTypeDefinition implements TypeDefinition {
 
 	private QName defaultAspect;

@@ -12,6 +12,11 @@ import org.alfresco.service.cmr.dictionary.ModelDefinition;
 import org.alfresco.service.cmr.dictionary.PropertyDefinition;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of MockPropertyDefinition for testing purposes.
+ *
+ * @author lucastancapiano
+ */
 public class MockPropertyDefinition implements PropertyDefinition, Serializable {
 
 	private QName name;

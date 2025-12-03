@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 import org.mozilla.javascript.Scriptable;
 
+/**
+ * Mock implementation of MockScope for testing purposes.
+ *
+ * @author lucastancapiano
+ */
 public class MockScope implements Scriptable, Serializable {
 
 	@Override

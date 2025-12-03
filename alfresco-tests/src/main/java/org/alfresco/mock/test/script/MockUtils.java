@@ -18,6 +18,11 @@ import org.alfresco.util.ScriptPagingDetails;
 import org.springframework.extensions.surf.util.I18NUtil;
 import org.springframework.extensions.surf.util.ISO8601DateFormat;
 
+/**
+ * Mock implementation of MockUtils for testing purposes.
+ *
+ * @author lucastancapiano
+ */
 public class MockUtils extends BaseScopableProcessorExtension implements Serializable {
 
     private final static String NAMESPACE_BEGIN = "" + QName.NAMESPACE_BEGIN;

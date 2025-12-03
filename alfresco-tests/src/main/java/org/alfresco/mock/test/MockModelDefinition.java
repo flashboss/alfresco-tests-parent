@@ -10,6 +10,11 @@ import org.alfresco.service.cmr.dictionary.ModelDefinition;
 import org.alfresco.service.cmr.dictionary.NamespaceDefinition;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of MockModelDefinition for testing purposes.
+ *
+ * @author lucastancapiano
+ */
 public class MockModelDefinition implements ModelDefinition, Serializable {
 
 	private QName name;

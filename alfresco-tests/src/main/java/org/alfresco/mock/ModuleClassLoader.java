@@ -18,6 +18,11 @@ import java.util.List;
 
 import org.slf4j.Logger;
 
+/**
+ * ModuleClassLoader for testing purposes.
+ *
+ * @author lucastancapiano
+ */
 public class ModuleClassLoader extends ClassLoader {
 
     private static final String SEPARATOR = "/";

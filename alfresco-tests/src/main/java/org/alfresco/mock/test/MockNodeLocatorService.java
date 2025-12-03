@@ -10,6 +10,11 @@ import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.search.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of MockNodeLocatorService for testing purposes.
+ *
+ * @author lucastancapiano
+ */
 public class MockNodeLocatorService implements NodeLocatorService, Serializable {
 
 	@Autowired

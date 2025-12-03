@@ -14,6 +14,11 @@ import org.alfresco.service.cmr.dictionary.ModelDefinition;
 import org.alfresco.service.cmr.dictionary.PropertyDefinition;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of MockAspectDefinition for testing purposes.
+ *
+ * @author lucastancapiano
+ */
 public class MockAspectDefinition implements AspectDefinition, Serializable {
 
 	private QName name;

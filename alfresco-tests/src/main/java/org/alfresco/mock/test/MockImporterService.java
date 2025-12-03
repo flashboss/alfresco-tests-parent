@@ -24,6 +24,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.google.gdata.util.common.base.Charsets;
 import com.google.gdata.util.common.io.CharStreams;
 
+/**
+ * Mock implementation of MockImporterService for testing purposes.
+ *
+ * @author lucastancapiano
+ */
 public class MockImporterService implements ImporterService, Serializable {
 
 	@Autowired

@@ -7,6 +7,11 @@ import org.alfresco.repo.cache.SimpleCache;
 import org.alfresco.repo.transaction.TransactionListener;
 import org.springframework.beans.factory.InitializingBean;
 
+/**
+ * Mock implementation of MockTransactionalCache for testing purposes.
+ *
+ * @author lucastancapiano
+ */
 public class MockTransactionalCache<K extends Serializable, V extends Object>
 		implements SimpleCache<K, V>, TransactionListener, InitializingBean {
 

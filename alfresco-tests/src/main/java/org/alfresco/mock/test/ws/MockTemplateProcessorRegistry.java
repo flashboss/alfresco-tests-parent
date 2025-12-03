@@ -3,6 +3,11 @@ package org.alfresco.mock.test.ws;
 import org.springframework.extensions.webscripts.TemplateProcessor;
 import org.springframework.extensions.webscripts.TemplateProcessorRegistry;
 
+/**
+ * Mock implementation of MockTemplateProcessorRegistry for testing purposes.
+ *
+ * @author lucastancapiano
+ */
 public class MockTemplateProcessorRegistry extends TemplateProcessorRegistry {
 
 	@Override

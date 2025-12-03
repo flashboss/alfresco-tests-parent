@@ -10,6 +10,11 @@ import org.alfresco.service.cmr.action.ActionCondition;
 import org.alfresco.service.cmr.action.ActionStatus;
 import org.alfresco.service.cmr.repository.NodeRef;
 
+/**
+ * Mock implementation of MockAction for testing purposes.
+ *
+ * @author lucastancapiano
+ */
 public class MockAction implements Action {
 
 	private String name;

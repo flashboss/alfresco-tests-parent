@@ -5,6 +5,11 @@ import org.alfresco.service.cmr.dictionary.ClassDefinition;
 import org.alfresco.service.cmr.dictionary.ModelDefinition;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of MockAssociationDefinition for testing purposes.
+ *
+ * @author lucastancapiano
+ */
 public class MockAssociationDefinition implements AssociationDefinition {
 
 	@Override

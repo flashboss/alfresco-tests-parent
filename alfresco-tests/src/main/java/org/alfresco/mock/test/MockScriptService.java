@@ -5,6 +5,11 @@ import java.io.Serializable;
 import org.alfresco.repo.processor.ScriptServiceImpl;
 import org.alfresco.service.cmr.repository.ScriptProcessor;
 
+/**
+ * Mock implementation of MockScriptService for testing purposes.
+ *
+ * @author lucastancapiano
+ */
 public class MockScriptService extends ScriptServiceImpl implements Serializable {
 
 	private ScriptProcessor scriptProcessor;

@@ -21,6 +21,11 @@ import org.alfresco.service.cmr.repository.TransformationOptions;
 import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of MockContentService for testing purposes.
+ *
+ * @author lucastancapiano
+ */
 public class MockContentService implements ContentService, Serializable {
 
 	public final static String FOLDER_TEST = "./target/test-classes/";
