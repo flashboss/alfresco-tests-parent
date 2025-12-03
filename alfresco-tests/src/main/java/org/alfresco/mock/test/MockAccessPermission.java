@@ -40,82 +40,82 @@ public class MockAccessPermission implements AccessPermission, Serializable {
 		this.authority = authority;
 	}
 
-	@Override
 	/**
 	 * Get permission.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String getPermission() {
 		return permission;
 	}
 
-	@Override
 	/**
 	 * Get access status.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public AccessStatus getAccessStatus() {
 		return accessStatus;
 	}
 
-	@Override
 	/**
 	 * Get authority.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String getAuthority() {
 		return authority;
 	}
 
-	@Override
 	/**
 	 * Get authority type.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public AuthorityType getAuthorityType() {
 		return authorityType;
 	}
 
-	@Override
 	/**
 	 * Get position.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public int getPosition() {
 		return position;
 	}
 
-	@Override
 	/**
 	 * Is inherited.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isInherited() {
 		return inherited;
 	}
 
-	@Override
 	/**
 	 * Is set directly.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isSetDirectly() {
 		return setDirectly;
 	}
 
-	@Override
 	/**
 	 * To string.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String toString() {
 		return "MockAccessPermission [permission=" + permission + ", accessStatus=" + accessStatus + ", authority="
 				+ authority + ", authorityType=" + authorityType + ", position=" + position + ", inherited=" + inherited

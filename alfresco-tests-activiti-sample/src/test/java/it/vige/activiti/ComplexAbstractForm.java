@@ -46,12 +46,12 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 	/** The generation folder. */
 	protected NodeRef generationFolder;
 
-	@Override
 	/**
 	 * Init.
 	 *
 	 * @param variables the variables
 	 */
+	@Override
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;

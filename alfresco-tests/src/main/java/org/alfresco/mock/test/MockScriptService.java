@@ -16,13 +16,13 @@ public class MockScriptService extends ScriptServiceImpl implements Serializable
 	/** The script processor. */
 	private ScriptProcessor scriptProcessor;
 
-	@Override
 	/**
 	 * Lookup script processor.
 	 *
 	 * @param name the name
 	 * @return the result
 	 */
+	@Override
 	protected ScriptProcessor lookupScriptProcessor(String name) {
 		return scriptProcessor;
 	}

@@ -53,7 +53,6 @@ public class PreviousWSSample extends DeclarativeWebScript {
 	/** The fmt. */
 	private SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 
-	@Override
 	/**
 	 * Execute impl.
 	 *
@@ -61,6 +60,7 @@ public class PreviousWSSample extends DeclarativeWebScript {
 	 * @param status the status
 	 * @param cache the cache
 	 */
+	@Override
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
 		// -- 1 -- VARIABLE INITIALIZATION

@@ -19,7 +19,6 @@ import org.alfresco.util.Pair;
  */
 public class MockCategoryService implements CategoryService {
 
-	@Override
 	/**
 	 * Get children.
 	 *
@@ -28,12 +27,12 @@ public class MockCategoryService implements CategoryService {
 	 * @param depth the depth
 	 * @return the result
 	 */
+	@Override
 	public Collection<ChildAssociationRef> getChildren(NodeRef categoryRef, Mode mode, Depth depth) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get categories.
 	 *
@@ -42,24 +41,24 @@ public class MockCategoryService implements CategoryService {
 	 * @param depth the depth
 	 * @return the result
 	 */
+	@Override
 	public Collection<ChildAssociationRef> getCategories(StoreRef storeRef, QName aspectQName, Depth depth) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get classifications.
 	 *
 	 * @param storeRef the store ref
 	 * @return the result
 	 */
+	@Override
 	public Collection<ChildAssociationRef> getClassifications(StoreRef storeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get root categories.
 	 *
@@ -67,6 +66,7 @@ public class MockCategoryService implements CategoryService {
 	 * @param aspectName the aspect name
 	 * @return the result
 	 */
+	@Override
 	public Collection<ChildAssociationRef> getRootCategories(StoreRef storeRef, QName aspectName) {
 		// TODO Auto-generated method stub
 		return null;
@@ -79,7 +79,6 @@ public class MockCategoryService implements CategoryService {
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get root categories.
 	 *
@@ -88,12 +87,12 @@ public class MockCategoryService implements CategoryService {
 	 * @param filter the filter
 	 * @return the result
 	 */
+	@Override
 	public Collection<ChildAssociationRef> getRootCategories(StoreRef storeRef, QName aspectName, String filter) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get category.
 	 *
@@ -102,6 +101,7 @@ public class MockCategoryService implements CategoryService {
 	 * @param name the name
 	 * @return the result
 	 */
+	@Override
 	public ChildAssociationRef getCategory(NodeRef parent, QName aspectName, String name) {
 		// TODO Auto-generated method stub
 		return null;
@@ -114,18 +114,17 @@ public class MockCategoryService implements CategoryService {
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get classification aspects.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public Collection<QName> getClassificationAspects() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Create classification.
 	 *
@@ -134,12 +133,12 @@ public class MockCategoryService implements CategoryService {
 	 * @param attributeName the attribute name
 	 * @return the result
 	 */
+	@Override
 	public NodeRef createClassification(StoreRef storeRef, QName aspectName, String attributeName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Create root category.
 	 *
@@ -148,12 +147,12 @@ public class MockCategoryService implements CategoryService {
 	 * @param name the name
 	 * @return the result
 	 */
+	@Override
 	public NodeRef createRootCategory(StoreRef storeRef, QName aspectName, String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Create category.
 	 *
@@ -161,29 +160,30 @@ public class MockCategoryService implements CategoryService {
 	 * @param name the name
 	 * @return the result
 	 */
+	@Override
 	public NodeRef createCategory(NodeRef parent, String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Delete classification.
 	 *
 	 * @param storeRef the store ref
 	 * @param aspectName the aspect name
 	 */
+	@Override
 	public void deleteClassification(StoreRef storeRef, QName aspectName) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * Delete category.
 	 *
 	 * @param nodeRef the node ref
 	 */
+	@Override
 	public void deleteCategory(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		

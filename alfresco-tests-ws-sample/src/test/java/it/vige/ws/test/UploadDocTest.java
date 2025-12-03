@@ -60,25 +60,25 @@ public class UploadDocTest extends AbstractWSForm {
 	/** The template vars. */
 	private Map<String, String> templateVars;
 
-	@Autowired
 	/** The upload doc. */
+	@Autowired
 	private UploadDoc uploadDoc;
 
-	@Override
 	/**
 	 * Get abstract web script.
 	 *
 	 * @return the result
 	 */
+	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return uploadDoc;
 	}
 
-	@Before
 	/**
 	 * Init.
 	 *
 	 */
+	@Before
 	public void init() {
 		super.init();
 		templateVars = new HashMap<String, String>();
@@ -93,11 +93,11 @@ public class UploadDocTest extends AbstractWSForm {
 		insertFolder(sys, "Dropzone");
 	}
 
-	@Test
 	/**
 	 * Execute.
 	 *
 	 */
+	@Test
 	public void execute() throws ParseException, IOException {
 
 		logger.debug("start test");

@@ -20,90 +20,89 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class MockPermissionService implements PermissionService, Serializable {
 
-	@Autowired
 	/** The node service. */
+	@Autowired
 	private NodeService nodeService;
 
-	@Override
 	/**
 	 * Get owner authority.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String getOwnerAuthority() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get all authorities.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String getAllAuthorities() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get all permission.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String getAllPermission() {
 		return ((MockNodeService) nodeService).getPermissions();
 	}
 
-	@Override
 	/**
 	 * Get permissions.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public Set<AccessPermission> getPermissions(NodeRef nodeRef) {
 		return ((MockNodeService) nodeService).getPermissions(nodeRef);
 	}
 
-	@Override
 	/**
 	 * Get all set permissions.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public Set<AccessPermission> getAllSetPermissions(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get settable permissions.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public Set<String> getSettablePermissions(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get settable permissions.
 	 *
 	 * @param type the type
 	 * @return the result
 	 */
+	@Override
 	public Set<String> getSettablePermissions(QName type) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Has permission.
 	 *
@@ -111,34 +110,34 @@ public class MockPermissionService implements PermissionService, Serializable {
 	 * @param permission the permission
 	 * @return the result
 	 */
+	@Override
 	public AccessStatus hasPermission(NodeRef nodeRef, String permission) {
 		return hasReadPermission(nodeRef);
 	}
 
-	@Override
 	/**
 	 * Has read permission.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public AccessStatus hasReadPermission(NodeRef nodeRef) {
 		return AccessStatus.ALLOWED;
 	}
 
-	@Override
 	/**
 	 * Get readers.
 	 *
 	 * @param aclId the acl id
 	 * @return the result
 	 */
+	@Override
 	public Set<String> getReaders(Long aclId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Has permission.
 	 *
@@ -147,34 +146,34 @@ public class MockPermissionService implements PermissionService, Serializable {
 	 * @param permission the permission
 	 * @return the result
 	 */
+	@Override
 	public AccessStatus hasPermission(Long aclID, PermissionContext context, String permission) {
 		return AccessStatus.ALLOWED;
 	}
 
-	@Override
 	/**
 	 * Delete permissions.
 	 *
 	 * @param nodeRef the node ref
 	 */
+	@Override
 	public void deletePermissions(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Clear permission.
 	 *
 	 * @param nodeRef the node ref
 	 * @param authority the authority
 	 */
+	@Override
 	public void clearPermission(NodeRef nodeRef, String authority) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Delete permission.
 	 *
@@ -182,12 +181,12 @@ public class MockPermissionService implements PermissionService, Serializable {
 	 * @param authority the authority
 	 * @param permission the permission
 	 */
+	@Override
 	public void deletePermission(NodeRef nodeRef, String authority, String permission) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Set permission.
 	 *
@@ -196,36 +195,36 @@ public class MockPermissionService implements PermissionService, Serializable {
 	 * @param permission the permission
 	 * @param allow the allow
 	 */
+	@Override
 	public void setPermission(NodeRef nodeRef, String authority, String permission, boolean allow) {
 		AccessPermission accessPermission = new MockAccessPermission(permission, authority);
 		((MockNodeService) nodeService).setPermission(nodeRef, accessPermission);
 	}
 
-	@Override
 	/**
 	 * Set inherit parent permissions.
 	 *
 	 * @param nodeRef the node ref
 	 * @param inheritParentPermissions the inherit parent permissions
 	 */
+	@Override
 	public void setInheritParentPermissions(NodeRef nodeRef, boolean inheritParentPermissions) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Get inherit parent permissions.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public boolean getInheritParentPermissions(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Set permission.
 	 *
@@ -234,12 +233,12 @@ public class MockPermissionService implements PermissionService, Serializable {
 	 * @param permission the permission
 	 * @param allow the allow
 	 */
+	@Override
 	public void setPermission(StoreRef storeRef, String authority, String permission, boolean allow) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Delete permission.
 	 *
@@ -247,52 +246,53 @@ public class MockPermissionService implements PermissionService, Serializable {
 	 * @param authority the authority
 	 * @param permission the permission
 	 */
+	@Override
 	public void deletePermission(StoreRef storeRef, String authority, String permission) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Clear permission.
 	 *
 	 * @param storeRef the store ref
 	 * @param authority the authority
 	 */
+	@Override
 	public void clearPermission(StoreRef storeRef, String authority) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Delete permissions.
 	 *
 	 * @param storeRef the store ref
 	 */
+	@Override
 	public void deletePermissions(StoreRef storeRef) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Get all set permissions.
 	 *
 	 * @param storeRef the store ref
 	 * @return the result
 	 */
+	@Override
 	public Set<AccessPermission> getAllSetPermissions(StoreRef storeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get authorisations.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public Set<String> getAuthorisations() {
 		// TODO Auto-generated method stub
 		return null;
@@ -307,7 +307,6 @@ public class MockPermissionService implements PermissionService, Serializable {
 		this.nodeService = nodeService;
 	}
 
-	@Override
 	/**
 	 * Set inherit parent permissions.
 	 *
@@ -315,6 +314,7 @@ public class MockPermissionService implements PermissionService, Serializable {
 	 * @param inheritParentPermissions the inherit parent permissions
 	 * @param asyncCall the async call
 	 */
+	@Override
 	public void setInheritParentPermissions(NodeRef nodeRef, boolean inheritParentPermissions, boolean asyncCall) {
 		// TODO Auto-generated method stub
 		

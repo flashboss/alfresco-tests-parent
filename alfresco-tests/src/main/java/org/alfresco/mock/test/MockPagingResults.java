@@ -25,43 +25,43 @@ public class MockPagingResults<R> implements PagingResults<R>, Serializable {
 		this.files = files;
 	}
 
-	@Override
 	/**
 	 * Get page.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public List<R> getPage() {
 		return files;
 	}
 
-	@Override
 	/**
 	 * Has more items.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean hasMoreItems() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Get total result count.
 	 *
 	 */
+	@Override
 	public Pair<Integer, Integer> getTotalResultCount() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get query execution id.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String getQueryExecutionId() {
 		// TODO Auto-generated method stub
 		return null;

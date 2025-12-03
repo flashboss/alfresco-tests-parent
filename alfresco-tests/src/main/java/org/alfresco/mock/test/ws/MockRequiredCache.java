@@ -9,32 +9,32 @@ import org.springframework.extensions.webscripts.Description.RequiredCache;
  */
 public class MockRequiredCache implements RequiredCache {
 
-	@Override
 	/**
 	 * Get never cache.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean getNeverCache() {
 		return false;
 	}
 
-	@Override
 	/**
 	 * Get is public.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean getIsPublic() {
 		return false;
 	}
 
-	@Override
 	/**
 	 * Get must revalidate.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean getMustRevalidate() {
 		return false;
 	}

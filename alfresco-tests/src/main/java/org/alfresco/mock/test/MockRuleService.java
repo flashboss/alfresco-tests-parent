@@ -33,7 +33,6 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 
 	/** The action service for executing rule actions. */
 	@Autowired
-	/** The action service. */
 	private ActionService actionService;
 
 	/** Storage for rules indexed by folder nodeRef. */
@@ -111,53 +110,52 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		}
 	}
 
-	@Override
 	/**
 	 * On add aspect.
 	 *
 	 * @param nodeRef the node ref
 	 * @param aspectTypeQName the aspect type q name
 	 */
+	@Override
 	public void onAddAspect(NodeRef nodeRef, QName aspectTypeQName) {
 		// In a real implementation, this would trigger rules for aspect addition
 		// For mock, we can leave it empty or trigger rules if needed
 	}
 
-	@Override
 	/**
 	 * On update node.
 	 *
 	 * @param nodeRef the node ref
 	 */
+	@Override
 	public void onUpdateNode(NodeRef nodeRef) {
 		// In a real implementation, this would trigger rules for node updates
 		// For mock, we can leave it empty or trigger rules if needed
 	}
 
-	@Override
 	/**
 	 * On create node.
 	 *
 	 * @param childAssocRef the child assoc ref
 	 */
+	@Override
 	public void onCreateNode(ChildAssociationRef childAssocRef) {
 		// In a real implementation, this would trigger rules for node creation
 		// For mock, we can leave it empty or trigger rules if needed
 	}
 
-	@Override
 	/**
 	 * On create child association.
 	 *
 	 * @param childAssocRef the child assoc ref
 	 * @param isNewNode the is new node
 	 */
+	@Override
 	public void onCreateChildAssociation(ChildAssociationRef childAssocRef, boolean isNewNode) {
 		// In a real implementation, this would trigger rules for child association creation
 		// For mock, we can leave it empty or trigger rules if needed
 	}
 
-	@Override
 	/**
 	 * Execute rule.
 	 *
@@ -165,6 +163,7 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 	 * @param actionedUponNodeRef the actioned upon node ref
 	 * @param executedRules the executed rules
 	 */
+	@Override
 	public void executeRule(Rule rule, NodeRef actionedUponNodeRef, Set<ExecutedRuleData> executedRules) {
 		if (rule == null || actionedUponNodeRef == null) {
 			return;
@@ -197,7 +196,6 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return true;
 	}
 
-	@Override
 	/**
 	 * Add rule pending execution.
 	 *
@@ -205,6 +203,7 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 	 * @param actionedUponNodeRef the actioned upon node ref
 	 * @param rule the rule
 	 */
+	@Override
 	public void addRulePendingExecution(NodeRef actionableNodeRef, NodeRef actionedUponNodeRef, Rule rule) {
 		addRulePendingExecution(actionableNodeRef, actionedUponNodeRef, rule, false);
 	}
@@ -224,21 +223,21 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		pending.add(new PendingRule(actionableNodeRef, actionedUponNodeRef, rule, executeAtEnd));
 	}
 
-	@Override
 	/**
 	 * Remove rule pending execution.
 	 *
 	 * @param actionedUponNodeRef the actioned upon node ref
 	 */
+	@Override
 	public void removeRulePendingExecution(NodeRef actionedUponNodeRef) {
 		pendingRules.remove(actionedUponNodeRef);
 	}
 
-	@Override
 	/**
 	 * Execute pending rules.
 	 *
 	 */
+	@Override
 	public void executePendingRules() {
 		for (Map.Entry<NodeRef, List<PendingRule>> entry : pendingRules.entrySet()) {
 			for (PendingRule pendingRule : entry.getValue()) {
@@ -251,86 +250,86 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		pendingRules.clear();
 	}
 
-	@Override
 	/**
 	 * Register rule type.
 	 *
 	 * @param ruleType the rule type
 	 */
+	@Override
 	public void registerRuleType(RuleType ruleType) {
 		if (ruleType != null && ruleType.getName() != null) {
 			ruleTypes.put(ruleType.getName(), ruleType);
 		}
 	}
 
-	@Override
 	/**
 	 * Get saved rule folder assoc.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public ChildAssociationRef getSavedRuleFolderAssoc(NodeRef nodeRef) {
 		// Mock implementation - return null as we don't track associations
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get rule types.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public List<RuleType> getRuleTypes() {
 		return new ArrayList<>(ruleTypes.values());
 	}
 
-	@Override
 	/**
 	 * Get rule type.
 	 *
 	 * @param name the name
 	 * @return the result
 	 */
+	@Override
 	public RuleType getRuleType(String name) {
 		return ruleTypes.get(name);
 	}
 
-	@Override
 	/**
 	 * Enable rules.
 	 *
 	 */
+	@Override
 	public void enableRules() {
 		globallyEnabled = true;
 	}
 
-	@Override
 	/**
 	 * Disable rules.
 	 *
 	 */
+	@Override
 	public void disableRules() {
 		globallyEnabled = false;
 	}
 
-	@Override
 	/**
 	 * Is enabled.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isEnabled() {
 		return globallyEnabled;
 	}
 
-	@Override
 	/**
 	 * Rules enabled.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public boolean rulesEnabled(NodeRef nodeRef) {
 		if (!globallyEnabled) {
 			return false;
@@ -338,85 +337,85 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return !disabledFolders.contains(nodeRef);
 	}
 
-	@Override
 	/**
 	 * Disable rules.
 	 *
 	 * @param nodeRef the node ref
 	 */
+	@Override
 	public void disableRules(NodeRef nodeRef) {
 		if (nodeRef != null) {
 			disabledFolders.add(nodeRef);
 		}
 	}
 
-	@Override
 	/**
 	 * Enable rules.
 	 *
 	 * @param nodeRef the node ref
 	 */
+	@Override
 	public void enableRules(NodeRef nodeRef) {
 		if (nodeRef != null) {
 			disabledFolders.remove(nodeRef);
 		}
 	}
 
-	@Override
 	/**
 	 * Disable rule.
 	 *
 	 * @param rule the rule
 	 */
+	@Override
 	public void disableRule(Rule rule) {
 		if (rule != null && rule.getNodeRef() != null) {
 			disabledRules.add(rule.getNodeRef());
 		}
 	}
 
-	@Override
 	/**
 	 * Enable rule.
 	 *
 	 * @param rule the rule
 	 */
+	@Override
 	public void enableRule(Rule rule) {
 		if (rule != null && rule.getNodeRef() != null) {
 			disabledRules.remove(rule.getNodeRef());
 		}
 	}
 
-	@Override
 	/**
 	 * Disable rule type.
 	 *
 	 * @param ruleType the rule type
 	 */
+	@Override
 	public void disableRuleType(String ruleType) {
 		if (ruleType != null) {
 			disabledRuleTypes.add(ruleType);
 		}
 	}
 
-	@Override
 	/**
 	 * Enable rule type.
 	 *
 	 * @param ruleType the rule type
 	 */
+	@Override
 	public void enableRuleType(String ruleType) {
 		if (ruleType != null) {
 			disabledRuleTypes.remove(ruleType);
 		}
 	}
 
-	@Override
 	/**
 	 * Is rule type enabled.
 	 *
 	 * @param ruleType the rule type
 	 * @return the result
 	 */
+	@Override
 	public boolean isRuleTypeEnabled(String ruleType) {
 		if (ruleType == null) {
 			return true;
@@ -424,13 +423,13 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return !disabledRuleTypes.contains(ruleType);
 	}
 
-	@Override
 	/**
 	 * Has rules.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public boolean hasRules(NodeRef nodeRef) {
 		List<Rule> rules = rulesByFolder.get(nodeRef);
 		return rules != null && !rules.isEmpty();
@@ -447,18 +446,17 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return hasRules(nodeRef);
 	}
 
-	@Override
 	/**
 	 * Get rules.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public List<Rule> getRules(NodeRef nodeRef) {
 		return getRules(nodeRef, false);
 	}
 
-	@Override
 	/**
 	 * Get rules.
 	 *
@@ -466,6 +464,7 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 	 * @param includeInhertied the include inhertied
 	 * @return the result
 	 */
+	@Override
 	public List<Rule> getRules(NodeRef nodeRef, boolean includeInhertied) {
 		List<Rule> rules = rulesByFolder.get(nodeRef);
 		if (rules == null) {
@@ -481,7 +480,6 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return enabledRules;
 	}
 
-	@Override
 	/**
 	 * Get rules.
 	 *
@@ -490,6 +488,7 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 	 * @param ruleTypeName the rule type name
 	 * @return the result
 	 */
+	@Override
 	public List<Rule> getRules(NodeRef nodeRef, boolean includeInhertiedRuleType, String ruleTypeName) {
 		List<Rule> allRules = getRules(nodeRef, includeInhertiedRuleType);
 		if (ruleTypeName == null) {
@@ -502,13 +501,13 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return allRules;
 	}
 
-	@Override
 	/**
 	 * Count rules.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public int countRules(NodeRef nodeRef) {
 		return getRules(nodeRef).size();
 	}
@@ -554,13 +553,13 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return getFoldersInheritingRuleSet(ruleSet, maxFoldersToReturn);
 	}
 
-	@Override
 	/**
 	 * Get rule.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public Rule getRule(NodeRef nodeRef) {
 		return rulesByNodeRef.get(nodeRef);
 	}
@@ -605,7 +604,6 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		ruleOwnership.put(rule, nodeRef);
 	}
 
-	@Override
 	/**
 	 * Save rule.
 	 *
@@ -613,6 +611,7 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 	 * @param rule the rule
 	 * @param index the index
 	 */
+	@Override
 	public void saveRule(NodeRef nodeRef, Rule rule, int index) {
 		if (nodeRef == null || rule == null) {
 			return;
@@ -652,7 +651,6 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		ruleOwnership.put(rule, nodeRef);
 	}
 
-	@Override
 	/**
 	 * Set rule position.
 	 *
@@ -660,6 +658,7 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 	 * @param ruleNodeRef the rule node ref
 	 * @param index the index
 	 */
+	@Override
 	public void setRulePosition(NodeRef nodeRef, NodeRef ruleNodeRef, int index) {
 		Rule rule = getRule(ruleNodeRef);
 		if (rule != null) {
@@ -667,7 +666,6 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		}
 	}
 
-	@Override
 	/**
 	 * Set rule position.
 	 *
@@ -675,6 +673,7 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 	 * @param rule the rule
 	 * @param index the index
 	 */
+	@Override
 	public void setRulePosition(NodeRef nodeRef, Rule rule, int index) {
 		List<Rule> rules = rulesByFolder.get(nodeRef);
 		if (rules == null || !rules.contains(rule)) {
@@ -691,13 +690,13 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		rules.add(index, rule);
 	}
 
-	@Override
 	/**
 	 * Remove rule.
 	 *
 	 * @param nodeRef the node ref
 	 * @param rule the rule
 	 */
+	@Override
 	public void removeRule(NodeRef nodeRef, Rule rule) {
 		if (nodeRef == null || rule == null) {
 			return;
@@ -716,12 +715,12 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		ruleOwnership.remove(rule);
 	}
 
-	@Override
 	/**
 	 * Remove all rules.
 	 *
 	 * @param nodeRef the node ref
 	 */
+	@Override
 	public void removeAllRules(NodeRef nodeRef) {
 		if (nodeRef == null) {
 			return;
@@ -739,24 +738,24 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		}
 	}
 
-	@Override
 	/**
 	 * Get owning node ref.
 	 *
 	 * @param rule the rule
 	 * @return the result
 	 */
+	@Override
 	public NodeRef getOwningNodeRef(Rule rule) {
 		return ruleOwnership.get(rule);
 	}
 
-	@Override
 	/**
 	 * Get owning node ref.
 	 *
 	 * @param action the action
 	 * @return the result
 	 */
+	@Override
 	public NodeRef getOwningNodeRef(Action action) {
 		return actionOwnership.get(action);
 	}
@@ -771,24 +770,24 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return ruleSetOwnership.get(ruleSet);
 	}
 
-	@Override
 	/**
 	 * Is linked to rule node.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public boolean isLinkedToRuleNode(NodeRef nodeRef) {
 		return folderToRuleSet.containsKey(nodeRef);
 	}
 
-	@Override
 	/**
 	 * Get linked to rule node.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public NodeRef getLinkedToRuleNode(NodeRef nodeRef) {
 		return folderToRuleSet.get(nodeRef);
 	}

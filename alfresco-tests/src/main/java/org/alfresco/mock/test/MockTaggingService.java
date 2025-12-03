@@ -17,7 +17,6 @@ import org.alfresco.util.Pair;
  */
 public class MockTaggingService implements TaggingService{
 
-	@Override
 	/**
 	 * Is tag.
 	 *
@@ -25,30 +24,31 @@ public class MockTaggingService implements TaggingService{
 	 * @param tag the tag
 	 * @return the result
 	 */
+	@Override
 	public boolean isTag(StoreRef storeRef, String tag) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Get tag name.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public String getTagName(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get tags.
 	 *
 	 * @param storeRef the store ref
 	 * @return the result
 	 */
+	@Override
 	public List<String> getTags(StoreRef storeRef) {
 		// TODO Auto-generated method stub
 		return null;
@@ -60,7 +60,6 @@ public class MockTaggingService implements TaggingService{
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get tags.
 	 *
@@ -68,12 +67,12 @@ public class MockTaggingService implements TaggingService{
 	 * @param filter the filter
 	 * @return the result
 	 */
+	@Override
 	public List<String> getTags(StoreRef storeRef, String filter) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Create tag.
 	 *
@@ -81,24 +80,24 @@ public class MockTaggingService implements TaggingService{
 	 * @param tag the tag
 	 * @return the result
 	 */
+	@Override
 	public NodeRef createTag(StoreRef storeRef, String tag) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Delete tag.
 	 *
 	 * @param storeRef the store ref
 	 * @param tag the tag
 	 */
+	@Override
 	public void deleteTag(StoreRef storeRef, String tag) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * Change tag.
 	 *
@@ -107,12 +106,12 @@ public class MockTaggingService implements TaggingService{
 	 * @param newTag the new tag
 	 * @return the result
 	 */
+	@Override
 	public NodeRef changeTag(StoreRef storeRef, String existingTag, String newTag) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Has tag.
 	 *
@@ -120,12 +119,12 @@ public class MockTaggingService implements TaggingService{
 	 * @param tag the tag
 	 * @return the result
 	 */
+	@Override
 	public boolean hasTag(NodeRef nodeRef, String tag) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Add tag.
 	 *
@@ -133,12 +132,12 @@ public class MockTaggingService implements TaggingService{
 	 * @param tag the tag
 	 * @return the result
 	 */
+	@Override
 	public NodeRef addTag(NodeRef nodeRef, String tag) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get tag node ref.
 	 *
@@ -146,6 +145,7 @@ public class MockTaggingService implements TaggingService{
 	 * @param tag the tag
 	 * @return the result
 	 */
+	@Override
 	public NodeRef getTagNodeRef(StoreRef storeRef, String tag) {
 		// TODO Auto-generated method stub
 		return null;
@@ -157,37 +157,37 @@ public class MockTaggingService implements TaggingService{
 		return null;
 	}
 
-	@Override
 	/**
 	 * Remove tag.
 	 *
 	 * @param nodeRef the node ref
 	 * @param tag the tag
 	 */
+	@Override
 	public void removeTag(NodeRef nodeRef, String tag) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * Remove tags.
 	 *
 	 * @param nodeRef the node ref
 	 * @param tags the tags
 	 */
+	@Override
 	public void removeTags(NodeRef nodeRef, List<String> tags) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * Get tags.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public List<String> getTags(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
@@ -199,100 +199,99 @@ public class MockTaggingService implements TaggingService{
 		return null;
 	}
 
-	@Override
 	/**
 	 * Set tags.
 	 *
 	 * @param nodeRef the node ref
 	 * @param tags the tags
 	 */
+	@Override
 	public void setTags(NodeRef nodeRef, List<String> tags) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * Clear tags.
 	 *
 	 * @param nodeRef the node ref
 	 */
+	@Override
 	public void clearTags(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * Is tag scope.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public boolean isTagScope(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Add tag scope.
 	 *
 	 * @param nodeRef the node ref
 	 */
+	@Override
 	public void addTagScope(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * Refresh tag scope.
 	 *
 	 * @param nodeRef the node ref
 	 * @param async the async
 	 */
+	@Override
 	public void refreshTagScope(NodeRef nodeRef, boolean async) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * Remove tag scope.
 	 *
 	 * @param nodeRef the node ref
 	 */
+	@Override
 	public void removeTagScope(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * Find tag scope.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public TagScope findTagScope(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Find all tag scopes.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public List<TagScope> findAllTagScopes(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Find tagged nodes.
 	 *
@@ -300,12 +299,12 @@ public class MockTaggingService implements TaggingService{
 	 * @param tag the tag
 	 * @return the result
 	 */
+	@Override
 	public List<NodeRef> findTaggedNodes(StoreRef storeRef, String tag) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Find tagged nodes.
 	 *
@@ -314,6 +313,7 @@ public class MockTaggingService implements TaggingService{
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public List<NodeRef> findTaggedNodes(StoreRef storeRef, String tag, NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;

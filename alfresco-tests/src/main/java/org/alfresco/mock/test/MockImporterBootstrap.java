@@ -24,23 +24,23 @@ public class MockImporterBootstrap extends AbstractLifecycleBean {
 	/** The bootstrap views. */
 	private List<Properties> bootstrapViews;
 
-	@Override
 	/**
 	 * On bootstrap.
 	 *
 	 * @param event the event
 	 */
+	@Override
 	protected void onBootstrap(ApplicationEvent event) {
 		logger.debug(useExistingStore + "");
 		logger.debug(bootstrapViews + "");
 	}
 
-	@Override
 	/**
 	 * On shutdown.
 	 *
 	 * @param event the event
 	 */
+	@Override
 	protected void onShutdown(ApplicationEvent event) {
 		// TODO Auto-generated method stub
 

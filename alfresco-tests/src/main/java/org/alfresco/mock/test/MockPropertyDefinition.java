@@ -32,244 +32,244 @@ public class MockPropertyDefinition implements PropertyDefinition, Serializable 
 		this.name = name;
 	}
 
-	@Override
 	/**
 	 * Get model.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public ModelDefinition getModel() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get name.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public QName getName() {
 		return name;
 	}
 
-	@Override
 	/**
 	 * Get title.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String getTitle() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get description.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get title.
 	 *
 	 * @param messageLookup the message lookup
 	 * @return the result
 	 */
+	@Override
 	public String getTitle(MessageLookup messageLookup) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get description.
 	 *
 	 * @param messageLookup the message lookup
 	 * @return the result
 	 */
+	@Override
 	public String getDescription(MessageLookup messageLookup) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get default value.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String getDefaultValue() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get data type.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public DataTypeDefinition getDataType() {
 		return new MockDataTypeDefinition();
 	}
 
-	@Override
 	/**
 	 * Get container class.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public ClassDefinition getContainerClass() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Is override.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isOverride() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Is multi valued.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isMultiValued() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Is mandatory.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isMandatory() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Is mandatory enforced.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isMandatoryEnforced() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Is protected.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isProtected() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Is indexed.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isIndexed() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Is stored in index.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isStoredInIndex() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Get index tokenisation mode.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public IndexTokenisationMode getIndexTokenisationMode() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Is indexed atomically.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isIndexedAtomically() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Get constraints.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public List<ConstraintDefinition> getConstraints() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get analyser resource bundle name.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String getAnalyserResourceBundleName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Resolve analyser class name.
 	 *
 	 * @param locale the locale
 	 * @return the result
 	 */
+	@Override
 	public String resolveAnalyserClassName(Locale locale) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Resolve analyser class name.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String resolveAnalyserClassName() {
 		// TODO Auto-generated method stub
 		return null;

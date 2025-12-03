@@ -53,8 +53,8 @@ import com.tradeshift.test.remote.RemoteTestRunner;
 @ContextConfiguration("classpath:test-module-context.xml")
 public abstract class AbstractForm {
 
-	@Autowired
 	/** The service registry. */
+	@Autowired
 	protected ServiceRegistry serviceRegistry;
 
 	/** The spaces store. */

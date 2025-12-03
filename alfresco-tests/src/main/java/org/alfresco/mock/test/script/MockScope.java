@@ -11,18 +11,17 @@ import org.mozilla.javascript.Scriptable;
  */
 public class MockScope implements Scriptable, Serializable {
 
-	@Override
 	/**
 	 * Get class name.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String getClassName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get.
 	 *
@@ -30,12 +29,12 @@ public class MockScope implements Scriptable, Serializable {
 	 * @param start the start
 	 * @return the result
 	 */
+	@Override
 	public Object get(String name, Scriptable start) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get.
 	 *
@@ -43,12 +42,12 @@ public class MockScope implements Scriptable, Serializable {
 	 * @param start the start
 	 * @return the result
 	 */
+	@Override
 	public Object get(int index, Scriptable start) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Has.
 	 *
@@ -56,12 +55,12 @@ public class MockScope implements Scriptable, Serializable {
 	 * @param start the start
 	 * @return the result
 	 */
+	@Override
 	public boolean has(String name, Scriptable start) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Has.
 	 *
@@ -69,12 +68,12 @@ public class MockScope implements Scriptable, Serializable {
 	 * @param start the start
 	 * @return the result
 	 */
+	@Override
 	public boolean has(int index, Scriptable start) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Put.
 	 *
@@ -82,12 +81,12 @@ public class MockScope implements Scriptable, Serializable {
 	 * @param start the start
 	 * @param value the value
 	 */
+	@Override
 	public void put(String name, Scriptable start, Object value) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * Put.
 	 *
@@ -95,72 +94,73 @@ public class MockScope implements Scriptable, Serializable {
 	 * @param start the start
 	 * @param value the value
 	 */
+	@Override
 	public void put(int index, Scriptable start, Object value) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * Delete.
 	 *
 	 * @param name the name
 	 */
+	@Override
 	public void delete(String name) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * Delete.
 	 *
 	 * @param index the index
 	 */
+	@Override
 	public void delete(int index) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * Get prototype.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public Scriptable getPrototype() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Set prototype.
 	 *
 	 * @param prototype the prototype
 	 */
+	@Override
 	public void setPrototype(Scriptable prototype) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * Get parent scope.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public Scriptable getParentScope() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Set parent scope.
 	 *
 	 * @param parent the parent
 	 */
+	@Override
 	public void setParentScope(Scriptable parent) {
 		// TODO Auto-generated method stub
 		
@@ -173,25 +173,25 @@ public class MockScope implements Scriptable, Serializable {
 	}
 
 	@Override
-	@SuppressWarnings("rawtypes")
 	/**
 	 * Get default value.
 	 *
 	 * @param hint the hint
 	 * @return the result
 	 */
+	@SuppressWarnings("rawtypes")
 	public Object getDefaultValue(Class hint) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Has instance.
 	 *
 	 * @param instance the instance
 	 * @return the result
 	 */
+	@Override
 	public boolean hasInstance(Scriptable instance) {
 		// TODO Auto-generated method stub
 		return false;

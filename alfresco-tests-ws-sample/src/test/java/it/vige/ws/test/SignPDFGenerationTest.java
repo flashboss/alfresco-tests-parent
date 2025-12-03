@@ -55,29 +55,29 @@ public class SignPDFGenerationTest extends AbstractWSForm {
 	/** The template vars. */
 	private Map<String, String> templateVars;
 
-	@Autowired
 	/** The sign p d f generation. */
+	@Autowired
 	private SignPDFGeneration signPDFGeneration;
 
-	@Autowired
 	/** The node service. */
+	@Autowired
 	private NodeService nodeService;
 
-	@Override
 	/**
 	 * Get abstract web script.
 	 *
 	 * @return the result
 	 */
+	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return signPDFGeneration;
 	}
 
-	@Before
 	/**
 	 * Init.
 	 *
 	 */
+	@Before
 	public void init() {
 		super.init();
 		templateVars = new HashMap<String, String>();
@@ -114,11 +114,11 @@ public class SignPDFGenerationTest extends AbstractWSForm {
 		}
 	}
 
-	@Test
 	/**
 	 * Execute.
 	 *
 	 */
+	@Test
 	public void execute() throws ParseException, IOException {
 
 		logger.debug("start test");

@@ -145,728 +145,728 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, S
 	/** The retrying transaction helper. */
 	private RetryingTransactionHelper retryingTransactionHelper;
 
-	@Override
 	/**
 	 * Get services.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public Collection<QName> getServices() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Is service provided.
 	 *
 	 * @param service the service
 	 * @return the result
 	 */
+	@Override
 	public boolean isServiceProvided(QName service) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Get service.
 	 *
 	 * @param service the service
 	 * @return the result
 	 */
+	@Override
 	public Object getService(QName service) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get descriptor service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public DescriptorService getDescriptorService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get transaction service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public TransactionService getTransactionService() {
 		return transactionService;
 	}
 
-	@Override
 	/**
 	 * Get retrying transaction helper.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public RetryingTransactionHelper getRetryingTransactionHelper() {
 		return retryingTransactionHelper;
 	}
 
-	@Override
 	/**
 	 * Get namespace service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public NamespaceService getNamespaceService() {
 		return namespaceService;
 	}
 
-	@Override
 	/**
 	 * Get authentication service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public MutableAuthenticationService getAuthenticationService() {
 		return authenticationService;
 	}
 
-	@Override
 	/**
 	 * Get node service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public NodeService getNodeService() {
 		return nodeService;
 	}
 
-	@Override
 	/**
 	 * Get content service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public ContentService getContentService() {
 		return contentService;
 	}
 
-	@Override
 	/**
 	 * Get mimetype service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public MimetypeService getMimetypeService() {
 		return mimetypeService;
 	}
 
-	@Override
 	/**
 	 * Get content filter languages service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public ContentFilterLanguagesService getContentFilterLanguagesService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get search service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public SearchService getSearchService() {
 		return searchService;
 	}
 
-	@Override
 	/**
 	 * Get version service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public VersionService getVersionService() {
 		return versionService;
 	}
 
-	@Override
 	/**
 	 * Get lock service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public LockService getLockService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get job lock service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public JobLockService getJobLockService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get dictionary service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public DictionaryService getDictionaryService() {
 		return dictionaryService;
 	}
 
-	@Override
 	/**
 	 * Get copy service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public CopyService getCopyService() {
 		return copyService;
 	}
 
-	@Override
 	/**
 	 * Get check out check in service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public CheckOutCheckInService getCheckOutCheckInService() {
 		return checkOutCheckInService;
 	}
 
-	@Override
 	/**
 	 * Get category service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public CategoryService getCategoryService() {
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get importer service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public ImporterService getImporterService() {
 		return importerService;
 	}
 
-	@Override
 	/**
 	 * Get exporter service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public ExporterService getExporterService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get rule service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public RuleService getRuleService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get action service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public ActionService getActionService() {
 		return actionService;
 	}
 
-	@Override
 	/**
 	 * Get permission service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public PermissionService getPermissionService() {
 		return permissionService;
 	}
 
-	@Override
 	/**
 	 * Get authority service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public AuthorityService getAuthorityService() {
 		return authorityService;
 	}
 
-	@Override
 	/**
 	 * Get template service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public TemplateService getTemplateService() {
 		return templateService;
 	}
 
-	@Override
 	/**
 	 * Get file folder service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public FileFolderService getFileFolderService() {
 		return fileFolderService;
 	}
 
-	@Override
 	/**
 	 * Get script service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public ScriptService getScriptService() {
 		return scriptService;
 	}
 
-	@Override
 	/**
 	 * Get workflow service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public WorkflowService getWorkflowService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get notification service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public NotificationService getNotificationService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get audit service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public AuditService getAuditService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get a v m service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public AVMService getAVMService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get a v m locking aware service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public AVMService getAVMLockingAwareService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get a v m sync service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public AVMSyncService getAVMSyncService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get ownable service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public OwnableService getOwnableService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get person service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public PersonService getPersonService() {
 		return personService;
 	}
 
-	@Override
 	/**
 	 * Get site service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public SiteService getSiteService() {
 		return siteService;
 	}
 
-	@Override
 	/**
 	 * Get cross repository copy service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public CrossRepositoryCopyService getCrossRepositoryCopyService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get attribute service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public AttributeService getAttributeService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get a v m locking service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public AVMLockingService getAVMLockingService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get virt server registry.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public VirtServerRegistry getVirtServerRegistry() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get multilingual content service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public MultilingualContentService getMultilingualContentService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get edition service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public EditionService getEditionService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get thumbnail service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public ThumbnailService getThumbnailService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get tagging service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public TaggingService getTaggingService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get deployment service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public DeploymentService getDeploymentService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get web project service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public WebProjectService getWebProjectService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get sandbox service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public SandboxService getSandboxService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get asset service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public AssetService getAssetService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get preview u r i service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public PreviewURIService getPreviewURIService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get form service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public FormService getFormService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get rendition service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public RenditionService getRenditionService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get rating service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public RatingService getRatingService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get node locator service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public NodeLocatorService getNodeLocatorService() {
 		return nodeLocatorService;
 	}
 
-	@Override
 	/**
 	 * Get blog service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public BlogService getBlogService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get calendar service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public CalendarService getCalendarService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get invitation service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public InvitationService getInvitationService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get c m i s service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public CMISServices getCMISService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get c m i s dictionary service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public CMISDictionaryService getCMISDictionaryService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get c m i s query service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public CMISQueryService getCMISQueryService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get imap service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public ImapService getImapService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get public service access service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public PublicServiceAccessService getPublicServiceAccessService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get repo admin service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public RepoAdminService getRepoAdminService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get sys admin params.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public SysAdminParams getSysAdminParams() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get web dav service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public WebDavService getWebDavService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get module service.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public ModuleService getModuleService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Set bean factory.
 	 *
 	 * @param beanFactory the bean factory
 	 */
+	@Override
 	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
 		// TODO Auto-generated method stub
 

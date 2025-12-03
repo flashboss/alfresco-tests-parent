@@ -15,55 +15,54 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class MockTransactionService implements TransactionService, Serializable {
 
-	@Autowired
 	/** The retrying transaction helper. */
+	@Autowired
 	private RetryingTransactionHelper retryingTransactionHelper;
 	
-	@Override
 	/**
 	 * Get allow write.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean getAllowWrite() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Is read only.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isReadOnly() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Get user transaction.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public UserTransaction getUserTransaction() {
 		return new MockUserTransaction();
 	}
 
-	@Override
 	/**
 	 * Get user transaction.
 	 *
 	 * @param readOnly the read only
 	 * @return the result
 	 */
+	@Override
 	public UserTransaction getUserTransaction(boolean readOnly) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get user transaction.
 	 *
@@ -71,35 +70,35 @@ public class MockTransactionService implements TransactionService, Serializable 
 	 * @param ignoreSystemReadOnly the ignore system read only
 	 * @return the result
 	 */
+	@Override
 	public UserTransaction getUserTransaction(boolean readOnly, boolean ignoreSystemReadOnly) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get non propagating user transaction.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public UserTransaction getNonPropagatingUserTransaction() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get non propagating user transaction.
 	 *
 	 * @param readOnly the read only
 	 * @return the result
 	 */
+	@Override
 	public UserTransaction getNonPropagatingUserTransaction(boolean readOnly) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get non propagating user transaction.
 	 *
@@ -107,17 +106,18 @@ public class MockTransactionService implements TransactionService, Serializable 
 	 * @param ignoreSystemReadOnly the ignore system read only
 	 * @return the result
 	 */
+	@Override
 	public UserTransaction getNonPropagatingUserTransaction(boolean readOnly, boolean ignoreSystemReadOnly) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get retrying transaction helper.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public RetryingTransactionHelper getRetryingTransactionHelper() {
 		return retryingTransactionHelper;
 	}

@@ -39,12 +39,12 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class MockSiteService implements SiteService, Serializable {
 
-	@Autowired
 	/** The search service. */
+	@Autowired
 	private SearchService searchService;
 
-	@Autowired
 	/** The node service. */
+	@Autowired
 	private NodeService nodeService;
 
 	@Override
@@ -59,7 +59,6 @@ public class MockSiteService implements SiteService, Serializable {
 		return siteInfo;
 	}
 
-	@Override
 	/**
 	 * Can add member.
 	 *
@@ -68,6 +67,7 @@ public class MockSiteService implements SiteService, Serializable {
 	 * @param role the role
 	 * @return the result
 	 */
+	@Override
 	public boolean canAddMember(String shortName, String authorityName, String role) {
 		// TODO Auto-generated method stub
 		return false;
@@ -85,18 +85,17 @@ public class MockSiteService implements SiteService, Serializable {
 		return createSite(sitePreset, shortName, title, description, visibility == PUBLIC);
 	}
 
-	@Override
 	/**
 	 * Has create site permissions.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean hasCreateSitePermissions() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Find sites.
 	 *
@@ -105,12 +104,12 @@ public class MockSiteService implements SiteService, Serializable {
 	 * @param size the size
 	 * @return the result
 	 */
+	@Override
 	public List<SiteInfo> findSites(String filter, String sitePresetFilter, int size) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * List sites.
 	 *
@@ -119,12 +118,12 @@ public class MockSiteService implements SiteService, Serializable {
 	 * @param size the size
 	 * @return the result
 	 */
+	@Override
 	public List<SiteInfo> listSites(String filter, String sitePresetFilter, int size) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * List sites.
 	 *
@@ -132,18 +131,19 @@ public class MockSiteService implements SiteService, Serializable {
 	 * @param sitePresetFilter the site preset filter
 	 * @return the result
 	 */
+	@Override
 	public List<SiteInfo> listSites(String filter, String sitePresetFilter) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * List sites.
 	 *
 	 * @param userName the user name
 	 * @return the result
 	 */
+	@Override
 	public List<SiteInfo> listSites(String userName) {
 		// TODO Auto-generated method stub
 		return null;
@@ -156,7 +156,6 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
-	@Override
 	/**
 	 * List sites.
 	 *
@@ -164,18 +163,19 @@ public class MockSiteService implements SiteService, Serializable {
 	 * @param size the size
 	 * @return the result
 	 */
+	@Override
 	public List<SiteInfo> listSites(String userName, int size) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get site.
 	 *
 	 * @param shortName the short name
 	 * @return the result
 	 */
+	@Override
 	public SiteInfo getSite(String shortName) {
 		ResultSet resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, LANGUAGE_FTS_ALFRESCO,
 				"PATH:\"company_home/sites/" + shortName + "\"");
@@ -184,58 +184,58 @@ public class MockSiteService implements SiteService, Serializable {
 		return siteInfo;
 	}
 
-	@Override
 	/**
 	 * Get site.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public SiteInfo getSite(NodeRef nodeRef) {
 		return new MockSiteInfo(nodeRef, nodeService.getProperty(nodeRef, ContentModel.PROP_NAME) + "");
 	}
 
-	@Override
 	/**
 	 * Get site short name.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public String getSiteShortName(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Has site.
 	 *
 	 * @param shortName the short name
 	 * @return the result
 	 */
+	@Override
 	public boolean hasSite(String shortName) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Update site.
 	 *
 	 * @param siteInfo the site info
 	 */
+	@Override
 	public void updateSite(SiteInfo siteInfo) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Delete site.
 	 *
 	 * @param shortName the short name
 	 */
+	@Override
 	public void deleteSite(String shortName) {
 		// TODO Auto-generated method stub
 
@@ -248,7 +248,6 @@ public class MockSiteService implements SiteService, Serializable {
 
 	}
 
-	@Override
 	/**
 	 * List members.
 	 *
@@ -257,6 +256,7 @@ public class MockSiteService implements SiteService, Serializable {
 	 * @param roleFilter the role filter
 	 * @param size the size
 	 */
+	@Override
 	public Map<String, String> listMembers(String shortName, String nameFilter, String roleFilter, int size) {
 		// TODO Auto-generated method stub
 		return null;
@@ -283,7 +283,6 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get members role info.
 	 *
@@ -291,12 +290,12 @@ public class MockSiteService implements SiteService, Serializable {
 	 * @param authorityName the authority name
 	 * @return the result
 	 */
+	@Override
 	public SiteMemberInfo getMembersRoleInfo(String shortName, String authorityName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Is member.
 	 *
@@ -304,12 +303,12 @@ public class MockSiteService implements SiteService, Serializable {
 	 * @param authorityName the authority name
 	 * @return the result
 	 */
+	@Override
 	public boolean isMember(String shortName, String authorityName) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Set membership.
 	 *
@@ -317,18 +316,19 @@ public class MockSiteService implements SiteService, Serializable {
 	 * @param authorityName the authority name
 	 * @param role the role
 	 */
+	@Override
 	public void setMembership(String shortName, String authorityName, String role) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Remove membership.
 	 *
 	 * @param shortName the short name
 	 * @param authorityName the authority name
 	 */
+	@Override
 	public void removeMembership(String shortName, String authorityName) {
 		// TODO Auto-generated method stub
 
@@ -341,7 +341,6 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get container.
 	 *
@@ -349,12 +348,12 @@ public class MockSiteService implements SiteService, Serializable {
 	 * @param componentId the component id
 	 * @return the result
 	 */
+	@Override
 	public NodeRef getContainer(String shortName, String componentId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * List containers.
 	 *
@@ -362,12 +361,12 @@ public class MockSiteService implements SiteService, Serializable {
 	 * @param pagingRequest the paging request
 	 * @return the result
 	 */
+	@Override
 	public PagingResults<FileInfo> listContainers(String shortName, PagingRequest pagingRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Has container.
 	 *
@@ -375,47 +374,47 @@ public class MockSiteService implements SiteService, Serializable {
 	 * @param componentId the component id
 	 * @return the result
 	 */
+	@Override
 	public boolean hasContainer(String shortName, String componentId) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Get site roles.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public List<String> getSiteRoles() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get site roles.
 	 *
 	 * @param shortName the short name
 	 * @return the result
 	 */
+	@Override
 	public List<String> getSiteRoles(String shortName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get site group.
 	 *
 	 * @param shortName the short name
 	 * @return the result
 	 */
+	@Override
 	public String getSiteGroup(String shortName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get site role group.
 	 *
@@ -423,29 +422,30 @@ public class MockSiteService implements SiteService, Serializable {
 	 * @param role the role
 	 * @return the result
 	 */
+	@Override
 	public String getSiteRoleGroup(String shortName, String role) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get site root.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public NodeRef getSiteRoot() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Clean site permissions.
 	 *
 	 * @param relocatedNode the relocated node
 	 * @param containingSite the containing site
 	 */
+	@Override
 	public void cleanSitePermissions(NodeRef relocatedNode, SiteInfo containingSite) {
 		// TODO Auto-generated method stub
 
@@ -458,19 +458,18 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
-	@Override
 	/**
 	 * Resolve site.
 	 *
 	 * @param group the group
 	 * @return the result
 	 */
+	@Override
 	public String resolveSite(String group) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get members role.
 	 *
@@ -478,12 +477,12 @@ public class MockSiteService implements SiteService, Serializable {
 	 * @param authorityName the authority name
 	 * @return the result
 	 */
+	@Override
 	public String getMembersRole(String shortName, String authorityName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Count authorities with role.
 	 *
@@ -491,12 +490,12 @@ public class MockSiteService implements SiteService, Serializable {
 	 * @param role the role
 	 * @return the result
 	 */
+	@Override
 	public int countAuthoritiesWithRole(String shortName, String role) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
 	/**
 	 * List site memberships.
 	 *
@@ -504,6 +503,7 @@ public class MockSiteService implements SiteService, Serializable {
 	 * @param size the size
 	 * @return the result
 	 */
+	@Override
 	public List<SiteMembership> listSiteMemberships(String userName, int size) {
 		// TODO Auto-generated method stub
 		return null;

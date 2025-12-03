@@ -38,15 +38,14 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class MockSearchService implements SearchService, Serializable {
 
-	@Autowired
 	/** The node service. */
+	@Autowired
 	private NodeService nodeService;
 
-	@Autowired
 	/** The namespace service. */
+	@Autowired
 	private NamespaceService namespaceService;
 
-	@Override
 	/**
 	 * Query.
 	 *
@@ -55,6 +54,7 @@ public class MockSearchService implements SearchService, Serializable {
 	 * @param query the query
 	 * @return the result
 	 */
+	@Override
 	public ResultSet query(StoreRef store, String language, String query) {
 		MockNodeService nodeService = getNodeService();
 		List<ResultSetRow> rows = new ArrayList<ResultSetRow>();
@@ -72,7 +72,6 @@ public class MockSearchService implements SearchService, Serializable {
 		return query(store, language, query);
 	}
 
-	@Override
 	/**
 	 * Query.
 	 *
@@ -81,18 +80,19 @@ public class MockSearchService implements SearchService, Serializable {
 	 * @param queryParameters the query parameters
 	 * @return the result
 	 */
+	@Override
 	public ResultSet query(StoreRef store, QName queryId, QueryParameter[] queryParameters) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Query.
 	 *
 	 * @param searchParameters the search parameters
 	 * @return the result
 	 */
+	@Override
 	public ResultSet query(SearchParameters searchParameters) {
 		ResultSet resultSet = query(searchParameters.getStores().get(0), searchParameters.getLanguage(),
 				searchParameters.getQuery());
@@ -141,7 +141,6 @@ public class MockSearchService implements SearchService, Serializable {
 		return null;
 	}
 
-	@Override
 	/**
 	 * Contains.
 	 *
@@ -150,13 +149,13 @@ public class MockSearchService implements SearchService, Serializable {
 	 * @param googleLikePattern the google like pattern
 	 * @return the result
 	 */
+	@Override
 	public boolean contains(NodeRef nodeRef, QName propertyQName, String googleLikePattern)
 			throws InvalidNodeRefException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Contains.
 	 *
@@ -166,13 +165,13 @@ public class MockSearchService implements SearchService, Serializable {
 	 * @param defaultOperator the default operator
 	 * @return the result
 	 */
+	@Override
 	public boolean contains(NodeRef nodeRef, QName propertyQName, String googleLikePattern, Operator defaultOperator)
 			throws InvalidNodeRefException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Like.
 	 *
@@ -182,6 +181,7 @@ public class MockSearchService implements SearchService, Serializable {
 	 * @param includeFTS the include f t s
 	 * @return the result
 	 */
+	@Override
 	public boolean like(NodeRef nodeRef, QName propertyQName, String sqlLikePattern, boolean includeFTS)
 			throws InvalidNodeRefException {
 		// TODO Auto-generated method stub

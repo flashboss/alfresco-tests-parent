@@ -24,19 +24,18 @@ import org.alfresco.service.namespace.QName;
  */
 public class MockDictionaryService implements DictionaryService, Serializable {
 
-	@Override
 	/**
 	 * Get message.
 	 *
 	 * @param messageKey the message key
 	 * @return the result
 	 */
+	@Override
 	public String getMessage(String messageKey) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get message.
 	 *
@@ -44,12 +43,12 @@ public class MockDictionaryService implements DictionaryService, Serializable {
 	 * @param locale the locale
 	 * @return the result
 	 */
+	@Override
 	public String getMessage(String messageKey, Locale locale) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get message.
 	 *
@@ -57,12 +56,12 @@ public class MockDictionaryService implements DictionaryService, Serializable {
 	 * @param params the params
 	 * @return the result
 	 */
+	@Override
 	public String getMessage(String messageKey, Object... params) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get message.
 	 *
@@ -71,93 +70,93 @@ public class MockDictionaryService implements DictionaryService, Serializable {
 	 * @param params the params
 	 * @return the result
 	 */
+	@Override
 	public String getMessage(String messageKey, Locale locale, Object... params) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get all models.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public Collection<QName> getAllModels() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get model.
 	 *
 	 * @param model the model
 	 * @return the result
 	 */
+	@Override
 	public ModelDefinition getModel(QName model) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get all data types.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public Collection<QName> getAllDataTypes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get data types.
 	 *
 	 * @param model the model
 	 * @return the result
 	 */
+	@Override
 	public Collection<QName> getDataTypes(QName model) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get data type.
 	 *
 	 * @param name the name
 	 * @return the result
 	 */
+	@Override
 	public DataTypeDefinition getDataType(QName name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get data type.
 	 *
 	 * @param javaClass the java class
 	 * @return the result
 	 */
+	@Override
 	public DataTypeDefinition getDataType(Class<?> javaClass) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get all types.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public Collection<QName> getAllTypes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get sub types.
 	 *
@@ -165,35 +164,35 @@ public class MockDictionaryService implements DictionaryService, Serializable {
 	 * @param follow the follow
 	 * @return the result
 	 */
+	@Override
 	public Collection<QName> getSubTypes(QName type, boolean follow) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get types.
 	 *
 	 * @param model the model
 	 * @return the result
 	 */
+	@Override
 	public Collection<QName> getTypes(QName model) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get type.
 	 *
 	 * @param name the name
 	 * @return the result
 	 */
+	@Override
 	public TypeDefinition getType(QName name) {
 		return new MockTypeDefinition(name);
 	}
 
-	@Override
 	/**
 	 * Get anonymous type.
 	 *
@@ -201,35 +200,35 @@ public class MockDictionaryService implements DictionaryService, Serializable {
 	 * @param aspects the aspects
 	 * @return the result
 	 */
+	@Override
 	public TypeDefinition getAnonymousType(QName type, Collection<QName> aspects) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get anonymous type.
 	 *
 	 * @param name the name
 	 * @return the result
 	 */
+	@Override
 	public TypeDefinition getAnonymousType(QName name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get all aspects.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public Collection<QName> getAllAspects() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get sub aspects.
 	 *
@@ -237,59 +236,59 @@ public class MockDictionaryService implements DictionaryService, Serializable {
 	 * @param follow the follow
 	 * @return the result
 	 */
+	@Override
 	public Collection<QName> getSubAspects(QName aspect, boolean follow) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get aspects.
 	 *
 	 * @param model the model
 	 * @return the result
 	 */
+	@Override
 	public Collection<QName> getAspects(QName model) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get associations.
 	 *
 	 * @param model the model
 	 * @return the result
 	 */
+	@Override
 	public Collection<QName> getAssociations(QName model) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get aspect.
 	 *
 	 * @param name the name
 	 * @return the result
 	 */
+	@Override
 	public AspectDefinition getAspect(QName name) {
 		return new MockAspectDefinition(name);
 	}
 
-	@Override
 	/**
 	 * Get class.
 	 *
 	 * @param name the name
 	 * @return the result
 	 */
+	@Override
 	public ClassDefinition getClass(QName name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Is sub class.
 	 *
@@ -297,12 +296,12 @@ public class MockDictionaryService implements DictionaryService, Serializable {
 	 * @param ofClassName the of class name
 	 * @return the result
 	 */
+	@Override
 	public boolean isSubClass(QName className, QName ofClassName) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Get property.
 	 *
@@ -310,48 +309,48 @@ public class MockDictionaryService implements DictionaryService, Serializable {
 	 * @param propertyName the property name
 	 * @return the result
 	 */
+	@Override
 	public PropertyDefinition getProperty(QName className, QName propertyName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get property defs.
 	 *
 	 * @param className the class name
 	 */
+	@Override
 	public Map<QName, PropertyDefinition> getPropertyDefs(QName className) {
 		Map<QName, PropertyDefinition> propertyDefs = new HashMap<QName, PropertyDefinition>();
 		propertyDefs.put(className, new MockPropertyDefinition(className));
 		return propertyDefs;
 	}
 
-	@Override
 	/**
 	 * Get property.
 	 *
 	 * @param propertyName the property name
 	 * @return the result
 	 */
+	@Override
 	public PropertyDefinition getProperty(QName propertyName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get all properties.
 	 *
 	 * @param dataType the data type
 	 * @return the result
 	 */
+	@Override
 	public Collection<QName> getAllProperties(QName dataType) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get properties.
 	 *
@@ -359,70 +358,70 @@ public class MockDictionaryService implements DictionaryService, Serializable {
 	 * @param dataType the data type
 	 * @return the result
 	 */
+	@Override
 	public Collection<QName> getProperties(QName model, QName dataType) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get properties.
 	 *
 	 * @param model the model
 	 * @return the result
 	 */
+	@Override
 	public Collection<QName> getProperties(QName model) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get association.
 	 *
 	 * @param associationName the association name
 	 * @return the result
 	 */
+	@Override
 	public AssociationDefinition getAssociation(QName associationName) {
 		return new MockAssociationDefinition();
 	}
 
-	@Override
 	/**
 	 * Get all associations.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public Collection<QName> getAllAssociations() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get constraint.
 	 *
 	 * @param constraintQName the constraint q name
 	 * @return the result
 	 */
+	@Override
 	public ConstraintDefinition getConstraint(QName constraintQName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get constraints.
 	 *
 	 * @param model the model
 	 * @return the result
 	 */
+	@Override
 	public Collection<ConstraintDefinition> getConstraints(QName model) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get constraints.
 	 *
@@ -430,6 +429,7 @@ public class MockDictionaryService implements DictionaryService, Serializable {
 	 * @param referenceableDefsOnly the referenceable defs only
 	 * @return the result
 	 */
+	@Override
 	public Collection<ConstraintDefinition> getConstraints(QName model, boolean referenceableDefsOnly) {
 		// TODO Auto-generated method stub
 		return null;

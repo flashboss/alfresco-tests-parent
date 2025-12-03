@@ -13,189 +13,189 @@ import org.alfresco.service.namespace.QName;
  */
 public class MockAssociationDefinition implements AssociationDefinition {
 
-	@Override
 	/**
 	 * Get model.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public ModelDefinition getModel() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get name.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public QName getName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get title.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String getTitle() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get description.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get title.
 	 *
 	 * @param messageLookup the message lookup
 	 * @return the result
 	 */
+	@Override
 	public String getTitle(MessageLookup messageLookup) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get description.
 	 *
 	 * @param messageLookup the message lookup
 	 * @return the result
 	 */
+	@Override
 	public String getDescription(MessageLookup messageLookup) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Is child.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isChild() {
 		return true;
 	}
 
-	@Override
 	/**
 	 * Is protected.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isProtected() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Get source class.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public ClassDefinition getSourceClass() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get source role name.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public QName getSourceRoleName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Is source mandatory.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isSourceMandatory() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Is source many.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isSourceMany() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Get target class.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public ClassDefinition getTargetClass() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get target role name.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public QName getTargetRoleName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Is target mandatory.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isTargetMandatory() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Is target mandatory enforced.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isTargetMandatoryEnforced() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Is target many.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean isTargetMany() {
 		// TODO Auto-generated method stub
 		return false;

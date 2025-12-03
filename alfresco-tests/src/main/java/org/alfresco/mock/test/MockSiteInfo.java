@@ -31,142 +31,142 @@ public class MockSiteInfo implements SiteInfo, Serializable {
 		this.shortName = shortName;
 	}
 
-	@Override
 	/**
 	 * Get node ref.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public NodeRef getNodeRef() {
 		return nodeRef;
 	}
 
-	@Override
 	/**
 	 * Get site preset.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String getSitePreset() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get short name.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String getShortName() {
 		return shortName;
 	}
 
-	@Override
 	/**
 	 * Get title.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String getTitle() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Set title.
 	 *
 	 * @param title the title
 	 */
+	@Override
 	public void setTitle(String title) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Get description.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Set description.
 	 *
 	 * @param description the description
 	 */
+	@Override
 	public void setDescription(String description) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Set is public.
 	 *
 	 * @param isPublic the is public
 	 */
+	@Override
 	public void setIsPublic(boolean isPublic) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Get is public.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public boolean getIsPublic() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Get visibility.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public SiteVisibility getVisibility() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Set visibility.
 	 *
 	 * @param visibility the visibility
 	 */
+	@Override
 	public void setVisibility(SiteVisibility visibility) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Get custom properties.
 	 *
 	 */
+	@Override
 	public Map<QName, Serializable> getCustomProperties() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get custom property.
 	 *
 	 * @param name the name
 	 * @return the result
 	 */
+	@Override
 	public Serializable getCustomProperty(QName name) {
 		// TODO Auto-generated method stub
 		return null;

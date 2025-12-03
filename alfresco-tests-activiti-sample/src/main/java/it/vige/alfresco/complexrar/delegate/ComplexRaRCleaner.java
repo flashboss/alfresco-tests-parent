@@ -15,12 +15,12 @@ import org.mozilla.javascript.NativeArray;
  */
 public class ComplexRaRCleaner extends BaseJavaDelegate {
 
-	@Override
 	/**
 	 * Execute.
 	 *
 	 * @param execution the execution
 	 */
+	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 		ActivitiScriptNode bpmPackage = (ActivitiScriptNode) execution.getVariable("bpm_package");
 		@SuppressWarnings("unchecked")

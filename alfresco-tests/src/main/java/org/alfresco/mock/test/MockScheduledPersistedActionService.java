@@ -13,58 +13,58 @@ import org.alfresco.service.cmr.action.scheduled.ScheduledPersistedActionService
  */
 public class MockScheduledPersistedActionService implements ScheduledPersistedActionService {
 
-	@Override
 	/**
 	 * Create schedule.
 	 *
 	 * @param persistedAction the persisted action
 	 * @return the result
 	 */
+	@Override
 	public ScheduledPersistedAction createSchedule(Action persistedAction) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Save schedule.
 	 *
 	 * @param schedule the schedule
 	 */
+	@Override
 	public void saveSchedule(ScheduledPersistedAction schedule) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * Delete schedule.
 	 *
 	 * @param schedule the schedule
 	 */
+	@Override
 	public void deleteSchedule(ScheduledPersistedAction schedule) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * Get schedule.
 	 *
 	 * @param persistedAction the persisted action
 	 * @return the result
 	 */
+	@Override
 	public ScheduledPersistedAction getSchedule(Action persistedAction) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * List schedules.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public List<ScheduledPersistedAction> listSchedules() {
 		// TODO Auto-generated method stub
 		return null;

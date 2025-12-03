@@ -50,61 +50,60 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class MockVersionService implements VersionService, Serializable {
 
-	@Autowired
 	/** The node service. */
+	@Autowired
 	private NodeService nodeService;
 
-	@Autowired
 	/** The content service. */
+	@Autowired
 	private ContentService contentService;
 
-	@Autowired
 	/** The mimetype service. */
+	@Autowired
 	private MimetypeService mimetypeService;
 
-	@Autowired
 	/** The namespace service. */
+	@Autowired
 	private NamespaceService namespaceService;
 
 	/** The version histories. */
 	private Map<NodeRef, VersionHistory> versionHistories = new HashMap<NodeRef, VersionHistory>();
 
-	@Override
 	/**
 	 * Get version store reference.
 	 *
 	 * @return the result
 	 */
+	@Override
 	public StoreRef getVersionStoreReference() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Is a version.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public boolean isAVersion(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Is versioned.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public boolean isVersioned(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Create version.
 	 *
@@ -112,6 +111,7 @@ public class MockVersionService implements VersionService, Serializable {
 	 * @param versionProperties the version properties
 	 * @return the result
 	 */
+	@Override
 	public Version createVersion(NodeRef nodeRef, Map<String, Serializable> versionProperties)
 			throws ReservedVersionNameException, AspectMissingException {
 		Collection<Version> versions = createVersion(nodeRef, versionProperties, true);
@@ -178,7 +178,6 @@ public class MockVersionService implements VersionService, Serializable {
 		return versionHistory.getAllVersions();
 	}
 
-	@Override
 	/**
 	 * Create version.
 	 *
@@ -186,71 +185,71 @@ public class MockVersionService implements VersionService, Serializable {
 	 * @param versionProperties the version properties
 	 * @return the result
 	 */
+	@Override
 	public Collection<Version> createVersion(Collection<NodeRef> nodeRefs, Map<String, Serializable> versionProperties)
 			throws ReservedVersionNameException, AspectMissingException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get version history.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public VersionHistory getVersionHistory(NodeRef nodeRef) throws AspectMissingException {
 		return versionHistories.get(nodeRef);
 	}
 
-	@Override
 	/**
 	 * Get current version.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the result
 	 */
+	@Override
 	public Version getCurrentVersion(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Revert.
 	 *
 	 * @param nodeRef the node ref
 	 */
+	@Override
 	public void revert(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Revert.
 	 *
 	 * @param nodeRef the node ref
 	 * @param deep the deep
 	 */
+	@Override
 	public void revert(NodeRef nodeRef, boolean deep) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Revert.
 	 *
 	 * @param nodeRef the node ref
 	 * @param version the version
 	 */
+	@Override
 	public void revert(NodeRef nodeRef, Version version) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Revert.
 	 *
@@ -258,12 +257,12 @@ public class MockVersionService implements VersionService, Serializable {
 	 * @param version the version
 	 * @param deep the deep
 	 */
+	@Override
 	public void revert(NodeRef nodeRef, Version version, boolean deep) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Restore.
 	 *
@@ -273,6 +272,7 @@ public class MockVersionService implements VersionService, Serializable {
 	 * @param assocQName the assoc q name
 	 * @return the result
 	 */
+	@Override
 	public NodeRef restore(NodeRef nodeRef, NodeRef parentNodeRef, QName assocTypeQName, QName assocQName) {
 		// TODO Auto-generated method stub
 		return null;
@@ -285,48 +285,48 @@ public class MockVersionService implements VersionService, Serializable {
 		return null;
 	}
 
-	@Override
 	/**
 	 * Delete version history.
 	 *
 	 * @param nodeRef the node ref
 	 */
+	@Override
 	public void deleteVersionHistory(NodeRef nodeRef) throws AspectMissingException {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Delete version.
 	 *
 	 * @param nodeRef the node ref
 	 * @param version the version
 	 */
+	@Override
 	public void deleteVersion(NodeRef nodeRef, Version version) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Ensure versioning enabled.
 	 *
 	 * @param nodeRef the node ref
 	 * @param versionProperties the version properties
 	 */
+	@Override
 	public void ensureVersioningEnabled(NodeRef nodeRef, Map<QName, Serializable> versionProperties) {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	/**
 	 * Register version label policy.
 	 *
 	 * @param typeQName the type q name
 	 * @param policy the policy
 	 */
+	@Override
 	public void registerVersionLabelPolicy(QName typeQName, CalculateVersionLabelPolicy policy) {
 		// TODO Auto-generated method stub
 

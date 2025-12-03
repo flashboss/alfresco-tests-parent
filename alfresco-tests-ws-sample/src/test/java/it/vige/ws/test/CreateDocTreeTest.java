@@ -47,25 +47,25 @@ public class CreateDocTreeTest extends AbstractWSForm {
 	/** The numero pratica. */
 	private final String NUMERO_PRATICA = "3456";
 
-	@Autowired
 	/** The create doc tree. */
+	@Autowired
 	private CreateDocTree createDocTree;
 
-	@Override
 	/**
 	 * Get abstract web script.
 	 *
 	 * @return the result
 	 */
+	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return createDocTree;
 	}
 
-	@Before
 	/**
 	 * Init.
 	 *
 	 */
+	@Before
 	public void init() {
 		super.init();
 		templateVars = new HashMap<String, String>();
@@ -78,11 +78,11 @@ public class CreateDocTreeTest extends AbstractWSForm {
 		insertFolder(bdmDL, "Questions");
 	}
 
-	@Test
 	/**
 	 * Execute.
 	 *
 	 */
+	@Test
 	public void execute() throws ParseException, IOException {
 
 		logger.debug("start test");
