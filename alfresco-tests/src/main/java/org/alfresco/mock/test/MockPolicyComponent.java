@@ -180,7 +180,7 @@ public class MockPolicyComponent implements PolicyComponent {
 	@Override
 	public void removeClassDefinition(BehaviourDefinition<ClassBehaviourBinding> definition) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

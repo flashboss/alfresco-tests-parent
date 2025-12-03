@@ -21,6 +21,6 @@ public class ActUtil {
 
 	public static final QName PROP_LEGISLATURE_QNAME = QName.createQName(CRL_ACTS_MODEL, PROP_LEGISLATURE);
 	public static final QName PROP_NUMERO_ACT_QNAME = QName.createQName(CRL_ACTS_MODEL, PROP_NUM_ACT);
-	
+
 	public static final QName PROP_STATE_ACT_QNAME = QName.createQName(CRL_ACTS_MODEL, PROP_STATE_ACT);
 }

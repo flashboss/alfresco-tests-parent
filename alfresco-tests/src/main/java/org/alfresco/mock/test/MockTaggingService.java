@@ -99,7 +99,7 @@ public class MockTaggingService implements TaggingService{
 	@Override
 	public void deleteTag(StoreRef storeRef, String tag) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -170,7 +170,7 @@ public class MockTaggingService implements TaggingService{
 	@Override
 	public void removeTag(NodeRef nodeRef, String tag) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -181,7 +181,7 @@ public class MockTaggingService implements TaggingService{
 	@Override
 	public void removeTags(NodeRef nodeRef, List<String> tags) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -214,7 +214,7 @@ public class MockTaggingService implements TaggingService{
 	@Override
 	public void setTags(NodeRef nodeRef, List<String> tags) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -224,7 +224,7 @@ public class MockTaggingService implements TaggingService{
 	@Override
 	public void clearTags(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -245,7 +245,7 @@ public class MockTaggingService implements TaggingService{
 	@Override
 	public void addTagScope(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -256,7 +256,7 @@ public class MockTaggingService implements TaggingService{
 	@Override
 	public void refreshTagScope(NodeRef nodeRef, boolean async) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -266,7 +266,7 @@ public class MockTaggingService implements TaggingService{
 	@Override
 	public void removeTagScope(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**

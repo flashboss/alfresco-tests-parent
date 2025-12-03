@@ -59,7 +59,7 @@ public class MockTransferServiceImpl2 implements TransferService2 {
 	public void transferAsync(String targetName, TransferDefinition definition, Collection<TransferCallback> callback)
 			throws TransferException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -71,7 +71,7 @@ public class MockTransferServiceImpl2 implements TransferService2 {
 	public void transferAsync(String targetName, TransferDefinition definition, TransferCallback... callbacks)
 			throws TransferException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -82,7 +82,7 @@ public class MockTransferServiceImpl2 implements TransferService2 {
 	@Override
 	public void verify(TransferTarget target) throws TransferException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -161,7 +161,7 @@ public class MockTransferServiceImpl2 implements TransferService2 {
 	@Override
 	public void deleteTransferTarget(String name) throws TransferException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -185,7 +185,7 @@ public class MockTransferServiceImpl2 implements TransferService2 {
 	@Override
 	public void enableTransferTarget(String name, boolean enable) throws TransferException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -195,7 +195,7 @@ public class MockTransferServiceImpl2 implements TransferService2 {
 	@Override
 	public void cancelAsync(String transferId) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

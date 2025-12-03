@@ -37,7 +37,7 @@ public class MockRenditionService2 implements RenditionService2, Serializable {
 	@Override
 	public void render(NodeRef sourceNodeRef, String renditionName) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -81,7 +81,7 @@ public class MockRenditionService2 implements RenditionService2, Serializable {
 	@Override
 	public void transform(NodeRef sourceNodeRef, TransformDefinition transformDefinition) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -91,7 +91,7 @@ public class MockRenditionService2 implements RenditionService2, Serializable {
 	@Override
 	public void clearRenditionContentDataInTransaction(NodeRef renditionNode) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
