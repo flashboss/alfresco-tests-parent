@@ -16,7 +16,7 @@ import org.springframework.extensions.webscripts.WebScriptSession;
 * @version 7.4.2.1.1
  */
 public class MockRuntime implements Runtime {
-	
+
 	private Map<String, Object> templateParameters = new HashMap<String, Object>();
 
 /**

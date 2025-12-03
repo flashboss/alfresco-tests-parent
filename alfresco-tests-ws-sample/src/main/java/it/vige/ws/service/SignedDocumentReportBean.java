@@ -24,7 +24,7 @@ public class SignedDocumentReportBean {
 	public List<NoteReportBean> getNoteReportList() {
 		return new ArrayList<NoteReportBean>();
 	}
-	
+
 /**
 * Gets the signature format.
 * @return the result

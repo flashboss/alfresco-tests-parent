@@ -11,5 +11,5 @@ import it.vige.common.CommonHashUtil;
 * @version 7.4.2.1.1
  */
 public class ComplexHashUtil extends CommonHashUtil {
-	
+
 }

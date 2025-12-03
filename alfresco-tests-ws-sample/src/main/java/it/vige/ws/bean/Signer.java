@@ -18,7 +18,7 @@ public class Signer {
 * The password.
  */
 	private String password;
-	
+
 /**
 * Gets the username.
 * @return the result

@@ -300,7 +300,7 @@ public class MockPermissionService implements PermissionService, Serializable {
 	@Override
 	public void setInheritParentPermissions(NodeRef nodeRef, boolean inheritParentPermissions, boolean asyncCall) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**

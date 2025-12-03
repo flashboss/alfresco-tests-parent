@@ -16,7 +16,7 @@ import org.apache.commons.logging.LogFactory;
 * @version 7.4.2.1.1
  */
 public class MockLogger extends BaseProcessorExtension implements Serializable {
-	
+
 	private static final Log logger = LogFactory.getLog(ScriptLogger.class);
 	private static final SystemOut systemOut = new SystemOut();
 

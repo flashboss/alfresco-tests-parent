@@ -23,7 +23,7 @@ public class MockTransactionService implements TransactionService, Serializable 
  */
 	@Autowired
 	private RetryingTransactionHelper retryingTransactionHelper;
-	
+
 /**
 * {@inheritDoc}
 * @return the result
