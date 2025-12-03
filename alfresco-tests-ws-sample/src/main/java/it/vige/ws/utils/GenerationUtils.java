@@ -47,6 +47,9 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
+/**
+ * @author vige
+ */
 public class GenerationUtils {
 
 	private Logger logger = Logger.getLogger(GenerationUtils.class);

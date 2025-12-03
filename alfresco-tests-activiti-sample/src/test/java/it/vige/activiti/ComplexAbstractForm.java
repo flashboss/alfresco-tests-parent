@@ -20,6 +20,9 @@ import org.alfresco.service.namespace.QName;
 
 import it.vige.common.ConservationModel;
 
+/**
+ * @author vige
+ */
 public class ComplexAbstractForm extends AbstractActivitiForm {
 
 	public final static String ACTIVITY_KEY = "complexRarGenerationWorkflow";

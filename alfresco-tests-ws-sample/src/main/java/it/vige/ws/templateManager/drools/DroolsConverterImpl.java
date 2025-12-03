@@ -31,6 +31,9 @@ import static org.apache.pdfbox.io.IOUtils.toByteArray;
 /**
  * Author: Luca Stancapiano
  */
+/**
+ * @author vige
+ */
 public class DroolsConverterImpl {
 
 	Logger logger = Logger.getLogger("FILE2");

@@ -6,6 +6,9 @@ import java.util.List;
 import org.alfresco.query.PagingResults;
 import org.alfresco.util.Pair;
 
+/**
+ * @author vige
+ */
 public class MockPagingResults<R> implements PagingResults<R>, Serializable {
 
 	private List<R> files;

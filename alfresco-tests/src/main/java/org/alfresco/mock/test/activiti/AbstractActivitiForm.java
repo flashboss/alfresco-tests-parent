@@ -54,6 +54,9 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.subethamail.smtp.server.SMTPServer;
 
+/**
+ * @author vige
+ */
 public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
 	protected NodeRef spacesStore;

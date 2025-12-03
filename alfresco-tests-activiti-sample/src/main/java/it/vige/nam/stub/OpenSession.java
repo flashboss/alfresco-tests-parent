@@ -29,6 +29,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "openSession", propOrder = { "credentials" })
+/**
+ * @author vige
+ */
 public class OpenSession {
 
 	protected Credentials credentials;

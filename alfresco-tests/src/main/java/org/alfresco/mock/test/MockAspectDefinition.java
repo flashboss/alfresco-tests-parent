@@ -15,6 +15,9 @@ import org.alfresco.service.cmr.dictionary.PropertyDefinition;
 import org.alfresco.service.cmr.i18n.MessageLookup;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * @author vige
+ */
 public class MockAspectDefinition implements AspectDefinition, Serializable {
 
 	private QName name;

@@ -9,6 +9,9 @@ import org.springframework.extensions.webscripts.Cache;
 import org.springframework.extensions.webscripts.Runtime;
 import org.springframework.extensions.webscripts.WebScriptResponse;
 
+/**
+ * @author vige
+ */
 public class MockWebScriptResponse implements WebScriptResponse {
 
 	private MockWriter mockWriter = new MockWriter();

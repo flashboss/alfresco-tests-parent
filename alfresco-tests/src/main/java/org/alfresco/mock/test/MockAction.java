@@ -10,6 +10,9 @@ import org.alfresco.service.cmr.action.ActionCondition;
 import org.alfresco.service.cmr.action.ActionStatus;
 import org.alfresco.service.cmr.repository.NodeRef;
 
+/**
+ * @author vige
+ */
 public class MockAction implements Action {
 
 	private String name;

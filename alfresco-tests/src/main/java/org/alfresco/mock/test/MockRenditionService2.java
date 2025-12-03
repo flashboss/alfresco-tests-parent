@@ -8,6 +8,9 @@ import org.alfresco.repo.rendition2.RenditionService2;
 import org.alfresco.service.cmr.repository.ChildAssociationRef;
 import org.alfresco.service.cmr.repository.NodeRef;
 
+/**
+ * @author vige
+ */
 public class MockRenditionService2 implements RenditionService2, Serializable {
 
 	@Override
