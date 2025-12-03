@@ -40,24 +40,56 @@ import it.vige.ws.service.SignService;
 import it.vige.ws.service.NoteReportBean;
 import it.vige.ws.service.SignedDocumentReportBean;
 
+/**
+ * WebScript for uploading documents to the repository.
+ * This class handles document upload with optional signature verification
+ * and timestamp application.
+ *
+ * @author lucastancapiano
+ */
 public class UploadDoc extends DeclarativeWebScript {
 
+	/** The logger instance. */
 	private Logger logger = Logger.getLogger(UploadDoc.class);
 
+	/** The file folder service. */
 	FileFolderService fileFolderService;
+
+	/** The search service. */
 	SearchService searchService;
+
+	/** The node service. */
 	NodeService nodeService;
+
+	/** The content service. */
 	ContentService contentService;
+
+	/** The version service. */
 	VersionService versionService;
+
+	/** The sign service. */
 	SignService signService;
 
+	/** The dropzone path. */
 	String dropzonePath;
 
+	/** Flag to apply timestamp. */
 	boolean applicaMarca;
 
+	/** The PAdES type constant. */
 	String PADES_TYPE = "PAdES";
+
+	/** The PAdES description for non-compliant signatures. */
 	String PADES_DESCRIPTION = "The sign does not respect the PAdES format as it does not take into account the entire document";
 
+	/**
+	 * Executes the webscript to upload a document.
+	 *
+	 * @param req the webscript request containing form data
+	 * @param status the status object for setting response codes
+	 * @param cache the cache object
+	 * @return a map containing the model data
+	 */
 	@Override
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
@@ -346,34 +378,74 @@ public class UploadDoc extends DeclarativeWebScript {
 		return model;
 	}
 
+	/**
+	 * Sets the file folder service.
+	 *
+	 * @param fileFolderService the file folder service to set
+	 */
 	public void setFileFolderService(FileFolderService fileFolderService) {
 		this.fileFolderService = fileFolderService;
 	}
 
+	/**
+	 * Sets the search service.
+	 *
+	 * @param searchService the search service to set
+	 */
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
 
+	/**
+	 * Sets the node service.
+	 *
+	 * @param nodeService the node service to set
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+	/**
+	 * Sets the content service.
+	 *
+	 * @param contentService the content service to set
+	 */
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}
 
+	/**
+	 * Sets the version service.
+	 *
+	 * @param versionService the version service to set
+	 */
 	public void setVersionService(VersionService versionService) {
 		this.versionService = versionService;
 	}
 
+	/**
+	 * Sets the dropzone path.
+	 *
+	 * @param dropzonePath the dropzone path to set
+	 */
 	public void setDropzonePath(String dropzonePath) {
 		this.dropzonePath = dropzonePath;
 	}
 
+	/**
+	 * Sets the sign service.
+	 *
+	 * @param signService the sign service to set
+	 */
 	public void setSignService(SignService signService) {
 		this.signService = signService;
 	}
 
+	/**
+	 * Sets the flag to apply timestamp.
+	 *
+	 * @param applicaMarca true to apply timestamp, false otherwise
+	 */
 	public void setApplicaMarca(boolean applicaMarca) {
 		this.applicaMarca = applicaMarca;
 	}

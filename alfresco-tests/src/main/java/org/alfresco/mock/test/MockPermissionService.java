@@ -14,148 +14,288 @@ import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Mock implementation of MockPermissionService for testing purposes.
+ * Mock implementation of PermissionService for testing purposes.
+ * Provides basic permission checking with all permissions allowed by default.
  *
  * @author lucastancapiano
  */
 public class MockPermissionService implements PermissionService, Serializable {
 
+	/** The node service. */
 	@Autowired
 	private NodeService nodeService;
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @return the owner authority
+	 */
 	@Override
 	public String getOwnerAuthority() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @return all authorities
+	 */
 	@Override
 	public String getAllAuthorities() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @return the all permission string
+	 */
 	@Override
 	public String getAllPermission() {
 		return ((MockNodeService) nodeService).getPermissions();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param nodeRef the node reference
+	 * @return the set of access permissions
+	 */
 	@Override
 	public Set<AccessPermission> getPermissions(NodeRef nodeRef) {
 		return ((MockNodeService) nodeService).getPermissions(nodeRef);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param nodeRef the node reference
+	 * @return all set permissions
+	 */
 	@Override
 	public Set<AccessPermission> getAllSetPermissions(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param nodeRef the node reference
+	 * @return the settable permissions
+	 */
 	@Override
 	public Set<String> getSettablePermissions(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param type the type QName
+	 * @return the settable permissions for the type
+	 */
 	@Override
 	public Set<String> getSettablePermissions(QName type) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param nodeRef the node reference
+	 * @param permission the permission to check
+	 * @return the access status
+	 */
 	@Override
 	public AccessStatus hasPermission(NodeRef nodeRef, String permission) {
 		return hasReadPermission(nodeRef);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param nodeRef the node reference
+	 * @return the read permission access status
+	 */
 	@Override
 	public AccessStatus hasReadPermission(NodeRef nodeRef) {
 		return AccessStatus.ALLOWED;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param aclId the ACL ID
+	 * @return the readers set
+	 */
 	@Override
 	public Set<String> getReaders(Long aclId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param aclID the ACL ID
+	 * @param context the permission context
+	 * @param permission the permission to check
+	 * @return the access status
+	 */
 	@Override
 	public AccessStatus hasPermission(Long aclID, PermissionContext context, String permission) {
 		return AccessStatus.ALLOWED;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param nodeRef the node reference
+	 */
 	@Override
 	public void deletePermissions(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
-
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param nodeRef the node reference
+	 * @param authority the authority to clear
+	 */
 	@Override
 	public void clearPermission(NodeRef nodeRef, String authority) {
 		// TODO Auto-generated method stub
-
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param nodeRef the node reference
+	 * @param authority the authority
+	 * @param permission the permission to delete
+	 */
 	@Override
 	public void deletePermission(NodeRef nodeRef, String authority, String permission) {
 		// TODO Auto-generated method stub
-
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param nodeRef the node reference
+	 * @param authority the authority
+	 * @param permission the permission
+	 * @param allow whether to allow or deny
+	 */
 	@Override
 	public void setPermission(NodeRef nodeRef, String authority, String permission, boolean allow) {
 		AccessPermission accessPermission = new MockAccessPermission(permission, authority);
 		((MockNodeService) nodeService).setPermission(nodeRef, accessPermission);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param nodeRef the node reference
+	 * @param inheritParentPermissions whether to inherit parent permissions
+	 */
 	@Override
 	public void setInheritParentPermissions(NodeRef nodeRef, boolean inheritParentPermissions) {
 		// TODO Auto-generated method stub
-
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param nodeRef the node reference
+	 * @return true if inheriting parent permissions, false otherwise
+	 */
 	@Override
 	public boolean getInheritParentPermissions(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param storeRef the store reference
+	 * @param authority the authority
+	 * @param permission the permission
+	 * @param allow whether to allow or deny
+	 */
 	@Override
 	public void setPermission(StoreRef storeRef, String authority, String permission, boolean allow) {
 		// TODO Auto-generated method stub
-
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param storeRef the store reference
+	 * @param authority the authority
+	 * @param permission the permission to delete
+	 */
 	@Override
 	public void deletePermission(StoreRef storeRef, String authority, String permission) {
 		// TODO Auto-generated method stub
-
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param storeRef the store reference
+	 * @param authority the authority to clear
+	 */
 	@Override
 	public void clearPermission(StoreRef storeRef, String authority) {
 		// TODO Auto-generated method stub
-
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param storeRef the store reference
+	 */
 	@Override
 	public void deletePermissions(StoreRef storeRef) {
 		// TODO Auto-generated method stub
-
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param storeRef the store reference
+	 * @return all set permissions for the store
+	 */
 	@Override
 	public Set<AccessPermission> getAllSetPermissions(StoreRef storeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @return the authorisations set
+	 */
 	@Override
 	public Set<String> getAuthorisations() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Sets the node service.
+	 *
+	 * @param nodeService the node service to set
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}

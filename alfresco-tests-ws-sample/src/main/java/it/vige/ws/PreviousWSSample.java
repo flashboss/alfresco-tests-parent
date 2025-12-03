@@ -28,20 +28,40 @@ import org.springframework.extensions.webscripts.servlet.FormData;
 
 import net.sf.acegisecurity.providers.ProviderNotFoundException;
 
+/**
+ * WebScript for handling previous WS Sample operations.
+ * This class manages the update of WS Sample folder aspects and metadata.
+ *
+ * @author lucastancapiano
+ */
 public class PreviousWSSample extends DeclarativeWebScript {
 
+	/** The service registry. */
 	private ServiceRegistry serviceRegistry;
 
+	/** The conservation folder template path. */
 	private String conservazioneFolderTemplate;
 
+	/** The repository folder template for WS Sample. */
 	private String repositoryFolderTemplateWSSample;
 
+	/** The documents folder template for WS Sample. */
 	private String documentsWSSampleFolderTemplate;
 
+	/** The store reference for workspace. */
 	private StoreRef storeRef = new StoreRef(StoreRef.PROTOCOL_WORKSPACE, "SpacesStore");
 
+	/** The date format for parsing dates. */
 	private SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 
+	/**
+	 * Executes the webscript implementation.
+	 *
+	 * @param req the webscript request
+	 * @param status the status object for setting response codes
+	 * @param cache the cache object
+	 * @return a map containing the model data
+	 */
 	@Override
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
@@ -126,12 +146,25 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		return model;
 	}
 
+	/**
+	 * Sets redirect status with error message.
+	 *
+	 * @param status the status object
+	 * @param message the error message
+	 */
 	private void redirectStatus(Status status, String message) {
 		status.setCode(500);
 		status.setMessage(message);
 		status.setRedirect(true);
 	}
 
+	/**
+	 * Gets the positions to conserve as node references.
+	 *
+	 * @param dateFrom the start date
+	 * @param dateTo the end date
+	 * @return list of node references for folders to conserve
+	 */
 	private List<NodeRef> getPosizionidaConservareAsNodeRef(DateTime dateFrom, DateTime dateTo) {
 		ResultSet folderRs = serviceRegistry.getSearchService().query(this.storeRef,
 				SearchService.LANGUAGE_FTS_ALFRESCO,
@@ -147,6 +180,11 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		return praticheFolderList;
 	}
 
+	/**
+	 * Gets the conservation folder node reference.
+	 *
+	 * @return the conservation folder node reference, or null if not found
+	 */
 	private NodeRef getConservazioneFolder() {
 		ResultSet folderRs = serviceRegistry.getSearchService().query(this.storeRef,
 				SearchService.LANGUAGE_FTS_ALFRESCO, conservazioneFolderTemplate);
@@ -156,6 +194,12 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		return folderRs.getNodeRef(0);
 	}
 
+	/**
+	 * Gets the last document modification date for a WS Sample folder.
+	 *
+	 * @param folderWSSample the WS Sample folder node reference
+	 * @return the last modification date, or null if no documents found
+	 */
 	private Date getLastDocumentDateForWSSample(NodeRef folderWSSample) {
 		NodeService nodeService = serviceRegistry.getNodeService();
 		SearchService searchService = serviceRegistry.getSearchService();
@@ -174,6 +218,12 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		return date;
 	}
 
+	/**
+	 * Updates the WS Sample aspect on a folder.
+	 *
+	 * @param folderWSSample the folder node reference
+	 * @param dateModify the modification date to set
+	 */
 	private void aggiornaAspettoWSSample(NodeRef folderWSSample, Date dateModify) {
 		NodeService nodeService = serviceRegistry.getNodeService();
 		if (!nodeService.hasAspect(folderWSSample, WSSampleModel.ASPECT_WSSAMPLEFOLDER)) {
@@ -184,18 +234,38 @@ public class PreviousWSSample extends DeclarativeWebScript {
 			nodeService.setProperty(folderWSSample, WSSampleModel.PROP_UPDATE_PROPERTY, dateModify);
 	}
 
+	/**
+	 * Sets the service registry.
+	 *
+	 * @param serviceRegistry the service registry to set
+	 */
 	public void setServiceRegistry(ServiceRegistry serviceRegistry) {
 		this.serviceRegistry = serviceRegistry;
 	}
 
+	/**
+	 * Sets the conservation folder template.
+	 *
+	 * @param conservazioneFolderTemplate the template path to set
+	 */
 	public void setConservazioneFolderTemplate(String conservazioneFolderTemplate) {
 		this.conservazioneFolderTemplate = conservazioneFolderTemplate;
 	}
 
+	/**
+	 * Sets the repository folder template for WS Sample.
+	 *
+	 * @param repositoryFolderTemplateWSSample the template to set
+	 */
 	public void setRepositoryFolderTemplateWSSample(String repositoryFolderTemplateWSSample) {
 		this.repositoryFolderTemplateWSSample = repositoryFolderTemplateWSSample;
 	}
 
+	/**
+	 * Sets the documents folder template for WS Sample.
+	 *
+	 * @param documentsWSSampleFolderTemplate the template to set
+	 */
 	public void setDocumentsWSSampleFolderTemplate(String documentsWSSampleFolderTemplate) {
 		this.documentsWSSampleFolderTemplate = documentsWSSampleFolderTemplate;
 	}

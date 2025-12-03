@@ -29,16 +29,34 @@ import java.util.regex.Pattern;
 import static org.apache.pdfbox.io.IOUtils.toByteArray;
 
 /**
- * Author: Luca Stancapiano
+ * Implementation of a Drools-based document converter.
+ * Provides methods for replacing template fields with JSON data values,
+ * including support for dates, currencies, and multivalue fields.
+ *
+ * @author lucastancapiano
  */
 public class DroolsConverterImpl {
 
+	/** The logger instance. */
 	Logger logger = Logger.getLogger("FILE2");
 
+	/** The date format for parsing input dates. */
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+	/** The date format for output dates. */
 	private DateFormat convertedDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+	/** The JSON data map. */
 	private Map<String, String> jsonMap;
 
+	/**
+	 * Replaces a template field with a value from the JSON map.
+	 * Supports optional padding specified in the template field.
+	 *
+	 * @param r the XWPFRun containing the text to replace
+	 * @param templateField the template field placeholder
+	 * @param jsonField the JSON field key to get the value from
+	 */
 	public void replace(XWPFRun r, String templateField, String jsonField) {
 		String runText = r.getText(0);
 
@@ -68,6 +86,14 @@ public class DroolsConverterImpl {
 		}
 	}
 
+	/**
+	 * Replaces a template field with a formatted date value from the JSON map.
+	 * Converts the date from input format to output format (dd/MM/yyyy).
+	 *
+	 * @param r the XWPFRun containing the text to replace
+	 * @param templateField the template field placeholder
+	 * @param jsonField the JSON field key to get the date value from
+	 */
 	public void replaceDate(XWPFRun r, String templateField, String jsonField) {
 		String runText = r.getText(0);
 		if (runText != null && runText.contains(templateField)) {
@@ -88,6 +114,14 @@ public class DroolsConverterImpl {
 		}
 	}
 
+	/**
+	 * Replaces a template field with a formatted currency value from the JSON map.
+	 * Formats the value using Italian locale currency format.
+	 *
+	 * @param r the XWPFRun containing the text to replace
+	 * @param templateField the template field placeholder
+	 * @param jsonField the JSON field key to get the currency value from
+	 */
 	public void replaceCurrency(XWPFRun r, String templateField, String jsonField) {
 		String runText = r.getText(0);
 		if (runText != null && runText.contains(templateField)) {
@@ -116,6 +150,14 @@ public class DroolsConverterImpl {
 		}
 	}
 
+	/**
+	 * Replaces a multivalue template field based on the JSON value.
+	 * Marks matching options with 'X' and clears non-matching options.
+	 *
+	 * @param r the XWPFRun containing the text to replace
+	 * @param templateField the template field placeholder
+	 * @param jsonField the JSON field key to get the value from
+	 */
 	public void replaceMultivalue(XWPFRun r, String templateField, String jsonField) {
 		String runText = r.getText(0);
 		String value = jsonMap.get(jsonField);
@@ -138,20 +180,27 @@ public class DroolsConverterImpl {
 		}
 	}
 
+	/**
+	 * Checks if the run text contains more template fields to process.
+	 *
+	 * @param r the XWPFRun to check
+	 * @return true if there are more template fields, false otherwise
+	 */
 	public boolean checkIfContinue(XWPFRun r) {
 		String runText = r.getText(0);
 		return runText != null && runText.contains("${");
 	}
 
 	/**
-	 * Convert a single template based on the drools rule file and information
-	 * extracted from the json
-	 * 
-	 * @param templateIS
-	 * @param droolsRuleIS
-	 * @param jsonMap
-	 * @return
-	 * @throws Exception
+	 * Fills a Word template with data using Drools rules.
+	 * Processes the template by executing Drools rules to replace placeholders.
+	 *
+	 * @param templateIS the input stream containing the Word template
+	 * @param droolsRuleIS the input stream containing the Drools rule file
+	 * @param jsonMap the map containing JSON field values
+	 * @param nomeFile the output file name for metadata
+	 * @return a ByteArrayOutputStream containing the filled template
+	 * @throws IOException if an I/O error occurs
 	 */
 	public ByteArrayOutputStream fillTemplate(InputStream templateIS, InputStream droolsRuleIS,
 			Map<String, String> jsonMap, String nomeFile) throws IOException {

@@ -31,22 +31,34 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 import it.vige.ws.api.NodeListDownloadWebScript;
 import it.vige.ws.utils.ActUtil;
 
+/**
+ * Test class for the NodeListDownloadWebScript.
+ * Tests the export of node lists to Excel format.
+ *
+ * @author lucastancapiano
+ */
 public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 
+	/** The NodeListDownloadWebScript instance. */
 	@Autowired
 	private NodeListDownloadWebScript nodeListDownloadWebScript;
 
+	/** The PDL folder node reference. */
 	private NodeRef PDL;
+
+	/** The act node reference. */
 	private NodeRef act;
 
+	/**
+	 * Initializes the test environment.
+	 * Creates the repository structure and test nodes.
+	 */
 	@Before
 	public void init() {
 		super.init();
 		// initialize repository with test nodes
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
 		namespaceService.registerNamespace("crlacts", ActUtil.CRL_ACTS_MODEL);
-		// NodeRef companyHome = insertFolder(spacesStore,
-		// NamespaceService.APP_MODEL_PREFIX, "company_home");
 		NodeRef crl = insertFolder(companyHome, "CRL");
 		NodeRef gestioneActs = insertFolder(crl, "Gestione Acts");
 		NodeRef legislature = insertFolder(gestioneActs, "XII");
@@ -58,6 +70,13 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 
 	}
 
+	/**
+	 * Creates a test act node with the specified properties.
+	 *
+	 * @param PDL the parent folder node reference
+	 * @param name the name of the act
+	 * @return the created act node reference
+	 */
 	private NodeRef createAct(NodeRef PDL, String name) {
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>(11);
 		properties.put(ContentModel.PROP_NAME, name);
@@ -70,6 +89,12 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 		return insertDocument(PDL, name, "testbytes", properties);
 	}
 
+	/**
+	 * Adds a state act association to a document.
+	 *
+	 * @param document the document node reference
+	 * @param PDL the PDL folder node reference
+	 */
 	private void addStateAct(NodeRef document, NodeRef PDL) {
 		NodeService nodeService = serviceRegistry.getNodeService();
 		String name = (String) nodeService.getProperty(document, ContentModel.PROP_NAME);
@@ -82,11 +107,22 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 		nodeService.createAssociation(document, target, ActUtil.PROP_STATE_ACT_QNAME);
 	}
 
+	/**
+	 * Gets the abstract webscript under test.
+	 *
+	 * @return the NodeListDownloadWebScript instance
+	 */
 	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return nodeListDownloadWebScript;
 	}
 
+	/**
+	 * Tests the execution of NodeListDownloadWebScript.
+	 * Verifies that the Excel export contains the expected data.
+	 *
+	 * @throws IOException if an I/O error occurs
+	 */
 	@Test
 	public void execute() throws IOException {
 

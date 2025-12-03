@@ -32,17 +32,34 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 import it.vige.ws.PreviousWSSample;
 import it.vige.ws.WSSampleModel;
 
+/**
+ * Test class for the PreviousWSSample WebScript.
+ * Tests the updating of WS Sample folder aspects and properties.
+ *
+ * @author lucastancapiano
+ */
 public class PreviousWSSampleTest extends AbstractWSForm {
 
+	/** The test folder name. */
 	private final static String FOLDER_WSSAMPLE = "WSSAMPLE-20157726";
+
+	/** The test modification date. */
 	private final static String dataModifica = "2020-06-19";
 
+	/** The PreviousWSSample WebScript. */
 	@Autowired
 	private PreviousWSSample previousWSSample;
 
+	/** The date format for parsing dates. */
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+	/** The repository folder node reference. */
 	private NodeRef repository;
 
+	/**
+	 * Initializes the test environment.
+	 * Creates required folders and sites structure.
+	 */
 	@Before
 	public void init() {
 		super.init();
@@ -59,11 +76,23 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 		insertFolder(repository, FOLDER_WSSAMPLE);
 	}
 
+	/**
+	 * Gets the abstract webscript under test.
+	 *
+	 * @return the PreviousWSSample webscript
+	 */
 	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return previousWSSample;
 	}
 
+	/**
+	 * Tests the execution of PreviousWSSample webscript.
+	 * Verifies that the aspect is added and properties are set correctly.
+	 *
+	 * @throws ParseException if date parsing fails
+	 * @throws IOException if an I/O error occurs
+	 */
 	@Test
 	public void execute() throws ParseException, IOException {
 

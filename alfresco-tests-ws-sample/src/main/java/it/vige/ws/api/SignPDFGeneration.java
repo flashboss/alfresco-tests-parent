@@ -40,21 +40,47 @@ import it.vige.ws.dom.VigeWSContentModel;
 import it.vige.ws.service.SignService;
 import it.vige.ws.utils.GenerationUtils;
 
+/**
+ * WebScript for generating and signing PDF documents.
+ * This class handles the generation of PDF documents from templates
+ * and optionally signs them using PAdES format.
+ *
+ * @author lucastancapiano
+ */
 public class SignPDFGeneration extends DeclarativeWebScript {
 
+	/** The file folder service. */
 	private FileFolderService fileFolderService;
+
+	/** The node service. */
 	private NodeService nodeService;
+
+	/** The sign service. */
 	private SignService signService;
+
+	/** The generation utility. */
 	private GenerationUtils generationUtil;
 
+	/** The generate cedra flag. */
 	private String generateCedra;
 
+	/** The signer list. */
 	private HashMap<String, Signer> signerList;
 
+	/** The date pattern for parsing dates. */
 	private final String datePattern = "yyyy-MM-dd HH:mm:ss";
 
+	/** The logger instance. */
 	private Logger logger = Logger.getLogger(SignPDFGeneration.class);
 
+	/**
+	 * Executes the webscript to generate and sign PDF documents.
+	 *
+	 * @param req the webscript request containing form data and template variables
+	 * @param status the status object for setting response codes
+	 * @param cache the cache object
+	 * @return a map containing the model data with generated document IDs
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
@@ -232,11 +258,12 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	}
 
 	/**
-	 * 
-	 * @param destinazioneNodeRef
-	 * @param dati
-	 * @param metadata
-	 * @param index
+	 * Creates a practice document from template data.
+	 *
+	 * @param destinazioneNodeRef the destination folder node reference
+	 * @param dati the JSON data for the document
+	 * @param metadata the metadata map containing document properties
+	 * @param index the index for multiple documents, -1 for single documents
 	 */
 	private void creaPratica(NodeRef destinazioneNodeRef, JSONObject dati, Map<String, String> metadata, int index) {
 
@@ -293,50 +320,110 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 
 	}
 
+	/**
+	 * Gets the file folder service.
+	 *
+	 * @return the file folder service
+	 */
 	public FileFolderService getFileFolderService() {
 		return fileFolderService;
 	}
 
+	/**
+	 * Sets the file folder service.
+	 *
+	 * @param fileFolderService the file folder service to set
+	 */
 	public void setFileFolderService(FileFolderService fileFolderService) {
 		this.fileFolderService = fileFolderService;
 	}
 
+	/**
+	 * Gets the node service.
+	 *
+	 * @return the node service
+	 */
 	public NodeService getNodeService() {
 		return nodeService;
 	}
 
+	/**
+	 * Sets the node service.
+	 *
+	 * @param nodeService the node service to set
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+	/**
+	 * Gets the sign service.
+	 *
+	 * @return the sign service
+	 */
 	public SignService getSignService() {
 		return signService;
 	}
 
+	/**
+	 * Sets the sign service.
+	 *
+	 * @param signService the sign service to set
+	 */
 	public void setSignService(SignService signService) {
 		this.signService = signService;
 	}
 
+	/**
+	 * Gets the generation utility.
+	 *
+	 * @return the generation utility
+	 */
 	public GenerationUtils getGenerationUtil() {
 		return generationUtil;
 	}
 
+	/**
+	 * Sets the generation utility.
+	 *
+	 * @param generationUtil the generation utility to set
+	 */
 	public void setGenerationUtil(GenerationUtils generationUtil) {
 		this.generationUtil = generationUtil;
 	}
 
+	/**
+	 * Gets the generate cedra flag.
+	 *
+	 * @return the generate cedra flag
+	 */
 	public String getGenerateCeda() {
 		return generateCedra;
 	}
 
+	/**
+	 * Sets the generate cedra flag.
+	 *
+	 * @param generateCedra the generate cedra flag to set
+	 */
 	public void setGenerateCedra(String generateCedra) {
 		this.generateCedra = generateCedra;
 	}
 
+	/**
+	 * Gets the signer list.
+	 *
+	 * @return the signer list
+	 */
 	public HashMap<String, Signer> getSignerList() {
 		return signerList;
 	}
 
+	/**
+	 * Sets the signer list.
+	 *
+	 * @param signerList the signer list to set
+	 */
 	public void setListaFirmatari(HashMap<String, Signer> signerList) {
 		this.signerList = signerList;
 	}

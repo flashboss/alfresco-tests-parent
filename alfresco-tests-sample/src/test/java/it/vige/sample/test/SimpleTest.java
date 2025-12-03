@@ -31,27 +31,55 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import it.vige.sample.BackupAction;
 
+/**
+ * Test class for the BackupAction and version management functionality.
+ * Tests document backup creation and version history management.
+ *
+ * @author lucastancapiano
+ */
 public class SimpleTest extends AbstractForm {
 
+	/** The backup action to test. */
 	@Autowired
 	private BackupAction myAction;
 
+	/** The test document name. */
 	private final static String documentName = "VALID.pdf";
 
+	/** The first version name. */
 	private final static String versionName = "firstVersion.pdf";
+
+	/** The first version content. */
 	private final static String versionContent = "new content";
+
+	/** The first version label. */
 	private final static String versionLabel = "1.0";
 
+	/** The second version name. */
 	private final static String version2Name = "secondVersion.pdf";
+
+	/** The second version content. */
 	private final static String version2Content = "new content 2";
+
+	/** The second version label. */
 	private final static String version2Label = "1.1";
 
+	/** The third version name. */
 	private final static String version3Name = "thirdVersion.pdf";
+
+	/** The third version content. */
 	private final static String version3Content = "new content 3";
+
+	/** The third version label. */
 	private final static String version3Label = "2.0";
 
+	/** The test document node reference. */
 	private NodeRef document;
 
+	/**
+	 * Initializes the test environment.
+	 * Creates a test document in the repository.
+	 */
 	@Before
 	public void init() {
 		super.init();
@@ -71,6 +99,10 @@ public class SimpleTest extends AbstractForm {
 		Assert.assertEquals("VALID.pdf is created", documentName, nodeName);
 	}
 
+	/**
+	 * Tests the execution of the backup action.
+	 * Verifies that a backup document is created with the correct name.
+	 */
 	@Test
 	public void execute() {
 
@@ -89,6 +121,10 @@ public class SimpleTest extends AbstractForm {
 
 	}
 
+	/**
+	 * Tests the version management functionality.
+	 * Creates multiple versions and verifies version history and properties.
+	 */
 	@Test
 	public void versioned() {
 		insertVersion(document, versionName, versionContent, versionLabel, MINOR);

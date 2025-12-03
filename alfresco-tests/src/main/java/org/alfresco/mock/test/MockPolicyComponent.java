@@ -19,30 +19,57 @@ import org.alfresco.repo.policy.ServiceBehaviourBinding;
 import org.alfresco.service.namespace.QName;
 
 /**
- * Mock implementation of MockPolicyComponent for testing purposes.
+ * Mock implementation of PolicyComponent for testing purposes.
+ * Provides stub methods for policy registration and binding.
  *
  * @author lucastancapiano
  */
 public class MockPolicyComponent implements PolicyComponent {
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param policy the class policy to register
+	 * @param <P> the policy type
+	 * @return the policy delegate
+	 */
 	@Override
 	public <P extends ClassPolicy> ClassPolicyDelegate<P> registerClassPolicy(Class<P> policy) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param policy the property policy to register
+	 * @param <P> the policy type
+	 * @return the policy delegate
+	 */
 	@Override
 	public <P extends PropertyPolicy> PropertyPolicyDelegate<P> registerPropertyPolicy(Class<P> policy) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param policy the association policy to register
+	 * @param <P> the policy type
+	 * @return the policy delegate
+	 */
 	@Override
 	public <P extends AssociationPolicy> AssociationPolicyDelegate<P> registerAssociationPolicy(Class<P> policy) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @return the collection of registered policies
+	 */
 	@Override
 	@SuppressWarnings("rawtypes")
 	public Collection<PolicyDefinition> getRegisteredPolicies() {
@@ -50,18 +77,40 @@ public class MockPolicyComponent implements PolicyComponent {
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param policyType the policy type
+	 * @param policy the policy QName
+	 * @return the policy definition
+	 */
 	@Override
 	public PolicyDefinition<Policy> getRegisteredPolicy(PolicyType policyType, QName policy) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param policyType the policy type
+	 * @param policy the policy QName
+	 * @return true if policy is registered, false otherwise
+	 */
 	@Override
 	public boolean isRegisteredPolicy(PolicyType policyType, QName policy) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param policy the policy QName
+	 * @param className the class QName
+	 * @param behaviour the behaviour to bind
+	 * @return the behaviour definition
+	 */
 	@Override
 	public BehaviourDefinition<ClassBehaviourBinding> bindClassBehaviour(QName policy, QName className,
 			Behaviour behaviour) {
@@ -69,6 +118,14 @@ public class MockPolicyComponent implements PolicyComponent {
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param policy the policy QName
+	 * @param service the service object
+	 * @param behaviour the behaviour to bind
+	 * @return the behaviour definition
+	 */
 	@Override
 	public BehaviourDefinition<ServiceBehaviourBinding> bindClassBehaviour(QName policy, Object service,
 			Behaviour behaviour) {
@@ -76,6 +133,15 @@ public class MockPolicyComponent implements PolicyComponent {
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param policy the policy QName
+	 * @param className the class QName
+	 * @param propertyName the property QName
+	 * @param behaviour the behaviour to bind
+	 * @return the behaviour definition
+	 */
 	@Override
 	@SuppressWarnings("all")
 	public BehaviourDefinition bindPropertyBehaviour(QName policy, QName className,
@@ -84,6 +150,14 @@ public class MockPolicyComponent implements PolicyComponent {
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param policy the policy QName
+	 * @param className the class QName
+	 * @param behaviour the behaviour to bind
+	 * @return the behaviour definition
+	 */
 	@Override
 	@SuppressWarnings("all")
 	public BehaviourDefinition bindPropertyBehaviour(QName policy, QName className,
@@ -92,6 +166,14 @@ public class MockPolicyComponent implements PolicyComponent {
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param policy the policy QName
+	 * @param service the service object
+	 * @param behaviour the behaviour to bind
+	 * @return the behaviour definition
+	 */
 	@Override
 	public BehaviourDefinition<ServiceBehaviourBinding> bindPropertyBehaviour(QName policy, Object service,
 			Behaviour behaviour) {
@@ -99,6 +181,15 @@ public class MockPolicyComponent implements PolicyComponent {
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param policy the policy QName
+	 * @param className the class QName
+	 * @param assocName the association QName
+	 * @param behaviour the behaviour to bind
+	 * @return the behaviour definition
+	 */
 	@Override
 	@SuppressWarnings("all")
 	public BehaviourDefinition bindAssociationBehaviour(QName policy, QName className,
@@ -107,6 +198,14 @@ public class MockPolicyComponent implements PolicyComponent {
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param policy the policy QName
+	 * @param className the class QName
+	 * @param behaviour the behaviour to bind
+	 * @return the behaviour definition
+	 */
 	@Override
 	@SuppressWarnings("all")
 	public BehaviourDefinition bindAssociationBehaviour(QName policy, QName className,
@@ -115,6 +214,14 @@ public class MockPolicyComponent implements PolicyComponent {
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param policy the policy QName
+	 * @param service the service object
+	 * @param behaviour the behaviour to bind
+	 * @return the behaviour definition
+	 */
 	@Override
 	public BehaviourDefinition<ServiceBehaviourBinding> bindAssociationBehaviour(QName policy, Object service,
 			Behaviour behaviour) {
@@ -122,10 +229,14 @@ public class MockPolicyComponent implements PolicyComponent {
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param definition the behaviour definition to remove
+	 */
 	@Override
 	public void removeClassDefinition(BehaviourDefinition<ClassBehaviourBinding> definition) {
 		// TODO Auto-generated method stub
-		
 	}
 
 }

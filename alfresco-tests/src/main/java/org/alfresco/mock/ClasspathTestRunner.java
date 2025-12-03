@@ -7,19 +7,33 @@ import org.junit.runners.model.InitializationError;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * ClasspathTestRunner for testing purposes.
+ * Custom JUnit test runner that uses a custom class loader for loading test classes.
+ * This allows tests to run with module-specific classpath configurations.
  *
  * @author lucastancapiano
  */
 public class ClasspathTestRunner extends SpringJUnit4ClassRunner {
 
+  /** The custom class loader instance. */
   static ClassLoader customClassLoader;
 
+  /**
+   * Constructs a new ClasspathTestRunner for the given test class.
+   *
+   * @param clazz the test class to run
+   * @throws InitializationError if the test class cannot be loaded
+   */
   public ClasspathTestRunner(Class<?> clazz) throws InitializationError {
     super(loadFromCustomClassloader(clazz));
   }
 
-  // Loads a class in the custom classloader
+  /**
+   * Loads a class using the custom class loader.
+   *
+   * @param clazz the class to load
+   * @return the loaded class from the custom class loader
+   * @throws InitializationError if the class cannot be found
+   */
   private static Class<?> loadFromCustomClassloader(Class<?> clazz) throws InitializationError {
     try {
       // Only load once to support parallel tests
@@ -33,7 +47,11 @@ public class ClasspathTestRunner extends SpringJUnit4ClassRunner {
     }
   }
 
-  // Runs junit tests in a separate thread using the custom class loader
+  /**
+   * Runs the JUnit tests in a separate thread using the custom class loader.
+   *
+   * @param notifier the run notifier for test events
+   */
   @Override
   public void run(final RunNotifier notifier) {
     Runnable runnable = new Runnable() {

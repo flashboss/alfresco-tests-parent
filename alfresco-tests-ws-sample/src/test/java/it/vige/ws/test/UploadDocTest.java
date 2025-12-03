@@ -34,34 +34,83 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 import it.vige.ws.api.UploadDoc;
 import it.vige.ws.dom.VigeWSContentModel;
 
+/**
+ * Test class for the UploadDoc WebScript.
+ * Tests the document upload functionality including metadata and aspects.
+ *
+ * @author lucastancapiano
+ */
 public class UploadDocTest extends AbstractWSForm {
 
+	/** The logger instance. */
 	private final static Logger logger = getLogger(UploadDocTest.class);
+
+	/** The test partner ID. */
 	private final static String ID_PARTNER = "prova";
+
+	/** The test practice ID. */
 	private final static String ID_PRATICA = "prova";
+
+	/** The test document ID. */
 	private final static String ID_DOC = "prova";
+
+	/** The test file name. */
 	private final static String NOME_FILE = "unsigned.pdf";
+
+	/** The test description. */
 	private final static String DESCRIZIONE = "descrizione.pdf";
+
+	/** The test treatment code. */
 	private final static String TRATTAMENTO = "3";
+
+	/** The test expiration date. */
 	private final static String DATA_SCADENZA = "2018-04-19";
+
+	/** The test emission date. */
 	private final static String DATA_EMISSIONE = "2018-04-19";
+
+	/** The test creation date. */
 	private final static String DATA_CREAZIONE = "2018-04-23";
+
+	/** The test document code. */
 	private final static String CODICE_DOC = "461";
+
+	/** The test category type. */
 	private final static String CATEGORIA_TIPO = "461";
+
+	/** The test notes. */
 	private final static String NOTE = "note";
+
+	/** The test document number. */
 	private final static String NUMERO_DOC = "";
+
+	/** The test user ID. */
 	private final static String ID_USER = "105";
+
+	/** The dropzone folder path. */
 	private final static String FOLDER_DROPZONE = "/sites/vige-site/documentLibrary/sys/Dropzone";
+
+	/** The template variables map. */
 	private Map<String, String> templateVars;
 
+	/** The UploadDoc WebScript. */
 	@Autowired
 	private UploadDoc uploadDoc;
 
+	/**
+	 * Gets the abstract webscript under test.
+	 *
+	 * @return the UploadDoc webscript
+	 */
 	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return uploadDoc;
 	}
 
+	/**
+	 * Initializes the test environment.
+	 * Creates required folders and sites structure.
+	 */
 	@Before
 	public void init() {
 		super.init();
@@ -77,6 +126,13 @@ public class UploadDocTest extends AbstractWSForm {
 		insertFolder(sys, "Dropzone");
 	}
 
+	/**
+	 * Tests the execution of UploadDoc webscript.
+	 * Verifies that the document is uploaded with correct aspects, properties and metadata.
+	 *
+	 * @throws ParseException if date parsing fails
+	 * @throws IOException if an I/O error occurs
+	 */
 	@Test
 	public void execute() throws ParseException, IOException {
 

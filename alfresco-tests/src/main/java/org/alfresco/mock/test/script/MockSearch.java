@@ -11,12 +11,19 @@ import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.repository.StoreRef;
 
 /**
- * Mock implementation of MockSearch for testing purposes.
+ * Mock implementation of Search for testing purposes.
+ * Provides externalizable search functionality for JavaScript scripts.
  *
  * @author lucastancapiano
  */
 public class MockSearch extends Search implements Serializable, Externalizable {
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param out the output to write to
+	 * @throws IOException if writing fails
+	 */
 	@Override
 	public void writeExternal(ObjectOutput out) throws IOException {
 		out.writeObject(services);
@@ -24,6 +31,13 @@ public class MockSearch extends Search implements Serializable, Externalizable {
 		out.writeObject(storeRef);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param in the input to read from
+	 * @throws IOException if reading fails
+	 * @throws ClassNotFoundException if class not found
+	 */
 	@Override
 	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
 		services = (ServiceRegistry) in.readObject();
