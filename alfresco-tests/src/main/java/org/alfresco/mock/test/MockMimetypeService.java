@@ -11,6 +11,13 @@ import org.alfresco.repo.content.encoding.ContentCharsetFinder;
 import org.alfresco.service.cmr.repository.ContentReader;
 import org.alfresco.service.cmr.repository.MimetypeService;
 
+/**
+ * Mock implementation of MimetypeService for testing purposes.
+ * Provides mimetype detection and extension resolution for
+ * common file types.
+ * 
+ * @author vige
+ */
 public class MockMimetypeService implements MimetypeService, Serializable {
 
 	@Override
