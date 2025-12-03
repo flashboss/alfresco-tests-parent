@@ -30,6 +30,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "verifyWithPreferences", propOrder = { "signedContent", "preferences" })
+/**
+ * @author vige
+ */
 public class VerifyWithPreferences {
 
 	protected byte[] signedContent;

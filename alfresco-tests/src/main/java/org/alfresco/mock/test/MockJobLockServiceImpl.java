@@ -3,6 +3,9 @@ package org.alfresco.mock.test;
 import org.alfresco.repo.lock.JobLockService;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * @author vige
+ */
 public class MockJobLockServiceImpl implements JobLockService {
 
 	@Override

@@ -29,6 +29,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "getAvailableSignatures", propOrder = { "credentials" })
+/**
+ * @author vige
+ */
 public class GetAvailableSignatures {
 
 	protected Credentials credentials;

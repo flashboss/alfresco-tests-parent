@@ -10,6 +10,9 @@ import org.springframework.extensions.webscripts.AbstractWebScript;
 import org.springframework.extensions.webscripts.Container;
 import org.springframework.extensions.webscripts.Description;
 
+/**
+ * @author vige
+ */
 public abstract class AbstractWSForm extends AbstractForm {
 
 	@Autowired

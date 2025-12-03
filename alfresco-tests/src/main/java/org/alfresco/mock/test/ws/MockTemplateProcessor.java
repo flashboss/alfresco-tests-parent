@@ -5,6 +5,9 @@ import java.util.Map;
 
 import org.springframework.extensions.webscripts.TemplateProcessor;
 
+/**
+ * @author vige
+ */
 public class MockTemplateProcessor implements TemplateProcessor {
 
 	@Override

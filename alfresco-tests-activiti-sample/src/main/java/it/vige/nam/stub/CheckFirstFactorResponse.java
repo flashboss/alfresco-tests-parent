@@ -28,6 +28,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "checkFirstFactorResponse")
+/**
+ * @author vige
+ */
 public class CheckFirstFactorResponse {
 
 }

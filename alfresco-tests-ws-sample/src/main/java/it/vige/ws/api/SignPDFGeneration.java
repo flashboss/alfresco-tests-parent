@@ -40,6 +40,9 @@ import it.vige.ws.service.SignService;
 import it.vige.ws.templateManager.drools.DroolsConverterImpl;
 import it.vige.ws.utils.GenerationUtils;
 
+/**
+ * @author vige
+ */
 public class SignPDFGeneration extends DeclarativeWebScript {
 
 	private FileFolderService fileFolderService;

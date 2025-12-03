@@ -7,6 +7,9 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
+/**
+ * @author vige
+ */
 public class MockUserTransaction implements UserTransaction {
 
 	@Override

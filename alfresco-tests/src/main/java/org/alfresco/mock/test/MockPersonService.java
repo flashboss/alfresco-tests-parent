@@ -13,6 +13,9 @@ import org.alfresco.service.cmr.security.PersonService;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.util.Pair;
 
+/**
+ * @author vige
+ */
 public class MockPersonService implements PersonService, Serializable {
 
 	@Override
