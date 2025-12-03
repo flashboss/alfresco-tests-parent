@@ -4,32 +4,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-* Mock implementation of the SignedDocumentReportBean class for testing purposes.
-* This class provides a mock implementation that allows unit and integration tests
-* to run without requiring a full Alfresco server instance.
-*
-* @author Generated
-* @version 7.4.2.1.1
+ * Mock implementation of the SignedDocumentReportBean class for testing purposes. This class
+ * provides a mock implementation that allows unit and integration tests to run without requiring a
+ * full Alfresco server instance.
+ *
+ * @author Generated
+ * @version 7.4.2.1.1
  */
 public class SignedDocumentReportBean {
 
-/**
-* Checks if overall verified.
-* @return the result
- */
-	public boolean isOverallVerified() {
-		return true;
-	}
+  /**
+   * Checks if overall verified.
+   *
+   * @return the result
+   */
+  public boolean isOverallVerified() {
+    return true;
+  }
 
-	public List<NoteReportBean> getNoteReportList() {
-		return new ArrayList<NoteReportBean>();
-	}
+  public List<NoteReportBean> getNoteReportList() {
+    return new ArrayList<NoteReportBean>();
+  }
 
-/**
-* Gets the signature format.
-* @return the result
- */
-	public String getSignatureFormat() {
-		return "";
-	}
+  /**
+   * Gets the signature format.
+   *
+   * @return the result
+   */
+  public String getSignatureFormat() {
+    return "";
+  }
 }

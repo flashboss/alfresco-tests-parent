@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import net.sf.acegisecurity.providers.ProviderNotFoundException;
 import org.alfresco.model.ContentModel;
 import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.repository.NodeRef;
@@ -26,233 +26,247 @@ import org.springframework.extensions.webscripts.Status;
 import org.springframework.extensions.webscripts.WebScriptRequest;
 import org.springframework.extensions.webscripts.servlet.FormData;
 
-import net.sf.acegisecurity.providers.ProviderNotFoundException;
-
 /**
-* Mock implementation of the PreviousWSSample class for testing purposes.
-* This class provides a mock implementation that allows unit and integration tests
-* to run without requiring a full Alfresco server instance.
-*
-* @author Generated
-* @version 7.4.2.1.1
+ * Mock implementation of the PreviousWSSample class for testing purposes. This class provides a
+ * mock implementation that allows unit and integration tests to run without requiring a full
+ * Alfresco server instance.
+ *
+ * @author Generated
+ * @version 7.4.2.1.1
  */
 public class PreviousWSSample extends DeclarativeWebScript {
 
-/**
-* The service registry.
- */
-	private ServiceRegistry serviceRegistry;
+  /** The service registry. */
+  private ServiceRegistry serviceRegistry;
 
-/**
-* The conservazione folder template.
- */
-	private String conservazioneFolderTemplate;
+  /** The conservazione folder template. */
+  private String conservazioneFolderTemplate;
 
-/**
-* The repository folder template ws sample.
- */
-	private String repositoryFolderTemplateWSSample;
+  /** The repository folder template ws sample. */
+  private String repositoryFolderTemplateWSSample;
 
-/**
-* The documents ws sample folder template.
- */
-	private String documentsWSSampleFolderTemplate;
+  /** The documents ws sample folder template. */
+  private String documentsWSSampleFolderTemplate;
 
-	private StoreRef storeRef = new StoreRef(StoreRef.PROTOCOL_WORKSPACE, "SpacesStore");
+  private StoreRef storeRef = new StoreRef(StoreRef.PROTOCOL_WORKSPACE, "SpacesStore");
 
-	private SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+  private SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 
-	@Override
-	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
+  @Override
+  protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
-		// -- 1 -- VARIABLE INITIALIZATION
-		Map<String, Object> model = new HashMap<String, Object>();
-		NodeRef rootNode = null;
-		Date dateModify = null;
-		Date dateWSSampleStart = null;
-		Date dateWSSampleEnd = null;
-		Boolean automatico = false;
-		Boolean aggiorna = false;
-		List<NodeRef> folderWSSamples = new ArrayList<NodeRef>();
-		try {
+    // -- 1 -- VARIABLE INITIALIZATION
+    Map<String, Object> model = new HashMap<String, Object>();
+    NodeRef rootNode = null;
+    Date dateModify = null;
+    Date dateWSSampleStart = null;
+    Date dateWSSampleEnd = null;
+    Boolean automatico = false;
+    Boolean aggiorna = false;
+    List<NodeRef> folderWSSamples = new ArrayList<NodeRef>();
+    try {
 
-			// -- 2 -- AUTENTICATION
-			AuthenticationService authenticationService = serviceRegistry.getAuthenticationService();
-			String currentUser = authenticationService.getCurrentUserName();
+      // -- 2 -- AUTENTICATION
+      AuthenticationService authenticationService = serviceRegistry.getAuthenticationService();
+      String currentUser = authenticationService.getCurrentUserName();
 
-			if (currentUser != null) {
-				// -- 3 -- METADATA EXTRACTION FROM THE FORM
-				FormData form = (FormData) req.parseContent();
-				FormData.FormField[] fields = form.getFields();
-				NodeService nodeService = serviceRegistry.getNodeService();
-				rootNode = getConservazioneFolder();
-				if (rootNode == null) {
-					redirectStatus(status, "Folder 'cm:repository' in the site 'Sample Banck' doesn't exit");
-				}
-				DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-				for (FormData.FormField field : fields) {
-					switch (field.getName()) {
-					case "date_modified":
-						dateModify = dateFormat.parse(field.getValue());
-						break;
-					case "date_ws_start":
-						dateWSSampleStart = dateFormat.parse(field.getValue());
-						break;
-					case "date_ws_end":
-						dateWSSampleEnd = dateFormat.parse(field.getValue());
-						break;
-					case "codicews":
-						String codiceWSSample = field.getValue();
-						folderWSSamples.add(nodeService.getChildByName(rootNode, ContentModel.ASSOC_CONTAINS, codiceWSSample));
-						break;
-					case "automatico":
-						automatico = field.getValue().equals("on") ? true : false;
-						break;
-					case "aggiorna":
-						aggiorna = true;
-						status.setRedirect(true);
-						status.setCode(Status.STATUS_MOVED_PERMANENTLY);
-						status.setLocation("previouswssample?date_ws_start=" + dateFormat.format(dateWSSampleStart)
-								+ "&date_ws_end=" + dateFormat.format(dateWSSampleEnd) + "&date_modified="
-								+ dateFormat.format(dateModify));
-						break;
-					}
-				}
+      if (currentUser != null) {
+        // -- 3 -- METADATA EXTRACTION FROM THE FORM
+        FormData form = (FormData) req.parseContent();
+        FormData.FormField[] fields = form.getFields();
+        NodeService nodeService = serviceRegistry.getNodeService();
+        rootNode = getConservazioneFolder();
+        if (rootNode == null) {
+          redirectStatus(status, "Folder 'cm:repository' in the site 'Sample Banck' doesn't exit");
+        }
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        for (FormData.FormField field : fields) {
+          switch (field.getName()) {
+            case "date_modified":
+              dateModify = dateFormat.parse(field.getValue());
+              break;
+            case "date_ws_start":
+              dateWSSampleStart = dateFormat.parse(field.getValue());
+              break;
+            case "date_ws_end":
+              dateWSSampleEnd = dateFormat.parse(field.getValue());
+              break;
+            case "codicews":
+              String codiceWSSample = field.getValue();
+              folderWSSamples.add(
+                  nodeService.getChildByName(
+                      rootNode, ContentModel.ASSOC_CONTAINS, codiceWSSample));
+              break;
+            case "automatico":
+              automatico = field.getValue().equals("on") ? true : false;
+              break;
+            case "aggiorna":
+              aggiorna = true;
+              status.setRedirect(true);
+              status.setCode(Status.STATUS_MOVED_PERMANENTLY);
+              status.setLocation(
+                  "previouswssample?date_ws_start="
+                      + dateFormat.format(dateWSSampleStart)
+                      + "&date_ws_end="
+                      + dateFormat.format(dateWSSampleEnd)
+                      + "&date_modified="
+                      + dateFormat.format(dateModify));
+              break;
+          }
+        }
 
-				if (!aggiorna) {
-					if (folderWSSamples.isEmpty())
-						folderWSSamples = getPosizionidaConservareAsNodeRef(new DateTime(dateWSSampleStart.getTime()),
-								new DateTime(dateWSSampleEnd.getTime()));
+        if (!aggiorna) {
+          if (folderWSSamples.isEmpty())
+            folderWSSamples =
+                getPosizionidaConservareAsNodeRef(
+                    new DateTime(dateWSSampleStart.getTime()),
+                    new DateTime(dateWSSampleEnd.getTime()));
 
-					// -- 4 -- UPDATE OF THE MODIFICATION DATE ON THE WS Sample FOLDER
-					for (NodeRef folderWSSample : folderWSSamples) {
-						Date dataAggiornamento = dateModify;
-						if (automatico)
-							dataAggiornamento = getLastDocumentDateForWSSample(folderWSSample);
-						aggiornaAspettoWSSample(folderWSSample, dataAggiornamento);
-					}
-				}
-			}
-		} catch (ProviderNotFoundException ex1) {
-			model.put("errore", "User not authenticated");
-		} catch (Exception ex2) {
-			model.put("errore", "ERROR in updating the folder");
-		}
+          // -- 4 -- UPDATE OF THE MODIFICATION DATE ON THE WS Sample FOLDER
+          for (NodeRef folderWSSample : folderWSSamples) {
+            Date dataAggiornamento = dateModify;
+            if (automatico) dataAggiornamento = getLastDocumentDateForWSSample(folderWSSample);
+            aggiornaAspettoWSSample(folderWSSample, dataAggiornamento);
+          }
+        }
+      }
+    } catch (ProviderNotFoundException ex1) {
+      model.put("errore", "User not authenticated");
+    } catch (Exception ex2) {
+      model.put("errore", "ERROR in updating the folder");
+    }
 
-		model.put("node", rootNode);
+    model.put("node", rootNode);
 
-		// -- 7 -- END WEBSCRIPT
+    // -- 7 -- END WEBSCRIPT
 
-		return model;
-	}
+    return model;
+  }
 
-/**
-* Performs redirect status.
-* @param status the status
-* @param message the message
- */
-	private void redirectStatus(Status status, String message) {
-		status.setCode(500);
-		status.setMessage(message);
-		status.setRedirect(true);
-	}
+  /**
+   * Performs redirect status.
+   *
+   * @param status the status
+   * @param message the message
+   */
+  private void redirectStatus(Status status, String message) {
+    status.setCode(500);
+    status.setMessage(message);
+    status.setRedirect(true);
+  }
 
-	private List<NodeRef> getPosizionidaConservareAsNodeRef(DateTime dateFrom, DateTime dateTo) {
-		ResultSet folderRs = serviceRegistry.getSearchService().query(this.storeRef,
-				SearchService.LANGUAGE_FTS_ALFRESCO,
-				repositoryFolderTemplateWSSample.replace("{wsSampleFrom}", fmt.format(dateFrom.toDate())).replace("{wsSampleTo}",
-						fmt.format(dateTo.toDate())));
-		if (folderRs.length() < 1) {
-			return null;
-		}
-		List<NodeRef> praticheFolderList = new ArrayList<>(folderRs.length());
-		for (ResultSetRow pratiche : folderRs) {
-			praticheFolderList.add(pratiche.getNodeRef());
-		}
-		return praticheFolderList;
-	}
+  private List<NodeRef> getPosizionidaConservareAsNodeRef(DateTime dateFrom, DateTime dateTo) {
+    ResultSet folderRs =
+        serviceRegistry
+            .getSearchService()
+            .query(
+                this.storeRef,
+                SearchService.LANGUAGE_FTS_ALFRESCO,
+                repositoryFolderTemplateWSSample
+                    .replace("{wsSampleFrom}", fmt.format(dateFrom.toDate()))
+                    .replace("{wsSampleTo}", fmt.format(dateTo.toDate())));
+    if (folderRs.length() < 1) {
+      return null;
+    }
+    List<NodeRef> praticheFolderList = new ArrayList<>(folderRs.length());
+    for (ResultSetRow pratiche : folderRs) {
+      praticheFolderList.add(pratiche.getNodeRef());
+    }
+    return praticheFolderList;
+  }
 
-/**
-* Gets the conservazione folder.
-* @return the result
- */
-	private NodeRef getConservazioneFolder() {
-		ResultSet folderRs = serviceRegistry.getSearchService().query(this.storeRef,
-				SearchService.LANGUAGE_FTS_ALFRESCO, conservazioneFolderTemplate);
-		if (folderRs.length() < 1) {
-			return null;
-		}
-		return folderRs.getNodeRef(0);
-	}
+  /**
+   * Gets the conservazione folder.
+   *
+   * @return the result
+   */
+  private NodeRef getConservazioneFolder() {
+    ResultSet folderRs =
+        serviceRegistry
+            .getSearchService()
+            .query(this.storeRef, SearchService.LANGUAGE_FTS_ALFRESCO, conservazioneFolderTemplate);
+    if (folderRs.length() < 1) {
+      return null;
+    }
+    return folderRs.getNodeRef(0);
+  }
 
-/**
-* Gets the last document date for ws sample.
-* @param folderWSSample the folderWSSample
-* @return the result
- */
-	private Date getLastDocumentDateForWSSample(NodeRef folderWSSample) {
-		NodeService nodeService = serviceRegistry.getNodeService();
-		SearchService searchService = serviceRegistry.getSearchService();
-		String folderWSSampleName = (String) nodeService.getProperty(folderWSSample, ContentModel.PROP_NAME);
-		ResultSet folderRs = searchService.query(this.storeRef, SearchService.LANGUAGE_FTS_ALFRESCO,
-				documentsWSSampleFolderTemplate.replace("{nomeWSSampleFolder}", folderWSSampleName));
-		if (folderRs.length() < 1) {
-			return null;
-		}
-		Date date = null;
-		for (ResultSetRow documento : folderRs) {
-			Date dDate = (Date) nodeService.getProperty(documento.getNodeRef(), ContentModel.PROP_MODIFIED);
-			if (date == null || date.compareTo(dDate) < 0)
-				date = dDate;
-		}
-		return date;
-	}
+  /**
+   * Gets the last document date for ws sample.
+   *
+   * @param folderWSSample the folderWSSample
+   * @return the result
+   */
+  private Date getLastDocumentDateForWSSample(NodeRef folderWSSample) {
+    NodeService nodeService = serviceRegistry.getNodeService();
+    SearchService searchService = serviceRegistry.getSearchService();
+    String folderWSSampleName =
+        (String) nodeService.getProperty(folderWSSample, ContentModel.PROP_NAME);
+    ResultSet folderRs =
+        searchService.query(
+            this.storeRef,
+            SearchService.LANGUAGE_FTS_ALFRESCO,
+            documentsWSSampleFolderTemplate.replace("{nomeWSSampleFolder}", folderWSSampleName));
+    if (folderRs.length() < 1) {
+      return null;
+    }
+    Date date = null;
+    for (ResultSetRow documento : folderRs) {
+      Date dDate =
+          (Date) nodeService.getProperty(documento.getNodeRef(), ContentModel.PROP_MODIFIED);
+      if (date == null || date.compareTo(dDate) < 0) date = dDate;
+    }
+    return date;
+  }
 
-/**
-* Performs aggiorna aspetto ws sample.
-* @param folderWSSample the folderWSSample
-* @param dateModify the dateModify
- */
-	private void aggiornaAspettoWSSample(NodeRef folderWSSample, Date dateModify) {
-		NodeService nodeService = serviceRegistry.getNodeService();
-		if (!nodeService.hasAspect(folderWSSample, WSSampleModel.ASPECT_WSSAMPLEFOLDER)) {
-			Map<QName, Serializable> aspectProperties = new HashMap<QName, Serializable>();
-			aspectProperties.put(WSSampleModel.PROP_UPDATE_PROPERTY, dateModify);
-			nodeService.addAspect(folderWSSample, WSSampleModel.ASPECT_WSSAMPLEFOLDER, aspectProperties);
-		} else
-			nodeService.setProperty(folderWSSample, WSSampleModel.PROP_UPDATE_PROPERTY, dateModify);
-	}
+  /**
+   * Performs aggiorna aspetto ws sample.
+   *
+   * @param folderWSSample the folderWSSample
+   * @param dateModify the dateModify
+   */
+  private void aggiornaAspettoWSSample(NodeRef folderWSSample, Date dateModify) {
+    NodeService nodeService = serviceRegistry.getNodeService();
+    if (!nodeService.hasAspect(folderWSSample, WSSampleModel.ASPECT_WSSAMPLEFOLDER)) {
+      Map<QName, Serializable> aspectProperties = new HashMap<QName, Serializable>();
+      aspectProperties.put(WSSampleModel.PROP_UPDATE_PROPERTY, dateModify);
+      nodeService.addAspect(folderWSSample, WSSampleModel.ASPECT_WSSAMPLEFOLDER, aspectProperties);
+    } else nodeService.setProperty(folderWSSample, WSSampleModel.PROP_UPDATE_PROPERTY, dateModify);
+  }
 
-/**
-* Sets the service registry.
-* @param serviceRegistry the serviceRegistry
- */
-	public void setServiceRegistry(ServiceRegistry serviceRegistry) {
-		this.serviceRegistry = serviceRegistry;
-	}
+  /**
+   * Sets the service registry.
+   *
+   * @param serviceRegistry the serviceRegistry
+   */
+  public void setServiceRegistry(ServiceRegistry serviceRegistry) {
+    this.serviceRegistry = serviceRegistry;
+  }
 
-/**
-* Sets the conservazione folder template.
-* @param conservazioneFolderTemplate the conservazioneFolderTemplate
- */
-	public void setConservazioneFolderTemplate(String conservazioneFolderTemplate) {
-		this.conservazioneFolderTemplate = conservazioneFolderTemplate;
-	}
+  /**
+   * Sets the conservazione folder template.
+   *
+   * @param conservazioneFolderTemplate the conservazioneFolderTemplate
+   */
+  public void setConservazioneFolderTemplate(String conservazioneFolderTemplate) {
+    this.conservazioneFolderTemplate = conservazioneFolderTemplate;
+  }
 
-/**
-* Sets the repository folder template ws sample.
-* @param repositoryFolderTemplateWSSample the repositoryFolderTemplateWSSample
- */
-	public void setRepositoryFolderTemplateWSSample(String repositoryFolderTemplateWSSample) {
-		this.repositoryFolderTemplateWSSample = repositoryFolderTemplateWSSample;
-	}
+  /**
+   * Sets the repository folder template ws sample.
+   *
+   * @param repositoryFolderTemplateWSSample the repositoryFolderTemplateWSSample
+   */
+  public void setRepositoryFolderTemplateWSSample(String repositoryFolderTemplateWSSample) {
+    this.repositoryFolderTemplateWSSample = repositoryFolderTemplateWSSample;
+  }
 
-/**
-* Sets the documents ws sample folder template.
-* @param documentsWSSampleFolderTemplate the documentsWSSampleFolderTemplate
- */
-	public void setDocumentsWSSampleFolderTemplate(String documentsWSSampleFolderTemplate) {
-		this.documentsWSSampleFolderTemplate = documentsWSSampleFolderTemplate;
-	}
-
+  /**
+   * Sets the documents ws sample folder template.
+   *
+   * @param documentsWSSampleFolderTemplate the documentsWSSampleFolderTemplate
+   */
+  public void setDocumentsWSSampleFolderTemplate(String documentsWSSampleFolderTemplate) {
+    this.documentsWSSampleFolderTemplate = documentsWSSampleFolderTemplate;
+  }
 }
