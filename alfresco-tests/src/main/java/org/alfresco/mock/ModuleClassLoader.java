@@ -18,6 +18,13 @@ import java.util.List;
 
 import org.slf4j.Logger;
 
+/**
+ * Custom classloader that searches for resources in Alfresco module paths.
+ * Extends the default classloader to find resources in target/classes/alfresco/module
+ * and target/test-classes/alfresco/module directories.
+ *
+ * @author vige
+ */
 public class ModuleClassLoader extends ClassLoader {
 
     private static final String SEPARATOR = "/";
@@ -26,6 +33,9 @@ public class ModuleClassLoader extends ClassLoader {
 
     private Logger logger = getLogger(getClass());
 
+    /**
+     * Constructs a new ModuleClassLoader using the current thread's context classloader.
+     */
     public ModuleClassLoader() {
         super(currentThread()
                 .getContextClassLoader());
@@ -42,6 +52,13 @@ public class ModuleClassLoader extends ClassLoader {
         return url;
     }
 
+    /**
+     * Finds a resource in the specified module path.
+     *
+     * @param modulePath the path to search in
+     * @param searchTerm the term to search for
+     * @return the URL of the found resource, or null if not found
+     */
     public URL find(String modulePath, String searchTerm) {
         URL pathResult = null;
         URI directoryPath = new File(modulePath).toURI();

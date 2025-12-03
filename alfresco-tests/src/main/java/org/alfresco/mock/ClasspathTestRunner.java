@@ -6,15 +6,33 @@ import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.InitializationError;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+/**
+ * Custom JUnit test runner that uses a custom classloader to support
+ * loading classes from Alfresco module paths.
+ *
+ * @author vige
+ */
 public class ClasspathTestRunner extends SpringJUnit4ClassRunner {
 
   static ClassLoader customClassLoader;
 
+  /**
+   * Constructs a new ClasspathTestRunner.
+   *
+   * @param clazz the test class
+   * @throws InitializationError if initialization fails
+   */
   public ClasspathTestRunner(Class<?> clazz) throws InitializationError {
     super(loadFromCustomClassloader(clazz));
   }
 
-  // Loads a class in the custom classloader
+  /**
+   * Loads a class using the custom classloader.
+   *
+   * @param clazz the class to load
+   * @return the loaded class
+   * @throws InitializationError if the class cannot be found
+   */
   private static Class<?> loadFromCustomClassloader(Class<?> clazz) throws InitializationError {
     try {
       // Only load once to support parallel tests
