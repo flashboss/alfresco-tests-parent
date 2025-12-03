@@ -2,9 +2,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>it.vige</groupId>
+	<parent>
+		<groupId>it.vige</groupId>
+		<artifactId>alfresco-tests-parent</artifactId>
+		<version>23.1.0.11</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
 	<artifactId>alfresco-tests</artifactId>
-	<version>23.1.0.11</version>
 	<name>Alfresco Tests</name>
 	<packaging>jar</packaging>
 	<description>
@@ -16,8 +20,6 @@
 		<alfresco.groupId>org.alfresco</alfresco.groupId>
 		<alfresco.platform.version>23.1.0</alfresco.platform.version>
 		<alfresco.bomDependencyArtifactId>acs-packaging</alfresco.bomDependencyArtifactId>
-		<maven.source.plugin.version>3.1.0</maven.source.plugin.version>
-		<maven.javadoc.plugin.version>3.1.1</maven.javadoc.plugin.version>
 		<maven.gpg.plugin.version>1.6</maven.gpg.plugin.version>
 	</properties>
 	<organization>
