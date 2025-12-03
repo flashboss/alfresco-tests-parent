@@ -547,7 +547,7 @@ public class MockSiteService implements SiteService, Serializable {
 	public void listMembers(String shortName, String nameFilter, String roleFilter, boolean includeUsers,
 			boolean includeGroups, boolean expandGroups, SiteMembersCallback callback) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**

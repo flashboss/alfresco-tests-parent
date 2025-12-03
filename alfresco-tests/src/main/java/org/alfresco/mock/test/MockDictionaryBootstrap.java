@@ -18,7 +18,7 @@ public class MockDictionaryBootstrap implements DictionaryListener {
 	@Override
 	public void onDictionaryInit() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -27,7 +27,7 @@ public class MockDictionaryBootstrap implements DictionaryListener {
 	@Override
 	public void afterDictionaryDestroy() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -36,7 +36,7 @@ public class MockDictionaryBootstrap implements DictionaryListener {
 	@Override
 	public void afterDictionaryInit() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -141,7 +141,7 @@ public class MockRuleServiceTest {
 	public void testPendingRules() {
 		// Test that pending rules methods don't throw exceptions
 		NodeRef targetNode = new NodeRef("workspace://SpacesStore/target-123");
-		
+
 		// Remove pending rule (should not throw)
 		ruleService.removeRulePendingExecution(targetNode);
 
@@ -155,7 +155,7 @@ public class MockRuleServiceTest {
 	@Test
 	public void testHasNonInheritedRules() {
 		// Initially no rules
-		assertFalse("Should not have non-inherited rules initially", 
+		assertFalse("Should not have non-inherited rules initially",
 				ruleService.hasNonInheritedRules(folderNodeRef));
 	}
 
@@ -198,7 +198,7 @@ public class MockRuleServiceTest {
 	@Test
 	public void testGetRule() {
 		// Get non-existent rule
-		assertNull("Should return null for non-existent rule", 
+		assertNull("Should return null for non-existent rule",
 				ruleService.getRule(ruleNodeRef1));
 	}
 
@@ -217,7 +217,7 @@ public class MockRuleServiceTest {
 	@Test
 	public void testIsLinkedToRuleNode() {
 		// Should return false for non-linked node
-		assertFalse("Should return false for non-linked node", 
+		assertFalse("Should return false for non-linked node",
 				ruleService.isLinkedToRuleNode(folderNodeRef));
 	}
 
@@ -227,7 +227,7 @@ public class MockRuleServiceTest {
 	@Test
 	public void testGetLinkedToRuleNode() {
 		// Should return null for non-linked node
-		assertNull("Should return null for non-linked node", 
+		assertNull("Should return null for non-linked node",
 				ruleService.getLinkedToRuleNode(folderNodeRef));
 	}
 
@@ -257,7 +257,7 @@ public class MockRuleServiceTest {
 	@Test
 	public void testIsRuleSetAssociatedWithFolder() {
 		NodeRef ruleSet = new NodeRef("workspace://SpacesStore/ruleset-1");
-		assertFalse("Should return false for non-associated rule set", 
+		assertFalse("Should return false for non-associated rule set",
 				ruleService.isRuleSetAssociatedWithFolder(ruleSet, folderNodeRef));
 	}
 
@@ -267,7 +267,7 @@ public class MockRuleServiceTest {
 	@Test
 	public void testIsRuleAssociatedWithRuleSet() {
 		NodeRef ruleSet = new NodeRef("workspace://SpacesStore/ruleset-1");
-		assertFalse("Should return false for non-associated rule", 
+		assertFalse("Should return false for non-associated rule",
 				ruleService.isRuleAssociatedWithRuleSet(ruleNodeRef1, ruleSet));
 	}
 
@@ -277,7 +277,7 @@ public class MockRuleServiceTest {
 	@Test
 	public void testIsRuleSetShared() {
 		NodeRef ruleSet = new NodeRef("workspace://SpacesStore/ruleset-1");
-		assertFalse("Should return false for non-shared rule set", 
+		assertFalse("Should return false for non-shared rule set",
 				ruleService.isRuleSetShared(ruleSet));
 	}
 
