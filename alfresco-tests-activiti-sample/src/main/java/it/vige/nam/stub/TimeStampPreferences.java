@@ -39,6 +39,8 @@ import javax.xml.bind.annotation.XmlType;
 		"timestampHashAlgo", "timestampPassword", "timestampUrl", "timestampUsername" })
 @XmlSeeAlso({ SignPreferences.class })
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class TimeStampPreferences {

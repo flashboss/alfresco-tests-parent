@@ -19,6 +19,8 @@ import java.util.List;
 import org.slf4j.Logger;
 
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class ModuleClassLoader extends ClassLoader {

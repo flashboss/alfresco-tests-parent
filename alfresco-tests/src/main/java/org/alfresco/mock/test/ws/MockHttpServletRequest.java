@@ -28,6 +28,8 @@ import org.alfresco.service.cmr.repository.NodeService;
 import org.apache.commons.io.FileUtils;
 
 /**
+ * Mock implementation of HttpServletRequest for testing purposes.
+ * 
  * @author vige
  */
 public class MockHttpServletRequest implements HttpServletRequest {

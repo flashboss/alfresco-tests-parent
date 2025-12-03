@@ -37,6 +37,8 @@ import it.vige.ws.api.SignPDFGeneration;
 import it.vige.ws.dom.VigeWSContentModel;
 
 /**
+ * Test class for verifying functionality.
+ * 
  * @author vige
  */
 public class SignPDFGenerationTest extends AbstractWSForm {

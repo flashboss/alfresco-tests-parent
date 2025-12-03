@@ -24,6 +24,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
 /**
+ * Mock implementation of the Alfresco ActionService for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
  * @author vige
  */
 public class MockActionService implements ActionService, RuntimeActionService, Serializable {

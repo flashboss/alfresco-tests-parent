@@ -7,6 +7,8 @@ import org.alfresco.service.cmr.i18n.MessageLookup;
 import org.alfresco.service.namespace.QName;
 
 /**
+ * Mock implementation of AssociationDefinition for testing purposes.
+ * 
  * @author vige
  */
 public class MockAssociationDefinition implements AssociationDefinition {

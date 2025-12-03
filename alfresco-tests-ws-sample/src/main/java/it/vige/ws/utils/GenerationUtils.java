@@ -49,6 +49,8 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 /**
+ * Utility class providing helper methods.
+ * 
  * @author vige
  */
 public class GenerationUtils {

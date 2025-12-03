@@ -13,6 +13,9 @@ import org.alfresco.service.namespace.QName;
 import org.alfresco.util.Pair;
 
 /**
+ * Mock implementation of the Alfresco CategoryService for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
  * @author vige
  */
 public class MockCategoryService implements CategoryService {

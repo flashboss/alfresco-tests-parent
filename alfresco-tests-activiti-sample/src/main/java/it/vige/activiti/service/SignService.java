@@ -13,6 +13,8 @@ import org.apache.commons.io.IOUtils;
 import it.vige.common.SignConstants;
 
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class SignService {

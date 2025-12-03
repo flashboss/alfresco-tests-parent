@@ -35,6 +35,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "credentials", propOrder = { "idOtp", "otp", "password", "securityCode", "sessionKey", "username" })
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class Credentials {

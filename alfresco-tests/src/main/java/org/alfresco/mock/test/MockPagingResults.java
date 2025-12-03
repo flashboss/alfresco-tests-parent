@@ -7,6 +7,8 @@ import org.alfresco.query.PagingResults;
 import org.alfresco.util.Pair;
 
 /**
+ * Mock implementation of PagingResults for testing purposes.
+ * 
  * @author vige
  */
 public class MockPagingResults<R> implements PagingResults<R>, Serializable {

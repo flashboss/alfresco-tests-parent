@@ -3,6 +3,8 @@ package it.vige.ws.dom;
 import org.joda.time.DateTime;
 
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class DocVigeWS {
