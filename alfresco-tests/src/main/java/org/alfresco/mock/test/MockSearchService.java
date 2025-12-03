@@ -30,11 +30,20 @@ import org.alfresco.util.ISO9075;
 import org.alfresco.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of SearchService for testing purposes.
+ * Supports XPATH and FTS Alfresco query languages to search
+ * nodes in the mock repository based on paths and properties.
+ * 
+ * @author vige
+ */
 public class MockSearchService implements SearchService, Serializable {
 
+	/** Node service for node operations. */
 	@Autowired
 	private NodeService nodeService;
 
+	/** Namespace service for QName resolution. */
 	@Autowired
 	private NamespaceService namespaceService;
 

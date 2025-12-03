@@ -33,11 +33,20 @@ import org.alfresco.util.Pair;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of FileFolderService for testing purposes.
+ * Provides file and folder operations using the file system
+ * to simulate Alfresco repository operations.
+ * 
+ * @author vige
+ */
 public class MockFileFolderService implements FileFolderService, Serializable {
 
+	/** Node service for node operations. */
 	@Autowired
 	private NodeService nodeService;
 
+	/** Namespace service for QName resolution. */
 	@Autowired
 	private NamespaceService namespaceService;
 

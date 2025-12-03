@@ -27,8 +27,16 @@ import org.alfresco.service.cmr.security.AuthorityType;
 import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of AuthorityService for testing purposes.
+ * Provides basic authority and group management functionality
+ * using the node service to store authority information.
+ * 
+ * @author vige
+ */
 public class MockAuthorityService implements AuthorityService, Serializable {
 
+	/** Prefix for group authority names. */
 	private final static String GROUP_PREFIX = "GROUP_";
 
 	@Autowired

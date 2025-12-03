@@ -40,6 +40,14 @@ import org.alfresco.service.namespace.QNamePattern;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of NodeService for testing purposes.
+ * Provides file-based node storage using the file system to simulate
+ * the Alfresco repository. Supports node creation, properties, aspects,
+ * associations, and path operations.
+ * 
+ * @author vige
+ */
 public class MockNodeService implements NodeService, Serializable {
 
 	private static Map<NodeRef, Map<QName, Serializable>> sampleProperties = new HashMap<NodeRef, Map<QName, Serializable>>();

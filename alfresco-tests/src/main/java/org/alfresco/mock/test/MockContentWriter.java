@@ -29,18 +29,37 @@ import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
 import org.apache.commons.io.IOUtils;
 
+/**
+ * Mock implementation of ContentWriter for testing purposes.
+ * Writes content to the file system and updates node properties
+ * with content metadata.
+ * 
+ * @author vige
+ */
 public class MockContentWriter implements ContentWriter {
 
+	/** The file to write content to. */
 	private File file;
 
+	/** The content mimetype. */
 	private String mimetype;
 
+	/** Content data with ID for node property. */
 	private ContentDataWithId contentProp;
 
+	/** The node reference associated with this writer. */
 	private NodeRef node;
 
+	/** Node service for updating properties. */
 	private NodeService nodeService;
 
+	/**
+	 * Creates a new MockContentWriter for the specified file and node.
+	 * 
+	 * @param file the file to write to
+	 * @param node the node reference
+	 * @param nodeService the node service
+	 */
 	public MockContentWriter(File file, NodeRef node, NodeService nodeService) {
 		this.node = node;
 		this.nodeService = nodeService;
