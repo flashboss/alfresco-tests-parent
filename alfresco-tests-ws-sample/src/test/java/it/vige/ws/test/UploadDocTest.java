@@ -35,6 +35,8 @@ import it.vige.ws.api.UploadDoc;
 import it.vige.ws.dom.VigeWSContentModel;
 
 /**
+ * Test class for verifying functionality.
+ * 
  * @author vige
  */
 public class UploadDocTest extends AbstractWSForm {

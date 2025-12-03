@@ -36,6 +36,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "signPreferences", propOrder = { "hashAlgorithm", "signEngineImpl", "signType", "withTimestamp" })
 @XmlSeeAlso({ CAdESPreferences.class })
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class SignPreferences extends TimeStampPreferences {

@@ -10,6 +10,8 @@ import org.springframework.context.ApplicationEvent;
 import org.springframework.extensions.surf.util.AbstractLifecycleBean;
 
 /**
+ * Mock implementation of ImporterBootstrap for testing purposes.
+ * 
  * @author vige
  */
 public class MockImporterBootstrap extends AbstractLifecycleBean {

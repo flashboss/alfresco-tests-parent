@@ -8,6 +8,8 @@ import org.alfresco.service.cmr.version.Version;
 import org.alfresco.service.cmr.version.VersionHistory;
 
 /**
+ * Mock implementation of VersionHistory for testing purposes.
+ * 
  * @author vige
  */
 public class MockVersionHistory implements VersionHistory, Serializable {

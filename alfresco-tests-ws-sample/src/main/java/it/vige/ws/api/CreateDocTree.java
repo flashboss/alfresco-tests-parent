@@ -30,6 +30,8 @@ import it.vige.ws.dom.DocVigeWS;
 import it.vige.ws.dom.VigeWSContentModel;
 
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class CreateDocTree extends DeclarativeWebScript {

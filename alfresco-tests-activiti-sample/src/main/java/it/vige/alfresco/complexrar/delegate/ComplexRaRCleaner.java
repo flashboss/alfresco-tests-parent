@@ -9,6 +9,8 @@ import org.alfresco.repo.workflow.activiti.BaseJavaDelegate;
 import org.mozilla.javascript.NativeArray;
 
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class ComplexRaRCleaner extends BaseJavaDelegate {

@@ -7,6 +7,8 @@ import org.alfresco.repo.search.impl.solr.facet.FacetQueryProvider;
 import org.alfresco.repo.search.impl.solr.facet.SolrFacetHelper;
 
 /**
+ * Mock implementation of SolrFacetHelper for testing purposes.
+ * 
  * @author vige
  */
 public class MockSolrFacetHelper extends SolrFacetHelper implements Serializable {

@@ -33,6 +33,8 @@ import it.vige.ws.PreviousWSSample;
 import it.vige.ws.WSSampleModel;
 
 /**
+ * Test class for verifying functionality.
+ * 
  * @author vige
  */
 public class PreviousWSSampleTest extends AbstractWSForm {
