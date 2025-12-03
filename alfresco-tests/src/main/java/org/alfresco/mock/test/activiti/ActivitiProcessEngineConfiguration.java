@@ -6,6 +6,13 @@ import org.alfresco.repo.jscript.ScriptUtils;
 import org.alfresco.repo.jscript.Search;
 import org.alfresco.service.ServiceRegistry;
 
+/**
+ * Configuration for Activiti process engine in mock environment.
+ * Extends StandaloneProcessEngineConfiguration with Alfresco service
+ * registry and script components.
+ * 
+ * @author vige
+ */
 public class ActivitiProcessEngineConfiguration extends StandaloneProcessEngineConfiguration {
 
 	private ServiceRegistry serviceRegistry;

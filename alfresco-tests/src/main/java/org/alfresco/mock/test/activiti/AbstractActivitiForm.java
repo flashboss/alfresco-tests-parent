@@ -28,6 +28,14 @@ import org.activiti.engine.impl.cfg.SpringBeanFactoryProxyMap;
 import org.activiti.engine.impl.identity.Authentication;
 import org.activiti.engine.impl.test.ResourceActivitiTestCase;
 import org.activiti.engine.repository.Deployment;
+
+/**
+ * Abstract base class for Activiti workflow tests.
+ * Provides initialization of Activiti process engine and Alfresco mock
+ * repository for testing workflow processes.
+ * 
+ * @author vige
+ */
 import org.alfresco.mock.NodeUtils;
 import org.alfresco.mock.ZipUtils;
 import org.alfresco.mock.test.MockContentService;
