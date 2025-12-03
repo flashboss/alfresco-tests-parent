@@ -33,6 +33,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "verifyOnDate", propOrder = { "signedContent", "verifyDate" })
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class VerifyOnDate {

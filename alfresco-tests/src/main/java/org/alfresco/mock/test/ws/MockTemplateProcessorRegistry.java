@@ -4,6 +4,8 @@ import org.springframework.extensions.webscripts.TemplateProcessor;
 import org.springframework.extensions.webscripts.TemplateProcessorRegistry;
 
 /**
+ * Mock implementation of TemplateProcessorRegistry for testing purposes.
+ * 
  * @author vige
  */
 public class MockTemplateProcessorRegistry extends TemplateProcessorRegistry {

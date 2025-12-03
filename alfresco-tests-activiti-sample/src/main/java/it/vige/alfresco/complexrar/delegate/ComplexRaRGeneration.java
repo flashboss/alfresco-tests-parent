@@ -19,6 +19,8 @@ import it.vige.alfresco.complexrar.util.ComplexHashUtil;
 import it.vige.common.ConservationModel;
 
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class ComplexRaRGeneration extends BaseJavaDelegate {

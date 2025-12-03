@@ -29,6 +29,8 @@ import org.springframework.extensions.webscripts.servlet.FormData;
 import net.sf.acegisecurity.providers.ProviderNotFoundException;
 
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class PreviousWSSample extends DeclarativeWebScript {

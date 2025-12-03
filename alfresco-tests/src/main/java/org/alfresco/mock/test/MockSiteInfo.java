@@ -10,6 +10,8 @@ import org.alfresco.service.cmr.site.SiteVisibility;
 import org.alfresco.service.namespace.QName;
 
 /**
+ * Mock implementation of SiteInfo for testing purposes.
+ * 
  * @author vige
  */
 public class MockSiteInfo implements SiteInfo, Serializable {

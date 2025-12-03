@@ -22,6 +22,8 @@ import it.vige.common.ConservationModel;
 import it.vige.common.SignConstants;
 
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class ComplexRaRStoring extends ComplexRaRGeneration {

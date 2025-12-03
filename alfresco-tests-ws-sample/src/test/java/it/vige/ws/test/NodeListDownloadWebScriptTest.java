@@ -32,6 +32,8 @@ import it.vige.ws.api.NodeListDownloadWebScript;
 import it.vige.ws.utils.ActUtil;
 
 /**
+ * Test class for verifying functionality.
+ * 
  * @author vige
  */
 public class NodeListDownloadWebScriptTest extends AbstractWSForm {
