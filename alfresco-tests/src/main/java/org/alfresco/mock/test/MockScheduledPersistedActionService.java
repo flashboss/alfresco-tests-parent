@@ -6,6 +6,12 @@ import org.alfresco.service.cmr.action.Action;
 import org.alfresco.service.cmr.action.scheduled.ScheduledPersistedAction;
 import org.alfresco.service.cmr.action.scheduled.ScheduledPersistedActionService;
 
+/**
+ * Mock implementation of ScheduledPersistedActionService for testing purposes.
+ * Provides scheduled action management stub.
+ * 
+ * @author vige
+ */
 public class MockScheduledPersistedActionService implements ScheduledPersistedActionService {
 
 	@Override

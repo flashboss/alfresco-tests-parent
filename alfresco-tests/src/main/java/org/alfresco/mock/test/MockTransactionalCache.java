@@ -7,6 +7,14 @@ import org.alfresco.repo.cache.LockingCache;
 import org.alfresco.repo.transaction.TransactionListener;
 import org.springframework.beans.factory.InitializingBean;
 
+/**
+ * Mock implementation of TransactionalCache for testing purposes.
+ * Provides transaction-aware caching stub.
+ * 
+ * @param <K> the key type
+ * @param <V> the value type
+ * @author vige
+ */
 public class MockTransactionalCache<K extends Serializable, V extends Object>
 implements LockingCache<K, V>, TransactionListener, InitializingBean {
 

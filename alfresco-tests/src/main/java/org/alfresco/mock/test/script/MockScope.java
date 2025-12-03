@@ -4,6 +4,12 @@ import java.io.Serializable;
 
 import org.mozilla.javascript.Scriptable;
 
+/**
+ * Mock implementation of Scriptable scope for testing purposes.
+ * Provides JavaScript scope stub for script execution.
+ * 
+ * @author vige
+ */
 public class MockScope implements Scriptable, Serializable {
 
 	@Override

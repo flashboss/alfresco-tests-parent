@@ -7,6 +7,12 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
+/**
+ * Mock implementation of UserTransaction for testing purposes.
+ * Provides transaction boundary operations stub.
+ * 
+ * @author vige
+ */
 public class MockUserTransaction implements UserTransaction {
 
 	@Override

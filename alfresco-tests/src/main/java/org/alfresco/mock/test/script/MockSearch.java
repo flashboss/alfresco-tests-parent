@@ -10,6 +10,12 @@ import org.alfresco.repo.jscript.Search;
 import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.repository.StoreRef;
 
+/**
+ * Mock implementation of Search for testing purposes.
+ * Provides JavaScript search capabilities.
+ * 
+ * @author vige
+ */
 public class MockSearch extends Search implements Serializable, Externalizable {
 
 	@Override

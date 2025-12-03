@@ -18,6 +18,13 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+
+/**
+ * Mock implementation of HttpServletRequest for testing purposes.
+ * Provides HTTP request operations with parameters and attributes.
+ * 
+ * @author vige
+ */
 import javax.servlet.http.HttpSession;
 
 import org.alfresco.model.ContentModel;

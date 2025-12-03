@@ -7,6 +7,12 @@ import org.alfresco.repo.processor.BaseProcessorExtension;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+/**
+ * Mock implementation of ScriptLogger for testing purposes.
+ * Provides logging capabilities for JavaScript execution.
+ * 
+ * @author vige
+ */
 public class MockLogger extends BaseProcessorExtension implements Serializable {
 	
 	private static final Log logger = LogFactory.getLog(ScriptLogger.class);

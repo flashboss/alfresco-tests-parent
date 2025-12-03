@@ -18,6 +18,13 @@ import org.alfresco.repo.policy.PropertyPolicyDelegate;
 import org.alfresco.repo.policy.ServiceBehaviourBinding;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of PolicyComponent for testing purposes.
+ * Provides behavior and policy registration stub.
+ * 
+ * @author vige
+ */
+
 public class MockPolicyComponent implements PolicyComponent {
 
 	@Override
