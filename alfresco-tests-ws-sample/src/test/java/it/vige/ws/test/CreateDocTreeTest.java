@@ -27,6 +27,14 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 import it.vige.ws.api.CreateDocTree;
 import it.vige.ws.dom.DocVigeWS;
 
+/**
+* Mock implementation of the CreateDocTreeTest class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
+ */
 public class CreateDocTreeTest extends AbstractWSForm {
 
 	private final static Log logger = LogFactory.getLog(CreateDocTreeTest.class);
@@ -39,14 +47,24 @@ public class CreateDocTreeTest extends AbstractWSForm {
 	private final String CONVENZIONE = "1970-01-01";
 	private final String NUMERO_PRATICA = "3456";
 
+/**
+* The create doc tree.
+ */
 	@Autowired
 	private CreateDocTree createDocTree;
 
+/**
+* Gets the abstract web script.
+* @return the result
+ */
 	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return createDocTree;
 	}
 
+/**
+* Initializes the component.
+ */
 	@Before
 	public void init() {
 		super.init();
@@ -60,6 +78,11 @@ public class CreateDocTreeTest extends AbstractWSForm {
 		insertFolder(bdmDL, "Questions");
 	}
 
+/**
+* Performs execute.
+* @throws ParseException if an error occurs
+* @throws IOException if an error occurs
+ */
 	@Test
 	public void execute() throws ParseException, IOException {
 

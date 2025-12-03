@@ -34,6 +34,14 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 import it.vige.ws.api.UploadDoc;
 import it.vige.ws.dom.VigeWSContentModel;
 
+/**
+* Mock implementation of the UploadDocTest class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
+ */
 public class UploadDocTest extends AbstractWSForm {
 
 	private final static Log logger = LogFactory.getLog(UploadDocTest.class);
@@ -54,14 +62,24 @@ public class UploadDocTest extends AbstractWSForm {
 	private final static String FOLDER_DROPZONE = "/sites/vige-site/documentLibrary/sys/Dropzone";
 	private Map<String, String> templateVars;
 
+/**
+* The upload doc.
+ */
 	@Autowired
 	private UploadDoc uploadDoc;
 
+/**
+* Gets the abstract web script.
+* @return the result
+ */
 	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return uploadDoc;
 	}
 
+/**
+* Initializes the component.
+ */
 	@Before
 	public void init() {
 		super.init();
@@ -77,6 +95,11 @@ public class UploadDocTest extends AbstractWSForm {
 		insertFolder(sys, "Dropzone");
 	}
 
+/**
+* Performs execute.
+* @throws ParseException if an error occurs
+* @throws IOException if an error occurs
+ */
 	@Test
 	public void execute() throws ParseException, IOException {
 

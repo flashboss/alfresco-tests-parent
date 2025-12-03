@@ -14,49 +14,64 @@ import org.subethamail.smtp.MessageHandlerFactory;
 import org.subethamail.smtp.RejectException;
 
 /**
- * A factory of messages. It is used by the internal mail server
- * 
- * @author lucastancapiano
- *
+* A factory of messages. It is used by the internal mail server
+*
+* @author lucastancapiano
+*
  */
 public class MockMessageHandlerFactory implements MessageHandlerFactory {
 
 	private Logger logger = getLogger(getClass());
 
+/**
+* Creates a new .
+* @param ctx the ctx
+* @return the result
+ */
 	public MessageHandler create(MessageContext ctx) {
 		return new Handler(ctx);
 	}
 
-	/**
-	 * Print the message and its properties
-	 * 
-	 * @author lucastancapiano
-	 *
-	 */
+/**
+* Print the message and its properties
+*
+* @author lucastancapiano
+*
+ */
 	class Handler implements MessageHandler {
 		MessageContext ctx;
 
+/**
+* Constructs a new Handler instance.
+* @param ctx the ctx
+ */
 		public Handler(MessageContext ctx) {
 			this.ctx = ctx;
 		}
 
-		/**
-		 * Prints the from mail
-		 */
+/**
+* Prints the from mail
+* @param from the from
+* @throws RejectException if an error occurs
+ */
 		public void from(String from) throws RejectException {
 			logger.info("FROM:" + from);
 		}
 
-		/**
-		 * Prints the recipient mail
-		 */
+/**
+* Prints the recipient mail
+* @param recipient the recipient
+* @throws RejectException if an error occurs
+ */
 		public void recipient(String recipient) throws RejectException {
 			logger.info("RECIPIENT:" + recipient);
 		}
 
-		/**
-		 * Prints the body of the message
-		 */
+/**
+* Prints the body of the message
+* @param data the data
+* @throws IOException if an error occurs
+ */
 		public void data(InputStream data) throws IOException {
 			logger.info("MAIL DATA");
 			logger.info("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
@@ -64,20 +79,20 @@ public class MockMessageHandlerFactory implements MessageHandlerFactory {
 			logger.info("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
 		}
 
-		/**
-		 * Prints if the message is created
-		 */
+/**
+* Prints if the message is created
+ */
 		public void done() {
 			logger.info("Finished");
 		}
 
-		/**
-		 * Utility convert a stream in a string
-		 * 
-		 * @param is
-		 *            The stream to convert
-		 * @return The converted string
-		 */
+/**
+* Utility convert a stream in a string
+*
+* @param is
+*            The stream to convert
+* @return The converted string
+ */
 		public String convertStreamToString(InputStream is) {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 			StringBuilder sb = new StringBuilder();

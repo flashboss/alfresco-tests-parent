@@ -32,17 +32,34 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 import it.vige.ws.PreviousWSSample;
 import it.vige.ws.WSSampleModel;
 
+/**
+* Mock implementation of the PreviousWSSampleTest class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
+ */
 public class PreviousWSSampleTest extends AbstractWSForm {
 
 	private final static String FOLDER_WSSAMPLE = "WSSAMPLE-20157726";
 	private final static String dataModifica = "2020-06-19";
 
+/**
+* The previous ws sample.
+ */
 	@Autowired
 	private PreviousWSSample previousWSSample;
 
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+/**
+* The repository.
+ */
 	private NodeRef repository;
 
+/**
+* Initializes the component.
+ */
 	@Before
 	public void init() {
 		super.init();
@@ -59,11 +76,20 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 		insertFolder(repository, FOLDER_WSSAMPLE);
 	}
 
+/**
+* Gets the abstract web script.
+* @return the result
+ */
 	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return previousWSSample;
 	}
 
+/**
+* Performs execute.
+* @throws ParseException if an error occurs
+* @throws IOException if an error occurs
+ */
 	@Test
 	public void execute() throws ParseException, IOException {
 

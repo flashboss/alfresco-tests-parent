@@ -17,30 +17,30 @@ import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Mock implementation of the MockCopyService class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- * 
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the MockCopyService class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class MockCopyService implements CopyService, Serializable {
 
+/**
+* The file folder service.
+ */
 	@Autowired
 	private FileFolderService fileFolderService;
 
+/**
+* The node service.
+ */
 	@Autowired
 	private NodeService nodeService;
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+ */
 	@Override
 	public NodeRef copy(NodeRef sourceNodeRef, NodeRef targetParentNodeRef, QName assocTypeQName, QName assocQName,
 			boolean copyChildren) {
@@ -56,15 +56,9 @@ public class MockCopyService implements CopyService, Serializable {
 		return result;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+ */
 	@Override
 	public NodeRef copyAndRename(NodeRef sourceNodeRef, NodeRef targetParentNodeRef, QName assocTypeQName,
 			QName assocQName, boolean copyChildren) {
@@ -72,88 +66,66 @@ public class MockCopyService implements CopyService, Serializable {
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param sourceNodeRef the sourceNodeRef
+* @param targetParentNodeRef the targetParentNodeRef
+* @param assocTypeQName the assocTypeQName
+* @param assocQName the assocQName
+* @return the result
+ */
 	@Override
 	public NodeRef copy(NodeRef sourceNodeRef, NodeRef targetParentNodeRef, QName assocTypeQName, QName assocQName) {
 		return copy(sourceNodeRef, targetParentNodeRef, assocTypeQName, assocQName, false);
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param sourceNodeRef the sourceNodeRef
+* @param destinationNodeRef the destinationNodeRef
+ */
 	@Override
 	public void copy(NodeRef sourceNodeRef, NodeRef destinationNodeRef) {
 		copy(sourceNodeRef, destinationNodeRef, ContentModel.ASSOC_CONTAINS, ContentModel.ASSOC_CHILDREN);
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param copiedNodeRef the copiedNodeRef
+* @return the result
+ */
 	@Override
 	public NodeRef getOriginal(NodeRef copiedNodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param nodeRef the nodeRef
+* @return the result
+ */
 	@Override
 	public List<NodeRef> getCopies(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param originalNodeRef the originalNodeRef
+* @param pagingRequest the pagingRequest
+* @return the result
+ */
 	@Override
 	public PagingResults<CopyInfo> getCopies(NodeRef originalNodeRef, PagingRequest pagingRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+ */
 	@Override
 	public PagingResults<CopyInfo> getCopies(NodeRef originalNodeRef, NodeRef copyParentNodeRef,
 			PagingRequest pagingRequest) {
@@ -161,15 +133,9 @@ public class MockCopyService implements CopyService, Serializable {
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+ */
 	@Override
 	public String getTopLevelNodeNewName(NodeRef sourceNodeRef, NodeRef targetParentRef, QName assocTypeQName,
 			QName assocQName) {

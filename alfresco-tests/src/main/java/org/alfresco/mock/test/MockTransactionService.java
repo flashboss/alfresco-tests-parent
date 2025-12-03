@@ -9,151 +9,119 @@ import org.alfresco.service.transaction.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Mock implementation of the MockTransactionService class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- * 
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the MockTransactionService class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class MockTransactionService implements TransactionService, Serializable {
 
+/**
+* The retrying transaction helper.
+ */
 	@Autowired
 	private RetryingTransactionHelper retryingTransactionHelper;
 	
-	/**
-
-	
-	 * {@inheritDoc}
-
-	
-	 */
-
-	
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public boolean getAllowWrite() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public boolean isReadOnly() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public UserTransaction getUserTransaction() {
 		return new MockUserTransaction();
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param readOnly the readOnly
+* @return the result
+ */
 	@Override
 	public UserTransaction getUserTransaction(boolean readOnly) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param readOnly the readOnly
+* @param ignoreSystemReadOnly the ignoreSystemReadOnly
+* @return the result
+ */
 	@Override
 	public UserTransaction getUserTransaction(boolean readOnly, boolean ignoreSystemReadOnly) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public UserTransaction getNonPropagatingUserTransaction() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param readOnly the readOnly
+* @return the result
+ */
 	@Override
 	public UserTransaction getNonPropagatingUserTransaction(boolean readOnly) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param readOnly the readOnly
+* @param ignoreSystemReadOnly the ignoreSystemReadOnly
+* @return the result
+ */
 	@Override
 	public UserTransaction getNonPropagatingUserTransaction(boolean readOnly, boolean ignoreSystemReadOnly) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public RetryingTransactionHelper getRetryingTransactionHelper() {
 		return retryingTransactionHelper;
 	}
 
+/**
+* Sets the retrying transaction helper.
+* @param retryingTransactionHelper the retryingTransactionHelper
+ */
 	public void setRetryingTransactionHelper(RetryingTransactionHelper retryingTransactionHelper) {
 		this.retryingTransactionHelper = retryingTransactionHelper;
 	}

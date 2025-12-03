@@ -30,25 +30,47 @@ import org.alfresco.service.cmr.repository.NodeService;
 import org.apache.commons.io.IOUtils;
 
 /**
- * Mock implementation of the MockContentWriter class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- * 
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the MockContentWriter class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class MockContentWriter implements ContentWriter {
 
+/**
+* The file.
+ */
 	private File file;
 
+/**
+* The mimetype.
+ */
 	private String mimetype;
 
+/**
+* The content prop.
+ */
 	private ContentDataWithId contentProp;
 
+/**
+* The node.
+ */
 	private NodeRef node;
 
+/**
+* The node service.
+ */
 	private NodeService nodeService;
 
+/**
+* Constructs a new MockContentWriter with the specified file, node, and node service.
+*
+* @param file the file
+* @param node the node reference
+* @param nodeService the node service
+ */
 	public MockContentWriter(File file, NodeRef node, NodeService nodeService) {
 		this.node = node;
 		this.nodeService = nodeService;
@@ -75,163 +97,108 @@ public class MockContentWriter implements ContentWriter {
 		}
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public boolean isChannelOpen() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param listener the listener
+ */
 	@Override
 	public void addListener(ContentStreamListener listener) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public long getSize() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public ContentData getContentData() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public String getContentUrl() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public String getMimetype() {
 		return mimetype;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param mimetype the mimetype
+ */
 	@Override
 	public void setMimetype(String mimetype) {
 		this.mimetype = mimetype;
 		contentProp = new ContentDataWithId(ContentDataWithId.setMimetype(contentProp, mimetype), contentProp.getId());
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public String getEncoding() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param encoding the encoding
+ */
 	@Override
 	public void setEncoding(String encoding) {
 		contentProp = new ContentDataWithId(ContentDataWithId.setEncoding(contentProp, encoding), contentProp.getId());
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public Locale getLocale() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param locale the locale
+ */
 	@Override
 	public void setLocale(Locale locale) {
 		contentProp = new ContentDataWithId(new ContentData(contentProp.getContentUrl(), contentProp.getMimetype(),
@@ -239,74 +206,54 @@ public class MockContentWriter implements ContentWriter {
 
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+* @throws ContentIOException if an error occurs
+ */
 	@Override
 	public ContentReader getReader() throws ContentIOException {
 		return new FileContentReader(file);
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public boolean isClosed() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+* @throws ContentIOException if an error occurs
+ */
 	@Override
 	public WritableByteChannel getWritableChannel() throws ContentIOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param truncate the truncate
+* @return the result
+* @throws ContentIOException if an error occurs
+ */
 	@Override
 	public FileChannel getFileChannel(boolean truncate) throws ContentIOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @return the result
+* @throws ContentIOException if an error occurs
+ */
 	@Override
 	public OutputStream getContentOutputStream() throws ContentIOException {
 		try (FileOutputStream fom = new FileOutputStream(file)) {
@@ -316,29 +263,21 @@ public class MockContentWriter implements ContentWriter {
 		}
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param reader the reader
+* @throws ContentIOException if an error occurs
+ */
 	@Override
 	public void putContent(ContentReader reader) throws ContentIOException {
 		putContent(reader.getContentInputStream());
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param is the is
+* @throws ContentIOException if an error occurs
+ */
 	@Override
 	public void putContent(InputStream is) throws ContentIOException {
 		try (FileOutputStream fom = new FileOutputStream(file)) {
@@ -349,15 +288,11 @@ public class MockContentWriter implements ContentWriter {
 		}
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param file the file
+* @throws ContentIOException if an error occurs
+ */
 	@Override
 	public void putContent(File file) throws ContentIOException {
 		try (FileInputStream fim = new FileInputStream(file)) {
@@ -367,50 +302,42 @@ public class MockContentWriter implements ContentWriter {
 		}
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param content the content
+* @throws ContentIOException if an error occurs
+ */
 	@Override
 	public void putContent(String content) throws ContentIOException {
 		putContent(new ByteArrayInputStream(content.getBytes()));
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param filename the filename
+ */
 	@Override
 	public void guessMimetype(String filename) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+ */
 	@Override
 	public void guessEncoding() {
 		// TODO Auto-generated method stub
 
 	}
 
+/**
+* Adds an entry to a ZIP file.
+*
+* @param text the text content to add
+* @param output the output stream
+* @throws IOException if an I/O error occurs
+ */
 	public static void addEntryToZip(String text, OutputStream output) throws IOException {
 		InputStream inputStream = new ByteArrayInputStream(text.getBytes());
 		ZipOutputStream zipOut = new ZipOutputStream(output);
