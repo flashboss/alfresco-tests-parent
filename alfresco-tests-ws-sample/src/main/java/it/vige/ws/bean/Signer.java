@@ -1,5 +1,11 @@
 package it.vige.ws.bean;
 
+/**
+ * Bean representing a signer with credentials.
+ * Contains username and password for signing operations.
+ * 
+ * @author vige
+ */
 public class Signer {
 
 	private String username;

@@ -5,6 +5,13 @@ import org.alfresco.service.cmr.repository.NodeService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+/**
+ * Command class for checking open data properties on nodes.
+ * Validates that required act properties are present.
+ * 
+ * @author vige
+ */
 public class OpenDataCommand {
 
 	private static Log logger = LogFactory.getLog(OpenDataCommand.class);

@@ -28,6 +28,13 @@ import org.springframework.extensions.webscripts.servlet.FormData;
 
 import net.sf.acegisecurity.providers.ProviderNotFoundException;
 
+/**
+ * WebScript that processes and updates folder properties.
+ * Handles authentication and property updates based on form data.
+ * 
+ * @author vige
+ */
+
 public class PreviousWSSample extends DeclarativeWebScript {
 
 	private ServiceRegistry serviceRegistry;

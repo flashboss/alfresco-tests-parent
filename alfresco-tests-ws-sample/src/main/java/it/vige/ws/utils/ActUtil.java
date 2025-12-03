@@ -1,6 +1,13 @@
 package it.vige.ws.utils;
 
 import org.alfresco.service.namespace.QName;
+
+/**
+ * Utility class with constants for Acts content model.
+ * Defines QNames for act properties and types.
+ * 
+ * @author vige
+ */
 public class ActUtil {
 
 	public static final String CRL_ACTS_MODEL = "http://www.vige.it/content/model/acts/1.0";

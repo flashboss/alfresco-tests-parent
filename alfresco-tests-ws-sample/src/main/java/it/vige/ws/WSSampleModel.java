@@ -2,6 +2,12 @@ package it.vige.ws;
 
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Model constants for the WS Sample content model.
+ * Defines namespace and aspect QNames for the sample.
+ * 
+ * @author vige
+ */
 public interface WSSampleModel {
 
 	String PBPDV_NAMESPACE = "http://www.vige.it/pb/conservation/model/1.0";

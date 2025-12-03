@@ -5,6 +5,12 @@ import java.io.InputStream;
 
 import org.apache.log4j.Logger;
 
+/**
+ * Service for document signing and verification operations.
+ * Provides PAdES signing and timestamping capabilities.
+ * 
+ * @author vige
+ */
 public class SignService {
 
 	private final Logger logger = Logger.getLogger(SignService.class);

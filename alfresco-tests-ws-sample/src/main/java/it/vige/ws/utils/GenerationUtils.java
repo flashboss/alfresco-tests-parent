@@ -23,6 +23,13 @@ import org.alfresco.service.cmr.search.ResultSet;
 import org.alfresco.service.cmr.search.SearchService;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.util.ISO9075;
+
+/**
+ * Utility class for document generation and processing.
+ * Provides methods for PDF conversion, template retrieval, and document saving.
+ * 
+ * @author vige
+ */
 import org.apache.log4j.Logger;
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.joda.time.DateTime;
