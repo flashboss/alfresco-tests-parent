@@ -19,6 +19,8 @@ import javax.xml.namespace.QName;
  */
 @XmlRegistry
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class ObjectFactory {

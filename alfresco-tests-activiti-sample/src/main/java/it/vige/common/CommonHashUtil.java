@@ -18,6 +18,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
+ * Utility class providing helper methods.
+ * 
  * @author vige
  */
 public class CommonHashUtil {

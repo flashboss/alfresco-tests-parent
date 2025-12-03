@@ -30,6 +30,8 @@ import org.alfresco.service.cmr.repository.NodeService;
 import org.apache.commons.io.IOUtils;
 
 /**
+ * Mock implementation of ContentWriter for testing purposes.
+ * 
  * @author vige
  */
 public class MockContentWriter implements ContentWriter {

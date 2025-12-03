@@ -28,6 +28,8 @@ import it.vige.ws.api.CreateDocTree;
 import it.vige.ws.dom.DocVigeWS;
 
 /**
+ * Test class for verifying functionality.
+ * 
  * @author vige
  */
 public class CreateDocTreeTest extends AbstractWSForm {

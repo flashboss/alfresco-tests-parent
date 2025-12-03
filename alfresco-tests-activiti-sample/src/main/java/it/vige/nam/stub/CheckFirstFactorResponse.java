@@ -29,6 +29,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "checkFirstFactorResponse")
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class CheckFirstFactorResponse {

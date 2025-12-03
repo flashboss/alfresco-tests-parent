@@ -16,6 +16,8 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 import org.springframework.extensions.webscripts.servlet.FormData;
 
 /**
+ * Mock implementation of WebScriptRequest for testing purposes.
+ * 
  * @author vige
  */
 public class MockWebScriptRequest implements WebScriptRequest {
