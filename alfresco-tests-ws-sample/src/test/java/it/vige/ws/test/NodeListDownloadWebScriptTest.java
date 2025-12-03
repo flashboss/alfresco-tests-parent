@@ -32,21 +32,33 @@ import it.vige.ws.api.NodeListDownloadWebScript;
 import it.vige.ws.utils.ActUtil;
 
 /**
- * Mock implementation of the NodeListDownloadWebScriptTest class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- *
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the NodeListDownloadWebScriptTest class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 
+/**
+* The node list download web script.
+ */
 	@Autowired
 	private NodeListDownloadWebScript nodeListDownloadWebScript;
 
+/**
+* The pdl.
+ */
 	private NodeRef PDL;
+/**
+* The act.
+ */
 	private NodeRef act;
 
+/**
+* Initializes the component.
+ */
 	@Before
 	public void init() {
 		super.init();
@@ -66,6 +78,12 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 
 	}
 
+/**
+* Creates a new act.
+* @param PDL the PDL
+* @param name the name
+* @return the result
+ */
 	private NodeRef createAct(NodeRef PDL, String name) {
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>(11);
 		properties.put(ContentModel.PROP_NAME, name);
@@ -78,6 +96,11 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 		return insertDocument(PDL, name, "testbytes", properties);
 	}
 
+/**
+* Performs add state act.
+* @param document the document
+* @param PDL the PDL
+ */
 	private void addStateAct(NodeRef document, NodeRef PDL) {
 		NodeService nodeService = serviceRegistry.getNodeService();
 		String name = (String) nodeService.getProperty(document, ContentModel.PROP_NAME);
@@ -90,11 +113,19 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 		nodeService.createAssociation(document, target, ActUtil.PROP_STATE_ACT_QNAME);
 	}
 
+/**
+* Gets the abstract web script.
+* @return the result
+ */
 	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return nodeListDownloadWebScript;
 	}
 
+/**
+* Performs execute.
+* @throws IOException if an error occurs
+ */
 	@Test
 	public void execute() throws IOException {
 

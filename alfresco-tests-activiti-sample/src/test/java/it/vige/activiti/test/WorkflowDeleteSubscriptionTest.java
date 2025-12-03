@@ -24,16 +24,20 @@ import it.vige.activiti.ComplexAbstractForm;
 import it.vige.common.SignConstants;
 
 /**
- * Mock implementation of the WorkflowDeleteSubscriptionTest class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- *
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the WorkflowDeleteSubscriptionTest class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class WorkflowDeleteSubscriptionTest extends ComplexAbstractForm {
 
 	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/ComplexRaRProcess.bpmn" })
+/**
+* Performs test human.
+* @throws ParseException if an error occurs
+ */
 	public void testHuman() throws ParseException {
 		Map<String, Object> variables = new HashMap<String, Object>();
 		init(variables);

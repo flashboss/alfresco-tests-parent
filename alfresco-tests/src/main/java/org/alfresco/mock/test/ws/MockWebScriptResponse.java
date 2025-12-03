@@ -10,151 +10,178 @@ import org.springframework.extensions.webscripts.Runtime;
 import org.springframework.extensions.webscripts.WebScriptResponse;
 
 /**
- * Mock implementation of the MockWebScriptResponse class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- *
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the MockWebScriptResponse class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class MockWebScriptResponse implements WebScriptResponse {
 
 	private MockWriter mockWriter = new MockWriter();
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @param status the status
+ */
 	@Override
 	public void setStatus(int status) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @param name the name
+* @param value the value
+ */
 	@Override
 	public void setHeader(String name, String value) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @param name the name
+* @param value the value
+ */
 	@Override
 	public void addHeader(String name, String value) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @param contentType the contentType
+ */
 	@Override
 	public void setContentType(String contentType) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @param contentEncoding the contentEncoding
+ */
 	@Override
 	public void setContentEncoding(String contentEncoding) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @param cache the cache
+ */
 	@Override
 	public void setCache(Cache cache) {
 		// TODO Auto-generated method stub
 
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @return the result
+* @throws IOException if an error occurs
+ */
 	@Override
 	public Writer getWriter() throws IOException {
 		return mockWriter;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @return the result
+* @throws IOException if an error occurs
+ */
 	@Override
 	public OutputStream getOutputStream() throws IOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+ */
 	@Override
 	public void reset() {
 		// TODO Auto-generated method stub
 
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @param url the url
+* @return the result
+ */
 	@Override
 	public String encodeScriptUrl(String url) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @param url the url
+* @return the result
+ */
 	@Override
 	public String encodeResourceUrl(String url) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @param name the name
+* @return the result
+ */
 	@Override
 	public String getEncodeScriptUrlFunction(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @param name the name
+* @return the result
+ */
 	@Override
 	public String getEncodeResourceUrlFunction(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public Runtime getRuntime() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @param arg0 the arg0
+ */
 	@Override
 	public void reset(String arg0) {
 		// TODO Auto-generated method stub
 
 	}
 
+/**
+* Gets the model map.
+*
+* @return the model map
+ */
 	public Map<String, Object> getModel() {
 		return mockWriter.getModel();
 	}

@@ -13,12 +13,12 @@ import java.nio.file.Paths;
 import org.slf4j.Logger;
 
 /**
- * Mock implementation of the ModuleClassLoader class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- *
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the ModuleClassLoader class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class ModuleClassLoader extends ClassLoader {
 
@@ -28,14 +28,19 @@ public class ModuleClassLoader extends ClassLoader {
 
     private Logger logger = getLogger(getClass());
 
+/**
+* Constructs a new ModuleClassLoader instance.
+ */
     public ModuleClassLoader() {
         super(currentThread()
                 .getContextClassLoader());
     }
 
-    /**
-     * {@inheritDoc}
-     */
+/**
+* {@inheritDoc}
+* @param name the name
+* @return the result
+ */
     @Override
     public URL getResource(String name) {
         URL url = super.getResource(name);
@@ -47,6 +52,12 @@ public class ModuleClassLoader extends ClassLoader {
         return url;
     }
 
+/**
+* Performs find.
+* @param modulePath the modulePath
+* @param searchTerm the searchTerm
+* @return the result
+ */
     public URL find(String modulePath, String searchTerm) {
         URL pathResult = null;
         URI directoryPath = new File(modulePath).toURI();

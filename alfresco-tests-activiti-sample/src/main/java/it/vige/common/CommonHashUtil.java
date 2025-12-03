@@ -18,22 +18,35 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * Mock implementation of the CommonHashUtil class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- *
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the CommonHashUtil class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class CommonHashUtil {
 
 	private static Log logger = LogFactory.getLog(CommonHashUtil.class);
+/**
+* The hash type.
+ */
 	private String hashType;
 	private static final int BUFFER_SIZE = 1 << 8;
 
+/**
+* The node service.
+ */
 	private NodeService nodeService;
+/**
+* The content service.
+ */
 	private ContentService contentService;
 
+/**
+* Sets the hash.
+* @param nodeRef the nodeRef
+ */
 	public void setHash(NodeRef nodeRef) {
 		ContentReader contentReader = contentService.getReader(nodeRef, ContentModel.PROP_CONTENT);
 		if (contentReader == null || contentReader.getSize() == 0) {
@@ -59,10 +72,19 @@ public class CommonHashUtil {
 		nodeService.setProperty(nodeRef, HashModel.PROP_HASH_VALUE, hashPropeties.get(HashModel.PROP_HASH_VALUE));
 	}
 
+/**
+* Performs remove aspect.
+* @param nodeRef the nodeRef
+ */
 	private void removeAspect(NodeRef nodeRef) {
 		nodeService.removeAspect(nodeRef, HashModel.ASPECT_HASHABLE);
 	}
 
+/**
+* Performs compute hash.
+* @param contentStream the contentStream
+* @return the result
+ */
 	private String computeHash(InputStream contentStream) {
 		MessageDigest messageDigest = null;
 		try {
@@ -91,6 +113,10 @@ public class CommonHashUtil {
 		return convertByteArrayToHex(digest);
 	}
 
+/**
+* Performs convert byte array to hex.
+* @return the result
+ */
 	private String convertByteArrayToHex(byte[] array) {
 		StringBuffer hashValue = new StringBuffer();
 		for (int i = 0; i < array.length; i++) {
@@ -103,14 +129,26 @@ public class CommonHashUtil {
 		return hashValue.toString().toUpperCase();
 	}
 
+/**
+* Sets the hash type.
+* @param hashType the hashType
+ */
 	public void setHashType(String hashType) {
 		this.hashType = hashType;
 	}
 
+/**
+* Sets the node service.
+* @param nodeService the nodeService
+ */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+/**
+* Sets the content service.
+* @param contentService the contentService
+ */
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}

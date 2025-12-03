@@ -40,12 +40,12 @@ import it.vige.ws.service.SignService;
 import it.vige.ws.service.SignedDocumentReportBean;
 
 /**
- * Mock implementation of the UploadDoc class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- *
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the UploadDoc class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class UploadDoc extends DeclarativeWebScript {
 
@@ -353,34 +353,66 @@ public class UploadDoc extends DeclarativeWebScript {
 		return model;
 	}
 
+/**
+* Sets the file folder service.
+* @param fileFolderService the fileFolderService
+ */
 	public void setFileFolderService(FileFolderService fileFolderService) {
 		this.fileFolderService = fileFolderService;
 	}
 
+/**
+* Sets the search service.
+* @param searchService the searchService
+ */
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
 
+/**
+* Sets the node service.
+* @param nodeService the nodeService
+ */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+/**
+* Sets the content service.
+* @param contentService the contentService
+ */
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}
 
+/**
+* Sets the version service.
+* @param versionService the versionService
+ */
 	public void setVersionService(VersionService versionService) {
 		this.versionService = versionService;
 	}
 
+/**
+* Sets the dropzone path.
+* @param dropzonePath the dropzonePath
+ */
 	public void setDropzonePath(String dropzonePath) {
 		this.dropzonePath = dropzonePath;
 	}
 
+/**
+* Sets the sign service.
+* @param signService the signService
+ */
 	public void setSignService(SignService signService) {
 		this.signService = signService;
 	}
 
+/**
+* Sets the applica marca.
+* @param applicaMarca the applicaMarca
+ */
 	public void setApplicaMarca(boolean applicaMarca) {
 		this.applicaMarca = applicaMarca;
 	}

@@ -31,12 +31,12 @@ import org.mozilla.javascript.NativeArray;
 import it.vige.common.ConservationModel;
 
 /**
- * Mock implementation of the ComplexIRaRGeneration class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- *
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the ComplexIRaRGeneration class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class ComplexIRaRGeneration extends BaseJavaDelegate {
 
@@ -45,15 +45,42 @@ public class ComplexIRaRGeneration extends BaseJavaDelegate {
 	private static String IRAR_NODE_NAME_PREFIX = "IRaR_";
 	private static String IRAR_NODE_NAME_SUFFIX = ".xml";
 
+/**
+* The template service.
+ */
 	private TemplateService templateService;
+/**
+* The node service.
+ */
 	private NodeService nodeService;
+/**
+* The content service.
+ */
 	private ContentService contentService;
+/**
+* The namespace service.
+ */
 	private NamespaceService namespaceService;
+/**
+* The search service.
+ */
 	private SearchService searchService;
 
+/**
+* The irar template.
+ */
 	private String irarTemplate;
+/**
+* The irar folder.
+ */
 	private String irarFolder;
 
+/**
+* Performs generate i ra r.
+* @param rarId the rarId
+* @param execution the execution
+* @return the result
+ */
 	public NodeRef generateIRaR(int rarId, DelegateExecution execution) {
 		logger.debug("generateIRaR start");
 		NodeRef rootNodeRef = nodeService.getRootNode(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE);
@@ -99,37 +126,67 @@ public class ComplexIRaRGeneration extends BaseJavaDelegate {
 
 	}
 
+/**
+* Sets the irar template.
+* @param irarTemplate the irarTemplate
+ */
 	public void setIrarTemplate(String irarTemplate) {
 		this.irarTemplate = irarTemplate;
 	}
 
+/**
+* Sets the irar folder.
+* @param irarFolder the irarFolder
+ */
 	public void setIrarFolder(String irarFolder) {
 		this.irarFolder = irarFolder;
 	}
 
+/**
+* Sets the template service.
+* @param templateService the templateService
+ */
 	public void setTemplateService(TemplateService templateService) {
 		this.templateService = templateService;
 	}
 
+/**
+* Sets the node service.
+* @param nodeService the nodeService
+ */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+/**
+* Sets the content service.
+* @param contentService the contentService
+ */
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}
 
+/**
+* Sets the namespace service.
+* @param namespaceService the namespaceService
+ */
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
 	}
 
+/**
+* Sets the search service.
+* @param searchService the searchService
+ */
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @param execution the execution
+* @throws Exception if an error occurs
+ */
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 		int rarId = (int) execution.getVariable("vigewf_rarId");

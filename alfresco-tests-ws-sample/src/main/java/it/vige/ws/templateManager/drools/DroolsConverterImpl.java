@@ -34,7 +34,7 @@ import org.kie.api.runtime.StatelessKieSession;
 import org.springframework.extensions.webscripts.WebScriptException;
 
 /**
- * Author: Luca Stancapiano
+* Author: Luca Stancapiano
  */
 public class DroolsConverterImpl {
 
@@ -44,6 +44,12 @@ public class DroolsConverterImpl {
 	private DateFormat convertedDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 	private Map<String, String> jsonMap;
 
+/**
+* Performs replace.
+* @param r the r
+* @param templateField the templateField
+* @param jsonField the jsonField
+ */
 	public void replace(XWPFRun r, String templateField, String jsonField) {
 		String runText = r.getText(0);
 
@@ -73,6 +79,12 @@ public class DroolsConverterImpl {
 		}
 	}
 
+/**
+* Performs replace date.
+* @param r the r
+* @param templateField the templateField
+* @param jsonField the jsonField
+ */
 	public void replaceDate(XWPFRun r, String templateField, String jsonField) {
 		String runText = r.getText(0);
 		if (runText != null && runText.contains(templateField)) {
@@ -93,6 +105,12 @@ public class DroolsConverterImpl {
 		}
 	}
 
+/**
+* Performs replace currency.
+* @param r the r
+* @param templateField the templateField
+* @param jsonField the jsonField
+ */
 	public void replaceCurrency(XWPFRun r, String templateField, String jsonField) {
 		String runText = r.getText(0);
 		if (runText != null && runText.contains(templateField)) {
@@ -121,6 +139,12 @@ public class DroolsConverterImpl {
 		}
 	}
 
+/**
+* Performs replace multivalue.
+* @param r the r
+* @param templateField the templateField
+* @param jsonField the jsonField
+ */
 	public void replaceMultivalue(XWPFRun r, String templateField, String jsonField) {
 		String runText = r.getText(0);
 		String value = jsonMap.get(jsonField);
@@ -143,21 +167,26 @@ public class DroolsConverterImpl {
 		}
 	}
 
+/**
+* Performs check if continue.
+* @param r the r
+* @return the result
+ */
 	public boolean checkIfContinue(XWPFRun r) {
 		String runText = r.getText(0);
 		return runText != null && runText.contains("${");
 	}
 
-	/**
-	 * Convert a single template based on the drools rule file and
-	 * information extracted from the json
-	 *
-	 * @param templateIS
-	 * @param droolsRuleIS
-	 * @param jsonMap
-	 * @return
-	 * @throws Exception
-	 */
+/**
+* Convert a single template based on the drools rule file and
+* information extracted from the json
+*
+* @param templateIS
+* @param droolsRuleIS
+* @param jsonMap
+* @return
+* @throws Exception
+ */
 	public ByteArrayOutputStream fillTemplate(InputStream templateIS, InputStream droolsRuleIS,
 			Map<String, String> jsonMap, String nomeFile) throws IOException {
 		this.jsonMap = jsonMap;

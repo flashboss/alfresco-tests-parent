@@ -2,12 +2,12 @@ package it.vige.ws.utils;
 
 import org.alfresco.service.namespace.QName;
 /**
- * Mock implementation of the ActUtil class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- *
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the ActUtil class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class ActUtil {
 

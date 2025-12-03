@@ -47,12 +47,12 @@ import org.springframework.extensions.webscripts.WebScriptResponse;
 import it.vige.ws.utils.OpenDataCommand;
 
 /**
- * Mock implementation of the NodeListDownloadWebScript class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- *
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the NodeListDownloadWebScript class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class NodeListDownloadWebScript extends DeclarativeWebScript
 // implements InitializingBean
@@ -65,22 +65,55 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	public static final String MODEL_EXCEL = "excel";
 
 	private String[] overHeadings;
+/**
+* The filename base.
+ */
 	private String filenameBase;
 
+/**
+* The skip count def.
+ */
 	private String skipCountDef;
+/**
+* The max lines def.
+ */
 	private String maxLinesDef;
+/**
+* The max items def.
+ */
 	private String maxItemsDef;
 
+/**
+* The node service.
+ */
 	private NodeService nodeService;
+/**
+* The open data command.
+ */
 	private OpenDataCommand openDataCommand;
 
+/**
+* The namespace service.
+ */
 	private NamespaceService namespaceService;
 	private String[] modelProperties;
+/**
+* The open data date format.
+ */
 	private String openDataDateFormat;
+/**
+* The list separator.
+ */
 	private String listSeparator;
 
+/**
+* The search service.
+ */
 	private SearchService searchService;
 	
+/**
+* Sets the over headings.
+ */
 	public void setOverHeadings(String[] headingsString) {
 		this.overHeadings = headingsString;
 	}
@@ -89,59 +122,98 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		return overHeadings;
 	}
 
+/**
+* Sets the skip count def.
+* @param skipCountDef the skipCountDef
+ */
 	public void setSkipCountDef(String skipCountDef) {
 		this.skipCountDef = skipCountDef;
 	}
 
+/**
+* Sets the max lines def.
+* @param maxLinesDef the maxLinesDef
+ */
 	public void setMaxLinesDef(String maxLinesDef) {
 		this.maxLinesDef = maxLinesDef;
 	}
 
+/**
+* Sets the max items def.
+* @param maxItemsDef the maxItemsDef
+ */
 	public void setMaxItemsDef(String maxItemsDef) {
 		this.maxItemsDef = maxItemsDef;
 	}
 
+/**
+* Sets the search service.
+* @param searchService the searchService
+ */
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
 
+/**
+* Sets the model properties.
+ */
 	public void setModelProperties(String[] modelPropertiesString) {
 		this.modelProperties = modelPropertiesString;
 	}
 
+/**
+* Sets the open data command.
+* @param openDataCommand the openDataCommand
+ */
 	public void setOpenDataCommand(OpenDataCommand openDataCommand) {
 		this.openDataCommand = openDataCommand;
 	}
 
+/**
+* Constructs a new NodeListDownloadWebScript instance.
+ */
 	public NodeListDownloadWebScript() {
 		this.filenameBase = "DataListExport";
 	}
 
+/**
+* Sets the open data date format.
+* @param openDataDateFormat the openDataDateFormat
+ */
 	public void setOpenDataDateFormat(String openDataDateFormat) {
 		this.openDataDateFormat = openDataDateFormat;
 	}
 
-	/**
-	 * @param nodeService
-	 */
+/**
+* @param nodeService
+ */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
-	/**
-	 * @param namespaceService
-	 */
+/**
+* @param namespaceService
+ */
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
 	}
 
+/**
+* Sets the list separator.
+* @param listSeparator the listSeparator
+ */
 	public void setListSeparator(String listSeparator) {
 		this.listSeparator = listSeparator;
 	}
 
-	/**
-	 * Identify the datalist
-	 */
+/**
+* Identify the datalist
+* @param format the format
+* @param req the req
+* @param maxItems the maxItems
+* @param skypCount the skypCount
+* @return the result
+ */
 	protected List<NodeRef> identifyResource(String format, WebScriptRequest req, int maxItems, int skypCount) {
 		List<NodeRef> result = new ArrayList<NodeRef>();
 		// Try to find the datalist they requested
@@ -186,17 +258,18 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 
 	}
 
-	/**
-	 * We don't have a HTML version
-	 */
+/**
+* We don't have a HTML version
+* @return the result
+ */
 	protected boolean allowHtmlFallback() {
 		return false;
 	}
 
-	/**
-	 * Fetch the properties, in the requested order, from the data list
-	 * definition
-	 */
+/**
+* Fetch the properties, in the requested order, from the data list
+* definition
+ */
 	protected List<Pair<QName, Boolean>> buildPropertiesForHeader(Object resource, String format,
 			WebScriptRequest req) {
 		List<Pair<QName, Boolean>> properties = new ArrayList<Pair<QName, Boolean>>();
@@ -213,10 +286,25 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		return properties;
 	}
 
+/**
+* Performs populate body.
+* @param resource the resource
+* @param csv the csv
+* @param properties the properties
+* @throws IOException if an error occurs
+ */
 	protected void populateBody(Object resource, CSVPrinter csv, List<QName> properties) throws IOException {
 		throw new WebScriptException(Status.STATUS_BAD_REQUEST, "CSV not currently supported");
 	}
 
+/**
+* Performs populate body.
+* @param resource the resource
+* @param workbook the workbook
+* @param sheet the sheet
+* @param properties the properties
+* @return the result
+ */
 	protected Sheet populateBody(Object resource, Workbook workbook, Sheet sheet, List<QName> properties, Map<String,CellStyle> style)
 			throws IOException {
 		@SuppressWarnings("unchecked")
@@ -416,10 +504,10 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		}
 	}
 
-	/**
-	 * Generates the spreadsheet, based on the properties in the header and a
-	 * callback for the body.
-	 */
+/**
+* Generates the spreadsheet, based on the properties in the header and a
+* callback for the body.
+ */
 	public void generateSpreadsheet(/*Object resource,*/ String format, WebScriptRequest req, Status status,
 			Map<String, Object> model) throws IOException {
 		List<NodeRef> resource = new ArrayList<NodeRef>();
@@ -567,11 +655,26 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	}
 
 	public static class WriteExcel {
+/**
+* The format.
+ */
 		private String format;
+/**
+* The filename base.
+ */
 		private String filenameBase;
+/**
+* The res.
+ */
 		private WebScriptResponse res;
 		private Map<String, Object> model;
 
+/**
+* Constructs a new WriteExcel instance.
+* @param res the res
+* @param format the format
+* @param filenameBase the filenameBase
+ */
 		private WriteExcel(WebScriptResponse res, Map<String, Object> model, String format, String filenameBase) {
 			this.res = res;
 			this.model = model;
@@ -579,6 +682,10 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 			this.filenameBase = filenameBase;
 		}
 
+/**
+* Performs write.
+* @throws IOException if an error occurs
+ */
 		public void write() throws IOException {
 			String filename = filenameBase + "." + format;
  

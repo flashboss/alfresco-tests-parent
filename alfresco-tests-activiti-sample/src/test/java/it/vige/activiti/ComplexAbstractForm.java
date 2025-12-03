@@ -21,12 +21,12 @@ import org.alfresco.service.namespace.QName;
 import it.vige.common.ConservationModel;
 
 /**
- * Mock implementation of the ComplexAbstractForm class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- *
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the ComplexAbstractForm class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class ComplexAbstractForm extends AbstractActivitiForm {
 
@@ -34,22 +34,25 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 
 	public final static String CONTRIBUTORS = "contributors";
 
-	/**
-	 * Default admin user to start the scheduler process
-	 */
+/**
+* Default admin user to start the scheduler process
+ */
 	protected final static String ADMIN_USER_NAME = "kermit";
-	/**
-	 * Default traveler user to work with the reservations
-	 */
+/**
+* Default traveler user to work with the reservations
+ */
 	protected final static String USER_NAME = "gonzo";
 
 	protected final DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm:ss ZZZ yyyy");
 
+/**
+* The generation folder.
+ */
 	protected NodeRef generationFolder;
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+ */
 	@Override
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
@@ -81,14 +84,15 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 		identityService.setAuthenticatedUserId(USER_NAME);
 	}
 
-	/**
-	 * Create demo users for the application
-	 *
-	 * @param identityService The service to create the users
-	 */
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* Create demo users for the application
+*
+* @param identityService The service to create the users
+ */
+/**
+* {@inheritDoc}
+* @param identityService the identityService
+ */
 	@Override
 	public void initDemoUsers(IdentityService identityService) {
 		createUser(identityService, ADMIN_USER_NAME, "Kermit", "The Frog", ADMIN_USER_NAME,
@@ -104,14 +108,15 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 		initiator.getProperties().put("userName", USER_NAME);
 	}
 
-	/**
-	 * Create demo groups for teh application
-	 *
-	 * @param identityService The service to create the groups
-	 */
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* Create demo groups for teh application
+*
+* @param identityService The service to create the groups
+ */
+/**
+* {@inheritDoc}
+* @param identityService the identityService
+ */
 	@Override
 	public void initDemoGroups(IdentityService identityService) {
 		String[] assignmentGroups = new String[] { CONTRIBUTORS };

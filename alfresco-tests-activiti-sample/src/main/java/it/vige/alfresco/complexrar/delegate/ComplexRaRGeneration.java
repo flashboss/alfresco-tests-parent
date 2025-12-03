@@ -19,40 +19,76 @@ import it.vige.alfresco.complexrar.util.ComplexHashUtil;
 import it.vige.common.ConservationModel;
 
 /**
- * Mock implementation of the ComplexRaRGeneration class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- *
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the ComplexRaRGeneration class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class ComplexRaRGeneration extends BaseJavaDelegate {
 
 	private static Log logger = LogFactory.getLog(ComplexRaRGeneration.class);
 
+/**
+* The complex hash util.
+ */
 	private ComplexHashUtil complexHashUtil;
 
+/**
+* The rar folder.
+ */
 	protected String rarFolder;
+/**
+* The node service.
+ */
 	protected NodeService nodeService;
+/**
+* The search service.
+ */
 	protected SearchService searchService;
+/**
+* The namespace service.
+ */
 	protected NamespaceService namespaceService;
 
+/**
+* Sets the rar folder.
+* @param rarFolder the rarFolder
+ */
 	public void setRarFolder(String rarFolder) {
 		this.rarFolder = rarFolder;
 	}
 
+/**
+* Sets the node service.
+* @param nodeService the nodeService
+ */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+/**
+* Sets the search service.
+* @param searchService the searchService
+ */
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
 
+/**
+* Sets the namespace service.
+* @param namespaceService the namespaceService
+ */
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
 	}
 
+/**
+* Performs execute.
+* @param execution the execution
+* @throws Exception if an error occurs
+ */
 	public void execute(DelegateExecution execution) throws Exception {
 		logger.debug("RaRGeneration start");
 		NodeRef rootNodeRef = nodeService.getRootNode(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE);
@@ -72,10 +108,18 @@ public class ComplexRaRGeneration extends BaseJavaDelegate {
 		execution.setVariable("vigewf_rarId", rarCounter);
 	}
 
+/**
+* Gets the complex hash util.
+* @return the result
+ */
 	public ComplexHashUtil getComplexHashUtil() {
 		return complexHashUtil;
 	}
 
+/**
+* Sets the complex hash util.
+* @param complexHashUtil the complexHashUtil
+ */
 	public void setComplexHashUtil(ComplexHashUtil complexHashUtil) {
 		this.complexHashUtil = complexHashUtil;
 	}

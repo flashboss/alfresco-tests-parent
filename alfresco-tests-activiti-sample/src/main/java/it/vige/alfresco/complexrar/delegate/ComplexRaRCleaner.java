@@ -9,18 +9,20 @@ import org.alfresco.repo.workflow.activiti.BaseJavaDelegate;
 import org.mozilla.javascript.NativeArray;
 
 /**
- * Mock implementation of the ComplexRaRCleaner class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- *
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the ComplexRaRCleaner class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class ComplexRaRCleaner extends BaseJavaDelegate {
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @param execution the execution
+* @throws Exception if an error occurs
+ */
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 		ActivitiScriptNode bpmPackage = (ActivitiScriptNode) execution.getVariable("bpm_package");

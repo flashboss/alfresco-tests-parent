@@ -8,62 +8,74 @@ import org.alfresco.service.cmr.version.Version;
 import org.alfresco.service.cmr.version.VersionHistory;
 
 /**
- * Mock implementation of the MockVersionHistory class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- *
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the MockVersionHistory class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class MockVersionHistory implements VersionHistory, Serializable {
 
+/**
+* The versions collection.
+ */
 	private Collection<Version> versions = new ArrayList<Version>();
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public Version getRootVersion() {
 		return versions.toArray(new Version[0])[0];
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public Version getHeadVersion() {
 		return versions.toArray(new Version[0])[versions.size() - 1];
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @return the result
+ */
 	@Override
 	public Collection<Version> getAllVersions() {
 		return versions;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @param version the version
+* @return the result
+ */
 	@Override
 	public Version getPredecessor(Version version) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @param version the version
+* @return the result
+ */
 	@Override
 	public Collection<Version> getSuccessors(Version version) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+/**
+* {@inheritDoc}
+* @param versionLabel the versionLabel
+* @return the result
+ */
 	@Override
 	public Version getVersion(String versionLabel) {
 		// TODO Auto-generated method stub

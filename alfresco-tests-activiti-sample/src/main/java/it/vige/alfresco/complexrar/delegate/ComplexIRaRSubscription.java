@@ -9,19 +9,27 @@ import org.apache.commons.logging.LogFactory;
 import it.vige.activiti.service.SignService;
 
 /**
- * Mock implementation of the ComplexIRaRSubscription class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- *
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the ComplexIRaRSubscription class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class ComplexIRaRSubscription extends BaseJavaDelegate {
 
 	private static Log logger = LogFactory.getLog(ComplexIRaRSubscription.class);
 
+/**
+* The sign service.
+ */
 	private SignService signService;
 
+/**
+* Performs execute.
+* @param execution the execution
+* @throws Exception if an error occurs
+ */
 	public void execute(DelegateExecution execution) throws Exception {
 		logger.debug("Execute start");
 		String irarNodeRefString = (String) execution.getVariable("vigewf_relatedIRaR");
@@ -33,6 +41,10 @@ public class ComplexIRaRSubscription extends BaseJavaDelegate {
 		logger.debug("Execute end");
 	}
 
+/**
+* Sets the sign service.
+* @param signService the signService
+ */
 	public void setSignService(SignService signService) {
 		this.signService = signService;
 	}

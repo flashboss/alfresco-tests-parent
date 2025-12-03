@@ -14,19 +14,31 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Mock implementation of the MockRuleServiceTest class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- *
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the MockRuleServiceTest class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class MockRuleServiceTest {
 
+/**
+* The rule service.
+ */
 	private MockRuleService ruleService;
+/**
+* The folder node ref.
+ */
 	private NodeRef folderNodeRef;
+/**
+* The rule node ref.
+ */
 	private NodeRef ruleNodeRef1;
 
+/**
+* Sets the up.
+ */
 	@Before
 	public void setUp() {
 		ruleService = new MockRuleService();
@@ -34,6 +46,9 @@ public class MockRuleServiceTest {
 		ruleNodeRef1 = new NodeRef("workspace://SpacesStore/rule-1");
 	}
 
+/**
+* Performs test has rules.
+ */
 	@Test
 	public void testHasRules() {
 		// Initially no rules
@@ -41,6 +56,9 @@ public class MockRuleServiceTest {
 		assertEquals("Should have 0 rules initially", 0, ruleService.countRules(folderNodeRef));
 	}
 
+/**
+* Performs test get rules.
+ */
 	@Test
 	public void testGetRules() {
 		// Initially no rules
@@ -49,6 +67,9 @@ public class MockRuleServiceTest {
 		assertEquals("Should have 0 rules initially", 0, rules.size());
 	}
 
+/**
+* Performs test enable disable rules.
+ */
 	@Test
 	public void testEnableDisableRules() {
 		// Rules should be enabled by default
@@ -73,6 +94,9 @@ public class MockRuleServiceTest {
 		assertTrue("Rules should be enabled for folder", ruleService.rulesEnabled(folderNodeRef));
 	}
 
+/**
+* Performs test rule types.
+ */
 	@Test
 	public void testRuleTypes() {
 		// Initially no rule types
@@ -89,6 +113,9 @@ public class MockRuleServiceTest {
 		assertEquals("Rule type name should match", "inbound", retrieved.getName());
 	}
 
+/**
+* Performs test enable disable rule type.
+ */
 	@Test
 	public void testEnableDisableRuleType() {
 		// Register a rule type
@@ -107,6 +134,9 @@ public class MockRuleServiceTest {
 		assertTrue("Rule type should be enabled", ruleService.isRuleTypeEnabled("inbound"));
 	}
 
+/**
+* Performs test pending rules.
+ */
 	@Test
 	public void testPendingRules() {
 		// Test that pending rules methods don't throw exceptions
@@ -119,6 +149,9 @@ public class MockRuleServiceTest {
 		ruleService.executePendingRules();
 	}
 
+/**
+* Performs test has non inherited rules.
+ */
 	@Test
 	public void testHasNonInheritedRules() {
 		// Initially no rules
@@ -126,6 +159,9 @@ public class MockRuleServiceTest {
 				ruleService.hasNonInheritedRules(folderNodeRef));
 	}
 
+/**
+* Performs test get nodes supplying rule sets.
+ */
 	@Test
 	public void testGetNodesSupplyingRuleSets() {
 		// Should return empty list
@@ -134,6 +170,9 @@ public class MockRuleServiceTest {
 		assertEquals("Should return empty list", 0, nodes.size());
 	}
 
+/**
+* Performs test get folders inheriting rule set.
+ */
 	@Test
 	public void testGetFoldersInheritingRuleSet() {
 		NodeRef ruleSet = new NodeRef("workspace://SpacesStore/ruleset-1");
@@ -142,6 +181,9 @@ public class MockRuleServiceTest {
 		assertEquals("Should return empty list", 0, folders.size());
 	}
 
+/**
+* Performs test get folders linking to rule set.
+ */
 	@Test
 	public void testGetFoldersLinkingToRuleSet() {
 		NodeRef ruleSet = new NodeRef("workspace://SpacesStore/ruleset-1");
@@ -150,6 +192,9 @@ public class MockRuleServiceTest {
 		assertEquals("Should return empty list", 0, folders.size());
 	}
 
+/**
+* Performs test get rule.
+ */
 	@Test
 	public void testGetRule() {
 		// Get non-existent rule
@@ -157,12 +202,18 @@ public class MockRuleServiceTest {
 				ruleService.getRule(ruleNodeRef1));
 	}
 
+/**
+* Performs test get saved rule folder assoc.
+ */
 	@Test
 	public void testGetSavedRuleFolderAssoc() {
 		// Should return null in mock implementation
 		assertNull("Should return null", ruleService.getSavedRuleFolderAssoc(folderNodeRef));
 	}
 
+/**
+* Performs test is linked to rule node.
+ */
 	@Test
 	public void testIsLinkedToRuleNode() {
 		// Should return false for non-linked node
@@ -170,6 +221,9 @@ public class MockRuleServiceTest {
 				ruleService.isLinkedToRuleNode(folderNodeRef));
 	}
 
+/**
+* Performs test get linked to rule node.
+ */
 	@Test
 	public void testGetLinkedToRuleNode() {
 		// Should return null for non-linked node
@@ -177,6 +231,9 @@ public class MockRuleServiceTest {
 				ruleService.getLinkedToRuleNode(folderNodeRef));
 	}
 
+/**
+* Performs test get linked from rule nodes.
+ */
 	@Test
 	public void testGetLinkedFromRuleNodes() {
 		// Should return empty list
@@ -185,12 +242,18 @@ public class MockRuleServiceTest {
 		assertEquals("Should return empty list", 0, nodes.size());
 	}
 
+/**
+* Performs test get rule set node.
+ */
 	@Test
 	public void testGetRuleSetNode() {
 		// Should return null for folder without rule set
 		assertNull("Should return null", ruleService.getRuleSetNode(folderNodeRef));
 	}
 
+/**
+* Performs test is rule set associated with folder.
+ */
 	@Test
 	public void testIsRuleSetAssociatedWithFolder() {
 		NodeRef ruleSet = new NodeRef("workspace://SpacesStore/ruleset-1");
@@ -198,6 +261,9 @@ public class MockRuleServiceTest {
 				ruleService.isRuleSetAssociatedWithFolder(ruleSet, folderNodeRef));
 	}
 
+/**
+* Performs test is rule associated with rule set.
+ */
 	@Test
 	public void testIsRuleAssociatedWithRuleSet() {
 		NodeRef ruleSet = new NodeRef("workspace://SpacesStore/ruleset-1");
@@ -205,6 +271,9 @@ public class MockRuleServiceTest {
 				ruleService.isRuleAssociatedWithRuleSet(ruleNodeRef1, ruleSet));
 	}
 
+/**
+* Performs test is rule set shared.
+ */
 	@Test
 	public void testIsRuleSetShared() {
 		NodeRef ruleSet = new NodeRef("workspace://SpacesStore/ruleset-1");
@@ -214,33 +283,49 @@ public class MockRuleServiceTest {
 
 	// Helper class for MockRuleType
 	private static class MockRuleType implements RuleType {
+/**
+* The name.
+ */
 		private String name;
+/**
+* The display label.
+ */
 		private String displayLabel;
 
+/**
+* Constructs a new MockRuleType instance.
+* @param name the name
+* @param displayLabel the displayLabel
+ */
 		public MockRuleType(String name, String displayLabel) {
 			this.name = name;
 			this.displayLabel = displayLabel;
 		}
 
-		/**
-		 * {@inheritDoc}
-		 */
+/**
+* {@inheritDoc}
+* @return the result
+ */
 		@Override
 		public String getName() {
 			return name;
 		}
 
-		/**
-		 * {@inheritDoc}
-		 */
+/**
+* {@inheritDoc}
+* @return the result
+ */
 		@Override
 		public String getDisplayLabel() {
 			return displayLabel;
 		}
 
-		/**
-		 * {@inheritDoc}
-		 */
+/**
+* {@inheritDoc}
+* @param nodeRef the nodeRef
+* @param actionedUponNodeRef the actionedUponNodeRef
+* @param executeAsynchronously the executeAsynchronously
+ */
 		@Override
 		public void triggerRuleType(NodeRef nodeRef, NodeRef actionedUponNodeRef, boolean executeAsynchronously) {
 			// Not implemented in mock

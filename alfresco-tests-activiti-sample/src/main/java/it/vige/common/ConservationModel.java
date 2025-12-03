@@ -3,12 +3,12 @@ package it.vige.common;
 import org.alfresco.service.namespace.QName;
 
 /**
- * Mock implementation of the ConservationModel interface for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- *
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the ConservationModel interface for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public interface ConservationModel {
 	static final String VIGE_CONSERVATION_URI = "http://www.vige.it/model/content/conservation/1.0";
