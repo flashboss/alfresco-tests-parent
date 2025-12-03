@@ -23,6 +23,11 @@ import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
+/**
+ * Mock implementation of ActionService for testing purposes.
+ *
+ * @author vige
+ */
 public class MockActionService implements ActionService, RuntimeActionService, Serializable {
 
 	@Autowired
