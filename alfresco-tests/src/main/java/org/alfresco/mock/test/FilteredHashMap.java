@@ -7,20 +7,45 @@ import java.util.Map;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.StoreRef;
 
+/**
+ * A HashMap extension that filters out certain node references based on their file path.
+ * Used to exclude root store paths from the node reference map.
+ *
+ * @author vige
+ */
 public class FilteredHashMap extends HashMap<NodeRef, File> {
 
+	/**
+	 * Constructs a new FilteredHashMap with initial capacity and load factor.
+	 *
+	 * @param initialCapacity the initial capacity
+	 * @param loadFactor the load factor
+	 */
 	public FilteredHashMap(int initialCapacity, float loadFactor) {
 		super(initialCapacity, loadFactor);
 	}
 
+	/**
+	 * Constructs a new FilteredHashMap with initial capacity.
+	 *
+	 * @param initialCapacity the initial capacity
+	 */
 	public FilteredHashMap(int initialCapacity) {
 		super(initialCapacity);
 	}
 
+	/**
+	 * Constructs a new empty FilteredHashMap.
+	 */
 	public FilteredHashMap() {
 		super();
 	}
 
+	/**
+	 * Constructs a new FilteredHashMap from an existing map, filtering values.
+	 *
+	 * @param m the map to copy
+	 */
 	public FilteredHashMap(Map<NodeRef, File> m) {
 		super(m);
 		removeFilteredValues();

@@ -10,16 +10,31 @@ import org.alfresco.service.cmr.action.ActionCondition;
 import org.alfresco.service.cmr.action.ActionStatus;
 import org.alfresco.service.cmr.repository.NodeRef;
 
+/**
+ * Mock implementation of Action for testing purposes.
+ *
+ * @author vige
+ */
 public class MockAction implements Action {
 
 	private String name;
-
 	private Map<String, Serializable> params;
 
+	/**
+	 * Constructs a new MockAction with a name.
+	 *
+	 * @param name the action name
+	 */
 	public MockAction(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * Constructs a new MockAction with a name and parameters.
+	 *
+	 * @param name the action name
+	 * @param params the action parameters
+	 */
 	public MockAction(String name, Map<String, Serializable> params) {
 		this(name);
 		this.params = params;

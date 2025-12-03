@@ -42,6 +42,12 @@ import org.springframework.test.context.ContextConfiguration;
 import com.tradeshift.test.remote.Remote;
 import com.tradeshift.test.remote.RemoteTestRunner;
 
+/**
+ * Abstract base class for Alfresco test forms.
+ * Provides common setup and utility methods for testing Alfresco components.
+ *
+ * @author vige
+ */
 @RunWith(RemoteTestRunner.class)
 @Remote(runnerClass = ClasspathTestRunner.class)
 @ContextConfiguration("classpath:test-module-context.xml")
@@ -58,6 +64,9 @@ public abstract class AbstractForm {
 	protected String todayStr;
 	protected NodeRef companyHome;
 
+	/**
+	 * Initializes the test environment with default folders and namespaces.
+	 */
 	public void init() {
 
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
@@ -94,11 +103,26 @@ public abstract class AbstractForm {
 		insertFolder(system, SiteModel.SITE_MODEL_PREFIX, "authorities");
 	}
 
+	/**
+	 * Inserts a new folder.
+	 *
+	 * @param parent the parent node reference
+	 * @param name the folder name
+	 * @return the created folder node reference
+	 */
 	protected NodeRef insertFolder(NodeRef parent, String name) {
 		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
 		return fileFolderService.create(parent, name, ContentModel.TYPE_FOLDER).getNodeRef();
 	}
 
+	/**
+	 * Inserts a new folder with a qualified name.
+	 *
+	 * @param parent the parent node reference
+	 * @param prefix the namespace prefix
+	 * @param localName the local name
+	 * @return the created folder node reference
+	 */
 	protected NodeRef insertFolder(NodeRef parent, String prefix, String localName) {
 		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
@@ -106,24 +130,70 @@ public abstract class AbstractForm {
 		return fileFolderService.create(parent, qname.getPrefixString(), ContentModel.TYPE_FOLDER).getNodeRef();
 	}
 
+	/**
+	 * Inserts a new document with text content.
+	 *
+	 * @param parent the parent node reference
+	 * @param name the document name
+	 * @param text the text content
+	 * @param properties the document properties
+	 * @return the created document node reference
+	 */
 	protected NodeRef insertDocument(NodeRef parent, String name, String text, Map<QName, Serializable> properties) {
 		return NodeUtils.insertDocument(parent, name, text, properties, serviceRegistry);
 	}
 
+	/**
+	 * Inserts a new document with byte array content.
+	 *
+	 * @param parent the parent node reference
+	 * @param name the document name
+	 * @param text the byte array content
+	 * @param properties the document properties
+	 * @return the created document node reference
+	 */
 	protected NodeRef insertDocument(NodeRef parent, String name, byte[] text, Map<QName, Serializable> properties) {
 		return NodeUtils.insertDocument(parent, name, text, properties, serviceRegistry);
 	}
 
+	/**
+	 * Inserts a new version for a document.
+	 *
+	 * @param nodeRef the node reference to version
+	 * @param name the version name
+	 * @param text the version content
+	 * @param version the version label
+	 * @param versionType the version type
+	 * @return the frozen state node reference
+	 */
 	protected NodeRef insertVersion(NodeRef nodeRef, String name, String text, String version,
 			VersionType versionType) {
 		return NodeUtils.insertVersion(nodeRef, name, text, version, versionType, serviceRegistry);
 	}
 
+	/**
+	 * Inserts a ZIP file as a document.
+	 *
+	 * @param parent the parent node reference
+	 * @param zipName the ZIP file name
+	 * @param entryName the entry name inside the ZIP
+	 * @param text the text content
+	 * @param properties the document properties
+	 * @return the created node reference
+	 * @throws IOException if an I/O error occurs
+	 */
 	protected NodeRef insertZip(NodeRef parent, String zipName, String entryName, String text,
 			Map<QName, Serializable> properties) throws IOException {
 		return ZipUtils.insertZip(parent, zipName, entryName, text, properties, serviceRegistry);
 	}
 
+	/**
+	 * Encrypts an input stream using SHA-256.
+	 *
+	 * @param inputStream the input stream to encrypt
+	 * @return the Base64 encoded hash
+	 * @throws Exception if encryption fails
+	 */
 	protected String encrypt(InputStream inputStream) throws Exception {
 		MessageDigest digest = MessageDigest.getInstance("SHA-256");
 		byte[] contentBytes = IOUtils.toByteArray(inputStream);
@@ -132,6 +202,15 @@ public abstract class AbstractForm {
 		return hashOrigString;
 	}
 
+	/**
+	 * Unmarshals an XML document from a node into a Java object.
+	 *
+	 * @param <T> the type of the object
+	 * @param createdNodeRef the node reference containing the XML
+	 * @param objectClass the target class
+	 * @return the unmarshalled object
+	 * @throws Exception if unmarshalling fails
+	 */
 	protected <T> T getObjectFromXml(NodeRef createdNodeRef, Class<T> objectClass) throws Exception {
 		ContentService contentService = serviceRegistry.getContentService();
 		final JAXBContext contextPdv = JAXBContext.newInstance(objectClass);
@@ -144,6 +223,9 @@ public abstract class AbstractForm {
 		return result;
 	}
 
+	/**
+	 * Executes the test action. Sets the current date.
+	 */
 	protected void executeAction() {
 		// data per cercare i file generati
 		today = new Date();

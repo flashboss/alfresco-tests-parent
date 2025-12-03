@@ -6,6 +6,11 @@ import org.alfresco.service.cmr.security.AccessPermission;
 import org.alfresco.service.cmr.security.AccessStatus;
 import org.alfresco.service.cmr.security.AuthorityType;
 
+/**
+ * Mock implementation of AccessPermission for testing purposes.
+ *
+ * @author vige
+ */
 public class MockAccessPermission implements AccessPermission, Serializable {
 
 	private String permission;
@@ -16,6 +21,12 @@ public class MockAccessPermission implements AccessPermission, Serializable {
 	private boolean inherited;
 	private boolean setDirectly;
 
+	/**
+	 * Constructs a new MockAccessPermission.
+	 *
+	 * @param permission the permission name
+	 * @param authority the authority name
+	 */
 	public MockAccessPermission(String permission, String authority) {
 		super();
 		this.permission = permission;
