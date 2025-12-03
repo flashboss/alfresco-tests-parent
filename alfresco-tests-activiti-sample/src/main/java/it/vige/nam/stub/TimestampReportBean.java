@@ -1,380 +1,357 @@
-
 package it.vige.nam.stub;
 
 import java.math.BigInteger;
-
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "timestampReportBean", propOrder = { "comment", "content", "contentFilename", "contentMimeType", "date",
-/**
-* <p>
-* Classe Java per timestampReportBean complex type.
-*
-* <p>
-* Il seguente frammento di schema specifica il contenuto previsto contenuto in
-* questa classe.
-*
-* <pre>
-* &lt;complexType name="timestampReportBean"&gt;
-*   &lt;complexContent&gt;
-*     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-*       &lt;sequence&gt;
-*         &lt;element name="comment" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-*         &lt;element name="content" type="{http://www.w3.org/2001/XMLSchema}base64Binary" minOccurs="0"/&gt;
-*         &lt;element name="contentFilename" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-*         &lt;element name="contentMimeType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-*         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
-*         &lt;element name="hashAlgorithm" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-*         &lt;element name="index" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
-*         &lt;element name="issuer" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-*         &lt;element name="serialNumber" type="{http://www.w3.org/2001/XMLSchema}integer" minOccurs="0"/&gt;
-*         &lt;element name="signatureAlgorithm" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-*         &lt;element name="signatureVerificationStatus" type="{http://service.ws.nam/}result" minOccurs="0"/&gt;
-*         &lt;element name="timestampCertData" type="{http://www.w3.org/2001/XMLSchema}base64Binary" minOccurs="0"/&gt;
-*         &lt;element name="timestampCertificateStatus" type="{http://service.ws.nam/}certificateStatus" minOccurs="0"/&gt;
-*         &lt;element name="trustedListVerificationStatus" type="{http://service.ws.nam/}result" minOccurs="0"/&gt;
-*       &lt;/sequence&gt;
-*     &lt;/restriction&gt;
-*   &lt;/complexContent&gt;
-* &lt;/complexType&gt;
-* </pre>
-*
-*
- */
-		"hashAlgorithm", "index", "issuer", "serialNumber", "signatureAlgorithm", "signatureVerificationStatus",
-		"timestampCertData", "timestampCertificateStatus", "trustedListVerificationStatus" })
+@XmlType(
+    name = "timestampReportBean",
+    propOrder = {
+      "comment",
+      "content",
+      "contentFilename",
+      "contentMimeType",
+      "date",
+      /**
+       * Classe Java per timestampReportBean complex type.
+       *
+       * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa
+       * classe.
+       *
+       * <pre>
+       * &lt;complexType name="timestampReportBean"&gt;
+       *   &lt;complexContent&gt;
+       *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+       *       &lt;sequence&gt;
+       *         &lt;element name="comment" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+       *         &lt;element name="content" type="{http://www.w3.org/2001/XMLSchema}base64Binary" minOccurs="0"/&gt;
+       *         &lt;element name="contentFilename" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+       *         &lt;element name="contentMimeType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+       *         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+       *         &lt;element name="hashAlgorithm" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+       *         &lt;element name="index" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+       *         &lt;element name="issuer" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+       *         &lt;element name="serialNumber" type="{http://www.w3.org/2001/XMLSchema}integer" minOccurs="0"/&gt;
+       *         &lt;element name="signatureAlgorithm" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+       *         &lt;element name="signatureVerificationStatus" type="{http://service.ws.nam/}result" minOccurs="0"/&gt;
+       *         &lt;element name="timestampCertData" type="{http://www.w3.org/2001/XMLSchema}base64Binary" minOccurs="0"/&gt;
+       *         &lt;element name="timestampCertificateStatus" type="{http://service.ws.nam/}certificateStatus" minOccurs="0"/&gt;
+       *         &lt;element name="trustedListVerificationStatus" type="{http://service.ws.nam/}result" minOccurs="0"/&gt;
+       *       &lt;/sequence&gt;
+       *     &lt;/restriction&gt;
+       *   &lt;/complexContent&gt;
+       * &lt;/complexType&gt;
+       * </pre>
+       */
+      "hashAlgorithm",
+      "index",
+      "issuer",
+      "serialNumber",
+      "signatureAlgorithm",
+      "signatureVerificationStatus",
+      "timestampCertData",
+      "timestampCertificateStatus",
+      "trustedListVerificationStatus"
+    })
 public class TimestampReportBean {
 
-/**
-* The comment.
- */
-	protected String comment;
-	protected byte[] content;
-/**
-* The content filename.
- */
-	protected String contentFilename;
-/**
-* The content mime type.
- */
-	protected String contentMimeType;
-	@XmlSchemaType(name = "dateTime")
-/**
-* The date.
- */
-	protected XMLGregorianCalendar date;
-/**
-* The hash algorithm.
- */
-	protected String hashAlgorithm;
-/**
-* The index.
- */
-	protected int index;
-/**
-* The issuer.
- */
-	protected String issuer;
-/**
-* The serial number.
- */
-	protected BigInteger serialNumber;
-/**
-* The signature algorithm.
- */
-	protected String signatureAlgorithm;
-	@XmlSchemaType(name = "string")
-/**
-* The signature verification status.
- */
-	protected Result signatureVerificationStatus;
-	protected byte[] timestampCertData;
-	@XmlSchemaType(name = "string")
-/**
-* The timestamp certificate status.
- */
-	protected CertificateStatus timestampCertificateStatus;
-	@XmlSchemaType(name = "string")
-/**
-* The trusted list verification status.
- */
-	protected Result trustedListVerificationStatus;
+  /** The comment. */
+  protected String comment;
 
-/**
-* Recupera il valore della proprietà comment.
-*
-* @return possible object is {@link String }
-*
- */
-	public String getComment() {
-		return comment;
-	}
+  protected byte[] content;
 
-/**
-* Imposta il valore della proprietà comment.
-*
-* @param value allowed object is {@link String }
-*
- */
-	public void setComment(String value) {
-		this.comment = value;
-	}
+  /** The content filename. */
+  protected String contentFilename;
 
-/**
-* Recupera il valore della proprietà content.
-*
-* @return possible object is byte[]
- */
-	public byte[] getContent() {
-		return content;
-	}
+  /** The content mime type. */
+  protected String contentMimeType;
 
-/**
-* Imposta il valore della proprietà content.
-*
-* @param value allowed object is byte[]
- */
-	public void setContent(byte[] value) {
-		this.content = value;
-	}
+  @XmlSchemaType(name = "dateTime")
+  /** The date. */
+  protected XMLGregorianCalendar date;
 
-/**
-* Recupera il valore della proprietà contentFilename.
-*
-* @return possible object is {@link String }
-*
- */
-	public String getContentFilename() {
-		return contentFilename;
-	}
+  /** The hash algorithm. */
+  protected String hashAlgorithm;
 
-/**
-* Imposta il valore della proprietà contentFilename.
-*
-* @param value allowed object is {@link String }
-*
- */
-	public void setContentFilename(String value) {
-		this.contentFilename = value;
-	}
+  /** The index. */
+  protected int index;
 
-/**
-* Recupera il valore della proprietà contentMimeType.
-*
-* @return possible object is {@link String }
-*
- */
-	public String getContentMimeType() {
-		return contentMimeType;
-	}
+  /** The issuer. */
+  protected String issuer;
 
-/**
-* Imposta il valore della proprietà contentMimeType.
-*
-* @param value allowed object is {@link String }
-*
- */
-	public void setContentMimeType(String value) {
-		this.contentMimeType = value;
-	}
+  /** The serial number. */
+  protected BigInteger serialNumber;
 
-/**
-* Recupera il valore della proprietà date.
-*
-* @return possible object is {@link XMLGregorianCalendar }
-*
- */
-	public XMLGregorianCalendar getDate() {
-		return date;
-	}
+  /** The signature algorithm. */
+  protected String signatureAlgorithm;
 
-/**
-* Imposta il valore della proprietà date.
-*
-* @param value allowed object is {@link XMLGregorianCalendar }
-*
- */
-	public void setDate(XMLGregorianCalendar value) {
-		this.date = value;
-	}
+  @XmlSchemaType(name = "string")
+  /** The signature verification status. */
+  protected Result signatureVerificationStatus;
 
-/**
-* Recupera il valore della proprietà hashAlgorithm.
-*
-* @return possible object is {@link String }
-*
- */
-	public String getHashAlgorithm() {
-		return hashAlgorithm;
-	}
+  protected byte[] timestampCertData;
 
-/**
-* Imposta il valore della proprietà hashAlgorithm.
-*
-* @param value allowed object is {@link String }
-*
- */
-	public void setHashAlgorithm(String value) {
-		this.hashAlgorithm = value;
-	}
+  @XmlSchemaType(name = "string")
+  /** The timestamp certificate status. */
+  protected CertificateStatus timestampCertificateStatus;
 
-/**
-* Recupera il valore della proprietà index.
-* @return the result
- */
-	public int getIndex() {
-		return index;
-	}
+  @XmlSchemaType(name = "string")
+  /** The trusted list verification status. */
+  protected Result trustedListVerificationStatus;
 
-/**
-* Imposta il valore della proprietà index.
-* @param value the value
- */
-	public void setIndex(int value) {
-		this.index = value;
-	}
+  /**
+   * Recupera il valore della proprietà comment.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getComment() {
+    return comment;
+  }
 
-/**
-* Recupera il valore della proprietà issuer.
-*
-* @return possible object is {@link String }
-*
- */
-	public String getIssuer() {
-		return issuer;
-	}
+  /**
+   * Imposta il valore della proprietà comment.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setComment(String value) {
+    this.comment = value;
+  }
 
-/**
-* Imposta il valore della proprietà issuer.
-*
-* @param value allowed object is {@link String }
-*
- */
-	public void setIssuer(String value) {
-		this.issuer = value;
-	}
+  /**
+   * Recupera il valore della proprietà content.
+   *
+   * @return possible object is byte[]
+   */
+  public byte[] getContent() {
+    return content;
+  }
 
-/**
-* Recupera il valore della proprietà serialNumber.
-*
-* @return possible object is {@link BigInteger }
-*
- */
-	public BigInteger getSerialNumber() {
-		return serialNumber;
-	}
+  /**
+   * Imposta il valore della proprietà content.
+   *
+   * @param value allowed object is byte[]
+   */
+  public void setContent(byte[] value) {
+    this.content = value;
+  }
 
-/**
-* Imposta il valore della proprietà serialNumber.
-*
-* @param value allowed object is {@link BigInteger }
-*
- */
-	public void setSerialNumber(BigInteger value) {
-		this.serialNumber = value;
-	}
+  /**
+   * Recupera il valore della proprietà contentFilename.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getContentFilename() {
+    return contentFilename;
+  }
 
-/**
-* Recupera il valore della proprietà signatureAlgorithm.
-*
-* @return possible object is {@link String }
-*
- */
-	public String getSignatureAlgorithm() {
-		return signatureAlgorithm;
-	}
+  /**
+   * Imposta il valore della proprietà contentFilename.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setContentFilename(String value) {
+    this.contentFilename = value;
+  }
 
-/**
-* Imposta il valore della proprietà signatureAlgorithm.
-*
-* @param value allowed object is {@link String }
-*
- */
-	public void setSignatureAlgorithm(String value) {
-		this.signatureAlgorithm = value;
-	}
+  /**
+   * Recupera il valore della proprietà contentMimeType.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getContentMimeType() {
+    return contentMimeType;
+  }
 
-/**
-* Recupera il valore della proprietà signatureVerificationStatus.
-*
-* @return possible object is {@link Result }
-*
- */
-	public Result getSignatureVerificationStatus() {
-		return signatureVerificationStatus;
-	}
+  /**
+   * Imposta il valore della proprietà contentMimeType.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setContentMimeType(String value) {
+    this.contentMimeType = value;
+  }
 
-/**
-* Imposta il valore della proprietà signatureVerificationStatus.
-*
-* @param value allowed object is {@link Result }
-*
- */
-	public void setSignatureVerificationStatus(Result value) {
-		this.signatureVerificationStatus = value;
-	}
+  /**
+   * Recupera il valore della proprietà date.
+   *
+   * @return possible object is {@link XMLGregorianCalendar }
+   */
+  public XMLGregorianCalendar getDate() {
+    return date;
+  }
 
-/**
-* Recupera il valore della proprietà timestampCertData.
-*
-* @return possible object is byte[]
- */
-	public byte[] getTimestampCertData() {
-		return timestampCertData;
-	}
+  /**
+   * Imposta il valore della proprietà date.
+   *
+   * @param value allowed object is {@link XMLGregorianCalendar }
+   */
+  public void setDate(XMLGregorianCalendar value) {
+    this.date = value;
+  }
 
-/**
-* Imposta il valore della proprietà timestampCertData.
-*
-* @param value allowed object is byte[]
- */
-	public void setTimestampCertData(byte[] value) {
-		this.timestampCertData = value;
-	}
+  /**
+   * Recupera il valore della proprietà hashAlgorithm.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getHashAlgorithm() {
+    return hashAlgorithm;
+  }
 
-/**
-* Recupera il valore della proprietà timestampCertificateStatus.
-*
-* @return possible object is {@link CertificateStatus }
-*
- */
-	public CertificateStatus getTimestampCertificateStatus() {
-		return timestampCertificateStatus;
-	}
+  /**
+   * Imposta il valore della proprietà hashAlgorithm.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setHashAlgorithm(String value) {
+    this.hashAlgorithm = value;
+  }
 
-/**
-* Imposta il valore della proprietà timestampCertificateStatus.
-*
-* @param value allowed object is {@link CertificateStatus }
-*
- */
-	public void setTimestampCertificateStatus(CertificateStatus value) {
-		this.timestampCertificateStatus = value;
-	}
+  /**
+   * Recupera il valore della proprietà index.
+   *
+   * @return the result
+   */
+  public int getIndex() {
+    return index;
+  }
 
-/**
-* Recupera il valore della proprietà trustedListVerificationStatus.
-*
-* @return possible object is {@link Result }
-*
- */
-	public Result getTrustedListVerificationStatus() {
-		return trustedListVerificationStatus;
-	}
+  /**
+   * Imposta il valore della proprietà index.
+   *
+   * @param value the value
+   */
+  public void setIndex(int value) {
+    this.index = value;
+  }
 
-/**
-* Imposta il valore della proprietà trustedListVerificationStatus.
-*
-* @param value allowed object is {@link Result }
-*
- */
-	public void setTrustedListVerificationStatus(Result value) {
-		this.trustedListVerificationStatus = value;
-	}
+  /**
+   * Recupera il valore della proprietà issuer.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getIssuer() {
+    return issuer;
+  }
 
+  /**
+   * Imposta il valore della proprietà issuer.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setIssuer(String value) {
+    this.issuer = value;
+  }
+
+  /**
+   * Recupera il valore della proprietà serialNumber.
+   *
+   * @return possible object is {@link BigInteger }
+   */
+  public BigInteger getSerialNumber() {
+    return serialNumber;
+  }
+
+  /**
+   * Imposta il valore della proprietà serialNumber.
+   *
+   * @param value allowed object is {@link BigInteger }
+   */
+  public void setSerialNumber(BigInteger value) {
+    this.serialNumber = value;
+  }
+
+  /**
+   * Recupera il valore della proprietà signatureAlgorithm.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getSignatureAlgorithm() {
+    return signatureAlgorithm;
+  }
+
+  /**
+   * Imposta il valore della proprietà signatureAlgorithm.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setSignatureAlgorithm(String value) {
+    this.signatureAlgorithm = value;
+  }
+
+  /**
+   * Recupera il valore della proprietà signatureVerificationStatus.
+   *
+   * @return possible object is {@link Result }
+   */
+  public Result getSignatureVerificationStatus() {
+    return signatureVerificationStatus;
+  }
+
+  /**
+   * Imposta il valore della proprietà signatureVerificationStatus.
+   *
+   * @param value allowed object is {@link Result }
+   */
+  public void setSignatureVerificationStatus(Result value) {
+    this.signatureVerificationStatus = value;
+  }
+
+  /**
+   * Recupera il valore della proprietà timestampCertData.
+   *
+   * @return possible object is byte[]
+   */
+  public byte[] getTimestampCertData() {
+    return timestampCertData;
+  }
+
+  /**
+   * Imposta il valore della proprietà timestampCertData.
+   *
+   * @param value allowed object is byte[]
+   */
+  public void setTimestampCertData(byte[] value) {
+    this.timestampCertData = value;
+  }
+
+  /**
+   * Recupera il valore della proprietà timestampCertificateStatus.
+   *
+   * @return possible object is {@link CertificateStatus }
+   */
+  public CertificateStatus getTimestampCertificateStatus() {
+    return timestampCertificateStatus;
+  }
+
+  /**
+   * Imposta il valore della proprietà timestampCertificateStatus.
+   *
+   * @param value allowed object is {@link CertificateStatus }
+   */
+  public void setTimestampCertificateStatus(CertificateStatus value) {
+    this.timestampCertificateStatus = value;
+  }
+
+  /**
+   * Recupera il valore della proprietà trustedListVerificationStatus.
+   *
+   * @return possible object is {@link Result }
+   */
+  public Result getTrustedListVerificationStatus() {
+    return trustedListVerificationStatus;
+  }
+
+  /**
+   * Imposta il valore della proprietà trustedListVerificationStatus.
+   *
+   * @param value allowed object is {@link Result }
+   */
+  public void setTrustedListVerificationStatus(Result value) {
+    this.trustedListVerificationStatus = value;
+  }
 }
