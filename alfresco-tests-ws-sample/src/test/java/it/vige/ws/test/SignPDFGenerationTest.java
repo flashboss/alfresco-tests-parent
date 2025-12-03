@@ -36,6 +36,9 @@ import com.google.common.io.ByteStreams;
 import it.vige.ws.api.SignPDFGeneration;
 import it.vige.ws.dom.VigeWSContentModel;
 
+/**
+ * @author vige
+ */
 public class SignPDFGenerationTest extends AbstractWSForm {
 
 	private final static Logger logger = getLogger(SignPDFGenerationTest.class);

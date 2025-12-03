@@ -16,6 +16,9 @@ import org.alfresco.service.cmr.dictionary.TypeDefinition;
 import org.alfresco.service.cmr.i18n.MessageLookup;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * @author vige
+ */
 public class MockTypeDefinition implements TypeDefinition {
 
 	private QName defaultAspect;

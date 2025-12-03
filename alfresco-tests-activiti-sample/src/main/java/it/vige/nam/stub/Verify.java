@@ -29,6 +29,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "verify", propOrder = { "signedContent" })
+/**
+ * @author vige
+ */
 public class Verify {
 
 	protected byte[] signedContent;

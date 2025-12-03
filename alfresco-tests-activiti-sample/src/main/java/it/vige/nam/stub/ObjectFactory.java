@@ -18,6 +18,9 @@ import javax.xml.namespace.QName;
  * 
  */
 @XmlRegistry
+/**
+ * @author vige
+ */
 public class ObjectFactory {
 
 	private final static QName _SignCAdESByAttachment_QNAME = new QName("http://service.ws.nam/",

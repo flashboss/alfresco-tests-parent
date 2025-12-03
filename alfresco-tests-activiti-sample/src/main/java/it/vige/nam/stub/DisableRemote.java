@@ -29,6 +29,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "disableRemote", propOrder = { "credentials" })
+/**
+ * @author vige
+ */
 public class DisableRemote {
 
 	protected Credentials credentials;

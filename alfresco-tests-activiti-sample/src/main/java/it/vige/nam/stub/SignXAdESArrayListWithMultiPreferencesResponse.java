@@ -33,6 +33,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signXAdESArrayListWithMultiPreferencesResponse", propOrder = { "_return" })
+/**
+ * @author vige
+ */
 public class SignXAdESArrayListWithMultiPreferencesResponse {
 
 	@XmlElement(name = "return")

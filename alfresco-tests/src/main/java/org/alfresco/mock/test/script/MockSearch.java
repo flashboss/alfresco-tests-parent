@@ -10,6 +10,9 @@ import org.alfresco.repo.jscript.Search;
 import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.repository.StoreRef;
 
+/**
+ * @author vige
+ */
 public class MockSearch extends Search implements Serializable, Externalizable {
 
 	@Override

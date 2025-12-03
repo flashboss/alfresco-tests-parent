@@ -30,6 +30,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "timestamp", propOrder = { "content", "preferences" })
+/**
+ * @author vige
+ */
 public class Timestamp {
 
 	protected byte[] content;

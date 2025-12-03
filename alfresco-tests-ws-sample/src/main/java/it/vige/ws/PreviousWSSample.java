@@ -28,6 +28,9 @@ import org.springframework.extensions.webscripts.servlet.FormData;
 
 import net.sf.acegisecurity.providers.ProviderNotFoundException;
 
+/**
+ * @author vige
+ */
 public class PreviousWSSample extends DeclarativeWebScript {
 
 	private ServiceRegistry serviceRegistry;

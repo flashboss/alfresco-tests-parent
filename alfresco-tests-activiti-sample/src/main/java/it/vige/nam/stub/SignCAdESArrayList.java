@@ -36,6 +36,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signCAdESArrayList", propOrder = { "username", "password", "bufferList", "cAdESPreferences" })
+/**
+ * @author vige
+ */
 public class SignCAdESArrayList {
 
 	protected String username;

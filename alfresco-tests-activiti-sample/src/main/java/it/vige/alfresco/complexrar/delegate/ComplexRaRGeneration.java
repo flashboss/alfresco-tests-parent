@@ -18,6 +18,9 @@ import org.apache.commons.logging.LogFactory;
 import it.vige.alfresco.complexrar.util.ComplexHashUtil;
 import it.vige.common.ConservationModel;
 
+/**
+ * @author vige
+ */
 public class ComplexRaRGeneration extends BaseJavaDelegate {
 
 	private static Log logger = LogFactory.getLog(ComplexRaRGeneration.class);
