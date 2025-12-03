@@ -18,6 +18,9 @@ import org.alfresco.service.cmr.dictionary.TypeDefinition;
 import org.alfresco.service.namespace.QName;
 
 /**
+ * Mock implementation of the Alfresco DictionaryService for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
  * @author vige
  */
 public class MockDictionaryService implements DictionaryService, Serializable {

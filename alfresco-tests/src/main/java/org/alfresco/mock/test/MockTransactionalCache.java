@@ -8,6 +8,8 @@ import org.alfresco.repo.transaction.TransactionListener;
 import org.springframework.beans.factory.InitializingBean;
 
 /**
+ * Mock implementation of TransactionalCache for testing purposes.
+ * 
  * @author vige
  */
 public class MockTransactionalCache<K extends Serializable, V extends Object>

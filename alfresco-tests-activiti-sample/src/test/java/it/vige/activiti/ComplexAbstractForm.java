@@ -21,6 +21,8 @@ import org.alfresco.service.namespace.QName;
 import it.vige.common.ConservationModel;
 
 /**
+ * Abstract base class providing common functionality for tests.
+ * 
  * @author vige
  */
 public class ComplexAbstractForm extends AbstractActivitiForm {

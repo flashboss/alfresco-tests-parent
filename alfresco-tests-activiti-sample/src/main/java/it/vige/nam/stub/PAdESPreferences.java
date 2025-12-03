@@ -35,6 +35,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "pAdESPreferences", propOrder = { "encryptInAnyCase", "encryptionPassword", "page", "signerImage",
 		"signerImageReference" })
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class PAdESPreferences extends SignPreferences {

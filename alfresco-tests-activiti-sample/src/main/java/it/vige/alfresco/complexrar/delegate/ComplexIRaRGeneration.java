@@ -31,6 +31,8 @@ import org.mozilla.javascript.NativeArray;
 import it.vige.common.ConservationModel;
 
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class ComplexIRaRGeneration extends BaseJavaDelegate {

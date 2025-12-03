@@ -11,6 +11,9 @@ import org.alfresco.service.cmr.tagging.TaggingService;
 import org.alfresco.util.Pair;
 
 /**
+ * Mock implementation of the Alfresco TaggingService for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
  * @author vige
  */
 public class MockTaggingService implements TaggingService{

@@ -29,6 +29,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "result")
 @XmlEnum
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public enum Result {

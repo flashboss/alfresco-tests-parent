@@ -12,6 +12,9 @@ import org.alfresco.service.cmr.repository.ContentReader;
 import org.alfresco.service.cmr.repository.MimetypeService;
 
 /**
+ * Mock implementation of the Alfresco MimetypeService for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
  * @author vige
  */
 public class MockMimetypeService implements MimetypeService, Serializable {
