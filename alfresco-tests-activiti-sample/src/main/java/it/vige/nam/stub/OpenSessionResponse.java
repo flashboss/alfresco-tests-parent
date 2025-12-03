@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
 public class OpenSessionResponse {
 
 	@XmlElement(name = "return")
+	/** The  return. */
 	protected String _return;
 
 	/**

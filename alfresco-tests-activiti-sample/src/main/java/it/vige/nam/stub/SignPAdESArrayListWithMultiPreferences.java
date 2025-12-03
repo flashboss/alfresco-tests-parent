@@ -43,9 +43,12 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignPAdESArrayListWithMultiPreferences {
 
+	/** The credentials. */
 	protected Credentials credentials;
+	/** The buffer list. */
 	protected List<byte[]> bufferList;
 	@XmlElement(name = "PAdESPreferences")
+	/** The p ad e s preferences. */
 	protected List<PAdESPreferences> pAdESPreferences;
 
 	/**
@@ -88,6 +91,7 @@ public class SignPAdESArrayListWithMultiPreferences {
 	 * <p>
 	 * Objects of the following type(s) are allowed in the list byte[]
 	 * 
+	 * @return the result
 	 */
 	public List<byte[]> getBufferList() {
 		if (bufferList == null) {
@@ -118,6 +122,7 @@ public class SignPAdESArrayListWithMultiPreferences {
 	 * {@link PAdESPreferences }
 	 * 
 	 * 
+	 * @return the result
 	 */
 	public List<PAdESPreferences> getPAdESPreferences() {
 		if (pAdESPreferences == null) {

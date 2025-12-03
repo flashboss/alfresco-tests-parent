@@ -35,6 +35,12 @@ public class ZipUtils {
 
 	public final static File TEMP_DIR = new File(MockContentService.FOLDER_TEST + "temp");
 
+	/**
+	 * Unzip.
+	 *
+	 * @param inputStream the input stream
+	 * @param targetDirectory the target directory
+	 */
 	public static void unzip(InputStream inputStream, File targetDirectory) throws IOException {
 		targetDirectory.mkdir();
 		byte[] buffer = new byte[1024];
@@ -42,6 +48,8 @@ public class ZipUtils {
 		ZipEntry zipEntry = zis.getNextEntry();
 		while (zipEntry != null) {
 			String[] filePaths = zipEntry.getName().split("/");
+	 * @param zis.read(buffer the zis.read(buffer
+			/** The file name. */
 			String fileName = filePaths[filePaths.length - 1];
 			File newFile = new File(targetDirectory + "/" + fileName);
 			FileOutputStream fos = new FileOutputStream(newFile);
@@ -56,9 +64,22 @@ public class ZipUtils {
 		zis.close();
 	}
 
+	/**
+	 * Get zip entry content.
+	 *
+	 * @param parent the parent
+	 * @param documentName the document name
+	 * @return the string
+	 */
 	public static String getZipEntryContent(File parent, final String documentName) throws IOException {
 		FileFilter fileFiler = new FileFilter() {
 			@Override
+			/**
+			 * Accept.
+			 *
+			 * @param pathname the pathname
+			 * @return the boolean
+			 */
 			public boolean accept(File pathname) {
 				return pathname.getName().startsWith(documentName);
 			}
@@ -71,6 +92,12 @@ public class ZipUtils {
 		return new String(bytes);
 	}
 
+	/**
+	 * Get zip entry content.
+	 *
+	 * @param parent the parent
+	 * @return the string
+	 */
 	public static String getZipEntryContent(File parent) throws IOException {
 		File[] unzippedFiles = parent.listFiles();
 		byte[] bytes = new byte[1024];
@@ -80,6 +107,13 @@ public class ZipUtils {
 		return new String(bytes);
 	}
 
+	/**
+	 * Add entry to zip.
+	 *
+	 * @param text the text
+	 * @param entryName the entry name
+	 * @param output the output
+	 */
 	public static void addEntryToZip(String text, String entryName, OutputStream output) throws IOException {
 		InputStream inputStream = new ByteArrayInputStream(text.getBytes());
 		ZipOutputStream zipOut = new ZipOutputStream(output);
@@ -98,6 +132,8 @@ public class ZipUtils {
 			throws IOException {
 		NodeService nodeService = serviceRegistry.getNodeService(); 
 		ContentService contentService = serviceRegistry.getContentService();
+
+	/** The type. */
 		QName type = null;
 		if (properties != null)
 			type = (QName) properties.get(ContentModel.TYPE_BASE);

@@ -54,15 +54,25 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 	 */
 	private final static String USER_NAME = "gonzo";
 
+	 * @param yyyy" the yyyy"
+	/** The date format. */
 	private final DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm:ss ZZZ yyyy");
 
+	/** The generation folder. */
 	private NodeRef generationFolder;
 
+	/** The initiator. */
 	private Initiator initiator = new Initiator();
 
+	/** The generation folder name. */
 	private String generationFolderName = "20191024_154711";
 
 	@Override
+	/**
+	 * Init.
+	 *
+	 * @param variables the variables
+	 */
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
@@ -134,6 +144,10 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 	}
 
 	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/SimpleProcess.bpmn" })
+	/**
+	 * Test workflow.
+	 *
+	 */
 	public void testWorkflow() throws ParseException {
 		Map<String, Object> variables = new HashMap<String, Object>();
 		init(variables);
@@ -168,6 +182,8 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		ResultSet resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
 				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"rar/contracts_" + generationFolderName + ".zip\"");
 		NodeRef createdNodeRef = resultQ.getNodeRef(0);
+
+	/** The path. */
 		String path = nodeService.getPath(createdNodeRef).toString();
 		Assert.assertTrue("Added a zip file in the RAR folder",
 				path.endsWith("workspace/SpacesStore/company_home/sites/simple-site/documentLibrary/rar/contracts_"

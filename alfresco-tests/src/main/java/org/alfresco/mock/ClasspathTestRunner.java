@@ -15,11 +15,23 @@ public class ClasspathTestRunner extends SpringJUnit4ClassRunner {
 
   static ClassLoader customClassLoader;
 
+  /**
+   * Constructs a new classpath test runner.
+   *
+   * @param clazz the clazz
+	 * @return the result
+   */
   public ClasspathTestRunner(Class<?> clazz) throws InitializationError {
     super(loadFromCustomClassloader(clazz));
   }
 
   // Loads a class in the custom classloader
+  /**
+   * Load from custom classloader.
+   *
+   * @param clazz the clazz
+   * @return the class
+   */
   private static Class<?> loadFromCustomClassloader(Class<?> clazz) throws InitializationError {
     try {
       // Only load once to support parallel tests
@@ -35,9 +47,18 @@ public class ClasspathTestRunner extends SpringJUnit4ClassRunner {
 
   // Runs junit tests in a separate thread using the custom class loader
   @Override
+  /**
+   * Run.
+   *
+   * @param notifier the notifier
+   */
   public void run(final RunNotifier notifier) {
     Runnable runnable = new Runnable() {
       @Override
+      /**
+       * Run.
+       *
+       */
       public void run() {
           ClasspathTestRunner.super.run(notifier);
       }

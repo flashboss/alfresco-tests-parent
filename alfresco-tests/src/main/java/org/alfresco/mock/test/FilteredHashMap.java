@@ -14,24 +14,55 @@ import org.alfresco.service.cmr.repository.StoreRef;
  */
 public class FilteredHashMap extends HashMap<NodeRef, File> {
 
+	/**
+	 * Constructs a new filtered hash map.
+	 *
+	 * @param initialCapacity the initial capacity
+	 * @param loadFactor the load factor
+	 * @return the result
+	 */
 	public FilteredHashMap(int initialCapacity, float loadFactor) {
 		super(initialCapacity, loadFactor);
 	}
 
+	/**
+	 * Constructs a new filtered hash map.
+	 *
+	 * @param initialCapacity the initial capacity
+	 * @return the result
+	 */
 	public FilteredHashMap(int initialCapacity) {
 		super(initialCapacity);
 	}
 
+	/**
+	 * Constructs a new filtered hash map.
+	 *
+	 * @return the result
+	 */
 	public FilteredHashMap() {
 		super();
 	}
 
+	/**
+	 * Constructs a new filtered hash map.
+	 *
+	 * @param m the m
+	 * @return the result
+	 */
 	public FilteredHashMap(Map<NodeRef, File> m) {
 		super(m);
 		removeFilteredValues();
 	}
 
 	@Override
+	/**
+	 * Put.
+	 *
+	 * @param key the key
+	 * @param value the value
+	 * @return the file
+	 */
 	public File put(NodeRef key, File value) {
 		if (haveToAdd(value.getAbsolutePath()))
 			return super.put(key, value);
@@ -40,6 +71,11 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 	}
 
 	@Override
+	/**
+	 * Put all.
+	 *
+	 * @param m the m
+	 */
 	public void putAll(Map<? extends NodeRef, ? extends File> m) {
 		for (NodeRef key : m.keySet()) {
 			if (haveToAdd(m.get(key).getAbsolutePath()))
@@ -47,6 +83,10 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 		}
 	}
 
+	/**
+	 * Remove filtered values.
+	 *
+	 */
 	private void removeFilteredValues() {
 		for (NodeRef key : keySet()) {
 			if (!haveToAdd(get(key).getAbsolutePath()))
@@ -54,6 +94,12 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 		}
 	}
 
+	/**
+	 * Have to add.
+	 *
+	 * @param absolutePath the absolute path
+	 * @return the boolean
+	 */
 	private boolean haveToAdd(String absolutePath) {
 		return !absolutePath.endsWith(MockContentService.FOLDER_TEST.substring(0, 21))
 				&& !absolutePath.endsWith(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE)

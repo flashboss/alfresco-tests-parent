@@ -38,11 +38,13 @@ import javax.xml.bind.annotation.XmlType;
 public class GetSignaturesResponse {
 
 	@XmlElement(name = "return")
+	/** The  return. */
 	protected long _return;
 
 	/**
 	 * Recupera il valore della proprietà return.
 	 * 
+	 * @return the result
 	 */
 	public long getReturn() {
 		return _return;
@@ -51,6 +53,7 @@ public class GetSignaturesResponse {
 	/**
 	 * Imposta il valore della proprietà return.
 	 * 
+	 * @param value the value
 	 */
 	public void setReturn(long value) {
 		this._return = value;

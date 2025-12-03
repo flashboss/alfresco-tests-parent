@@ -66,32 +66,50 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class SignatureReportBean {
 
 	protected byte[] derEncodedSignerCert;
+	/** The id. */
 	protected String id;
+	/** The integrity. */
 	protected boolean integrity;
 	@XmlSchemaType(name = "dateTime")
+	/** The issuer certificate revocation date. */
 	protected XMLGregorianCalendar issuerCertificateRevocationDate;
 	@XmlSchemaType(name = "string")
+	/** The issuer certificate status. */
 	protected CertificateStatus issuerCertificateStatus;
+	/** The issuer d n. */
 	protected String issuerDN;
+	/** The issuer in trusted list. */
 	protected boolean issuerInTrustedList;
+	/** The key size. */
 	protected int keySize;
 	@XmlSchemaType(name = "string")
+	/** The qc compliance status. */
 	protected Result qcComplianceStatus;
+	/** The serial number. */
 	protected BigInteger serialNumber;
+	/** The signature algorithm name. */
 	protected String signatureAlgorithmName;
 	@XmlSchemaType(name = "dateTime")
+	/** The signature date. */
 	protected XMLGregorianCalendar signatureDate;
 	@XmlSchemaType(name = "dateTime")
+	/** The signer certificate not after. */
 	protected XMLGregorianCalendar signerCertificateNotAfter;
 	@XmlSchemaType(name = "dateTime")
+	/** The signer certificate not before. */
 	protected XMLGregorianCalendar signerCertificateNotBefore;
 	@XmlSchemaType(name = "dateTime")
+	/** The signer certificate revocation date. */
 	protected XMLGregorianCalendar signerCertificateRevocationDate;
 	@XmlSchemaType(name = "string")
+	/** The signer certificate status. */
 	protected CertificateStatus signerCertificateStatus;
+	/** The subject d n. */
 	protected String subjectDN;
 	@XmlElement(nillable = true)
+	/** The timestamp report bean list. */
 	protected List<TimestampReportBean> timestampReportBeanList;
+	/** The trusted signature date. */
 	protected boolean trustedSignatureDate;
 
 	/**
@@ -135,6 +153,7 @@ public class SignatureReportBean {
 	/**
 	 * Recupera il valore della proprietà integrity.
 	 * 
+	 * @return the result
 	 */
 	public boolean isIntegrity() {
 		return integrity;
@@ -143,6 +162,7 @@ public class SignatureReportBean {
 	/**
 	 * Imposta il valore della proprietà integrity.
 	 * 
+	 * @param value the value
 	 */
 	public void setIntegrity(boolean value) {
 		this.integrity = value;
@@ -211,6 +231,7 @@ public class SignatureReportBean {
 	/**
 	 * Recupera il valore della proprietà issuerInTrustedList.
 	 * 
+	 * @return the result
 	 */
 	public boolean isIssuerInTrustedList() {
 		return issuerInTrustedList;
@@ -219,6 +240,7 @@ public class SignatureReportBean {
 	/**
 	 * Imposta il valore della proprietà issuerInTrustedList.
 	 * 
+	 * @param value the value
 	 */
 	public void setIssuerInTrustedList(boolean value) {
 		this.issuerInTrustedList = value;
@@ -227,6 +249,7 @@ public class SignatureReportBean {
 	/**
 	 * Recupera il valore della proprietà keySize.
 	 * 
+	 * @return the result
 	 */
 	public int getKeySize() {
 		return keySize;
@@ -235,6 +258,7 @@ public class SignatureReportBean {
 	/**
 	 * Imposta il valore della proprietà keySize.
 	 * 
+	 * @param value the value
 	 */
 	public void setKeySize(int value) {
 		this.keySize = value;
@@ -442,6 +466,7 @@ public class SignatureReportBean {
 	 * {@link TimestampReportBean }
 	 * 
 	 * 
+	 * @return the result
 	 */
 	public List<TimestampReportBean> getTimestampReportBeanList() {
 		if (timestampReportBeanList == null) {
@@ -453,6 +478,7 @@ public class SignatureReportBean {
 	/**
 	 * Recupera il valore della proprietà trustedSignatureDate.
 	 * 
+	 * @return the result
 	 */
 	public boolean isTrustedSignatureDate() {
 		return trustedSignatureDate;
@@ -461,6 +487,7 @@ public class SignatureReportBean {
 	/**
 	 * Imposta il valore della proprietà trustedSignatureDate.
 	 * 
+	 * @param value the value
 	 */
 	public void setTrustedSignatureDate(boolean value) {
 		this.trustedSignatureDate = value;

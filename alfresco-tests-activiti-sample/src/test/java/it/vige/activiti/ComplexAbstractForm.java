@@ -40,17 +40,27 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 	 */
 	protected final static String USER_NAME = "gonzo";
 
+	 * @param yyyy" the yyyy"
+	/** The date format. */
 	protected final DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm:ss ZZZ yyyy");
 
+	/** The generation folder. */
 	protected NodeRef generationFolder;
 
 	@Override
+	/**
+	 * Init.
+	 *
+	 * @param variables the variables
+	 */
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
 		NamespaceService namespaceService = activitiProcessEngineConfiguration.getServiceRegistry()
 				.getNamespaceService();
 		namespaceService.registerNamespace("vigecont", ConservationModel.VIGE_CONSERVATION_URI);
+
+	/** The generation folder name. */
 		String generationFolderName = "20191024_154711";
 		NodeRef site = insertFolder(sites, "digital-conservation-complex-bank");
 		NodeRef documentLibrary = insertFolder(site, "documentLibrary");

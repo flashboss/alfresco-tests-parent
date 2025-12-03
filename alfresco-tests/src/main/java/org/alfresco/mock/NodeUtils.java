@@ -37,6 +37,14 @@ import org.alfresco.service.namespace.QName;
  */
 public class NodeUtils {
 
+	/**
+	 * Insert folder.
+	 *
+	 * @param parent the parent
+	 * @param name the name
+	 * @param fileFolderService the file folder service
+	 * @return the node ref
+	 */
 	public static NodeRef insertFolder(NodeRef parent, String name, FileFolderService fileFolderService) {
 		return fileFolderService.create(parent, name, ContentModel.TYPE_FOLDER).getNodeRef();
 	}
@@ -52,6 +60,8 @@ public class NodeUtils {
 		ContentService contentService = serviceRegistry.getContentService();
 		MimetypeService mimetypeService = serviceRegistry.getMimetypeService();
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
+
+	/** The type. */
 		QName type = null;
 		if (properties != null)
 			type = (QName) properties.get(ContentModel.TYPE_BASE);
@@ -79,11 +89,24 @@ public class NodeUtils {
 		return versionRef.getFrozenStateNodeRef();
 	}
 
+	/**
+	 * Sort by name.
+	 *
+	 * @param nodeRefs the node refs
+	 * @return the list
+	 */
 	public static List<NodeRef> sortByName(Set<NodeRef> nodeRefs) {
 		NodeRef[] nodeArray = nodeRefs.toArray(new NodeRef[0]);
 		Arrays.sort(nodeArray, new Comparator<NodeRef>() {
 
 			@Override
+			/**
+			 * Compare.
+			 *
+			 * @param o1 the o1
+			 * @param o2 the o2
+			 * @return the int
+			 */
 			public int compare(NodeRef o1, NodeRef o2) {
 				return o1.getId().compareTo(o2.getId());
 			}
@@ -91,6 +114,12 @@ public class NodeUtils {
 		return Arrays.asList(nodeArray);
 	}
 
+	/**
+	 * Generate u u i d.
+	 *
+	 * @param nodePath the node path
+	 * @return the string
+	 */
 	public static String generateUUID(String nodePath) {
 		if (nodePath.equals(FOLDER_TEST + PROTOCOL_WORKSPACE))
 			return FOLDER_TEST + PROTOCOL_WORKSPACE.hashCode() + "";

@@ -43,12 +43,19 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 	private final static String dataModifica = "2020-06-19";
 
 	@Autowired
+	/** The previous w s sample. */
 	private PreviousWSSample previousWSSample;
 
+	/** The date format. */
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	/** The repository. */
 	private NodeRef repository;
 
 	@Before
+	/**
+	 * Init.
+	 *
+	 */
 	public void init() {
 		super.init();
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
@@ -65,11 +72,20 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 	}
 
 	@Override
+	/**
+	 * Get abstract web script.
+	 *
+	 * @return the abstract web script
+	 */
 	protected AbstractWebScript getAbstractWebScript() {
 		return previousWSSample;
 	}
 
 	@Test
+	/**
+	 * Execute.
+	 *
+	 */
 	public void execute() throws ParseException, IOException {
 
 		SearchService searchService = serviceRegistry.getSearchService();
@@ -93,6 +109,8 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 		NodeRef result = nodeRefs.get(0);
 		Set<QName> aspects = nodeService.getAspects(result);
 		Assert.assertEquals("One aspect for the folder", 1, aspects.size());
+
+	/** The aspect. */
 		QName aspect = aspects.iterator().next();
 		Assert.assertEquals("Added an aspect to the WS Sample folder", WSSampleModel.ASPECT_WSSAMPLEFOLDER, aspect);
 		Date dateCedra = (Date) nodeService.getProperty(result, WSSampleModel.PROP_UPDATE_PROPERTY);

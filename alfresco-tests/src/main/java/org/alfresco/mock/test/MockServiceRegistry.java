@@ -77,441 +77,835 @@ import org.springframework.beans.factory.BeanFactoryAware;
  */
 public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, Externalizable {
 
+	/** The node service. */
 	private NodeService nodeService;
 
+	/** The content service. */
 	private ContentService contentService;
 
+	/** The search service. */
 	private SearchService searchService;
 
+	/** The file folder service. */
 	private FileFolderService fileFolderService;
 
+	/** The node locator service. */
 	private NodeLocatorService nodeLocatorService;
 
+	/** The namespace service. */
 	private NamespaceService namespaceService;
 
+	/** The script service. */
 	private ScriptService scriptService;
 
+	/** The mimetype service. */
 	private MimetypeService mimetypeService;
 
+	/** The importer service. */
 	private ImporterService importerService;
 
+	/** The permission service. */
 	private PermissionService permissionService;
 
+	/** The template service. */
 	private TemplateService templateService;
 
+	/** The solr facet helper. */
 	private SolrFacetHelper solrFacetHelper;
 
+	/** The transaction service. */
 	private TransactionService transactionService;
 
+	/** The dictionary service. */
 	private DictionaryService dictionaryService;
 
+	/** The authentication service. */
 	private MutableAuthenticationService authenticationService;
 
+	/** The version service. */
 	private VersionService versionService;
 
+	/** The copy service. */
 	private CopyService copyService;
 
+	/** The check out check in service. */
 	private CheckOutCheckInService checkOutCheckInService;
 
+	/** The site service. */
 	private SiteService siteService;
 
+	/** The person service. */
 	private PersonService personService;
 
+	/** The authority service. */
 	private AuthorityService authorityService;
 
+	/** The action service. */
 	private ActionService actionService;
 
 	@Override
+	/**
+	 * Get services.
+	 *
+	 * @return the collection
+	 */
 	public Collection<QName> getServices() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Is service provided.
+	 *
+	 * @param service the service
+	 * @return the boolean
+	 */
 	public boolean isServiceProvided(QName service) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
+	/**
+	 * Get service.
+	 *
+	 * @param service the service
+	 * @return the object
+	 */
 	public Object getService(QName service) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get descriptor service.
+	 *
+	 * @return the descriptor service
+	 */
 	public DescriptorService getDescriptorService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get transaction service.
+	 *
+	 * @return the transaction service
+	 */
 	public TransactionService getTransactionService() {
 		return transactionService;
 	}
 
 	@Override
+	/**
+	 * Get retrying transaction helper.
+	 *
+	 * @return the retrying transaction helper
+	 */
 	public RetryingTransactionHelper getRetryingTransactionHelper() {
 		return transactionService.getRetryingTransactionHelper();
 	}
 
 	@Override
+	/**
+	 * Get namespace service.
+	 *
+	 * @return the namespace service
+	 */
 	public NamespaceService getNamespaceService() {
 		return namespaceService;
 	}
 
 	@Override
+	/**
+	 * Get authentication service.
+	 *
+	 * @return the mutable authentication service
+	 */
 	public MutableAuthenticationService getAuthenticationService() {
 		return authenticationService;
 	}
 
 	@Override
+	/**
+	 * Get node service.
+	 *
+	 * @return the node service
+	 */
 	public NodeService getNodeService() {
 		return nodeService;
 	}
 
 	@Override
+	/**
+	 * Get content service.
+	 *
+	 * @return the content service
+	 */
 	public ContentService getContentService() {
 		return contentService;
 	}
 
 	@Override
+	/**
+	 * Get mimetype service.
+	 *
+	 * @return the mimetype service
+	 */
 	public MimetypeService getMimetypeService() {
 		return mimetypeService;
 	}
 
 	@Override
+	/**
+	 * Get content filter languages service.
+	 *
+	 * @return the content filter languages service
+	 */
 	public ContentFilterLanguagesService getContentFilterLanguagesService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get search service.
+	 *
+	 * @return the search service
+	 */
 	public SearchService getSearchService() {
 		return searchService;
 	}
 
 	@Override
+	/**
+	 * Get version service.
+	 *
+	 * @return the version service
+	 */
 	public VersionService getVersionService() {
 		return versionService;
 	}
 
 	@Override
+	/**
+	 * Get lock service.
+	 *
+	 * @return the lock service
+	 */
 	public LockService getLockService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get job lock service.
+	 *
+	 * @return the job lock service
+	 */
 	public JobLockService getJobLockService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get dictionary service.
+	 *
+	 * @return the dictionary service
+	 */
 	public DictionaryService getDictionaryService() {
 		return dictionaryService;
 	}
 
 	@Override
+	/**
+	 * Get copy service.
+	 *
+	 * @return the copy service
+	 */
 	public CopyService getCopyService() {
 		return copyService;
 	}
 
 	@Override
+	/**
+	 * Get check out check in service.
+	 *
+	 * @return the check out check in service
+	 */
 	public CheckOutCheckInService getCheckOutCheckInService() {
 		return checkOutCheckInService;
 	}
 
 	@Override
+	/**
+	 * Get category service.
+	 *
+	 * @return the category service
+	 */
 	public CategoryService getCategoryService() {
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get importer service.
+	 *
+	 * @return the importer service
+	 */
 	public ImporterService getImporterService() {
 		return importerService;
 	}
 
 	@Override
+	/**
+	 * Get exporter service.
+	 *
+	 * @return the exporter service
+	 */
 	public ExporterService getExporterService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get rule service.
+	 *
+	 * @return the rule service
+	 */
 	public RuleService getRuleService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get action service.
+	 *
+	 * @return the action service
+	 */
 	public ActionService getActionService() {
 		return actionService;
 	}
 
 	@Override
+	/**
+	 * Get permission service.
+	 *
+	 * @return the permission service
+	 */
 	public PermissionService getPermissionService() {
 		return permissionService;
 	}
 
 	@Override
+	/**
+	 * Get authority service.
+	 *
+	 * @return the authority service
+	 */
 	public AuthorityService getAuthorityService() {
 		return authorityService;
 	}
 
 	@Override
+	/**
+	 * Get template service.
+	 *
+	 * @return the template service
+	 */
 	public TemplateService getTemplateService() {
 		return templateService;
 	}
 
 	@Override
+	/**
+	 * Get file folder service.
+	 *
+	 * @return the file folder service
+	 */
 	public FileFolderService getFileFolderService() {
 		return fileFolderService;
 	}
 
 	@Override
+	/**
+	 * Get script service.
+	 *
+	 * @return the script service
+	 */
 	public ScriptService getScriptService() {
 		return scriptService;
 	}
 
 	@Override
+	/**
+	 * Get workflow service.
+	 *
+	 * @return the workflow service
+	 */
 	public WorkflowService getWorkflowService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get notification service.
+	 *
+	 * @return the notification service
+	 */
 	public NotificationService getNotificationService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get audit service.
+	 *
+	 * @return the audit service
+	 */
 	public AuditService getAuditService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get ownable service.
+	 *
+	 * @return the ownable service
+	 */
 	public OwnableService getOwnableService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get person service.
+	 *
+	 * @return the person service
+	 */
 	public PersonService getPersonService() {
 		return personService;
 	}
 
 	@Override
+	/**
+	 * Get site service.
+	 *
+	 * @return the site service
+	 */
 	public SiteService getSiteService() {
 		return siteService;
 	}
 
 	@Override
+	/**
+	 * Get attribute service.
+	 *
+	 * @return the attribute service
+	 */
 	public AttributeService getAttributeService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get multilingual content service.
+	 *
+	 * @return the multilingual content service
+	 */
 	public MultilingualContentService getMultilingualContentService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get edition service.
+	 *
+	 * @return the edition service
+	 */
 	public EditionService getEditionService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get thumbnail service.
+	 *
+	 * @return the thumbnail service
+	 */
 	public ThumbnailService getThumbnailService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get tagging service.
+	 *
+	 * @return the tagging service
+	 */
 	public TaggingService getTaggingService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get form service.
+	 *
+	 * @return the form service
+	 */
 	public FormService getFormService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get rendition service.
+	 *
+	 * @return the rendition service
+	 */
 	public RenditionService getRenditionService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get rating service.
+	 *
+	 * @return the rating service
+	 */
 	public RatingService getRatingService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get node locator service.
+	 *
+	 * @return the node locator service
+	 */
 	public NodeLocatorService getNodeLocatorService() {
 		return nodeLocatorService;
 	}
 
 	@Override
+	/**
+	 * Get blog service.
+	 *
+	 * @return the blog service
+	 */
 	public BlogService getBlogService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get calendar service.
+	 *
+	 * @return the calendar service
+	 */
 	public CalendarService getCalendarService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get invitation service.
+	 *
+	 * @return the invitation service
+	 */
 	public InvitationService getInvitationService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get imap service.
+	 *
+	 * @return the imap service
+	 */
 	public ImapService getImapService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get public service access service.
+	 *
+	 * @return the public service access service
+	 */
 	public PublicServiceAccessService getPublicServiceAccessService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get repo admin service.
+	 *
+	 * @return the repo admin service
+	 */
 	public RepoAdminService getRepoAdminService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get sys admin params.
+	 *
+	 * @return the sys admin params
+	 */
 	public SysAdminParams getSysAdminParams() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get web dav service.
+	 *
+	 * @return the web dav service
+	 */
 	public WebDavService getWebDavService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Set bean factory.
+	 *
+	 * @param beanFactory the bean factory
+	 */
 	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * Set file folder service.
+	 *
+	 * @param fileFolderService the file folder service
+	 */
 	public void setFileFolderService(FileFolderService fileFolderService) {
 		this.fileFolderService = fileFolderService;
 	}
 
+	/**
+	 * Set content service.
+	 *
+	 * @param contentService the content service
+	 */
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}
 
+	/**
+	 * Set node service.
+	 *
+	 * @param nodeService the node service
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+	/**
+	 * Set search service.
+	 *
+	 * @param searchService the search service
+	 */
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
 
+	/**
+	 * Set node locator service.
+	 *
+	 * @param nodeLocatorService the node locator service
+	 */
 	public void setNodeLocatorService(NodeLocatorService nodeLocatorService) {
 		this.nodeLocatorService = nodeLocatorService;
 	}
 
+	/**
+	 * Set namespace service.
+	 *
+	 * @param namespaceService the namespace service
+	 */
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
 	}
 
+	/**
+	 * Set mimetype service.
+	 *
+	 * @param mimetypeService the mimetype service
+	 */
 	public void setMimetypeService(MimetypeService mimetypeService) {
 		this.mimetypeService = mimetypeService;
 	}
 
+	/**
+	 * Set script service.
+	 *
+	 * @param scriptService the script service
+	 */
 	public void setScriptService(ScriptService scriptService) {
 		this.scriptService = scriptService;
 	}
 
+	/**
+	 * Set importer service.
+	 *
+	 * @param importerService the importer service
+	 */
 	public void setImporterService(ImporterService importerService) {
 		this.importerService = importerService;
 	}
 
+	/**
+	 * Set permission service.
+	 *
+	 * @param permissionService the permission service
+	 */
 	public void setPermissionService(PermissionService permissionService) {
 		this.permissionService = permissionService;
 	}
 
+	/**
+	 * Set template service.
+	 *
+	 * @param templateService the template service
+	 */
 	public void setTemplateService(TemplateService templateService) {
 		this.templateService = templateService;
 	}
 
 	@Override
+	/**
+	 * Get c m i s dictionary service.
+	 *
+	 * @return the c m i s dictionary service
+	 */
 	public CMISDictionaryService getCMISDictionaryService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get c m i s query service.
+	 *
+	 * @return the c m i s query service
+	 */
 	public CMISQueryService getCMISQueryService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get solr facet helper.
+	 *
+	 * @return the solr facet helper
+	 */
 	public SolrFacetHelper getSolrFacetHelper() {
 		return solrFacetHelper;
 	}
 
 	@Override
+	/**
+	 * Get facet label display handler registry.
+	 *
+	 * @return the facet label display handler registry
+	 */
 	public FacetLabelDisplayHandlerRegistry getFacetLabelDisplayHandlerRegistry() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Set solr facet helper.
+	 *
+	 * @param solrFacetHelper the solr facet helper
+	 */
 	public void setSolrFacetHelper(SolrFacetHelper solrFacetHelper) {
 		this.solrFacetHelper = solrFacetHelper;
 	}
 
 	@Override
+	/**
+	 * Get module service.
+	 *
+	 * @return the module service
+	 */
 	public ModuleService getModuleService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get message service.
+	 *
+	 * @return the message service
+	 */
 	public MessageService getMessageService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get document link service.
+	 *
+	 * @return the document link service
+	 */
 	public DocumentLinkService getDocumentLinkService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get policy component.
+	 *
+	 * @return the policy component
+	 */
 	public PolicyComponent getPolicyComponent() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Write external.
+	 *
+	 * @param out the out
+	 */
 	public void writeExternal(ObjectOutput out) throws IOException {
 		out.writeObject(namespaceService);
 		out.writeObject(mimetypeService);
@@ -537,6 +931,11 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 	}
 
 	@Override
+	/**
+	 * Read external.
+	 *
+	 * @param in the in
+	 */
 	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
 		namespaceService = (NamespaceService) in.readObject();
 		mimetypeService = (MimetypeService) in.readObject();
@@ -561,42 +960,92 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		versionService = (VersionService) in.readObject();
 	}
 
+	/**
+	 * Set authentication service.
+	 *
+	 * @param authenticationService the authentication service
+	 */
 	public void setAuthenticationService(MutableAuthenticationService authenticationService) {
 		this.authenticationService = authenticationService;
 	}
 
+	/**
+	 * Set transaction service.
+	 *
+	 * @param transactionService the transaction service
+	 */
 	public void setTransactionService(TransactionService transactionService) {
 		this.transactionService = transactionService;
 	}
 
+	/**
+	 * Set dictionary service.
+	 *
+	 * @param dictionaryService the dictionary service
+	 */
 	public void setDictionaryService(DictionaryService dictionaryService) {
 		this.dictionaryService = dictionaryService;
 	}
 
+	/**
+	 * Set version service.
+	 *
+	 * @param versionService the version service
+	 */
 	public void setVersionService(VersionService versionService) {
 		this.versionService = versionService;
 	}
 
+	/**
+	 * Set copy service.
+	 *
+	 * @param copyService the copy service
+	 */
 	public void setCopyService(CopyService copyService) {
 		this.copyService = copyService;
 	}
 
+	/**
+	 * Set check out check in service.
+	 *
+	 * @param checkOutCheckInService the check out check in service
+	 */
 	public void setCheckOutCheckInService(CheckOutCheckInService checkOutCheckInService) {
 		this.checkOutCheckInService = checkOutCheckInService;
 	}
 
+	/**
+	 * Set site service.
+	 *
+	 * @param siteService the site service
+	 */
 	public void setSiteService(SiteService siteService) {
 		this.siteService = siteService;
 	}
 
+	/**
+	 * Set person service.
+	 *
+	 * @param personService the person service
+	 */
 	public void setPersonService(PersonService personService) {
 		this.personService = personService;
 	}
 
+	/**
+	 * Set authority service.
+	 *
+	 * @param authorityService the authority service
+	 */
 	public void setAuthorityService(AuthorityService authorityService) {
 		this.authorityService = authorityService;
 	}
 
+	/**
+	 * Set action service.
+	 *
+	 * @param actionService the action service
+	 */
 	public void setActionService(ActionService actionService) {
 		this.actionService = actionService;
 	}

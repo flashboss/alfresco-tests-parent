@@ -41,16 +41,23 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class Credentials {
 
+	/** The id otp. */
 	protected int idOtp;
+	/** The otp. */
 	protected String otp;
+	/** The password. */
 	protected String password;
+	/** The security code. */
 	protected String securityCode;
+	/** The session key. */
 	protected String sessionKey;
+	/** The username. */
 	protected String username;
 
 	/**
 	 * Recupera il valore della proprietà idOtp.
 	 * 
+	 * @return the result
 	 */
 	public int getIdOtp() {
 		return idOtp;
@@ -59,6 +66,7 @@ public class Credentials {
 	/**
 	 * Imposta il valore della proprietà idOtp.
 	 * 
+	 * @param value the value
 	 */
 	public void setIdOtp(int value) {
 		this.idOtp = value;

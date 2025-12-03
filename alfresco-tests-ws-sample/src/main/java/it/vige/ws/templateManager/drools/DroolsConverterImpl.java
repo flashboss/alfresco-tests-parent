@@ -40,15 +40,29 @@ public class DroolsConverterImpl {
 
 	Logger logger = Logger.getLogger("FILE2");
 
+	 * @param hh:mm:ss" the hh:mm:ss"
+	/** The date format. */
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	/** The converted date format. */
 	private DateFormat convertedDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	/** The json map. */
 	private Map<String, String> jsonMap;
 
+	/**
+	 * Replace.
+	 *
+	 * @param r the r
+	 * @param templateField the template field
+	 * @param jsonField the json field
+	 */
 	public void replace(XWPFRun r, String templateField, String jsonField) {
+
+	/** The run text. */
 		String runText = r.getText(0);
 
 		if (runText != null && runText.contains(templateField)) {
 
+			/** The value. */
 			String value = jsonMap.get(jsonField);
 
 			if (value != null) {
@@ -57,8 +71,10 @@ public class DroolsConverterImpl {
 				Pattern pattern = Pattern.compile(">(\\d\\d)}$");
 				Matcher m = pattern.matcher(templateField);
 
+				/** The padded value. */
 				String paddedValue = value;
 				if (m.find()) {
+					/** The l string. */
 					String lString = m.group(1);
 
 					int length = lString != null ? Integer.valueOf(lString) : -1;
@@ -67,21 +83,33 @@ public class DroolsConverterImpl {
 					}
 				}
 
+				/** The new text. */
 				String newText = runText.replace(templateField, paddedValue);
 				r.setText(newText, 0);
 			}
 		}
 	}
 
+	/**
+	 * Replace date.
+	 *
+	 * @param r the r
+	 * @param templateField the template field
+	 * @param jsonField the json field
+	 */
 	public void replaceDate(XWPFRun r, String templateField, String jsonField) {
+
+	/** The run text. */
 		String runText = r.getText(0);
 		if (runText != null && runText.contains(templateField)) {
 
+			/** The value. */
 			String value = jsonMap.get(jsonField);
 			if (value != null) {
 				String newText;
 				try {
 					Date dateValue = dateFormat.parse(value);
+					/** The fdate. */
 					String fdate = convertedDateFormat.format(dateValue);
 					newText = runText.replace(templateField, fdate);
 				} catch (ParseException e) {
@@ -93,10 +121,20 @@ public class DroolsConverterImpl {
 		}
 	}
 
+	/**
+	 * Replace currency.
+	 *
+	 * @param r the r
+	 * @param templateField the template field
+	 * @param jsonField the json field
+	 */
 	public void replaceCurrency(XWPFRun r, String templateField, String jsonField) {
+
+	/** The run text. */
 		String runText = r.getText(0);
 		if (runText != null && runText.contains(templateField)) {
 
+			/** The value. */
 			String value = jsonMap.get(jsonField);
 			if (value != null) {
 				String newText;
@@ -104,11 +142,13 @@ public class DroolsConverterImpl {
 					BigDecimal bdValue = new BigDecimal(value);
 
 					Locale locale = new Locale("it", "IT");
+					/** The pattern. */
 					String pattern = "€ ###,###,##0.00";
 
 					DecimalFormat decimalFormat = (DecimalFormat) NumberFormat.getNumberInstance(locale);
 					decimalFormat.applyPattern(pattern);
 
+					/** The f valuta. */
 					String fValuta = decimalFormat.format(bdValue);
 					newText = runText.replace(templateField, fValuta);
 				} catch (IllegalArgumentException e) {
@@ -121,20 +161,35 @@ public class DroolsConverterImpl {
 		}
 	}
 
+	/**
+	 * Replace multivalue.
+	 *
+	 * @param r the r
+	 * @param templateField the template field
+	 * @param jsonField the json field
+	 */
 	public void replaceMultivalue(XWPFRun r, String templateField, String jsonField) {
+
+	/** The run text. */
 		String runText = r.getText(0);
+
+	/** The value. */
 		String value = jsonMap.get(jsonField);
 
 		if (value != null && runText.length() > 0) {
 
+			/** The template key. */
 			String templateKey = templateField.substring(2, templateField.length() - 1);
 
 			if (runText != null && runText.contains(templateField)) {
 
+				/** The new text step1. */
 				String newTextStep1 = runText.replaceAll("\\$\\{" + templateKey + "\\|\\*\\}", "X");
 
+				/** The new text step2. */
 				String newTextStep2 = newTextStep1.replaceAll("\\$\\{" + templateKey + "\\|" + value + "\\}", "X");
 
+				/** The new text final. */
 				String newTextFinal = newTextStep2.replaceAll("\\$\\{" + templateKey + "\\|\\w{1,10}\\}", " ");
 
 				r.setText(newTextFinal, 0);
@@ -143,7 +198,15 @@ public class DroolsConverterImpl {
 		}
 	}
 
+	/**
+	 * Check if continue.
+	 *
+	 * @param r the r
+	 * @return the boolean
+	 */
 	public boolean checkIfContinue(XWPFRun r) {
+
+	/** The run text. */
 		String runText = r.getText(0);
 		return runText != null && runText.contains("${");
 	}
