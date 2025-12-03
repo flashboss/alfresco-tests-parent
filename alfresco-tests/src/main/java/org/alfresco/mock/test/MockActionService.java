@@ -24,10 +24,27 @@ import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
+/**
+ * Mock implementation of the MockActionService class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockActionService implements ActionService, RuntimeActionService, Serializable {
 
 	@Autowired
 	private ApplicationContext appContext;
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public ActionDefinition getActionDefinition(String name) {
@@ -35,11 +52,29 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public List<ActionDefinition> getActionDefinitions() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<ActionDefinition> getActionDefinitions(NodeRef nodeRef) {
@@ -47,11 +82,29 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ActionConditionDefinition getActionConditionDefinition(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<ActionConditionDefinition> getActionConditionDefinitions() {
@@ -59,11 +112,29 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ParameterConstraint getParameterConstraint(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<ParameterConstraint> getParameterConstraints() {
@@ -71,15 +142,42 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Action createAction(String name) {
 		return new MockAction(name);
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Action createAction(String name, Map<String, Serializable> params) {
 		return new MockAction(name, params);
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public CompositeAction createCompositeAction() {
@@ -87,11 +185,29 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ActionCondition createActionCondition(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public ActionCondition createActionCondition(String name, Map<String, Serializable> params) {
@@ -99,11 +215,29 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public CompositeActionCondition createCompositeActionCondition() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void executeAction(Action action, NodeRef actionedUponNodeRef) {
@@ -117,11 +251,29 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		}
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void executeAction(Action action, NodeRef actionedUponNodeRef, boolean checkConditions) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void executeAction(Action action, NodeRef actionedUponNodeRef, boolean checkConditions,
@@ -129,11 +281,29 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		executeAction(action, actionedUponNodeRef);
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean evaluateAction(Action action, NodeRef actionedUponNodeRef) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean evaluateActionCondition(ActionCondition condition, NodeRef actionedUponNodeRef) {
@@ -141,11 +311,29 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void saveAction(NodeRef nodeRef, Action action) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<Action> getActions(NodeRef nodeRef) {
@@ -153,11 +341,29 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Action getAction(NodeRef nodeRef, String actionId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void removeAction(NodeRef nodeRef, Action action) {
@@ -165,11 +371,29 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void removeAllActions(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void postCommit() {
@@ -177,35 +401,98 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		throw new UnsupportedOperationException("Unimplemented method 'postCommit'");
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void registerActionConditionEvaluator(ActionConditionEvaluator actionConditionEvaluator) {
 		// TODO Auto-generated method stub
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void registerActionExecuter(ActionExecuter actionExecuter) {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void registerParameterConstraint(ParameterConstraint parameterConstraint) {
 		// TODO Auto-generated method stub
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Action createAction(NodeRef actionNodeRef) {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public NodeRef createActionNodeRef(Action action, NodeRef parentNodeRef, QName assocTypeName, QName assocName) {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void saveActionImpl(NodeRef actionNodeRef, Action action) {
 		// TODO Auto-generated method stub
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void executeActionImpl(Action action, NodeRef actionedUponNodeRef, boolean checkConditions,
@@ -213,15 +500,42 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void directActionExecution(Action action, NodeRef actionedUponNodeRef) {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean onLogException(Action action, Log logger, Throwable t, String message) {
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void verifyActionAccessRestrictions(Action action) {

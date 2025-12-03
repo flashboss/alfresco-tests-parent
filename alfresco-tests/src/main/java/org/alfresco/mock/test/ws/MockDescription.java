@@ -12,14 +12,40 @@ import org.springframework.extensions.webscripts.NegotiatedFormat;
 import org.springframework.extensions.webscripts.Path;
 import org.springframework.extensions.webscripts.TypeDescription;
 
+/**
+ * Mock implementation of the MockDescription class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockDescription implements Description {
 
 	private RequiredCache requiredCache = new MockRequiredCache();
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getId() {
 		return "test";
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getShortName() {
@@ -27,11 +53,29 @@ public class MockDescription implements Description {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getStorePath() {
@@ -39,11 +83,29 @@ public class MockDescription implements Description {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getScriptPath() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Path getPackage() {
@@ -51,11 +113,29 @@ public class MockDescription implements Description {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getDescPath() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public InputStream getDescDocument() throws IOException {
@@ -63,11 +143,29 @@ public class MockDescription implements Description {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getKind() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Set<String> getFamilys() {
@@ -75,11 +173,29 @@ public class MockDescription implements Description {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public RequiredAuthentication getRequiredAuthentication() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getRunAs() {
@@ -87,11 +203,29 @@ public class MockDescription implements Description {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public RequiredTransaction getRequiredTransaction() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public RequiredTransactionParameters getRequiredTransactionParameters() {
@@ -99,10 +233,28 @@ public class MockDescription implements Description {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public RequiredCache getRequiredCache() {
 		return requiredCache;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getMethod() {
@@ -110,11 +262,29 @@ public class MockDescription implements Description {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String[] getURIs() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public FormatStyle getFormatStyle() {
@@ -122,11 +292,29 @@ public class MockDescription implements Description {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getDefaultFormat() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public NegotiatedFormat[] getNegotiatedFormats() {
@@ -134,11 +322,29 @@ public class MockDescription implements Description {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Map<String, Serializable> getExtensions() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Lifecycle getLifecycle() {
@@ -146,11 +352,29 @@ public class MockDescription implements Description {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean getMultipartProcessing() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void setMultipartProcessing(boolean multipartProcessing) {
@@ -158,17 +382,44 @@ public class MockDescription implements Description {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ArgumentTypeDescription[] getArguments() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public TypeDescription[] getRequestTypes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public TypeDescription[] getResponseTypes() {

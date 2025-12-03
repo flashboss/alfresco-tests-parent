@@ -11,6 +11,14 @@ import org.alfresco.service.cmr.dictionary.NamespaceDefinition;
 import org.alfresco.service.cmr.i18n.MessageLookup;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of the MockModelDefinition class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockModelDefinition implements ModelDefinition, Serializable {
 
 	private QName name;
@@ -19,10 +27,28 @@ public class MockModelDefinition implements ModelDefinition, Serializable {
 		this.name = name;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public QName getName() {
 		return name;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getDescription(MessageLookup messageLookup) {
@@ -30,11 +56,29 @@ public class MockModelDefinition implements ModelDefinition, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getAuthor() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Date getPublishedDate() {
@@ -42,11 +86,29 @@ public class MockModelDefinition implements ModelDefinition, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getVersion() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Collection<NamespaceDefinition> getNamespaces() {
@@ -54,11 +116,29 @@ public class MockModelDefinition implements ModelDefinition, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean isNamespaceDefined(String uri) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Collection<NamespaceDefinition> getImportedNamespaces() {
@@ -66,11 +146,29 @@ public class MockModelDefinition implements ModelDefinition, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean isNamespaceImported(String uri) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void toXML(XMLBindingType bindingType, OutputStream xml) {
@@ -78,11 +176,29 @@ public class MockModelDefinition implements ModelDefinition, Serializable {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public long getChecksum(XMLBindingType bindingType) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public DictionaryDAO getDictionaryDAO() {

@@ -16,6 +16,14 @@ import org.alfresco.service.cmr.dictionary.TypeDefinition;
 import org.alfresco.service.cmr.i18n.MessageLookup;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of the MockTypeDefinition class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockTypeDefinition implements TypeDefinition {
 
 	private QName defaultAspect;
@@ -24,11 +32,29 @@ public class MockTypeDefinition implements TypeDefinition {
 		this.defaultAspect = defaultAspect;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ModelDefinition getModel() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public QName getName() {
@@ -36,11 +62,29 @@ public class MockTypeDefinition implements TypeDefinition {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getTitle() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getDescription() {
@@ -48,11 +92,29 @@ public class MockTypeDefinition implements TypeDefinition {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getTitle(MessageLookup messageLookup) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getDescription(MessageLookup messageLookup) {
@@ -60,11 +122,29 @@ public class MockTypeDefinition implements TypeDefinition {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public QName getParentName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean isAspect() {
@@ -72,11 +152,29 @@ public class MockTypeDefinition implements TypeDefinition {
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Boolean getArchive() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Boolean getIncludedInSuperTypeQuery() {
@@ -84,11 +182,29 @@ public class MockTypeDefinition implements TypeDefinition {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Map<QName, PropertyDefinition> getProperties() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Map<QName, Serializable> getDefaultValues() {
@@ -96,11 +212,29 @@ public class MockTypeDefinition implements TypeDefinition {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Map<QName, AssociationDefinition> getAssociations() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean isContainer() {
@@ -108,16 +242,43 @@ public class MockTypeDefinition implements TypeDefinition {
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Map<QName, ChildAssociationDefinition> getChildAssociations() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public List<AspectDefinition> getDefaultAspects() {
 		return getDefaultAspects(true);
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Set<QName> getDefaultAspectNames() {
@@ -125,12 +286,30 @@ public class MockTypeDefinition implements TypeDefinition {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public List<AspectDefinition> getDefaultAspects(boolean inherited) {
 		List<AspectDefinition> aspectDefinitions = new ArrayList<AspectDefinition>();
 		aspectDefinitions.add(new MockAspectDefinition(defaultAspect));
 		return aspectDefinitions;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public ClassDefinition getParentClassDefinition() {

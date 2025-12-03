@@ -28,6 +28,14 @@ import org.alfresco.service.namespace.QName;
 import org.alfresco.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of the MockAuthorityService class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockAuthorityService implements AuthorityService, Serializable {
 
 	private final static String GROUP_PREFIX = "GROUP_";
@@ -37,11 +45,29 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 
 	private Map<String, NodeRef> authorityNodes = new HashMap<String, NodeRef>();
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean hasAdminAuthority() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean isAdminAuthority(String authorityName) {
@@ -49,11 +75,29 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean hasGuestAuthority() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean isGuestAuthority(String authorityName) {
@@ -61,11 +105,29 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public long countUsers() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public long countGroups() {
@@ -73,20 +135,56 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		return 0;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Set<String> getAuthorities() {
 		return authorityNodes.keySet();
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Set<String> getAuthoritiesForUser(String userName) {
 		return getAuthorities();
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Set<String> getAllAuthorities(AuthorityType type) {
 		return getAuthorities();
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public PagingResults<AuthorityInfo> getAuthoritiesInfo(AuthorityType type, String zoneName,
@@ -94,6 +192,15 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public PagingResults<String> getAuthorities(AuthorityType type, String zoneName, String displayNameFilter,
@@ -104,15 +211,42 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		return authorities;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Set<String> getAllRootAuthorities(AuthorityType type) {
 		return getAuthorities();
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String createAuthority(AuthorityType type, String shortName) {
 		return createAuthority(type, shortName, null, null);
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String createAuthority(AuthorityType type, String shortName, String authorityDisplayName,
@@ -127,10 +261,28 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		return name;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void addAuthority(String parentName, String childName) {
 		createAuthority(null, childName);
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void addAuthority(Collection<String> parentNames, String childName) {
@@ -139,11 +291,29 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 				addAuthority(parentName, childName);
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void removeAuthority(String parentName, String childName) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void deleteAuthority(String name) {
@@ -151,11 +321,29 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void deleteAuthority(String name, boolean cascade) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Set<String> getContainedAuthorities(AuthorityType type, String name, boolean immediate) {
@@ -163,11 +351,29 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Set<String> getContainingAuthorities(AuthorityType type, String name, boolean immediate) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Set<String> getContainingAuthoritiesInZone(AuthorityType type, String name, String zoneName,
@@ -176,20 +382,56 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getShortName(String name) {
 		return name.replaceAll(GROUP_PREFIX, "");
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getName(AuthorityType type, String shortName) {
 		return GROUP_PREFIX + shortName;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean authorityExists(String name) {
 		return authorityNodes.get(name) != null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getAuthorityDisplayName(String name) {
@@ -197,16 +439,43 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void setAuthorityDisplayName(String authorityName, String authorityDisplayName) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public NodeRef getAuthorityNodeRef(String name) {
 		return authorityNodes.get(name);
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public NodeRef getOrCreateZone(String zoneName) {
@@ -214,11 +483,29 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public NodeRef getZone(String zoneName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Set<String> getAuthorityZones(String name) {
@@ -226,11 +513,29 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Set<String> getAllAuthoritiesInZone(String zoneName, AuthorityType type) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Set<String> getAllRootAuthoritiesInZone(String zoneName, AuthorityType type) {
@@ -238,11 +543,29 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void addAuthorityToZones(String authorityName, Set<String> zones) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void removeAuthorityFromZones(String authorityName, Set<String> zones) {
@@ -250,11 +573,29 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Set<String> getDefaultZones() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Set<String> findAuthorities(AuthorityType type, String parentAuthority, boolean immediate,

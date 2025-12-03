@@ -9,28 +9,16 @@ import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.Principal;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import jakarta.servlet.AsyncContext;
-import jakarta.servlet.DispatcherType;
-import jakarta.servlet.ReadListener;
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletConnection;
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletInputStream;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import jakarta.servlet.http.HttpUpgradeHandler;
-import jakarta.servlet.http.Part;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletInputStream;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.alfresco.model.ContentModel;
 import org.alfresco.service.ServiceRegistry;
@@ -39,6 +27,14 @@ import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
 import org.apache.commons.io.FileUtils;
 
+/**
+ * Mock implementation of the MockHttpServletRequest class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockHttpServletRequest implements HttpServletRequest {
 
 	private byte[] buffer = new byte[0];
@@ -48,6 +44,15 @@ public class MockHttpServletRequest implements HttpServletRequest {
 	private ServletInputStream servletInputStream = new ServletInputStream() {
 
 		int counter;
+
+		/**
+
+
+		 * {@inheritDoc}
+
+
+		 */
+
 
 		@Override
 		public int read() throws IOException {
@@ -60,24 +65,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 				result = buffer[counter];
 			counter++;
 			return result;
-		}
-
-		@Override
-		public boolean isFinished() {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		@Override
-		public boolean isReady() {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		@Override
-		public void setReadListener(ReadListener readListener) {
-			// TODO Auto-generated method stub
-			
 		}
 	};
 
@@ -126,11 +113,44 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		this.fields = fields;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Object getAttribute(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
+	@Override
+	public Enumeration<?> getAttributeNames() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getCharacterEncoding() {
@@ -138,11 +158,29 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void setCharacterEncoding(String env) throws UnsupportedEncodingException {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public int getContentLength() {
@@ -150,15 +188,42 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return 0;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getContentType() {
 		return "multipart/form-data=null, boundary=----WebKitFormBoundaryFUwwPQgv8AD2KZvR";
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ServletInputStream getInputStream() throws IOException {
 		return servletInputStream;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getParameter(String name) {
@@ -172,11 +237,59 @@ public class MockHttpServletRequest implements HttpServletRequest {
 			return value + "";
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
+	@Override
+	public Enumeration<?> getParameterNames() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String[] getParameterValues(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
+	@Override
+	public Map<?, ?> getParameterMap() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getProtocol() {
@@ -184,11 +297,29 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getScheme() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getServerName() {
@@ -196,11 +327,29 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public int getServerPort() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public BufferedReader getReader() throws IOException {
@@ -208,11 +357,29 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getRemoteAddr() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getRemoteHost() {
@@ -220,11 +387,29 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void setAttribute(String name, Object o) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void removeAttribute(String name) {
@@ -232,11 +417,44 @@ public class MockHttpServletRequest implements HttpServletRequest {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Locale getLocale() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
+	@Override
+	public Enumeration<?> getLocales() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean isSecure() {
@@ -244,11 +462,44 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public RequestDispatcher getRequestDispatcher(String path) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
+	@Override
+	public String getRealPath(String path) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public int getRemotePort() {
@@ -256,11 +507,29 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return 0;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getLocalName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getLocalAddr() {
@@ -268,11 +537,29 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public int getLocalPort() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getAuthType() {
@@ -280,11 +567,29 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Cookie[] getCookies() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public long getDateHeader(String name) {
@@ -292,11 +597,59 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return 0;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getHeader(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
+	@Override
+	public Enumeration<?> getHeaders(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
+	@Override
+	public Enumeration<?> getHeaderNames() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public int getIntHeader(String name) {
@@ -304,11 +657,29 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return 0;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getMethod() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getPathInfo() {
@@ -316,11 +687,29 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getPathTranslated() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getContextPath() {
@@ -328,11 +717,29 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getQueryString() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getRemoteUser() {
@@ -340,11 +747,29 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean isUserInRole(String role) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Principal getUserPrincipal() {
@@ -352,11 +777,29 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getRequestedSessionId() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getRequestURI() {
@@ -364,11 +807,29 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public StringBuffer getRequestURL() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getServletPath() {
@@ -376,11 +837,29 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public HttpSession getSession(boolean create) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public HttpSession getSession() {
@@ -388,11 +867,29 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean isRequestedSessionIdValid() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean isRequestedSessionIdFromCookie() {
@@ -400,8 +897,32 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean isRequestedSessionIdFromURL() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
+	@Override
+	public boolean isRequestedSessionIdFromUrl() {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -426,151 +947,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 			offset += array.length;
 		}
 		return result;
-	}
-
-	@Override
-	public long getContentLengthLong() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public ServletContext getServletContext() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public AsyncContext startAsync() throws IllegalStateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public AsyncContext startAsync(ServletRequest servletRequest, ServletResponse servletResponse)
-			throws IllegalStateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean isAsyncStarted() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isAsyncSupported() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public AsyncContext getAsyncContext() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public DispatcherType getDispatcherType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getRequestId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getProtocolRequestId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ServletConnection getServletConnection() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String changeSessionId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean authenticate(HttpServletResponse response) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void login(String username, String password) throws ServletException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void logout() throws ServletException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Collection<Part> getParts() throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Part getPart(String name) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public <T extends HttpUpgradeHandler> T upgrade(Class<T> handlerClass) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Enumeration<String> getAttributeNames() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Enumeration<String> getParameterNames() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Map<String, String[]> getParameterMap() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Enumeration<Locale> getLocales() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Enumeration<String> getHeaders(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Enumeration<String> getHeaderNames() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

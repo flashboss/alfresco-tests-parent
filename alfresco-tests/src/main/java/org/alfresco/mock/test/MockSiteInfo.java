@@ -9,6 +9,14 @@ import org.alfresco.service.cmr.site.SiteInfo;
 import org.alfresco.service.cmr.site.SiteVisibility;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of the MockSiteInfo class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockSiteInfo implements SiteInfo, Serializable {
 
 	private NodeRef nodeRef;
@@ -19,10 +27,28 @@ public class MockSiteInfo implements SiteInfo, Serializable {
 		this.shortName = shortName;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public NodeRef getNodeRef() {
 		return nodeRef;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getSitePreset() {
@@ -30,10 +56,28 @@ public class MockSiteInfo implements SiteInfo, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getShortName() {
 		return shortName;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getTitle() {
@@ -41,11 +85,29 @@ public class MockSiteInfo implements SiteInfo, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void setTitle(String title) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getDescription() {
@@ -53,11 +115,29 @@ public class MockSiteInfo implements SiteInfo, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void setDescription(String description) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void setIsPublic(boolean isPublic) {
@@ -65,11 +145,29 @@ public class MockSiteInfo implements SiteInfo, Serializable {
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean getIsPublic() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public SiteVisibility getVisibility() {
@@ -77,11 +175,29 @@ public class MockSiteInfo implements SiteInfo, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void setVisibility(SiteVisibility visibility) {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Map<QName, Serializable> getCustomProperties() {
@@ -89,11 +205,29 @@ public class MockSiteInfo implements SiteInfo, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Serializable getCustomProperty(QName name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Date getCreatedDate() {
@@ -101,17 +235,44 @@ public class MockSiteInfo implements SiteInfo, Serializable {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void setCreatedDate(Date createdDate) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Date getLastModifiedDate() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void setLastModifiedDate(Date lastModifiedDate) {

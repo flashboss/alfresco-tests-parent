@@ -15,6 +15,14 @@ import org.springframework.extensions.webscripts.WebScript;
 import org.springframework.extensions.webscripts.WebScriptRequest;
 import org.springframework.extensions.webscripts.servlet.FormData;
 
+/**
+ * Mock implementation of the MockWebScriptRequest class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockWebScriptRequest implements WebScriptRequest {
 
 	private String format;
@@ -39,10 +47,28 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		headerNames = new String[0];
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Match getServiceMatch() {
 		return serviceMatch;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getServerPath() {
@@ -50,11 +76,29 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getContextPath() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getServiceContextPath() {
@@ -62,11 +106,29 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getServicePath() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getURL() {
@@ -74,11 +136,29 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getPathInfo() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getQueryString() {
@@ -86,15 +166,42 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String[] getParameterNames() {
 		return parameterNames;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getParameter(String name) {
 		return httpServletRequest.getParameter(name);
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String[] getParameterValues(String name) {
@@ -102,10 +209,28 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String[] getHeaderNames() {
 		return headerNames;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getHeader(String name) {
@@ -113,11 +238,29 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String[] getHeaderValues(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getExtensionPath() {
@@ -125,11 +268,29 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getContentType() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Content getContent() {
@@ -137,10 +298,28 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Object parseContent() {
 		return formData;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public boolean isGuest() {
@@ -148,10 +327,28 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		return false;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getFormat() {
 		return format;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public FormatStyle getFormatStyle() {
@@ -159,11 +356,29 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getAgent() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String getJSONCallback() {
@@ -171,11 +386,29 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean forceSuccessStatus() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Runtime getRuntime() {

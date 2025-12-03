@@ -11,6 +11,14 @@ import org.alfresco.service.cmr.repository.NodeService;
 
 import it.vige.common.SignConstants;
 
+/**
+ * Mock implementation of the SignService class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class SignService {
 
 	private ContentService contentService;
