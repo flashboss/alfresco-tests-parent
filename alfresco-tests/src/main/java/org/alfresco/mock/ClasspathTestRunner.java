@@ -6,6 +6,14 @@ import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.InitializationError;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+/**
+ * Mock implementation of the ClasspathTestRunner class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class ClasspathTestRunner extends SpringJUnit4ClassRunner {
 
   static ClassLoader customClassLoader;
@@ -29,6 +37,12 @@ public class ClasspathTestRunner extends SpringJUnit4ClassRunner {
   }
 
   // Runs junit tests in a separate thread using the custom class loader
+  /**
+
+   * {@inheritDoc}
+
+   */
+
   @Override
   public void run(final RunNotifier notifier) {
     Runnable runnable = () -> {
