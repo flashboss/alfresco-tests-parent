@@ -16,6 +16,7 @@ import javax.xml.namespace.QName;
  * of schema type definitions, element declarations and model groups. Factory
  * methods for each of these are provided in this class.
  * 
+ * @author vige
  */
 @XmlRegistry
 public class ObjectFactory {

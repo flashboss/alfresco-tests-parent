@@ -11,8 +11,15 @@ import java.util.List;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+/**
+ * Mock implementation of the SignIntegration web service interface.
+ * Provides mock implementations for digital signature operations in test scenarios.
+ * 
+ * @author vige
+ */
 public class MockSignIntegration implements SignIntegration {
 
+	/** Date format for parsing dates in mock operations. */
 	private final static DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
 	@Override

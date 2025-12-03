@@ -10,10 +10,12 @@ import javax.xml.bind.annotation.XmlType;
  * <p>
  * Classe Java per signResponse complex type.
  * 
+ * @author vige
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
  * 
+ * @author vige
  * <pre>
  * &lt;complexType name="signResponse"&gt;
  *   &lt;complexContent&gt;
@@ -26,7 +28,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  * 
+ * @author vige
  * 
+ * @author vige
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signResponse", propOrder = { "_return" })
