@@ -1,12 +1,11 @@
 package org.alfresco.mock.test;
 
-import com.google.gdata.util.common.base.Charsets;
-import com.google.gdata.util.common.io.CharStreams;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.io.Serializable;
+
 import org.alfresco.model.ContentModel;
 import org.alfresco.repo.importer.ACPImportPackageHandler;
 import org.alfresco.service.cmr.repository.ContentService;
@@ -21,6 +20,9 @@ import org.alfresco.service.cmr.view.Location;
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.google.common.base.Charsets;
+import com.google.common.io.CharStreams;
 
 /**
  * Mock implementation of the MockImporterService class for testing purposes. This class provides a

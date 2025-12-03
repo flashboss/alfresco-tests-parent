@@ -5,8 +5,6 @@ import static org.alfresco.service.cmr.repository.StoreRef.PROTOCOL_WORKSPACE;
 import static org.alfresco.service.cmr.repository.StoreRef.STORE_REF_ARCHIVE_SPACESSTORE;
 import static org.alfresco.service.cmr.repository.StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
 
-import com.tradeshift.test.remote.Remote;
-import com.tradeshift.test.remote.RemoteTestRunner;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,10 +12,9 @@ import java.io.Serializable;
 import java.security.MessageDigest;
 import java.util.Date;
 import java.util.Map;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.Unmarshaller;
+
 import javax.xml.transform.stream.StreamSource;
+
 import org.alfresco.mock.ClasspathTestRunner;
 import org.alfresco.mock.NodeUtils;
 import org.alfresco.mock.ZipUtils;
@@ -38,6 +35,13 @@ import org.apache.commons.io.IOUtils;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+
+import com.tradeshift.test.remote.Remote;
+import com.tradeshift.test.remote.RemoteTestRunner;
+
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.Unmarshaller;
 
 /**
  * Abstract base class for form-based tests. This class provides common functionality for testing
