@@ -30,6 +30,12 @@ import org.alfresco.util.ISO9075;
 import org.alfresco.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of the Alfresco SearchService for testing purposes.
+ * Provides in-memory search capabilities using XPATH and FTS/Lucene query languages.
+ *
+ * @author vige
+ */
 public class MockSearchService implements SearchService, Serializable {
 
 	@Autowired
@@ -132,22 +138,45 @@ public class MockSearchService implements SearchService, Serializable {
 		return false;
 	}
 
+	/**
+	 * Gets the node service.
+	 *
+	 * @return the node service
+	 */
 	public MockNodeService getNodeService() {
 		return (MockNodeService) nodeService;
 	}
 
+	/**
+	 * Sets the node service.
+	 *
+	 * @param nodeService the node service to set
+	 */
 	public void setNodeService(MockNodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+	/**
+	 * Sets the namespace service.
+	 *
+	 * @param namespaceService the namespace service to set
+	 */
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
 	}
 
+	/**
+	 * Mock implementation of ResultSet for testing purposes.
+	 */
 	public class MockResultSet implements ResultSet {
 
 		private List<ResultSetRow> rows;
 
+		/**
+		 * Constructs a new MockResultSet.
+		 *
+		 * @param rows the result set rows
+		 */
 		public MockResultSet(List<ResultSetRow> rows) {
 			this.rows = rows;
 		}
@@ -262,10 +291,18 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 	}
 
+	/**
+	 * Mock implementation of ResultSetRow for testing purposes.
+	 */
 	public class MockResultSetRow implements ResultSetRow {
 
 		private NodeRef nodeRef;
 
+		/**
+		 * Constructs a new MockResultSetRow.
+		 *
+		 * @param nodeRef the node reference
+		 */
 		public MockResultSetRow(NodeRef nodeRef) {
 			this.nodeRef = nodeRef;
 		}
@@ -589,45 +626,89 @@ public class MockSearchService implements SearchService, Serializable {
 		return result;
 	}
 
+	/**
+	 * Internal class representing a property filter for search queries.
+	 */
 	private class MockProperty {
 
 		private QName qname;
 		private String value;
 		private boolean toDelete;
 
+		/**
+		 * Constructs a new MockProperty.
+		 *
+		 * @param qname the property QName
+		 * @param value the property value
+		 * @param toDelete true if this is a negation filter
+		 */
 		public MockProperty(QName qname, String value, boolean toDelete) {
 			this.qname = qname;
 			this.value = value;
 			this.toDelete = toDelete;
 		}
 
+		/**
+		 * Gets the property QName.
+		 *
+		 * @return the qname
+		 */
 		public QName getQname() {
 			return qname;
 		}
 
+		/**
+		 * Gets the property value.
+		 *
+		 * @return the value
+		 */
 		public String getValue() {
 			return value;
 		}
 
+		/**
+		 * Checks if this is a negation filter.
+		 *
+		 * @return true if negation
+		 */
 		public boolean isToDelete() {
 			return toDelete;
 		}
 	}
 
+	/**
+	 * Internal class representing an aspect filter for search queries.
+	 */
 	private class MockAspect {
 
 		private QName qname;
 		private boolean toDelete;
 
+		/**
+		 * Constructs a new MockAspect.
+		 *
+		 * @param qname the aspect QName
+		 * @param toDelete true if this is a negation filter
+		 */
 		public MockAspect(QName qname, boolean toDelete) {
 			this.qname = qname;
 			this.toDelete = toDelete;
 		}
 
+		/**
+		 * Gets the aspect QName.
+		 *
+		 * @return the qname
+		 */
 		public QName getQname() {
 			return qname;
 		}
 
+		/**
+		 * Checks if this is a negation filter.
+		 *
+		 * @return true if negation
+		 */
 		public boolean isToDelete() {
 			return toDelete;
 		}
