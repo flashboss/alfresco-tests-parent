@@ -22,7 +22,8 @@ import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Mock implementation of MockRuleService for testing purposes.
+ * Mock implementation of RuleService for testing purposes.
+ * Provides in-memory storage for rules, rule types, and rule execution.
  *
  * @author vige
  */
@@ -30,52 +31,77 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		NodeServicePolicies.OnCreateChildAssociationPolicy, NodeServicePolicies.OnCreateNodePolicy,
 		NodeServicePolicies.OnUpdateNodePolicy, NodeServicePolicies.OnAddAspectPolicy, Serializable {
 
+	/** The action service for executing rule actions. */
 	@Autowired
 	private ActionService actionService;
 
-	// Storage for rules by folder nodeRef
+	/** Storage for rules indexed by folder nodeRef. */
 	private Map<NodeRef, List<Rule>> rulesByFolder = new HashMap<>();
 
-	// Storage for rule nodeRefs to rules
+	/** Storage for rules indexed by rule nodeRef. */
 	private Map<NodeRef, Rule> rulesByNodeRef = new HashMap<>();
 
-	// Storage for rule types
+	/** Storage for registered rule types. */
 	private Map<String, RuleType> ruleTypes = new HashMap<>();
 
-	// Global enabled state
+	/** Global enabled state for all rules. */
 	private boolean globallyEnabled = true;
 
-	// Per-folder enabled state
+	/** Set of folders with disabled rules. */
 	private Set<NodeRef> disabledFolders = new HashSet<>();
 
-	// Per-rule enabled state
+	/** Set of disabled rule nodeRefs. */
 	private Set<NodeRef> disabledRules = new HashSet<>();
 
-	// Per-rule-type enabled state
+	/** Set of disabled rule type names. */
 	private Set<String> disabledRuleTypes = new HashSet<>();
 
-	// Pending rules for execution
+	/** Pending rules waiting for execution. */
 	private Map<NodeRef, List<PendingRule>> pendingRules = new HashMap<>();
 
-	// Rule ownership mapping
+	/** Maps rules to their owning folder nodeRef. */
 	private Map<Rule, NodeRef> ruleOwnership = new HashMap<>();
+
+	/** Maps actions to their owning nodeRef. */
 	private Map<Action, NodeRef> actionOwnership = new HashMap<>();
+
+	/** Maps rule sets to their owning nodeRef. */
 	private Map<NodeRef, NodeRef> ruleSetOwnership = new HashMap<>();
 
-	// Rule set associations
+	/** Maps folders to their associated rule set. */
 	private Map<NodeRef, NodeRef> folderToRuleSet = new HashMap<>();
+
+	/** Maps rule sets to the folders that inherit them. */
 	private Map<NodeRef, List<NodeRef>> ruleSetToFolders = new HashMap<>();
 
-	// Rule to rule set mapping
+	/** Maps rules to their containing rule set. */
 	private Map<NodeRef, NodeRef> ruleToRuleSet = new HashMap<>();
 
+	/**
+	 * Internal class representing a pending rule awaiting execution.
+	 */
 	private static class PendingRule {
+		/** The actionable node reference. */
 		@SuppressWarnings("unused")
 		NodeRef actionableNodeRef;
+
+		/** The node being acted upon. */
 		NodeRef actionedUponNodeRef;
+
+		/** The rule to execute. */
 		Rule rule;
+
+		/** Whether to execute at end of transaction. */
 		boolean executeAtEnd;
 
+		/**
+		 * Constructs a new PendingRule.
+		 *
+		 * @param actionableNodeRef the actionable node reference
+		 * @param actionedUponNodeRef the node being acted upon
+		 * @param rule the rule to execute
+		 * @param executeAtEnd whether to execute at end of transaction
+		 */
 		PendingRule(NodeRef actionableNodeRef, NodeRef actionedUponNodeRef, Rule rule, boolean executeAtEnd) {
 			this.actionableNodeRef = actionableNodeRef;
 			this.actionedUponNodeRef = actionedUponNodeRef;
@@ -128,6 +154,12 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		}
 	}
 
+	/**
+	 * Checks if a rule is enabled.
+	 *
+	 * @param rule the rule to check
+	 * @return true if the rule is enabled, false otherwise
+	 */
 	private boolean isRuleEnabled(Rule rule) {
 		if (rule.getNodeRef() != null) {
 			return !disabledRules.contains(rule.getNodeRef());
@@ -275,6 +307,12 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return rules != null && !rules.isEmpty();
 	}
 
+	/**
+	 * Checks if a folder has non-inherited rules.
+	 *
+	 * @param nodeRef the folder node reference
+	 * @return true if the folder has non-inherited rules
+	 */
 	public boolean hasNonInheritedRules(NodeRef nodeRef) {
 		// In a simplified mock, we consider all rules as non-inherited
 		return hasRules(nodeRef);
@@ -319,11 +357,24 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return getRules(nodeRef).size();
 	}
 
+	/**
+	 * Gets the nodes supplying rule sets to a folder.
+	 *
+	 * @param nodeRef the folder node reference
+	 * @return list of nodes supplying rule sets
+	 */
 	public List<NodeRef> getNodesSupplyingRuleSets(NodeRef nodeRef) {
 		// Mock implementation - return empty list
 		return new ArrayList<>();
 	}
 
+	/**
+	 * Gets the folders inheriting a rule set.
+	 *
+	 * @param ruleSet the rule set node reference
+	 * @param maxFoldersToReturn maximum number of folders to return
+	 * @return list of folders inheriting the rule set
+	 */
 	public List<NodeRef> getFoldersInheritingRuleSet(NodeRef ruleSet, int maxFoldersToReturn) {
 		List<NodeRef> folders = ruleSetToFolders.get(ruleSet);
 		if (folders == null) {
@@ -335,6 +386,13 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return new ArrayList<>(folders);
 	}
 
+	/**
+	 * Gets the folders linking to a rule set.
+	 *
+	 * @param ruleSet the rule set node reference
+	 * @param maxFoldersToReturn maximum number of folders to return
+	 * @return list of folders linking to the rule set
+	 */
 	public List<NodeRef> getFoldersLinkingToRuleSet(NodeRef ruleSet, int maxFoldersToReturn) {
 		// Similar to getFoldersInheritingRuleSet for mock
 		return getFoldersInheritingRuleSet(ruleSet, maxFoldersToReturn);
@@ -345,6 +403,12 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return rulesByNodeRef.get(nodeRef);
 	}
 
+	/**
+	 * Saves a rule to a folder.
+	 *
+	 * @param nodeRef the folder node reference
+	 * @param rule the rule to save
+	 */
 	public void saveRule(NodeRef nodeRef, Rule rule) {
 		if (nodeRef == null || rule == null) {
 			return;
@@ -491,6 +555,12 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return actionOwnership.get(action);
 	}
 
+	/**
+	 * Gets the owning node for a rule set.
+	 *
+	 * @param ruleSet the rule set node reference
+	 * @return the owning node reference
+	 */
 	public NodeRef getOwningNodeRef(NodeRef ruleSet) {
 		return ruleSetOwnership.get(ruleSet);
 	}
@@ -505,6 +575,12 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return folderToRuleSet.get(nodeRef);
 	}
 
+	/**
+	 * Gets the folders linked from a rule node.
+	 *
+	 * @param nodeRef the rule node reference
+	 * @return list of linked folder node references
+	 */
 	public List<NodeRef> getLinkedFromRuleNodes(NodeRef nodeRef) {
 		List<NodeRef> folders = ruleSetToFolders.get(nodeRef);
 		if (folders == null) {
@@ -513,20 +589,46 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return new ArrayList<>(folders);
 	}
 
+	/**
+	 * Gets the rule set node for a folder.
+	 *
+	 * @param folderNodeRef the folder node reference
+	 * @return the rule set node reference
+	 */
 	public NodeRef getRuleSetNode(NodeRef folderNodeRef) {
 		return folderToRuleSet.get(folderNodeRef);
 	}
 
+	/**
+	 * Checks if a rule set is associated with a folder.
+	 *
+	 * @param ruleSetNodeRef the rule set node reference
+	 * @param folderNodeRef the folder node reference
+	 * @return true if the rule set is associated with the folder
+	 */
 	public boolean isRuleSetAssociatedWithFolder(NodeRef ruleSetNodeRef, NodeRef folderNodeRef) {
 		NodeRef associatedRuleSet = folderToRuleSet.get(folderNodeRef);
 		return ruleSetNodeRef != null && ruleSetNodeRef.equals(associatedRuleSet);
 	}
 
+	/**
+	 * Checks if a rule is associated with a rule set.
+	 *
+	 * @param ruleNodeRef the rule node reference
+	 * @param ruleSetNodeRef the rule set node reference
+	 * @return true if the rule is associated with the rule set
+	 */
 	public boolean isRuleAssociatedWithRuleSet(NodeRef ruleNodeRef, NodeRef ruleSetNodeRef) {
 		NodeRef associatedRuleSet = ruleToRuleSet.get(ruleNodeRef);
 		return ruleSetNodeRef != null && ruleSetNodeRef.equals(associatedRuleSet);
 	}
 
+	/**
+	 * Checks if a rule set is shared by multiple folders.
+	 *
+	 * @param ruleSetNodeRef the rule set node reference
+	 * @return true if the rule set is shared
+	 */
 	public boolean isRuleSetShared(NodeRef ruleSetNodeRef) {
 		List<NodeRef> folders = ruleSetToFolders.get(ruleSetNodeRef);
 		return folders != null && folders.size() > 1;
