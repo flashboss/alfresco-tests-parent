@@ -43,6 +43,13 @@ import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of VersionService for testing purposes.
+ * Provides version creation and history management for nodes
+ * using the node service to store version information.
+ * 
+ * @author vige
+ */
 public class MockVersionService implements VersionService, Serializable {
 
 	@Autowired

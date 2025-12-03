@@ -14,6 +14,14 @@ import org.alfresco.repo.lock.JobLockService;
 import org.alfresco.repo.nodelocator.NodeLocatorService;
 import org.alfresco.repo.transaction.RetryingTransactionHelper;
 import org.alfresco.service.ServiceRegistry;
+
+/**
+ * Mock implementation of ServiceRegistry for testing purposes.
+ * Provides access to all Alfresco services through autowired dependencies.
+ * This is the central service locator for the mock Alfresco environment.
+ * 
+ * @author vige
+ */
 import org.alfresco.service.cmr.action.ActionService;
 import org.alfresco.service.cmr.admin.RepoAdminService;
 import org.alfresco.service.cmr.attributes.AttributeService;

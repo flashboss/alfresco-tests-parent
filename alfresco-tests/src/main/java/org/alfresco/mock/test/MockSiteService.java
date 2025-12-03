@@ -32,6 +32,13 @@ import org.alfresco.service.namespace.QName;
 import org.alfresco.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of SiteService for testing purposes.
+ * Provides site creation and management capabilities using
+ * the search and node services.
+ * 
+ * @author vige
+ */
 public class MockSiteService implements SiteService, Serializable {
 
 	@Autowired

@@ -13,6 +13,13 @@ import org.alfresco.service.cmr.security.PersonService;
 import org.alfresco.service.namespace.QName;
 import org.alfresco.util.Pair;
 
+/**
+ * Mock implementation of PersonService for testing purposes.
+ * Provides person and user management capabilities for the
+ * mock Alfresco environment.
+ * 
+ * @author vige
+ */
 public class MockPersonService implements PersonService, Serializable {
 
 	@Override

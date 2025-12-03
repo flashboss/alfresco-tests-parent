@@ -21,6 +21,13 @@ import org.alfresco.service.cmr.rule.RuleType;
 import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of RuleService and RuntimeRuleService for testing purposes.
+ * Provides rule management and execution capabilities including rule types,
+ * rule ownership, and pending rule execution.
+ * 
+ * @author vige
+ */
 public class MockRuleService implements RuleService, RuntimeRuleService,
 		NodeServicePolicies.OnCreateChildAssociationPolicy, NodeServicePolicies.OnCreateNodePolicy,
 		NodeServicePolicies.OnUpdateNodePolicy, NodeServicePolicies.OnAddAspectPolicy, Serializable {
