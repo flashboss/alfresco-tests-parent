@@ -27,6 +27,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "certificateStatus")
 @XmlEnum
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public enum CertificateStatus {

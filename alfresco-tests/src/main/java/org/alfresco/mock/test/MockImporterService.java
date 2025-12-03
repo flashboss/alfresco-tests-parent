@@ -25,6 +25,9 @@ import com.google.gdata.util.common.base.Charsets;
 import com.google.gdata.util.common.io.CharStreams;
 
 /**
+ * Mock implementation of the Alfresco ImporterService for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
  * @author vige
  */
 public class MockImporterService implements ImporterService, Serializable {

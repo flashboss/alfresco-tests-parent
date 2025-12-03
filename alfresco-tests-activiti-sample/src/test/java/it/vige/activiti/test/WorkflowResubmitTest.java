@@ -24,6 +24,8 @@ import it.vige.activiti.ComplexAbstractForm;
 import it.vige.common.SignConstants;
 
 /**
+ * Test class for verifying functionality.
+ * 
  * @author vige
  */
 public class WorkflowResubmitTest extends ComplexAbstractForm {

@@ -17,6 +17,8 @@ import org.alfresco.service.cmr.i18n.MessageLookup;
 import org.alfresco.service.namespace.QName;
 
 /**
+ * Mock implementation of TypeDefinition for testing purposes.
+ * 
  * @author vige
  */
 public class MockTypeDefinition implements TypeDefinition {

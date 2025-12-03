@@ -3,6 +3,8 @@ package it.vige.ws.dom;
 import org.alfresco.service.namespace.QName;
 
 /**
+ * Model constants defining QNames and namespace URIs.
+ * 
  * @author vige
  */
 public abstract class VigeWSContentModel {

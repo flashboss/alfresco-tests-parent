@@ -10,6 +10,8 @@ import javax.xml.ws.WebFault;
 
 @WebFault(name = "WSException", targetNamespace = "http://service.ws.nam/")
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class WSException extends Exception {
