@@ -10,6 +10,12 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
+ * Bean representing a timestamp report.
+ * Contains timestamp information for digital signature validation.
+ * 
+ * @author vige
+ */
+/**
  * <p>
  * Classe Java per timestampReportBean complex type.
  * 

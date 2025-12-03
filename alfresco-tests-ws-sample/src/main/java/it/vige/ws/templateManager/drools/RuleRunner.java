@@ -12,7 +12,10 @@ import java.io.IOException;
 
 
 /**
- * Author: Luca Stancapiano
+ * Utility class for running Drools rules.
+ * Provides methods for executing rules against facts.
+ * 
+ * @author vige
  */
 public class RuleRunner {
 

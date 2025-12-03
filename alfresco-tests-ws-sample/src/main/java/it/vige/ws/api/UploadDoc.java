@@ -28,6 +28,28 @@ import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+
+/**
+ * WebScript for uploading documents to Alfresco.
+ * Handles multipart form data, signature verification, and metadata.
+ * 
+ * @author vige
+ */
+
+/**
+ * WebScript for uploading documents to Alfresco.
+ * Handles multipart form data, verifies digital signatures,
+ * applies timestamps, and sets document metadata.
+ * 
+ * @author vige
+ */
+
+/**
+ * WebScript for uploading documents to Alfresco.
+ * Handles multipart form data and document metadata.
+ * 
+ * @author vige
+ */
 import org.springframework.extensions.webscripts.Cache;
 import org.springframework.extensions.webscripts.DeclarativeWebScript;
 import org.springframework.extensions.webscripts.Status;

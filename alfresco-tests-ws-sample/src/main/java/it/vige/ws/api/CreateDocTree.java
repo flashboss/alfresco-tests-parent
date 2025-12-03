@@ -29,6 +29,27 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 import it.vige.ws.dom.DocVigeWS;
 import it.vige.ws.dom.VigeWSContentModel;
 
+/**
+ * WebScript for creating document tree structures in Alfresco.
+ * Creates folder hierarchies and sets metadata properties.
+ * 
+ * @author vige
+ */
+
+/**
+ * WebScript that creates a document tree structure in Alfresco.
+ * Handles folder creation based on practice data and metadata.
+ * 
+ * @author vige
+ */
+
+/**
+ * WebScript for creating document tree structures.
+ * Creates folders and documents based on request parameters.
+ * 
+ * @author vige
+ */
+
 public class CreateDocTree extends DeclarativeWebScript {
 
 	private Logger logger = Logger.getLogger(CreateDocTree.class);

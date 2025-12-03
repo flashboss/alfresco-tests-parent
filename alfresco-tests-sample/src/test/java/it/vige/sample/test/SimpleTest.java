@@ -32,6 +32,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * Test class for BackupAction and versioning functionality.
  * Tests document creation, versioning, and search operations.
+ * Extends AbstractForm to provide mock Alfresco services for testing.
  * 
  * @author vige
  */
@@ -40,25 +41,73 @@ import it.vige.sample.BackupAction;
 
 public class SimpleTest extends AbstractForm {
 
+	/**
+	 * The backup action being tested.
+	 * Injected by Spring autowiring.
+	 */
 	@Autowired
 	private BackupAction myAction;
 
+	/**
+	 * The name of the test document used in tests.
+	 */
 	private final static String documentName = "VALID.pdf";
 
+	/**
+	 * The name for the first version of the document.
+	 */
 	private final static String versionName = "firstVersion.pdf";
+
+	/**
+	 * The content for the first version of the document.
+	 */
 	private final static String versionContent = "new content";
+
+	/**
+	 * The version label for the first version (1.0).
+	 */
 	private final static String versionLabel = "1.0";
 
+	/**
+	 * The name for the second version of the document.
+	 */
 	private final static String version2Name = "secondVersion.pdf";
+
+	/**
+	 * The content for the second version of the document.
+	 */
 	private final static String version2Content = "new content 2";
+
+	/**
+	 * The version label for the second version (1.1).
+	 */
 	private final static String version2Label = "1.1";
 
+	/**
+	 * The name for the third version of the document.
+	 */
 	private final static String version3Name = "thirdVersion.pdf";
+
+	/**
+	 * The content for the third version of the document.
+	 */
 	private final static String version3Content = "new content 3";
+
+	/**
+	 * The version label for the third version (2.0).
+	 */
 	private final static String version3Label = "2.0";
 
+	/**
+	 * The node reference of the test document created during initialization.
+	 */
 	private NodeRef document;
 
+	/**
+	 * Initializes the test environment before each test.
+	 * Creates a test document and verifies it was created successfully.
+	 * Calls the parent init method to set up mock services.
+	 */
 	@Before
 	public void init() {
 		super.init();
@@ -78,6 +127,11 @@ public class SimpleTest extends AbstractForm {
 		Assert.assertEquals("VALID.pdf is created", documentName, nodeName);
 	}
 
+	/**
+	 * Tests the backup action execution.
+	 * Executes the BackupAction and verifies that a backup document
+	 * is created with the expected name (original name + .bak extension).
+	 */
 	@Test
 	public void execute() {
 
@@ -96,6 +150,13 @@ public class SimpleTest extends AbstractForm {
 
 	}
 
+	/**
+	 * Tests the versioning functionality.
+	 * Creates multiple versions of a document (minor and major versions)
+	 * and verifies that the version history is correctly maintained.
+	 * Checks version properties including name, label, type, and description
+	 * for both versioned and frozen state node references.
+	 */
 	@Test
 	public void versioned() {
 		insertVersion(document, versionName, versionContent, versionLabel, MINOR);

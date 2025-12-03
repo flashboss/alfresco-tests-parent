@@ -17,6 +17,12 @@ import org.alfresco.service.namespace.QName;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+/**
+ * Utility class for computing and setting hash values on nodes.
+ * Provides methods to calculate and store hash digests on content.
+ * 
+ * @author vige
+ */
 public class CommonHashUtil {
 
 	private static Log logger = LogFactory.getLog(CommonHashUtil.class);

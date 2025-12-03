@@ -28,6 +28,27 @@ import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVStrategy;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+/**
+ * WebScript for downloading node lists in CSV or Excel format.
+ * Queries Alfresco nodes and exports their properties to spreadsheets.
+ * 
+ * @author vige
+ */
+
+/**
+ * WebScript for downloading node lists in CSV or Excel format.
+ * Queries nodes based on type and parameters, generates spreadsheets.
+ * 
+ * @author vige
+ */
+
+/**
+ * WebScript for downloading node lists in CSV or Excel format.
+ * Queries nodes based on type and properties, exports them as spreadsheet.
+ * 
+ * @author vige
+ */
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;

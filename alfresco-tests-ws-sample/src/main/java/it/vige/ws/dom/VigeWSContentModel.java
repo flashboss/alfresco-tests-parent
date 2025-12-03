@@ -2,6 +2,12 @@ package it.vige.ws.dom;
 
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Content model constants for VigeWS documents.
+ * Defines namespace and QNames for document metadata properties.
+ * 
+ * @author vige
+ */
 public abstract class VigeWSContentModel {
 
     private VigeWSContentModel() { }

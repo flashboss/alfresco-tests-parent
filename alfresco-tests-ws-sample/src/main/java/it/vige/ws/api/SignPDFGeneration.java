@@ -28,6 +28,28 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.extensions.webscripts.Cache;
+
+/**
+ * WebScript for generating and signing PDF documents.
+ * Uses templates and Drools rules to create PDFs with digital signatures.
+ * 
+ * @author vige
+ */
+
+/**
+ * WebScript for generating and signing PDFs from templates.
+ * Processes JSON input, fills templates using Drools rules, 
+ * converts to PDF, and optionally signs the document.
+ * 
+ * @author vige
+ */
+
+/**
+ * WebScript for PDF generation and signing.
+ * Generates PDFs from templates and optionally signs them.
+ * 
+ * @author vige
+ */
 import org.springframework.extensions.webscripts.DeclarativeWebScript;
 import org.springframework.extensions.webscripts.Status;
 import org.springframework.extensions.webscripts.WebScriptException;

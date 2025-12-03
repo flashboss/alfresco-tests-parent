@@ -1,5 +1,11 @@
 package it.vige.common;
 
+/**
+ * Constants for digital signature operations.
+ * Defines file extensions and mimetypes for signed documents.
+ * 
+ * @author vige
+ */
 public interface SignConstants {
 
 	String P7M_EXTENSION = "p7m";

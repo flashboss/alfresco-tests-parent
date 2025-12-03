@@ -4,6 +4,12 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
 import java.util.Map;
 
+/**
+ * Parameter object for Drools rule execution.
+ * Contains document, JSON data map, and converter instance.
+ * 
+ * @author vige
+ */
 public class DocParam {
 
 	private XWPFDocument doc;

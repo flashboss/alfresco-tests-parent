@@ -23,6 +23,13 @@ import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.search.SearchService;
 import org.alfresco.service.namespace.QName;
+
+/**
+ * Test class for UploadDoc WebScript.
+ * Tests document upload with metadata and aspects.
+ * 
+ * @author vige
+ */
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Before;

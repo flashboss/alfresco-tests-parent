@@ -29,6 +29,13 @@ import java.util.regex.Pattern;
 import static org.apache.pdfbox.io.IOUtils.toByteArray;
 
 /**
+ * Implementation of Drools converter for template filling.
+ * Converts templates using Drools rules and JSON data.
+ * 
+ * @author vige
+ */
+
+/**
  * Author: Luca Stancapiano
  */
 public class DroolsConverterImpl {

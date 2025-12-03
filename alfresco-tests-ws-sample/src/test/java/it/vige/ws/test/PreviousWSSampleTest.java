@@ -23,6 +23,13 @@ import org.alfresco.service.cmr.search.SearchService;
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.junit.Assert;
+
+/**
+ * Test class for PreviousWSSample WebScript.
+ * Tests folder property updates and aspect additions.
+ * 
+ * @author vige
+ */
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

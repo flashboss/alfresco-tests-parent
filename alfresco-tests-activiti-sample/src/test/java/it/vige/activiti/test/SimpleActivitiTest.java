@@ -23,6 +23,13 @@ import org.alfresco.mock.test.script.MockLogger;
 import org.alfresco.model.ContentModel;
 import org.alfresco.repo.jscript.Search;
 import org.alfresco.repo.workflow.activiti.ActivitiScriptNodeList;
+
+/**
+ * Simple test class for Activiti workflow processes.
+ * Tests basic workflow functionality with document creation and task completion.
+ * 
+ * @author vige
+ */
 import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;

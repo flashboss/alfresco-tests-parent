@@ -20,6 +20,12 @@ import org.alfresco.service.namespace.QName;
 
 import it.vige.common.ConservationModel;
 
+/**
+ * Abstract base class for complex workflow tests.
+ * Provides initialization for complex RAR workflow testing scenarios.
+ * 
+ * @author vige
+ */
 public class ComplexAbstractForm extends AbstractActivitiForm {
 
 	public final static String ACTIVITY_KEY = "complexRarGenerationWorkflow";

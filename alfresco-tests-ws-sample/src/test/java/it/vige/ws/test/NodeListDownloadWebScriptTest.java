@@ -23,6 +23,13 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.junit.Before;
+
+/**
+ * Test class for NodeListDownloadWebScript.
+ * Tests Excel export functionality with node properties.
+ * 
+ * @author vige
+ */
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.extensions.webscripts.AbstractWebScript;

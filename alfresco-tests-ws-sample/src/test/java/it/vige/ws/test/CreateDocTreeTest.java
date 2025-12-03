@@ -27,6 +27,12 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 import it.vige.ws.api.CreateDocTree;
 import it.vige.ws.dom.DocVigeWS;
 
+/**
+ * Test class for CreateDocTree WebScript.
+ * Tests document tree creation functionality.
+ * 
+ * @author vige
+ */
 public class CreateDocTreeTest extends AbstractWSForm {
 
 	private final static Logger logger = getLogger(CreateDocTreeTest.class);

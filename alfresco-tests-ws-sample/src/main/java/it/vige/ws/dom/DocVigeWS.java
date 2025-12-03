@@ -2,6 +2,12 @@ package it.vige.ws.dom;
 
 import org.joda.time.DateTime;
 
+/**
+ * Domain object representing a VigeWS document.
+ * Contains document metadata like practice ID, convention, and company info.
+ * 
+ * @author vige
+ */
 public class DocVigeWS {
 
     private String idPratica;
