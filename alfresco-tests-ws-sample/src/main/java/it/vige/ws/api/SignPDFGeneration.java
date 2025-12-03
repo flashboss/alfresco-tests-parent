@@ -40,6 +40,11 @@ import it.vige.ws.service.SignService;
 import it.vige.ws.templateManager.drools.DroolsConverterImpl;
 import it.vige.ws.utils.GenerationUtils;
 
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class SignPDFGeneration extends DeclarativeWebScript {
 
 	private FileFolderService fileFolderService;

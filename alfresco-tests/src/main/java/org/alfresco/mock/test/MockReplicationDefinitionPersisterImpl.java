@@ -5,6 +5,11 @@ import java.util.List;
 import org.alfresco.repo.replication.ReplicationDefinitionPersisterImpl;
 import org.alfresco.service.cmr.replication.ReplicationDefinition;
 
+/**
+ * Mock implementation of ReplicationDefinitionPersisterImpl for testing purposes.
+ * 
+ * @author vige
+ */
 public class MockReplicationDefinitionPersisterImpl extends ReplicationDefinitionPersisterImpl {
 
 	@Override

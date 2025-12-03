@@ -14,6 +14,11 @@ import java.io.IOException;
 /**
  * Author: Luca Stancapiano
  */
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class RuleRunner {
 
 //	private Log logger = getLog(RuleRunner.class);

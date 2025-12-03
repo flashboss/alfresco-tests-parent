@@ -12,6 +12,11 @@ import org.springframework.extensions.webscripts.NegotiatedFormat;
 import org.springframework.extensions.webscripts.Path;
 import org.springframework.extensions.webscripts.TypeDescription;
 
+/**
+ * Mock implementation of Description for testing purposes.
+ * 
+ * @author vige
+ */
 public class MockDescription implements Description {
 
 	private RequiredCache requiredCache = new MockRequiredCache();

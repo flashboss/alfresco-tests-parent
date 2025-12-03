@@ -14,6 +14,11 @@ import org.alfresco.service.cmr.repository.NodeService;
 
 import it.vige.common.HashModel;
 
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class ComplexRaRCheck extends BaseJavaDelegate {
 
 	private NodeService nodeService;

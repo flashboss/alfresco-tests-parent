@@ -9,6 +9,12 @@ import org.alfresco.repo.rendition2.TransformDefinition;
 import org.alfresco.service.cmr.repository.ChildAssociationRef;
 import org.alfresco.service.cmr.repository.NodeRef;
 
+/**
+ * Mock implementation of the Alfresco RenditionService2 for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
+ * @author vige
+ */
 public class MockRenditionService2 implements RenditionService2, Serializable {
 
 	@Override

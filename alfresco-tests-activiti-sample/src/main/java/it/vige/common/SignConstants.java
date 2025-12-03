@@ -1,5 +1,10 @@
 package it.vige.common;
 
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public interface SignConstants {
 
 	String P7M_EXTENSION = "p7m";

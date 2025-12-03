@@ -31,6 +31,12 @@ import org.alfresco.util.ISO9075;
 import org.alfresco.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of the Alfresco SearchService for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
+ * @author vige
+ */
 public class MockSearchService implements SearchService, Serializable {
 
 	@Autowired

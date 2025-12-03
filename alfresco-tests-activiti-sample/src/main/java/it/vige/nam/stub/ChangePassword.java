@@ -32,6 +32,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "changePassword", propOrder = { "securityCode", "username", "password", "newPassword" })
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class ChangePassword {
 
 	protected String securityCode;

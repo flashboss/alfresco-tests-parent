@@ -30,6 +30,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signPkcs1Response", propOrder = { "_return" })
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class SignPkcs1Response {
 
 	@XmlElement(name = "return")

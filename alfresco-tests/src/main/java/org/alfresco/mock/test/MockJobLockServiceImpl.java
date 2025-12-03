@@ -3,6 +3,12 @@ package org.alfresco.mock.test;
 import org.alfresco.repo.lock.JobLockService;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of the Alfresco JobLockServiceImpl for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
+ * @author vige
+ */
 public class MockJobLockServiceImpl implements JobLockService {
 
 	@Override

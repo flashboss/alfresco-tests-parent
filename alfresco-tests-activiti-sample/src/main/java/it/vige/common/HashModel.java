@@ -2,6 +2,11 @@ package it.vige.common;
 
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Model constants defining QNames and namespace URIs.
+ * 
+ * @author vige
+ */
 public interface HashModel {
 	static final String VIGE_HASH_URI = "http://www.vige.it/model/content/hash/1.0";
 	static final QName ASPECT_HASHABLE = QName.createQName(VIGE_HASH_URI, "hashable");

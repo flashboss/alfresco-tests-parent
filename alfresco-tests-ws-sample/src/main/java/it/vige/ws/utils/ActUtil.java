@@ -1,6 +1,11 @@
 package it.vige.ws.utils;
 
 import org.alfresco.service.namespace.QName;
+/**
+ * Utility class providing helper methods.
+ * 
+ * @author vige
+ */
 public class ActUtil {
 
 	public static final String CRL_ACTS_MODEL = "http://www.vige.it/content/model/acts/1.0";

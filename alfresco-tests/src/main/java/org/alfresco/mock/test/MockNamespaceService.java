@@ -10,6 +10,12 @@ import java.util.Map;
 import org.alfresco.service.namespace.NamespaceException;
 import org.alfresco.service.namespace.NamespaceService;
 
+/**
+ * Mock implementation of the Alfresco NamespaceService for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
+ * @author vige
+ */
 public class MockNamespaceService implements NamespaceService, Serializable {
 
 	private static Map<String, String> prefixes = new HashMap<String, String>();

@@ -58,6 +58,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
 		"qcComplianceStatus", "serialNumber", "signatureAlgorithmName", "signatureDate", "signerCertificateNotAfter",
 		"signerCertificateNotBefore", "signerCertificateRevocationDate", "signerCertificateStatus", "subjectDN",
 		"timestampReportBeanList", "trustedSignatureDate" })
+/**
+ * Bean class for data transfer.
+ * 
+ * @author vige
+ */
 public class SignatureReportBean {
 
 	protected byte[] derEncodedSignerCert;

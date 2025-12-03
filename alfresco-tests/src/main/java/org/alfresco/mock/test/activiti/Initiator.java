@@ -4,6 +4,11 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class Initiator implements Serializable {
 
 	private Map<String, String> properties = new HashMap<String, String>();

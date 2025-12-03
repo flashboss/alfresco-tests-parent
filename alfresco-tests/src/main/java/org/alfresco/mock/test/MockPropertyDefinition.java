@@ -14,6 +14,11 @@ import org.alfresco.service.cmr.dictionary.PropertyDefinition;
 import org.alfresco.service.cmr.i18n.MessageLookup;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of PropertyDefinition for testing purposes.
+ * 
+ * @author vige
+ */
 public class MockPropertyDefinition implements PropertyDefinition, Serializable {
 
 	private QName name;

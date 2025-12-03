@@ -15,6 +15,11 @@ import javax.xml.ws.ResponseWrapper;
  */
 @WebService(targetNamespace = "http://service.ws.nam/", name = "SignIntegrationBig")
 @XmlSeeAlso({ ObjectFactory.class })
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public interface SignIntegrationBig {
 
 	@WebMethod

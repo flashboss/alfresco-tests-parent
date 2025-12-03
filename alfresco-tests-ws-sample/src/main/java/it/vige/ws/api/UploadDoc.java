@@ -38,6 +38,11 @@ import it.vige.ws.service.NoteReportBean;
 import it.vige.ws.service.SignService;
 import it.vige.ws.service.SignedDocumentReportBean;
 
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class UploadDoc extends DeclarativeWebScript {
 
 	private Logger logger = Logger.getLogger(UploadDoc.class);

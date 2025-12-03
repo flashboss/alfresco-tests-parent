@@ -6,6 +6,11 @@ import org.alfresco.repo.jscript.ScriptUtils;
 import org.alfresco.repo.jscript.Search;
 import org.alfresco.service.ServiceRegistry;
 
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class ActivitiProcessEngineConfiguration extends StandaloneProcessEngineConfiguration {
 
 	private ServiceRegistry serviceRegistry;

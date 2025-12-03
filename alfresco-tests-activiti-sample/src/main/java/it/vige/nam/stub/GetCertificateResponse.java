@@ -30,6 +30,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "getCertificateResponse", propOrder = { "_return" })
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class GetCertificateResponse {
 
 	@XmlElement(name = "return")

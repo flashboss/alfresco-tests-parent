@@ -21,6 +21,11 @@ import org.apache.commons.logging.LogFactory;
 import it.vige.common.ConservationModel;
 import it.vige.common.SignConstants;
 
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class ComplexRaRStoring extends ComplexRaRGeneration {
 
 	private static Log logger = LogFactory.getLog(ComplexRaRStoring.class);

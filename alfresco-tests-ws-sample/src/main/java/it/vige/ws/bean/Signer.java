@@ -1,5 +1,10 @@
 package it.vige.ws.bean;
 
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class Signer {
 
 	private String username;

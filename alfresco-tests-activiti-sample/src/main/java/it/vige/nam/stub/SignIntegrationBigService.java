@@ -14,6 +14,11 @@ import javax.xml.ws.WebServiceFeature;
  * 
  */
 @WebServiceClient(name = "SignIntegrationBigService", wsdlLocation = "classpath:wsdl/SignIntegrationBigServices.wsdl", targetNamespace = "http://service.ws.nam/")
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class SignIntegrationBigService extends Service {
 
 	public final static URL WSDL_LOCATION;

@@ -43,6 +43,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signedDocumentReportBean", propOrder = { "checkDate", "noteReportList", "nrOfSignatures",
 		"overallVerified", "plainDocument", "signatureFormat", "signatureReportList", "verificationDate" })
+/**
+ * Bean class for data transfer.
+ * 
+ * @author vige
+ */
 public class SignedDocumentReportBean {
 
 	@XmlSchemaType(name = "dateTime")

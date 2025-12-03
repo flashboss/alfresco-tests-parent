@@ -17,6 +17,11 @@ import org.alfresco.service.namespace.QName;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+/**
+ * Utility class providing helper methods.
+ * 
+ * @author vige
+ */
 public class CommonHashUtil {
 
 	private static Log logger = LogFactory.getLog(CommonHashUtil.class);

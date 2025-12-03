@@ -8,6 +8,12 @@ import org.alfresco.service.license.LicenseDescriptor;
 import org.alfresco.service.license.LicenseService.LicenseChangeHandler;
 import org.springframework.beans.factory.InitializingBean;
 
+/**
+ * Mock implementation of the Alfresco DescriptorService for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
+ * @author vige
+ */
 public class MockDescriptorService implements DescriptorService, InitializingBean, LicenseChangeHandler {
 
 	@Override

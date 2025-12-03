@@ -68,6 +68,12 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 
+/**
+ * Mock implementation of the Alfresco ServiceRegistry for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
+ * @author vige
+ */
 public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, Externalizable {
 
 	private NodeService nodeService;

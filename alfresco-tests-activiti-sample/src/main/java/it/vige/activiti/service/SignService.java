@@ -11,6 +11,11 @@ import org.alfresco.service.cmr.repository.NodeService;
 
 import it.vige.common.SignConstants;
 
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class SignService {
 
 	private ContentService contentService;

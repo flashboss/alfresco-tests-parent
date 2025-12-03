@@ -7,6 +7,11 @@ import org.springframework.extensions.webscripts.Container;
 import org.springframework.extensions.webscripts.Runtime;
 import org.springframework.extensions.webscripts.WebScriptSession;
 
+/**
+ * Mock implementation of Runtime for testing purposes.
+ * 
+ * @author vige
+ */
 public class MockRuntime implements Runtime {
 	
 	private Map<String, Object> templateParameters = new HashMap<String, Object>();

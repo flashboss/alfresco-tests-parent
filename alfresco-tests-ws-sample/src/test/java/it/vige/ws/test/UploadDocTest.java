@@ -34,6 +34,11 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 import it.vige.ws.api.UploadDoc;
 import it.vige.ws.dom.VigeWSContentModel;
 
+/**
+ * Test class for verifying functionality.
+ * 
+ * @author vige
+ */
 public class UploadDocTest extends AbstractWSForm {
 
 	private final static Log logger = LogFactory.getLog(UploadDocTest.class);

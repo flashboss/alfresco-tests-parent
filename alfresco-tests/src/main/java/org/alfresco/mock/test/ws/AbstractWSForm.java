@@ -10,6 +10,11 @@ import org.springframework.extensions.webscripts.AbstractWebScript;
 import org.springframework.extensions.webscripts.Container;
 import org.springframework.extensions.webscripts.Description;
 
+/**
+ * Abstract base class providing common functionality for tests.
+ * 
+ * @author vige
+ */
 public abstract class AbstractWSForm extends AbstractForm {
 
 	@Autowired

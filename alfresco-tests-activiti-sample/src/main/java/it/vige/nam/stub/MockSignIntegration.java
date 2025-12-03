@@ -11,6 +11,11 @@ import java.util.List;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+/**
+ * Mock implementation of SignIntegration for testing purposes.
+ * 
+ * @author vige
+ */
 public class MockSignIntegration implements SignIntegration {
 
 	private final static DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");

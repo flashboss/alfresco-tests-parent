@@ -7,6 +7,12 @@ import org.alfresco.service.cmr.coci.CheckOutCheckInService;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of the Alfresco CheckOutCheckInService for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
+ * @author vige
+ */
 public class MockCheckOutCheckInService implements CheckOutCheckInService, Serializable {
 
 	private boolean checkedOut;

@@ -30,6 +30,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "verifyOnDateResponse", propOrder = { "_return" })
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class VerifyOnDateResponse {
 
 	@XmlElement(name = "return")

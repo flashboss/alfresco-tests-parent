@@ -31,6 +31,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "disable", propOrder = { "securityCode", "username", "password" })
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class Disable {
 
 	protected String securityCode;

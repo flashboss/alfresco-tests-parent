@@ -33,6 +33,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "timestampTSDVerifyResponse", propOrder = { "_return" })
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class TimestampTSDVerifyResponse {
 
 	@XmlElement(name = "return")

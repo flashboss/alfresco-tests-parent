@@ -34,6 +34,12 @@ import org.alfresco.util.Pair;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of the Alfresco FileFolderService for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
+ * @author vige
+ */
 public class MockFileFolderService implements FileFolderService, Serializable {
 
 	@Autowired

@@ -38,6 +38,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "timeStampPreferences", propOrder = { "filenameInTSD", "outputAsTSD", "outputBase64Encoded",
 		"timestampHashAlgo", "timestampPassword", "timestampUrl", "timestampUsername" })
 @XmlSeeAlso({ SignPreferences.class })
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class TimeStampPreferences {
 
 	protected String filenameInTSD;

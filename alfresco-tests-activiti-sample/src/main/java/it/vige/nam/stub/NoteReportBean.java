@@ -33,6 +33,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "noteReportBean", propOrder = { "about", "description", "policy", "synopsis", "type" })
+/**
+ * Bean class for data transfer.
+ * 
+ * @author vige
+ */
 public class NoteReportBean {
 
 	protected int about;

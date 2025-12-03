@@ -9,6 +9,11 @@ import java.util.stream.Collectors;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.StoreRef;
 
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public class FilteredHashMap extends HashMap<NodeRef, File> {
 
 	public FilteredHashMap(int initialCapacity, float loadFactor) {

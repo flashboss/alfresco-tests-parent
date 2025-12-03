@@ -6,6 +6,12 @@ import java.util.Set;
 import org.alfresco.repo.security.authentication.AuthenticationException;
 import org.alfresco.service.cmr.security.MutableAuthenticationService;
 
+/**
+ * Mock implementation of the Alfresco AuthenticationService for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
+ * @author vige
+ */
 public class MockAuthenticationService implements MutableAuthenticationService, Serializable {
 
 	@Override

@@ -26,6 +26,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "signEngineImpl")
 @XmlEnum
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
 public enum SignEngineImpl {
 
 	LOCAL, STATIC, DYNAMIC;
