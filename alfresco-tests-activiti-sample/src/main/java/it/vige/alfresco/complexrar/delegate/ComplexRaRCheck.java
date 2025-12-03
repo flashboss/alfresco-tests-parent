@@ -15,17 +15,25 @@ import org.alfresco.service.cmr.repository.NodeService;
 import it.vige.common.HashModel;
 
 /**
- * Mock implementation of the ComplexRaRCheck class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- * 
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the ComplexRaRCheck class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class ComplexRaRCheck extends BaseJavaDelegate {
 
+/**
+* The node service.
+ */
 	private NodeService nodeService;
 
+/**
+* Performs execute.
+* @param execution the execution
+* @throws Exception if an error occurs
+ */
 	public void execute(DelegateExecution execution) throws Exception {
 		// Check duplicates
 		List<String> duplicatedPdvs = new ArrayList<String>();
@@ -54,6 +62,10 @@ public class ComplexRaRCheck extends BaseJavaDelegate {
 		execution.setVariable("vigewf_reviewUnsignedSaSError", unsignedPdvs);
 	}
 
+/**
+* Sets the node service.
+* @param nodeService the nodeService
+ */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}

@@ -11,27 +11,27 @@ import org.alfresco.service.cmr.search.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Mock implementation of the MockNodeLocatorService class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- * 
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the MockNodeLocatorService class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class MockNodeLocatorService implements NodeLocatorService, Serializable {
 
+/**
+* The search service.
+ */
 	@Autowired
 	private SearchService searchService;
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param locatorName the locatorName
+* @param source the source
+* @return the result
+ */
 	@Override
 	public NodeRef getNode(String locatorName, NodeRef source, Map<String, Serializable> params) {
 		if (params != null && params.get("query") != null)
@@ -41,15 +41,11 @@ public class MockNodeLocatorService implements NodeLocatorService, Serializable 
 			return null;
 	}
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+* @param locatorName the locatorName
+* @param locator the locator
+ */
 	@Override
 	public void register(String locatorName, NodeLocator locator) {
 		// TODO Auto-generated method stub
