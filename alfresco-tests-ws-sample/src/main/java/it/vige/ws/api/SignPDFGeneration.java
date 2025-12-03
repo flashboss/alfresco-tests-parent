@@ -42,21 +42,39 @@ import it.vige.ws.templateManager.drools.DroolsConverterImpl;
 import it.vige.ws.utils.GenerationUtils;
 
 /**
- * Mock implementation of the SignPDFGeneration class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- * 
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the SignPDFGeneration class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class SignPDFGeneration extends DeclarativeWebScript {
 
+/**
+* The file folder service.
+ */
 	private FileFolderService fileFolderService;
+/**
+* The node service.
+ */
 	private NodeService nodeService;
+/**
+* The sign service.
+ */
 	private SignService signService;
+/**
+* The generation util.
+ */
 	private GenerationUtils generationUtil;
 
+/**
+* The pdf conv secret.
+ */
 	private String pdfConvSecret;
+/**
+* The generate cedra.
+ */
 	private String generateCedra;
 
 	private HashMap<String, Signer> signerList;
@@ -66,12 +84,13 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	private Log logger = LogFactory.getLog(SignPDFGeneration.class);
 
 	@SuppressWarnings("unchecked")
-	/**
-
-	 * {@inheritDoc}
-
-	 */
-
+/**
+* {@inheritDoc}
+* @param req the req
+* @param status the status
+* @param cache the cache
+* @return the result
+ */
 	@Override
 	public Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
@@ -147,9 +166,9 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 			if (json.get(template) instanceof JSONObject) {
 
 				/*
-				 * Elimino eventuali modelli precedentemente generati per la stessa tipologia di
-				 * documento
-				 */
+	* Elimino eventuali modelli precedentemente generati per la stessa tipologia di
+	* documento
+ */
 				List<ChildAssociationRef> listaFiles = nodeService.getChildAssocs(destinazioneNodeRef);
 				for (ChildAssociationRef figlio : listaFiles) {
 					NodeRef figlioNodeRef = figlio.getChildRef();
@@ -247,13 +266,13 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 		return model;
 	}
 
-	/**
-	 * 
-	 * @param destinazioneNodeRef
-	 * @param dati
-	 * @param metadata
-	 * @param index
-	 */
+/**
+*
+* @param destinazioneNodeRef
+* @param dati
+* @param metadata
+* @param index
+ */
 	private void creaPratica(NodeRef destinazioneNodeRef, JSONObject dati, Map<String, String> metadata, int index) {
 
 		final String codiceTemplate = metadata.get("codiceTemplate");
@@ -316,50 +335,98 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 
 	}
 
+/**
+* Gets the file folder service.
+* @return the result
+ */
 	public FileFolderService getFileFolderService() {
 		return fileFolderService;
 	}
 
+/**
+* Sets the file folder service.
+* @param fileFolderService the fileFolderService
+ */
 	public void setFileFolderService(FileFolderService fileFolderService) {
 		this.fileFolderService = fileFolderService;
 	}
 
+/**
+* Gets the node service.
+* @return the result
+ */
 	public NodeService getNodeService() {
 		return nodeService;
 	}
 
+/**
+* Sets the node service.
+* @param nodeService the nodeService
+ */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+/**
+* Gets the sign service.
+* @return the result
+ */
 	public SignService getSignService() {
 		return signService;
 	}
 
+/**
+* Sets the sign service.
+* @param signService the signService
+ */
 	public void setSignService(SignService signService) {
 		this.signService = signService;
 	}
 
+/**
+* Gets the generation util.
+* @return the result
+ */
 	public GenerationUtils getGenerationUtil() {
 		return generationUtil;
 	}
 
+/**
+* Sets the generation util.
+* @param generationUtil the generationUtil
+ */
 	public void setGenerationUtil(GenerationUtils generationUtil) {
 		this.generationUtil = generationUtil;
 	}
 
+/**
+* Gets the pdf conv secret.
+* @return the result
+ */
 	public String getPdfConvSecret() {
 		return pdfConvSecret;
 	}
 
+/**
+* Sets the pdf conv secret.
+* @param pdfConvSecret the pdfConvSecret
+ */
 	public void setPdfConvSecret(String pdfConvSecret) {
 		this.pdfConvSecret = pdfConvSecret;
 	}
 
+/**
+* Gets the generate ceda.
+* @return the result
+ */
 	public String getGenerateCeda() {
 		return generateCedra;
 	}
 
+/**
+* Sets the generate cedra.
+* @param generateCedra the generateCedra
+ */
 	public void setGenerateCedra(String generateCedra) {
 		this.generateCedra = generateCedra;
 	}
@@ -368,6 +435,9 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 		return signerList;
 	}
 
+/**
+* Sets the lista firmatari.
+ */
 	public void setListaFirmatari(HashMap<String, Signer> signerList) {
 		this.signerList = signerList;
 	}

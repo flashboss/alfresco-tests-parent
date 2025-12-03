@@ -12,12 +12,16 @@ import java.io.IOException;
 
 
 /**
- * Author: Luca Stancapiano
+* Author: Luca Stancapiano
  */
 public class RuleRunner {
 
 //	private Log logger = getLog(RuleRunner.class);
 
+/**
+* Performs run rules.
+* @throws IOException if an error occurs
+ */
 	public void runRules(byte[] rule, Object[] facts) throws IOException {
 
 		KieServices kieServices = KieServices.Factory.get();

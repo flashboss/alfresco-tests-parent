@@ -34,44 +34,41 @@ import org.junit.Assert;
 import it.vige.activiti.SimpleModel;
 
 /**
- * Mock implementation of the SimpleActivitiTest class for testing purposes.
- * This class provides a mock implementation that allows unit and integration tests
- * to run without requiring a full Alfresco server instance.
- * 
- * @author Generated
- * @version 7.4.2.1.1
+* Mock implementation of the SimpleActivitiTest class for testing purposes.
+* This class provides a mock implementation that allows unit and integration tests
+* to run without requiring a full Alfresco server instance.
+*
+* @author Generated
+* @version 7.4.2.1.1
  */
 public class SimpleActivitiTest extends AbstractActivitiForm {
 
 	public final static String CONTRIBUTORS = "contributors";
 	public final static String ACTIVITY_KEY = "generationWorkflow";
 
-	/**
-	 * Default admin user to start the scheduler process
-	 */
+/**
+* Default admin user to start the scheduler process
+ */
 	private final static String ADMIN_USER_NAME = "kermit";
-	/**
-	 * Default traveler user to work with the reservations
-	 */
+/**
+* Default traveler user to work with the reservations
+ */
 	private final static String USER_NAME = "gonzo";
 
 	private final DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm:ss ZZZ yyyy");
 
+/**
+* The generation folder.
+ */
 	private NodeRef generationFolder;
 
 	private Initiator initiator = new Initiator();
 
 	private String generationFolderName = "20191024_154711";
 
-	/**
-
-
-	 * {@inheritDoc}
-
-
-	 */
-
-
+/**
+* {@inheritDoc}
+ */
 	@Override
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
@@ -100,17 +97,15 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		variables.put("mywf_starterRaR", "Human");
 	}
 
-	/**
-	 * Create demo users for the application
-	 * 
-	 * @param identityService The service to create the users
-	 */
-	/**
-
-	 * {@inheritDoc}
-
-	 */
-
+/**
+* Create demo users for the application
+*
+* @param identityService The service to create the users
+ */
+/**
+* {@inheritDoc}
+* @param identityService the identityService
+ */
 	@Override
 	public void initDemoUsers(IdentityService identityService) {
 		createUser(identityService, ADMIN_USER_NAME, "Kermit", "The Frog", ADMIN_USER_NAME,
@@ -126,17 +121,15 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		initiator.getProperties().put("userName", USER_NAME);
 	}
 
-	/**
-	 * Create demo groups for teh application
-	 * 
-	 * @param identityService The service to create the groups
-	 */
-	/**
-
-	 * {@inheritDoc}
-
-	 */
-
+/**
+* Create demo groups for teh application
+*
+* @param identityService The service to create the groups
+ */
+/**
+* {@inheritDoc}
+* @param identityService the identityService
+ */
 	@Override
 	public void initDemoGroups(IdentityService identityService) {
 		String[] assignmentGroups = new String[] { CONTRIBUTORS };
@@ -151,6 +144,10 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 	}
 
 	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/SimpleProcess.bpmn" })
+/**
+* Performs test workflow.
+* @throws ParseException if an error occurs
+ */
 	public void testWorkflow() throws ParseException {
 		Map<String, Object> variables = new HashMap<String, Object>();
 		init(variables);
