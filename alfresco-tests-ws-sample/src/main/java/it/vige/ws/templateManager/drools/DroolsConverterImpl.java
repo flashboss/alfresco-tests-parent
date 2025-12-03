@@ -16,7 +16,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -33,201 +32,209 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.StatelessKieSession;
 import org.springframework.extensions.webscripts.WebScriptException;
 
-/**
-* Author: Luca Stancapiano
- */
+/** Author: Luca Stancapiano */
 public class DroolsConverterImpl {
 
-	Log logger = LogFactory.getLog("FILE2");
+  Log logger = LogFactory.getLog("FILE2");
 
-	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-	private DateFormat convertedDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-	private Map<String, String> jsonMap;
+  private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+  private DateFormat convertedDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+  private Map<String, String> jsonMap;
 
-/**
-* Performs replace.
-* @param r the r
-* @param templateField the templateField
-* @param jsonField the jsonField
- */
-	public void replace(XWPFRun r, String templateField, String jsonField) {
-		String runText = r.getText(0);
+  /**
+   * Performs replace.
+   *
+   * @param r the r
+   * @param templateField the templateField
+   * @param jsonField the jsonField
+   */
+  public void replace(XWPFRun r, String templateField, String jsonField) {
+    String runText = r.getText(0);
 
-		if (runText != null && runText.contains(templateField)) {
+    if (runText != null && runText.contains(templateField)) {
 
-			String value = jsonMap.get(jsonField);
+      String value = jsonMap.get(jsonField);
 
-			if (value != null) {
+      if (value != null) {
 
-				// padding is added, if any
-				Pattern pattern = Pattern.compile(">(\\d\\d)}$");
-				Matcher m = pattern.matcher(templateField);
+        // padding is added, if any
+        Pattern pattern = Pattern.compile(">(\\d\\d)}$");
+        Matcher m = pattern.matcher(templateField);
 
-				String paddedValue = value;
-				if (m.find()) {
-					String lString = m.group(1);
+        String paddedValue = value;
+        if (m.find()) {
+          String lString = m.group(1);
 
-					int length = lString != null ? Integer.valueOf(lString) : -1;
-					if (length > 0) {
-						paddedValue = StringUtils.rightPad(value, length);
-					}
-				}
+          int length = lString != null ? Integer.valueOf(lString) : -1;
+          if (length > 0) {
+            paddedValue = StringUtils.rightPad(value, length);
+          }
+        }
 
-				String newText = runText.replace(templateField, paddedValue);
-				r.setText(newText, 0);
-			}
-		}
-	}
+        String newText = runText.replace(templateField, paddedValue);
+        r.setText(newText, 0);
+      }
+    }
+  }
 
-/**
-* Performs replace date.
-* @param r the r
-* @param templateField the templateField
-* @param jsonField the jsonField
- */
-	public void replaceDate(XWPFRun r, String templateField, String jsonField) {
-		String runText = r.getText(0);
-		if (runText != null && runText.contains(templateField)) {
+  /**
+   * Performs replace date.
+   *
+   * @param r the r
+   * @param templateField the templateField
+   * @param jsonField the jsonField
+   */
+  public void replaceDate(XWPFRun r, String templateField, String jsonField) {
+    String runText = r.getText(0);
+    if (runText != null && runText.contains(templateField)) {
 
-			String value = jsonMap.get(jsonField);
-			if (value != null) {
-				String newText;
-				try {
-					Date dateValue = dateFormat.parse(value);
-					String fdate = convertedDateFormat.format(dateValue);
-					newText = runText.replace(templateField, fdate);
-				} catch (ParseException e) {
-					newText = runText.replace(templateField, "");
-				}
+      String value = jsonMap.get(jsonField);
+      if (value != null) {
+        String newText;
+        try {
+          Date dateValue = dateFormat.parse(value);
+          String fdate = convertedDateFormat.format(dateValue);
+          newText = runText.replace(templateField, fdate);
+        } catch (ParseException e) {
+          newText = runText.replace(templateField, "");
+        }
 
-				r.setText(newText, 0);
-			}
-		}
-	}
+        r.setText(newText, 0);
+      }
+    }
+  }
 
-/**
-* Performs replace currency.
-* @param r the r
-* @param templateField the templateField
-* @param jsonField the jsonField
- */
-	public void replaceCurrency(XWPFRun r, String templateField, String jsonField) {
-		String runText = r.getText(0);
-		if (runText != null && runText.contains(templateField)) {
+  /**
+   * Performs replace currency.
+   *
+   * @param r the r
+   * @param templateField the templateField
+   * @param jsonField the jsonField
+   */
+  public void replaceCurrency(XWPFRun r, String templateField, String jsonField) {
+    String runText = r.getText(0);
+    if (runText != null && runText.contains(templateField)) {
 
-			String value = jsonMap.get(jsonField);
-			if (value != null) {
-				String newText;
-				try {
-					BigDecimal bdValue = new BigDecimal(value);
+      String value = jsonMap.get(jsonField);
+      if (value != null) {
+        String newText;
+        try {
+          BigDecimal bdValue = new BigDecimal(value);
 
-					Locale locale = new Locale("it", "IT");
-					String pattern = "€ ###,###,##0.00";
+          Locale locale = new Locale("it", "IT");
+          String pattern = "€ ###,###,##0.00";
 
-					DecimalFormat decimalFormat = (DecimalFormat) NumberFormat.getNumberInstance(locale);
-					decimalFormat.applyPattern(pattern);
+          DecimalFormat decimalFormat = (DecimalFormat) NumberFormat.getNumberInstance(locale);
+          decimalFormat.applyPattern(pattern);
 
-					String fValuta = decimalFormat.format(bdValue);
-					newText = runText.replace(templateField, fValuta);
-				} catch (IllegalArgumentException e) {
-					logger.error("Currency parsing error: " + e.getMessage());
-					newText = runText.replace(templateField, "");
-				}
+          String fValuta = decimalFormat.format(bdValue);
+          newText = runText.replace(templateField, fValuta);
+        } catch (IllegalArgumentException e) {
+          logger.error("Currency parsing error: " + e.getMessage());
+          newText = runText.replace(templateField, "");
+        }
 
-				r.setText(newText, 0);
-			}
-		}
-	}
+        r.setText(newText, 0);
+      }
+    }
+  }
 
-/**
-* Performs replace multivalue.
-* @param r the r
-* @param templateField the templateField
-* @param jsonField the jsonField
- */
-	public void replaceMultivalue(XWPFRun r, String templateField, String jsonField) {
-		String runText = r.getText(0);
-		String value = jsonMap.get(jsonField);
+  /**
+   * Performs replace multivalue.
+   *
+   * @param r the r
+   * @param templateField the templateField
+   * @param jsonField the jsonField
+   */
+  public void replaceMultivalue(XWPFRun r, String templateField, String jsonField) {
+    String runText = r.getText(0);
+    String value = jsonMap.get(jsonField);
 
-		if (value != null && runText.length() > 0) {
+    if (value != null && runText.length() > 0) {
 
-			String templateKey = templateField.substring(2, templateField.length() - 1);
+      String templateKey = templateField.substring(2, templateField.length() - 1);
 
-			if (runText != null && runText.contains(templateField)) {
+      if (runText != null && runText.contains(templateField)) {
 
-				String newTextStep1 = runText.replaceAll("\\$\\{" + templateKey + "\\|\\*\\}", "X");
+        String newTextStep1 = runText.replaceAll("\\$\\{" + templateKey + "\\|\\*\\}", "X");
 
-				String newTextStep2 = newTextStep1.replaceAll("\\$\\{" + templateKey + "\\|" + value + "\\}", "X");
+        String newTextStep2 =
+            newTextStep1.replaceAll("\\$\\{" + templateKey + "\\|" + value + "\\}", "X");
 
-				String newTextFinal = newTextStep2.replaceAll("\\$\\{" + templateKey + "\\|\\w{1,10}\\}", " ");
+        String newTextFinal =
+            newTextStep2.replaceAll("\\$\\{" + templateKey + "\\|\\w{1,10}\\}", " ");
 
-				r.setText(newTextFinal, 0);
+        r.setText(newTextFinal, 0);
+      }
+    }
+  }
 
-			}
-		}
-	}
+  /**
+   * Performs check if continue.
+   *
+   * @param r the r
+   * @return the result
+   */
+  public boolean checkIfContinue(XWPFRun r) {
+    String runText = r.getText(0);
+    return runText != null && runText.contains("${");
+  }
 
-/**
-* Performs check if continue.
-* @param r the r
-* @return the result
- */
-	public boolean checkIfContinue(XWPFRun r) {
-		String runText = r.getText(0);
-		return runText != null && runText.contains("${");
-	}
+  /**
+   * Convert a single template based on the drools rule file and information extracted from the json
+   *
+   * @param templateIS
+   * @param droolsRuleIS
+   * @param jsonMap
+   * @return
+   * @throws Exception
+   */
+  public ByteArrayOutputStream fillTemplate(
+      InputStream templateIS,
+      InputStream droolsRuleIS,
+      Map<String, String> jsonMap,
+      String nomeFile)
+      throws IOException {
+    this.jsonMap = jsonMap;
+    // fill in the document
+    XWPFDocument template = new XWPFDocument(templateIS);
 
-/**
-* Convert a single template based on the drools rule file and
-* information extracted from the json
-*
-* @param templateIS
-* @param droolsRuleIS
-* @param jsonMap
-* @return
-* @throws Exception
- */
-	public ByteArrayOutputStream fillTemplate(InputStream templateIS, InputStream droolsRuleIS,
-			Map<String, String> jsonMap, String nomeFile) throws IOException {
-		this.jsonMap = jsonMap;
-		// fill in the document
-		XWPFDocument template = new XWPFDocument(templateIS);
+    byte[] rule = toByteArray(droolsRuleIS);
+    final DocParam docParam = new DocParam(template, jsonMap, this);
 
-		byte[] rule = toByteArray(droolsRuleIS);
-		final DocParam docParam = new DocParam(template, jsonMap, this);
+    final KieServices kieServices = KieServices.Factory.get();
 
-		final KieServices kieServices = KieServices.Factory.get();
+    KieFileSystem kfs = kieServices.newKieFileSystem();
+    kfs.write(
+        "src/main/resources/drools/rule.drl",
+        kieServices.getResources().newByteArrayResource(rule));
+    KieBuilder kb = kieServices.newKieBuilder(kfs).buildAll();
 
-		KieFileSystem kfs = kieServices.newKieFileSystem();
-		kfs.write("src/main/resources/drools/rule.drl", kieServices.getResources().newByteArrayResource(rule));
-		KieBuilder kb = kieServices.newKieBuilder(kfs).buildAll();
+    if (kb.getResults().hasMessages(Message.Level.ERROR)) {
+      throw new WebScriptException("Error in substitution rules " + kb.getResults());
+    }
 
-		if (kb.getResults().hasMessages(Message.Level.ERROR)) {
-			throw new WebScriptException("Error in substitution rules " + kb.getResults());
-		}
+    KieRepository kieRepository = kieServices.getRepository();
+    KieContainer kContainer = kieServices.newKieContainer(kieRepository.getDefaultReleaseId());
+    StatelessKieSession kSession = kContainer.newStatelessKieSession();
 
-		KieRepository kieRepository = kieServices.getRepository();
-		KieContainer kContainer = kieServices.newKieContainer(kieRepository.getDefaultReleaseId());
-		StatelessKieSession kSession = kContainer.newStatelessKieSession();
+    // exec drools rule (stateless)
+    kSession.execute(docParam);
 
-		// exec drools rule (stateless)
-		kSession.execute(docParam);
+    ByteArrayOutputStream templateOs = new ByteArrayOutputStream();
 
-		ByteArrayOutputStream templateOs = new ByteArrayOutputStream();
+    /* Imposto i metadati del documento */
+    try (XWPFWordExtractor word = new XWPFWordExtractor(template)) {
 
-		/* Imposto i metadati del documento */
-		try (XWPFWordExtractor word = new XWPFWordExtractor(template)) {
+      CoreProperties info = word.getCoreProperties();
+      info.setTitle(nomeFile);
+      info.setSubjectProperty(nomeFile);
+      info.setCreator("Sample Bank - http://www.vige.it/");
+      template.write(templateOs);
+    }
 
-			CoreProperties info = word.getCoreProperties();
-			info.setTitle(nomeFile);
-			info.setSubjectProperty(nomeFile);
-			info.setCreator("Sample Bank - http://www.vige.it/");
-			template.write(templateOs);
-		}
+    logger.info("template compilation completed");
 
-		logger.info("template compilation completed");
-
-		return templateOs;
-	}
-
+    return templateOs;
+  }
 }

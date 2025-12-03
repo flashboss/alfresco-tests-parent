@@ -7,184 +7,200 @@ import org.alfresco.service.cmr.i18n.MessageLookup;
 import org.alfresco.service.namespace.QName;
 
 /**
-* Mock implementation of the MockAssociationDefinition class for testing purposes.
-* This class provides a mock implementation that allows unit and integration tests
-* to run without requiring a full Alfresco server instance.
-*
-* @author Generated
-* @version 7.4.2.1.1
+ * Mock implementation of the MockAssociationDefinition class for testing purposes. This class
+ * provides a mock implementation that allows unit and integration tests to run without requiring a
+ * full Alfresco server instance.
+ *
+ * @author Generated
+ * @version 7.4.2.1.1
  */
 public class MockAssociationDefinition implements AssociationDefinition {
 
-/**
-* {@inheritDoc}
-* @return the result
- */
-	@Override
-	public ModelDefinition getModel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public ModelDefinition getModel() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-/**
-* {@inheritDoc}
-* @return the result
- */
-	@Override
-	public QName getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public QName getName() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-/**
-* {@inheritDoc}
-* @return the result
- */
-	@Override
-	public String getTitle() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public String getTitle() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-/**
-* {@inheritDoc}
-* @return the result
- */
-	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public String getDescription() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-/**
-* {@inheritDoc}
-* @param messageLookup the messageLookup
-* @return the result
- */
-	@Override
-	public String getTitle(MessageLookup messageLookup) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @param messageLookup the messageLookup
+   * @return the result
+   */
+  @Override
+  public String getTitle(MessageLookup messageLookup) {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-/**
-* {@inheritDoc}
-* @param messageLookup the messageLookup
-* @return the result
- */
-	@Override
-	public String getDescription(MessageLookup messageLookup) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @param messageLookup the messageLookup
+   * @return the result
+   */
+  @Override
+  public String getDescription(MessageLookup messageLookup) {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-/**
-* {@inheritDoc}
-* @return the result
- */
-	@Override
-	public boolean isChild() {
-		return true;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public boolean isChild() {
+    return true;
+  }
 
-/**
-* {@inheritDoc}
-* @return the result
- */
-	@Override
-	public boolean isProtected() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public boolean isProtected() {
+    // TODO Auto-generated method stub
+    return false;
+  }
 
-/**
-* {@inheritDoc}
-* @return the result
- */
-	@Override
-	public ClassDefinition getSourceClass() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public ClassDefinition getSourceClass() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-/**
-* {@inheritDoc}
-* @return the result
- */
-	@Override
-	public QName getSourceRoleName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public QName getSourceRoleName() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-/**
-* {@inheritDoc}
-* @return the result
- */
-	@Override
-	public boolean isSourceMandatory() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public boolean isSourceMandatory() {
+    // TODO Auto-generated method stub
+    return false;
+  }
 
-/**
-* {@inheritDoc}
-* @return the result
- */
-	@Override
-	public boolean isSourceMany() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public boolean isSourceMany() {
+    // TODO Auto-generated method stub
+    return false;
+  }
 
-/**
-* {@inheritDoc}
-* @return the result
- */
-	@Override
-	public ClassDefinition getTargetClass() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public ClassDefinition getTargetClass() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-/**
-* {@inheritDoc}
-* @return the result
- */
-	@Override
-	public QName getTargetRoleName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public QName getTargetRoleName() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-/**
-* {@inheritDoc}
-* @return the result
- */
-	@Override
-	public boolean isTargetMandatory() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public boolean isTargetMandatory() {
+    // TODO Auto-generated method stub
+    return false;
+  }
 
-/**
-* {@inheritDoc}
-* @return the result
- */
-	@Override
-	public boolean isTargetMandatoryEnforced() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public boolean isTargetMandatoryEnforced() {
+    // TODO Auto-generated method stub
+    return false;
+  }
 
-/**
-* {@inheritDoc}
-* @return the result
- */
-	@Override
-	public boolean isTargetMany() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public boolean isTargetMany() {
+    // TODO Auto-generated method stub
+    return false;
+  }
 }
