@@ -2,10 +2,10 @@ package it.vige.nam.stub;
 
 import java.net.URL;
 import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
-import javax.xml.ws.WebEndpoint;
-import javax.xml.ws.WebServiceClient;
-import javax.xml.ws.WebServiceFeature;
+import jakarta.xml.ws.Service;
+import jakarta.xml.ws.WebEndpoint;
+import jakarta.xml.ws.WebServiceClient;
+import jakarta.xml.ws.WebServiceFeature;
 
 @WebServiceClient(
     name = "SignIntegrationBigService",
@@ -100,7 +100,7 @@ public class SignIntegrationBigService extends Service {
 
   @WebEndpoint(name = "SignIntegrationBigPort")
   /**
-   * @param features A list of {@link javax.xml.ws.WebServiceFeature} to configure on the proxy.
+   * @param features A list of {@link jakarta.xml.ws.WebServiceFeature} to configure on the proxy.
    *     Supported features not in the <code>features</code> parameter will have their default
    *     values.
    * @return returns SignIntegrationBig

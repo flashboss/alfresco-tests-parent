@@ -5,12 +5,11 @@
 	<parent>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests-parent</artifactId>
-		<version>	<name>Alfrescotestsparent</name></version>
+		<version>23.2.1.9</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests</artifactId>
-	<version>23.2.1.9</version>
 	<name>Alfresco Tests</name>
 	<packaging>jar</packaging>
 	<description>

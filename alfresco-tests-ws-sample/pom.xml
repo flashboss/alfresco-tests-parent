@@ -6,13 +6,12 @@
     <parent>
         <groupId>it.vige</groupId>
         <artifactId>alfresco-tests-parent</artifactId>
-        <version>	<name>Alfrescotestsparent</name></version>
+		<version>23.2.1.9</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 	<groupId>it.vige</groupId>
 	<artifactId>alfresco-tests-ws-sample</artifactId>
 	<name>Alfresco Tests ws sample</name>
-	<version>23.2.1.9</version>
 	<description>Simple JAR sample for tests</description>
     <properties>
         <!-- Alfresco Maven Plugin version to use -->
