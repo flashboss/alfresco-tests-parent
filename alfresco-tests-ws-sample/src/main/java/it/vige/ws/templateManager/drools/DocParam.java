@@ -4,6 +4,9 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
 import java.util.Map;
 
+/**
+ * @author vige
+ */
 public class DocParam {
 
 	private XWPFDocument doc;

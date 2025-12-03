@@ -48,6 +48,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "timestampReportBean", propOrder = { "comment", "content", "contentFilename", "contentMimeType", "date",
 		"hashAlgorithm", "index", "issuer", "serialNumber", "signatureAlgorithm", "signatureVerificationStatus",
 		"timestampCertData", "timestampCertificateStatus", "trustedListVerificationStatus" })
+/**
+ * @author vige
+ */
 public class TimestampReportBean {
 
 	protected String comment;

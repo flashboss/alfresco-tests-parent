@@ -26,6 +26,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "signEngineImpl")
 @XmlEnum
+/**
+ * @author vige
+ */
 public enum SignEngineImpl {
 
 	LOCAL, STATIC, DYNAMIC;

@@ -2,6 +2,9 @@ package it.vige.ws.dom;
 
 import org.joda.time.DateTime;
 
+/**
+ * @author vige
+ */
 public class DocVigeWS {
 
     private String idPratica;

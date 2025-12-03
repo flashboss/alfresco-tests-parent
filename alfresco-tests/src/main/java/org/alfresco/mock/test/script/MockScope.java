@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import org.mozilla.javascript.Scriptable;
 
+/**
+ * @author vige
+ */
 public class MockScope implements Scriptable, Serializable {
 
 	@Override

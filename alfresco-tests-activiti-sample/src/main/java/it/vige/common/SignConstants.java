@@ -1,5 +1,8 @@
 package it.vige.common;
 
+/**
+ * @author vige
+ */
 public interface SignConstants {
 
 	String P7M_EXTENSION = "p7m";
