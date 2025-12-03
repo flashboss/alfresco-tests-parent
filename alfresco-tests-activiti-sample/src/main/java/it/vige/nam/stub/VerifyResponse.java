@@ -30,6 +30,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "verifyResponse", propOrder = { "_return" })
+/**
+ * @author vige
+ */
 public class VerifyResponse {
 
 	@XmlElement(name = "return")

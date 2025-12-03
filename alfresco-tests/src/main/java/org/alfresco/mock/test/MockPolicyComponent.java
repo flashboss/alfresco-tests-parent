@@ -18,6 +18,9 @@ import org.alfresco.repo.policy.PropertyPolicyDelegate;
 import org.alfresco.repo.policy.ServiceBehaviourBinding;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * @author vige
+ */
 public class MockPolicyComponent implements PolicyComponent {
 
 	@Override

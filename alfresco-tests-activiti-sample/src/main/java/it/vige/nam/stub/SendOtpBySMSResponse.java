@@ -28,6 +28,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "sendOtpBySMSResponse")
+/**
+ * @author vige
+ */
 public class SendOtpBySMSResponse {
 
 }

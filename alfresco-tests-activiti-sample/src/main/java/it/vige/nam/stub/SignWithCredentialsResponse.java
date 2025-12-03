@@ -30,6 +30,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signWithCredentialsResponse", propOrder = { "_return" })
+/**
+ * @author vige
+ */
 public class SignWithCredentialsResponse {
 
 	@XmlElement(name = "return")

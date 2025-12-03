@@ -33,6 +33,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signPAdES", propOrder = { "username", "password", "buffer", "pAdESPreferences" })
+/**
+ * @author vige
+ */
 public class SignPAdES {
 
 	protected String username;

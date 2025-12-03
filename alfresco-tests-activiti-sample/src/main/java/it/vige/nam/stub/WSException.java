@@ -9,6 +9,9 @@ import javax.xml.ws.WebFault;
  */
 
 @WebFault(name = "WSException", targetNamespace = "http://service.ws.nam/")
+/**
+ * @author vige
+ */
 public class WSException extends Exception {
 
 	private it.vige.nam.stub.WsFaultBean wsException;

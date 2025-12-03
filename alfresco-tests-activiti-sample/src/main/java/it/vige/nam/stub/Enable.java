@@ -31,6 +31,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "enable", propOrder = { "securityCode", "username", "password" })
+/**
+ * @author vige
+ */
 public class Enable {
 
 	protected String securityCode;

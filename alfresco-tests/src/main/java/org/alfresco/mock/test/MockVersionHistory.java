@@ -7,6 +7,9 @@ import java.util.Collection;
 import org.alfresco.service.cmr.version.Version;
 import org.alfresco.service.cmr.version.VersionHistory;
 
+/**
+ * @author vige
+ */
 public class MockVersionHistory implements VersionHistory, Serializable {
 
 	private Collection<Version> versions = new ArrayList<Version>();

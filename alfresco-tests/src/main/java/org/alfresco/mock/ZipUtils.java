@@ -26,6 +26,9 @@ import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * @author vige
+ */
 public class ZipUtils {
 
 	public final static File TEMP_DIR = new File(MockContentService.FOLDER_TEST + "temp");

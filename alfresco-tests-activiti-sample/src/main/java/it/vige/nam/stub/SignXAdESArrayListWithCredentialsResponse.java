@@ -33,6 +33,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signXAdESArrayListWithCredentialsResponse", propOrder = { "_return" })
+/**
+ * @author vige
+ */
 public class SignXAdESArrayListWithCredentialsResponse {
 
 	@XmlElement(name = "return")
