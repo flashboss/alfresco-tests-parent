@@ -9,11 +9,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per sign complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="sign"&gt;
  *   &lt;complexContent&gt;
@@ -28,8 +28,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "sign", propOrder = { "username", "password", "buffer", "adESPreferences" })
@@ -43,9 +43,9 @@ public class Sign {
 
 	/**
 	 * Recupera il valore della proprietà username.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getUsername() {
 		return username;
@@ -53,9 +53,9 @@ public class Sign {
 
 	/**
 	 * Imposta il valore della proprietà username.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setUsername(String value) {
 		this.username = value;
@@ -63,9 +63,9 @@ public class Sign {
 
 	/**
 	 * Recupera il valore della proprietà password.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getPassword() {
 		return password;
@@ -73,9 +73,9 @@ public class Sign {
 
 	/**
 	 * Imposta il valore della proprietà password.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setPassword(String value) {
 		this.password = value;
@@ -83,7 +83,7 @@ public class Sign {
 
 	/**
 	 * Recupera il valore della proprietà buffer.
-	 * 
+	 *
 	 * @return possible object is byte[]
 	 */
 	public byte[] getBuffer() {
@@ -92,7 +92,7 @@ public class Sign {
 
 	/**
 	 * Imposta il valore della proprietà buffer.
-	 * 
+	 *
 	 * @param value allowed object is byte[]
 	 */
 	public void setBuffer(byte[] value) {
@@ -101,9 +101,9 @@ public class Sign {
 
 	/**
 	 * Recupera il valore della proprietà adESPreferences.
-	 * 
+	 *
 	 * @return possible object is {@link SignPreferences }
-	 * 
+	 *
 	 */
 	public SignPreferences getAdESPreferences() {
 		return adESPreferences;
@@ -111,9 +111,9 @@ public class Sign {
 
 	/**
 	 * Imposta il valore della proprietà adESPreferences.
-	 * 
+	 *
 	 * @param value allowed object is {@link SignPreferences }
-	 * 
+	 *
 	 */
 	public void setAdESPreferences(SignPreferences value) {
 		this.adESPreferences = value;

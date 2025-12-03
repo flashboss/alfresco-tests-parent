@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per signPkcs1 complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="signPkcs1"&gt;
  *   &lt;complexContent&gt;
@@ -26,8 +26,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signPkcs1", propOrder = { "credentials", "hash", "preferences" })
@@ -39,9 +39,9 @@ public class SignPkcs1 {
 
 	/**
 	 * Recupera il valore della proprietà credentials.
-	 * 
+	 *
 	 * @return possible object is {@link Credentials }
-	 * 
+	 *
 	 */
 	public Credentials getCredentials() {
 		return credentials;
@@ -49,9 +49,9 @@ public class SignPkcs1 {
 
 	/**
 	 * Imposta il valore della proprietà credentials.
-	 * 
+	 *
 	 * @param value allowed object is {@link Credentials }
-	 * 
+	 *
 	 */
 	public void setCredentials(Credentials value) {
 		this.credentials = value;
@@ -59,7 +59,7 @@ public class SignPkcs1 {
 
 	/**
 	 * Recupera il valore della proprietà hash.
-	 * 
+	 *
 	 * @return possible object is byte[]
 	 */
 	public byte[] getHash() {
@@ -68,7 +68,7 @@ public class SignPkcs1 {
 
 	/**
 	 * Imposta il valore della proprietà hash.
-	 * 
+	 *
 	 * @param value allowed object is byte[]
 	 */
 	public void setHash(byte[] value) {
@@ -77,9 +77,9 @@ public class SignPkcs1 {
 
 	/**
 	 * Recupera il valore della proprietà preferences.
-	 * 
+	 *
 	 * @return possible object is {@link SignPreferences }
-	 * 
+	 *
 	 */
 	public SignPreferences getPreferences() {
 		return preferences;
@@ -87,9 +87,9 @@ public class SignPkcs1 {
 
 	/**
 	 * Imposta il valore della proprietà preferences.
-	 * 
+	 *
 	 * @param value allowed object is {@link SignPreferences }
-	 * 
+	 *
 	 */
 	public void setPreferences(SignPreferences value) {
 		this.preferences = value;

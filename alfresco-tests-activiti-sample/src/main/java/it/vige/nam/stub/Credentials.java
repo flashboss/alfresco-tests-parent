@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per credentials complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="credentials"&gt;
  *   &lt;complexContent&gt;
@@ -29,8 +29,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "credentials", propOrder = { "idOtp", "otp", "password", "securityCode", "sessionKey", "username" })
@@ -45,7 +45,7 @@ public class Credentials {
 
 	/**
 	 * Recupera il valore della proprietà idOtp.
-	 * 
+	 *
 	 */
 	public int getIdOtp() {
 		return idOtp;
@@ -53,7 +53,7 @@ public class Credentials {
 
 	/**
 	 * Imposta il valore della proprietà idOtp.
-	 * 
+	 *
 	 */
 	public void setIdOtp(int value) {
 		this.idOtp = value;
@@ -61,9 +61,9 @@ public class Credentials {
 
 	/**
 	 * Recupera il valore della proprietà otp.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getOtp() {
 		return otp;
@@ -71,9 +71,9 @@ public class Credentials {
 
 	/**
 	 * Imposta il valore della proprietà otp.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setOtp(String value) {
 		this.otp = value;
@@ -81,9 +81,9 @@ public class Credentials {
 
 	/**
 	 * Recupera il valore della proprietà password.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getPassword() {
 		return password;
@@ -91,9 +91,9 @@ public class Credentials {
 
 	/**
 	 * Imposta il valore della proprietà password.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setPassword(String value) {
 		this.password = value;
@@ -101,9 +101,9 @@ public class Credentials {
 
 	/**
 	 * Recupera il valore della proprietà securityCode.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getSecurityCode() {
 		return securityCode;
@@ -111,9 +111,9 @@ public class Credentials {
 
 	/**
 	 * Imposta il valore della proprietà securityCode.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setSecurityCode(String value) {
 		this.securityCode = value;
@@ -121,9 +121,9 @@ public class Credentials {
 
 	/**
 	 * Recupera il valore della proprietà sessionKey.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getSessionKey() {
 		return sessionKey;
@@ -131,9 +131,9 @@ public class Credentials {
 
 	/**
 	 * Imposta il valore della proprietà sessionKey.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setSessionKey(String value) {
 		this.sessionKey = value;
@@ -141,9 +141,9 @@ public class Credentials {
 
 	/**
 	 * Recupera il valore della proprietà username.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getUsername() {
 		return username;
@@ -151,9 +151,9 @@ public class Credentials {
 
 	/**
 	 * Imposta il valore della proprietà username.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setUsername(String value) {
 		this.username = value;

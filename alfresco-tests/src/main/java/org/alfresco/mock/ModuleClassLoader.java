@@ -16,7 +16,7 @@ import org.slf4j.Logger;
  * Mock implementation of the ModuleClassLoader class for testing purposes.
  * This class provides a mock implementation that allows unit and integration tests
  * to run without requiring a full Alfresco server instance.
- * 
+ *
  * @author Generated
  * @version 7.4.2.1.1
  */
@@ -34,14 +34,8 @@ public class ModuleClassLoader extends ClassLoader {
     }
 
     /**
-
-
      * {@inheritDoc}
-
-
      */
-
-
     @Override
     public URL getResource(String name) {
         URL url = super.getResource(name);

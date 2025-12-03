@@ -24,7 +24,7 @@ import it.vige.common.ConservationModel;
  * Mock implementation of the ComplexAbstractForm class for testing purposes.
  * This class provides a mock implementation that allows unit and integration tests
  * to run without requiring a full Alfresco server instance.
- * 
+ *
  * @author Generated
  * @version 7.4.2.1.1
  */
@@ -48,14 +48,8 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 	protected NodeRef generationFolder;
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
@@ -89,15 +83,12 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 
 	/**
 	 * Create demo users for the application
-	 * 
+	 *
 	 * @param identityService The service to create the users
 	 */
 	/**
-
 	 * {@inheritDoc}
-
 	 */
-
 	@Override
 	public void initDemoUsers(IdentityService identityService) {
 		createUser(identityService, ADMIN_USER_NAME, "Kermit", "The Frog", ADMIN_USER_NAME,
@@ -115,15 +106,12 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 
 	/**
 	 * Create demo groups for teh application
-	 * 
+	 *
 	 * @param identityService The service to create the groups
 	 */
 	/**
-
 	 * {@inheritDoc}
-
 	 */
-
 	@Override
 	public void initDemoGroups(IdentityService identityService) {
 		String[] assignmentGroups = new String[] { CONTRIBUTORS };

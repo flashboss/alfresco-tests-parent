@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per timestamp complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="timestamp"&gt;
  *   &lt;complexContent&gt;
@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "timestamp", propOrder = { "content", "preferences" })
@@ -37,7 +37,7 @@ public class Timestamp {
 
 	/**
 	 * Recupera il valore della proprietà content.
-	 * 
+	 *
 	 * @return possible object is byte[]
 	 */
 	public byte[] getContent() {
@@ -46,7 +46,7 @@ public class Timestamp {
 
 	/**
 	 * Imposta il valore della proprietà content.
-	 * 
+	 *
 	 * @param value allowed object is byte[]
 	 */
 	public void setContent(byte[] value) {
@@ -55,9 +55,9 @@ public class Timestamp {
 
 	/**
 	 * Recupera il valore della proprietà preferences.
-	 * 
+	 *
 	 * @return possible object is {@link TimeStampPreferences }
-	 * 
+	 *
 	 */
 	public TimeStampPreferences getPreferences() {
 		return preferences;
@@ -65,9 +65,9 @@ public class Timestamp {
 
 	/**
 	 * Imposta il valore della proprietà preferences.
-	 * 
+	 *
 	 * @param value allowed object is {@link TimeStampPreferences }
-	 * 
+	 *
 	 */
 	public void setPreferences(TimeStampPreferences value) {
 		this.preferences = value;

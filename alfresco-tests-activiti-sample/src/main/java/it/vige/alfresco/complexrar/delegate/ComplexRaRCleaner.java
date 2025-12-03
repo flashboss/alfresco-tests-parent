@@ -12,21 +12,15 @@ import org.mozilla.javascript.NativeArray;
  * Mock implementation of the ComplexRaRCleaner class for testing purposes.
  * This class provides a mock implementation that allows unit and integration tests
  * to run without requiring a full Alfresco server instance.
- * 
+ *
  * @author Generated
  * @version 7.4.2.1.1
  */
 public class ComplexRaRCleaner extends BaseJavaDelegate {
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 		ActivitiScriptNode bpmPackage = (ActivitiScriptNode) execution.getVariable("bpm_package");

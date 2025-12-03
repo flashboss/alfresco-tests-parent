@@ -17,7 +17,7 @@ import org.junit.Test;
  * Mock implementation of the MockRuleServiceTest class for testing purposes.
  * This class provides a mock implementation that allows unit and integration tests
  * to run without requiring a full Alfresco server instance.
- * 
+ *
  * @author Generated
  * @version 7.4.2.1.1
  */
@@ -223,42 +223,24 @@ public class MockRuleServiceTest {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public String getName() {
 			return name;
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public String getDisplayLabel() {
 			return displayLabel;
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public void triggerRuleType(NodeRef nodeRef, NodeRef actionedUponNodeRef, boolean executeAsynchronously) {
 			// Not implemented in mock

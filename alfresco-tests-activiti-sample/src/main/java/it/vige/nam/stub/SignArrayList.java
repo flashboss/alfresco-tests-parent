@@ -12,11 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per signArrayList complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="signArrayList"&gt;
  *   &lt;complexContent&gt;
@@ -31,8 +31,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signArrayList", propOrder = { "username", "password", "bufferList", "adESPreferences" })
@@ -46,9 +46,9 @@ public class SignArrayList {
 
 	/**
 	 * Recupera il valore della proprietà username.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getUsername() {
 		return username;
@@ -56,9 +56,9 @@ public class SignArrayList {
 
 	/**
 	 * Imposta il valore della proprietà username.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setUsername(String value) {
 		this.username = value;
@@ -66,9 +66,9 @@ public class SignArrayList {
 
 	/**
 	 * Recupera il valore della proprietà password.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getPassword() {
 		return password;
@@ -76,9 +76,9 @@ public class SignArrayList {
 
 	/**
 	 * Imposta il valore della proprietà password.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setPassword(String value) {
 		this.password = value;
@@ -86,24 +86,24 @@ public class SignArrayList {
 
 	/**
 	 * Gets the value of the bufferList property.
-	 * 
+	 *
 	 * <p>
 	 * This accessor method returns a reference to the live list, not a snapshot.
 	 * Therefore any modification you make to the returned list will be present
 	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
 	 * for the bufferList property.
-	 * 
+	 *
 	 * <p>
 	 * For example, to add a new item, do as follows:
-	 * 
+	 *
 	 * <pre>
 	 * getBufferList().add(newItem);
 	 * </pre>
-	 * 
-	 * 
+	 *
+	 *
 	 * <p>
 	 * Objects of the following type(s) are allowed in the list byte[]
-	 * 
+	 *
 	 */
 	public List<byte[]> getBufferList() {
 		if (bufferList == null) {
@@ -114,9 +114,9 @@ public class SignArrayList {
 
 	/**
 	 * Recupera il valore della proprietà adESPreferences.
-	 * 
+	 *
 	 * @return possible object is {@link SignPreferences }
-	 * 
+	 *
 	 */
 	public SignPreferences getAdESPreferences() {
 		return adESPreferences;
@@ -124,9 +124,9 @@ public class SignArrayList {
 
 	/**
 	 * Imposta il valore della proprietà adESPreferences.
-	 * 
+	 *
 	 * @param value allowed object is {@link SignPreferences }
-	 * 
+	 *
 	 */
 	public void setAdESPreferences(SignPreferences value) {
 		this.adESPreferences = value;

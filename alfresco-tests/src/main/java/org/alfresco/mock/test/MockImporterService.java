@@ -28,7 +28,7 @@ import com.google.gdata.util.common.io.CharStreams;
  * Mock implementation of the MockImporterService class for testing purposes.
  * This class provides a mock implementation that allows unit and integration tests
  * to run without requiring a full Alfresco server instance.
- * 
+ *
  * @author Generated
  * @version 7.4.2.1.1
  */
@@ -41,14 +41,8 @@ public class MockImporterService implements ImporterService, Serializable {
 	private ContentService contentService;
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public void importView(Reader viewReader, Location location, ImporterBinding binding, ImporterProgress progress)
 			throws ImporterException {
@@ -57,14 +51,8 @@ public class MockImporterService implements ImporterService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public void importView(ImportPackageHandler importHandler, Location location, ImporterBinding binding,
 			ImporterProgress progress) throws ImporterException {

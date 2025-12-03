@@ -34,7 +34,7 @@ import it.vige.common.ConservationModel;
  * Mock implementation of the ComplexIRaRGeneration class for testing purposes.
  * This class provides a mock implementation that allows unit and integration tests
  * to run without requiring a full Alfresco server instance.
- * 
+ *
  * @author Generated
  * @version 7.4.2.1.1
  */
@@ -128,14 +128,8 @@ public class ComplexIRaRGeneration extends BaseJavaDelegate {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 		int rarId = (int) execution.getVariable("vigewf_rarId");

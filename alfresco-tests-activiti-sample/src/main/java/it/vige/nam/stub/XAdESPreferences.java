@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per xAdESPreferences complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="xAdESPreferences"&gt;
  *   &lt;complexContent&gt;
@@ -24,8 +24,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "xAdESPreferences", propOrder = { "signElement" })
@@ -35,9 +35,9 @@ public class XAdESPreferences extends SignPreferences {
 
 	/**
 	 * Recupera il valore della proprietà signElement.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getSignElement() {
 		return signElement;
@@ -45,9 +45,9 @@ public class XAdESPreferences extends SignPreferences {
 
 	/**
 	 * Imposta il valore della proprietà signElement.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setSignElement(String value) {
 		this.signElement = value;

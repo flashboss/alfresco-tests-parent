@@ -15,7 +15,7 @@ import javax.xml.namespace.QName;
  * can consist of schema derived interfaces and classes representing the binding
  * of schema type definitions, element declarations and model groups. Factory
  * methods for each of these are provided in this class.
- * 
+ *
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -33,14 +33,14 @@ public class ObjectFactory {
 	/**
 	 * Create a new ObjectFactory that can be used to create new instances of schema
 	 * derived classes for package: it.vige.nam.stub
-	 * 
+	 *
 	 */
 	public ObjectFactory() {
 	}
 
 	/**
 	 * Create an instance of {@link SignCAdESByAttachment }
-	 * 
+	 *
 	 */
 	public SignCAdESByAttachment createSignCAdESByAttachment() {
 		return new SignCAdESByAttachment();
@@ -48,7 +48,7 @@ public class ObjectFactory {
 
 	/**
 	 * Create an instance of {@link SignCAdESByAttachmentResponse }
-	 * 
+	 *
 	 */
 	public SignCAdESByAttachmentResponse createSignCAdESByAttachmentResponse() {
 		return new SignCAdESByAttachmentResponse();
@@ -56,7 +56,7 @@ public class ObjectFactory {
 
 	/**
 	 * Create an instance of {@link VerifyCAdESByAttachment }
-	 * 
+	 *
 	 */
 	public VerifyCAdESByAttachment createVerifyCAdESByAttachment() {
 		return new VerifyCAdESByAttachment();
@@ -64,7 +64,7 @@ public class ObjectFactory {
 
 	/**
 	 * Create an instance of {@link VerifyCAdESByAttachmentResponse }
-	 * 
+	 *
 	 */
 	public VerifyCAdESByAttachmentResponse createVerifyCAdESByAttachmentResponse() {
 		return new VerifyCAdESByAttachmentResponse();
@@ -72,7 +72,7 @@ public class ObjectFactory {
 
 	/**
 	 * Create an instance of {@link WsFaultBean }
-	 * 
+	 *
 	 */
 	public WsFaultBean createWsFaultBean() {
 		return new WsFaultBean();
@@ -80,7 +80,7 @@ public class ObjectFactory {
 
 	/**
 	 * Create an instance of {@link VerifyPreferences }
-	 * 
+	 *
 	 */
 	public VerifyPreferences createVerifyPreferences() {
 		return new VerifyPreferences();
@@ -88,7 +88,7 @@ public class ObjectFactory {
 
 	/**
 	 * Create an instance of {@link SignedDocumentReportBean }
-	 * 
+	 *
 	 */
 	public SignedDocumentReportBean createSignedDocumentReportBean() {
 		return new SignedDocumentReportBean();
@@ -96,7 +96,7 @@ public class ObjectFactory {
 
 	/**
 	 * Create an instance of {@link NoteReportBean }
-	 * 
+	 *
 	 */
 	public NoteReportBean createNoteReportBean() {
 		return new NoteReportBean();
@@ -104,7 +104,7 @@ public class ObjectFactory {
 
 	/**
 	 * Create an instance of {@link SignatureReportBean }
-	 * 
+	 *
 	 */
 	public SignatureReportBean createSignatureReportBean() {
 		return new SignatureReportBean();
@@ -112,7 +112,7 @@ public class ObjectFactory {
 
 	/**
 	 * Create an instance of {@link TimestampReportBean }
-	 * 
+	 *
 	 */
 	public TimestampReportBean createTimestampReportBean() {
 		return new TimestampReportBean();
@@ -120,7 +120,7 @@ public class ObjectFactory {
 
 	/**
 	 * Create an instance of {@link Credentials }
-	 * 
+	 *
 	 */
 	public Credentials createCredentials() {
 		return new Credentials();
@@ -128,7 +128,7 @@ public class ObjectFactory {
 
 	/**
 	 * Create an instance of {@link CAdESPreferences }
-	 * 
+	 *
 	 */
 	public CAdESPreferences createCAdESPreferences() {
 		return new CAdESPreferences();
@@ -136,7 +136,7 @@ public class ObjectFactory {
 
 	/**
 	 * Create an instance of {@link SignPreferences }
-	 * 
+	 *
 	 */
 	public SignPreferences createSignPreferences() {
 		return new SignPreferences();
@@ -144,7 +144,7 @@ public class ObjectFactory {
 
 	/**
 	 * Create an instance of {@link TimeStampPreferences }
-	 * 
+	 *
 	 */
 	public TimeStampPreferences createTimeStampPreferences() {
 		return new TimeStampPreferences();
@@ -153,7 +153,7 @@ public class ObjectFactory {
 	/**
 	 * Create an instance of {@link JAXBElement
 	 * }{@code <}{@link SignCAdESByAttachment }{@code >}}
-	 * 
+	 *
 	 */
 	@XmlElementDecl(namespace = "http://service.ws.nam/", name = "signCAdESByAttachment")
 	public JAXBElement<SignCAdESByAttachment> createSignCAdESByAttachment(SignCAdESByAttachment value) {
@@ -164,7 +164,7 @@ public class ObjectFactory {
 	/**
 	 * Create an instance of {@link JAXBElement
 	 * }{@code <}{@link SignCAdESByAttachmentResponse }{@code >}}
-	 * 
+	 *
 	 */
 	@XmlElementDecl(namespace = "http://service.ws.nam/", name = "signCAdESByAttachmentResponse")
 	public JAXBElement<SignCAdESByAttachmentResponse> createSignCAdESByAttachmentResponse(
@@ -176,7 +176,7 @@ public class ObjectFactory {
 	/**
 	 * Create an instance of {@link JAXBElement
 	 * }{@code <}{@link VerifyCAdESByAttachment }{@code >}}
-	 * 
+	 *
 	 */
 	@XmlElementDecl(namespace = "http://service.ws.nam/", name = "verifyCAdESByAttachment")
 	public JAXBElement<VerifyCAdESByAttachment> createVerifyCAdESByAttachment(VerifyCAdESByAttachment value) {
@@ -187,7 +187,7 @@ public class ObjectFactory {
 	/**
 	 * Create an instance of {@link JAXBElement
 	 * }{@code <}{@link VerifyCAdESByAttachmentResponse }{@code >}}
-	 * 
+	 *
 	 */
 	@XmlElementDecl(namespace = "http://service.ws.nam/", name = "verifyCAdESByAttachmentResponse")
 	public JAXBElement<VerifyCAdESByAttachmentResponse> createVerifyCAdESByAttachmentResponse(
@@ -199,7 +199,7 @@ public class ObjectFactory {
 	/**
 	 * Create an instance of {@link JAXBElement }{@code <}{@link WsFaultBean
 	 * }{@code >}}
-	 * 
+	 *
 	 */
 	@XmlElementDecl(namespace = "http://service.ws.nam/", name = "WSException")
 	public JAXBElement<WsFaultBean> createWSException(WsFaultBean value) {

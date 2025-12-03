@@ -15,7 +15,7 @@ import org.subethamail.smtp.RejectException;
 
 /**
  * A factory of messages. It is used by the internal mail server
- * 
+ *
  * @author lucastancapiano
  *
  */
@@ -29,7 +29,7 @@ public class MockMessageHandlerFactory implements MessageHandlerFactory {
 
 	/**
 	 * Print the message and its properties
-	 * 
+	 *
 	 * @author lucastancapiano
 	 *
 	 */
@@ -73,7 +73,7 @@ public class MockMessageHandlerFactory implements MessageHandlerFactory {
 
 		/**
 		 * Utility convert a stream in a string
-		 * 
+		 *
 		 * @param is
 		 *            The stream to convert
 		 * @return The converted string

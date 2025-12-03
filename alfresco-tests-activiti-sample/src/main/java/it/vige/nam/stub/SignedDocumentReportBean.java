@@ -14,11 +14,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
 /**
  * <p>
  * Classe Java per signedDocumentReportBean complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="signedDocumentReportBean"&gt;
  *   &lt;complexContent&gt;
@@ -37,8 +37,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signedDocumentReportBean", propOrder = { "checkDate", "noteReportList", "nrOfSignatures",
@@ -60,9 +60,9 @@ public class SignedDocumentReportBean {
 
 	/**
 	 * Recupera il valore della proprietà checkDate.
-	 * 
+	 *
 	 * @return possible object is {@link XMLGregorianCalendar }
-	 * 
+	 *
 	 */
 	public XMLGregorianCalendar getCheckDate() {
 		return checkDate;
@@ -70,9 +70,9 @@ public class SignedDocumentReportBean {
 
 	/**
 	 * Imposta il valore della proprietà checkDate.
-	 * 
+	 *
 	 * @param value allowed object is {@link XMLGregorianCalendar }
-	 * 
+	 *
 	 */
 	public void setCheckDate(XMLGregorianCalendar value) {
 		this.checkDate = value;
@@ -80,26 +80,26 @@ public class SignedDocumentReportBean {
 
 	/**
 	 * Gets the value of the noteReportList property.
-	 * 
+	 *
 	 * <p>
 	 * This accessor method returns a reference to the live list, not a snapshot.
 	 * Therefore any modification you make to the returned list will be present
 	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
 	 * for the noteReportList property.
-	 * 
+	 *
 	 * <p>
 	 * For example, to add a new item, do as follows:
-	 * 
+	 *
 	 * <pre>
 	 * getNoteReportList().add(newItem);
 	 * </pre>
-	 * 
-	 * 
+	 *
+	 *
 	 * <p>
 	 * Objects of the following type(s) are allowed in the list
 	 * {@link NoteReportBean }
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public List<NoteReportBean> getNoteReportList() {
 		if (noteReportList == null) {
@@ -110,7 +110,7 @@ public class SignedDocumentReportBean {
 
 	/**
 	 * Recupera il valore della proprietà nrOfSignatures.
-	 * 
+	 *
 	 */
 	public int getNrOfSignatures() {
 		return nrOfSignatures;
@@ -118,7 +118,7 @@ public class SignedDocumentReportBean {
 
 	/**
 	 * Imposta il valore della proprietà nrOfSignatures.
-	 * 
+	 *
 	 */
 	public void setNrOfSignatures(int value) {
 		this.nrOfSignatures = value;
@@ -126,7 +126,7 @@ public class SignedDocumentReportBean {
 
 	/**
 	 * Recupera il valore della proprietà overallVerified.
-	 * 
+	 *
 	 */
 	public boolean isOverallVerified() {
 		return overallVerified;
@@ -134,7 +134,7 @@ public class SignedDocumentReportBean {
 
 	/**
 	 * Imposta il valore della proprietà overallVerified.
-	 * 
+	 *
 	 */
 	public void setOverallVerified(boolean value) {
 		this.overallVerified = value;
@@ -142,7 +142,7 @@ public class SignedDocumentReportBean {
 
 	/**
 	 * Recupera il valore della proprietà plainDocument.
-	 * 
+	 *
 	 * @return possible object is byte[]
 	 */
 	public byte[] getPlainDocument() {
@@ -151,7 +151,7 @@ public class SignedDocumentReportBean {
 
 	/**
 	 * Imposta il valore della proprietà plainDocument.
-	 * 
+	 *
 	 * @param value allowed object is byte[]
 	 */
 	public void setPlainDocument(byte[] value) {
@@ -160,9 +160,9 @@ public class SignedDocumentReportBean {
 
 	/**
 	 * Recupera il valore della proprietà signatureFormat.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getSignatureFormat() {
 		return signatureFormat;
@@ -170,9 +170,9 @@ public class SignedDocumentReportBean {
 
 	/**
 	 * Imposta il valore della proprietà signatureFormat.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setSignatureFormat(String value) {
 		this.signatureFormat = value;
@@ -180,26 +180,26 @@ public class SignedDocumentReportBean {
 
 	/**
 	 * Gets the value of the signatureReportList property.
-	 * 
+	 *
 	 * <p>
 	 * This accessor method returns a reference to the live list, not a snapshot.
 	 * Therefore any modification you make to the returned list will be present
 	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
 	 * for the signatureReportList property.
-	 * 
+	 *
 	 * <p>
 	 * For example, to add a new item, do as follows:
-	 * 
+	 *
 	 * <pre>
 	 * getSignatureReportList().add(newItem);
 	 * </pre>
-	 * 
-	 * 
+	 *
+	 *
 	 * <p>
 	 * Objects of the following type(s) are allowed in the list
 	 * {@link SignatureReportBean }
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public List<SignatureReportBean> getSignatureReportList() {
 		if (signatureReportList == null) {
@@ -210,9 +210,9 @@ public class SignedDocumentReportBean {
 
 	/**
 	 * Recupera il valore della proprietà verificationDate.
-	 * 
+	 *
 	 * @return possible object is {@link XMLGregorianCalendar }
-	 * 
+	 *
 	 */
 	public XMLGregorianCalendar getVerificationDate() {
 		return verificationDate;
@@ -220,9 +220,9 @@ public class SignedDocumentReportBean {
 
 	/**
 	 * Imposta il valore della proprietà verificationDate.
-	 * 
+	 *
 	 * @param value allowed object is {@link XMLGregorianCalendar }
-	 * 
+	 *
 	 */
 	public void setVerificationDate(XMLGregorianCalendar value) {
 		this.verificationDate = value;

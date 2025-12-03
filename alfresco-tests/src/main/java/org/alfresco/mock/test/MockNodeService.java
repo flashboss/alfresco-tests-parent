@@ -44,7 +44,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Mock implementation of the NodeService interface for testing purposes.
  * This class provides a mock implementation that allows unit and integration tests
  * to run without requiring a full Alfresco server instance.
- * 
+ *
  * @author Generated
  * @version 7.4.2.1.1
  */
@@ -614,7 +614,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	/**
 	 * Creates an association in the given map.
-	 * 
+	 *
 	 * @param qnameAssocs the map of associations
 	 * @param nodeRef the node reference
 	 * @param assocTypeQName the association type QName
@@ -647,7 +647,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	/**
 	 * Removes an association from the given map.
-	 * 
+	 *
 	 * @param qnameAssocs the map of associations
 	 * @param nodeRef the node reference
 	 * @param assocTypeQName the association type QName
@@ -749,7 +749,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	/**
 	 * Gets the path of a node as a string.
-	 * 
+	 *
 	 * @param nodeRef the node reference
 	 * @return the path as a string, or null if the path cannot be determined
 	 * @throws InvalidNodeRefException if the node reference is invalid
@@ -828,7 +828,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 		/**
 		 * Creates a new MockElement with the specified path.
-		 * 
+		 *
 		 * @param path the path string
 		 */
 		public MockElement(String path) {
@@ -855,7 +855,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	/**
 	 * Gets the properties map for a node, creating it if it doesn't exist.
-	 * 
+	 *
 	 * @param nodeRef the node reference
 	 * @return the properties map, never null
 	 */
@@ -870,7 +870,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	/**
 	 * Gets the map of node references to files.
-	 * 
+	 *
 	 * @return the map of node references to files
 	 */
 	public Map<NodeRef, File> getNodeRefs() {
@@ -889,7 +889,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	/**
 	 * Gets the permissions as a string representation.
-	 * 
+	 *
 	 * @return the permissions as a string
 	 */
 	public String getPermissions() {
@@ -898,7 +898,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	/**
 	 * Gets the permissions for a specific node.
-	 * 
+	 *
 	 * @param nodeRef the node reference
 	 * @return the set of access permissions for the node
 	 */
@@ -908,7 +908,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	/**
 	 * Sets a permission for a specific node.
-	 * 
+	 *
 	 * @param nodeRef the node reference
 	 * @param accessPermission the access permission to set
 	 */
@@ -923,7 +923,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	/**
 	 * Sets the namespace service.
-	 * 
+	 *
 	 * @param namespaceService the namespace service to set
 	 */
 	public void setNamespaceService(NamespaceService namespaceService) {

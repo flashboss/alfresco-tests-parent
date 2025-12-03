@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per enable complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="enable"&gt;
  *   &lt;complexContent&gt;
@@ -26,8 +26,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "enable", propOrder = { "securityCode", "username", "password" })
@@ -39,9 +39,9 @@ public class Enable {
 
 	/**
 	 * Recupera il valore della proprietà securityCode.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getSecurityCode() {
 		return securityCode;
@@ -49,9 +49,9 @@ public class Enable {
 
 	/**
 	 * Imposta il valore della proprietà securityCode.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setSecurityCode(String value) {
 		this.securityCode = value;
@@ -59,9 +59,9 @@ public class Enable {
 
 	/**
 	 * Recupera il valore della proprietà username.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getUsername() {
 		return username;
@@ -69,9 +69,9 @@ public class Enable {
 
 	/**
 	 * Imposta il valore della proprietà username.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setUsername(String value) {
 		this.username = value;
@@ -79,9 +79,9 @@ public class Enable {
 
 	/**
 	 * Recupera il valore della proprietà password.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getPassword() {
 		return password;
@@ -89,9 +89,9 @@ public class Enable {
 
 	/**
 	 * Imposta il valore della proprietà password.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setPassword(String value) {
 		this.password = value;

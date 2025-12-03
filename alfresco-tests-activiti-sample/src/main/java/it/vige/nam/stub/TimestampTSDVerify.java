@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per timestampTSDVerify complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="timestampTSDVerify"&gt;
  *   &lt;complexContent&gt;
@@ -24,8 +24,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "timestampTSDVerify", propOrder = { "tsd" })
@@ -35,7 +35,7 @@ public class TimestampTSDVerify {
 
 	/**
 	 * Recupera il valore della proprietà tsd.
-	 * 
+	 *
 	 * @return possible object is byte[]
 	 */
 	public byte[] getTsd() {
@@ -44,7 +44,7 @@ public class TimestampTSDVerify {
 
 	/**
 	 * Imposta il valore della proprietà tsd.
-	 * 
+	 *
 	 * @param value allowed object is byte[]
 	 */
 	public void setTsd(byte[] value) {

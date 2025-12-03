@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per signerImage complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="signerImage"&gt;
  *   &lt;complexContent&gt;
@@ -37,8 +37,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signerImage", propOrder = { "fieldName", "fontName", "fontSize", "height", "image", "imageFilename",
@@ -62,9 +62,9 @@ public class SignerImage {
 
 	/**
 	 * Recupera il valore della proprietà fieldName.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getFieldName() {
 		return fieldName;
@@ -72,9 +72,9 @@ public class SignerImage {
 
 	/**
 	 * Imposta il valore della proprietà fieldName.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setFieldName(String value) {
 		this.fieldName = value;
@@ -82,9 +82,9 @@ public class SignerImage {
 
 	/**
 	 * Recupera il valore della proprietà fontName.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getFontName() {
 		return fontName;
@@ -92,9 +92,9 @@ public class SignerImage {
 
 	/**
 	 * Imposta il valore della proprietà fontName.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setFontName(String value) {
 		this.fontName = value;
@@ -102,7 +102,7 @@ public class SignerImage {
 
 	/**
 	 * Recupera il valore della proprietà fontSize.
-	 * 
+	 *
 	 */
 	public int getFontSize() {
 		return fontSize;
@@ -110,7 +110,7 @@ public class SignerImage {
 
 	/**
 	 * Imposta il valore della proprietà fontSize.
-	 * 
+	 *
 	 */
 	public void setFontSize(int value) {
 		this.fontSize = value;
@@ -118,7 +118,7 @@ public class SignerImage {
 
 	/**
 	 * Recupera il valore della proprietà height.
-	 * 
+	 *
 	 */
 	public int getHeight() {
 		return height;
@@ -126,7 +126,7 @@ public class SignerImage {
 
 	/**
 	 * Imposta il valore della proprietà height.
-	 * 
+	 *
 	 */
 	public void setHeight(int value) {
 		this.height = value;
@@ -134,7 +134,7 @@ public class SignerImage {
 
 	/**
 	 * Recupera il valore della proprietà image.
-	 * 
+	 *
 	 * @return possible object is byte[]
 	 */
 	public byte[] getImage() {
@@ -143,7 +143,7 @@ public class SignerImage {
 
 	/**
 	 * Imposta il valore della proprietà image.
-	 * 
+	 *
 	 * @param value allowed object is byte[]
 	 */
 	public void setImage(byte[] value) {
@@ -152,9 +152,9 @@ public class SignerImage {
 
 	/**
 	 * Recupera il valore della proprietà imageFilename.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getImageFilename() {
 		return imageFilename;
@@ -162,9 +162,9 @@ public class SignerImage {
 
 	/**
 	 * Imposta il valore della proprietà imageFilename.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setImageFilename(String value) {
 		this.imageFilename = value;
@@ -172,9 +172,9 @@ public class SignerImage {
 
 	/**
 	 * Recupera il valore della proprietà imageURL.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getImageURL() {
 		return imageURL;
@@ -182,9 +182,9 @@ public class SignerImage {
 
 	/**
 	 * Imposta il valore della proprietà imageURL.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setImageURL(String value) {
 		this.imageURL = value;
@@ -192,9 +192,9 @@ public class SignerImage {
 
 	/**
 	 * Recupera il valore della proprietà location.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getLocation() {
 		return location;
@@ -202,9 +202,9 @@ public class SignerImage {
 
 	/**
 	 * Imposta il valore della proprietà location.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setLocation(String value) {
 		this.location = value;
@@ -212,9 +212,9 @@ public class SignerImage {
 
 	/**
 	 * Recupera il valore della proprietà reason.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getReason() {
 		return reason;
@@ -222,9 +222,9 @@ public class SignerImage {
 
 	/**
 	 * Imposta il valore della proprietà reason.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setReason(String value) {
 		this.reason = value;
@@ -232,9 +232,9 @@ public class SignerImage {
 
 	/**
 	 * Recupera il valore della proprietà signerName.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getSignerName() {
 		return signerName;
@@ -242,9 +242,9 @@ public class SignerImage {
 
 	/**
 	 * Imposta il valore della proprietà signerName.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setSignerName(String value) {
 		this.signerName = value;
@@ -252,7 +252,7 @@ public class SignerImage {
 
 	/**
 	 * Recupera il valore della proprietà textVisible.
-	 * 
+	 *
 	 */
 	public boolean isTextVisible() {
 		return textVisible;
@@ -260,7 +260,7 @@ public class SignerImage {
 
 	/**
 	 * Imposta il valore della proprietà textVisible.
-	 * 
+	 *
 	 */
 	public void setTextVisible(boolean value) {
 		this.textVisible = value;
@@ -268,7 +268,7 @@ public class SignerImage {
 
 	/**
 	 * Recupera il valore della proprietà width.
-	 * 
+	 *
 	 */
 	public int getWidth() {
 		return width;
@@ -276,7 +276,7 @@ public class SignerImage {
 
 	/**
 	 * Imposta il valore della proprietà width.
-	 * 
+	 *
 	 */
 	public void setWidth(int value) {
 		this.width = value;
@@ -284,7 +284,7 @@ public class SignerImage {
 
 	/**
 	 * Recupera il valore della proprietà x.
-	 * 
+	 *
 	 */
 	public int getX() {
 		return x;
@@ -292,7 +292,7 @@ public class SignerImage {
 
 	/**
 	 * Imposta il valore della proprietà x.
-	 * 
+	 *
 	 */
 	public void setX(int value) {
 		this.x = value;
@@ -300,7 +300,7 @@ public class SignerImage {
 
 	/**
 	 * Recupera il valore della proprietà y.
-	 * 
+	 *
 	 */
 	public int getY() {
 		return y;
@@ -308,7 +308,7 @@ public class SignerImage {
 
 	/**
 	 * Imposta il valore della proprietà y.
-	 * 
+	 *
 	 */
 	public void setY(int value) {
 		this.y = value;

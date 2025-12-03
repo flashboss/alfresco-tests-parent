@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per noteReportBean complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="noteReportBean"&gt;
  *   &lt;complexContent&gt;
@@ -28,8 +28,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "noteReportBean", propOrder = { "about", "description", "policy", "synopsis", "type" })
@@ -43,7 +43,7 @@ public class NoteReportBean {
 
 	/**
 	 * Recupera il valore della proprietà about.
-	 * 
+	 *
 	 */
 	public int getAbout() {
 		return about;
@@ -51,7 +51,7 @@ public class NoteReportBean {
 
 	/**
 	 * Imposta il valore della proprietà about.
-	 * 
+	 *
 	 */
 	public void setAbout(int value) {
 		this.about = value;
@@ -59,9 +59,9 @@ public class NoteReportBean {
 
 	/**
 	 * Recupera il valore della proprietà description.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getDescription() {
 		return description;
@@ -69,9 +69,9 @@ public class NoteReportBean {
 
 	/**
 	 * Imposta il valore della proprietà description.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setDescription(String value) {
 		this.description = value;
@@ -79,7 +79,7 @@ public class NoteReportBean {
 
 	/**
 	 * Recupera il valore della proprietà policy.
-	 * 
+	 *
 	 */
 	public int getPolicy() {
 		return policy;
@@ -87,7 +87,7 @@ public class NoteReportBean {
 
 	/**
 	 * Imposta il valore della proprietà policy.
-	 * 
+	 *
 	 */
 	public void setPolicy(int value) {
 		this.policy = value;
@@ -95,9 +95,9 @@ public class NoteReportBean {
 
 	/**
 	 * Recupera il valore della proprietà synopsis.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getSynopsis() {
 		return synopsis;
@@ -105,9 +105,9 @@ public class NoteReportBean {
 
 	/**
 	 * Imposta il valore della proprietà synopsis.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setSynopsis(String value) {
 		this.synopsis = value;
@@ -115,7 +115,7 @@ public class NoteReportBean {
 
 	/**
 	 * Recupera il valore della proprietà type.
-	 * 
+	 *
 	 */
 	public int getType() {
 		return type;
@@ -123,7 +123,7 @@ public class NoteReportBean {
 
 	/**
 	 * Imposta il valore della proprietà type.
-	 * 
+	 *
 	 */
 	public void setType(int value) {
 		this.type = value;

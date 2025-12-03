@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per pAdESPreferences complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="pAdESPreferences"&gt;
  *   &lt;complexContent&gt;
@@ -28,8 +28,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "pAdESPreferences", propOrder = { "encryptInAnyCase", "encryptionPassword", "page", "signerImage",
@@ -44,7 +44,7 @@ public class PAdESPreferences extends SignPreferences {
 
 	/**
 	 * Recupera il valore della proprietà encryptInAnyCase.
-	 * 
+	 *
 	 */
 	public boolean isEncryptInAnyCase() {
 		return encryptInAnyCase;
@@ -52,7 +52,7 @@ public class PAdESPreferences extends SignPreferences {
 
 	/**
 	 * Imposta il valore della proprietà encryptInAnyCase.
-	 * 
+	 *
 	 */
 	public void setEncryptInAnyCase(boolean value) {
 		this.encryptInAnyCase = value;
@@ -60,9 +60,9 @@ public class PAdESPreferences extends SignPreferences {
 
 	/**
 	 * Recupera il valore della proprietà encryptionPassword.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getEncryptionPassword() {
 		return encryptionPassword;
@@ -70,9 +70,9 @@ public class PAdESPreferences extends SignPreferences {
 
 	/**
 	 * Imposta il valore della proprietà encryptionPassword.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setEncryptionPassword(String value) {
 		this.encryptionPassword = value;
@@ -80,7 +80,7 @@ public class PAdESPreferences extends SignPreferences {
 
 	/**
 	 * Recupera il valore della proprietà page.
-	 * 
+	 *
 	 */
 	public int getPage() {
 		return page;
@@ -88,7 +88,7 @@ public class PAdESPreferences extends SignPreferences {
 
 	/**
 	 * Imposta il valore della proprietà page.
-	 * 
+	 *
 	 */
 	public void setPage(int value) {
 		this.page = value;
@@ -96,9 +96,9 @@ public class PAdESPreferences extends SignPreferences {
 
 	/**
 	 * Recupera il valore della proprietà signerImage.
-	 * 
+	 *
 	 * @return possible object is {@link SignerImage }
-	 * 
+	 *
 	 */
 	public SignerImage getSignerImage() {
 		return signerImage;
@@ -106,9 +106,9 @@ public class PAdESPreferences extends SignPreferences {
 
 	/**
 	 * Imposta il valore della proprietà signerImage.
-	 * 
+	 *
 	 * @param value allowed object is {@link SignerImage }
-	 * 
+	 *
 	 */
 	public void setSignerImage(SignerImage value) {
 		this.signerImage = value;
@@ -116,9 +116,9 @@ public class PAdESPreferences extends SignPreferences {
 
 	/**
 	 * Recupera il valore della proprietà signerImageReference.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getSignerImageReference() {
 		return signerImageReference;
@@ -126,9 +126,9 @@ public class PAdESPreferences extends SignPreferences {
 
 	/**
 	 * Imposta il valore della proprietà signerImageReference.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setSignerImageReference(String value) {
 		this.signerImageReference = value;

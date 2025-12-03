@@ -151,7 +151,7 @@ public class DroolsConverterImpl {
 	/**
 	 * Convert a single template based on the drools rule file and
 	 * information extracted from the json
-	 * 
+	 *
 	 * @param templateIS
 	 * @param droolsRuleIS
 	 * @param jsonMap

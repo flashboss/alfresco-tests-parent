@@ -11,11 +11,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per signCAdESByAttachmentResponse complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="signCAdESByAttachmentResponse"&gt;
  *   &lt;complexContent&gt;
@@ -27,8 +27,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signCAdESByAttachmentResponse", propOrder = { "_return" })
@@ -40,9 +40,9 @@ public class SignCAdESByAttachmentResponse {
 
 	/**
 	 * Recupera il valore della proprietà return.
-	 * 
+	 *
 	 * @return possible object is {@link DataHandler }
-	 * 
+	 *
 	 */
 	public DataHandler getReturn() {
 		return _return;
@@ -50,9 +50,9 @@ public class SignCAdESByAttachmentResponse {
 
 	/**
 	 * Imposta il valore della proprietà return.
-	 * 
+	 *
 	 * @param value allowed object is {@link DataHandler }
-	 * 
+	 *
 	 */
 	public void setReturn(DataHandler value) {
 		this._return = value;

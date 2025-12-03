@@ -9,11 +9,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per getSignaturesResponse complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="getSignaturesResponse"&gt;
  *   &lt;complexContent&gt;
@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "getSignaturesResponse", propOrder = { "_return" })
@@ -37,7 +37,7 @@ public class GetSignaturesResponse {
 
 	/**
 	 * Recupera il valore della proprietà return.
-	 * 
+	 *
 	 */
 	public long getReturn() {
 		return _return;
@@ -45,7 +45,7 @@ public class GetSignaturesResponse {
 
 	/**
 	 * Imposta il valore della proprietà return.
-	 * 
+	 *
 	 */
 	public void setReturn(long value) {
 		this._return = value;

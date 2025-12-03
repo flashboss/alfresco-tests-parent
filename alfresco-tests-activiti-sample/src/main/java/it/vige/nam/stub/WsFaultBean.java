@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per wsFaultBean complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="wsFaultBean"&gt;
  *   &lt;complexContent&gt;
@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "wsFaultBean", propOrder = { "error", "message" })
@@ -37,7 +37,7 @@ public class WsFaultBean {
 
 	/**
 	 * Recupera il valore della proprietà error.
-	 * 
+	 *
 	 */
 	public int getError() {
 		return error;
@@ -45,7 +45,7 @@ public class WsFaultBean {
 
 	/**
 	 * Imposta il valore della proprietà error.
-	 * 
+	 *
 	 */
 	public void setError(int value) {
 		this.error = value;
@@ -53,9 +53,9 @@ public class WsFaultBean {
 
 	/**
 	 * Recupera il valore della proprietà message.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getMessage() {
 		return message;
@@ -63,9 +63,9 @@ public class WsFaultBean {
 
 	/**
 	 * Imposta il valore della proprietà message.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setMessage(String value) {
 		this.message = value;

@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per verifyWithPreferences complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="verifyWithPreferences"&gt;
  *   &lt;complexContent&gt;
@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "verifyWithPreferences", propOrder = { "signedContent", "preferences" })
@@ -37,7 +37,7 @@ public class VerifyWithPreferences {
 
 	/**
 	 * Recupera il valore della proprietà signedContent.
-	 * 
+	 *
 	 * @return possible object is byte[]
 	 */
 	public byte[] getSignedContent() {
@@ -46,7 +46,7 @@ public class VerifyWithPreferences {
 
 	/**
 	 * Imposta il valore della proprietà signedContent.
-	 * 
+	 *
 	 * @param value allowed object is byte[]
 	 */
 	public void setSignedContent(byte[] value) {
@@ -55,9 +55,9 @@ public class VerifyWithPreferences {
 
 	/**
 	 * Recupera il valore della proprietà preferences.
-	 * 
+	 *
 	 * @return possible object is {@link VerifyPreferences }
-	 * 
+	 *
 	 */
 	public VerifyPreferences getPreferences() {
 		return preferences;
@@ -65,9 +65,9 @@ public class VerifyWithPreferences {
 
 	/**
 	 * Imposta il valore della proprietà preferences.
-	 * 
+	 *
 	 * @param value allowed object is {@link VerifyPreferences }
-	 * 
+	 *
 	 */
 	public void setPreferences(VerifyPreferences value) {
 		this.preferences = value;

@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per enableRemote complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="enableRemote"&gt;
  *   &lt;complexContent&gt;
@@ -24,8 +24,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "enableRemote", propOrder = { "credentials" })
@@ -35,9 +35,9 @@ public class EnableRemote {
 
 	/**
 	 * Recupera il valore della proprietà credentials.
-	 * 
+	 *
 	 * @return possible object is {@link Credentials }
-	 * 
+	 *
 	 */
 	public Credentials getCredentials() {
 		return credentials;
@@ -45,9 +45,9 @@ public class EnableRemote {
 
 	/**
 	 * Imposta il valore della proprietà credentials.
-	 * 
+	 *
 	 * @param value allowed object is {@link Credentials }
-	 * 
+	 *
 	 */
 	public void setCredentials(Credentials value) {
 		this.credentials = value;

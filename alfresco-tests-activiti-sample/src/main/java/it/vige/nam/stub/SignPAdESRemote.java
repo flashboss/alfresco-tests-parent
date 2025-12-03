@@ -9,11 +9,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per signPAdESRemote complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="signPAdESRemote"&gt;
  *   &lt;complexContent&gt;
@@ -27,8 +27,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signPAdESRemote", propOrder = { "credentials", "buffer", "pAdESPreferences" })
@@ -41,9 +41,9 @@ public class SignPAdESRemote {
 
 	/**
 	 * Recupera il valore della proprietà credentials.
-	 * 
+	 *
 	 * @return possible object is {@link Credentials }
-	 * 
+	 *
 	 */
 	public Credentials getCredentials() {
 		return credentials;
@@ -51,9 +51,9 @@ public class SignPAdESRemote {
 
 	/**
 	 * Imposta il valore della proprietà credentials.
-	 * 
+	 *
 	 * @param value allowed object is {@link Credentials }
-	 * 
+	 *
 	 */
 	public void setCredentials(Credentials value) {
 		this.credentials = value;
@@ -61,7 +61,7 @@ public class SignPAdESRemote {
 
 	/**
 	 * Recupera il valore della proprietà buffer.
-	 * 
+	 *
 	 * @return possible object is byte[]
 	 */
 	public byte[] getBuffer() {
@@ -70,7 +70,7 @@ public class SignPAdESRemote {
 
 	/**
 	 * Imposta il valore della proprietà buffer.
-	 * 
+	 *
 	 * @param value allowed object is byte[]
 	 */
 	public void setBuffer(byte[] value) {
@@ -79,9 +79,9 @@ public class SignPAdESRemote {
 
 	/**
 	 * Recupera il valore della proprietà pAdESPreferences.
-	 * 
+	 *
 	 * @return possible object is {@link PAdESPreferences }
-	 * 
+	 *
 	 */
 	public PAdESPreferences getPAdESPreferences() {
 		return pAdESPreferences;
@@ -89,9 +89,9 @@ public class SignPAdESRemote {
 
 	/**
 	 * Imposta il valore della proprietà pAdESPreferences.
-	 * 
+	 *
 	 * @param value allowed object is {@link PAdESPreferences }
-	 * 
+	 *
 	 */
 	public void setPAdESPreferences(PAdESPreferences value) {
 		this.pAdESPreferences = value;

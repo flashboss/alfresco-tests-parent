@@ -9,11 +9,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per verifyCAdESByAttachmentResponse complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="verifyCAdESByAttachmentResponse"&gt;
  *   &lt;complexContent&gt;
@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "verifyCAdESByAttachmentResponse", propOrder = { "_return" })
@@ -37,9 +37,9 @@ public class VerifyCAdESByAttachmentResponse {
 
 	/**
 	 * Recupera il valore della proprietà return.
-	 * 
+	 *
 	 * @return possible object is {@link SignedDocumentReportBean }
-	 * 
+	 *
 	 */
 	public SignedDocumentReportBean getReturn() {
 		return _return;
@@ -47,9 +47,9 @@ public class VerifyCAdESByAttachmentResponse {
 
 	/**
 	 * Imposta il valore della proprietà return.
-	 * 
+	 *
 	 * @param value allowed object is {@link SignedDocumentReportBean }
-	 * 
+	 *
 	 */
 	public void setReturn(SignedDocumentReportBean value) {
 		this._return = value;

@@ -10,11 +10,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per signPreferences complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="signPreferences"&gt;
  *   &lt;complexContent&gt;
@@ -29,8 +29,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signPreferences", propOrder = { "hashAlgorithm", "signEngineImpl", "signType", "withTimestamp" })
@@ -45,9 +45,9 @@ public class SignPreferences extends TimeStampPreferences {
 
 	/**
 	 * Recupera il valore della proprietà hashAlgorithm.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getHashAlgorithm() {
 		return hashAlgorithm;
@@ -55,9 +55,9 @@ public class SignPreferences extends TimeStampPreferences {
 
 	/**
 	 * Imposta il valore della proprietà hashAlgorithm.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setHashAlgorithm(String value) {
 		this.hashAlgorithm = value;
@@ -65,9 +65,9 @@ public class SignPreferences extends TimeStampPreferences {
 
 	/**
 	 * Recupera il valore della proprietà signEngineImpl.
-	 * 
+	 *
 	 * @return possible object is {@link SignEngineImpl }
-	 * 
+	 *
 	 */
 	public SignEngineImpl getSignEngineImpl() {
 		return signEngineImpl;
@@ -75,9 +75,9 @@ public class SignPreferences extends TimeStampPreferences {
 
 	/**
 	 * Imposta il valore della proprietà signEngineImpl.
-	 * 
+	 *
 	 * @param value allowed object is {@link SignEngineImpl }
-	 * 
+	 *
 	 */
 	public void setSignEngineImpl(SignEngineImpl value) {
 		this.signEngineImpl = value;
@@ -85,7 +85,7 @@ public class SignPreferences extends TimeStampPreferences {
 
 	/**
 	 * Recupera il valore della proprietà signType.
-	 * 
+	 *
 	 */
 	public int getSignType() {
 		return signType;
@@ -93,7 +93,7 @@ public class SignPreferences extends TimeStampPreferences {
 
 	/**
 	 * Imposta il valore della proprietà signType.
-	 * 
+	 *
 	 */
 	public void setSignType(int value) {
 		this.signType = value;
@@ -101,7 +101,7 @@ public class SignPreferences extends TimeStampPreferences {
 
 	/**
 	 * Recupera il valore della proprietà withTimestamp.
-	 * 
+	 *
 	 */
 	public boolean isWithTimestamp() {
 		return withTimestamp;
@@ -109,7 +109,7 @@ public class SignPreferences extends TimeStampPreferences {
 
 	/**
 	 * Imposta il valore della proprietà withTimestamp.
-	 * 
+	 *
 	 */
 	public void setWithTimestamp(boolean value) {
 		this.withTimestamp = value;

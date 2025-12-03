@@ -15,11 +15,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
 /**
  * <p>
  * Classe Java per signatureReportBean complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="signatureReportBean"&gt;
  *   &lt;complexContent&gt;
@@ -49,8 +49,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signatureReportBean", propOrder = { "derEncodedSignerCert", "id", "integrity",
@@ -91,7 +91,7 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà derEncodedSignerCert.
-	 * 
+	 *
 	 * @return possible object is byte[]
 	 */
 	public byte[] getDerEncodedSignerCert() {
@@ -100,7 +100,7 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà derEncodedSignerCert.
-	 * 
+	 *
 	 * @param value allowed object is byte[]
 	 */
 	public void setDerEncodedSignerCert(byte[] value) {
@@ -109,9 +109,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà id.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getId() {
 		return id;
@@ -119,9 +119,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà id.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setId(String value) {
 		this.id = value;
@@ -129,7 +129,7 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà integrity.
-	 * 
+	 *
 	 */
 	public boolean isIntegrity() {
 		return integrity;
@@ -137,7 +137,7 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà integrity.
-	 * 
+	 *
 	 */
 	public void setIntegrity(boolean value) {
 		this.integrity = value;
@@ -145,9 +145,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà issuerCertificateRevocationDate.
-	 * 
+	 *
 	 * @return possible object is {@link XMLGregorianCalendar }
-	 * 
+	 *
 	 */
 	public XMLGregorianCalendar getIssuerCertificateRevocationDate() {
 		return issuerCertificateRevocationDate;
@@ -155,9 +155,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà issuerCertificateRevocationDate.
-	 * 
+	 *
 	 * @param value allowed object is {@link XMLGregorianCalendar }
-	 * 
+	 *
 	 */
 	public void setIssuerCertificateRevocationDate(XMLGregorianCalendar value) {
 		this.issuerCertificateRevocationDate = value;
@@ -165,9 +165,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà issuerCertificateStatus.
-	 * 
+	 *
 	 * @return possible object is {@link CertificateStatus }
-	 * 
+	 *
 	 */
 	public CertificateStatus getIssuerCertificateStatus() {
 		return issuerCertificateStatus;
@@ -175,9 +175,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà issuerCertificateStatus.
-	 * 
+	 *
 	 * @param value allowed object is {@link CertificateStatus }
-	 * 
+	 *
 	 */
 	public void setIssuerCertificateStatus(CertificateStatus value) {
 		this.issuerCertificateStatus = value;
@@ -185,9 +185,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà issuerDN.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getIssuerDN() {
 		return issuerDN;
@@ -195,9 +195,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà issuerDN.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setIssuerDN(String value) {
 		this.issuerDN = value;
@@ -205,7 +205,7 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà issuerInTrustedList.
-	 * 
+	 *
 	 */
 	public boolean isIssuerInTrustedList() {
 		return issuerInTrustedList;
@@ -213,7 +213,7 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà issuerInTrustedList.
-	 * 
+	 *
 	 */
 	public void setIssuerInTrustedList(boolean value) {
 		this.issuerInTrustedList = value;
@@ -221,7 +221,7 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà keySize.
-	 * 
+	 *
 	 */
 	public int getKeySize() {
 		return keySize;
@@ -229,7 +229,7 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà keySize.
-	 * 
+	 *
 	 */
 	public void setKeySize(int value) {
 		this.keySize = value;
@@ -237,9 +237,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà qcComplianceStatus.
-	 * 
+	 *
 	 * @return possible object is {@link Result }
-	 * 
+	 *
 	 */
 	public Result getQcComplianceStatus() {
 		return qcComplianceStatus;
@@ -247,9 +247,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà qcComplianceStatus.
-	 * 
+	 *
 	 * @param value allowed object is {@link Result }
-	 * 
+	 *
 	 */
 	public void setQcComplianceStatus(Result value) {
 		this.qcComplianceStatus = value;
@@ -257,9 +257,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà serialNumber.
-	 * 
+	 *
 	 * @return possible object is {@link BigInteger }
-	 * 
+	 *
 	 */
 	public BigInteger getSerialNumber() {
 		return serialNumber;
@@ -267,9 +267,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà serialNumber.
-	 * 
+	 *
 	 * @param value allowed object is {@link BigInteger }
-	 * 
+	 *
 	 */
 	public void setSerialNumber(BigInteger value) {
 		this.serialNumber = value;
@@ -277,9 +277,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà signatureAlgorithmName.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getSignatureAlgorithmName() {
 		return signatureAlgorithmName;
@@ -287,9 +287,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà signatureAlgorithmName.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setSignatureAlgorithmName(String value) {
 		this.signatureAlgorithmName = value;
@@ -297,9 +297,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà signatureDate.
-	 * 
+	 *
 	 * @return possible object is {@link XMLGregorianCalendar }
-	 * 
+	 *
 	 */
 	public XMLGregorianCalendar getSignatureDate() {
 		return signatureDate;
@@ -307,9 +307,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà signatureDate.
-	 * 
+	 *
 	 * @param value allowed object is {@link XMLGregorianCalendar }
-	 * 
+	 *
 	 */
 	public void setSignatureDate(XMLGregorianCalendar value) {
 		this.signatureDate = value;
@@ -317,9 +317,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà signerCertificateNotAfter.
-	 * 
+	 *
 	 * @return possible object is {@link XMLGregorianCalendar }
-	 * 
+	 *
 	 */
 	public XMLGregorianCalendar getSignerCertificateNotAfter() {
 		return signerCertificateNotAfter;
@@ -327,9 +327,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà signerCertificateNotAfter.
-	 * 
+	 *
 	 * @param value allowed object is {@link XMLGregorianCalendar }
-	 * 
+	 *
 	 */
 	public void setSignerCertificateNotAfter(XMLGregorianCalendar value) {
 		this.signerCertificateNotAfter = value;
@@ -337,9 +337,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà signerCertificateNotBefore.
-	 * 
+	 *
 	 * @return possible object is {@link XMLGregorianCalendar }
-	 * 
+	 *
 	 */
 	public XMLGregorianCalendar getSignerCertificateNotBefore() {
 		return signerCertificateNotBefore;
@@ -347,9 +347,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà signerCertificateNotBefore.
-	 * 
+	 *
 	 * @param value allowed object is {@link XMLGregorianCalendar }
-	 * 
+	 *
 	 */
 	public void setSignerCertificateNotBefore(XMLGregorianCalendar value) {
 		this.signerCertificateNotBefore = value;
@@ -357,9 +357,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà signerCertificateRevocationDate.
-	 * 
+	 *
 	 * @return possible object is {@link XMLGregorianCalendar }
-	 * 
+	 *
 	 */
 	public XMLGregorianCalendar getSignerCertificateRevocationDate() {
 		return signerCertificateRevocationDate;
@@ -367,9 +367,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà signerCertificateRevocationDate.
-	 * 
+	 *
 	 * @param value allowed object is {@link XMLGregorianCalendar }
-	 * 
+	 *
 	 */
 	public void setSignerCertificateRevocationDate(XMLGregorianCalendar value) {
 		this.signerCertificateRevocationDate = value;
@@ -377,9 +377,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà signerCertificateStatus.
-	 * 
+	 *
 	 * @return possible object is {@link CertificateStatus }
-	 * 
+	 *
 	 */
 	public CertificateStatus getSignerCertificateStatus() {
 		return signerCertificateStatus;
@@ -387,9 +387,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà signerCertificateStatus.
-	 * 
+	 *
 	 * @param value allowed object is {@link CertificateStatus }
-	 * 
+	 *
 	 */
 	public void setSignerCertificateStatus(CertificateStatus value) {
 		this.signerCertificateStatus = value;
@@ -397,9 +397,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà subjectDN.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getSubjectDN() {
 		return subjectDN;
@@ -407,9 +407,9 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà subjectDN.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setSubjectDN(String value) {
 		this.subjectDN = value;
@@ -417,26 +417,26 @@ public class SignatureReportBean {
 
 	/**
 	 * Gets the value of the timestampReportBeanList property.
-	 * 
+	 *
 	 * <p>
 	 * This accessor method returns a reference to the live list, not a snapshot.
 	 * Therefore any modification you make to the returned list will be present
 	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
 	 * for the timestampReportBeanList property.
-	 * 
+	 *
 	 * <p>
 	 * For example, to add a new item, do as follows:
-	 * 
+	 *
 	 * <pre>
 	 * getTimestampReportBeanList().add(newItem);
 	 * </pre>
-	 * 
-	 * 
+	 *
+	 *
 	 * <p>
 	 * Objects of the following type(s) are allowed in the list
 	 * {@link TimestampReportBean }
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public List<TimestampReportBean> getTimestampReportBeanList() {
 		if (timestampReportBeanList == null) {
@@ -447,7 +447,7 @@ public class SignatureReportBean {
 
 	/**
 	 * Recupera il valore della proprietà trustedSignatureDate.
-	 * 
+	 *
 	 */
 	public boolean isTrustedSignatureDate() {
 		return trustedSignatureDate;
@@ -455,7 +455,7 @@ public class SignatureReportBean {
 
 	/**
 	 * Imposta il valore della proprietà trustedSignatureDate.
-	 * 
+	 *
 	 */
 	public void setTrustedSignatureDate(boolean value) {
 		this.trustedSignatureDate = value;

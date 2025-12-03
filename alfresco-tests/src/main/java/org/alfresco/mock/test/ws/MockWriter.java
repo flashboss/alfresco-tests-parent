@@ -8,7 +8,7 @@ import java.util.Map;
  * Mock implementation of the MockWriter class for testing purposes.
  * This class provides a mock implementation that allows unit and integration tests
  * to run without requiring a full Alfresco server instance.
- * 
+ *
  * @author Generated
  * @version 7.4.2.1.1
  */
@@ -17,40 +17,22 @@ public class MockWriter extends Writer {
 	private Map<String, Object> model;
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public void write(char[] cbuf, int off, int len) throws IOException {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public void flush() throws IOException {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public void close() throws IOException {
 	}

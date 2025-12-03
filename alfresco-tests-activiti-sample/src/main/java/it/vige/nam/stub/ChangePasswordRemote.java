@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per changePasswordRemote complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="changePasswordRemote"&gt;
  *   &lt;complexContent&gt;
@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "changePasswordRemote", propOrder = { "credentials", "newPassword" })
@@ -37,9 +37,9 @@ public class ChangePasswordRemote {
 
 	/**
 	 * Recupera il valore della proprietà credentials.
-	 * 
+	 *
 	 * @return possible object is {@link Credentials }
-	 * 
+	 *
 	 */
 	public Credentials getCredentials() {
 		return credentials;
@@ -47,9 +47,9 @@ public class ChangePasswordRemote {
 
 	/**
 	 * Imposta il valore della proprietà credentials.
-	 * 
+	 *
 	 * @param value allowed object is {@link Credentials }
-	 * 
+	 *
 	 */
 	public void setCredentials(Credentials value) {
 		this.credentials = value;
@@ -57,9 +57,9 @@ public class ChangePasswordRemote {
 
 	/**
 	 * Recupera il valore della proprietà newPassword.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getNewPassword() {
 		return newPassword;
@@ -67,9 +67,9 @@ public class ChangePasswordRemote {
 
 	/**
 	 * Imposta il valore della proprietà newPassword.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setNewPassword(String value) {
 		this.newPassword = value;

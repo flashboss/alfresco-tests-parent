@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per verify complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="verify"&gt;
  *   &lt;complexContent&gt;
@@ -24,8 +24,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "verify", propOrder = { "signedContent" })
@@ -35,7 +35,7 @@ public class Verify {
 
 	/**
 	 * Recupera il valore della proprietà signedContent.
-	 * 
+	 *
 	 * @return possible object is byte[]
 	 */
 	public byte[] getSignedContent() {
@@ -44,7 +44,7 @@ public class Verify {
 
 	/**
 	 * Imposta il valore della proprietà signedContent.
-	 * 
+	 *
 	 * @param value allowed object is byte[]
 	 */
 	public void setSignedContent(byte[] value) {

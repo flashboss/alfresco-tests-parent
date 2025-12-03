@@ -15,21 +15,15 @@ import org.alfresco.service.cmr.repository.MimetypeService;
  * Mock implementation of the MockMimetypeService class for testing purposes.
  * This class provides a mock implementation that allows unit and integration tests
  * to run without requiring a full Alfresco server instance.
- * 
+ *
  * @author Generated
  * @version 7.4.2.1.1
  */
 public class MockMimetypeService implements MimetypeService, Serializable {
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public String getExtension(String mimetype) {
 		if (mimetype.indexOf(".") >= 0)
@@ -39,14 +33,8 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public String getMimetype(String extension) {
 		if (extension != null && extension.equals("acp"))
@@ -64,14 +52,8 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public Map<String, String> getDisplaysByExtension() {
 		// TODO Auto-generated method stub
@@ -79,14 +61,8 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public Map<String, String> getDisplaysByMimetype() {
 		// TODO Auto-generated method stub
@@ -94,14 +70,8 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public Map<String, String> getExtensionsByMimetype() {
 		// TODO Auto-generated method stub
@@ -109,14 +79,8 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public Map<String, String> getMimetypesByExtension() {
 		// TODO Auto-generated method stub
@@ -124,14 +88,8 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public boolean isText(String mimetype) {
 		// TODO Auto-generated method stub
@@ -139,14 +97,8 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public List<String> getMimetypes() {
 		// TODO Auto-generated method stub
@@ -154,14 +106,8 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public String guessMimetype(String filename) {
 		String extension = null;
@@ -171,14 +117,8 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public String guessMimetype(String filename, ContentReader reader) {
 		// TODO Auto-generated method stub
@@ -186,14 +126,8 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public String guessMimetype(String filename, InputStream input) {
 		// TODO Auto-generated method stub
@@ -201,14 +135,8 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public String getMimetypeIfNotMatches(ContentReader reader) {
 		// TODO Auto-generated method stub
@@ -216,14 +144,8 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public ContentCharsetFinder getContentCharsetFinder() {
 		// TODO Auto-generated method stub
@@ -231,14 +153,8 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public Collection<String> getMimetypes(String extension) {
 		// TODO Auto-generated method stub

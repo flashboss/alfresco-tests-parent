@@ -12,11 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per signArrayListWithCredentials complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="signArrayListWithCredentials"&gt;
  *   &lt;complexContent&gt;
@@ -30,8 +30,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signArrayListWithCredentials", propOrder = { "credentials", "bufferList", "adESPreferences" })
@@ -44,9 +44,9 @@ public class SignArrayListWithCredentials {
 
 	/**
 	 * Recupera il valore della proprietà credentials.
-	 * 
+	 *
 	 * @return possible object is {@link Credentials }
-	 * 
+	 *
 	 */
 	public Credentials getCredentials() {
 		return credentials;
@@ -54,9 +54,9 @@ public class SignArrayListWithCredentials {
 
 	/**
 	 * Imposta il valore della proprietà credentials.
-	 * 
+	 *
 	 * @param value allowed object is {@link Credentials }
-	 * 
+	 *
 	 */
 	public void setCredentials(Credentials value) {
 		this.credentials = value;
@@ -64,24 +64,24 @@ public class SignArrayListWithCredentials {
 
 	/**
 	 * Gets the value of the bufferList property.
-	 * 
+	 *
 	 * <p>
 	 * This accessor method returns a reference to the live list, not a snapshot.
 	 * Therefore any modification you make to the returned list will be present
 	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
 	 * for the bufferList property.
-	 * 
+	 *
 	 * <p>
 	 * For example, to add a new item, do as follows:
-	 * 
+	 *
 	 * <pre>
 	 * getBufferList().add(newItem);
 	 * </pre>
-	 * 
-	 * 
+	 *
+	 *
 	 * <p>
 	 * Objects of the following type(s) are allowed in the list byte[]
-	 * 
+	 *
 	 */
 	public List<byte[]> getBufferList() {
 		if (bufferList == null) {
@@ -92,9 +92,9 @@ public class SignArrayListWithCredentials {
 
 	/**
 	 * Recupera il valore della proprietà adESPreferences.
-	 * 
+	 *
 	 * @return possible object is {@link SignPreferences }
-	 * 
+	 *
 	 */
 	public SignPreferences getAdESPreferences() {
 		return adESPreferences;
@@ -102,9 +102,9 @@ public class SignArrayListWithCredentials {
 
 	/**
 	 * Imposta il valore della proprietà adESPreferences.
-	 * 
+	 *
 	 * @param value allowed object is {@link SignPreferences }
-	 * 
+	 *
 	 */
 	public void setAdESPreferences(SignPreferences value) {
 		this.adESPreferences = value;

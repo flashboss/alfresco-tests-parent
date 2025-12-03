@@ -35,7 +35,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Mock implementation of the MockSearchService class for testing purposes.
  * This class provides a mock implementation that allows unit and integration tests
  * to run without requiring a full Alfresco server instance.
- * 
+ *
  * @author Generated
  * @version 7.4.2.1.1
  */
@@ -48,14 +48,8 @@ public class MockSearchService implements SearchService, Serializable {
 	private NamespaceService namespaceService;
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public ResultSet query(StoreRef store, String language, String query) {
 		MockNodeService nodeService = getNodeService();
@@ -69,14 +63,8 @@ public class MockSearchService implements SearchService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public ResultSet query(StoreRef store, String language, String query,
 			QueryParameterDefinition[] queryParameterDefinitions) {
@@ -84,14 +72,8 @@ public class MockSearchService implements SearchService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public ResultSet query(StoreRef store, QName queryId, QueryParameter[] queryParameters) {
 		// TODO Auto-generated method stub
@@ -99,14 +81,8 @@ public class MockSearchService implements SearchService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public ResultSet query(SearchParameters searchParameters) {
 		ResultSet resultSet = query(searchParameters.getStores().get(0), searchParameters.getLanguage(),
@@ -122,14 +98,8 @@ public class MockSearchService implements SearchService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public List<NodeRef> selectNodes(NodeRef contextNodeRef, String xpath, QueryParameterDefinition[] parameters,
 			NamespacePrefixResolver namespacePrefixResolver, boolean followAllParentLinks)
@@ -142,14 +112,8 @@ public class MockSearchService implements SearchService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public List<NodeRef> selectNodes(NodeRef contextNodeRef, String xpath, QueryParameterDefinition[] parameters,
 			NamespacePrefixResolver namespacePrefixResolver, boolean followAllParentLinks, String language)
@@ -159,14 +123,8 @@ public class MockSearchService implements SearchService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public List<Serializable> selectProperties(NodeRef contextNodeRef, String xpath,
 			QueryParameterDefinition[] parameters, NamespacePrefixResolver namespacePrefixResolver,
@@ -176,14 +134,8 @@ public class MockSearchService implements SearchService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public List<Serializable> selectProperties(NodeRef contextNodeRef, String xpath,
 			QueryParameterDefinition[] parameters, NamespacePrefixResolver namespacePrefixResolver,
@@ -193,14 +145,8 @@ public class MockSearchService implements SearchService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public boolean contains(NodeRef nodeRef, QName propertyQName, String googleLikePattern)
 			throws InvalidNodeRefException {
@@ -209,14 +155,8 @@ public class MockSearchService implements SearchService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public boolean contains(NodeRef nodeRef, QName propertyQName, String googleLikePattern, Operator defaultOperator)
 			throws InvalidNodeRefException {
@@ -225,14 +165,8 @@ public class MockSearchService implements SearchService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public boolean like(NodeRef nodeRef, QName propertyQName, String sqlLikePattern, boolean includeFTS)
 			throws InvalidNodeRefException {
@@ -267,42 +201,24 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public int length() {
 			return rows.size();
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public long getNumberFound() {
 			return rows.size();
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public NodeRef getNodeRef(int n) {
 			if (rows.size() <= n)
@@ -311,14 +227,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public float getScore(int n) {
 			// TODO Auto-generated method stub
@@ -326,14 +236,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public void close() {
 			// TODO Auto-generated method stub
@@ -341,14 +245,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public ResultSetRow getRow(int i) {
 			// TODO Auto-generated method stub
@@ -356,14 +254,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public List<NodeRef> getNodeRefs() {
 			List<NodeRef> result = new ArrayList<NodeRef>();
@@ -373,14 +265,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public List<ChildAssociationRef> getChildAssocRefs() {
 			// TODO Auto-generated method stub
@@ -388,14 +274,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public ChildAssociationRef getChildAssocRef(int n) {
 			// TODO Auto-generated method stub
@@ -403,14 +283,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public ResultSetMetaData getResultSetMetaData() {
 			// TODO Auto-generated method stub
@@ -418,14 +292,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public int getStart() {
 			// TODO Auto-generated method stub
@@ -433,14 +301,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public boolean hasMore() {
 			// TODO Auto-generated method stub
@@ -448,14 +310,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public boolean setBulkFetch(boolean bulkFetch) {
 			// TODO Auto-generated method stub
@@ -463,14 +319,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public boolean getBulkFetch() {
 			// TODO Auto-generated method stub
@@ -478,14 +328,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public int setBulkFetchSize(int bulkFetchSize) {
 			// TODO Auto-generated method stub
@@ -493,14 +337,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public int getBulkFetchSize() {
 			// TODO Auto-generated method stub
@@ -508,14 +346,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public List<Pair<String, Integer>> getFieldFacet(String field) {
 			// TODO Auto-generated method stub
@@ -523,14 +355,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public Iterator<ResultSetRow> iterator() {
 			// TODO Auto-generated method stub
@@ -538,42 +364,24 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public Map<String, Integer> getFacetQueries() {
 			return facetQueries;
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public SpellCheckResult getSpellCheckResult() {
 			return spellCheckResult;
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public Map<NodeRef, List<Pair<String, List<String>>>> getHighlighting() {
 			return highLights;
@@ -589,14 +397,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public Map<String, Serializable> getValues() {
 			Map<String, Serializable> map = new HashMap<String, Serializable>();
@@ -605,84 +407,48 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public Serializable getValue(String columnName) {
 			return nodeRef;
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public Serializable getValue(QName qname) {
 			return nodeService.getProperty(nodeRef, qname);
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public NodeRef getNodeRef() {
 			return nodeRef;
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public Map<String, NodeRef> getNodeRefs() {
 			return null;
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public NodeRef getNodeRef(String selectorName) {
 			return nodeRef;
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public float getScore() {
 			// TODO Auto-generated method stub
@@ -690,14 +456,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public Map<String, Float> getScores() {
 			// TODO Auto-generated method stub
@@ -705,14 +465,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public float getScore(String selectorName) {
 			// TODO Auto-generated method stub
@@ -720,14 +474,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public ResultSet getResultSet() {
 			// TODO Auto-generated method stub
@@ -735,14 +483,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public QName getQName() {
 			// TODO Auto-generated method stub
@@ -750,14 +492,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public int getIndex() {
 			// TODO Auto-generated method stub
@@ -765,14 +501,8 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 
 		/**
-
-
 		 * {@inheritDoc}
-
-
 		 */
-
-
 		@Override
 		public ChildAssociationRef getChildAssocRef() {
 			// TODO Auto-generated method stub

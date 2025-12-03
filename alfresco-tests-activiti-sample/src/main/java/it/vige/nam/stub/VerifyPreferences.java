@@ -10,11 +10,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
 /**
  * <p>
  * Classe Java per verifyPreferences complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="verifyPreferences"&gt;
  *   &lt;complexContent&gt;
@@ -28,8 +28,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "verifyPreferences", propOrder = { "nam", "pdfEncryptionPassword", "verifyOnDate" })
@@ -42,7 +42,7 @@ public class VerifyPreferences {
 
 	/**
 	 * Recupera il valore della proprietà nam.
-	 * 
+	 *
 	 */
 	public boolean isNam() {
 		return nam;
@@ -50,7 +50,7 @@ public class VerifyPreferences {
 
 	/**
 	 * Imposta il valore della proprietà nam.
-	 * 
+	 *
 	 */
 	public void setNam(boolean value) {
 		this.nam = value;
@@ -58,9 +58,9 @@ public class VerifyPreferences {
 
 	/**
 	 * Recupera il valore della proprietà pdfEncryptionPassword.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getPdfEncryptionPassword() {
 		return pdfEncryptionPassword;
@@ -68,9 +68,9 @@ public class VerifyPreferences {
 
 	/**
 	 * Imposta il valore della proprietà pdfEncryptionPassword.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setPdfEncryptionPassword(String value) {
 		this.pdfEncryptionPassword = value;
@@ -78,9 +78,9 @@ public class VerifyPreferences {
 
 	/**
 	 * Recupera il valore della proprietà verifyOnDate.
-	 * 
+	 *
 	 * @return possible object is {@link XMLGregorianCalendar }
-	 * 
+	 *
 	 */
 	public XMLGregorianCalendar getVerifyOnDate() {
 		return verifyOnDate;
@@ -88,9 +88,9 @@ public class VerifyPreferences {
 
 	/**
 	 * Imposta il valore della proprietà verifyOnDate.
-	 * 
+	 *
 	 * @param value allowed object is {@link XMLGregorianCalendar }
-	 * 
+	 *
 	 */
 	public void setVerifyOnDate(XMLGregorianCalendar value) {
 		this.verifyOnDate = value;

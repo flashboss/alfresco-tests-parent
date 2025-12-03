@@ -12,21 +12,15 @@ import org.springframework.beans.factory.InitializingBean;
  * Mock implementation of the MockDescriptorService class for testing purposes.
  * This class provides a mock implementation that allows unit and integration tests
  * to run without requiring a full Alfresco server instance.
- * 
+ *
  * @author Generated
  * @version 7.4.2.1.1
  */
 public class MockDescriptorService implements DescriptorService, InitializingBean, LicenseChangeHandler {
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public void onLicenseChange(LicenseDescriptor licenseDescriptor) {
 		// TODO Auto-generated method stub
@@ -34,14 +28,8 @@ public class MockDescriptorService implements DescriptorService, InitializingBea
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public void onLicenseFail() {
 		// TODO Auto-generated method stub
@@ -49,14 +37,8 @@ public class MockDescriptorService implements DescriptorService, InitializingBea
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		// TODO Auto-generated method stub
@@ -64,14 +46,8 @@ public class MockDescriptorService implements DescriptorService, InitializingBea
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public Descriptor getServerDescriptor() {
 		// TODO Auto-generated method stub
@@ -79,14 +55,8 @@ public class MockDescriptorService implements DescriptorService, InitializingBea
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public Descriptor getCurrentRepositoryDescriptor() {
 		// TODO Auto-generated method stub
@@ -94,14 +64,8 @@ public class MockDescriptorService implements DescriptorService, InitializingBea
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public Descriptor getInstalledRepositoryDescriptor() {
 		// TODO Auto-generated method stub
@@ -109,14 +73,8 @@ public class MockDescriptorService implements DescriptorService, InitializingBea
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public LicenseDescriptor getLicenseDescriptor() {
 		// TODO Auto-generated method stub
@@ -124,14 +82,8 @@ public class MockDescriptorService implements DescriptorService, InitializingBea
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public String loadLicense() {
 		// TODO Auto-generated method stub
@@ -139,14 +91,8 @@ public class MockDescriptorService implements DescriptorService, InitializingBea
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public String loadLicense(InputStream licenseStream) {
 		// TODO Auto-generated method stub
@@ -154,14 +100,8 @@ public class MockDescriptorService implements DescriptorService, InitializingBea
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public boolean isBootstrapped() {
 		// TODO Auto-generated method stub

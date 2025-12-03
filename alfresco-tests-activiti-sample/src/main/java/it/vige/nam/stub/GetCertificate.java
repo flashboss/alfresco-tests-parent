@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per getCertificate complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="getCertificate"&gt;
  *   &lt;complexContent&gt;
@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "getCertificate", propOrder = { "username", "password" })
@@ -37,9 +37,9 @@ public class GetCertificate {
 
 	/**
 	 * Recupera il valore della proprietà username.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getUsername() {
 		return username;
@@ -47,9 +47,9 @@ public class GetCertificate {
 
 	/**
 	 * Imposta il valore della proprietà username.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setUsername(String value) {
 		this.username = value;
@@ -57,9 +57,9 @@ public class GetCertificate {
 
 	/**
 	 * Recupera il valore della proprietà password.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getPassword() {
 		return password;
@@ -67,9 +67,9 @@ public class GetCertificate {
 
 	/**
 	 * Imposta il valore della proprietà password.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setPassword(String value) {
 		this.password = value;

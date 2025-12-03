@@ -9,11 +9,11 @@ import javax.xml.bind.annotation.XmlType;
 /**
  * <p>
  * Classe Java per timeStampPreferences complex type.
- * 
+ *
  * <p>
  * Il seguente frammento di schema specifica il contenuto previsto contenuto in
  * questa classe.
- * 
+ *
  * <pre>
  * &lt;complexType name="timeStampPreferences"&gt;
  *   &lt;complexContent&gt;
@@ -31,8 +31,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "timeStampPreferences", propOrder = { "filenameInTSD", "outputAsTSD", "outputBase64Encoded",
@@ -50,9 +50,9 @@ public class TimeStampPreferences {
 
 	/**
 	 * Recupera il valore della proprietà filenameInTSD.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getFilenameInTSD() {
 		return filenameInTSD;
@@ -60,9 +60,9 @@ public class TimeStampPreferences {
 
 	/**
 	 * Imposta il valore della proprietà filenameInTSD.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setFilenameInTSD(String value) {
 		this.filenameInTSD = value;
@@ -70,7 +70,7 @@ public class TimeStampPreferences {
 
 	/**
 	 * Recupera il valore della proprietà outputAsTSD.
-	 * 
+	 *
 	 */
 	public boolean isOutputAsTSD() {
 		return outputAsTSD;
@@ -78,7 +78,7 @@ public class TimeStampPreferences {
 
 	/**
 	 * Imposta il valore della proprietà outputAsTSD.
-	 * 
+	 *
 	 */
 	public void setOutputAsTSD(boolean value) {
 		this.outputAsTSD = value;
@@ -86,7 +86,7 @@ public class TimeStampPreferences {
 
 	/**
 	 * Recupera il valore della proprietà outputBase64Encoded.
-	 * 
+	 *
 	 */
 	public boolean isOutputBase64Encoded() {
 		return outputBase64Encoded;
@@ -94,7 +94,7 @@ public class TimeStampPreferences {
 
 	/**
 	 * Imposta il valore della proprietà outputBase64Encoded.
-	 * 
+	 *
 	 */
 	public void setOutputBase64Encoded(boolean value) {
 		this.outputBase64Encoded = value;
@@ -102,9 +102,9 @@ public class TimeStampPreferences {
 
 	/**
 	 * Recupera il valore della proprietà timestampHashAlgo.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getTimestampHashAlgo() {
 		return timestampHashAlgo;
@@ -112,9 +112,9 @@ public class TimeStampPreferences {
 
 	/**
 	 * Imposta il valore della proprietà timestampHashAlgo.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setTimestampHashAlgo(String value) {
 		this.timestampHashAlgo = value;
@@ -122,9 +122,9 @@ public class TimeStampPreferences {
 
 	/**
 	 * Recupera il valore della proprietà timestampPassword.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getTimestampPassword() {
 		return timestampPassword;
@@ -132,9 +132,9 @@ public class TimeStampPreferences {
 
 	/**
 	 * Imposta il valore della proprietà timestampPassword.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setTimestampPassword(String value) {
 		this.timestampPassword = value;
@@ -142,9 +142,9 @@ public class TimeStampPreferences {
 
 	/**
 	 * Recupera il valore della proprietà timestampUrl.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getTimestampUrl() {
 		return timestampUrl;
@@ -152,9 +152,9 @@ public class TimeStampPreferences {
 
 	/**
 	 * Imposta il valore della proprietà timestampUrl.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setTimestampUrl(String value) {
 		this.timestampUrl = value;
@@ -162,9 +162,9 @@ public class TimeStampPreferences {
 
 	/**
 	 * Recupera il valore della proprietà timestampUsername.
-	 * 
+	 *
 	 * @return possible object is {@link String }
-	 * 
+	 *
 	 */
 	public String getTimestampUsername() {
 		return timestampUsername;
@@ -172,9 +172,9 @@ public class TimeStampPreferences {
 
 	/**
 	 * Imposta il valore della proprietà timestampUsername.
-	 * 
+	 *
 	 * @param value allowed object is {@link String }
-	 * 
+	 *
 	 */
 	public void setTimestampUsername(String value) {
 		this.timestampUsername = value;

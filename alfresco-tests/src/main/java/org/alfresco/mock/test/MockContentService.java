@@ -20,7 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Mock implementation of the MockContentService class for testing purposes.
  * This class provides a mock implementation that allows unit and integration tests
  * to run without requiring a full Alfresco server instance.
- * 
+ *
  * @author Generated
  * @version 7.4.2.1.1
  */
@@ -35,14 +35,8 @@ public class MockContentService implements ContentService, Serializable {
 	private MimetypeService mimetypeService;
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public long getStoreTotalSpace() {
 		// TODO Auto-generated method stub
@@ -50,14 +44,8 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public long getStoreFreeSpace() {
 		// TODO Auto-generated method stub
@@ -65,14 +53,8 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public ContentReader getRawReader(String contentUrl) {
 		// TODO Auto-generated method stub
@@ -80,14 +62,8 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public ContentReader getReader(NodeRef nodeRef, QName propertyQName)
 			throws InvalidNodeRefException, InvalidTypeException {
@@ -99,14 +75,8 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public ContentWriter getWriter(NodeRef nodeRef, QName propertyQName, boolean update)
 			throws InvalidNodeRefException, InvalidTypeException {
@@ -115,14 +85,8 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public ContentWriter getTempWriter() {
 		// TODO Auto-generated method stub
@@ -146,14 +110,8 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public boolean isContentDirectUrlEnabled() {
 		// TODO Auto-generated method stub
@@ -161,14 +119,8 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public boolean isContentDirectUrlEnabled(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
@@ -176,14 +128,8 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public DirectAccessUrl requestContentDirectUrl(NodeRef nodeRef, boolean attachment, Long validFor) {
 		// TODO Auto-generated method stub
@@ -191,14 +137,8 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public boolean isContentDirectUrlEnabled(NodeRef nodeRef, QName propertyQName) {
 		// TODO Auto-generated method stub
@@ -206,14 +146,8 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	/**
-
-
 	 * {@inheritDoc}
-
-
 	 */
-
-
 	@Override
 	public DirectAccessUrl requestContentDirectUrl(NodeRef nodeRef, QName propertyQName, boolean attachment,
 			Long validFor) {
