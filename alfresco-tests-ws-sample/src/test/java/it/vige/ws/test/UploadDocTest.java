@@ -57,17 +57,28 @@ public class UploadDocTest extends AbstractWSForm {
 	private final static String NUMERO_DOC = "";
 	private final static String ID_USER = "105";
 	private final static String FOLDER_DROPZONE = "/sites/vige-site/documentLibrary/sys/Dropzone";
+	/** The template vars. */
 	private Map<String, String> templateVars;
 
 	@Autowired
+	/** The upload doc. */
 	private UploadDoc uploadDoc;
 
 	@Override
+	/**
+	 * Get abstract web script.
+	 *
+	 * @return the result
+	 */
 	protected AbstractWebScript getAbstractWebScript() {
 		return uploadDoc;
 	}
 
 	@Before
+	/**
+	 * Init.
+	 *
+	 */
 	public void init() {
 		super.init();
 		templateVars = new HashMap<String, String>();
@@ -83,6 +94,10 @@ public class UploadDocTest extends AbstractWSForm {
 	}
 
 	@Test
+	/**
+	 * Execute.
+	 *
+	 */
 	public void execute() throws ParseException, IOException {
 
 		logger.debug("start test");

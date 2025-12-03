@@ -24,13 +24,23 @@ import org.apache.commons.logging.LogFactory;
  */
 public class CommonHashUtil {
 
+	/** The logger. */
 	private static Log logger = LogFactory.getLog(CommonHashUtil.class);
+	/** The hash type. */
 	private String hashType;
+	/** The buffer size. */
 	private static final int BUFFER_SIZE = 1 << 8;
 
+	/** The node service. */
 	private NodeService nodeService;
+	/** The content service. */
 	private ContentService contentService;
 
+	/**
+	 * Set hash.
+	 *
+	 * @param nodeRef the node ref
+	 */
 	public void setHash(NodeRef nodeRef) {
 		ContentReader contentReader = contentService.getReader(nodeRef, ContentModel.PROP_CONTENT);
 		if (contentReader == null || contentReader.getSize() == 0) {
@@ -100,14 +110,29 @@ public class CommonHashUtil {
 		return hashValue.toString().toUpperCase();
 	}
 
+	/**
+	 * Set hash type.
+	 *
+	 * @param hashType the hash type
+	 */
 	public void setHashType(String hashType) {
 		this.hashType = hashType;
 	}
 
+	/**
+	 * Set node service.
+	 *
+	 * @param nodeService the node service
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+	/**
+	 * Set content service.
+	 *
+	 * @param contentService the content service
+	 */
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}

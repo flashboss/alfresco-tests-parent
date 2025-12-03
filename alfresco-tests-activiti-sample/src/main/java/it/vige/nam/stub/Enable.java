@@ -36,8 +36,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "enable", propOrder = { "securityCode", "username", "password" })
 public class Enable {
 
+	/** The security code. */
 	protected String securityCode;
+	/** The username. */
 	protected String username;
+	/** The password. */
 	protected String password;
 
 	/**

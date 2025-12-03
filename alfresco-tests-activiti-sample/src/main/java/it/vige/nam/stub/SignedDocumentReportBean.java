@@ -51,16 +51,23 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class SignedDocumentReportBean {
 
 	@XmlSchemaType(name = "dateTime")
+	/** The check date. */
 	protected XMLGregorianCalendar checkDate;
 	@XmlElement(nillable = true)
+	/** The note report list. */
 	protected List<NoteReportBean> noteReportList;
+	/** The nr of signatures. */
 	protected int nrOfSignatures;
+	/** The overall verified. */
 	protected boolean overallVerified;
 	protected byte[] plainDocument;
+	/** The signature format. */
 	protected String signatureFormat;
 	@XmlElement(nillable = true)
+	/** The signature report list. */
 	protected List<SignatureReportBean> signatureReportList;
 	@XmlSchemaType(name = "dateTime")
+	/** The verification date. */
 	protected XMLGregorianCalendar verificationDate;
 
 	/**

@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "closeSession", propOrder = { "credentials" })
 public class CloseSession {
 
+	/** The credentials. */
 	protected Credentials credentials;
 
 	/**

@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
 public class VerifyWithPreferences {
 
 	protected byte[] signedContent;
+	/** The preferences. */
 	protected VerifyPreferences preferences;
 
 	/**

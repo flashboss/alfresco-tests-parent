@@ -50,19 +50,32 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignerImage {
 
+	/** The field name. */
 	protected String fieldName;
+	/** The font name. */
 	protected String fontName;
+	/** The font size. */
 	protected int fontSize;
+	/** The height. */
 	protected int height;
 	protected byte[] image;
+	/** The image filename. */
 	protected String imageFilename;
+	/** The image u r l. */
 	protected String imageURL;
+	/** The location. */
 	protected String location;
+	/** The reason. */
 	protected String reason;
+	/** The signer name. */
 	protected String signerName;
+	/** The text visible. */
 	protected boolean textVisible;
+	/** The width. */
 	protected int width;
+	/** The x. */
 	protected int x;
+	/** The y. */
 	protected int y;
 
 	/**

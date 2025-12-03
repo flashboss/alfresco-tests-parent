@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 public class TimestampTSDVerifyResponse {
 
 	@XmlElement(name = "return")
+	/** The  return. */
 	protected List<TimestampReportBean> _return;
 
 	/**

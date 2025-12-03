@@ -35,7 +35,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "wsFaultBean", propOrder = { "error", "message" })
 public class WsFaultBean {
 
+	/** The error. */
 	protected int error;
+	/** The message. */
 	protected String message;
 
 	/**

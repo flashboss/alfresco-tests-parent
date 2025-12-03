@@ -54,15 +54,24 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 	 */
 	private final static String USER_NAME = "gonzo";
 
+	/** The date format. */
 	private final DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm:ss ZZZ yyyy");
 
+	/** The generation folder. */
 	private NodeRef generationFolder;
 
+	/** The initiator. */
 	private Initiator initiator = new Initiator();
 
+	/** The generation folder name. */
 	private String generationFolderName = "20191024_154711";
 
 	@Override
+	/**
+	 * Init.
+	 *
+	 * @param variables the variables
+	 */
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
@@ -134,6 +143,10 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 	}
 
 	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/SimpleProcess.bpmn" })
+	/**
+	 * Test workflow.
+	 *
+	 */
 	public void testWorkflow() throws ParseException {
 		Map<String, Object> variables = new HashMap<String, Object>();
 		init(variables);

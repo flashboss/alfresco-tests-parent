@@ -36,8 +36,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "signPkcs1", propOrder = { "credentials", "hash", "preferences" })
 public class SignPkcs1 {
 
+	/** The credentials. */
 	protected Credentials credentials;
 	protected byte[] hash;
+	/** The preferences. */
 	protected SignPreferences preferences;
 
 	/**

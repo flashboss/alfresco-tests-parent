@@ -35,19 +35,32 @@ import net.sf.acegisecurity.providers.ProviderNotFoundException;
  */
 public class PreviousWSSample extends DeclarativeWebScript {
 
+	/** The service registry. */
 	private ServiceRegistry serviceRegistry;
 
+	/** The conservazione folder template. */
 	private String conservazioneFolderTemplate;
 
+	/** The repository folder template w s sample. */
 	private String repositoryFolderTemplateWSSample;
 
+	/** The documents w s sample folder template. */
 	private String documentsWSSampleFolderTemplate;
 
+	/** The store ref. */
 	private StoreRef storeRef = new StoreRef(StoreRef.PROTOCOL_WORKSPACE, "SpacesStore");
 
+	/** The fmt. */
 	private SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 
 	@Override
+	/**
+	 * Execute impl.
+	 *
+	 * @param req the req
+	 * @param status the status
+	 * @param cache the cache
+	 */
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
 		// -- 1 -- VARIABLE INITIALIZATION
@@ -189,18 +202,38 @@ public class PreviousWSSample extends DeclarativeWebScript {
 			nodeService.setProperty(folderWSSample, WSSampleModel.PROP_UPDATE_PROPERTY, dateModify);
 	}
 
+	/**
+	 * Set service registry.
+	 *
+	 * @param serviceRegistry the service registry
+	 */
 	public void setServiceRegistry(ServiceRegistry serviceRegistry) {
 		this.serviceRegistry = serviceRegistry;
 	}
 
+	/**
+	 * Set conservazione folder template.
+	 *
+	 * @param conservazioneFolderTemplate the conservazione folder template
+	 */
 	public void setConservazioneFolderTemplate(String conservazioneFolderTemplate) {
 		this.conservazioneFolderTemplate = conservazioneFolderTemplate;
 	}
 
+	/**
+	 * Set repository folder template w s sample.
+	 *
+	 * @param repositoryFolderTemplateWSSample the repository folder template w s sample
+	 */
 	public void setRepositoryFolderTemplateWSSample(String repositoryFolderTemplateWSSample) {
 		this.repositoryFolderTemplateWSSample = repositoryFolderTemplateWSSample;
 	}
 
+	/**
+	 * Set documents w s sample folder template.
+	 *
+	 * @param documentsWSSampleFolderTemplate the documents w s sample folder template
+	 */
 	public void setDocumentsWSSampleFolderTemplate(String documentsWSSampleFolderTemplate) {
 		this.documentsWSSampleFolderTemplate = documentsWSSampleFolderTemplate;
 	}

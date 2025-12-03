@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "sendOtpBySMS", propOrder = { "credentials" })
 public class SendOtpBySMS {
 
+	/** The credentials. */
 	protected Credentials credentials;
 
 	/**

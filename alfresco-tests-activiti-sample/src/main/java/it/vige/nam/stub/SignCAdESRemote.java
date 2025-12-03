@@ -37,9 +37,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "signCAdESRemote", propOrder = { "credentials", "buffer", "cAdESPreferences" })
 public class SignCAdESRemote {
 
+	/** The credentials. */
 	protected Credentials credentials;
 	protected byte[] buffer;
 	@XmlElement(name = "CAdESPreferences")
+	/** The c ad e s preferences. */
 	protected CAdESPreferences cAdESPreferences;
 
 	/**

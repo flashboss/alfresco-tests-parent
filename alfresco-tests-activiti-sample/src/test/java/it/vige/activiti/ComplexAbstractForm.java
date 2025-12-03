@@ -40,11 +40,18 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 	 */
 	protected final static String USER_NAME = "gonzo";
 
+	/** The date format. */
 	protected final DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm:ss ZZZ yyyy");
 
+	/** The generation folder. */
 	protected NodeRef generationFolder;
 
 	@Override
+	/**
+	 * Init.
+	 *
+	 * @param variables the variables
+	 */
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;

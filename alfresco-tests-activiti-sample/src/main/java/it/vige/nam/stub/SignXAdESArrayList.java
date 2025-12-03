@@ -41,10 +41,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "signXAdESArrayList", propOrder = { "username", "password", "bufferList", "xAdESPreferences" })
 public class SignXAdESArrayList {
 
+	/** The username. */
 	protected String username;
+	/** The password. */
 	protected String password;
+	/** The buffer list. */
 	protected List<byte[]> bufferList;
 	@XmlElement(name = "XAdESPreferences")
+	/** The x ad e s preferences. */
 	protected XAdESPreferences xAdESPreferences;
 
 	/**

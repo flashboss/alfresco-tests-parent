@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "xAdESPreferences", propOrder = { "signElement" })
 public class XAdESPreferences extends SignPreferences {
 
+	/** The sign element. */
 	protected String signElement;
 
 	/**

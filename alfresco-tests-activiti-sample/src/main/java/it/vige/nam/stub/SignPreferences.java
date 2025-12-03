@@ -40,10 +40,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlSeeAlso({ CAdESPreferences.class })
 public class SignPreferences extends TimeStampPreferences {
 
+	/** The hash algorithm. */
 	protected String hashAlgorithm;
 	@XmlSchemaType(name = "string")
+	/** The sign engine impl. */
 	protected SignEngineImpl signEngineImpl;
+	/** The sign type. */
 	protected int signType;
+	/** The with timestamp. */
 	protected boolean withTimestamp;
 
 	/**

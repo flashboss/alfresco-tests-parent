@@ -43,12 +43,19 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 	private final static String dataModifica = "2020-06-19";
 
 	@Autowired
+	/** The previous w s sample. */
 	private PreviousWSSample previousWSSample;
 
+	/** The date format. */
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	/** The repository. */
 	private NodeRef repository;
 
 	@Before
+	/**
+	 * Init.
+	 *
+	 */
 	public void init() {
 		super.init();
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
@@ -65,11 +72,20 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 	}
 
 	@Override
+	/**
+	 * Get abstract web script.
+	 *
+	 * @return the result
+	 */
 	protected AbstractWebScript getAbstractWebScript() {
 		return previousWSSample;
 	}
 
 	@Test
+	/**
+	 * Execute.
+	 *
+	 */
 	public void execute() throws ParseException, IOException {
 
 		SearchService searchService = serviceRegistry.getSearchService();

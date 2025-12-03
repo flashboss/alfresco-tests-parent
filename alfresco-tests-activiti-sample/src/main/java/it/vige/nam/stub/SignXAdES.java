@@ -38,10 +38,13 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "signXAdES", propOrder = { "username", "password", "buffer", "xAdESPreferences" })
 public class SignXAdES {
 
+	/** The username. */
 	protected String username;
+	/** The password. */
 	protected String password;
 	protected byte[] buffer;
 	@XmlElement(name = "XAdESPreferences")
+	/** The x ad e s preferences. */
 	protected XAdESPreferences xAdESPreferences;
 
 	/**

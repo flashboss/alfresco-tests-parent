@@ -37,9 +37,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "signWithCredentials", propOrder = { "credentials", "buffer", "adESPreferences" })
 public class SignWithCredentials {
 
+	/** The credentials. */
 	protected Credentials credentials;
 	protected byte[] buffer;
 	@XmlElement(name = "AdESPreferences")
+	/** The ad e s preferences. */
 	protected SignPreferences adESPreferences;
 
 	/**

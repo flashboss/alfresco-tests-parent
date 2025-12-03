@@ -21,8 +21,14 @@ import it.vige.common.HashModel;
  */
 public class ComplexRaRCheck extends BaseJavaDelegate {
 
+	/** The node service. */
 	private NodeService nodeService;
 
+	/**
+	 * Execute.
+	 *
+	 * @param execution the execution
+	 */
 	public void execute(DelegateExecution execution) throws Exception {
 		// Check duplicates
 		List<String> duplicatedPdvs = new ArrayList<String>();
@@ -51,6 +57,11 @@ public class ComplexRaRCheck extends BaseJavaDelegate {
 		execution.setVariable("vigewf_reviewUnsignedSaSError", unsignedPdvs);
 	}
 
+	/**
+	 * Set node service.
+	 *
+	 * @param nodeService the node service
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}

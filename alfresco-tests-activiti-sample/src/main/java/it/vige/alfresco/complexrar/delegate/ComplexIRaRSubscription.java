@@ -15,10 +15,17 @@ import it.vige.activiti.service.SignService;
  */
 public class ComplexIRaRSubscription extends BaseJavaDelegate {
 
+	/** The logger. */
 	private static Log logger = LogFactory.getLog(ComplexIRaRSubscription.class);
 
+	/** The sign service. */
 	private SignService signService;
 
+	/**
+	 * Execute.
+	 *
+	 * @param execution the execution
+	 */
 	public void execute(DelegateExecution execution) throws Exception {
 		logger.debug("Execute start");
 		String irarNodeRefString = (String) execution.getVariable("vigewf_relatedIRaR");
@@ -30,6 +37,11 @@ public class ComplexIRaRSubscription extends BaseJavaDelegate {
 		logger.debug("Execute end");
 	}
 
+	/**
+	 * Set sign service.
+	 *
+	 * @param signService the sign service
+	 */
 	public void setSignService(SignService signService) {
 		this.signService = signService;
 	}

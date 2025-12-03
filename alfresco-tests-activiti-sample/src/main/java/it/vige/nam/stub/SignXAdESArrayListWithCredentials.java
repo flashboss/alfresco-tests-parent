@@ -40,9 +40,12 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "signXAdESArrayListWithCredentials", propOrder = { "credentials", "bufferList", "xAdESPreferences" })
 public class SignXAdESArrayListWithCredentials {
 
+	/** The credentials. */
 	protected Credentials credentials;
+	/** The buffer list. */
 	protected List<byte[]> bufferList;
 	@XmlElement(name = "XAdESPreferences")
+	/** The x ad e s preferences. */
 	protected XAdESPreferences xAdESPreferences;
 
 	/**

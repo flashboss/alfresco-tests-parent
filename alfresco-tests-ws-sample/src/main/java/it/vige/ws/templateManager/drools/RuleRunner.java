@@ -21,6 +21,12 @@ public class RuleRunner {
 
 //	private Log logger = getLog(RuleRunner.class);
 
+	/**
+	 * Run rules.
+	 *
+	 * @param rule the rule
+	 * @param facts the facts
+	 */
 	public void runRules(byte[] rule, Object[] facts) throws IOException {
 
 		KieServices kieServices = KieServices.Factory.get();

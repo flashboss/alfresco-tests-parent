@@ -37,9 +37,13 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "changePassword", propOrder = { "securityCode", "username", "password", "newPassword" })
 public class ChangePassword {
 
+	/** The security code. */
 	protected String securityCode;
+	/** The username. */
 	protected String username;
+	/** The password. */
 	protected String password;
+	/** The new password. */
 	protected String newPassword;
 
 	/**

@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "checkOTP", propOrder = { "credentials" })
 public class CheckOTP {
 
+	/** The credentials. */
 	protected Credentials credentials;
 
 	/**

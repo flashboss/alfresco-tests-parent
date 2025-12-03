@@ -16,23 +16,51 @@ public class WSException extends Exception {
 
 	private it.vige.nam.stub.WsFaultBean wsException;
 
+	/**
+	 * Constructs a new WSException.
+	 *
+	 */
 	public WSException() {
 		super();
 	}
 
+	/**
+	 * Constructs a new WSException.
+	 *
+	 * @param message the message
+	 */
 	public WSException(String message) {
 		super(message);
 	}
 
+	/**
+	 * Constructs a new WSException.
+	 *
+	 * @param message the message
+	 * @param cause the cause
+	 */
 	public WSException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
+	/**
+	 * Constructs a new WSException.
+	 *
+	 * @param message the message
+	 * @param wsException the ws exception
+	 */
 	public WSException(String message, it.vige.nam.stub.WsFaultBean wsException) {
 		super(message);
 		this.wsException = wsException;
 	}
 
+	/**
+	 * Constructs a new WSException.
+	 *
+	 * @param message the message
+	 * @param wsException the ws exception
+	 * @param cause the cause
+	 */
 	public WSException(String message, it.vige.nam.stub.WsFaultBean wsException, Throwable cause) {
 		super(message, cause);
 		this.wsException = wsException;

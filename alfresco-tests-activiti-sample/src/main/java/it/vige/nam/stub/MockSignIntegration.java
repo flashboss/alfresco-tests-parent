@@ -26,6 +26,11 @@ public class MockSignIntegration implements SignIntegration {
 	}
 
 	@Override
+	/**
+	 * Send otp by s m s.
+	 *
+	 * @param credentials the credentials
+	 */
 	public void sendOtpBySMS(Credentials credentials) throws WSException {
 		
 	}
@@ -43,28 +48,61 @@ public class MockSignIntegration implements SignIntegration {
 	}
 
 	@Override
+	/**
+	 * Change password.
+	 *
+	 * @param securityCode the security code
+	 * @param username the username
+	 * @param password the password
+	 * @param newPassword the new password
+	 */
 	public void changePassword(String securityCode, String username, String password, String newPassword)
 			throws WSException {
 		
 	}
 
 	@Override
+	/**
+	 * Verify on date.
+	 *
+	 * @param signedContent the signed content
+	 * @param verifyDate the verify date
+	 * @return the result
+	 */
 	public SignedDocumentReportBean verifyOnDate(byte[] signedContent, XMLGregorianCalendar verifyDate)
 			throws WSException {
 		return null;
 	}
 
 	@Override
+	/**
+	 * Disable.
+	 *
+	 * @param securityCode the security code
+	 * @param username the username
+	 * @param password the password
+	 */
 	public void disable(String securityCode, String username, String password) throws WSException {
 		
 	}
 
 	@Override
+	/**
+	 * Open session.
+	 *
+	 * @param credentials the credentials
+	 * @return the result
+	 */
 	public String openSession(Credentials credentials) throws WSException {
 		return null;
 	}
 
 	@Override
+	/**
+	 * Check first factor.
+	 *
+	 * @param credentials the credentials
+	 */
 	public void checkFirstFactor(Credentials credentials) throws WSException {
 		
 	}
@@ -126,6 +164,12 @@ public class MockSignIntegration implements SignIntegration {
 	}
 
 	@Override
+	/**
+	 * Get signatures.
+	 *
+	 * @param credentials the credentials
+	 * @return the result
+	 */
 	public long getSignatures(Credentials credentials) throws WSException {
 		return 0;
 	}
@@ -137,6 +181,13 @@ public class MockSignIntegration implements SignIntegration {
 	}
 
 	@Override
+	/**
+	 * Timestamp t s r verify.
+	 *
+	 * @param tsr the tsr
+	 * @param content the content
+	 * @return the result
+	 */
 	public TimestampReportBean timestampTSRVerify(byte[] tsr, byte[] content) throws WSException {
 		return null;
 	}
@@ -148,6 +199,12 @@ public class MockSignIntegration implements SignIntegration {
 	}
 
 	@Override
+	/**
+	 * Get available signatures.
+	 *
+	 * @param credentials the credentials
+	 * @return the result
+	 */
 	public long getAvailableSignatures(Credentials credentials) throws WSException {
 		return 0;
 	}
@@ -171,6 +228,11 @@ public class MockSignIntegration implements SignIntegration {
 	}
 
 	@Override
+	/**
+	 * Enable remote.
+	 *
+	 * @param credentials the credentials
+	 */
 	public void enableRemote(Credentials credentials) throws WSException {
 		
 	}
@@ -182,6 +244,12 @@ public class MockSignIntegration implements SignIntegration {
 	}
 
 	@Override
+	/**
+	 * Timestamp t s d verify.
+	 *
+	 * @param tsd the tsd
+	 * @return the result
+	 */
 	public List<TimestampReportBean> timestampTSDVerify(byte[] tsd) throws WSException {
 		TimestampReportBean timestampReportBean = new TimestampReportBean();
 		timestampReportBean.setContent(tsd);
@@ -216,6 +284,14 @@ public class MockSignIntegration implements SignIntegration {
 	}
 
 	@Override
+	/**
+	 * Sign pkcs1 array list.
+	 *
+	 * @param credentials the credentials
+	 * @param hashList the hash list
+	 * @param preferences the preferences
+	 * @return the result
+	 */
 	public List<byte[]> signPkcs1ArrayList(Credentials credentials, List<byte[]> hashList, SignPreferences preferences)
 			throws WSException {
 		return null;
@@ -227,6 +303,12 @@ public class MockSignIntegration implements SignIntegration {
 	}
 
 	@Override
+	/**
+	 * Change password remote.
+	 *
+	 * @param credentials the credentials
+	 * @param newPassword the new password
+	 */
 	public void changePasswordRemote(Credentials credentials, String newPassword) throws WSException {
 		
 	}
@@ -238,31 +320,66 @@ public class MockSignIntegration implements SignIntegration {
 	}
 
 	@Override
+	/**
+	 * Enable.
+	 *
+	 * @param securityCode the security code
+	 * @param username the username
+	 * @param password the password
+	 */
 	public void enable(String securityCode, String username, String password) throws WSException {
 		
 	}
 
 	@Override
+	/**
+	 * Check o t p.
+	 *
+	 * @param credentials the credentials
+	 */
 	public void checkOTP(Credentials credentials) throws WSException {
 		
 	}
 
 	@Override
+	/**
+	 * Verify.
+	 *
+	 * @param signedContent the signed content
+	 * @return the result
+	 */
 	public SignedDocumentReportBean verify(byte[] signedContent) throws WSException {
 		return null;
 	}
 
 	@Override
+	/**
+	 * Close session.
+	 *
+	 * @param credentials the credentials
+	 */
 	public void closeSession(Credentials credentials) throws WSException {
 		
 	}
 
 	@Override
+	/**
+	 * Disable remote.
+	 *
+	 * @param credentials the credentials
+	 */
 	public void disableRemote(Credentials credentials) throws WSException {
 		
 	}
 
 	@Override
+	/**
+	 * Verify with preferences.
+	 *
+	 * @param signedContent the signed content
+	 * @param preferences the preferences
+	 * @return the result
+	 */
 	public SignedDocumentReportBean verifyWithPreferences(byte[] signedContent, VerifyPreferences preferences)
 			throws WSException {
 		SignedDocumentReportBean bean = new SignedDocumentReportBean();

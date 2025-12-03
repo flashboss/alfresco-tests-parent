@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
 public class Timestamp {
 
 	protected byte[] content;
+	/** The preferences. */
 	protected TimeStampPreferences preferences;
 
 	/**

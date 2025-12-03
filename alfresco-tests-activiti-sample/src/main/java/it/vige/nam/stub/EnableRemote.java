@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "enableRemote", propOrder = { "credentials" })
 public class EnableRemote {
 
+	/** The credentials. */
 	protected Credentials credentials;
 
 	/**

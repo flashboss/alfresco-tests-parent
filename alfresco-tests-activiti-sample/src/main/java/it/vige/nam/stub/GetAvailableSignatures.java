@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "getAvailableSignatures", propOrder = { "credentials" })
 public class GetAvailableSignatures {
 
+	/** The credentials. */
 	protected Credentials credentials;
 
 	/**

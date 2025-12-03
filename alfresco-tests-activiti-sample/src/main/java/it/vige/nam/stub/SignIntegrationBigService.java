@@ -34,26 +34,59 @@ public class SignIntegrationBigService extends Service {
 		WSDL_LOCATION = url;
 	}
 
+	/**
+	 * Constructs a new SignIntegrationBigService.
+	 *
+	 * @param wsdlLocation the wsdl location
+	 */
 	public SignIntegrationBigService(URL wsdlLocation) {
 		super(wsdlLocation, SERVICE);
 	}
 
+	/**
+	 * Constructs a new SignIntegrationBigService.
+	 *
+	 * @param wsdlLocation the wsdl location
+	 * @param serviceName the service name
+	 */
 	public SignIntegrationBigService(URL wsdlLocation, QName serviceName) {
 		super(wsdlLocation, serviceName);
 	}
 
+	/**
+	 * Constructs a new SignIntegrationBigService.
+	 *
+	 */
 	public SignIntegrationBigService() {
 		super(WSDL_LOCATION, SERVICE);
 	}
 
+	/**
+	 * Constructs a new SignIntegrationBigService.
+	 *
+	 * @param features the features
+	 */
 	public SignIntegrationBigService(WebServiceFeature... features) {
 		super(WSDL_LOCATION, SERVICE, features);
 	}
 
+	/**
+	 * Constructs a new SignIntegrationBigService.
+	 *
+	 * @param wsdlLocation the wsdl location
+	 * @param features the features
+	 */
 	public SignIntegrationBigService(URL wsdlLocation, WebServiceFeature... features) {
 		super(wsdlLocation, SERVICE, features);
 	}
 
+	/**
+	 * Constructs a new SignIntegrationBigService.
+	 *
+	 * @param wsdlLocation the wsdl location
+	 * @param serviceName the service name
+	 * @param features the features
+	 */
 	public SignIntegrationBigService(URL wsdlLocation, QName serviceName, WebServiceFeature... features) {
 		super(wsdlLocation, serviceName, features);
 	}

@@ -60,6 +60,12 @@ public interface SignIntegration {
 	@WebMethod
 	@RequestWrapper(localName = "changePassword", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.ChangePassword")
 	@ResponseWrapper(localName = "changePasswordResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.ChangePasswordResponse")
+	/**
+	 * Change password.
+	 *
+	 * @param "securityCode" the "security code"
+	 * @param "" the ""
+	 */
 	public void changePassword(@WebParam(name = "securityCode", targetNamespace = "") java.lang.String securityCode,
 			@WebParam(name = "username", targetNamespace = "") java.lang.String username,
 			@WebParam(name = "password", targetNamespace = "") java.lang.String password,
@@ -77,6 +83,12 @@ public interface SignIntegration {
 	@WebMethod
 	@RequestWrapper(localName = "disable", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.Disable")
 	@ResponseWrapper(localName = "disableResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.DisableResponse")
+	/**
+	 * Disable.
+	 *
+	 * @param "securityCode" the "security code"
+	 * @param "" the ""
+	 */
 	public void disable(@WebParam(name = "securityCode", targetNamespace = "") java.lang.String securityCode,
 			@WebParam(name = "username", targetNamespace = "") java.lang.String username,
 			@WebParam(name = "password", targetNamespace = "") java.lang.String password) throws WSException;
@@ -335,6 +347,12 @@ public interface SignIntegration {
 	@WebMethod
 	@RequestWrapper(localName = "enable", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.Enable")
 	@ResponseWrapper(localName = "enableResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.EnableResponse")
+	/**
+	 * Enable.
+	 *
+	 * @param "securityCode" the "security code"
+	 * @param "" the ""
+	 */
 	public void enable(@WebParam(name = "securityCode", targetNamespace = "") java.lang.String securityCode,
 			@WebParam(name = "username", targetNamespace = "") java.lang.String username,
 			@WebParam(name = "password", targetNamespace = "") java.lang.String password) throws WSException;

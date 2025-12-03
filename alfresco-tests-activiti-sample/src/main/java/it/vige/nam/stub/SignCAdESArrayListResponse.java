@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 public class SignCAdESArrayListResponse {
 
 	@XmlElement(name = "return")
+	/** The  return. */
 	protected List<byte[]> _return;
 
 	/**

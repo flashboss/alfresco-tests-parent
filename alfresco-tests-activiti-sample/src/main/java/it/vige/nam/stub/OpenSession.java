@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "openSession", propOrder = { "credentials" })
 public class OpenSession {
 
+	/** The credentials. */
 	protected Credentials credentials;
 
 	/**

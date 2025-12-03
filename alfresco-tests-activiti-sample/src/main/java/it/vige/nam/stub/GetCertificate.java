@@ -35,7 +35,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "getCertificate", propOrder = { "username", "password" })
 public class GetCertificate {
 
+	/** The username. */
 	protected String username;
+	/** The password. */
 	protected String password;
 
 	/**

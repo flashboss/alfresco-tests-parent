@@ -19,9 +19,19 @@ import it.vige.common.SignConstants;
  */
 public class SignService {
 
+	/** The content service. */
 	private ContentService contentService;
+	/** The node service. */
 	private NodeService nodeService;
 	
+	/**
+	 * Sign c ad e s with time stamp.
+	 *
+	 * @param nodeRef the node ref
+	 * @param username the username
+	 * @param password the password
+	 * @return the result
+	 */
 	public boolean signCAdESWithTimeStamp(NodeRef nodeRef, String username, String password) {
 		boolean status = false;
 		ContentReader reader = contentService.getReader(nodeRef, ContentModel.PROP_CONTENT);
@@ -44,10 +54,20 @@ public class SignService {
 		return status;
 	}
 
+	/**
+	 * Set content service.
+	 *
+	 * @param contentService the content service
+	 */
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}
 
+	/**
+	 * Set node service.
+	 *
+	 * @param nodeService the node service
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}

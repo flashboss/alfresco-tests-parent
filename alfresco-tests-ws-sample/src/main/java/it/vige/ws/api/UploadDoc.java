@@ -47,6 +47,7 @@ import it.vige.ws.service.SignedDocumentReportBean;
  */
 public class UploadDoc extends DeclarativeWebScript {
 
+	/** The logger. */
 	private Logger logger = Logger.getLogger(UploadDoc.class);
 
 	FileFolderService fileFolderService;
@@ -64,6 +65,13 @@ public class UploadDoc extends DeclarativeWebScript {
 	String PADES_DESCRIPTION = "The sign does not respect the PAdES format as it does not take into account the entire document";
 
 	@Override
+	/**
+	 * Execute impl.
+	 *
+	 * @param req the req
+	 * @param status the status
+	 * @param cache the cache
+	 */
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
 		Map<String, Object> model = new HashMap<>();
@@ -350,34 +358,74 @@ public class UploadDoc extends DeclarativeWebScript {
 		return model;
 	}
 
+	/**
+	 * Set file folder service.
+	 *
+	 * @param fileFolderService the file folder service
+	 */
 	public void setFileFolderService(FileFolderService fileFolderService) {
 		this.fileFolderService = fileFolderService;
 	}
 
+	/**
+	 * Set search service.
+	 *
+	 * @param searchService the search service
+	 */
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
 
+	/**
+	 * Set node service.
+	 *
+	 * @param nodeService the node service
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+	/**
+	 * Set content service.
+	 *
+	 * @param contentService the content service
+	 */
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}
 
+	/**
+	 * Set version service.
+	 *
+	 * @param versionService the version service
+	 */
 	public void setVersionService(VersionService versionService) {
 		this.versionService = versionService;
 	}
 
+	/**
+	 * Set dropzone path.
+	 *
+	 * @param dropzonePath the dropzone path
+	 */
 	public void setDropzonePath(String dropzonePath) {
 		this.dropzonePath = dropzonePath;
 	}
 
+	/**
+	 * Set sign service.
+	 *
+	 * @param signService the sign service
+	 */
 	public void setSignService(SignService signService) {
 		this.signService = signService;
 	}
 
+	/**
+	 * Set applica marca.
+	 *
+	 * @param applicaMarca the applica marca
+	 */
 	public void setApplicaMarca(boolean applicaMarca) {
 		this.applicaMarca = applicaMarca;
 	}

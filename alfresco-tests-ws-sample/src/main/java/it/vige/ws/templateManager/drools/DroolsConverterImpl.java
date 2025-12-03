@@ -38,10 +38,20 @@ public class DroolsConverterImpl {
 
 	Logger logger = Logger.getLogger("FILE2");
 
+	/** The date format. */
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	/** The converted date format. */
 	private DateFormat convertedDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	/** The json map. */
 	private Map<String, String> jsonMap;
 
+	/**
+	 * Replace.
+	 *
+	 * @param r the r
+	 * @param templateField the template field
+	 * @param jsonField the json field
+	 */
 	public void replace(XWPFRun r, String templateField, String jsonField) {
 		String runText = r.getText(0);
 
@@ -71,6 +81,13 @@ public class DroolsConverterImpl {
 		}
 	}
 
+	/**
+	 * Replace date.
+	 *
+	 * @param r the r
+	 * @param templateField the template field
+	 * @param jsonField the json field
+	 */
 	public void replaceDate(XWPFRun r, String templateField, String jsonField) {
 		String runText = r.getText(0);
 		if (runText != null && runText.contains(templateField)) {
@@ -91,6 +108,13 @@ public class DroolsConverterImpl {
 		}
 	}
 
+	/**
+	 * Replace currency.
+	 *
+	 * @param r the r
+	 * @param templateField the template field
+	 * @param jsonField the json field
+	 */
 	public void replaceCurrency(XWPFRun r, String templateField, String jsonField) {
 		String runText = r.getText(0);
 		if (runText != null && runText.contains(templateField)) {
@@ -119,6 +143,13 @@ public class DroolsConverterImpl {
 		}
 	}
 
+	/**
+	 * Replace multivalue.
+	 *
+	 * @param r the r
+	 * @param templateField the template field
+	 * @param jsonField the json field
+	 */
 	public void replaceMultivalue(XWPFRun r, String templateField, String jsonField) {
 		String runText = r.getText(0);
 		String value = jsonMap.get(jsonField);
@@ -141,6 +172,12 @@ public class DroolsConverterImpl {
 		}
 	}
 
+	/**
+	 * Check if continue.
+	 *
+	 * @param r the r
+	 * @return the result
+	 */
 	public boolean checkIfContinue(XWPFRun r) {
 		String runText = r.getText(0);
 		return runText != null && runText.contains("${");

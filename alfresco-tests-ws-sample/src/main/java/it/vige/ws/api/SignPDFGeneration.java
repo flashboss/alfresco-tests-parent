@@ -47,21 +47,36 @@ import it.vige.ws.utils.GenerationUtils;
  */
 public class SignPDFGeneration extends DeclarativeWebScript {
 
+	/** The file folder service. */
 	private FileFolderService fileFolderService;
+	/** The node service. */
 	private NodeService nodeService;
+	/** The sign service. */
 	private SignService signService;
+	/** The generation util. */
 	private GenerationUtils generationUtil;
 
+	/** The generate cedra. */
 	private String generateCedra;
 
+	/** The signer list. */
 	private HashMap<String, Signer> signerList;
 
+	/** The date pattern. */
 	private final String datePattern = "yyyy-MM-dd HH:mm:ss";
 
+	/** The logger. */
 	private Logger logger = Logger.getLogger(SignPDFGeneration.class);
 
 	@SuppressWarnings("unchecked")
 	@Override
+	/**
+	 * Execute impl.
+	 *
+	 * @param req the req
+	 * @param status the status
+	 * @param cache the cache
+	 */
 	public Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
 		logger.info(">>> PDF sign generation");
@@ -298,50 +313,109 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 
 	}
 
+	/**
+	 * Get file folder service.
+	 *
+	 * @return the result
+	 */
 	public FileFolderService getFileFolderService() {
 		return fileFolderService;
 	}
 
+	/**
+	 * Set file folder service.
+	 *
+	 * @param fileFolderService the file folder service
+	 */
 	public void setFileFolderService(FileFolderService fileFolderService) {
 		this.fileFolderService = fileFolderService;
 	}
 
+	/**
+	 * Get node service.
+	 *
+	 * @return the result
+	 */
 	public NodeService getNodeService() {
 		return nodeService;
 	}
 
+	/**
+	 * Set node service.
+	 *
+	 * @param nodeService the node service
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+	/**
+	 * Get sign service.
+	 *
+	 * @return the result
+	 */
 	public SignService getSignService() {
 		return signService;
 	}
 
+	/**
+	 * Set sign service.
+	 *
+	 * @param signService the sign service
+	 */
 	public void setSignService(SignService signService) {
 		this.signService = signService;
 	}
 
+	/**
+	 * Get generation util.
+	 *
+	 * @return the result
+	 */
 	public GenerationUtils getGenerationUtil() {
 		return generationUtil;
 	}
 
+	/**
+	 * Set generation util.
+	 *
+	 * @param generationUtil the generation util
+	 */
 	public void setGenerationUtil(GenerationUtils generationUtil) {
 		this.generationUtil = generationUtil;
 	}
 
+	/**
+	 * Get generate ceda.
+	 *
+	 * @return the result
+	 */
 	public String getGenerateCeda() {
 		return generateCedra;
 	}
 
+	/**
+	 * Set generate cedra.
+	 *
+	 * @param generateCedra the generate cedra
+	 */
 	public void setGenerateCedra(String generateCedra) {
 		this.generateCedra = generateCedra;
 	}
 
+	/**
+	 * Get signer list.
+	 *
+	 */
 	public HashMap<String, Signer> getSignerList() {
 		return signerList;
 	}
 
+	/**
+	 * Set lista firmatari.
+	 *
+	 * @param signerList the signer list
+	 */
 	public void setListaFirmatari(HashMap<String, Signer> signerList) {
 		this.signerList = signerList;
 	}
