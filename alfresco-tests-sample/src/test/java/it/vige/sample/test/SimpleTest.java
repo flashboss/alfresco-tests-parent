@@ -29,6 +29,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Test class for BackupAction and versioning functionality.
+ * Tests document creation, versioning, and search operations.
+ * 
+ * @author vige
+ */
+
 import it.vige.sample.BackupAction;
 
 public class SimpleTest extends AbstractForm {

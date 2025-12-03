@@ -10,6 +10,12 @@ import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Action that creates a backup copy of a document.
+ * Creates a new document with the specified name and extension.
+ * 
+ * @author vige
+ */
 public class BackupAction extends ActionExecuterAbstractBase {
 
 	public static String DOCUMENT_NAME = "documentName";
