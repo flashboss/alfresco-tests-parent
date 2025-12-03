@@ -37,7 +37,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class GetCertificate {
 
+	/** The username. */
 	protected String username;
+	/** The password. */
 	protected String password;
 
 	/**

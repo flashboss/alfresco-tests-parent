@@ -13,39 +13,83 @@ import org.alfresco.service.ServiceRegistry;
  */
 public class ActivitiProcessEngineConfiguration extends StandaloneProcessEngineConfiguration {
 
+	/** The service registry. */
 	private ServiceRegistry serviceRegistry;
+	/** The search script. */
 	private Search searchScript;
+	/** The logger script. */
 	private MockLogger loggerScript;
+	/** The utils script. */
 	private ScriptUtils utilsScript;
 
+	/**
+	 * Get service registry.
+	 *
+	 * @return the service registry
+	 */
 	public ServiceRegistry getServiceRegistry() {
 		return serviceRegistry;
 	}
 
+	/**
+	 * Set service registry.
+	 *
+	 * @param serviceRegistry the service registry
+	 */
 	public void setServiceRegistry(ServiceRegistry serviceRegistry) {
 		this.serviceRegistry = serviceRegistry;
 	}
 
+	/**
+	 * Get search script.
+	 *
+	 * @return the search
+	 */
 	public Search getSearchScript() {
 		return searchScript;
 	}
 
+	/**
+	 * Set search script.
+	 *
+	 * @param searchScript the search script
+	 */
 	public void setSearchScript(Search searchScript) {
 		this.searchScript = searchScript;
 	}
 
+	/**
+	 * Get logger script.
+	 *
+	 * @return the mock logger
+	 */
 	public MockLogger getLoggerScript() {
 		return loggerScript;
 	}
 
+	/**
+	 * Set logger script.
+	 *
+	 * @param loggerScript the logger script
+	 */
 	public void setLoggerScript(MockLogger loggerScript) {
 		this.loggerScript = loggerScript;
 	}
 
+	/**
+	 * Get utils script.
+	 *
+	 * @return the script utils
+	 */
 	public ScriptUtils getUtilsScript() {
 		return utilsScript;
 	}
 
+	/**
+	 * Set utils script.
+	 *
+	 * @param utilsScript the utils script
+	 */
 	public void setUtilsScript(ScriptUtils utilsScript) {
 		this.utilsScript = utilsScript;
 	}

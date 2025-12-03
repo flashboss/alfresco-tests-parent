@@ -35,10 +35,21 @@ public enum CertificateStatus {
 
 	VALID, REVOKED, UNKNOWN;
 
+	/**
+	 * Value.
+	 *
+	 * @return the string
+	 */
 	public String value() {
 		return name();
 	}
 
+	/**
+	 * From value.
+	 *
+	 * @param v the v
+	 * @return the certificate status
+	 */
 	public static CertificateStatus fromValue(String v) {
 		return valueOf(v);
 	}

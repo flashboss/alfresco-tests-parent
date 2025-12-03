@@ -33,12 +33,27 @@ public class MockTransferServiceImpl2 implements TransferService2 {
 	}
 
 	@Override
+	/**
+	 * Transfer.
+	 *
+	 * @param targetName the target name
+	 * @param definition the definition
+	 * @param callbacks the callbacks
+	 * @return the transfer end event
+	 */
 	public TransferEndEvent transfer(String targetName, TransferDefinition definition, TransferCallback... callbacks)
 			throws TransferFailureException {
 		return transfer(targetName, definition, Arrays.asList(callbacks));
 	}
 
 	@Override
+	/**
+	 * Transfer async.
+	 *
+	 * @param targetName the target name
+	 * @param definition the definition
+	 * @param callback the callback
+	 */
 	public void transferAsync(String targetName, TransferDefinition definition, Collection<TransferCallback> callback)
 			throws TransferException {
 		// TODO Auto-generated method stub
@@ -46,6 +61,13 @@ public class MockTransferServiceImpl2 implements TransferService2 {
 	}
 
 	@Override
+	/**
+	 * Transfer async.
+	 *
+	 * @param targetName the target name
+	 * @param definition the definition
+	 * @param callbacks the callbacks
+	 */
 	public void transferAsync(String targetName, TransferDefinition definition, TransferCallback... callbacks)
 			throws TransferException {
 		// TODO Auto-generated method stub
@@ -53,6 +75,11 @@ public class MockTransferServiceImpl2 implements TransferService2 {
 	}
 
 	@Override
+	/**
+	 * Verify.
+	 *
+	 * @param target the target
+	 */
 	public void verify(TransferTarget target) throws TransferException {
 		// TODO Auto-generated method stub
 		
@@ -67,54 +94,105 @@ public class MockTransferServiceImpl2 implements TransferService2 {
 	}
 
 	@Override
+	/**
+	 * Create transfer target.
+	 *
+	 * @param name the name
+	 * @return the transfer target
+	 */
 	public TransferTarget createTransferTarget(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get transfer targets.
+	 *
+	 * @return the set
+	 */
 	public Set<TransferTarget> getTransferTargets() throws TransferException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get transfer targets.
+	 *
+	 * @param groupName the group name
+	 * @return the set
+	 */
 	public Set<TransferTarget> getTransferTargets(String groupName) throws TransferException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get transfer target.
+	 *
+	 * @param name the name
+	 * @return the transfer target
+	 */
 	public TransferTarget getTransferTarget(String name) throws TransferException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Target exists.
+	 *
+	 * @param name the name
+	 * @return the boolean
+	 */
 	public boolean targetExists(String name) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
+	/**
+	 * Delete transfer target.
+	 *
+	 * @param name the name
+	 */
 	public void deleteTransferTarget(String name) throws TransferException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
+	/**
+	 * Save transfer target.
+	 *
+	 * @param update the update
+	 * @return the transfer target
+	 */
 	public TransferTarget saveTransferTarget(TransferTarget update) throws TransferException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Enable transfer target.
+	 *
+	 * @param name the name
+	 * @param enable the enable
+	 */
 	public void enableTransferTarget(String name, boolean enable) throws TransferException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
+	/**
+	 * Cancel async.
+	 *
+	 * @param transferId the transfer id
+	 */
 	public void cancelAsync(String transferId) {
 		// TODO Auto-generated method stub
 		

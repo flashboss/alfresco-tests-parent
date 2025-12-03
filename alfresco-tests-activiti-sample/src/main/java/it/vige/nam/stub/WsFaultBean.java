@@ -37,12 +37,15 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class WsFaultBean {
 
+	/** The error. */
 	protected int error;
+	/** The message. */
 	protected String message;
 
 	/**
 	 * Recupera il valore della proprietà error.
 	 * 
+	 * @return the result
 	 */
 	public int getError() {
 		return error;
@@ -51,6 +54,7 @@ public class WsFaultBean {
 	/**
 	 * Imposta il valore della proprietà error.
 	 * 
+	 * @param value the value
 	 */
 	public void setError(int value) {
 		this.error = value;

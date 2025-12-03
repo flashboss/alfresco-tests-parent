@@ -45,6 +45,7 @@ import it.vige.ws.service.SignedDocumentReportBean;
  */
 public class UploadDoc extends DeclarativeWebScript {
 
+	/** The logger. */
 	private Logger logger = Logger.getLogger(UploadDoc.class);
 
 	FileFolderService fileFolderService;
@@ -58,18 +59,32 @@ public class UploadDoc extends DeclarativeWebScript {
 
 	boolean applicaMarca;
 
+	/** The pades type. */
 	String PADES_TYPE = "PAdES";
+	/** The pades description. */
 	String PADES_DESCRIPTION = "The sign does not respect the PAdES format as it does not take into account the entire document";
 
 	@Override
+	/**
+	 * Execute impl.
+	 *
+	 * @param req the req
+	 * @param status the status
+	 * @param cache the cache
+	 */
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
 		Map<String, Object> model = new HashMap<>();
 
 		Map<String, String> templateArgs = req.getServiceMatch().getTemplateVars();
 
+	/** The id partner. */
 		String idPartner = templateArgs.get("idpartner");
+
+	/** The id pratica. */
 		String idPratica = templateArgs.get("idpratica");
+
+	/** The id doc. */
 		String idDoc = templateArgs.get("iddoc");
 
 		logger.info(">>> Upload doc: " + idPartner + " - " + idPratica + " - " + idDoc);
@@ -87,20 +102,44 @@ public class UploadDoc extends DeclarativeWebScript {
 		FormData.FormField[] formFields = formData.getFields();
 
 		InputStream fileToUpload = null;
+
+	/** The file name. */
 		String fileName = "";
+
+	/** The file type. */
 		String fileType = "";
 
 		// metadata control
 		String signVerify = "";
+
+	/** The cod doc. */
 		String codDoc = "";
+
+	/** The categoria tipo. */
 		String categoriaTipo = "";
+
+	/** The trattamento. */
 		String trattamento = "";
+
+	/** The id user. */
 		String idUser = "";
+
+	/** The desc. */
 		String desc = "";
+
+	/** The numero doc. */
 		String numeroDoc = "";
+
+	/** The note. */
 		String note = "";
+
+	/** The data creazione pratica. */
 		String dataCreazionePratica = "";
+
+	/** The data emissione string. */
 		String dataEmissioneString = "";
+
+	/** The data scadenza string. */
 		String dataScadenzaString = "";
 
 		for (FormData.FormField field : formFields) {
@@ -234,6 +273,8 @@ public class UploadDoc extends DeclarativeWebScript {
 			// Check if the dropzone folder exists ...
 			DateTime dataCreazione = DateTime.parse(dataCreazionePratica);
 
+	 * @param dropzoneQuery the dropzone query
+			/** The dropzone query. */
 			String dropzoneQuery = "PATH:\"" + dropzonePath + "\"";
 			ResultSet siteRS = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
 					SearchService.LANGUAGE_FTS_ALFRESCO, dropzoneQuery);
@@ -289,6 +330,7 @@ public class UploadDoc extends DeclarativeWebScript {
 			// also adds the title for convenience
 			props.put(ContentModel.PROP_TITLE, fileName);
 
+			/** The document alf name. */
 			String documentAlfName = "d" + idPartner + "_" + idPratica + "_" + idDoc;
 
 			NodeRef documentNF;
@@ -349,34 +391,74 @@ public class UploadDoc extends DeclarativeWebScript {
 		return model;
 	}
 
+	/**
+	 * Set file folder service.
+	 *
+	 * @param fileFolderService the file folder service
+	 */
 	public void setFileFolderService(FileFolderService fileFolderService) {
 		this.fileFolderService = fileFolderService;
 	}
 
+	/**
+	 * Set search service.
+	 *
+	 * @param searchService the search service
+	 */
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
 
+	/**
+	 * Set node service.
+	 *
+	 * @param nodeService the node service
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+	/**
+	 * Set content service.
+	 *
+	 * @param contentService the content service
+	 */
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}
 
+	/**
+	 * Set version service.
+	 *
+	 * @param versionService the version service
+	 */
 	public void setVersionService(VersionService versionService) {
 		this.versionService = versionService;
 	}
 
+	/**
+	 * Set dropzone path.
+	 *
+	 * @param dropzonePath the dropzone path
+	 */
 	public void setDropzonePath(String dropzonePath) {
 		this.dropzonePath = dropzonePath;
 	}
 
+	/**
+	 * Set sign service.
+	 *
+	 * @param signService the sign service
+	 */
 	public void setSignService(SignService signService) {
 		this.signService = signService;
 	}
 
+	/**
+	 * Set applica marca.
+	 *
+	 * @param applicaMarca the applica marca
+	 */
 	public void setApplicaMarca(boolean applicaMarca) {
 		this.applicaMarca = applicaMarca;
 	}

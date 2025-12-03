@@ -55,23 +55,35 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 public class TimestampReportBean {
 
+	/** The comment. */
 	protected String comment;
 	protected byte[] content;
+	/** The content filename. */
 	protected String contentFilename;
+	/** The content mime type. */
 	protected String contentMimeType;
 	@XmlSchemaType(name = "dateTime")
+	/** The date. */
 	protected XMLGregorianCalendar date;
+	/** The hash algorithm. */
 	protected String hashAlgorithm;
+	/** The index. */
 	protected int index;
+	/** The issuer. */
 	protected String issuer;
+	/** The serial number. */
 	protected BigInteger serialNumber;
+	/** The signature algorithm. */
 	protected String signatureAlgorithm;
 	@XmlSchemaType(name = "string")
+	/** The signature verification status. */
 	protected Result signatureVerificationStatus;
 	protected byte[] timestampCertData;
 	@XmlSchemaType(name = "string")
+	/** The timestamp certificate status. */
 	protected CertificateStatus timestampCertificateStatus;
 	@XmlSchemaType(name = "string")
+	/** The trusted list verification status. */
 	protected Result trustedListVerificationStatus;
 
 	/**
@@ -195,6 +207,7 @@ public class TimestampReportBean {
 	/**
 	 * Recupera il valore della proprietà index.
 	 * 
+	 * @return the result
 	 */
 	public int getIndex() {
 		return index;
@@ -203,6 +216,7 @@ public class TimestampReportBean {
 	/**
 	 * Imposta il valore della proprietà index.
 	 * 
+	 * @param value the value
 	 */
 	public void setIndex(int value) {
 		this.index = value;

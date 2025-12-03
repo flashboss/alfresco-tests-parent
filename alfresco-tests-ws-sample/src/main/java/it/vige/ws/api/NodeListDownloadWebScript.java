@@ -58,62 +58,124 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	// Logger
 	private static final Log logger = LogFactory.getLog(NodeListDownloadWebScript.class);
 
+	/** The model csv. */
 	public static final String MODEL_CSV = "csv";
+	/** The model excel. */
 	public static final String MODEL_EXCEL = "excel";
 
 	private String[] overHeadings;
+	/** The filename base. */
 	private String filenameBase;
 
+	/** The skip count def. */
 	private String skipCountDef;
+	/** The max lines def. */
 	private String maxLinesDef;
+	/** The max items def. */
 	private String maxItemsDef;
 
+	/** The node service. */
 	private NodeService nodeService;
+	/** The open data command. */
 	private OpenDataCommand openDataCommand;
 
+	/** The namespace service. */
 	private NamespaceService namespaceService;
 	private String[] modelProperties;
+	/** The open data date format. */
 	private String openDataDateFormat;
+	/** The list separator. */
 	private String listSeparator;
 
+	/** The search service. */
 	private SearchService searchService;
 	
+	/**
+	 * Set over headings.
+	 *
+	 * @param headingsString the headings string
+	 */
 	public void setOverHeadings(String[] headingsString) {
 		this.overHeadings = headingsString;
 	}
 
+	/**
+	 * Get over headings.
+	 *
+	 * @return the string[]
+	 */
 	public String[] getOverHeadings() {
 		return overHeadings;
 	}
 
+	/**
+	 * Set skip count def.
+	 *
+	 * @param skipCountDef the skip count def
+	 */
 	public void setSkipCountDef(String skipCountDef) {
 		this.skipCountDef = skipCountDef;
 	}
 
+	/**
+	 * Set max lines def.
+	 *
+	 * @param maxLinesDef the max lines def
+	 */
 	public void setMaxLinesDef(String maxLinesDef) {
 		this.maxLinesDef = maxLinesDef;
 	}
 
+	/**
+	 * Set max items def.
+	 *
+	 * @param maxItemsDef the max items def
+	 */
 	public void setMaxItemsDef(String maxItemsDef) {
 		this.maxItemsDef = maxItemsDef;
 	}
 
+	/**
+	 * Set search service.
+	 *
+	 * @param searchService the search service
+	 */
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
 
+	/**
+	 * Set model properties.
+	 *
+	 * @param modelPropertiesString the model properties string
+	 */
 	public void setModelProperties(String[] modelPropertiesString) {
 		this.modelProperties = modelPropertiesString;
 	}
 
+	/**
+	 * Set open data command.
+	 *
+	 * @param openDataCommand the open data command
+	 */
 	public void setOpenDataCommand(OpenDataCommand openDataCommand) {
 		this.openDataCommand = openDataCommand;
 	}
 
+	/**
+	 * Constructs a new node list download web script.
+	 *
+	 * @return the result
+	 */
 	public NodeListDownloadWebScript() {
 		this.filenameBase = "DataListExport";
 	}
 
+	/**
+	 * Set open data date format.
+	 *
+	 * @param openDataDateFormat the open data date format
+	 */
 	public void setOpenDataDateFormat(String openDataDateFormat) {
 		this.openDataDateFormat = openDataDateFormat;
 	}
@@ -132,20 +194,34 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		this.namespaceService = namespaceService;
 	}
 
+	/**
+	 * Set list separator.
+	 *
+	 * @param listSeparator the list separator
+	 */
 	public void setListSeparator(String listSeparator) {
 		this.listSeparator = listSeparator;
 	}
 
 	/**
 	 * Identify the datalist
+	 * @param format the format
+	 * @param req the req
+	 * @param maxItems the max items
+	 * @param skypCount the skyp count
+	 * @return the result
 	 */
 	protected List<NodeRef> identifyResource(String format, WebScriptRequest req, int maxItems, int skypCount) {
 		List<NodeRef> result = new ArrayList<NodeRef>();
 		// Try to find the datalist they requested
 		String type = req.getParameter("type");
 		logger.debug("Type: " + type);
+
+	/** The query. */
 		String query = req.getParameter("q");
 		logger.debug("q: " + query);
+
+	/** The lucene query. */
 		String luceneQuery = "";
 		if (type != null) {
 			luceneQuery = "TYPE:\"" + type + "\"";
@@ -185,6 +261,7 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 
 	/**
 	 * We don't have a HTML version
+	 * @return the result
 	 */
 	protected boolean allowHtmlFallback() {
 		return false;
@@ -199,7 +276,11 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		List<Pair<QName, Boolean>> properties = new ArrayList<Pair<QName, Boolean>>();
 		for (String qnameString : modelProperties) {
 			String[] qnameStringSplitted = qnameString.split(":");
+	 * @param Boolean>(QName.createQName(prefix the boolean>( q name.create q name(prefix
+			/** The prefix. */
 			String prefix = qnameStringSplitted[0];
+	 * @param Boolean>(QName.createQName(prefix the boolean>( q name.create q name(prefix
+			/** The local name. */
 			String localName = qnameStringSplitted[1];
 			try {
 				properties.add(new Pair<QName, Boolean>(QName.createQName(prefix, localName, namespaceService), true));
@@ -210,10 +291,27 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		return properties;
 	}
 
+	/**
+	 * Populate body.
+	 *
+	 * @param resource the resource
+	 * @param csv the csv
+	 * @param properties the properties
+	 */
 	protected void populateBody(Object resource, CSVPrinter csv, List<QName> properties) throws IOException {
 		throw new WebScriptException(Status.STATUS_BAD_REQUEST, "CSV not currently supported");
 	}
 
+	/**
+	 * Populate body.
+	 *
+	 * @param resource the resource
+	 * @param workbook the workbook
+	 * @param sheet the sheet
+	 * @param properties the properties
+	 * @param style the style
+	 * @return the sheet
+	 */
 	protected Sheet populateBody(Object resource, Workbook workbook, Sheet sheet, List<QName> properties, Map<String,CellStyle> style)
 			throws IOException {
 		@SuppressWarnings("unchecked")
@@ -244,6 +342,7 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 
 							for (AssociationRef ref : assocs) {
 								NodeRef child = ref.getTargetRef();
+								/** The type. */
 								QName type = nodeService.getType(child);
 								if (ContentModel.TYPE_PERSON.equals(type)) {
 									if (text.length() > 0) {
@@ -291,6 +390,8 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 								}
 							}
 
+	 * @param sheet.getDefaultRowHeightInPoints( the sheet.get default row height in points(
+							/** The v. */
 							String v = text.toString();
 							c.setCellValue(v);
 							if (lines > 1) {
@@ -362,6 +463,11 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		return sheet;
 	}
 
+	/**
+	 * Generate style from w b.
+	 *
+	 * @param workbook the workbook
+	 */
 	protected Map<String, CellStyle> generateStyleFromWB(Workbook workbook) {
 		DataFormat formatter = workbook.createDataFormat();
 
@@ -387,10 +493,18 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		return style;
 	}
 	@Override
+	/**
+	 * Execute impl.
+	 *
+	 * @param req the req
+	 * @param status the status
+	 */
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("success", Boolean.TRUE);
  
+
+	/** The format. */
 		String format = req.getFormat();
 		if ("csv".equals(format) || "xls".equals(format) || "xlsx".equals(format) || "excel".equals(format)) {
  
@@ -442,6 +556,7 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
  
 		List<QName> properties = new ArrayList<QName>(propertyDetails.size());
 		for (Pair<QName, Boolean> p : propertyDetails) {
+			/** The qn. */
 			QName qn = null;
 			if (p != null) {
 				qn = p.getFirst();
@@ -563,11 +678,28 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	}
 
 	public static class WriteExcel {
+
+	/** The format. */
 		private String format;
+
+	/** The filename base. */
 		private String filenameBase;
+
+	/** The res. */
 		private WebScriptResponse res;
+
+	/** The model. */
 		private Map<String, Object> model;
 
+	/**
+		 * Constructs a new write excel.
+		 *
+		 * @param res the res
+		 * @param model the model
+		 * @param format the format
+		 * @param filenameBase the filename base
+	 * @return the result
+		 */
 		private WriteExcel(WebScriptResponse res, Map<String, Object> model, String format, String filenameBase) {
 			this.res = res;
 			this.model = model;
@@ -575,7 +707,12 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 			this.filenameBase = filenameBase;
 		}
 
+	/**
+		 * Write.
+		 *
+		 */
 		public void write() throws IOException {
+			/** The filename. */
 			String filename = filenameBase + "." + format;
  
 			if (!"csv".equals(format)) {

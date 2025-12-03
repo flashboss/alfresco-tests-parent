@@ -42,7 +42,6 @@ import org.springframework.test.context.ContextConfiguration;
 import com.tradeshift.test.remote.Remote;
 import com.tradeshift.test.remote.RemoteTestRunner;
 
-
 @RunWith(RemoteTestRunner.class)
 @Remote(runnerClass = ClasspathTestRunner.class)
 @ContextConfiguration("classpath:test-module-context.xml")
@@ -54,16 +53,28 @@ import com.tradeshift.test.remote.RemoteTestRunner;
 public abstract class AbstractForm {
 
 	@Autowired
+	/** The service registry. */
 	protected ServiceRegistry serviceRegistry;
 
+	/** The spaces store. */
 	protected NodeRef spacesStore;
+	/** The archive. */
 	protected NodeRef archive;
+	/** The sites. */
 	protected NodeRef sites;
+	/** The shared. */
 	protected NodeRef shared;
+	/** The today. */
 	protected Date today;
+	/** The today str. */
 	protected String todayStr;
+	/** The company home. */
 	protected NodeRef companyHome;
 
+	/**
+	 * Init.
+	 *
+	 */
 	public void init() {
 
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
@@ -100,22 +111,57 @@ public abstract class AbstractForm {
 		insertFolder(system, SiteModel.SITE_MODEL_PREFIX, "authorities");
 	}
 
+	/**
+	 * Insert folder.
+	 *
+	 * @param parent the parent
+	 * @param name the name
+	 * @return the node ref
+	 */
 	protected NodeRef insertFolder(NodeRef parent, String name) {
 		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
 		return fileFolderService.create(parent, name, ContentModel.TYPE_FOLDER).getNodeRef();
 	}
 
+	/**
+	 * Insert folder.
+	 *
+	 * @param parent the parent
+	 * @param prefix the prefix
+	 * @param localName the local name
+	 * @return the node ref
+	 */
 	protected NodeRef insertFolder(NodeRef parent, String prefix, String localName) {
 		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
+
+	/** The qname. */
 		QName qname = QName.createQName(prefix, localName, namespaceService);
 		return fileFolderService.create(parent, qname.getPrefixString(), ContentModel.TYPE_FOLDER).getNodeRef();
 	}
 
+	/**
+	 * Insert document.
+	 *
+	 * @param parent the parent
+	 * @param name the name
+	 * @param text the text
+	 * @param properties the properties
+	 * @return the node ref
+	 */
 	protected NodeRef insertDocument(NodeRef parent, String name, String text, Map<QName, Serializable> properties) {
 		return NodeUtils.insertDocument(parent, name, text, properties, serviceRegistry);
 	}
 
+	/**
+	 * Insert document.
+	 *
+	 * @param parent the parent
+	 * @param name the name
+	 * @param text the text
+	 * @param properties the properties
+	 * @return the node ref
+	 */
 	protected NodeRef insertDocument(NodeRef parent, String name, byte[] text, Map<QName, Serializable> properties) {
 		return NodeUtils.insertDocument(parent, name, text, properties, serviceRegistry);
 	}
@@ -130,14 +176,28 @@ public abstract class AbstractForm {
 		return ZipUtils.insertZip(parent, zipName, entryName, text, properties, serviceRegistry);
 	}
 
+	/**
+	 * Encrypt.
+	 *
+	 * @param inputStream the input stream
+	 * @return the string
+	 */
 	protected String encrypt(InputStream inputStream) throws Exception {
 		MessageDigest digest = MessageDigest.getInstance("SHA-256");
 		byte[] contentBytes = IOUtils.toByteArray(inputStream);
 		byte[] hash = digest.digest(contentBytes);
+
+	/** The hash orig string. */
 		String hashOrigString = Base64.encodeBase64String(hash);
 		return hashOrigString;
 	}
 
+	/**
+	 * Get object from xml.
+	 *
+	 * @param createdNodeRef the created node ref
+	 * @param objectClass the object class
+	 */
 	protected <T> T getObjectFromXml(NodeRef createdNodeRef, Class<T> objectClass) throws Exception {
 		ContentService contentService = serviceRegistry.getContentService();
 		final JAXBContext contextPdv = JAXBContext.newInstance(objectClass);
@@ -150,6 +210,10 @@ public abstract class AbstractForm {
 		return result;
 	}
 
+	/**
+	 * Execute action.
+	 *
+	 */
 	protected void executeAction() {
 		// data per cercare i file generati
 		today = new Date();

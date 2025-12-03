@@ -43,9 +43,12 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignXAdESArrayListWithMultiPreferences {
 
+	/** The credentials. */
 	protected Credentials credentials;
+	/** The buffer list. */
 	protected List<byte[]> bufferList;
 	@XmlElement(name = "XAdESPreferences")
+	/** The x ad e s preferences. */
 	protected List<XAdESPreferences> xAdESPreferences;
 
 	/**
@@ -88,6 +91,7 @@ public class SignXAdESArrayListWithMultiPreferences {
 	 * <p>
 	 * Objects of the following type(s) are allowed in the list byte[]
 	 * 
+	 * @return the result
 	 */
 	public List<byte[]> getBufferList() {
 		if (bufferList == null) {
@@ -118,6 +122,7 @@ public class SignXAdESArrayListWithMultiPreferences {
 	 * {@link XAdESPreferences }
 	 * 
 	 * 
+	 * @return the result
 	 */
 	public List<XAdESPreferences> getXAdESPreferences() {
 		if (xAdESPreferences == null) {

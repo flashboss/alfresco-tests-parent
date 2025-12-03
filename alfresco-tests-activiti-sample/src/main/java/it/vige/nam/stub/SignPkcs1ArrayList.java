@@ -41,8 +41,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignPkcs1ArrayList {
 
+	/** The credentials. */
 	protected Credentials credentials;
+	/** The hash list. */
 	protected List<byte[]> hashList;
+	/** The preferences. */
 	protected SignPreferences preferences;
 
 	/**
@@ -85,6 +88,7 @@ public class SignPkcs1ArrayList {
 	 * <p>
 	 * Objects of the following type(s) are allowed in the list byte[]
 	 * 
+	 * @return the result
 	 */
 	public List<byte[]> getHashList() {
 		if (hashList == null) {

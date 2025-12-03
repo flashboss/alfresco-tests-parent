@@ -15,14 +15,28 @@ import it.vige.activiti.service.SignService;
  */
 public class ComplexIRaRSubscription extends BaseJavaDelegate {
 
+	/** The logger. */
 	private static Log logger = LogFactory.getLog(ComplexIRaRSubscription.class);
 
+	/** The sign service. */
 	private SignService signService;
 
+	/**
+	 * Execute.
+	 *
+	 * @param execution the execution
+	 */
 	public void execute(DelegateExecution execution) throws Exception {
 		logger.debug("Execute start");
+
+	/** The irar node ref string. */
 		String irarNodeRefString = (String) execution.getVariable("vigewf_relatedIRaR");
+
+	/** The nam username. */
 		String namUsername = (String) execution.getVariable("vigewf_namUsername");
+
+	 * @param end" the end"
+	/** The nam password. */
 		String namPassword = (String) execution.getVariable("vigewf_namPassword");
 		NodeRef irarNodeRef = new NodeRef(irarNodeRefString);
 		boolean result = signService.signCAdESWithTimeStamp(irarNodeRef, namUsername, namPassword);
@@ -30,6 +44,11 @@ public class ComplexIRaRSubscription extends BaseJavaDelegate {
 		logger.debug("Execute end");
 	}
 
+	/**
+	 * Set sign service.
+	 *
+	 * @param signService the sign service
+	 */
 	public void setSignService(SignService signService) {
 		this.signService = signService;
 	}

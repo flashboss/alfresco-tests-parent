@@ -32,30 +32,55 @@ public class MockContentService implements ContentService, Serializable {
 	public final static String FOLDER_TEST = "./target/test-classes/";
 
 	@Autowired
+	/** The node service. */
 	private NodeService nodeService;
 
 	@Autowired
+	/** The mimetype service. */
 	private MimetypeService mimetypeService;
 
 	@Override
+	/**
+	 * Get store total space.
+	 *
+	 * @return the long
+	 */
 	public long getStoreTotalSpace() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
+	/**
+	 * Get store free space.
+	 *
+	 * @return the long
+	 */
 	public long getStoreFreeSpace() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
+	/**
+	 * Get raw reader.
+	 *
+	 * @param contentUrl the content url
+	 * @return the content reader
+	 */
 	public ContentReader getRawReader(String contentUrl) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get reader.
+	 *
+	 * @param nodeRef the node ref
+	 * @param propertyQName the property q name
+	 * @return the content reader
+	 */
 	public ContentReader getReader(NodeRef nodeRef, QName propertyQName)
 			throws InvalidNodeRefException, InvalidTypeException {
 		File file = getNodeService().getNodeRefs().get(nodeRef);
@@ -66,6 +91,14 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	@Override
+	/**
+	 * Get writer.
+	 *
+	 * @param nodeRef the node ref
+	 * @param propertyQName the property q name
+	 * @param update the update
+	 * @return the content writer
+	 */
 	public ContentWriter getWriter(NodeRef nodeRef, QName propertyQName, boolean update)
 			throws InvalidNodeRefException, InvalidTypeException {
 		File file = getNodeService().getNodeRefs().get(nodeRef);
@@ -73,12 +106,23 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	@Override
+	/**
+	 * Get temp writer.
+	 *
+	 * @return the content writer
+	 */
 	public ContentWriter getTempWriter() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Transform.
+	 *
+	 * @param reader the reader
+	 * @param writer the writer
+	 */
 	public void transform(ContentReader reader, ContentWriter writer)
 			throws NoTransformerException, ContentIOException {
 		// TODO Auto-generated method stub
@@ -86,6 +130,13 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	@Override
+	/**
+	 * Transform.
+	 *
+	 * @param reader the reader
+	 * @param writer the writer
+	 * @param options the options
+	 */
 	public void transform(ContentReader reader, ContentWriter writer, Map<String, Object> options)
 			throws NoTransformerException, ContentIOException {
 		// TODO Auto-generated method stub
@@ -93,6 +144,13 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	@Override
+	/**
+	 * Transform.
+	 *
+	 * @param reader the reader
+	 * @param writer the writer
+	 * @param options the options
+	 */
 	public void transform(ContentReader reader, ContentWriter writer, TransformationOptions options)
 			throws NoTransformerException, ContentIOException {
 		// TODO Auto-generated method stub
@@ -100,6 +158,13 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	@Override
+	/**
+	 * Get transformer.
+	 *
+	 * @param sourceMimetype the source mimetype
+	 * @param targetMimetype the target mimetype
+	 * @return the content transformer
+	 */
 	public ContentTransformer getTransformer(String sourceMimetype, String targetMimetype) {
 		// TODO Auto-generated method stub
 		return null;
@@ -127,6 +192,14 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	@Override
+	/**
+	 * Get max source size bytes.
+	 *
+	 * @param sourceMimetype the source mimetype
+	 * @param targetMimetype the target mimetype
+	 * @param options the options
+	 * @return the long
+	 */
 	public long getMaxSourceSizeBytes(String sourceMimetype, String targetMimetype, TransformationOptions options) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -147,35 +220,75 @@ public class MockContentService implements ContentService, Serializable {
 	}
 
 	@Override
+	/**
+	 * Get image transformer.
+	 *
+	 * @return the content transformer
+	 */
 	public ContentTransformer getImageTransformer() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Is transformable.
+	 *
+	 * @param reader the reader
+	 * @param writer the writer
+	 * @return the boolean
+	 */
 	public boolean isTransformable(ContentReader reader, ContentWriter writer) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
+	/**
+	 * Is transformable.
+	 *
+	 * @param reader the reader
+	 * @param writer the writer
+	 * @param options the options
+	 * @return the boolean
+	 */
 	public boolean isTransformable(ContentReader reader, ContentWriter writer, TransformationOptions options) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 * Get node service.
+	 *
+	 * @return the mock node service
+	 */
 	public MockNodeService getNodeService() {
 		return (MockNodeService) nodeService;
 	}
 
+	/**
+	 * Get mimetype service.
+	 *
+	 * @return the mimetype service
+	 */
 	public MimetypeService getMimetypeService() {
 		return mimetypeService;
 	}
 
+	/**
+	 * Set mimetype service.
+	 *
+	 * @param mimetypeService the mimetype service
+	 */
 	public void setMimetypeService(MimetypeService mimetypeService) {
 		this.mimetypeService = mimetypeService;
 	}
 
+	/**
+	 * Set node service.
+	 *
+	 * @param nodeService the node service
+	 */
 	public void setNodeService(MockNodeService nodeService) {
 		this.nodeService = nodeService;
 	}

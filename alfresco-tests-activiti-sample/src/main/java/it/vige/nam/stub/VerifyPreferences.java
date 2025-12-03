@@ -40,14 +40,18 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 public class VerifyPreferences {
 
+	/** The nam. */
 	protected boolean nam;
+	/** The pdf encryption password. */
 	protected String pdfEncryptionPassword;
 	@XmlSchemaType(name = "dateTime")
+	/** The verify on date. */
 	protected XMLGregorianCalendar verifyOnDate;
 
 	/**
 	 * Recupera il valore della proprietà nam.
 	 * 
+	 * @return the result
 	 */
 	public boolean isNam() {
 		return nam;
@@ -56,6 +60,7 @@ public class VerifyPreferences {
 	/**
 	 * Imposta il valore della proprietà nam.
 	 * 
+	 * @param value the value
 	 */
 	public void setNam(boolean value) {
 		this.nam = value;

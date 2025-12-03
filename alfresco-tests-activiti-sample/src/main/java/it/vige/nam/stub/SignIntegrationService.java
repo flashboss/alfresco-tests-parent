@@ -35,26 +35,65 @@ public class SignIntegrationService extends Service {
 		WSDL_LOCATION = url;
 	}
 
+	/**
+	 * Constructs a new sign integration service.
+	 *
+	 * @param wsdlLocation the wsdl location
+	 * @return the result
+	 */
 	public SignIntegrationService(URL wsdlLocation) {
 		super(wsdlLocation, SERVICE);
 	}
 
+	/**
+	 * Constructs a new sign integration service.
+	 *
+	 * @param wsdlLocation the wsdl location
+	 * @param serviceName the service name
+	 * @return the result
+	 */
 	public SignIntegrationService(URL wsdlLocation, QName serviceName) {
 		super(wsdlLocation, serviceName);
 	}
 
+	/**
+	 * Constructs a new sign integration service.
+	 *
+	 * @return the result
+	 */
 	public SignIntegrationService() {
 		super(WSDL_LOCATION, SERVICE);
 	}
 
+	/**
+	 * Constructs a new sign integration service.
+	 *
+	 * @param features the features
+	 * @return the result
+	 */
 	public SignIntegrationService(WebServiceFeature... features) {
 		super(WSDL_LOCATION, SERVICE, features);
 	}
 
+	/**
+	 * Constructs a new sign integration service.
+	 *
+	 * @param wsdlLocation the wsdl location
+	 * @param features the features
+	 * @return the result
+	 */
 	public SignIntegrationService(URL wsdlLocation, WebServiceFeature... features) {
 		super(wsdlLocation, SERVICE, features);
 	}
 
+	/**
+	 * Constructs a new sign integration service.
+	 *
+	 * @param wsdlLocation the wsdl location
+	 * @param serviceName the service name
+	 * @param features the features
+	 * @return the result
+	 */
 	public SignIntegrationService(URL wsdlLocation, QName serviceName, WebServiceFeature... features) {
 		super(wsdlLocation, serviceName, features);
 	}

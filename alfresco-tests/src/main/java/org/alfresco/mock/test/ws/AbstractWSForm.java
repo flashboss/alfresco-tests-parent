@@ -18,16 +18,23 @@ import org.springframework.extensions.webscripts.Description;
 public abstract class AbstractWSForm extends AbstractForm {
 
 	@Autowired
+	/** The container. */
 	private Container container;
 	
 	@Autowired
+	/** The description. */
 	private Description description;
 	
+	/** The date format. */
 	protected DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmm");
 
 	protected abstract AbstractWebScript getAbstractWebScript();
 
 	@Before
+	/**
+	 * Init.
+	 *
+	 */
 	public void init() {
 		super.init();
 		getAbstractWebScript().init(container, description);

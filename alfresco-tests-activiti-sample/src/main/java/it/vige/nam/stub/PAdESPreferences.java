@@ -41,15 +41,21 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class PAdESPreferences extends SignPreferences {
 
+	/** The encrypt in any case. */
 	protected boolean encryptInAnyCase;
+	/** The encryption password. */
 	protected String encryptionPassword;
+	/** The page. */
 	protected int page;
+	/** The signer image. */
 	protected SignerImage signerImage;
+	/** The signer image reference. */
 	protected String signerImageReference;
 
 	/**
 	 * Recupera il valore della proprietà encryptInAnyCase.
 	 * 
+	 * @return the result
 	 */
 	public boolean isEncryptInAnyCase() {
 		return encryptInAnyCase;
@@ -58,6 +64,7 @@ public class PAdESPreferences extends SignPreferences {
 	/**
 	 * Imposta il valore della proprietà encryptInAnyCase.
 	 * 
+	 * @param value the value
 	 */
 	public void setEncryptInAnyCase(boolean value) {
 		this.encryptInAnyCase = value;
@@ -86,6 +93,7 @@ public class PAdESPreferences extends SignPreferences {
 	/**
 	 * Recupera il valore della proprietà page.
 	 * 
+	 * @return the result
 	 */
 	public int getPage() {
 		return page;
@@ -94,6 +102,7 @@ public class PAdESPreferences extends SignPreferences {
 	/**
 	 * Imposta il valore della proprietà page.
 	 * 
+	 * @param value the value
 	 */
 	public void setPage(int value) {
 		this.page = value;

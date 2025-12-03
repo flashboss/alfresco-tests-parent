@@ -28,14 +28,26 @@ import it.vige.common.SignConstants;
  */
 public class ComplexRaRStoring extends ComplexRaRGeneration {
 
+	/** The logger. */
 	private static Log logger = LogFactory.getLog(ComplexRaRStoring.class);
 
+	/** The file folder service. */
 	protected FileFolderService fileFolderService;
 
+	/**
+	 * Set file folder service.
+	 *
+	 * @param fileFolderService the file folder service
+	 */
 	public void setFileFolderService(FileFolderService fileFolderService) {
 		this.fileFolderService = fileFolderService;
 	}
 
+	/**
+	 * Execute.
+	 *
+	 * @param execution the execution
+	 */
 	public void execute(DelegateExecution execution) throws Exception {
 		logger.debug("Execute start");
 		int rarId = (int) execution.getVariable("vigewf_rarId");
@@ -45,7 +57,11 @@ public class ComplexRaRStoring extends ComplexRaRGeneration {
 			throw new AlfrescoRuntimeException(rarFolder);
 		}
 		NodeRef rarFolderNodeRef = results.get(0);
+
+	/** The padded rar id. */
 		String paddedRarId = String.format("%05d", rarId);
+
+	/** The rar node name. */
 		String rarNodeName = "RAR_" + paddedRarId;
 		Map<QName, Serializable> rarProps = new HashMap<QName, Serializable>();
 		rarProps.put(ContentModel.PROP_NAME, rarNodeName);
@@ -58,6 +74,7 @@ public class ComplexRaRStoring extends ComplexRaRGeneration {
 		List<ChildAssociationRef> relatedSaSsChild = nodeService.getChildAssocs(bpmPackage.getNodeRef());
 		for (ChildAssociationRef relatedSaSChild : relatedSaSsChild) {
 			NodeRef relatedSaSNodeRef = relatedSaSChild.getChildRef();
+			/** The related s a s name. */
 			String relatedSASName = (String) nodeService.getProperty(relatedSaSNodeRef, ContentModel.PROP_NAME);
 			NodeRef relateSaSParentNodeRef = nodeService.getPrimaryParent(relatedSaSNodeRef).getParentRef();
 			fileFolderService.moveFrom(relatedSaSNodeRef, relateSaSParentNodeRef, rarNodeRef, relatedSASName);
@@ -74,9 +91,13 @@ public class ComplexRaRStoring extends ComplexRaRGeneration {
 			fileFolderService.moveFrom(relateISaSNodeRef, relateSaSParentNodeRef, rarNodeRef, relatedISaSName);
 		}
 		logger.debug("I took all the sas files to be sent for conservation ");
+
+	/** The irar node ref string. */
 		String irarNodeRefString = (String) execution.getVariable("vigewf_relatedIRaR");
 		NodeRef irarNodeRef = new NodeRef(irarNodeRefString);
 		NodeRef irarParentNodeRef = nodeService.getPrimaryParent(irarNodeRef).getParentRef();
+
+	/** The irar name. */
 		String irarName = (String) nodeService.getProperty(irarNodeRef, ContentModel.PROP_NAME);
 		logger.debug("Taken name IRAR with the counter value from the Workflow");
 		// adds the aspect to move the content to the new content store

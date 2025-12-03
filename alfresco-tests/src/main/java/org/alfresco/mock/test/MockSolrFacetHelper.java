@@ -13,6 +13,12 @@ import org.alfresco.repo.search.impl.solr.facet.SolrFacetHelper;
  */
 public class MockSolrFacetHelper extends SolrFacetHelper implements Serializable {
 
+	/**
+	 * Constructs a new mock solr facet helper.
+	 *
+	 * @param facetQueryProviders the facet query providers
+	 * @return the result
+	 */
 	public MockSolrFacetHelper(List<FacetQueryProvider> facetQueryProviders) {
 		super(facetQueryProviders);
 	}

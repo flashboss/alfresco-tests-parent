@@ -43,10 +43,14 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignArrayList {
 
+	/** The username. */
 	protected String username;
+	/** The password. */
 	protected String password;
+	/** The buffer list. */
 	protected List<byte[]> bufferList;
 	@XmlElement(name = "AdESPreferences")
+	/** The ad e s preferences. */
 	protected SignPreferences adESPreferences;
 
 	/**
@@ -109,6 +113,7 @@ public class SignArrayList {
 	 * <p>
 	 * Objects of the following type(s) are allowed in the list byte[]
 	 * 
+	 * @return the result
 	 */
 	public List<byte[]> getBufferList() {
 		if (bufferList == null) {

@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlType;
 public class TimestampTSDVerifyResponse {
 
 	@XmlElement(name = "return")
+	/** The  return. */
 	protected List<TimestampReportBean> _return;
 
 	/**
@@ -65,6 +66,7 @@ public class TimestampTSDVerifyResponse {
 	 * {@link TimestampReportBean }
 	 * 
 	 * 
+	 * @return the result
 	 */
 	public List<TimestampReportBean> getReturn() {
 		if (_return == null) {

@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlType;
 public class SignXAdESArrayListWithCredentialsResponse {
 
 	@XmlElement(name = "return")
+	/** The  return. */
 	protected List<byte[]> _return;
 
 	/**
@@ -63,6 +64,7 @@ public class SignXAdESArrayListWithCredentialsResponse {
 	 * <p>
 	 * Objects of the following type(s) are allowed in the list byte[]
 	 * 
+	 * @return the result
 	 */
 	public List<byte[]> getReturn() {
 		if (_return == null) {

@@ -39,6 +39,7 @@ import it.vige.sample.BackupAction;
 public class SimpleTest extends AbstractForm {
 
 	@Autowired
+	/** The my action. */
 	private BackupAction myAction;
 
 	private final static String documentName = "VALID.pdf";
@@ -55,9 +56,14 @@ public class SimpleTest extends AbstractForm {
 	private final static String version3Content = "new content 3";
 	private final static String version3Label = "2.0";
 
+	/** The document. */
 	private NodeRef document;
 
 	@Before
+	/**
+	 * Init.
+	 *
+	 */
 	public void init() {
 		super.init();
 
@@ -65,6 +71,8 @@ public class SimpleTest extends AbstractForm {
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
 		properties.put(PROP_NAME, documentName);
 		properties.put(PROP_DESCRIPTION, documentName);
+
+	/** The content. */
 		String content = new String(com.adobe.xmp.impl.Base64.encode(documentName));
 		document = insertDocument(spacesStore, documentName, content, properties);
 
@@ -72,11 +80,17 @@ public class SimpleTest extends AbstractForm {
 		ResultSet docs = serviceRegistry.getSearchService().query(STORE_REF_WORKSPACE_SPACESSTORE,
 				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"/" + documentName + "\"");
 		Assert.assertEquals("A document is created", 1, docs.length());
+
+	/** The node name. */
 		String nodeName = (String) serviceRegistry.getNodeService().getProperty(docs.getNodeRefs().get(0), PROP_NAME);
 		Assert.assertEquals("VALID.pdf is created", documentName, nodeName);
 	}
 
 	@Test
+	/**
+	 * Execute.
+	 *
+	 */
 	public void execute() {
 
 		// execute the injected action
@@ -89,12 +103,18 @@ public class SimpleTest extends AbstractForm {
 		ResultSet docs = serviceRegistry.getSearchService().query(STORE_REF_WORKSPACE_SPACESSTORE,
 				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"/" + documentName + ".bak\"");
 		Assert.assertEquals("A backup document is created", 1, docs.length());
+
+	/** The node name. */
 		String nodeName = (String) serviceRegistry.getNodeService().getProperty(docs.getNodeRefs().get(0), PROP_NAME);
 		Assert.assertEquals("VALID.pdf.bak is created", documentName + ".bak", nodeName);
 
 	}
 
 	@Test
+	/**
+	 * Versioned.
+	 *
+	 */
 	public void versioned() {
 		insertVersion(document, versionName, versionContent, versionLabel, MINOR);
 		insertVersion(document, version2Name, version2Content, version2Label, MINOR);

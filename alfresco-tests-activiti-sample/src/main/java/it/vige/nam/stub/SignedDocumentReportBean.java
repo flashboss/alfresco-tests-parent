@@ -51,16 +51,23 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class SignedDocumentReportBean {
 
 	@XmlSchemaType(name = "dateTime")
+	/** The check date. */
 	protected XMLGregorianCalendar checkDate;
 	@XmlElement(nillable = true)
+	/** The note report list. */
 	protected List<NoteReportBean> noteReportList;
+	/** The nr of signatures. */
 	protected int nrOfSignatures;
+	/** The overall verified. */
 	protected boolean overallVerified;
 	protected byte[] plainDocument;
+	/** The signature format. */
 	protected String signatureFormat;
 	@XmlElement(nillable = true)
+	/** The signature report list. */
 	protected List<SignatureReportBean> signatureReportList;
 	@XmlSchemaType(name = "dateTime")
+	/** The verification date. */
 	protected XMLGregorianCalendar verificationDate;
 
 	/**
@@ -105,6 +112,7 @@ public class SignedDocumentReportBean {
 	 * {@link NoteReportBean }
 	 * 
 	 * 
+	 * @return the result
 	 */
 	public List<NoteReportBean> getNoteReportList() {
 		if (noteReportList == null) {
@@ -116,6 +124,7 @@ public class SignedDocumentReportBean {
 	/**
 	 * Recupera il valore della proprietà nrOfSignatures.
 	 * 
+	 * @return the result
 	 */
 	public int getNrOfSignatures() {
 		return nrOfSignatures;
@@ -124,6 +133,7 @@ public class SignedDocumentReportBean {
 	/**
 	 * Imposta il valore della proprietà nrOfSignatures.
 	 * 
+	 * @param value the value
 	 */
 	public void setNrOfSignatures(int value) {
 		this.nrOfSignatures = value;
@@ -132,6 +142,7 @@ public class SignedDocumentReportBean {
 	/**
 	 * Recupera il valore della proprietà overallVerified.
 	 * 
+	 * @return the result
 	 */
 	public boolean isOverallVerified() {
 		return overallVerified;
@@ -140,6 +151,7 @@ public class SignedDocumentReportBean {
 	/**
 	 * Imposta il valore della proprietà overallVerified.
 	 * 
+	 * @param value the value
 	 */
 	public void setOverallVerified(boolean value) {
 		this.overallVerified = value;
@@ -205,6 +217,7 @@ public class SignedDocumentReportBean {
 	 * {@link SignatureReportBean }
 	 * 
 	 * 
+	 * @return the result
 	 */
 	public List<SignatureReportBean> getSignatureReportList() {
 		if (signatureReportList == null) {

@@ -10,14 +10,29 @@ import java.util.List;
  */
 public class SignedDocumentReportBean {
 
+	/**
+	 * Is overall verified.
+	 *
+	 * @return the boolean
+	 */
 	public boolean isOverallVerified() {
 		return true;
 	}
 
+	/**
+	 * Get note report list.
+	 *
+	 * @return the list
+	 */
 	public List<NoteReportBean> getNoteReportList() {
 		return new ArrayList<NoteReportBean>();
 	}
 	
+	/**
+	 * Get signature format.
+	 *
+	 * @return the string
+	 */
 	public String getSignatureFormat() {
 		return "";
 	}

@@ -45,12 +45,19 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class TimeStampPreferences {
 
+	/** The filename in t s d. */
 	protected String filenameInTSD;
+	/** The output as t s d. */
 	protected boolean outputAsTSD;
+	/** The output base64 encoded. */
 	protected boolean outputBase64Encoded;
+	/** The timestamp hash algo. */
 	protected String timestampHashAlgo;
+	/** The timestamp password. */
 	protected String timestampPassword;
+	/** The timestamp url. */
 	protected String timestampUrl;
+	/** The timestamp username. */
 	protected String timestampUsername;
 
 	/**
@@ -76,6 +83,7 @@ public class TimeStampPreferences {
 	/**
 	 * Recupera il valore della proprietà outputAsTSD.
 	 * 
+	 * @return the result
 	 */
 	public boolean isOutputAsTSD() {
 		return outputAsTSD;
@@ -84,6 +92,7 @@ public class TimeStampPreferences {
 	/**
 	 * Imposta il valore della proprietà outputAsTSD.
 	 * 
+	 * @param value the value
 	 */
 	public void setOutputAsTSD(boolean value) {
 		this.outputAsTSD = value;
@@ -92,6 +101,7 @@ public class TimeStampPreferences {
 	/**
 	 * Recupera il valore della proprietà outputBase64Encoded.
 	 * 
+	 * @return the result
 	 */
 	public boolean isOutputBase64Encoded() {
 		return outputBase64Encoded;
@@ -100,6 +110,7 @@ public class TimeStampPreferences {
 	/**
 	 * Imposta il valore della proprietà outputBase64Encoded.
 	 * 
+	 * @param value the value
 	 */
 	public void setOutputBase64Encoded(boolean value) {
 		this.outputBase64Encoded = value;
