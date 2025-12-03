@@ -8,6 +8,14 @@ import org.apache.commons.logging.LogFactory;
 
 import it.vige.activiti.service.SignService;
 
+/**
+ * Mock implementation of the ComplexIRaRSubscription class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class ComplexIRaRSubscription extends BaseJavaDelegate {
 
 	private static Log logger = LogFactory.getLog(ComplexIRaRSubscription.class);

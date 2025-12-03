@@ -30,6 +30,14 @@ import org.alfresco.service.cmr.version.VersionType;
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of the NodeUtils class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class NodeUtils {
 
 	public static NodeRef insertFolder(NodeRef parent, String name, FileFolderService fileFolderService) {
@@ -77,6 +85,15 @@ public class NodeUtils {
 	public static List<NodeRef> sortByName(Set<NodeRef> nodeRefs) {
 		NodeRef[] nodeArray = nodeRefs.toArray(new NodeRef[0]);
 		Arrays.sort(nodeArray, new Comparator<NodeRef>() {
+
+			/**
+
+
+			 * {@inheritDoc}
+
+
+			 */
+
 
 			@Override
 			public int compare(NodeRef o1, NodeRef o2) {

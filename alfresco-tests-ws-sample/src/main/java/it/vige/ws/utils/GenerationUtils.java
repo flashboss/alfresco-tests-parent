@@ -48,6 +48,14 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
+/**
+ * Mock implementation of the GenerationUtils class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class GenerationUtils {
 
 	private Log logger = LogFactory.getLog(GenerationUtils.class);

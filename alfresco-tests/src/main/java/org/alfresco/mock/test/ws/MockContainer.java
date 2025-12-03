@@ -14,6 +14,14 @@ import org.springframework.extensions.webscripts.SearchPath;
 import org.springframework.extensions.webscripts.ServerModel;
 import org.springframework.extensions.webscripts.TemplateProcessorRegistry;
 
+/**
+ * Mock implementation of the MockContainer class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockContainer implements Container {
 
 	private Map<String, Object> templateParameters = new HashMap<String, Object>();
@@ -28,11 +36,29 @@ public class MockContainer implements Container {
 		formatRegistry.addFormats(null, formats);
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public ServerModel getDescription() {
@@ -40,10 +66,28 @@ public class MockContainer implements Container {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public ScriptProcessorRegistry getScriptProcessorRegistry() {
 		return scriptProcessorRegistry;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public ScriptParameterFactoryRegistry getScriptParameterFactoryRegistry() {
@@ -51,16 +95,43 @@ public class MockContainer implements Container {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public Map<String, Object> getScriptParameters() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public TemplateProcessorRegistry getTemplateProcessorRegistry() {
 		return templateProcessorRegistry;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Map<String, Object> getTemplateParameters() {
@@ -68,10 +139,28 @@ public class MockContainer implements Container {
 		return templateParameters;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public FormatRegistry getFormatRegistry() {
 		return formatRegistry;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public Registry getRegistry() {
@@ -79,10 +168,28 @@ public class MockContainer implements Container {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public SearchPath getSearchPath() {
 		return searchPath;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public ConfigService getConfigService() {
@@ -90,11 +197,29 @@ public class MockContainer implements Container {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public boolean allowCallbacks() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void reset() {

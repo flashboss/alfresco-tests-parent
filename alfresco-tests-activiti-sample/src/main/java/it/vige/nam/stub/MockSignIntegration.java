@@ -11,19 +11,54 @@ import java.util.List;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+/**
+ * Mock implementation of the MockSignIntegration class for testing purposes.
+ * This class provides a mock implementation that allows unit and integration tests
+ * to run without requiring a full Alfresco server instance.
+ * 
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockSignIntegration implements SignIntegration {
 
 	private final static DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public byte[] signPkcs1(Credentials credentials, byte[] hash, SignPreferences preferences) throws WSException {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void sendOtpBySMS(Credentials credentials) throws WSException {
 		
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public byte[] signCAdES(String username, String password, byte[] buffer, CAdESPreferences cAdESPreferences)
@@ -31,11 +66,29 @@ public class MockSignIntegration implements SignIntegration {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public byte[] signCAdESRemote(Credentials credentials, byte[] buffer, CAdESPreferences cAdESPreferences)
 			throws WSException {
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void changePassword(String securityCode, String username, String password, String newPassword)
@@ -43,26 +96,71 @@ public class MockSignIntegration implements SignIntegration {
 		
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public SignedDocumentReportBean verifyOnDate(byte[] signedContent, XMLGregorianCalendar verifyDate)
 			throws WSException {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void disable(String securityCode, String username, String password) throws WSException {
 		
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public String openSession(Credentials credentials) throws WSException {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void checkFirstFactor(Credentials credentials) throws WSException {
 		
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public byte[] signPAdESRemote(Credentials credentials, byte[] buffer, PAdESPreferences pAdESPreferences)
@@ -70,11 +168,29 @@ public class MockSignIntegration implements SignIntegration {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public List<byte[]> signCAdESArrayListWithMultiPreferences(Credentials credentials, List<byte[]> bufferList,
 			List<CAdESPreferences> cAdESPreferences) throws WSException {
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<byte[]> signPAdESArrayListWithCredentials(Credentials credentials, List<byte[]> bufferList,
@@ -82,11 +198,29 @@ public class MockSignIntegration implements SignIntegration {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public List<byte[]> signCAdESArrayListWithCredentials(Credentials credentials, List<byte[]> bufferList,
 			CAdESPreferences cAdESPreferences) throws WSException {
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public byte[] signWithCredentials(Credentials credentials, byte[] buffer, SignPreferences adESPreferences)
@@ -108,11 +242,29 @@ public class MockSignIntegration implements SignIntegration {
 		return bufferStr.getBytes();
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public List<byte[]> signXAdESArrayListWithMultiPreferences(Credentials credentials, List<byte[]> bufferList,
 			List<XAdESPreferences> xAdESPreferences) throws WSException {
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<byte[]> signArrayListWithCredentials(Credentials credentials, List<byte[]> bufferList,
@@ -120,10 +272,28 @@ public class MockSignIntegration implements SignIntegration {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public long getSignatures(Credentials credentials) throws WSException {
 		return 0;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public byte[] sign(String username, String password, byte[] buffer, SignPreferences adESPreferences)
@@ -131,10 +301,28 @@ public class MockSignIntegration implements SignIntegration {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public TimestampReportBean timestampTSRVerify(byte[] tsr, byte[] content) throws WSException {
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<byte[]> signXAdESArrayListWithCredentials(Credentials credentials, List<byte[]> bufferList,
@@ -142,10 +330,28 @@ public class MockSignIntegration implements SignIntegration {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public long getAvailableSignatures(Credentials credentials) throws WSException {
 		return 0;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public byte[] signXAdES(String username, String password, byte[] buffer, XAdESPreferences xAdESPreferences)
@@ -153,11 +359,29 @@ public class MockSignIntegration implements SignIntegration {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public byte[] signXAdESRemote(Credentials credentials, byte[] buffer, XAdESPreferences xAdESPreferences)
 			throws WSException {
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<byte[]> signPAdESArrayList(String username, String password, List<byte[]> bufferList,
@@ -165,16 +389,43 @@ public class MockSignIntegration implements SignIntegration {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void enableRemote(Credentials credentials) throws WSException {
 		
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<byte[]> signXAdESArrayList(String username, String password, List<byte[]> bufferList,
 			XAdESPreferences xAdESPreferences) throws WSException {
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<TimestampReportBean> timestampTSDVerify(byte[] tsd) throws WSException {
@@ -192,11 +443,29 @@ public class MockSignIntegration implements SignIntegration {
 		return Arrays.asList(new TimestampReportBean[] { timestampReportBean });
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public List<byte[]> signPAdESArrayListWithMultiPreferences(Credentials credentials, List<byte[]> bufferList,
 			List<PAdESPreferences> pAdESPreferences) throws WSException {
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<byte[]> signArrayList(String username, String password, List<byte[]> bufferList,
@@ -204,11 +473,29 @@ public class MockSignIntegration implements SignIntegration {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public byte[] signPAdES(String username, String password, byte[] buffer, PAdESPreferences pAdESPreferences)
 			throws WSException {
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<byte[]> signPkcs1ArrayList(Credentials credentials, List<byte[]> hashList, SignPreferences preferences)
@@ -216,15 +503,42 @@ public class MockSignIntegration implements SignIntegration {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public byte[] getCertificate(String username, String password) throws WSException {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void changePasswordRemote(Credentials credentials, String newPassword) throws WSException {
 		
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public List<byte[]> signCAdESArrayList(String username, String password, List<byte[]> bufferList,
@@ -232,30 +546,84 @@ public class MockSignIntegration implements SignIntegration {
 		return null;
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void enable(String securityCode, String username, String password) throws WSException {
 		
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void checkOTP(Credentials credentials) throws WSException {
 		
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public SignedDocumentReportBean verify(byte[] signedContent) throws WSException {
 		return null;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public void closeSession(Credentials credentials) throws WSException {
 		
 	}
 
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
+
 	@Override
 	public void disableRemote(Credentials credentials) throws WSException {
 		
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public SignedDocumentReportBean verifyWithPreferences(byte[] signedContent, VerifyPreferences preferences)
@@ -286,6 +654,15 @@ public class MockSignIntegration implements SignIntegration {
 		bean.setNrOfSignatures(bean.getSignatureReportList().size());
 		return bean;
 	}
+
+	/**
+
+
+	 * {@inheritDoc}
+
+
+	 */
+
 
 	@Override
 	public byte[] timestamp(byte[] content, TimeStampPreferences preferences) throws WSException {
