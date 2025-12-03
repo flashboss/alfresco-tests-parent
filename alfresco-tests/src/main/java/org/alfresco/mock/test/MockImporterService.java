@@ -17,6 +17,13 @@ import org.alfresco.service.cmr.view.ImporterException;
 import org.alfresco.service.cmr.view.ImporterProgress;
 import org.alfresco.service.cmr.view.ImporterService;
 import org.alfresco.service.cmr.view.Location;
+
+/**
+ * Mock implementation of ImporterService for testing purposes.
+ * Provides content import capabilities using ACP packages.
+ * 
+ * @author vige
+ */
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;

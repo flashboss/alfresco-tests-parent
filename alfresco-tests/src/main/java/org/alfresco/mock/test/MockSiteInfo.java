@@ -8,6 +8,12 @@ import org.alfresco.service.cmr.site.SiteInfo;
 import org.alfresco.service.cmr.site.SiteVisibility;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Mock implementation of SiteInfo for testing purposes.
+ * Represents site information with node reference and short name.
+ * 
+ * @author vige
+ */
 public class MockSiteInfo implements SiteInfo, Serializable {
 
 	private NodeRef nodeRef;

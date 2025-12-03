@@ -11,6 +11,12 @@ import org.alfresco.service.cmr.repository.TemplateImageResolver;
 import org.alfresco.service.cmr.repository.TemplateProcessor;
 import org.alfresco.service.cmr.repository.TemplateService;
 
+/**
+ * Mock implementation of TemplateService for testing purposes.
+ * Provides template processing stub.
+ * 
+ * @author vige
+ */
 public class MockTemplateService implements TemplateService, Serializable {
 
 	@Override

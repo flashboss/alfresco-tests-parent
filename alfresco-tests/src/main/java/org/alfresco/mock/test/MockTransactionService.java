@@ -8,6 +8,12 @@ import org.alfresco.repo.transaction.RetryingTransactionHelper;
 import org.alfresco.service.transaction.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Mock implementation of TransactionService for testing purposes.
+ * Provides transaction management stub with retrying helper support.
+ * 
+ * @author vige
+ */
 public class MockTransactionService implements TransactionService, Serializable {
 
 	@Autowired
