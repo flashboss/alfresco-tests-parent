@@ -25,13 +25,13 @@ public abstract class AbstractWSForm extends AbstractForm {
  */
 	@Autowired
 	private Container container;
-	
+
 /**
 * The description.
  */
 	@Autowired
 	private Description description;
-	
+
 /**
 * The date format for file naming.
  */

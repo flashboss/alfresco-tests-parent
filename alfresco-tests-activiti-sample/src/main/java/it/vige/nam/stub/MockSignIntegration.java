@@ -41,7 +41,7 @@ public class MockSignIntegration implements SignIntegration {
  */
 	@Override
 	public void sendOtpBySMS(Credentials credentials) throws WSException {
-		
+
 	}
 
 /**
@@ -77,7 +77,7 @@ public class MockSignIntegration implements SignIntegration {
 	@Override
 	public void changePassword(String securityCode, String username, String password, String newPassword)
 			throws WSException {
-		
+
 	}
 
 /**
@@ -100,7 +100,7 @@ public class MockSignIntegration implements SignIntegration {
  */
 	@Override
 	public void disable(String securityCode, String username, String password) throws WSException {
-		
+
 	}
 
 /**
@@ -121,7 +121,7 @@ public class MockSignIntegration implements SignIntegration {
  */
 	@Override
 	public void checkFirstFactor(Credentials credentials) throws WSException {
-		
+
 	}
 
 /**
@@ -297,7 +297,7 @@ public class MockSignIntegration implements SignIntegration {
  */
 	@Override
 	public void enableRemote(Credentials credentials) throws WSException {
-		
+
 	}
 
 /**
@@ -392,7 +392,7 @@ public class MockSignIntegration implements SignIntegration {
  */
 	@Override
 	public void changePasswordRemote(Credentials credentials, String newPassword) throws WSException {
-		
+
 	}
 
 /**
@@ -413,7 +413,7 @@ public class MockSignIntegration implements SignIntegration {
  */
 	@Override
 	public void enable(String securityCode, String username, String password) throws WSException {
-		
+
 	}
 
 /**
@@ -423,7 +423,7 @@ public class MockSignIntegration implements SignIntegration {
  */
 	@Override
 	public void checkOTP(Credentials credentials) throws WSException {
-		
+
 	}
 
 /**
@@ -443,7 +443,7 @@ public class MockSignIntegration implements SignIntegration {
  */
 	@Override
 	public void closeSession(Credentials credentials) throws WSException {
-		
+
 	}
 
 /**
@@ -453,7 +453,7 @@ public class MockSignIntegration implements SignIntegration {
  */
 	@Override
 	public void disableRemote(Credentials credentials) throws WSException {
-		
+
 	}
 
 /**

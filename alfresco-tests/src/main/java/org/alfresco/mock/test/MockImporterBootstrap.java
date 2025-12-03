@@ -23,7 +23,7 @@ public class MockImporterBootstrap extends AbstractLifecycleBean {
 	@Override
 	protected void onBootstrap(ApplicationEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -33,9 +33,9 @@ public class MockImporterBootstrap extends AbstractLifecycleBean {
 	@Override
 	protected void onShutdown(ApplicationEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 /**
 * Sets whether to use existing store.
 *
@@ -44,9 +44,9 @@ public class MockImporterBootstrap extends AbstractLifecycleBean {
     public void setUseExistingStore(boolean useExistingStore)
     {
     	// TODO Auto-generated method stub
-    	
+
     }
-    
+
 /**
 * Sets the bootstrap views.
 *
@@ -55,7 +55,7 @@ public class MockImporterBootstrap extends AbstractLifecycleBean {
     public void setBootstrapViews(List<Properties> bootstrapViews)
     {
     	// TODO Auto-generated method stub
-    	
+
     }
 
 }

@@ -25,7 +25,7 @@ public class MockDescriptorService implements DescriptorService, InitializingBea
 	@Override
 	public void onLicenseChange(LicenseDescriptor licenseDescriptor) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -34,7 +34,7 @@ public class MockDescriptorService implements DescriptorService, InitializingBea
 	@Override
 	public void onLicenseFail() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**
@@ -44,7 +44,7 @@ public class MockDescriptorService implements DescriptorService, InitializingBea
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 /**

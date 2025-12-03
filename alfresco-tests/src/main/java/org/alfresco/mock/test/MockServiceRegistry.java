@@ -812,7 +812,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 		// TODO Auto-generated method stub
 		return null;
 	}
-		
+
 /**
 * Performs write external.
 * @param out the out
@@ -973,7 +973,7 @@ public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, E
 	public void setSolrFacetHelper(SolrFacetHelper solrFacetHelper) {
 		this.solrFacetHelper = solrFacetHelper;
 	}
-	
+
 /**
 * Sets the dictionary service.
 * @param dictionaryService the dictionaryService
