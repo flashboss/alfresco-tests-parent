@@ -32,6 +32,8 @@ import static org.apache.pdfbox.io.IOUtils.toByteArray;
  * Author: Luca Stancapiano
  */
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class DroolsConverterImpl {

@@ -34,6 +34,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "verifyPreferences", propOrder = { "nam", "pdfEncryptionPassword", "verifyOnDate" })
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class VerifyPreferences {

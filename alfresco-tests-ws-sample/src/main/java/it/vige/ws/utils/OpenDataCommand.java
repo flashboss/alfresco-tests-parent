@@ -6,6 +6,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class OpenDataCommand {

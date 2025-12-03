@@ -8,6 +8,8 @@ import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
 /**
+ * Mock implementation of UserTransaction for testing purposes.
+ * 
  * @author vige
  */
 public class MockUserTransaction implements UserTransaction {

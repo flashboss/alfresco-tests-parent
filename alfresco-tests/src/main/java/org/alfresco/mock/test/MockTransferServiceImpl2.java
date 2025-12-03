@@ -15,6 +15,9 @@ import org.alfresco.service.cmr.transfer.TransferService2;
 import org.alfresco.service.cmr.transfer.TransferTarget;
 
 /**
+ * Mock implementation of the Alfresco TransferServiceImpl2 for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
  * @author vige
  */
 public class MockTransferServiceImpl2 implements TransferService2 {

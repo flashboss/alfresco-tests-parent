@@ -33,6 +33,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signCAdESRemote", propOrder = { "credentials", "buffer", "cAdESPreferences" })
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class SignCAdESRemote {

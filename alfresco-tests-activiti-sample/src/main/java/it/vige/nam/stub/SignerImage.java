@@ -44,6 +44,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "signerImage", propOrder = { "fieldName", "fontName", "fontSize", "height", "image", "imageFilename",
 		"imageURL", "location", "reason", "signerName", "textVisible", "width", "x", "y" })
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class SignerImage {

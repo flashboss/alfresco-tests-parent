@@ -32,6 +32,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signPkcs1", propOrder = { "credentials", "hash", "preferences" })
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class SignPkcs1 {

@@ -27,6 +27,8 @@ import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 
 /**
+ * Utility class providing helper methods.
+ * 
  * @author vige
  */
 public class ZipUtils {

@@ -20,6 +20,8 @@ import org.alfresco.repo.policy.ServiceBehaviourBinding;
 import org.alfresco.service.namespace.QName;
 
 /**
+ * Mock implementation of PolicyComponent for testing purposes.
+ * 
  * @author vige
  */
 public class MockPolicyComponent implements PolicyComponent {

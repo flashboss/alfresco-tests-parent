@@ -34,6 +34,8 @@ import org.junit.Assert;
 import it.vige.activiti.SimpleModel;
 
 /**
+ * Test class for verifying functionality.
+ * 
  * @author vige
  */
 public class SimpleActivitiTest extends AbstractActivitiForm {

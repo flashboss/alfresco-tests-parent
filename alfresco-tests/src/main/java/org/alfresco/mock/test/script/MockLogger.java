@@ -8,6 +8,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
+ * Mock implementation of Logger for testing purposes.
+ * 
  * @author vige
  */
 public class MockLogger extends BaseProcessorExtension implements Serializable {

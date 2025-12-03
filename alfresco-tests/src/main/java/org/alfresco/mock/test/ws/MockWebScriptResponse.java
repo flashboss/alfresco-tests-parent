@@ -10,6 +10,8 @@ import org.springframework.extensions.webscripts.Runtime;
 import org.springframework.extensions.webscripts.WebScriptResponse;
 
 /**
+ * Mock implementation of WebScriptResponse for testing purposes.
+ * 
  * @author vige
  */
 public class MockWebScriptResponse implements WebScriptResponse {

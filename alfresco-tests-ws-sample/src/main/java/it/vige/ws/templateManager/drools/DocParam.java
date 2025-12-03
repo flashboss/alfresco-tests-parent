@@ -5,6 +5,8 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import java.util.Map;
 
 /**
+ * Class providing functionality for Alfresco testing.
+ * 
  * @author vige
  */
 public class DocParam {

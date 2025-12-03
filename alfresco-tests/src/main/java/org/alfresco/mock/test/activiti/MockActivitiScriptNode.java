@@ -8,6 +8,8 @@ import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 
 /**
+ * Mock implementation of ActivitiScriptNode for testing purposes.
+ * 
  * @author vige
  */
 public class MockActivitiScriptNode extends ActivitiScriptNode {
