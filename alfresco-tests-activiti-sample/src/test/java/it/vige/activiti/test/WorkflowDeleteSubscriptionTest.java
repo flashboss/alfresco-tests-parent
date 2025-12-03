@@ -23,8 +23,21 @@ import org.junit.Assert;
 import it.vige.activiti.ComplexAbstractForm;
 import it.vige.common.SignConstants;
 
+/**
+ * Test class for workflow deletion during subscription phase.
+ * Tests cancellation of the workflow during the IRaR subscription step.
+ * 
+ * @author vige
+ */
 public class WorkflowDeleteSubscriptionTest extends ComplexAbstractForm {
 
+	/**
+	 * Tests the human-started workflow with cancellation during subscription.
+	 * Starts the workflow, completes tasks, cancels at subscription step,
+	 * and verifies no files are created in the RAR folder.
+	 * 
+	 * @throws ParseException if date parsing fails
+	 */
 	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/ComplexRaRProcess.bpmn" })
 	public void testHuman() throws ParseException {
 		Map<String, Object> variables = new HashMap<String, Object>();

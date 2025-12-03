@@ -30,22 +30,51 @@ import org.mozilla.javascript.NativeArray;
 
 import it.vige.common.ConservationModel;
 
+/**
+ * Activiti delegate for generating IRaR (Index of RaR) documents.
+ * Creates an XML document containing metadata about the RaR archive.
+ * 
+ * @author vige
+ */
 public class ComplexIRaRGeneration extends BaseJavaDelegate {
 
+	/** Logger for this class. */
 	private static Log logger = LogFactory.getLog(ComplexIRaRGeneration.class);
 
+	/** Prefix for IRaR node names. */
 	private static String IRAR_NODE_NAME_PREFIX = "IRaR_";
+
+	/** Suffix for IRaR node names. */
 	private static String IRAR_NODE_NAME_SUFFIX = ".xml";
 
+	/** Service for template processing. */
 	private TemplateService templateService;
+
+	/** Service for node operations. */
 	private NodeService nodeService;
+
+	/** Service for content operations. */
 	private ContentService contentService;
+
+	/** Service for namespace resolution. */
 	private NamespaceService namespaceService;
+
+	/** Service for search operations. */
 	private SearchService searchService;
 
+	/** XPath to the IRaR template. */
 	private String irarTemplate;
+
+	/** XPath to the IRaR folder. */
 	private String irarFolder;
 
+	/**
+	 * Generates an IRaR document for the given RaR ID.
+	 * 
+	 * @param rarId the RaR identifier
+	 * @param execution the Activiti delegate execution context
+	 * @return the node reference of the created IRaR document
+	 */
 	public NodeRef generateIRaR(int rarId, DelegateExecution execution) {
 		logger.debug("generateIRaR start");
 		NodeRef rootNodeRef = nodeService.getRootNode(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE);
@@ -74,6 +103,13 @@ public class ComplexIRaRGeneration extends BaseJavaDelegate {
 		return irarNodeRef;
 	}
 
+	/**
+	 * Generates the model for the IRaR template.
+	 * 
+	 * @param rarId the RaR identifier
+	 * @param execution the Activiti delegate execution context
+	 * @return the model map for template processing
+	 */
 	private Map<String, Serializable> generateIRaRModel(int rarId, DelegateExecution execution) {
 		Map<String, Serializable> model = new HashMap<String, Serializable>();
 		execution.getVariable("");
@@ -91,34 +127,78 @@ public class ComplexIRaRGeneration extends BaseJavaDelegate {
 
 	}
 
+	/**
+	 * Sets the IRaR template path.
+	 * 
+	 * @param irarTemplate the XPath to the IRaR template
+	 */
 	public void setIrarTemplate(String irarTemplate) {
 		this.irarTemplate = irarTemplate;
 	}
 
+	/**
+	 * Sets the IRaR folder path.
+	 * 
+	 * @param irarFolder the XPath to the IRaR folder
+	 */
 	public void setIrarFolder(String irarFolder) {
 		this.irarFolder = irarFolder;
 	}
 
+	/**
+	 * Sets the template service.
+	 * 
+	 * @param templateService the template service to use
+	 */
 	public void setTemplateService(TemplateService templateService) {
 		this.templateService = templateService;
 	}
 
+	/**
+	 * Sets the node service.
+	 * 
+	 * @param nodeService the node service to use
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+	/**
+	 * Sets the content service.
+	 * 
+	 * @param contentService the content service to use
+	 */
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}
 
+	/**
+	 * Sets the namespace service.
+	 * 
+	 * @param namespaceService the namespace service to use
+	 */
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
 	}
 
+	/**
+	 * Sets the search service.
+	 * 
+	 * @param searchService the search service to use
+	 */
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
 
+	/**
+	 * Executes the IRaR generation delegate.
+	 * Generates an IRaR document and stores the reference in the workflow.
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @param execution the Activiti delegate execution context
+	 * @throws Exception if IRaR generation fails
+	 */
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 		int rarId = (int) execution.getVariable("vigewf_rarId");

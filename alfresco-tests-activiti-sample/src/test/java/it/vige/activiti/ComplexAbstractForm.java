@@ -28,23 +28,32 @@ import it.vige.common.ConservationModel;
  */
 public class ComplexAbstractForm extends AbstractActivitiForm {
 
+	/** The process definition key for the complex RAR generation workflow. */
 	public final static String ACTIVITY_KEY = "complexRarGenerationWorkflow";
 
+	/** The contributors group name. */
 	public final static String CONTRIBUTORS = "contributors";
 
-	/**
-	 * Default admin user to start the scheduler process
-	 */
+	/** Default admin user to start the scheduler process. */
 	protected final static String ADMIN_USER_NAME = "kermit";
-	/**
-	 * Default traveler user to work with the reservations
-	 */
+
+	/** Default traveler user to work with the reservations. */
 	protected final static String USER_NAME = "gonzo";
 
+	/** Date format for parsing workflow dates. */
 	protected final DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm:ss ZZZ yyyy");
 
+	/** The generation folder node reference. */
 	protected NodeRef generationFolder;
 
+	/**
+	 * Initializes the test environment.
+	 * Sets up namespaces, creates folder structure, and inserts test documents.
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @param variables the workflow variables map
+	 */
 	@Override
 	public void init(Map<String, Object> variables) {
 		super.init(variables);

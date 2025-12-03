@@ -23,8 +23,21 @@ import org.junit.Assert;
 import it.vige.activiti.ComplexAbstractForm;
 import it.vige.common.SignConstants;
 
+/**
+ * Test class for workflow resubmission.
+ * Tests the workflow path when a restart is requested during review.
+ * 
+ * @author vige
+ */
 public class WorkflowResubmitTest extends ComplexAbstractForm {
 
+	/**
+	 * Tests the human-started workflow with resubmission.
+	 * Starts the workflow, restarts during review, then completes successfully,
+	 * and verifies that files are created with incremented counter.
+	 * 
+	 * @throws ParseException if date parsing fails
+	 */
 	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/ComplexRaRProcess.bpmn" })
 	public void testHuman() throws ParseException {
 		Map<String, Object> variables = new HashMap<String, Object>();

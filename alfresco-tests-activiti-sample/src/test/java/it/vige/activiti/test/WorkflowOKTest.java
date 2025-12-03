@@ -23,8 +23,21 @@ import org.junit.Assert;
 import it.vige.activiti.ComplexAbstractForm;
 import it.vige.common.SignConstants;
 
+/**
+ * Test class for successful workflow completion.
+ * Tests the complete happy path of the complex RaR generation workflow.
+ * 
+ * @author vige
+ */
 public class WorkflowOKTest extends ComplexAbstractForm {
 
+	/**
+	 * Tests the human-started workflow with successful completion.
+	 * Starts the workflow, completes all tasks successfully,
+	 * and verifies that files are created in the expected RAR folder.
+	 * 
+	 * @throws ParseException if date parsing fails
+	 */
 	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/ComplexRaRProcess.bpmn" })
 	public void testHuman() throws ParseException {
 		Map<String, Object> variables = new HashMap<String, Object>();

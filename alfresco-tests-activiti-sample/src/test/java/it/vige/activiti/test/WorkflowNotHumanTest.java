@@ -23,8 +23,21 @@ import org.junit.Assert;
 import it.vige.activiti.ComplexAbstractForm;
 import it.vige.common.SignConstants;
 
+/**
+ * Test class for non-human-started workflow.
+ * Tests the automatic workflow path without human intervention at start.
+ * 
+ * @author vige
+ */
 public class WorkflowNotHumanTest extends ComplexAbstractForm {
 
+	/**
+	 * Tests the non-human-started workflow.
+	 * Starts the workflow automatically, skips the selected SaS task,
+	 * and verifies that the signed IRaR is created in the RAR folder.
+	 * 
+	 * @throws ParseException if date parsing fails
+	 */
 	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/ComplexRaRProcess.bpmn" })
 	public void testNotHuman() throws ParseException {
 		Map<String, Object> variables = new HashMap<String, Object>();

@@ -8,8 +8,23 @@ import org.alfresco.repo.workflow.activiti.ActivitiScriptNode;
 import org.alfresco.repo.workflow.activiti.BaseJavaDelegate;
 import org.mozilla.javascript.NativeArray;
 
+/**
+ * Activiti delegate for cleaning RaR workflow packages.
+ * Removes duplicate documents from the workflow package.
+ * 
+ * @author vige
+ */
 public class ComplexRaRCleaner extends BaseJavaDelegate {
 
+	/**
+	 * Executes the RaR cleaner delegate.
+	 * Removes nodes that are not in the cleaned list from the workflow package.
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @param execution the Activiti delegate execution context
+	 * @throws Exception if cleaning fails
+	 */
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 		ActivitiScriptNode bpmPackage = (ActivitiScriptNode) execution.getVariable("bpm_package");

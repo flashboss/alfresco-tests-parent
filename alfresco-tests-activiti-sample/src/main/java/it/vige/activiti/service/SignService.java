@@ -12,11 +12,29 @@ import org.apache.commons.io.IOUtils;
 
 import it.vige.common.SignConstants;
 
+/**
+ * Service for digital signature operations.
+ * Provides methods to sign documents using CAdES format with timestamps.
+ * 
+ * @author vige
+ */
 public class SignService {
 
+	/** Service for content operations. */
 	private ContentService contentService;
+
+	/** Service for node operations. */
 	private NodeService nodeService;
 	
+	/**
+	 * Signs a document using CAdES format with timestamp.
+	 * Reads the content, applies the signature, updates the content and filename.
+	 * 
+	 * @param nodeRef the node reference of the document to sign
+	 * @param username the username for signature credentials
+	 * @param password the password for signature credentials
+	 * @return true if signing was successful, false otherwise
+	 */
 	public boolean signCAdESWithTimeStamp(NodeRef nodeRef, String username, String password) {
 		boolean status = false;
 		ContentReader reader = contentService.getReader(nodeRef, ContentModel.PROP_CONTENT);
@@ -39,10 +57,20 @@ public class SignService {
 		return status;
 	}
 
+	/**
+	 * Sets the content service.
+	 * 
+	 * @param contentService the content service to use
+	 */
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}
 
+	/**
+	 * Sets the node service.
+	 * 
+	 * @param nodeService the node service to use
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}

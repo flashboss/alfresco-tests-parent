@@ -44,26 +44,38 @@ import it.vige.activiti.SimpleModel;
 
 public class SimpleActivitiTest extends AbstractActivitiForm {
 
+	/** The contributors group name. */
 	public final static String CONTRIBUTORS = "contributors";
+
+	/** The process definition key for the generation workflow. */
 	public final static String ACTIVITY_KEY = "generationWorkflow";
 
-	/**
-	 * Default admin user to start the scheduler process
-	 */
+	/** Default admin user to start the scheduler process. */
 	private final static String ADMIN_USER_NAME = "kermit";
-	/**
-	 * Default traveler user to work with the reservations
-	 */
+
+	/** Default traveler user to work with the reservations. */
 	private final static String USER_NAME = "gonzo";
 
+	/** Date format for parsing workflow dates. */
 	private final DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm:ss ZZZ yyyy");
 
+	/** The generation folder node reference. */
 	private NodeRef generationFolder;
 
+	/** The workflow initiator. */
 	private Initiator initiator = new Initiator();
 
+	/** The generation folder name. */
 	private String generationFolderName = "20191024_154711";
 
+	/**
+	 * Initializes the test environment.
+	 * Sets up namespaces, creates folder structure, and inserts test documents.
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @param variables the workflow variables map
+	 */
 	@Override
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
@@ -135,6 +147,13 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		}
 	}
 
+	/**
+	 * Tests the simple workflow process.
+	 * Starts the workflow, completes the selected SaS task, and verifies
+	 * that files are created in the expected locations.
+	 * 
+	 * @throws ParseException if date parsing fails
+	 */
 	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/SimpleProcess.bpmn" })
 	public void testWorkflow() throws ParseException {
 		Map<String, Object> variables = new HashMap<String, Object>();

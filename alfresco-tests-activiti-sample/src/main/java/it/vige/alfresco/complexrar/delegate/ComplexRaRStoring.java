@@ -21,16 +21,38 @@ import org.apache.commons.logging.LogFactory;
 import it.vige.common.ConservationModel;
 import it.vige.common.SignConstants;
 
+/**
+ * Activiti delegate for storing RaR documents.
+ * Creates the RaR folder structure and moves documents to their final location.
+ * 
+ * @author vige
+ */
 public class ComplexRaRStoring extends ComplexRaRGeneration {
 
+	/** Logger for this class. */
 	private static Log logger = LogFactory.getLog(ComplexRaRStoring.class);
 
+	/** Service for file and folder operations. */
 	protected FileFolderService fileFolderService;
 
+	/**
+	 * Sets the file folder service.
+	 * 
+	 * @param fileFolderService the file folder service to use
+	 */
 	public void setFileFolderService(FileFolderService fileFolderService) {
 		this.fileFolderService = fileFolderService;
 	}
 
+	/**
+	 * Executes the RaR storing delegate.
+	 * Creates the RaR folder, moves documents, and sets storage aspects.
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @param execution the Activiti delegate execution context
+	 * @throws Exception if storing fails
+	 */
 	public void execute(DelegateExecution execution) throws Exception {
 		logger.debug("Execute start");
 		int rarId = (int) execution.getVariable("vigewf_rarId");

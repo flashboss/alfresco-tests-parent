@@ -18,33 +18,77 @@ import org.apache.commons.logging.LogFactory;
 import it.vige.alfresco.complexrar.util.ComplexHashUtil;
 import it.vige.common.ConservationModel;
 
+/**
+ * Activiti delegate for RaR generation.
+ * Increments the RaR counter and computes hash values for documents.
+ * 
+ * @author vige
+ */
 public class ComplexRaRGeneration extends BaseJavaDelegate {
 
+	/** Logger for this class. */
 	private static Log logger = LogFactory.getLog(ComplexRaRGeneration.class);
 
+	/** Utility for hash computation. */
 	private ComplexHashUtil complexHashUtil;
 
+	/** XPath to the RaR folder. */
 	protected String rarFolder;
+
+	/** Service for node operations. */
 	protected NodeService nodeService;
+
+	/** Service for search operations. */
 	protected SearchService searchService;
+
+	/** Service for namespace resolution. */
 	protected NamespaceService namespaceService;
 
+	/**
+	 * Sets the RaR folder path.
+	 * 
+	 * @param rarFolder the XPath to the RaR folder
+	 */
 	public void setRarFolder(String rarFolder) {
 		this.rarFolder = rarFolder;
 	}
 
+	/**
+	 * Sets the node service.
+	 * 
+	 * @param nodeService the node service to use
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+	/**
+	 * Sets the search service.
+	 * 
+	 * @param searchService the search service to use
+	 */
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
 
+	/**
+	 * Sets the namespace service.
+	 * 
+	 * @param namespaceService the namespace service to use
+	 */
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
 	}
 
+	/**
+	 * Executes the RaR generation delegate.
+	 * Increments the RaR counter and computes hash values for workflow documents.
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @param execution the Activiti delegate execution context
+	 * @throws Exception if generation fails
+	 */
 	public void execute(DelegateExecution execution) throws Exception {
 		logger.debug("RaRGeneration start");
 		NodeRef rootNodeRef = nodeService.getRootNode(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE);
@@ -64,10 +108,20 @@ public class ComplexRaRGeneration extends BaseJavaDelegate {
 		execution.setVariable("vigewf_rarId", rarCounter);
 	}
 
+	/**
+	 * Gets the complex hash utility.
+	 * 
+	 * @return the complex hash utility
+	 */
 	public ComplexHashUtil getComplexHashUtil() {
 		return complexHashUtil;
 	}
 
+	/**
+	 * Sets the complex hash utility.
+	 * 
+	 * @param complexHashUtil the complex hash utility to use
+	 */
 	public void setComplexHashUtil(ComplexHashUtil complexHashUtil) {
 		this.complexHashUtil = complexHashUtil;
 	}

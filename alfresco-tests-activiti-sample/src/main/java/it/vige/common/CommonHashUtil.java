@@ -25,13 +25,27 @@ import org.apache.commons.logging.LogFactory;
  */
 public class CommonHashUtil {
 
+	/** Logger for this class. */
 	private static Log logger = LogFactory.getLog(CommonHashUtil.class);
+
+	/** The hash algorithm type (e.g., SHA-256). */
 	private String hashType;
+
+	/** Buffer size for reading content streams. */
 	private static final int BUFFER_SIZE = 1 << 8;
 
+	/** Service for node operations. */
 	private NodeService nodeService;
+
+	/** Service for content operations. */
 	private ContentService contentService;
 
+	/**
+	 * Computes and sets the hash value on a node.
+	 * If content is null or empty, removes the hashable aspect.
+	 * 
+	 * @param nodeRef the node reference to compute hash for
+	 */
 	public void setHash(NodeRef nodeRef) {
 		ContentReader contentReader = contentService.getReader(nodeRef, ContentModel.PROP_CONTENT);
 		if (contentReader == null || contentReader.getSize() == 0) {
@@ -57,10 +71,21 @@ public class CommonHashUtil {
 		nodeService.setProperty(nodeRef, HashModel.PROP_HASH_VALUE, hashPropeties.get(HashModel.PROP_HASH_VALUE));
 	}
 
+	/**
+	 * Removes the hashable aspect from a node.
+	 * 
+	 * @param nodeRef the node reference to remove the aspect from
+	 */
 	private void removeAspect(NodeRef nodeRef) {
 		nodeService.removeAspect(nodeRef, HashModel.ASPECT_HASHABLE);
 	}
 
+	/**
+	 * Computes the hash value for a content stream.
+	 * 
+	 * @param contentStream the input stream to compute hash for
+	 * @return the computed hash as a hex string, or null on error
+	 */
 	private String computeHash(InputStream contentStream) {
 		MessageDigest messageDigest = null;
 		try {
@@ -89,6 +114,12 @@ public class CommonHashUtil {
 		return convertByteArrayToHex(digest);
 	}
 
+	/**
+	 * Converts a byte array to a hexadecimal string.
+	 * 
+	 * @param array the byte array to convert
+	 * @return the hex string representation in uppercase
+	 */
 	private String convertByteArrayToHex(byte[] array) {
 		StringBuffer hashValue = new StringBuffer();
 		for (int i = 0; i < array.length; i++) {
@@ -101,14 +132,29 @@ public class CommonHashUtil {
 		return hashValue.toString().toUpperCase();
 	}
 
+	/**
+	 * Sets the hash algorithm type.
+	 * 
+	 * @param hashType the hash algorithm (e.g., "SHA-256")
+	 */
 	public void setHashType(String hashType) {
 		this.hashType = hashType;
 	}
 
+	/**
+	 * Sets the node service.
+	 * 
+	 * @param nodeService the node service to use
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+	/**
+	 * Sets the content service.
+	 * 
+	 * @param contentService the content service to use
+	 */
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}

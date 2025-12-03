@@ -8,12 +8,29 @@ import org.apache.commons.logging.LogFactory;
 
 import it.vige.activiti.service.SignService;
 
+/**
+ * Activiti delegate for IRaR subscription (digital signing).
+ * Signs the IRaR document using CAdES format with timestamp.
+ * 
+ * @author vige
+ */
 public class ComplexIRaRSubscription extends BaseJavaDelegate {
 
+	/** Logger for this class. */
 	private static Log logger = LogFactory.getLog(ComplexIRaRSubscription.class);
 
+	/** Service for digital signature operations. */
 	private SignService signService;
 
+	/**
+	 * Executes the IRaR subscription delegate.
+	 * Signs the IRaR document and sets the subscription error flag.
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @param execution the Activiti delegate execution context
+	 * @throws Exception if signing fails
+	 */
 	public void execute(DelegateExecution execution) throws Exception {
 		logger.debug("Execute start");
 		String irarNodeRefString = (String) execution.getVariable("vigewf_relatedIRaR");
@@ -25,6 +42,11 @@ public class ComplexIRaRSubscription extends BaseJavaDelegate {
 		logger.debug("Execute end");
 	}
 
+	/**
+	 * Sets the sign service.
+	 * 
+	 * @param signService the sign service to use
+	 */
 	public void setSignService(SignService signService) {
 		this.signService = signService;
 	}

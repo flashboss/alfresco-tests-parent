@@ -14,10 +14,26 @@ import org.alfresco.service.cmr.repository.NodeService;
 
 import it.vige.common.HashModel;
 
+/**
+ * Activiti delegate for checking RaR documents.
+ * Validates documents for duplicates and unsigned files.
+ * 
+ * @author vige
+ */
 public class ComplexRaRCheck extends BaseJavaDelegate {
 
+	/** Service for node operations. */
 	private NodeService nodeService;
 
+	/**
+	 * Executes the RaR check delegate.
+	 * Checks for duplicate and unsigned documents in the workflow package.
+	 * 
+	 * {@inheritDoc}
+	 * 
+	 * @param execution the Activiti delegate execution context
+	 * @throws Exception if check fails
+	 */
 	public void execute(DelegateExecution execution) throws Exception {
 		// Check duplicates
 		List<String> duplicatedPdvs = new ArrayList<String>();
@@ -46,6 +62,11 @@ public class ComplexRaRCheck extends BaseJavaDelegate {
 		execution.setVariable("vigewf_reviewUnsignedSaSError", unsignedPdvs);
 	}
 
+	/**
+	 * Sets the node service.
+	 * 
+	 * @param nodeService the node service to use
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
