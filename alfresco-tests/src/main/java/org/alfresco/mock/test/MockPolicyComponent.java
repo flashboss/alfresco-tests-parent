@@ -45,18 +45,37 @@ public class MockPolicyComponent implements PolicyComponent {
 
 	@Override
 	@SuppressWarnings("rawtypes")
+	/**
+	 * Get registered policies.
+	 *
+	 * @return the result
+	 */
 	public Collection<PolicyDefinition> getRegisteredPolicies() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get registered policy.
+	 *
+	 * @param policyType the policy type
+	 * @param policy the policy
+	 * @return the result
+	 */
 	public PolicyDefinition<Policy> getRegisteredPolicy(PolicyType policyType, QName policy) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Is registered policy.
+	 *
+	 * @param policyType the policy type
+	 * @param policy the policy
+	 * @return the result
+	 */
 	public boolean isRegisteredPolicy(PolicyType policyType, QName policy) {
 		// TODO Auto-generated method stub
 		return false;
@@ -77,6 +96,11 @@ public class MockPolicyComponent implements PolicyComponent {
 	}
 
 	@Override
+	/**
+	 * Remove class definition.
+	 *
+	 * @param definition the definition
+	 */
 	public void removeClassDefinition(BehaviourDefinition<ClassBehaviourBinding> definition) {
 		// TODO Auto-generated method stub
 		

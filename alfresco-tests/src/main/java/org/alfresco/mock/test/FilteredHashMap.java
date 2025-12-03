@@ -52,6 +52,13 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 	}
 
 	@Override
+	/**
+	 * Put.
+	 *
+	 * @param key the key
+	 * @param value the value
+	 * @return the result
+	 */
 	public File put(NodeRef key, File value) {
 		if (haveToAdd(value.getAbsolutePath()))
 			return super.put(key, value);
@@ -60,6 +67,11 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 	}
 
 	@Override
+	/**
+	 * Put all.
+	 *
+	 * @param m the m
+	 */
 	public void putAll(Map<? extends NodeRef, ? extends File> m) {
 		for (NodeRef key : m.keySet()) {
 			if (haveToAdd(m.get(key).getAbsolutePath()))

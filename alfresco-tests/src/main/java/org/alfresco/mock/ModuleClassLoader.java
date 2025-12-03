@@ -27,10 +27,14 @@ import org.slf4j.Logger;
  */
 public class ModuleClassLoader extends ClassLoader {
 
+	/** The s e p a r a t o r. */
     private static final String SEPARATOR = "/";
+	/** The module path. */
     private static final String MODULE_PATH = "target/classes/alfresco/module";
+	/** The module path test. */
     private static final String MODULE_PATH_TEST = "target/test-classes/alfresco/module";
 
+	/** The logger. */
     private Logger logger = getLogger(getClass());
 
     /**
@@ -42,6 +46,12 @@ public class ModuleClassLoader extends ClassLoader {
     }
 
     @Override
+	/**
+	 * Get resource.
+	 *
+	 * @param name the name
+	 * @return the result
+	 */
     public URL getResource(String name) {
         URL url = super.getResource(name);
         if (url == null && name != null && !name.contains(SEPARATOR)) {
@@ -76,6 +86,13 @@ public class ModuleClassLoader extends ClassLoader {
 
         Files.walkFileTree(rootPath, new SimpleFileVisitor<Path>() {
             @Override
+	/**
+	 * Visit file.
+	 *
+	 * @param file the file
+	 * @param attrs the attrs
+	 * @return the result
+	 */
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 String fileName = file.getFileName().toString();
                 if (fileName.contains(searchTerm)) {

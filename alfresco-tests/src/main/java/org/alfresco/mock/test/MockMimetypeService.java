@@ -19,6 +19,12 @@ import org.alfresco.service.cmr.repository.MimetypeService;
 public class MockMimetypeService implements MimetypeService, Serializable {
 
 	@Override
+	/**
+	 * Get extension.
+	 *
+	 * @param mimetype the mimetype
+	 * @return the result
+	 */
 	public String getExtension(String mimetype) {
 		if (mimetype.indexOf(".") >= 0)
 			return mimetype.substring(mimetype.lastIndexOf(".") + 1);
@@ -27,6 +33,12 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	}
 
 	@Override
+	/**
+	 * Get mimetype.
+	 *
+	 * @param extension the extension
+	 * @return the result
+	 */
 	public String getMimetype(String extension) {
 		if (extension != null && extension.equals("acp"))
 			return MimetypeMap.MIMETYPE_ACP;
@@ -43,42 +55,75 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	}
 
 	@Override
+	/**
+	 * Get displays by extension.
+	 *
+	 */
 	public Map<String, String> getDisplaysByExtension() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get displays by mimetype.
+	 *
+	 */
 	public Map<String, String> getDisplaysByMimetype() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get extensions by mimetype.
+	 *
+	 */
 	public Map<String, String> getExtensionsByMimetype() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get mimetypes by extension.
+	 *
+	 */
 	public Map<String, String> getMimetypesByExtension() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Is text.
+	 *
+	 * @param mimetype the mimetype
+	 * @return the result
+	 */
 	public boolean isText(String mimetype) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
+	/**
+	 * Get mimetypes.
+	 *
+	 * @return the result
+	 */
 	public List<String> getMimetypes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Guess mimetype.
+	 *
+	 * @param filename the filename
+	 * @return the result
+	 */
 	public String guessMimetype(String filename) {
 		String extension = null;
 		if (filename != null && filename.contains("."))
@@ -87,30 +132,61 @@ public class MockMimetypeService implements MimetypeService, Serializable {
 	}
 
 	@Override
+	/**
+	 * Guess mimetype.
+	 *
+	 * @param filename the filename
+	 * @param reader the reader
+	 * @return the result
+	 */
 	public String guessMimetype(String filename, ContentReader reader) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Guess mimetype.
+	 *
+	 * @param filename the filename
+	 * @param input the input
+	 * @return the result
+	 */
 	public String guessMimetype(String filename, InputStream input) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get mimetype if not matches.
+	 *
+	 * @param reader the reader
+	 * @return the result
+	 */
 	public String getMimetypeIfNotMatches(ContentReader reader) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get content charset finder.
+	 *
+	 * @return the result
+	 */
 	public ContentCharsetFinder getContentCharsetFinder() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get mimetypes.
+	 *
+	 * @param extension the extension
+	 * @return the result
+	 */
 	public Collection<String> getMimetypes(String extension) {
 		// TODO Auto-generated method stub
 		return null;

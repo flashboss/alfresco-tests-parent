@@ -54,14 +54,22 @@ import com.tradeshift.test.remote.RemoteTestRunner;
 public abstract class AbstractForm {
 
 	@Autowired
+	/** The service registry. */
 	protected ServiceRegistry serviceRegistry;
 
+	/** The spaces store. */
 	protected NodeRef spacesStore;
+	/** The archive. */
 	protected NodeRef archive;
+	/** The sites. */
 	protected NodeRef sites;
+	/** The shared. */
 	protected NodeRef shared;
+	/** The today. */
 	protected Date today;
+	/** The today str. */
 	protected String todayStr;
+	/** The company home. */
 	protected NodeRef companyHome;
 
 	/**

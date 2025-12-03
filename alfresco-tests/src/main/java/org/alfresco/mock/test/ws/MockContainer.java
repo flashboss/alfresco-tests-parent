@@ -21,10 +21,15 @@ import org.springframework.extensions.webscripts.TemplateProcessorRegistry;
  */
 public class MockContainer implements Container {
 
+	/** The template parameters. */
 	private Map<String, Object> templateParameters = new HashMap<String, Object>();
+	/** The search path. */
 	private SearchPath searchPath = new SearchPath();
+	/** The script processor registry. */
 	private ScriptProcessorRegistry scriptProcessorRegistry = new ScriptProcessorRegistry();
+	/** The template processor registry. */
 	private TemplateProcessorRegistry templateProcessorRegistry = new MockTemplateProcessorRegistry();
+	/** The format registry. */
 	private FormatRegistry formatRegistry = new FormatRegistry();
 	{
 		Map<String, String> formats = new HashMap<String, String>();
@@ -34,74 +39,136 @@ public class MockContainer implements Container {
 	}
 
 	@Override
+	/**
+	 * Get name.
+	 *
+	 * @return the result
+	 */
 	public String getName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get description.
+	 *
+	 * @return the result
+	 */
 	public ServerModel getDescription() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get script processor registry.
+	 *
+	 * @return the result
+	 */
 	public ScriptProcessorRegistry getScriptProcessorRegistry() {
 		return scriptProcessorRegistry;
 	}
 
 	@Override
+	/**
+	 * Get script parameter factory registry.
+	 *
+	 * @return the result
+	 */
 	public ScriptParameterFactoryRegistry getScriptParameterFactoryRegistry() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get script parameters.
+	 *
+	 */
 	public Map<String, Object> getScriptParameters() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get template processor registry.
+	 *
+	 * @return the result
+	 */
 	public TemplateProcessorRegistry getTemplateProcessorRegistry() {
 		return templateProcessorRegistry;
 	}
 
 	@Override
+	/**
+	 * Get template parameters.
+	 *
+	 */
 	public Map<String, Object> getTemplateParameters() {
 		// TODO Auto-generated method stub
 		return templateParameters;
 	}
 
 	@Override
+	/**
+	 * Get format registry.
+	 *
+	 * @return the result
+	 */
 	public FormatRegistry getFormatRegistry() {
 		return formatRegistry;
 	}
 
 	@Override
+	/**
+	 * Get registry.
+	 *
+	 * @return the result
+	 */
 	public Registry getRegistry() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Get search path.
+	 *
+	 * @return the result
+	 */
 	public SearchPath getSearchPath() {
 		return searchPath;
 	}
 
 	@Override
+	/**
+	 * Get config service.
+	 *
+	 * @return the result
+	 */
 	public ConfigService getConfigService() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	/**
+	 * Allow callbacks.
+	 *
+	 * @return the result
+	 */
 	public boolean allowCallbacks() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
+	/**
+	 * Reset.
+	 *
+	 */
 	public void reset() {
 		// TODO Auto-generated method stub
 

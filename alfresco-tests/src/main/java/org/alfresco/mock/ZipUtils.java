@@ -75,6 +75,12 @@ public class ZipUtils {
 	public static String getZipEntryContent(File parent, final String documentName) throws IOException {
 		FileFilter fileFiler = new FileFilter() {
 			@Override
+	/**
+	 * Accept.
+	 *
+	 * @param pathname the pathname
+	 * @return the result
+	 */
 			public boolean accept(File pathname) {
 				return pathname.getName().startsWith(documentName);
 			}

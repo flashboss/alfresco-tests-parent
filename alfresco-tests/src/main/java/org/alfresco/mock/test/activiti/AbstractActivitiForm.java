@@ -61,18 +61,34 @@ import org.subethamail.smtp.server.SMTPServer;
  */
 public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
+	/** The spaces store. */
 	protected NodeRef spacesStore;
+	/** The archive. */
 	protected NodeRef archive;
+	/** The sites. */
 	protected NodeRef sites;
+	/** The shared. */
 	protected NodeRef shared;
+	/** The company home. */
 	protected NodeRef companyHome;
+	/** The bpm package. */
 	protected ActivitiScriptNode bpmPackage;
+	/** The initiator. */
 	protected Initiator initiator;
 
+	/**
+	 * Constructs a new AbstractActivitiForm.
+	 *
+	 */
 	public AbstractActivitiForm() {
 		super("test-module-context.xml");
 	}
 
+	/**
+	 * Init.
+	 *
+	 * @param variables the variables
+	 */
 	public void init(Map<String, Object> variables) {
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
 		ServiceRegistry serviceRegistry = activitiProcessEngineConfiguration.getServiceRegistry();
@@ -129,6 +145,10 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		variables.put("utils", utils);
 	}
 
+	/**
+	 * End.
+	 *
+	 */
 	public void end() {
 		// CLEANING DB
 		deleteAllIdentities(identityService);
@@ -140,11 +160,26 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
 	}
 
+	/**
+	 * Insert folder.
+	 *
+	 * @param parent the parent
+	 * @param name the name
+	 * @return the result
+	 */
 	protected NodeRef insertFolder(NodeRef parent, String name) {
 		return NodeUtils.insertFolder(parent, name, ((ActivitiProcessEngineConfiguration) processEngineConfiguration)
 				.getServiceRegistry().getFileFolderService());
 	}
 
+	/**
+	 * Insert folder.
+	 *
+	 * @param parent the parent
+	 * @param prefix the prefix
+	 * @param localName the local name
+	 * @return the result
+	 */
 	protected NodeRef insertFolder(NodeRef parent, String prefix, String localName) {
 		ServiceRegistry serviceRegistry = ((ActivitiProcessEngineConfiguration) processEngineConfiguration)
 				.getServiceRegistry();
@@ -154,6 +189,15 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		return fileFolderService.create(parent, qname.getPrefixString(), ContentModel.TYPE_FOLDER).getNodeRef();
 	}
 
+	/**
+	 * Insert document.
+	 *
+	 * @param parent the parent
+	 * @param name the name
+	 * @param text the text
+	 * @param properties the properties
+	 * @return the result
+	 */
 	protected NodeRef insertDocument(NodeRef parent, String name, String text, Map<QName, Serializable> properties) {
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
 		return NodeUtils.insertDocument(parent, name, text, properties,
@@ -168,6 +212,10 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	}
 
 	@Override
+	/**
+	 * Initialize process engine.
+	 *
+	 */
 	protected void initializeProcessEngine() {
 		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 		XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
@@ -200,16 +248,31 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		processEngine = processEngineConfiguration.buildProcessEngine();
 	}
 
+	/** The smtp server. */
 	private SMTPServer smtpServer;
 
+	/**
+	 * Get smtp server.
+	 *
+	 * @return the result
+	 */
 	public SMTPServer getSmtpServer() {
 		return smtpServer;
 	}
 
+	/**
+	 * Set smtp server.
+	 *
+	 * @param smtpServer the smtp server
+	 */
 	public void setSmtpServer(SMTPServer smtpServer) {
 		this.smtpServer = smtpServer;
 	}
 
+	/**
+	 * Start mail server.
+	 *
+	 */
 	public void startMailServer() {
 		MockMessageHandlerFactory myFactory = new MockMessageHandlerFactory();
 		smtpServer = new SMTPServer(myFactory);
@@ -217,6 +280,10 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		smtpServer.start();
 	}
 
+	/**
+	 * Stop mail server.
+	 *
+	 */
 	public void stopMailServer() {
 		smtpServer.stop();
 	}
@@ -261,6 +328,13 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
 	}
 
+	/**
+	 * Create group.
+	 *
+	 * @param identityService the identity service
+	 * @param groupId the group id
+	 * @param type the type
+	 */
 	public void createGroup(IdentityService identityService, String groupId, String type) {
 		if (identityService.createGroupQuery().groupId(groupId).count() == 0) {
 			Group newGroup = identityService.newGroup(groupId);
@@ -270,6 +344,11 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		}
 	}
 
+	/**
+	 * Delete all identities.
+	 *
+	 * @param identityService the identity service
+	 */
 	public void deleteAllIdentities(IdentityService identityService) {
 		List<User> users = identityService.createUserQuery().list();
 		for (User user : users) {
@@ -281,6 +360,11 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		}
 	}
 
+	/**
+	 * Delete all histories.
+	 *
+	 * @param historyService the history service
+	 */
 	public void deleteAllHistories(HistoryService historyService) {
 		List<HistoricProcessInstance> historicInstances = historyService.createHistoricProcessInstanceQuery().list();
 		for (HistoricProcessInstance historicProcessInstance : historicInstances)
@@ -291,6 +375,11 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 			}
 	}
 
+	/**
+	 * Delete all i deployments.
+	 *
+	 * @param repositoryService the repository service
+	 */
 	public void deleteAllIDeployments(RepositoryService repositoryService) {
 		List<Deployment> deployments = repositoryService.createDeploymentQuery().list();
 		for (Deployment deployment : deployments) {
@@ -298,12 +387,25 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		}
 	}
 
+	/**
+	 * Get date.
+	 *
+	 * @param number the number
+	 * @return the result
+	 */
 	public static Date getDate(int... number) {
 		Calendar c1 = getInstance();
 		c1.set(number[0], number[1], number[2], number.length > 3 ? number[3] : 0, number.length > 4 ? number[4] : 0);
 		return c1.getTime();
 	}
 
+	/**
+	 * Add hours.
+	 *
+	 * @param date the date
+	 * @param hours the hours
+	 * @return the result
+	 */
 	public static Date addHours(Date date, int hours) {
 		Calendar cal = getInstance(); // creates calendar
 		cal.setTime(date); // sets calendar time/date
@@ -311,11 +413,26 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		return cal.getTime(); // returns new date object, one hour in the future
 	}
 
+	/**
+	 * Difference between.
+	 *
+	 * @param date1 the date1
+	 * @param date2 the date2
+	 * @param timeUnit the time unit
+	 * @return the result
+	 */
 	public static long differenceBetween(Date date1, Date date2, TimeUnit timeUnit) {
 		long diffInMillies = date1.getTime() - date2.getTime();
 		return timeUnit.convert(diffInMillies, MILLISECONDS);
 	}
 
+	/**
+	 * Is admin.
+	 *
+	 * @param user the user
+	 * @param identityService the identity service
+	 * @return the result
+	 */
 	public static boolean isAdmin(String user, IdentityService identityService) {
 		return identityService.createUserQuery().userId(Authentication.getAuthenticatedUserId()).memberOfGroup("admin")
 				.count() > 0;

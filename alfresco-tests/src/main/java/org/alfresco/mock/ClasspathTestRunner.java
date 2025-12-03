@@ -48,9 +48,18 @@ public class ClasspathTestRunner extends SpringJUnit4ClassRunner {
 
   // Runs junit tests in a separate thread using the custom class loader
   @Override
+	/**
+	 * Run.
+	 *
+	 * @param notifier the notifier
+	 */
   public void run(final RunNotifier notifier) {
     Runnable runnable = new Runnable() {
       @Override
+	/**
+	 * Run.
+	 *
+	 */
       public void run() {
           ClasspathTestRunner.super.run(notifier);
       }
