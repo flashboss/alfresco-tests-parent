@@ -30,17 +30,52 @@ import org.alfresco.service.cmr.version.VersionType;
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Utility class providing static helper methods for creating and manipulating
+ * nodes in a mock Alfresco repository. This class provides methods for inserting
+ * folders, documents, and versions, as well as sorting and UUID generation.
+ * 
+ * @author vige
+ */
 public class NodeUtils {
 
+	/**
+	 * Creates a new folder under the specified parent node.
+	 * 
+	 * @param parent the parent node reference
+	 * @param name the name of the folder to create
+	 * @param fileFolderService the file folder service to use
+	 * @return the NodeRef of the created folder
+	 */
 	public static NodeRef insertFolder(NodeRef parent, String name, FileFolderService fileFolderService) {
 		return fileFolderService.create(parent, name, ContentModel.TYPE_FOLDER).getNodeRef();
 	}
 
+	/**
+	 * Creates a new document with text content under the specified parent node.
+	 * 
+	 * @param parent the parent node reference
+	 * @param name the name of the document to create
+	 * @param text the text content of the document
+	 * @param properties the properties to set on the document
+	 * @param serviceRegistry the service registry to use
+	 * @return the NodeRef of the created document
+	 */
 	public static NodeRef insertDocument(NodeRef parent, String name, String text, Map<QName, Serializable> properties,
 			ServiceRegistry serviceRegistry) {
 		return insertDocument(parent, name, text.getBytes(), properties, serviceRegistry);
 	}
 
+	/**
+	 * Creates a new document with binary content under the specified parent node.
+	 * 
+	 * @param parent the parent node reference
+	 * @param name the name of the document to create
+	 * @param text the binary content of the document
+	 * @param properties the properties to set on the document
+	 * @param serviceRegistry the service registry to use
+	 * @return the NodeRef of the created document
+	 */
 	public static NodeRef insertDocument(NodeRef parent, String name, byte[] text, Map<QName, Serializable> properties,
 			ServiceRegistry serviceRegistry) {
 		NodeService nodeService = serviceRegistry.getNodeService();
@@ -62,6 +97,17 @@ public class NodeUtils {
 		return node;
 	}
 
+	/**
+	 * Creates a new version of an existing document.
+	 * 
+	 * @param nodeRef the node reference of the document to version
+	 * @param name the name of the versioned document
+	 * @param text the text content for the new version
+	 * @param version the version label
+	 * @param versionType the type of version (MAJOR or MINOR)
+	 * @param serviceRegistry the service registry to use
+	 * @return the NodeRef of the frozen state of the created version
+	 */
 	public static NodeRef insertVersion(NodeRef nodeRef, String name, String text, String version, VersionType versionType,
 			ServiceRegistry serviceRegistry) {
 		VersionService versionService = serviceRegistry.getVersionService();
@@ -74,6 +120,12 @@ public class NodeUtils {
 		return versionRef.getFrozenStateNodeRef();
 	}
 
+	/**
+	 * Sorts a set of node references by their ID.
+	 * 
+	 * @param nodeRefs the set of node references to sort
+	 * @return a sorted list of node references
+	 */
 	public static List<NodeRef> sortByName(Set<NodeRef> nodeRefs) {
 		NodeRef[] nodeArray = nodeRefs.toArray(new NodeRef[0]);
 		Arrays.sort(nodeArray, new Comparator<NodeRef>() {
@@ -86,6 +138,13 @@ public class NodeUtils {
 		return Arrays.asList(nodeArray);
 	}
 
+	/**
+	 * Generates a UUID for a node based on its path.
+	 * Uses hash codes to generate deterministic UUIDs for mock nodes.
+	 * 
+	 * @param nodePath the path of the node
+	 * @return a generated UUID string
+	 */
 	public static String generateUUID(String nodePath) {
 		if (nodePath.equals(FOLDER_TEST + PROTOCOL_WORKSPACE))
 			return FOLDER_TEST + PROTOCOL_WORKSPACE.hashCode() + "";

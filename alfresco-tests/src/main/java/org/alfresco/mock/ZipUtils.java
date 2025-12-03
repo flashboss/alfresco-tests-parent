@@ -26,10 +26,25 @@ import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 
+/**
+ * Utility class for handling ZIP files in a mock Alfresco environment.
+ * Provides methods for unzipping, reading entry content, adding entries,
+ * and creating ZIP nodes in the repository.
+ * 
+ * @author vige
+ */
 public class ZipUtils {
 
+	/** Temporary directory for ZIP operations. */
 	public final static File TEMP_DIR = new File(MockContentService.FOLDER_TEST + "temp");
 
+	/**
+	 * Extracts all entries from a ZIP input stream to a target directory.
+	 * 
+	 * @param inputStream the ZIP input stream to extract
+	 * @param targetDirectory the directory to extract files to
+	 * @throws IOException if an I/O error occurs during extraction
+	 */
 	public static void unzip(InputStream inputStream, File targetDirectory) throws IOException {
 		targetDirectory.mkdir();
 		byte[] buffer = new byte[1024];
@@ -51,6 +66,14 @@ public class ZipUtils {
 		zis.close();
 	}
 
+	/**
+	 * Reads the content of a specific file from an unzipped directory.
+	 * 
+	 * @param parent the directory containing the unzipped files
+	 * @param documentName the name prefix of the file to read
+	 * @return the content of the file as a string
+	 * @throws IOException if an I/O error occurs while reading
+	 */
 	public static String getZipEntryContent(File parent, final String documentName) throws IOException {
 		FileFilter fileFiler = new FileFilter() {
 			@Override
@@ -66,6 +89,13 @@ public class ZipUtils {
 		return new String(bytes);
 	}
 
+	/**
+	 * Reads the content of the first file from an unzipped directory.
+	 * 
+	 * @param parent the directory containing the unzipped files
+	 * @return the content of the first file as a string
+	 * @throws IOException if an I/O error occurs while reading
+	 */
 	public static String getZipEntryContent(File parent) throws IOException {
 		File[] unzippedFiles = parent.listFiles();
 		byte[] bytes = new byte[1024];
@@ -75,6 +105,14 @@ public class ZipUtils {
 		return new String(bytes);
 	}
 
+	/**
+	 * Adds a text entry to a ZIP output stream.
+	 * 
+	 * @param text the text content to add
+	 * @param entryName the name of the ZIP entry
+	 * @param output the output stream to write the ZIP to
+	 * @throws IOException if an I/O error occurs while writing
+	 */
 	public static void addEntryToZip(String text, String entryName, OutputStream output) throws IOException {
 		InputStream inputStream = new ByteArrayInputStream(text.getBytes());
 		ZipOutputStream zipOut = new ZipOutputStream(output);
@@ -88,6 +126,18 @@ public class ZipUtils {
 		zipOut.close();
 	}
 
+	/**
+	 * Creates a ZIP file node in the Alfresco repository with the specified content.
+	 * 
+	 * @param parent the parent node reference
+	 * @param zipName the name of the ZIP file
+	 * @param entryName the name of the entry inside the ZIP
+	 * @param text the text content to add to the ZIP entry
+	 * @param properties the properties to set on the node
+	 * @param serviceRegistry the service registry to use
+	 * @return the NodeRef of the created ZIP node
+	 * @throws IOException if an I/O error occurs while creating the ZIP
+	 */
 	public static NodeRef insertZip(NodeRef parent, String zipName, String entryName, String text,
 			Map<QName, Serializable> properties, ServiceRegistry serviceRegistry)
 			throws IOException {
