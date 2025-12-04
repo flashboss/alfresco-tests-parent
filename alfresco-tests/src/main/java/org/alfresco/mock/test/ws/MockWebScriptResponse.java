@@ -16,98 +16,178 @@ import org.springframework.extensions.webscripts.WebScriptResponse;
  */
 public class MockWebScriptResponse implements WebScriptResponse {
 
+ /** The mock writer. */
 	private MockWriter mockWriter = new MockWriter();
 
 	@Override
+ /**
+ * Set status.
+ *
+ * @param status the status
+ */
 	public void setStatus(int status) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
+ /**
+ * Set header.
+ *
+ * @param name the name
+ * @param value the value
+ */
 	public void setHeader(String name, String value) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
+ /**
+ * Add header.
+ *
+ * @param name the name
+ * @param value the value
+ */
 	public void addHeader(String name, String value) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
+ /**
+ * Set content type.
+ *
+ * @param contentType the content type
+ */
 	public void setContentType(String contentType) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
+ /**
+ * Set content encoding.
+ *
+ * @param contentEncoding the content encoding
+ */
 	public void setContentEncoding(String contentEncoding) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
+ /**
+ * Set cache.
+ *
+ * @param cache the cache
+ */
 	public void setCache(Cache cache) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
+ /**
+ * Get writer.
+ *
+ * @return the writer
+ */
 	public Writer getWriter() throws IOException {
 		return mockWriter;
 	}
 
 	@Override
+ /**
+ * Get output stream.
+ *
+ * @return the output stream
+ */
 	public OutputStream getOutputStream() throws IOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /** Reset. */
 	public void reset() {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
+ /**
+ * Encode script url.
+ *
+ * @param url the url
+ * @return the string
+ */
 	public String encodeScriptUrl(String url) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Encode resource url.
+ *
+ * @param url the url
+ * @return the string
+ */
 	public String encodeResourceUrl(String url) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Get encode script url function.
+ *
+ * @param name the name
+ * @return the string
+ */
 	public String getEncodeScriptUrlFunction(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Get encode resource url function.
+ *
+ * @param name the name
+ * @return the string
+ */
 	public String getEncodeResourceUrlFunction(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Get runtime.
+ *
+ * @return the runtime
+ */
 	public Runtime getRuntime() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Reset.
+ *
+ * @param arg0 the arg0
+ */
 	public void reset(String arg0) {
 		// TODO Auto-generated method stub
 
 	}
 
+ /** Get model. */
 	public Map<String, Object> getModel() {
+  /** Get model. */
 		return mockWriter.getModel();
 	}
 

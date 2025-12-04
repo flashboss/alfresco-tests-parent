@@ -33,12 +33,16 @@ public class MockCopyService implements CopyService, Serializable {
 	@Override
 	public NodeRef copy(NodeRef sourceNodeRef, NodeRef targetParentNodeRef, QName assocTypeQName, QName assocQName,
 			boolean copyChildren) {
+  /** The name. */
 		String name = (String) nodeService.getProperty(sourceNodeRef, ContentModel.PROP_NAME);
 		NodeRef result = null;
 		try {
+   /** The name. */
 			FileInfo fileInfo = fileFolderService.copy(sourceNodeRef, targetParentNodeRef, name);
+   /** The name. */
 			result = fileInfo.getNodeRef();
 			nodeService.setType(result, assocQName);
+  /** The name. */
 		} catch (FileExistsException | FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -58,23 +62,48 @@ public class MockCopyService implements CopyService, Serializable {
 	}
 
 	@Override
+ /**
+ * Copy.
+ *
+ * @param sourceNodeRef the source node ref
+ * @param destinationNodeRef the destination node ref
+ */
 	public void copy(NodeRef sourceNodeRef, NodeRef destinationNodeRef) {
 		copy(sourceNodeRef, destinationNodeRef, ContentModel.ASSOC_CONTAINS, ContentModel.ASSOC_CHILDREN);
 	}
 
 	@Override
+ /**
+ * Get original.
+ *
+ * @param copiedNodeRef the copied node ref
+ * @return the node ref
+ */
 	public NodeRef getOriginal(NodeRef copiedNodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Get copies.
+ *
+ * @param nodeRef the node ref
+ * @return the list
+ */
 	public List<NodeRef> getCopies(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Get copies.
+ *
+ * @param originalNodeRef the original node ref
+ * @param pagingRequest the paging request
+ * @return the paging results
+ */
 	public PagingResults<CopyInfo> getCopies(NodeRef originalNodeRef, PagingRequest pagingRequest) {
 		// TODO Auto-generated method stub
 		return null;

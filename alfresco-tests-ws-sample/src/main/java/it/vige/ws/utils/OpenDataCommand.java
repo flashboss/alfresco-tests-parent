@@ -12,14 +12,26 @@ import org.apache.commons.logging.LogFactory;
  */
 public class OpenDataCommand {
 
+ /** The logger. */
 	private static Log logger = LogFactory.getLog(OpenDataCommand.class);
 
+ /** The node service. */
 	private NodeService nodeService;
 
+ /**
+ * Constructs a new open data command.
+ *
+ * @return the result
+ */
 	public OpenDataCommand() {
 		super();
 	}
 
+ /**
+ * Set node service.
+ *
+ * @param nodeService the node service
+ */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}

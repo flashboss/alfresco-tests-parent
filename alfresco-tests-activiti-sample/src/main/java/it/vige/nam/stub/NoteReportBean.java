@@ -40,10 +40,15 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class NoteReportBean {
 
+ /** The about. */
 	protected int about;
+ /** The description. */
 	protected String description;
+ /** The policy. */
 	protected int policy;
+ /** The synopsis. */
 	protected String synopsis;
+ /** The type. */
 	protected int type;
 
 	/**

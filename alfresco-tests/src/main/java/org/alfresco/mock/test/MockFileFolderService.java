@@ -49,9 +49,33 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	private NamespaceService namespaceService;
 
 	@Override
+ /**
+ * List.
+ *
+ * @param contextNodeRef the context node ref
+ * @return the list
+ */
 	public List<FileInfo> list(NodeRef contextNodeRef) {
+  /**
+  * List.
+  *
+  * @param contextNodeRef the context node ref
+  * @return the list
+  */
 		List<FileInfo> result = new ArrayList<FileInfo>();
+  /**
+  * List.
+  *
+  * @param contextNodeRef the context node ref
+  * @return the list
+  */
 		List<ChildAssociationRef> associationRefs = nodeService.getChildAssocs(contextNodeRef);
+  /**
+  * List.
+  *
+  * @param contextNodeRef the context node ref
+  * @return the list
+  */
 		for (ChildAssociationRef associationRef : associationRefs) {
 			FileInfo fileInfo = new MockFileInfo(associationRef.getChildRef(), associationRef.getQName().getLocalName(),
 					associationRef.getQName());
@@ -75,9 +99,33 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	}
 
 	@Override
+ /**
+ * List files.
+ *
+ * @param contextNodeRef the context node ref
+ * @return the list
+ */
 	public List<FileInfo> listFiles(NodeRef contextNodeRef) {
+  /**
+  * List files.
+  *
+  * @param contextNodeRef the context node ref
+  * @return the list
+  */
 		List<FileInfo> allFiles = list(contextNodeRef);
+  /**
+  * List files.
+  *
+  * @param contextNodeRef the context node ref
+  * @return the list
+  */
 		List<FileInfo> onlyFiles = new ArrayList<FileInfo>();
+  /**
+  * List files.
+  *
+  * @param contextNodeRef the context node ref
+  * @return the list
+  */
 		for (FileInfo fileInfo : allFiles) {
 			if (!fileInfo.isFolder())
 				onlyFiles.add(fileInfo);
@@ -86,9 +134,33 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	}
 
 	@Override
+ /**
+ * List folders.
+ *
+ * @param contextNodeRef the context node ref
+ * @return the list
+ */
 	public List<FileInfo> listFolders(NodeRef contextNodeRef) {
+  /**
+  * List files.
+  *
+  * @param contextNodeRef the context node ref
+  * @return the list
+  */
 		List<FileInfo> allFiles = list(contextNodeRef);
+  /**
+  * List folders.
+  *
+  * @param contextNodeRef the context node ref
+  * @return the list
+  */
 		List<FileInfo> onlyFolders = new ArrayList<FileInfo>();
+  /**
+  * List files.
+  *
+  * @param contextNodeRef the context node ref
+  * @return the list
+  */
 		for (FileInfo fileInfo : allFiles) {
 			if (fileInfo.isFolder())
 				onlyFolders.add(fileInfo);
@@ -97,17 +169,44 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	}
 
 	@Override
+ /**
+ * List deep folders.
+ *
+ * @param contextNodeRef the context node ref
+ * @param filter the filter
+ * @return the list
+ */
 	public List<FileInfo> listDeepFolders(NodeRef contextNodeRef, SubFolderFilter filter) {
+  /**
+  * List deep folders.
+  *
+  * @param contextNodeRef the context node ref
+  * @param filter the filter
+  * @return the list
+  */
 		return recursiveDeep(contextNodeRef, filter, new ArrayList<FileInfo>(), false);
 	}
 
 	@Override
+ /**
+ * Get localized sibling.
+ *
+ * @param nodeRef the node ref
+ * @return the node ref
+ */
 	public NodeRef getLocalizedSibling(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Search simple.
+ *
+ * @param contextNodeRef the context node ref
+ * @param name the name
+ * @return the node ref
+ */
 	public NodeRef searchSimple(NodeRef contextNodeRef, String name) {
 		// TODO Auto-generated method stub
 		return null;
@@ -129,9 +228,13 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	@Override
 	public FileInfo rename(NodeRef fileFolderRef, String newName) throws FileExistsException, FileNotFoundException {
 		try {
+   /** The old name. */
 			Map<NodeRef, File> nodeRefs = ((MockNodeService) nodeService).getNodeRefs();
+   /** The old name. */
 			List<FileInfo> children = recursiveDeep(fileFolderRef, null, new ArrayList<FileInfo>(), true);
+   /** The old name. */
 			File file = nodeRefs.get(fileFolderRef);
+   /** The old name. */
 			String oldName = "/" + file.getName() + "/";
 			Files.move(file.toPath(), file.toPath().resolveSibling(newName));
 			nodeService.setProperty(fileFolderRef, ContentModel.PROP_NAME, newName);
@@ -140,6 +243,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 				nodeRefs.put(fileInfo.getNodeRef(),
 						new File(fileChild.getAbsolutePath().replaceAll(oldName, "/" + newName + "/")));
 			}
+  /** The path child. */
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -148,6 +252,14 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	}
 
 	@Override
+ /**
+ * Move.
+ *
+ * @param sourceNodeRef the source node ref
+ * @param targetParentRef the target parent ref
+ * @param newName the new name
+ * @return the file info
+ */
 	public FileInfo move(NodeRef sourceNodeRef, NodeRef targetParentRef, String newName)
 			throws FileExistsException, FileNotFoundException {
 		FileInfo fileInfo = copy(sourceNodeRef, targetParentRef, newName);
@@ -164,8 +276,10 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 			file.delete();
 			file.mkdir();
 		}
+  /** The name. */
 		String name = getNodeService().getNodeRefs().get(sourceNodeRef).getName();
 		NodeRef originalNode = nodeService.getChildByName(sourceParentRef, ContentModel.ASSOC_CONTAINS, name);
+  /** The name. */
 		return move(originalNode, targetParentRef, newName);
 	}
 
@@ -177,14 +291,24 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	}
 
 	@Override
+ /**
+ * Copy.
+ *
+ * @param sourceNodeRef the source node ref
+ * @param targetParentRef the target parent ref
+ * @param newName the new name
+ * @return the file info
+ */
 	public FileInfo copy(NodeRef sourceNodeRef, NodeRef targetParentRef, String newName)
 			throws FileExistsException, FileNotFoundException {
 		if (newName == null)
 			newName = nodeService.getPath(sourceNodeRef).last().getElementString();
+  /** The assoc q name. */
 		QName assocQName = QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, newName);
 		ChildAssociationRef association = nodeService.createNode(targetParentRef, ContentModel.ASSOC_CONTAINS,
 				assocQName, ContentModel.TYPE_CONTENT, nodeService.getProperties(sourceNodeRef));
 		recursiveCopy(sourceNodeRef, association.getChildRef());
+  /** The assoc q name. */
 		File source = getNodeService().getNodeRefs().get(sourceNodeRef);
 		File target = getNodeService().getNodeRefs().get(targetParentRef);
 		try {
@@ -194,6 +318,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 			File newFile = new File(newDir + "/" + newName);
 			if (oldFile.exists() && !newFile.exists())
 				FileUtils.moveFile(oldFile, newFile);
+  /** The path child. */
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -207,15 +332,28 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 			String prefix = NamespaceService.CONTENT_MODEL_PREFIX;
 			name = prefix + ":" + name;
 		}
+  /** The assoc q name. */
 		QName assocQName = QName.createQName(name);
+  /** The assoc q name. */
 		if (name.contains(":"))
+   /** The assoc q name. */
 			assocQName = QName.createQName(name.split(":")[0], name.split(":")[1], namespaceService);
 		ChildAssociationRef association = nodeService.createNode(parentNodeRef, ContentModel.ASSOC_CONTAINS, assocQName,
 				typeQName);
+  /** The assoc q name. */
 		return new MockFileInfo(association.getChildRef(), name, typeQName);
 	}
 
 	@Override
+ /**
+ * Create.
+ *
+ * @param parentNodeRef the parent node ref
+ * @param name the name
+ * @param typeQName the type q name
+ * @param assocQName the assoc q name
+ * @return the file info
+ */
 	public FileInfo create(NodeRef parentNodeRef, String name, QName typeQName, QName assocQName)
 			throws FileExistsException {
 		// TODO Auto-generated method stub
@@ -223,21 +361,43 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	}
 
 	@Override
+ /**
+ * Delete.
+ *
+ * @param nodeRef the node ref
+ */
 	public void delete(NodeRef nodeRef) {
+  /**
+  * Delete.
+  *
+  * @param nodeRef the node ref
+  */
 		List<NodeRef> toRemove = new ArrayList<NodeRef>();
+  /**
+  * Delete.
+  *
+  * @param nodeRef the node ref
+  */
 		Map<NodeRef, File> nodeRefs = getNodeService().getNodeRefs();
+  /** The path parent. */
 		String pathParent = nodeService.getPath(nodeRef).toString() + "/";
+  /** The path parent. */
 		for (NodeRef node : nodeRefs.keySet()) {
+   /** The path child. */
 			String pathChild = nodeService.getPath(node).toString();
 			if (pathChild.contains(pathParent))
 				toRemove.add(node);
 		}
 		nodeRefs.keySet().removeAll(toRemove);
 		try {
+   /** The path child. */
 			File file = nodeRefs.get(nodeRef);
+   /** The path child. */
 			if (file != null)
+    /** The path child. */
 				if (!(file.getPath() + "/").equals(MockContentService.FOLDER_TEST))
 					FileUtils.deleteDirectory(file);
+  /** The path child. */
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -258,10 +418,25 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 
 	@Override
 	public FileInfo resolveNamePath(NodeRef rootNodeRef, List<String> pathElements) throws FileNotFoundException {
+  /**
+  * Resolve name path.
+  *
+  * @param rootNodeRef the root node ref
+  * @param pathElements the path elements
+  * @return the file info
+  */
 		return resolveNamePath(rootNodeRef, pathElements, false);
 	}
 
 	@Override
+ /**
+ * Resolve name path.
+ *
+ * @param rootNodeRef the root node ref
+ * @param pathElements the path elements
+ * @param mustExist the must exist
+ * @return the file info
+ */
 	public FileInfo resolveNamePath(NodeRef rootNodeRef, List<String> pathElements, boolean mustExist)
 			throws FileNotFoundException {
 		NodeRef nodeRef = null;
@@ -276,8 +451,20 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	}
 
 	@Override
+ /**
+ * Get file info.
+ *
+ * @param nodeRef the node ref
+ * @return the file info
+ */
 	public FileInfo getFileInfo(NodeRef nodeRef) {
 		QName qname = ContentModel.TYPE_CONTENT;
+  /**
+  * Get file info.
+  *
+  * @param nodeRef the node ref
+  * @return the file info
+  */
 		File file = getNodeService().getNodeRefs().get(nodeRef);
 		if (file == null)
 			throw new InvalidNodeRefException(nodeRef);
@@ -287,43 +474,115 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	}
 
 	@Override
+ /**
+ * Get reader.
+ *
+ * @param nodeRef the node ref
+ * @return the content reader
+ */
 	public ContentReader getReader(NodeRef nodeRef) {
+  /**
+  * Get file info.
+  *
+  * @param nodeRef the node ref
+  * @return the file info
+  */
 		File file = getNodeService().getNodeRefs().get(nodeRef);
+  /**
+  * Get reader.
+  *
+  * @param nodeRef the node ref
+  * @return the content reader
+  */
 		File content = new File(file.getAbsolutePath() + "/" + file.getName());
+  /**
+  * Get reader.
+  *
+  * @param nodeRef the node ref
+  * @return the content reader
+  */
 		return new FileContentReader(content);
 	}
 
 	@Override
+ /**
+ * Get writer.
+ *
+ * @param nodeRef the node ref
+ * @return the content writer
+ */
 	public ContentWriter getWriter(NodeRef nodeRef) {
+  /**
+  * Get file info.
+  *
+  * @param nodeRef the node ref
+  * @return the file info
+  */
 		File file = getNodeService().getNodeRefs().get(nodeRef);
+  /**
+  * Get writer.
+  *
+  * @param nodeRef the node ref
+  * @return the content writer
+  */
 		return new MockContentWriter(file, nodeRef, nodeService);
 	}
 
 	@Override
+ /**
+ * Exists.
+ *
+ * @param nodeRef the node ref
+ * @return the boolean
+ */
 	public boolean exists(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
+ /**
+ * Get type.
+ *
+ * @param typeQName the type q name
+ * @return the file folder service type
+ */
 	public FileFolderServiceType getType(QName typeQName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Is hidden.
+ *
+ * @param nodeRef the node ref
+ * @return the boolean
+ */
 	public boolean isHidden(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
+ /**
+ * Set hidden.
+ *
+ * @param nodeRef the node ref
+ * @param isHidden the is hidden
+ */
 	public void setHidden(NodeRef nodeRef, boolean isHidden) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
+ /**
+ * To file info list.
+ *
+ * @param nodeRefs the node refs
+ * @return the list
+ */
 	public List<FileInfo> toFileInfoList(List<NodeRef> nodeRefs) {
 		// TODO Auto-generated method stub
 		return null;
@@ -338,10 +597,21 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 
 	public class MockFileInfo implements FileInfo {
 
+  /** The node ref. */
 		private NodeRef nodeRef;
+  /** The name. */
 		private String name;
+  /** The type q name. */
 		private QName typeQName;
 
+  /**
+  * Constructs a new mock file info.
+  *
+  * @param nodeRef the node ref
+  * @param name the name
+  * @param typeQName the type q name
+  * @return the result
+  */
 		public MockFileInfo(NodeRef nodeRef, String name, QName typeQName) {
 			this.nodeRef = nodeRef;
 			this.name = name;
@@ -349,80 +619,162 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		}
 
 		@Override
+  /**
+  * Get node ref.
+  *
+  * @return the node ref
+  */
 		public NodeRef getNodeRef() {
 			return nodeRef;
 		}
 
 		@Override
+  /**
+  * Is folder.
+  *
+  * @return the boolean
+  */
 		public boolean isFolder() {
+   /**
+   * Is folder.
+   *
+   * @return the boolean
+   */
 			return typeQName.equals(ContentModel.TYPE_FOLDER);
 		}
 
 		@Override
+  /**
+  * Is link.
+  *
+  * @return the boolean
+  */
 		public boolean isLink() {
 			// TODO Auto-generated method stub
 			return false;
 		}
 
 		@Override
+  /**
+  * Is hidden.
+  *
+  * @return the boolean
+  */
 		public boolean isHidden() {
 			// TODO Auto-generated method stub
 			return false;
 		}
 
 		@Override
+  /**
+  * Get link node ref.
+  *
+  * @return the node ref
+  */
 		public NodeRef getLinkNodeRef() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
+  /**
+  * Get name.
+  *
+  * @return the string
+  */
 		public String getName() {
 			return name;
 		}
 
 		@Override
+  /**
+  * Get created date.
+  *
+  * @return the date
+  */
 		public Date getCreatedDate() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
+  /**
+  * Get modified date.
+  *
+  * @return the date
+  */
 		public Date getModifiedDate() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
+  /**
+  * Get content data.
+  *
+  * @return the content data
+  */
 		public ContentData getContentData() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
+  /** Get properties. */
 		public Map<QName, Serializable> getProperties() {
+   /** Get properties. */
 			return nodeService.getProperties(nodeRef);
 		}
 
 		@Override
+  /**
+  * Get type.
+  *
+  * @return the q name
+  */
 		public QName getType() {
 			return typeQName;
 		}
 
 	};
 
+ /**
+ * Get node service.
+ *
+ * @return the mock node service
+ */
 	public MockNodeService getNodeService() {
+  /**
+  * Get node service.
+  *
+  * @return the mock node service
+  */
 		return (MockNodeService) nodeService;
 	}
 
+ /**
+ * Set node service.
+ *
+ * @param nodeService the node service
+ */
 	public void setNodeService(MockNodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+ /**
+ * Get namespace service.
+ *
+ * @return the namespace service
+ */
 	public NamespaceService getNamespaceService() {
 		return namespaceService;
 	}
 
+ /**
+ * Set namespace service.
+ *
+ * @param namespaceService the namespace service
+ */
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
 	}
@@ -448,10 +800,40 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		return result;
 	}
 
+ /**
+ * Recursive copy.
+ *
+ * @param sourceNodeRef the source node ref
+ * @param targetParentRef the target parent ref
+ */
 	private void recursiveCopy(NodeRef sourceNodeRef, NodeRef targetParentRef) {
+  /**
+  * Recursive copy.
+  *
+  * @param sourceNodeRef the source node ref
+  * @param targetParentRef the target parent ref
+  */
 		List<ChildAssociationRef> children = nodeService.getChildAssocs(sourceNodeRef);
+  /**
+  * Recursive copy.
+  *
+  * @param sourceNodeRef the source node ref
+  * @param targetParentRef the target parent ref
+  */
 		for (ChildAssociationRef child : children) {
+   /**
+   * Recursive copy.
+   *
+   * @param sourceNodeRef the source node ref
+   * @param targetParentRef the target parent ref
+   */
 			File file = ((MockNodeService) nodeService).getNodeRefs().get(child.getChildRef());
+   /**
+   * Recursive copy.
+   *
+   * @param sourceNodeRef the source node ref
+   * @param targetParentRef the target parent ref
+   */
 			if (!file.isFile()) {
 				ChildAssociationRef result = nodeService.createNode(targetParentRef, ContentModel.ASSOC_CONTAINS,
 						QName.createQName("" + nodeService.getProperty(child.getChildRef(), ContentModel.PROP_NAME)),

@@ -37,11 +37,33 @@ public enum Result {
 
 	VALID, INVALID, UNDETERMINED, VALID_WITH_WARNINGS, INFORMATION;
 
+ /**
+ * Value.
+ *
+ * @return the string
+ */
 	public String value() {
+  /**
+  * Value.
+  *
+  * @return the string
+  */
 		return name();
 	}
 
+ /**
+ * From value.
+ *
+ * @param v the v
+ * @return the result
+ */
 	public static Result fromValue(String v) {
+  /**
+  * From value.
+  *
+  * @param v the v
+  * @return the result
+  */
 		return valueOf(v);
 	}
 

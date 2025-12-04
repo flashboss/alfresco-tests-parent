@@ -36,22 +36,53 @@ public class SignIntegrationBigService extends Service {
 		WSDL_LOCATION = url;
 	}
 
+ /**
+ * Constructs a new sign integration big service.
+ *
+ * @param wsdlLocation the wsdl location
+ * @return the result
+ */
 	public SignIntegrationBigService(URL wsdlLocation) {
 		super(wsdlLocation, SERVICE);
 	}
 
+ /**
+ * Constructs a new sign integration big service.
+ *
+ * @param wsdlLocation the wsdl location
+ * @param serviceName the service name
+ * @return the result
+ */
 	public SignIntegrationBigService(URL wsdlLocation, QName serviceName) {
 		super(wsdlLocation, serviceName);
 	}
 
+ /**
+ * Constructs a new sign integration big service.
+ *
+ * @return the result
+ */
 	public SignIntegrationBigService() {
 		super(WSDL_LOCATION, SERVICE);
 	}
 
+ /**
+ * Constructs a new sign integration big service.
+ *
+ * @param features the features
+ * @return the result
+ */
 	public SignIntegrationBigService(WebServiceFeature... features) {
 		super(WSDL_LOCATION, SERVICE);
 	}
 
+ /**
+ * Constructs a new sign integration big service.
+ *
+ * @param wsdlLocation the wsdl location
+ * @param features the features
+ * @return the result
+ */
 	public SignIntegrationBigService(URL wsdlLocation, WebServiceFeature... features) {
 		super(wsdlLocation, SERVICE);
 	}
@@ -65,7 +96,13 @@ public class SignIntegrationBigService extends Service {
 	 * @return returns SignIntegrationBig
 	 */
 	@WebEndpoint(name = "SignIntegrationBigPort")
+ /**
+ * @return returns SignIntegrationBig
+ */
 	public SignIntegrationBig getSignIntegrationBigPort() {
+  /**
+  * @return returns SignIntegrationBig
+  */
 		return super.getPort(SignIntegrationBigPort, SignIntegrationBig.class);
 	}
 
@@ -78,7 +115,19 @@ public class SignIntegrationBigService extends Service {
 	 * @return returns SignIntegrationBig
 	 */
 	@WebEndpoint(name = "SignIntegrationBigPort")
+ /**
+ * @param features A list of {@link javax.xml.ws.WebServiceFeature} to configure on the proxy.
+ *     Supported features not in the <code>features</code> parameter will have their default
+ *     values.
+ * @return returns SignIntegrationBig
+ */
 	public SignIntegrationBig getSignIntegrationBigPort(WebServiceFeature... features) {
+  /**
+  * @param features A list of {@link javax.xml.ws.WebServiceFeature} to configure on the proxy.
+  *     Supported features not in the <code>features</code> parameter will have their default
+  *     values.
+  * @return returns SignIntegrationBig
+  */
 		return super.getPort(SignIntegrationBigPort, SignIntegrationBig.class, features);
 	}
 

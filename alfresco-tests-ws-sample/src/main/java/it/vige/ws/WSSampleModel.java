@@ -10,7 +10,9 @@ import org.alfresco.service.namespace.QName;
 public interface WSSampleModel {
 
 	String PBPDV_NAMESPACE = "http://www.vige.it/pb/conservation/model/1.0";
+ /** The aspect wssamplefolder. */
 	QName ASPECT_WSSAMPLEFOLDER = QName.createQName(PBPDV_NAMESPACE, "wssamplefolder");
+ /** The prop update property. */
 	QName PROP_UPDATE_PROPERTY = QName.createQName(PBPDV_NAMESPACE, "update_property_date");
 
 }

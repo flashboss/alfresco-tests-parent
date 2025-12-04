@@ -38,6 +38,14 @@ import org.alfresco.service.namespace.QName;
 public class NodeUtils {
 
 	public static NodeRef insertFolder(NodeRef parent, String name, FileFolderService fileFolderService) {
+  /**
+  * Insert folder.
+  *
+  * @param parent the parent
+  * @param name the name
+  * @param fileFolderService the file folder service
+  * @return the node ref
+  */
 		return fileFolderService.create(parent, name, ContentModel.TYPE_FOLDER).getNodeRef();
 	}
 
@@ -55,7 +63,9 @@ public class NodeUtils {
 		QName type = null;
 		if (properties != null)
 			type = (QName) properties.get(ContentModel.TYPE_BASE);
+  /** The type. */
 		if (type == null)
+   /** The type. */
 			type = QName.createQName("cm", ContentModel.TYPE_CONTENT.getLocalName(), namespaceService);
 		NodeRef node = nodeService.createNode(parent, ContentModel.ASSOC_CONTAINS,
 				QName.createQName(NamespaceService.CONTENT_MODEL_PREFIX, name, namespaceService), type, properties)
@@ -79,22 +89,78 @@ public class NodeUtils {
 		return versionRef.getFrozenStateNodeRef();
 	}
 
+ /**
+ * Sort by name.
+ *
+ * @param nodeRefs the node refs
+ * @return the list
+ */
 	public static List<NodeRef> sortByName(Set<NodeRef> nodeRefs) {
+  /**
+  * Sort by name.
+  *
+  * @param nodeRefs the node refs
+  * @return the list
+  */
 		NodeRef[] nodeArray = nodeRefs.toArray(new NodeRef[0]);
 		Arrays.sort(nodeArray, new Comparator<NodeRef>() {
 
 			@Override
+   /**
+   * Compare.
+   *
+   * @param o1 the o1
+   * @param o2 the o2
+   * @return the int
+   */
 			public int compare(NodeRef o1, NodeRef o2) {
+    /**
+    * Compare.
+    *
+    * @param o1 the o1
+    * @param o2 the o2
+    * @return the int
+    */
 				return o1.getId().compareTo(o2.getId());
 			}
 		});
 		return Arrays.asList(nodeArray);
 	}
 
+ /**
+ * Generate u u i d.
+ *
+ * @param nodePath the node path
+ * @return the string
+ */
 	public static String generateUUID(String nodePath) {
+  /**
+  * Generate u u i d.
+  *
+  * @param nodePath the node path
+  * @return the string
+  */
 		if (nodePath.equals(FOLDER_TEST + PROTOCOL_WORKSPACE))
+   /**
+   * Generate u u i d.
+   *
+   * @param nodePath the node path
+   * @return the string
+   */
 			return FOLDER_TEST + PROTOCOL_WORKSPACE.hashCode() + "";
+  /**
+  * Generate u u i d.
+  *
+  * @param nodePath the node path
+  * @return the string
+  */
 		if (nodePath.equals(FOLDER_TEST + PROTOCOL_ARCHIVE))
+   /**
+   * Generate u u i d.
+   *
+   * @param nodePath the node path
+   * @return the string
+   */
 			return FOLDER_TEST + PROTOCOL_ARCHIVE.hashCode() + "";
 		return nodePath.replaceAll("/" + STORE_REF_WORKSPACE_SPACESSTORE.getIdentifier(), "").hashCode() + "";
 	}

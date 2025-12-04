@@ -61,13 +61,20 @@ public class SignPDFGenerationTest extends AbstractWSForm {
 	private NodeService nodeService;
 
 	@Override
+ /**
+ * Get abstract web script.
+ *
+ * @return the abstract web script
+ */
 	protected AbstractWebScript getAbstractWebScript() {
 		return signPDFGeneration;
 	}
 
 	@Before
+ /** Init. */
 	public void init() {
 		super.init();
+  /** Init. */
 		templateVars = new HashMap<String, String>();
 		templateVars.put("idpartner", ID_PARTNER);
 		templateVars.put("idpratica", ID_PRATICA);
@@ -103,18 +110,33 @@ public class SignPDFGenerationTest extends AbstractWSForm {
 	}
 
 	@Test
+ /**
+ * Execute.
+ *
+ * @throws ParseException if parsing fails
+ * @throws IOException if IO error occurs
+ */
 	public void execute() throws ParseException, IOException {
 
 		logger.debug("start test");
+  /**
+  * Execute.
+  *
+  * @throws ParseException if parsing fails
+  * @throws IOException if IO error occurs
+  */
 		SearchService searchService = serviceRegistry.getSearchService();
 		InputStream jsonStream = this.getClass().getClassLoader().getResourceAsStream("json_lecters.json");
+  /** The json. */
 		String json = new String(ByteStreams.toByteArray(jsonStream));
+  /** The json. */
 		Map<String, Serializable> fields = new HashMap<String, Serializable>();
 		{
 			fields.put("prova", json);
 		}
 		WebScriptRequest webScriptRequest = new MockWebScriptRequest("json", templateVars, signPDFGeneration, fields,
 				serviceRegistry);
+  /** The json. */
 		MockWebScriptResponse webScriptResponse = new MockWebScriptResponse();
 		signPDFGeneration.execute(webScriptRequest, webScriptResponse);
 
@@ -130,11 +152,14 @@ public class SignPDFGenerationTest extends AbstractWSForm {
 				Assert.assertEquals("The signed document looks like the title", ContentModel.ASPECT_TITLED, aspect);
 			else {
 				Assert.assertEquals("The signed document looks like the doc", VigeWSContentModel.DOC_ASPECT, aspect);
+    /** The id doc. */
 				String idDoc = (String) nodeService.getProperty(result, VigeWSContentModel.ID_DOC);
 				Assert.assertEquals("The document has the name of the file", ID_DOC, idDoc);
 			}
 		}
+  /** The id doc. */
 		Map<String, Object> model = webScriptResponse.getModel();
+  /** The id doc. */
 		Assert.assertEquals("Status ok", STATUS_OK + "", model.get("status").toString());
 		logger.debug("end test");
 	}

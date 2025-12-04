@@ -21,9 +21,22 @@ import org.subethamail.smtp.RejectException;
  */
 public class MockMessageHandlerFactory implements MessageHandlerFactory {
 
+ /** The logger. */
 	private Logger logger = getLogger(getClass());
 
+ /**
+ * Create.
+ *
+ * @param ctx the ctx
+ * @return the message handler
+ */
 	public MessageHandler create(MessageContext ctx) {
+  /**
+  * Create.
+  *
+  * @param ctx the ctx
+  * @return the message handler
+  */
 		return new Handler(ctx);
 	}
 
@@ -36,6 +49,12 @@ public class MockMessageHandlerFactory implements MessageHandlerFactory {
 	class Handler implements MessageHandler {
 		MessageContext ctx;
 
+  /**
+  * Constructs a new handler.
+  *
+  * @param ctx the ctx
+  * @return the result
+  */
 		public Handler(MessageContext ctx) {
 			this.ctx = ctx;
 		}
@@ -79,17 +98,32 @@ public class MockMessageHandlerFactory implements MessageHandlerFactory {
 		 * @return The converted string
 		 */
 		public String convertStreamToString(InputStream is) {
+   /**
+   * Utility convert a stream in a string
+   *
+   * @param is The stream to convert
+   * @return The converted string
+   */
 			BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+   /**
+   * Utility convert a stream in a string
+   *
+   * @param is The stream to convert
+   * @return The converted string
+   */
 			StringBuilder sb = new StringBuilder();
 
 			String line = null;
 			try {
+    /** The line. */
 				while ((line = reader.readLine()) != null) {
 					sb.append(line + "\n");
 				}
+   /** The line. */
 			} catch (IOException e) {
 				logger.error("activiti diagram", e);
 			}
+   /** The line. */
 			return sb.toString();
 		}
 

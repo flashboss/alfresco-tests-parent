@@ -40,11 +40,18 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 	 */
 	protected final static String USER_NAME = "gonzo";
 
+ /** The date format. */
 	protected final DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm:ss ZZZ yyyy");
 
+ /** The generation folder. */
 	protected NodeRef generationFolder;
 
 	@Override
+ /**
+ * Init.
+ *
+ * @param variables the variables
+ */
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
@@ -52,13 +59,18 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 				.getNamespaceService();
 		namespaceService.registerNamespace("vigecont", ConservationModel.VIGE_CONSERVATION_URI);
 		String generationFolderName = "20191024_154711";
+  /** The generation folder name. */
 		NodeRef site = insertFolder(sites, "digital-conservation-complex-bank");
+  /** The generation folder name. */
 		NodeRef documentLibrary = insertFolder(site, "documentLibrary");
+  /** The generation folder name. */
 		NodeRef sas = insertFolder(documentLibrary, "sas");
+  /** The generation folder name. */
 		NodeRef rar = insertFolder(documentLibrary, "rar");
 		insertFolder(documentLibrary, "irar");
 		NodeService nodeService = activitiProcessEngineConfiguration.getServiceRegistry().getNodeService();
 		nodeService.setProperty(rar, ConservationModel.PROP_RAR_ID_COUNTER, 0);
+  /** The generation folder name. */
 		generationFolder = insertFolder(sas, generationFolderName);
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
 		try {
@@ -81,6 +93,11 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 	 * @param identityService The service to create the users
 	 */
 	@Override
+ /**
+ * Create demo users for the application
+ *
+ * @param identityService The service to create the users
+ */
 	public void initDemoUsers(IdentityService identityService) {
 		createUser(identityService, ADMIN_USER_NAME, "Kermit", "The Frog", ADMIN_USER_NAME,
 				ADMIN_USER_NAME + "@activiti.org", null, asList(CONTRIBUTORS, "user", "admin"),
@@ -101,8 +118,18 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 	 * @param identityService The service to create the groups
 	 */
 	@Override
+ /**
+ * Create demo groups for teh application
+ *
+ * @param identityService The service to create the groups
+ */
 	public void initDemoGroups(IdentityService identityService) {
 		String[] assignmentGroups = new String[] { CONTRIBUTORS };
+  /**
+  * Create demo groups for teh application
+  *
+  * @param identityService The service to create the groups
+  */
 		for (String groupId : assignmentGroups) {
 			createGroup(identityService, groupId, "assignment");
 		}

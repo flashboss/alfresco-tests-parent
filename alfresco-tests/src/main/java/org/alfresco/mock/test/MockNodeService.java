@@ -52,6 +52,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	private static Map<NodeRef, Set<AccessPermission>> samplePermissions = new HashMap<NodeRef, Set<AccessPermission>>();
 
+ /** The node refs. */
 	private static Map<NodeRef, File> nodeRefs = new FilteredHashMap();
 
 	private static Map<NodeRef, Map<QName, Set<NodeRef>>> srcAssociations = new HashMap<NodeRef, Map<QName, Set<NodeRef>>>();
@@ -62,50 +63,100 @@ public class MockNodeService implements NodeService, Serializable {
 	@Autowired
 	private NamespaceService namespaceService;
 
+ /** The count dbids. */
 	private long countDbids;
 
 	@Override
+ /**
+ * Get stores.
+ *
+ * @return the list
+ */
 	public List<StoreRef> getStores() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Create store.
+ *
+ * @param protocol the protocol
+ * @param identifier the identifier
+ * @return the store ref
+ */
 	public StoreRef createStore(String protocol, String identifier) throws StoreExistsException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Delete store.
+ *
+ * @param storeRef the store ref
+ */
 	public void deleteStore(StoreRef storeRef) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
+ /**
+ * Exists.
+ *
+ * @param storeRef the store ref
+ * @return the boolean
+ */
 	public boolean exists(StoreRef storeRef) {
 		return true;
 	}
 
 	@Override
+ /**
+ * Exists.
+ *
+ * @param nodeRef the node ref
+ * @return the boolean
+ */
 	public boolean exists(NodeRef nodeRef) {
+  /**
+  * Exists.
+  *
+  * @param nodeRef the node ref
+  * @return the boolean
+  */
 		return nodeRefs.containsKey(nodeRef);
 	}
 
 	@Override
+ /**
+ * Get node status.
+ *
+ * @param nodeRef the node ref
+ * @return the status
+ */
 	public Status getNodeStatus(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Get node ref.
+ *
+ * @param nodeId the node id
+ * @return the node ref
+ */
 	public NodeRef getNodeRef(Long nodeId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /** The path. */
 	public NodeRef getRootNode(StoreRef storeRef) throws InvalidStoreRefException {
+  /** The path. */
 		for (NodeRef nodeRef : nodeRefs.keySet()) {
 			String path = getPath(nodeRef).toString();
 			if (path.endsWith(storeRef.getProtocol() + "/" + storeRef.getIdentifier()))
@@ -115,6 +166,12 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /**
+ * Get all root nodes.
+ *
+ * @param storeRef the store ref
+ * @return the set
+ */
 	public Set<NodeRef> getAllRootNodes(StoreRef storeRef) {
 		// TODO Auto-generated method stub
 		return null;
@@ -130,15 +187,20 @@ public class MockNodeService implements NodeService, Serializable {
 	public ChildAssociationRef createNode(NodeRef parentRef, QName assocTypeQName, QName assocQName,
 			QName nodeTypeQName, Map<QName, Serializable> properties)
 			throws InvalidNodeRefException, InvalidTypeException {
+  /** The node u u i d. */
 		String nodeUUID = assocQName.getLocalName();
+  /** The node u u i d. */
 		Path path = getPath(parentRef);
 		String pathStr = "";
 		if (path != null)
 			pathStr = path.toString() + "/" + nodeUUID;
+  /** The path str. */
 		else if (path == null && assocQName.getLocalName().equals(StoreRef.PROTOCOL_ARCHIVE))
 			pathStr = MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_ARCHIVE;
+  /** The path str. */
 		else if (path == null && assocQName.getLocalName().equals(StoreRef.PROTOCOL_WORKSPACE))
 			pathStr = MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE;
+  /** The path str. */
 		else if (parentRef.getStoreRef().getProtocol().equals(StoreRef.PROTOCOL_ARCHIVE)
 				&& assocQName.getLocalName().equals(StoreRef.STORE_REF_ARCHIVE_SPACESSTORE.getIdentifier()))
 			pathStr = MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_ARCHIVE + "/" + assocQName.getLocalName();
@@ -156,6 +218,11 @@ public class MockNodeService implements NodeService, Serializable {
 		if (pathStr.contains(StoreRef.PROTOCOL_WORKSPACE + "/" + Version2Model.STORE_ID))
 			storeRef = new StoreRef(StoreRef.PROTOCOL_WORKSPACE, Version2Model.STORE_ID);
 		NodeRef nodeRef = new NodeRef(storeRef, NodeUtils.generateUUID(pathStr));
+  /**
+  * Get not null properties.
+  *
+  * @param nodeRef the node ref
+  */
 		if (properties == null) {
 			setProperty(nodeRef, ContentModel.PROP_NAME, assocQName.getLocalName());
 			setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
@@ -183,6 +250,12 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /**
+ * Set child association index.
+ *
+ * @param childAssocRef the child assoc ref
+ * @param index the index
+ */
 	public void setChildAssociationIndex(ChildAssociationRef childAssocRef, int index)
 			throws InvalidChildAssociationRefException {
 		// TODO Auto-generated method stub
@@ -190,7 +263,19 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /**
+ * Get type.
+ *
+ * @param nodeRef the node ref
+ * @return the q name
+ */
 	public QName getType(NodeRef nodeRef) throws InvalidNodeRefException {
+  /**
+  * Get type.
+  *
+  * @param nodeRef the node ref
+  * @return the q name
+  */
 		Serializable object = getProperty(nodeRef, ContentModel.TYPE_BASE);
 		if (object instanceof QName)
 			return (QName) object;
@@ -199,6 +284,12 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /**
+ * Set type.
+ *
+ * @param nodeRef the node ref
+ * @param typeQName the type q name
+ */
 	public void setType(NodeRef nodeRef, QName typeQName) throws InvalidNodeRefException {
 		setProperty(nodeRef, ContentModel.TYPE_BASE, typeQName);
 	}
@@ -206,8 +297,26 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public void addAspect(NodeRef nodeRef, QName aspectTypeQName, Map<QName, Serializable> aspectProperties)
 			throws InvalidNodeRefException, InvalidAspectException {
+  /**
+  * Remove aspect.
+  *
+  * @param nodeRef the node ref
+  * @param aspectTypeQName the aspect type q name
+  */
 		Map<QName, Map<QName, Serializable>> aspects = sampleAspects.get(nodeRef);
+  /**
+  * Get aspects.
+  *
+  * @param nodeRef the node ref
+  * @return the set
+  */
 		if (aspects == null) {
+   /**
+   * Get aspects.
+   *
+   * @param nodeRef the node ref
+   * @return the set
+   */
 			aspects = new HashMap<QName, Map<QName, Serializable>>();
 			sampleAspects.put(nodeRef, aspects);
 		}
@@ -218,9 +327,27 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /**
+ * Remove aspect.
+ *
+ * @param nodeRef the node ref
+ * @param aspectTypeQName the aspect type q name
+ */
 	public void removeAspect(NodeRef nodeRef, QName aspectTypeQName)
 			throws InvalidNodeRefException, InvalidAspectException {
+  /**
+  * Remove aspect.
+  *
+  * @param nodeRef the node ref
+  * @param aspectTypeQName the aspect type q name
+  */
 		Map<QName, Map<QName, Serializable>> aspects = sampleAspects.get(nodeRef);
+  /**
+  * Remove aspect.
+  *
+  * @param nodeRef the node ref
+  * @param aspectTypeQName the aspect type q name
+  */
 		Map<QName, Serializable> properties = sampleProperties.get(nodeRef);
 		Map<QName, Serializable> aspectProperties = aspects.get(aspectTypeQName);
 		for (QName qname : aspectProperties.keySet())
@@ -229,15 +356,53 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /**
+ * Has aspect.
+ *
+ * @param nodeRef the node ref
+ * @param aspectTypeQName the aspect type q name
+ * @return the boolean
+ */
 	public boolean hasAspect(NodeRef nodeRef, QName aspectTypeQName)
 			throws InvalidNodeRefException, InvalidAspectException {
+  /**
+  * Has aspect.
+  *
+  * @param nodeRef the node ref
+  * @param aspectTypeQName the aspect type q name
+  * @return the boolean
+  */
 		return getAspects(nodeRef).contains(aspectTypeQName);
 	}
 
 	@Override
+ /**
+ * Get aspects.
+ *
+ * @param nodeRef the node ref
+ * @return the set
+ */
 	public Set<QName> getAspects(NodeRef nodeRef) throws InvalidNodeRefException {
+  /**
+  * Remove aspect.
+  *
+  * @param nodeRef the node ref
+  * @param aspectTypeQName the aspect type q name
+  */
 		Map<QName, Map<QName, Serializable>> aspects = sampleAspects.get(nodeRef);
+  /**
+  * Get aspects.
+  *
+  * @param nodeRef the node ref
+  * @return the set
+  */
 		if (aspects == null) {
+   /**
+   * Get aspects.
+   *
+   * @param nodeRef the node ref
+   * @return the set
+   */
 			aspects = new HashMap<QName, Map<QName, Serializable>>();
 			sampleAspects.put(nodeRef, aspects);
 		}
@@ -245,10 +410,20 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /**
+ * Delete node.
+ *
+ * @param nodeRef the node ref
+ */
 	public void deleteNode(NodeRef nodeRef) throws InvalidNodeRefException {
 		try {
 			FileUtils.deleteDirectory(nodeRefs.get(nodeRef));
 			nodeRefs.remove(nodeRef);
+  /**
+  * Delete node.
+  *
+  * @param nodeRef the node ref
+  */
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -261,6 +436,11 @@ public class MockNodeService implements NodeService, Serializable {
 				ContentModel.TYPE_CONTENT, getProperties(childRef));
 		try {
 			FileUtils.copyDirectory(nodeRefs.get(childRef), nodeRefs.get(association.getChildRef()));
+  /**
+  * Delete node.
+  *
+  * @param nodeRef the node ref
+  */
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -275,43 +455,103 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /**
+ * Remove child.
+ *
+ * @param parentRef the parent ref
+ * @param childRef the child ref
+ */
 	public void removeChild(NodeRef parentRef, NodeRef childRef) throws InvalidNodeRefException {
+  /**
+  * Remove child.
+  *
+  * @param parentRef the parent ref
+  * @param childRef the child ref
+  */
 		NodeRef parent = getPrimaryParent(childRef).getParentRef();
 		if (parent.equals(parentRef))
 			deleteNode(childRef);
 	}
 
 	@Override
+ /**
+ * Remove child association.
+ *
+ * @param childAssocRef the child assoc ref
+ * @return the boolean
+ */
 	public boolean removeChildAssociation(ChildAssociationRef childAssocRef) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
+ /**
+ * Remove seconary child association.
+ *
+ * @param childAssocRef the child assoc ref
+ * @return the boolean
+ */
 	public boolean removeSeconaryChildAssociation(ChildAssociationRef childAssocRef) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
+ /**
+ * Remove secondary child association.
+ *
+ * @param childAssocRef the child assoc ref
+ * @return the boolean
+ */
 	public boolean removeSecondaryChildAssociation(ChildAssociationRef childAssocRef) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
+ /**
+ * Get properties.
+ *
+ * @param nodeRef the node ref
+ */
 	public Map<QName, Serializable> getProperties(NodeRef nodeRef) throws InvalidNodeRefException {
+  /**
+  * Get properties.
+  *
+  * @param nodeRef the node ref
+  */
 		return sampleProperties.get(nodeRef);
 	}
 
 	@Override
+ /**
+ * Get node acl id.
+ *
+ * @param nodeRef the node ref
+ * @return the long
+ */
 	public Long getNodeAclId(NodeRef nodeRef) throws InvalidNodeRefException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Get property.
+ *
+ * @param nodeRef the node ref
+ * @param qname the qname
+ * @return the serializable
+ */
 	public Serializable getProperty(NodeRef nodeRef, QName qname) throws InvalidNodeRefException {
+  /**
+  * Get property.
+  *
+  * @param nodeRef the node ref
+  * @param qname the qname
+  * @return the serializable
+  */
 		return getNotNullProperties(nodeRef).get(qname);
 	}
 
@@ -327,14 +567,24 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public void setProperty(NodeRef nodeRef, QName qname, Serializable value) throws InvalidNodeRefException {
+  /** The q value. */
 		if (value instanceof QName) {
+   /** The q value. */
 			QName qValue = (QName) value;
+   /** The q value. */
 			Collection<String> prefixes = namespaceService.getPrefixes(qValue.getNamespaceURI());
+   /** The q value. */
 			if (!qValue.toPrefixString().contains(":") && !prefixes.isEmpty())
 				value = QName.createQName(prefixes.toArray(new String[0])[0], qValue.getLocalName(), namespaceService);
 		}
 		getNotNullProperties(nodeRef).put(qname, value);
 		if (qname.equals(ContentModel.PROP_NAME)) {
+   /**
+   * Get path.
+   *
+   * @param nodeRef the node ref
+   * @return the path
+   */
 			File file = nodeRefs.get(nodeRef);
 			if (file != null && !file.getName().equals(value)) {
 				File fileContent = new File(file.getAbsolutePath() + "/" + file.getName());
@@ -351,11 +601,23 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /**
+ * Remove property.
+ *
+ * @param nodeRef the node ref
+ * @param qname the qname
+ */
 	public void removeProperty(NodeRef nodeRef, QName qname) throws InvalidNodeRefException {
 		getNotNullProperties(nodeRef).remove(qname);
 	}
 
 	@Override
+ /**
+ * Get parent assocs.
+ *
+ * @param nodeRef the node ref
+ * @return the list
+ */
 	public List<ChildAssociationRef> getParentAssocs(NodeRef nodeRef) throws InvalidNodeRefException {
 		// TODO Auto-generated method stub
 		return null;
@@ -369,10 +631,15 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /** The parent path. */
 	public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef) throws InvalidNodeRefException {
+  /** The parent path. */
 		List<ChildAssociationRef> result = new ArrayList<ChildAssociationRef>();
+  /** The parent path. */
 		for (NodeRef node : nodeRefs.keySet()) {
+   /** The parent path. */
 			Path path = getPath(node);
+   /** The parent path. */
 			String parentPath = path.subPath(path.size() - 2).toString();
 			if (getPath(nodeRef).toString().equals(parentPath))
 				result.add(new ChildAssociationRef(ContentModel.ASSOC_CONTAINS, nodeRef, getType(node), node));
@@ -399,8 +666,23 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /**
+ * Get child assocs.
+ *
+ * @param nodeRef the node ref
+ * @param childNodeTypeQNames the child node type q names
+ * @return the list
+ */
 	public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef, Set<QName> childNodeTypeQNames) {
+  /** The parent path. */
 		List<ChildAssociationRef> result = new ArrayList<ChildAssociationRef>();
+  /**
+  * Get child assocs.
+  *
+  * @param nodeRef the node ref
+  * @param childNodeTypeQNames the child node type q names
+  * @return the list
+  */
 		List<ChildAssociationRef> children = getChildAssocs(nodeRef);
 		for (ChildAssociationRef child : children)
 			for (QName qname : childNodeTypeQNames)
@@ -417,9 +699,19 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /** The name. */
 	public NodeRef getChildByName(NodeRef nodeRef, QName assocTypeQName, String childName) {
+  /**
+  * Get child assocs.
+  *
+  * @param nodeRef the node ref
+  * @param childNodeTypeQNames the child node type q names
+  * @return the list
+  */
 		List<ChildAssociationRef> children = getChildAssocs(nodeRef);
+  /** The name. */
 		for (ChildAssociationRef ref : children) {
+   /** The name. */
 			String name = (String) getProperty(ref.getChildRef(), ContentModel.PROP_NAME);
 			if (name.equals(childName))
 				return ref.getChildRef();
@@ -435,8 +727,21 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /**
+ * Get primary parent.
+ *
+ * @param nodeRef the node ref
+ * @return the child association ref
+ */
 	public ChildAssociationRef getPrimaryParent(NodeRef nodeRef) throws InvalidNodeRefException {
+  /**
+  * Get primary parent.
+  *
+  * @param nodeRef the node ref
+  * @return the child association ref
+  */
 		NodeRef result = (NodeRef) getProperty(nodeRef, PRIMARY_PARENT);
+  /** The child q name. */
 		QName childQName = QName.createQName((String) getProperty(nodeRef, ContentModel.PROP_NAME));
 		ChildAssociationRef childAssociationRef = new ChildAssociationRef(ContentModel.ASSOC_CONTAINS, result,
 				childQName, nodeRef, true, -1);
@@ -462,6 +767,13 @@ public class MockNodeService implements NodeService, Serializable {
 
 	private void createAllAssociation(Map<QName, Set<NodeRef>> qnameAssocs, NodeRef nodeRef, QName assocTypeQName)
 			throws InvalidNodeRefException, AssociationExistsException {
+  /**
+  * Create all association.
+  *
+  * @param qnameAssocs the qname assocs
+  * @param nodeRef the node ref
+  * @param assocTypeQName the assoc type q name
+  */
 		Set<NodeRef> nodeRefs = qnameAssocs.get(assocTypeQName);
 		if (nodeRefs == null)
 			nodeRefs = new HashSet<NodeRef>();
@@ -472,8 +784,22 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /**
+ * Remove association.
+ *
+ * @param sourceRef the source ref
+ * @param targetRef the target ref
+ * @param assocTypeQName the assoc type q name
+ */
 	public void removeAssociation(NodeRef sourceRef, NodeRef targetRef, QName assocTypeQName)
 			throws InvalidNodeRefException {
+  /**
+  * Remove association.
+  *
+  * @param sourceRef the source ref
+  * @param targetRef the target ref
+  * @param assocTypeQName the assoc type q name
+  */
 		Map<QName, Set<NodeRef>> qnameSrcAssocs = srcAssociations.get(sourceRef);
 		Map<QName, Set<NodeRef>> qnameTrgAssocs = trgAssociations.get(targetRef);
 		removeAllAssociation(qnameSrcAssocs, targetRef, assocTypeQName);
@@ -483,14 +809,42 @@ public class MockNodeService implements NodeService, Serializable {
 
 	private void removeAllAssociation(Map<QName, Set<NodeRef>> qnameAssocs, NodeRef nodeRef, QName assocTypeQName)
 			throws InvalidNodeRefException {
+  /**
+  * Create all association.
+  *
+  * @param qnameAssocs the qname assocs
+  * @param nodeRef the node ref
+  * @param assocTypeQName the assoc type q name
+  */
 		Set<NodeRef> nodeRefs = qnameAssocs.get(assocTypeQName);
 		if (nodeRefs != null)
 			nodeRefs.remove(nodeRef);
 	}
 
 	@Override
+ /**
+ * Set associations.
+ *
+ * @param sourceRef the source ref
+ * @param assocTypeQName the assoc type q name
+ * @param targetRefs the target refs
+ */
 	public void setAssociations(NodeRef sourceRef, QName assocTypeQName, List<NodeRef> targetRefs) {
+  /**
+  * Set associations.
+  *
+  * @param sourceRef the source ref
+  * @param assocTypeQName the assoc type q name
+  * @param targetRefs the target refs
+  */
 		Map<QName, Set<NodeRef>> qnameAssocs = srcAssociations.get(sourceRef);
+  /**
+  * Create all association.
+  *
+  * @param qnameAssocs the qname assocs
+  * @param nodeRef the node ref
+  * @param assocTypeQName the assoc type q name
+  */
 		Set<NodeRef> nodeRefs = qnameAssocs.get(assocTypeQName);
 		if (nodeRefs == null)
 			nodeRefs = new HashSet<NodeRef>();
@@ -502,6 +856,13 @@ public class MockNodeService implements NodeService, Serializable {
 
 		for (NodeRef targetRef : targetRefs) {
 			qnameAssocs = trgAssociations.get(targetRef);
+   /**
+   * Create all association.
+   *
+   * @param qnameAssocs the qname assocs
+   * @param nodeRef the node ref
+   * @param assocTypeQName the assoc type q name
+   */
 			nodeRefs = qnameAssocs.get(assocTypeQName);
 			if (nodeRefs == null)
 				nodeRefs = new HashSet<NodeRef>();
@@ -514,14 +875,34 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /**
+ * Get assoc.
+ *
+ * @param id the id
+ * @return the association ref
+ */
 	public AssociationRef getAssoc(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Get target assocs.
+ *
+ * @param sourceRef the source ref
+ * @param qnamePattern the qname pattern
+ * @return the list
+ */
 	public List<AssociationRef> getTargetAssocs(NodeRef sourceRef, QNamePattern qnamePattern)
 			throws InvalidNodeRefException {
+  /**
+  * Get target assocs.
+  *
+  * @param sourceRef the source ref
+  * @param qnamePattern the qname pattern
+  * @return the list
+  */
 		List<AssociationRef> assRefs = new ArrayList<AssociationRef>();
 		Map<QName, Set<NodeRef>> qnames = srcAssociations.get(sourceRef);
 		for (QName qname : qnames.keySet())
@@ -534,8 +915,22 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /**
+ * Get source assocs.
+ *
+ * @param targetRef the target ref
+ * @param qnamePattern the qname pattern
+ * @return the list
+ */
 	public List<AssociationRef> getSourceAssocs(NodeRef targetRef, QNamePattern qnamePattern)
 			throws InvalidNodeRefException {
+  /**
+  * Get target assocs.
+  *
+  * @param sourceRef the source ref
+  * @param qnamePattern the qname pattern
+  * @return the list
+  */
 		List<AssociationRef> assRefs = new ArrayList<AssociationRef>();
 		Map<QName, Set<NodeRef>> qnames = trgAssociations.get(targetRef);
 		for (QName qname : qnames.keySet())
@@ -548,9 +943,33 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /**
+ * Get path.
+ *
+ * @param nodeRef the node ref
+ * @return the path
+ */
 	public Path getPath(NodeRef nodeRef) throws InvalidNodeRefException {
+  /**
+  * Get path.
+  *
+  * @param nodeRef the node ref
+  * @return the path
+  */
 		File file = nodeRefs.get(nodeRef);
+  /**
+  * Get path.
+  *
+  * @param nodeRef the node ref
+  * @return the path
+  */
 		if (file != null && file.exists()) {
+   /**
+   * Get path.
+   *
+   * @param nodeRef the node ref
+   * @return the path
+   */
 			Path path = new Path();
 			String[] paths = file.getPath().split("/");
 			for (String folder : paths)
@@ -561,12 +980,25 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /**
+ * Get paths.
+ *
+ * @param nodeRef the node ref
+ * @param primaryOnly the primary only
+ * @return the list
+ */
 	public List<Path> getPaths(NodeRef nodeRef, boolean primaryOnly) throws InvalidNodeRefException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Get store archive node.
+ *
+ * @param storeRef the store ref
+ * @return the node ref
+ */
 	public NodeRef getStoreArchiveNode(StoreRef storeRef) {
 		// TODO Auto-generated method stub
 		return null;
@@ -580,12 +1012,25 @@ public class MockNodeService implements NodeService, Serializable {
 	}
 
 	@Override
+ /**
+ * Find nodes.
+ *
+ * @param params the params
+ * @return the list
+ */
 	public List<NodeRef> findNodes(FindNodeParameters params) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Count child assocs.
+ *
+ * @param nodeRef the node ref
+ * @param isPrimary the is primary
+ * @return the int
+ */
 	public int countChildAssocs(NodeRef nodeRef, boolean isPrimary) throws InvalidNodeRefException {
 		// TODO Auto-generated method stub
 		return 0;
@@ -600,37 +1045,77 @@ public class MockNodeService implements NodeService, Serializable {
 
 	public class MockElement extends Path.Element {
 
+  /** The path. */
 		private String path;
 
+  /**
+  * Constructs a new mock element.
+  *
+  * @param path the path
+  * @return the result
+  */
 		public MockElement(String path) {
 			this.path = path;
 		}
 
 		@Override
+  /**
+  * Get element string.
+  *
+  * @return the string
+  */
 		public String getElementString() {
 			return path;
 		}
 
 		@Override
+  /**
+  * Get base name element.
+  *
+  * @param tenantService the tenant service
+  * @return the element
+  */
 		public Element getBaseNameElement(TenantService tenantService) {
 			return this;
 		}
 
 	}
 
+ /**
+ * Get not null properties.
+ *
+ * @param nodeRef the node ref
+ */
 	private Map<QName, Serializable> getNotNullProperties(NodeRef nodeRef) {
+  /**
+  * Get not null properties.
+  *
+  * @param nodeRef the node ref
+  */
 		Map<QName, Serializable> properties = getProperties(nodeRef);
+  /**
+  * Get not null properties.
+  *
+  * @param nodeRef the node ref
+  */
 		if (properties == null) {
+   /**
+   * Get not null properties.
+   *
+   * @param nodeRef the node ref
+   */
 			properties = new HashMap<QName, Serializable>();
 			sampleProperties.put(nodeRef, properties);
 		}
 		return properties;
 	}
 
+ /** Get node refs. */
 	public Map<NodeRef, File> getNodeRefs() {
 		return nodeRefs;
 	}
 
+ /** Init. */
 	public void init() {
 		sampleAspects.clear();
 		sampleProperties.clear();
@@ -638,23 +1123,69 @@ public class MockNodeService implements NodeService, Serializable {
 		nodeRefs.clear();
 	}
 
+ /**
+ * Get permissions.
+ *
+ * @return the string
+ */
 	public String getPermissions() {
 		return samplePermissions + "";
 	}
 
+ /**
+ * Get permissions.
+ *
+ * @param nodeRef the node ref
+ * @return the set
+ */
 	public Set<AccessPermission> getPermissions(NodeRef nodeRef) {
+  /**
+  * Get permissions.
+  *
+  * @param nodeRef the node ref
+  * @return the set
+  */
 		return samplePermissions.get(nodeRef);
 	}
 
+ /**
+ * Set permission.
+ *
+ * @param nodeRef the node ref
+ * @param accessPermission the access permission
+ */
 	public void setPermission(NodeRef nodeRef, AccessPermission accessPermission) {
+  /**
+  * Set permission.
+  *
+  * @param nodeRef the node ref
+  * @param accessPermission the access permission
+  */
 		Set<AccessPermission> permissions = samplePermissions.get(nodeRef);
+  /**
+  * Set permission.
+  *
+  * @param nodeRef the node ref
+  * @param accessPermission the access permission
+  */
 		if (permissions == null) {
+   /**
+   * Set permission.
+   *
+   * @param nodeRef the node ref
+   * @param accessPermission the access permission
+   */
 			permissions = new HashSet<AccessPermission>();
 			samplePermissions.put(nodeRef, permissions);
 		}
 		permissions.add(accessPermission);
 	}
 
+ /**
+ * Set namespace service.
+ *
+ * @param namespaceService the namespace service
+ */
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
 	}

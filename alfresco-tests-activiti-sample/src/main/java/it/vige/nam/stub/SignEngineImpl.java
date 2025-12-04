@@ -35,11 +35,33 @@ public enum SignEngineImpl {
 
 	LOCAL, STATIC, DYNAMIC;
 
+ /**
+ * Value.
+ *
+ * @return the string
+ */
 	public String value() {
+  /**
+  * Value.
+  *
+  * @return the string
+  */
 		return name();
 	}
 
+ /**
+ * From value.
+ *
+ * @param v the v
+ * @return the sign engine impl
+ */
 	public static SignEngineImpl fromValue(String v) {
+  /**
+  * From value.
+  *
+  * @param v the v
+  * @return the sign engine impl
+  */
 		return valueOf(v);
 	}
 

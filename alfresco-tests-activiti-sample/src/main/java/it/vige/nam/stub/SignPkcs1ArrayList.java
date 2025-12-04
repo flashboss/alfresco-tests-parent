@@ -41,8 +41,10 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignPkcs1ArrayList {
 
+ /** The credentials. */
 	protected Credentials credentials;
 	protected List<byte[]> hashList;
+ /** The preferences. */
 	protected SignPreferences preferences;
 
 	/**

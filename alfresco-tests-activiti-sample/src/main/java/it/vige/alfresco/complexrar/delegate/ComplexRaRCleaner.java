@@ -16,7 +16,17 @@ import org.mozilla.javascript.NativeArray;
 public class ComplexRaRCleaner extends BaseJavaDelegate {
 
 	@Override
+ /**
+ * Execute.
+ *
+ * @param execution the execution
+ */
 	public void execute(DelegateExecution execution) throws Exception {
+  /**
+  * Execute.
+  *
+  * @param execution the execution
+  */
 		ActivitiScriptNode bpmPackage = (ActivitiScriptNode) execution.getVariable("bpm_package");
 		@SuppressWarnings("unchecked")
 		List<String> relatedSaSsCleaned = (List<String>) execution.getVariable("vigewf_relatedSaSsCleaned");

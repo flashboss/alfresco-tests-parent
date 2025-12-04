@@ -31,7 +31,9 @@ import it.vige.common.SignConstants;
 public class WorkflowNotHumanTest extends ComplexAbstractForm {
 
 	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/ComplexRaRProcess.bpmn" })
+ /** Test not human. */
 	public void testNotHuman() throws ParseException {
+  /** Test not human. */
 		Map<String, Object> variables = new HashMap<String, Object>();
 		init(variables);
 		variables.put("vigewf_starterRaR", "NotHuman");

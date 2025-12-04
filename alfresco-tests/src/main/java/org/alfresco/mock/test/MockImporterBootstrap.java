@@ -16,18 +16,30 @@ import org.springframework.extensions.surf.util.AbstractLifecycleBean;
  */
 public class MockImporterBootstrap extends AbstractLifecycleBean {
 	
+ /** The logger. */
 	private Logger logger = getLogger(getClass());
 	
+    /** The use existing store. */
     private boolean useExistingStore = false;
     private List<Properties> bootstrapViews;
 
 	@Override
+ /**
+ * On bootstrap.
+ *
+ * @param event the event
+ */
 	protected void onBootstrap(ApplicationEvent event) {
 		logger.debug(useExistingStore + "");
 		logger.debug(bootstrapViews + "");
 	}
 
 	@Override
+ /**
+ * On shutdown.
+ *
+ * @param event the event
+ */
 	protected void onShutdown(ApplicationEvent event) {
 		// TODO Auto-generated method stub
 		

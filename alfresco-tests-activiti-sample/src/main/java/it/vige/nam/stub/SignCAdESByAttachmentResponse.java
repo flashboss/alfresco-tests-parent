@@ -41,6 +41,7 @@ public class SignCAdESByAttachmentResponse {
 
 	@XmlElement(name = "return")
 	@XmlMimeType("application/octet-stream")
+ /** The return. */
 	protected DataHandler _return;
 
 	/**

@@ -63,29 +63,61 @@ public class MockVersionService implements VersionService, Serializable {
 	@Autowired
 	private NamespaceService namespaceService;
 
+ /** The version histories. */
 	private Map<NodeRef, VersionHistory> versionHistories = new HashMap<NodeRef, VersionHistory>();
 
 	@Override
+ /**
+ * Get version store reference.
+ *
+ * @return the store ref
+ */
 	public StoreRef getVersionStoreReference() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Is a version.
+ *
+ * @param nodeRef the node ref
+ * @return the boolean
+ */
 	public boolean isAVersion(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
+ /**
+ * Is versioned.
+ *
+ * @param nodeRef the node ref
+ * @return the boolean
+ */
 	public boolean isVersioned(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
+ /**
+ * Create version.
+ *
+ * @param nodeRef the node ref
+ * @param versionProperties the version properties
+ * @return the version
+ */
 	public Version createVersion(NodeRef nodeRef, Map<String, Serializable> versionProperties)
 			throws ReservedVersionNameException, AspectMissingException {
+  /**
+  * Create version.
+  *
+  * @param nodeRef the node ref
+  * @param versionProperties the version properties
+  * @return the version
+  */
 		Collection<Version> versions = createVersion(nodeRef, versionProperties, true);
 		return versions.toArray(new Version[0])[versions.size() - 1];
 	}
@@ -95,7 +127,9 @@ public class MockVersionService implements VersionService, Serializable {
 			boolean versionChildren) throws ReservedVersionNameException, AspectMissingException {
 		byte[] text = (byte[]) versionProperties.getOrDefault(PROP_CONTENT.getLocalName(), new byte[] {});
 		String name = versionProperties.getOrDefault(PROP_NAME.getLocalName(), System.currentTimeMillis()).toString();
+  /** The name. */
 		InputStream inputStream = new ByteArrayInputStream(text);
+  /** The name. */
 		ContentWriter writer = contentService.getWriter(nodeRef, PROP_CONTENT, true);
 		writer.setMimetype(mimetypeService.getMimetype(mimetypeService.getExtension(name)));
 		writer.putContent(inputStream);
@@ -103,10 +137,13 @@ public class MockVersionService implements VersionService, Serializable {
 		String versionType = versionProperties.getOrDefault(Version2Model.PROP_VERSION_TYPE, "").toString();
 		nodeService.setProperty(nodeRef, PROP_VERSION_LABEL, version);
 		nodeService.setProperty(nodeRef, PROP_VERSION_TYPE, versionProperties.get(Version2Model.PROP_VERSION_TYPE));
+  /** The version type. */
 		VersionHistory versionHistory = versionHistories.get(nodeRef);
 		if (versionHistory == null)
 			versionHistory = new MockVersionHistory();
+  /** The version type. */
 		NodeRef versionStore = nodeService.getRootNode(new StoreRef(PROTOCOL_WORKSPACE, STORE_ID));
+  /** The version type. */
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
 		NodeRef parentVersion = nodeService.getChildByName(versionStore, ASSOC_CONTAINS, nodeRef.getId());
 		if (parentVersion == null) {
@@ -121,6 +158,7 @@ public class MockVersionService implements VersionService, Serializable {
 			} catch (InterruptedException e) {
 			}
 		}
+  /** The version type. */
 		properties = new HashMap<QName, Serializable>();
 		properties.put(PROP_NAME, name);
 		properties.put(PROP_QNAME_FROZEN_NODE_REF, nodeRef.getId());
@@ -132,6 +170,7 @@ public class MockVersionService implements VersionService, Serializable {
 				.createNode(parentVersion, CHILD_QNAME_VERSIONS,
 						QName.createQName(CONTENT_MODEL_PREFIX, name, namespaceService), TYPE_CONTENT, properties)
 				.getChildRef();
+  /** The name. */
 		inputStream = new ByteArrayInputStream(text);
 		writer = contentService.getWriter(versionedNode, PROP_CONTENT, true);
 		writer.setMimetype(mimetypeService.getMimetype(mimetypeService.getExtension(name)));
@@ -151,35 +190,77 @@ public class MockVersionService implements VersionService, Serializable {
 	}
 
 	@Override
+ /**
+ * Get version history.
+ *
+ * @param nodeRef the node ref
+ * @return the version history
+ */
 	public VersionHistory getVersionHistory(NodeRef nodeRef) throws AspectMissingException {
+  /**
+  * Get version history.
+  *
+  * @param nodeRef the node ref
+  * @return the version history
+  */
 		return versionHistories.get(nodeRef);
 	}
 
 	@Override
+ /**
+ * Get current version.
+ *
+ * @param nodeRef the node ref
+ * @return the version
+ */
 	public Version getCurrentVersion(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+ /**
+ * Revert.
+ *
+ * @param nodeRef the node ref
+ */
 	public void revert(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
+ /**
+ * Revert.
+ *
+ * @param nodeRef the node ref
+ * @param deep the deep
+ */
 	public void revert(NodeRef nodeRef, boolean deep) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
+ /**
+ * Revert.
+ *
+ * @param nodeRef the node ref
+ * @param version the version
+ */
 	public void revert(NodeRef nodeRef, Version version) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
+ /**
+ * Revert.
+ *
+ * @param nodeRef the node ref
+ * @param version the version
+ * @param deep the deep
+ */
 	public void revert(NodeRef nodeRef, Version version, boolean deep) {
 		// TODO Auto-generated method stub
 
@@ -199,45 +280,89 @@ public class MockVersionService implements VersionService, Serializable {
 	}
 
 	@Override
+ /**
+ * Delete version history.
+ *
+ * @param nodeRef the node ref
+ */
 	public void deleteVersionHistory(NodeRef nodeRef) throws AspectMissingException {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
+ /**
+ * Delete version.
+ *
+ * @param nodeRef the node ref
+ * @param version the version
+ */
 	public void deleteVersion(NodeRef nodeRef, Version version) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
+ /**
+ * Ensure versioning enabled.
+ *
+ * @param nodeRef the node ref
+ * @param versionProperties the version properties
+ */
 	public void ensureVersioningEnabled(NodeRef nodeRef, Map<QName, Serializable> versionProperties) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
+ /**
+ * Register version label policy.
+ *
+ * @param typeQName the type q name
+ * @param policy the policy
+ */
 	public void registerVersionLabelPolicy(QName typeQName, CalculateVersionLabelPolicy policy) {
 		// TODO Auto-generated method stub
 
 	}
 
+ /**
+ * Set node service.
+ *
+ * @param nodeService the node service
+ */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+ /**
+ * Set content service.
+ *
+ * @param contentService the content service
+ */
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}
 
+ /**
+ * Set mimetype service.
+ *
+ * @param mimetypeService the mimetype service
+ */
 	public void setMimetypeService(MimetypeService mimetypeService) {
 		this.mimetypeService = mimetypeService;
 	}
 
+ /**
+ * Set namespace service.
+ *
+ * @param namespaceService the namespace service
+ */
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
 	}
 
+ /** Init. */
 	public void init() {
 		versionHistories.clear();
 	}

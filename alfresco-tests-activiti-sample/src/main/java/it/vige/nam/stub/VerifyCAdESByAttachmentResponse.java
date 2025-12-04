@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
 public class VerifyCAdESByAttachmentResponse {
 
 	@XmlElement(name = "return")
+ /** The return. */
 	protected SignedDocumentReportBean _return;
 
 	/**

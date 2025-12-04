@@ -54,9 +54,24 @@ import okhttp3.ResponseBody;
  */
 public class GenerationUtils {
 
+ /**
+ * Utility class providing helper methods.
+ * 
+ * @author vige
+ */
 	private Logger logger = Logger.getLogger(GenerationUtils.class);
 
+ /**
+ * Utility class providing helper methods.
+ * 
+ * @author vige
+ */
 	private SearchService searchService;
+ /**
+ * Utility class providing helper methods.
+ * 
+ * @author vige
+ */
 	private FileFolderService fileFolderService;
 	private ContentService contentService;
 	private NodeService nodeService;
@@ -247,6 +262,13 @@ public class GenerationUtils {
 	public void saveDocument(NodeRef destinazioneNodeRef, String docName, InputStream conversionResult,
 			Map<QName, Serializable> props) {
 
+  /**
+  * 
+  * @param destinazioneNodeRef
+  * @param docName
+  * @param conversionResult
+  * @param props
+  */
 		final FileInfo nodeFI = fileFolderService.create(destinazioneNodeRef, docName, ContentModel.TYPE_CONTENT);
 		final ContentWriter writer = contentService.getWriter(nodeFI.getNodeRef(), ContentModel.PROP_CONTENT, true);
 		writer.setMimetype(MimetypeMap.MIMETYPE_PDF);
@@ -271,6 +293,13 @@ public class GenerationUtils {
 	public NodeRef getRegolaDrools(String model) throws NoSuchElementException {
 
 		// the model must be found in the client's folders.
+  /**
+  * 
+  * @param path
+  * @param model
+  * @return
+  * @throws NoSuchElementException
+  */
 		StringBuilder rootQuerySpec = new StringBuilder("PATH:\"").append(modelliDroolsPath + "/*")
 				.append("\" AND (=@cm\\:name:\"").append(model).append(".drl\")");
 
@@ -295,8 +324,22 @@ public class GenerationUtils {
 	 *         value
 	 */
 	@SuppressWarnings("unchecked")
+ /**
+ * It parses the json
+ * 
+ * @param codice
+ * @param json
+ * @return a key-value map with key = concatenation of the separate path by ':'
+ *         value
+ */
 	public Map<String, String> parseJsonObject(String codice, JSONObject json) {
 
+  /**
+  * 
+  * @param codice
+  * @param jsonArray
+  * @return
+  */
 		Map<String, String> parsedJsonResult = new HashMap<>();
 
 		Set<String> keyset = json.keySet();
@@ -330,8 +373,20 @@ public class GenerationUtils {
 	 * @return
 	 */
 	public Map<String, String> parseJsonArray(String codice, JSONArray jsonArray) {
+  /**
+  * 
+  * @param codice
+  * @param jsonArray
+  * @return
+  */
 		Map<String, String> parsedJsonResult = new HashMap<>();
 
+  /**
+  * 
+  * @param codice
+  * @param jsonArray
+  * @return
+  */
 		for (Object obj : jsonArray) {
 
 			if (obj instanceof JSONObject) {
@@ -357,7 +412,21 @@ public class GenerationUtils {
 	 */
 	private InputStream setPDFMetadata(InputStream pdfStream) throws IOException {
 
+  /**
+  * Set PDF metadata.
+  *
+  * @param pdfStream the pdf stream
+  * @return the input stream
+  * @throws IOException the io exception
+  */
 		PDDocument doc = PDDocument.load(pdfStream);
+  /**
+  * Set PDF metadata.
+  *
+  * @param pdfStream the pdf stream
+  * @return the input stream
+  * @throws IOException the io exception
+  */
 		PDDocumentInformation info = doc.getDocumentInformation();
 
 		info.setProducer("Sample Bank - http://www.vige.it/");
@@ -371,82 +440,182 @@ public class GenerationUtils {
 		return new ByteArrayInputStream(out.toByteArray());
 	}
 
+ /**
+ * Get search service.
+ *
+ * @return the search service
+ */
 	public SearchService getSearchService() {
 		return searchService;
 	}
 
+ /**
+ * Set search service.
+ *
+ * @param searchService the search service
+ */
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
 
+ /**
+ * Get file folder service.
+ *
+ * @return the file folder service
+ */
 	public FileFolderService getFileFolderService() {
 		return fileFolderService;
 	}
 
+ /**
+ * Set file folder service.
+ *
+ * @param fileFolderService the file folder service
+ */
 	public void setFileFolderService(FileFolderService fileFolderService) {
 		this.fileFolderService = fileFolderService;
 	}
 
+ /**
+ * Get content service.
+ *
+ * @return the content service
+ */
 	public ContentService getContentService() {
 		return contentService;
 	}
 
+ /**
+ * Set content service.
+ *
+ * @param contentService the content service
+ */
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}
 
+ /**
+ * Get node service.
+ *
+ * @return the node service
+ */
 	public NodeService getNodeService() {
 		return nodeService;
 	}
 
+ /**
+ * Set node service.
+ *
+ * @param nodeService the node service
+ */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
+ /**
+ * Get modelli gen path.
+ *
+ * @return the string
+ */
 	public String getModelliGenPath() {
 		return modelliGenPath;
 	}
 
+ /**
+ * Set modelli gen path.
+ *
+ * @param modelliGenPath the modelli gen path
+ */
 	public void setModelliGenPath(String modelliGenPath) {
 		this.modelliGenPath = modelliGenPath;
 	}
 
+ /**
+ * Get modelli root path.
+ *
+ * @return the string
+ */
 	public String getModelliRootPath() {
 		return modelliRootPath;
 	}
 
+ /**
+ * Set modelli root path.
+ *
+ * @param modelliRootPath the modelli root path
+ */
 	public void setModelliRootPath(String modelliRootPath) {
 		this.modelliRootPath = modelliRootPath;
 	}
 
+ /**
+ * Get questions path.
+ *
+ * @return the string
+ */
 	public String getQuestionsPath() {
 		return questionsPath;
 	}
 
+ /**
+ * Set questions path.
+ *
+ * @param questionsPath the questions path
+ */
 	public void setQuestionsPath(String questionsPath) {
 		this.questionsPath = questionsPath;
 	}
 
+ /**
+ * Get modelli drools path.
+ *
+ * @return the string
+ */
 	public String getModelliDroolsPath() {
 		return modelliDroolsPath;
 	}
 
+ /**
+ * Set modelli drools path.
+ *
+ * @param modelliDroolsPath the modelli drools path
+ */
 	public void setModelliDroolsPath(String modelliDroolsPath) {
 		this.modelliDroolsPath = modelliDroolsPath;
 	}
 
+ /**
+ * Get auto generated name.
+ *
+ * @return the string
+ */
 	public String getAutoGeneratedName() {
 		return autoGeneratedName;
 	}
 
+ /**
+ * Set auto generated name.
+ *
+ * @param autoGeneratedName the auto generated name
+ */
 	public void setAutoGeneratedName(String autoGeneratedName) {
 		this.autoGeneratedName = autoGeneratedName;
 	}
 
+ /**
+ * Get xml envelope.
+ *
+ * @return the string
+ */
 	public String getXmlEnvelope() {
 		return xmlEnvelope;
 	}
 
+ /**
+ * Set xml envelope.
+ *
+ * @param xmlEnvelope the xml envelope
+ */
 	public void setXmlEnvelope(String xmlEnvelope) {
 		this.xmlEnvelope = xmlEnvelope;
 	}

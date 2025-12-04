@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class XAdESPreferences extends SignPreferences {
 
+ /** The sign element. */
 	protected String signElement;
 
 	/**

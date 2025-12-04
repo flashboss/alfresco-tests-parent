@@ -18,6 +18,12 @@ import org.alfresco.service.cmr.repository.NodeRef;
 public class MockRenditionService2 implements RenditionService2, Serializable {
 
 	@Override
+ /**
+ * Mock implementation of the Alfresco RenditionService2 for testing purposes.
+ * Provides stub implementations for testing without a running Alfresco server.
+ * 
+ * @author vige
+ */
 	public RenditionDefinitionRegistry2 getRenditionDefinitionRegistry2() {
 		// TODO Auto-generated method stub
 		return null;

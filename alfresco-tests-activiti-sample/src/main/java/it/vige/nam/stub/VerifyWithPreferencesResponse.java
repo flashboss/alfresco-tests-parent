@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
 public class VerifyWithPreferencesResponse {
 
 	@XmlElement(name = "return")
+ /** The return. */
 	protected SignedDocumentReportBean _return;
 
 	/**

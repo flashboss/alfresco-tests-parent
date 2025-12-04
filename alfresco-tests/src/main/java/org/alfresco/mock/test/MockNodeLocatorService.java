@@ -22,7 +22,23 @@ public class MockNodeLocatorService implements NodeLocatorService, Serializable 
 	private SearchService searchService;
 
 	@Override
+ /**
+ * Get node.
+ *
+ * @param locatorName the locator name
+ * @param source the source
+ * @param params the params
+ * @return the node ref
+ */
 	public NodeRef getNode(String locatorName, NodeRef source, Map<String, Serializable> params) {
+  /**
+  * Get node.
+  *
+  * @param locatorName the locator name
+  * @param source the source
+  * @param params the params
+  * @return the node ref
+  */
 		if (params != null && params.get("query") != null)
 			return searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, locatorName, params.get("query") + "")
 					.getNodeRef(0);
@@ -31,6 +47,12 @@ public class MockNodeLocatorService implements NodeLocatorService, Serializable 
 	}
 
 	@Override
+ /**
+ * Register.
+ *
+ * @param locatorName the locator name
+ * @param locator the locator
+ */
 	public void register(String locatorName, NodeLocator locator) {
 		// TODO Auto-generated method stub
 

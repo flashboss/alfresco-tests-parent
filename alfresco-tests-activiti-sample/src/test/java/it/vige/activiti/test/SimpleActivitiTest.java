@@ -52,15 +52,24 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 	 */
 	private final static String USER_NAME = "gonzo";
 
+ /** The date format. */
 	private final DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm:ss ZZZ yyyy");
 
+ /** The generation folder. */
 	private NodeRef generationFolder;
 
+ /** The initiator. */
 	private Initiator initiator = new Initiator();
 
+ /** The generation folder name. */
 	private String generationFolderName = "20191024_154711";
 
 	@Override
+ /**
+ * Init.
+ *
+ * @param variables the variables
+ */
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
@@ -94,6 +103,11 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 	 * @param identityService The service to create the users
 	 */
 	@Override
+ /**
+ * Create demo users for the application
+ *
+ * @param identityService The service to create the users
+ */
 	public void initDemoUsers(IdentityService identityService) {
 		createUser(identityService, ADMIN_USER_NAME, "Kermit", "The Frog", ADMIN_USER_NAME,
 				ADMIN_USER_NAME + "@activiti.org", null, asList(CONTRIBUTORS, "user", "admin"),
@@ -114,8 +128,18 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 	 * @param identityService The service to create the groups
 	 */
 	@Override
+ /**
+ * Create demo groups for teh application
+ *
+ * @param identityService The service to create the groups
+ */
 	public void initDemoGroups(IdentityService identityService) {
 		String[] assignmentGroups = new String[] { CONTRIBUTORS };
+  /**
+  * Create demo groups for teh application
+  *
+  * @param identityService The service to create the groups
+  */
 		for (String groupId : assignmentGroups) {
 			createGroup(identityService, groupId, "assignment");
 		}
@@ -127,10 +151,13 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 	}
 
 	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/SimpleProcess.bpmn" })
+ /** Test workflow. */
 	public void testWorkflow() throws ParseException {
+  /** Test workflow. */
 		Map<String, Object> variables = new HashMap<String, Object>();
 		init(variables);
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
+  /** Test workflow. */
 		ServiceRegistry serviceRegistry = activitiProcessEngineConfiguration.getServiceRegistry();
 
 		// Start process
@@ -161,6 +188,7 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		ResultSet resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
 				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"rar/contracts_" + generationFolderName + ".zip\"");
 		NodeRef createdNodeRef = resultQ.getNodeRef(0);
+  /** The path. */
 		String path = nodeService.getPath(createdNodeRef).toString();
 		Assert.assertTrue("Added a zip file in the RAR folder",
 				path.endsWith("workspace/SpacesStore/company_home/sites/simple-site/documentLibrary/rar/contracts_"
@@ -170,6 +198,7 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		resultQ = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, SearchService.LANGUAGE_FTS_ALFRESCO,
 				"PATH:\"pkg_919f220e-870a-4c56-ba11-5030ee5325f0/contracts_" + generationFolderName + ".zip\"");
 		createdNodeRef = resultQ.getNodeRef(0);
+  /** The path. */
 		path = nodeService.getPath(createdNodeRef).toString();
 		Assert.assertTrue("File zip in the activiti folder",
 				path.endsWith("workspace/SpacesStore/workflow/packages/pkg_919f220e-870a-4c56-ba11-5030ee5325f0/contracts_"

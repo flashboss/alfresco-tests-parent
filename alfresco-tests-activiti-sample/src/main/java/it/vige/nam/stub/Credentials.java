@@ -41,11 +41,17 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class Credentials {
 
+ /** The id otp. */
 	protected int idOtp;
+ /** The otp. */
 	protected String otp;
+ /** The password. */
 	protected String password;
+ /** The security code. */
 	protected String securityCode;
+ /** The session key. */
 	protected String sessionKey;
+ /** The username. */
 	protected String username;
 
 	/**

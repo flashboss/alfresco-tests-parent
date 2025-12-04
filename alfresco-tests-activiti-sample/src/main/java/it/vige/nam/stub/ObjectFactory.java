@@ -48,6 +48,11 @@ public class ObjectFactory {
 	 * 
 	 */
 	public SignCAdESByAttachment createSignCAdESByAttachment() {
+  /**
+  * Create an instance of {@link SignCAdESByAttachment }
+  *
+  * @return the result
+  */
 		return new SignCAdESByAttachment();
 	}
 
@@ -56,6 +61,11 @@ public class ObjectFactory {
 	 * 
 	 */
 	public SignCAdESByAttachmentResponse createSignCAdESByAttachmentResponse() {
+  /**
+  * Create an instance of {@link SignCAdESByAttachmentResponse }
+  *
+  * @return the result
+  */
 		return new SignCAdESByAttachmentResponse();
 	}
 
@@ -64,6 +74,11 @@ public class ObjectFactory {
 	 * 
 	 */
 	public VerifyCAdESByAttachment createVerifyCAdESByAttachment() {
+  /**
+  * Create an instance of {@link VerifyCAdESByAttachment }
+  *
+  * @return the result
+  */
 		return new VerifyCAdESByAttachment();
 	}
 
@@ -72,6 +87,11 @@ public class ObjectFactory {
 	 * 
 	 */
 	public VerifyCAdESByAttachmentResponse createVerifyCAdESByAttachmentResponse() {
+  /**
+  * Create an instance of {@link VerifyCAdESByAttachmentResponse }
+  *
+  * @return the result
+  */
 		return new VerifyCAdESByAttachmentResponse();
 	}
 
@@ -80,6 +100,11 @@ public class ObjectFactory {
 	 * 
 	 */
 	public WsFaultBean createWsFaultBean() {
+  /**
+  * Create an instance of {@link WsFaultBean }
+  *
+  * @return the result
+  */
 		return new WsFaultBean();
 	}
 
@@ -88,6 +113,11 @@ public class ObjectFactory {
 	 * 
 	 */
 	public VerifyPreferences createVerifyPreferences() {
+  /**
+  * Create an instance of {@link VerifyPreferences }
+  *
+  * @return the result
+  */
 		return new VerifyPreferences();
 	}
 
@@ -96,6 +126,11 @@ public class ObjectFactory {
 	 * 
 	 */
 	public SignedDocumentReportBean createSignedDocumentReportBean() {
+  /**
+  * Create an instance of {@link SignedDocumentReportBean }
+  *
+  * @return the result
+  */
 		return new SignedDocumentReportBean();
 	}
 
@@ -104,6 +139,11 @@ public class ObjectFactory {
 	 * 
 	 */
 	public NoteReportBean createNoteReportBean() {
+  /**
+  * Create an instance of {@link NoteReportBean }
+  *
+  * @return the result
+  */
 		return new NoteReportBean();
 	}
 
@@ -112,6 +152,11 @@ public class ObjectFactory {
 	 * 
 	 */
 	public SignatureReportBean createSignatureReportBean() {
+  /**
+  * Create an instance of {@link SignatureReportBean }
+  *
+  * @return the result
+  */
 		return new SignatureReportBean();
 	}
 
@@ -120,6 +165,11 @@ public class ObjectFactory {
 	 * 
 	 */
 	public TimestampReportBean createTimestampReportBean() {
+  /**
+  * Create an instance of {@link TimestampReportBean }
+  *
+  * @return the result
+  */
 		return new TimestampReportBean();
 	}
 
@@ -128,6 +178,11 @@ public class ObjectFactory {
 	 * 
 	 */
 	public Credentials createCredentials() {
+  /**
+  * Create an instance of {@link Credentials }
+  *
+  * @return the result
+  */
 		return new Credentials();
 	}
 
@@ -136,6 +191,11 @@ public class ObjectFactory {
 	 * 
 	 */
 	public CAdESPreferences createCAdESPreferences() {
+  /**
+  * Create an instance of {@link CAdESPreferences }
+  *
+  * @return the result
+  */
 		return new CAdESPreferences();
 	}
 
@@ -144,6 +204,11 @@ public class ObjectFactory {
 	 * 
 	 */
 	public SignPreferences createSignPreferences() {
+  /**
+  * Create an instance of {@link SignPreferences }
+  *
+  * @return the result
+  */
 		return new SignPreferences();
 	}
 
@@ -152,6 +217,11 @@ public class ObjectFactory {
 	 * 
 	 */
 	public TimeStampPreferences createTimeStampPreferences() {
+  /**
+  * Create an instance of {@link TimeStampPreferences }
+  *
+  * @return the result
+  */
 		return new TimeStampPreferences();
 	}
 
@@ -172,6 +242,12 @@ public class ObjectFactory {
 	 * 
 	 */
 	@XmlElementDecl(namespace = "http://service.ws.nam/", name = "signCAdESByAttachmentResponse")
+ /**
+ * Create an instance of {@link JAXBElement }{@code <}{@link SignCAdESByAttachmentResponse }{@code
+ * >}}
+ *
+ * @return the result
+ */
 	public JAXBElement<SignCAdESByAttachmentResponse> createSignCAdESByAttachmentResponse(
 			SignCAdESByAttachmentResponse value) {
 		return new JAXBElement<SignCAdESByAttachmentResponse>(_SignCAdESByAttachmentResponse_QNAME,
@@ -195,6 +271,12 @@ public class ObjectFactory {
 	 * 
 	 */
 	@XmlElementDecl(namespace = "http://service.ws.nam/", name = "verifyCAdESByAttachmentResponse")
+ /**
+ * Create an instance of {@link JAXBElement }{@code <}{@link VerifyCAdESByAttachmentResponse
+ * }{@code >}}
+ *
+ * @return the result
+ */
 	public JAXBElement<VerifyCAdESByAttachmentResponse> createVerifyCAdESByAttachmentResponse(
 			VerifyCAdESByAttachmentResponse value) {
 		return new JAXBElement<VerifyCAdESByAttachmentResponse>(_VerifyCAdESByAttachmentResponse_QNAME,
@@ -207,7 +289,19 @@ public class ObjectFactory {
 	 * 
 	 */
 	@XmlElementDecl(namespace = "http://service.ws.nam/", name = "WSException")
+ /**
+ * Create an instance of {@link JAXBElement }{@code <}{@link WsFaultBean }{@code >}}
+ *
+ * @param value the value
+ * @return the result
+ */
 	public JAXBElement<WsFaultBean> createWSException(WsFaultBean value) {
+  /**
+  * Create an instance of {@link JAXBElement }{@code <}{@link WsFaultBean }{@code >}}
+  *
+  * @param value the value
+  * @return the result
+  */
 		return new JAXBElement<WsFaultBean>(_WSException_QNAME, WsFaultBean.class, null, value);
 	}
 

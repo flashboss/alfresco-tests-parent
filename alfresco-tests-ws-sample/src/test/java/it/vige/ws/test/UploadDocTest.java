@@ -63,19 +63,27 @@ public class UploadDocTest extends AbstractWSForm {
 	private UploadDoc uploadDoc;
 
 	@Override
+ /**
+ * Get abstract web script.
+ *
+ * @return the abstract web script
+ */
 	protected AbstractWebScript getAbstractWebScript() {
 		return uploadDoc;
 	}
 
 	@Before
+ /** Init. */
 	public void init() {
 		super.init();
+  /** Init. */
 		templateVars = new HashMap<String, String>();
 		templateVars.put("idpartner", ID_PARTNER);
 		templateVars.put("idpratica", ID_PRATICA);
 		templateVars.put("iddoc", ID_DOC);
 
 		// Creating initial folders and sites
+  /** Init. */
 		NodeRef bdm = insertFolder(sites, "vige-site");
 		NodeRef bdmDL = insertFolder(bdm, "documentLibrary");
 		NodeRef sys = insertFolder(bdmDL, "sys");
@@ -83,11 +91,15 @@ public class UploadDocTest extends AbstractWSForm {
 	}
 
 	@Test
+ /** Execute. */
 	public void execute() throws ParseException, IOException {
 
 		logger.debug("start test");
+  /** Execute. */
 		SearchService searchService = serviceRegistry.getSearchService();
+  /** Execute. */
 		NodeService nodeService = serviceRegistry.getNodeService();
+  /** Execute. */
 		Map<String, Serializable> fields = new HashMap<String, Serializable>();
 		{
 			fields.put("datacreazione", DATA_CREAZIONE);

@@ -39,9 +39,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignPAdESRemote {
 
+ /** The credentials. */
 	protected Credentials credentials;
 	protected byte[] buffer;
 	@XmlElement(name = "PAdESPreferences")
+ /** The p ad e s preferences. */
 	protected PAdESPreferences pAdESPreferences;
 
 	/**

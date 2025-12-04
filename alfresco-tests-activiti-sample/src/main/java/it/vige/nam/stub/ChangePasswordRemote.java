@@ -37,7 +37,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class ChangePasswordRemote {
 
+ /** The credentials. */
 	protected Credentials credentials;
+ /** The new password. */
 	protected String newPassword;
 
 	/**

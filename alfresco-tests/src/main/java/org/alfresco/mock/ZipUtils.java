@@ -35,21 +35,48 @@ public class ZipUtils {
 
 	public final static File TEMP_DIR = new File(MockContentService.FOLDER_TEST + "temp");
 
+ /**
+ * Unzip.
+ *
+ * @param inputStream the input stream
+ * @param targetDirectory the target directory
+ */
 	public static void unzip(InputStream inputStream, File targetDirectory) throws IOException {
 		targetDirectory.mkdir();
 		byte[] buffer = new byte[1024];
+  /**
+  * Unzip.
+  *
+  * @param inputStream the input stream
+  * @param targetDirectory the target directory
+  */
 		ZipInputStream zis = new ZipInputStream(inputStream);
+  /**
+  * Unzip.
+  *
+  * @param inputStream the input stream
+  * @param targetDirectory the target directory
+  */
 		ZipEntry zipEntry = zis.getNextEntry();
 		while (zipEntry != null) {
 			String[] filePaths = zipEntry.getName().split("/");
 			String fileName = filePaths[filePaths.length - 1];
+   /** The file name. */
 			File newFile = new File(targetDirectory + "/" + fileName);
+   /** The file name. */
 			FileOutputStream fos = new FileOutputStream(newFile);
 			int len;
+   /** The file name. */
 			while ((len = zis.read(buffer)) > 0) {
 				fos.write(buffer, 0, len);
 			}
 			fos.close();
+   /**
+   * Unzip.
+   *
+   * @param inputStream the input stream
+   * @param targetDirectory the target directory
+   */
 			zipEntry = zis.getNextEntry();
 		}
 		zis.closeEntry();
@@ -59,29 +86,86 @@ public class ZipUtils {
 	public static String getZipEntryContent(File parent, final String documentName) throws IOException {
 		FileFilter fileFiler = new FileFilter() {
 			@Override
+   /**
+   * Accept.
+   *
+   * @param pathname the pathname
+   * @return the boolean
+   */
 			public boolean accept(File pathname) {
+    /**
+    * Accept.
+    *
+    * @param pathname the pathname
+    * @return the boolean
+    */
 				return pathname.getName().startsWith(documentName);
 			}
 		};
 		File[] unzippedFiles = parent.listFiles(fileFiler);
 		byte[] bytes = new byte[1024];
+  /**
+  * Get zip entry content.
+  *
+  * @param parent the parent
+  * @return the string
+  */
 		try (InputStream inputStream = new FileInputStream(unzippedFiles[0])) {
 			inputStream.read(bytes);
 		}
 		return new String(bytes);
 	}
 
+ /**
+ * Get zip entry content.
+ *
+ * @param parent the parent
+ * @return the string
+ */
 	public static String getZipEntryContent(File parent) throws IOException {
+  /**
+  * Get zip entry content.
+  *
+  * @param parent the parent
+  * @return the string
+  */
 		File[] unzippedFiles = parent.listFiles();
 		byte[] bytes = new byte[1024];
+  /**
+  * Get zip entry content.
+  *
+  * @param parent the parent
+  * @return the string
+  */
 		try (InputStream inputStream = new FileInputStream(unzippedFiles[0])) {
 			inputStream.read(bytes);
 		}
 		return new String(bytes);
 	}
 
+ /**
+ * Add entry to zip.
+ *
+ * @param text the text
+ * @param entryName the entry name
+ * @param output the output
+ */
 	public static void addEntryToZip(String text, String entryName, OutputStream output) throws IOException {
+  /**
+  * Add entry to zip.
+  *
+  * @param text the text
+  * @param entryName the entry name
+  * @param output the output
+  */
 		InputStream inputStream = new ByteArrayInputStream(text.getBytes());
+  /**
+  * Add entry to zip.
+  *
+  * @param text the text
+  * @param entryName the entry name
+  * @param output the output
+  */
 		ZipOutputStream zipOut = new ZipOutputStream(output);
 		ZipEntry zipEntry = new ZipEntry(entryName);
 		zipOut.putNextEntry(zipEntry);

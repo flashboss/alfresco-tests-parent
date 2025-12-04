@@ -19,21 +19,54 @@ import org.slf4j.Logger;
  */
 public class ModuleClassLoader extends ClassLoader {
 
+    /** The s e p a r a t o r. */
     private static final String SEPARATOR = "/";
+    /** The module path. */
     private static final String MODULE_PATH = "target/classes/alfresco/module";
+    /** The module path test. */
     private static final String MODULE_PATH_TEST = "target/test-classes/alfresco/module";
 
+    /** The logger. */
     private Logger logger = getLogger(getClass());
 
+    /**
+    * Constructs a new module class loader.
+    *
+    * @return the result
+    */
     public ModuleClassLoader() {
         super(currentThread()
                 .getContextClassLoader());
     }
 
     @Override
+    /**
+    * Get resource.
+    *
+    * @param name the name
+    * @return the u r l
+    */
     public URL getResource(String name) {
+        /**
+        * Get resource.
+        *
+        * @param name the name
+        * @return the u r l
+        */
         URL url = super.getResource(name);
+        /**
+        * Get resource.
+        *
+        * @param name the name
+        * @return the u r l
+        */
         if (url == null && name != null && !name.contains(SEPARATOR)) {
+            /**
+            * Get resource.
+            *
+            * @param name the name
+            * @return the u r l
+            */
             url = find(MODULE_PATH_TEST, name);
             if (url == null)
                 url = find(MODULE_PATH, name);
@@ -41,8 +74,22 @@ public class ModuleClassLoader extends ClassLoader {
         return url;
     }
 
+    /**
+    * Find.
+    *
+    * @param modulePath the module path
+    * @param searchTerm the search term
+    * @return the u r l
+    */
     public URL find(String modulePath, String searchTerm) {
         URL pathResult = null;
+        /**
+        * Find.
+        *
+        * @param modulePath the module path
+        * @param searchTerm the search term
+        * @return the u r l
+        */
         URI directoryPath = new File(modulePath).toURI();
         try {
             Path pathRoot = Paths.get(directoryPath);

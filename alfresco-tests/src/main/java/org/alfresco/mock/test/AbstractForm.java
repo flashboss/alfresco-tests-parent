@@ -56,15 +56,24 @@ public abstract class AbstractForm {
 	@Autowired
 	protected ServiceRegistry serviceRegistry;
 
+ /** The spaces store. */
 	protected NodeRef spacesStore;
+ /** The archive. */
 	protected NodeRef archive;
+ /** The sites. */
 	protected NodeRef sites;
+ /** The shared. */
 	protected NodeRef shared;
+ /** The today. */
 	protected Date today;
+ /** The today str. */
 	protected String todayStr;
+ /** The company home. */
 	protected NodeRef companyHome;
 
+ /** Init. */
 	public void init() {
+  /** Init. */
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
 		namespaceService.registerNamespace(NamespaceService.APP_MODEL_PREFIX, NamespaceService.APP_MODEL_1_0_URI);
 		namespaceService.registerNamespace(SiteModel.SITE_MODEL_PREFIX, SiteModel.SITE_MODEL_URL);
@@ -99,14 +108,52 @@ public abstract class AbstractForm {
 		insertFolder(system, SiteModel.SITE_MODEL_PREFIX, "authorities");
 	}
 
+ /**
+ * Insert folder.
+ *
+ * @param parent the parent
+ * @param name the name
+ * @return the node ref
+ */
 	protected NodeRef insertFolder(NodeRef parent, String name) {
+  /**
+  * Insert folder.
+  *
+  * @param parent the parent
+  * @param name the name
+  * @return the node ref
+  */
 		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
+  /**
+  * Insert folder.
+  *
+  * @param parent the parent
+  * @param name the name
+  * @return the node ref
+  */
 		return fileFolderService.create(parent, name, ContentModel.TYPE_FOLDER).getNodeRef();
 	}
 
+ /**
+ * Insert folder.
+ *
+ * @param parent the parent
+ * @param prefix the prefix
+ * @param localName the local name
+ * @return the node ref
+ */
 	protected NodeRef insertFolder(NodeRef parent, String prefix, String localName) {
+  /**
+  * Insert folder.
+  *
+  * @param parent the parent
+  * @param name the name
+  * @return the node ref
+  */
 		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
+  /** Init. */
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
+  /** The qname. */
 		QName qname = QName.createQName(prefix, localName, namespaceService);
 		return fileFolderService.create(parent, qname.getPrefixString(), ContentModel.TYPE_FOLDER).getNodeRef();
 	}
@@ -129,17 +176,66 @@ public abstract class AbstractForm {
 		return ZipUtils.insertZip(parent, zipName, entryName, text, properties, serviceRegistry);
 	}
 
+ /**
+ * Encrypt.
+ *
+ * @param inputStream the input stream
+ * @return the string
+ */
 	protected String encrypt(InputStream inputStream) throws Exception {
+  /**
+  * Encrypt.
+  *
+  * @param inputStream the input stream
+  * @return the string
+  */
 		MessageDigest digest = MessageDigest.getInstance("SHA-256");
+  /**
+  * Encrypt.
+  *
+  * @param inputStream the input stream
+  * @return the string
+  */
 		byte[] contentBytes = IOUtils.toByteArray(inputStream);
+  /**
+  * Encrypt.
+  *
+  * @param inputStream the input stream
+  * @return the string
+  */
 		byte[] hash = digest.digest(contentBytes);
+  /** The hash orig string. */
 		String hashOrigString = Base64.encodeBase64String(hash);
 		return hashOrigString;
 	}
 
+ /**
+ * Get object from xml.
+ *
+ * @param createdNodeRef the created node ref
+ * @param objectClass the object class
+ */
 	protected <T> T getObjectFromXml(NodeRef createdNodeRef, Class<T> objectClass) throws Exception {
+  /**
+  * Get object from xml.
+  *
+  * @param createdNodeRef the created node ref
+  * @param objectClass the object class
+  */
 		ContentService contentService = serviceRegistry.getContentService();
+  /**
+  * Get object from xml.
+  *
+  * @param createdNodeRef the created node ref
+  * @param objectClass the object class
+  */
 		final JAXBContext contextPdv = JAXBContext.newInstance(objectClass);
+  /**
+  * Get object from xml.
+  *
+  * @param createdNodeRef the created node ref
+  * @param objectClass the object class
+  */
 		final Unmarshaller unmarshallerPdv = contextPdv.createUnmarshaller();
 		InputStream inputStream = contentService.getReader(createdNodeRef, ContentModel.PROP_CONTENT)
 				.getContentInputStream();
@@ -149,8 +245,10 @@ public abstract class AbstractForm {
 		return result;
 	}
 
+ /** Execute action. */
 	protected void executeAction() {
 		// data per cercare i file generati
+  /** Execute action. */
 		today = new Date();
 	}
 

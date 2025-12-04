@@ -40,10 +40,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignCAdES {
 
+ /** The username. */
 	protected String username;
+ /** The password. */
 	protected String password;
 	protected byte[] buffer;
 	@XmlElement(name = "CAdESPreferences")
+ /** The c ad e s preferences. */
 	protected CAdESPreferences cAdESPreferences;
 
 	/**

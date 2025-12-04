@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
 public class GetAvailableSignaturesResponse {
 
 	@XmlElement(name = "return")
+ /** The return. */
 	protected long _return;
 
 	/**

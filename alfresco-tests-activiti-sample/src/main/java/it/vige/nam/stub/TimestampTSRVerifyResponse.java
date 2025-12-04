@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
 public class TimestampTSRVerifyResponse {
 
 	@XmlElement(name = "return")
+ /** The return. */
 	protected TimestampReportBean _return;
 
 	/**

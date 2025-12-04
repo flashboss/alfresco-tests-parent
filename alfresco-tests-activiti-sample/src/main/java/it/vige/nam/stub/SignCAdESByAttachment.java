@@ -41,10 +41,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignCAdESByAttachment {
 
+ /** The credentials. */
 	protected Credentials credentials;
 	@XmlMimeType("application/octet-stream")
+ /** The input data handler. */
 	protected DataHandler inputDataHandler;
 	@XmlElement(name = "CAdESPreferences")
+ /** The c ad e s preferences. */
 	protected CAdESPreferences cAdESPreferences;
 
 	/**

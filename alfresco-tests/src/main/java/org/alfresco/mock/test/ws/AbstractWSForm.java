@@ -23,11 +23,14 @@ public abstract class AbstractWSForm extends AbstractForm {
 	@Autowired
 	private Description description;
 	
+ /** The date format. */
 	protected DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmm");
 
+ /** The date format. */
 	protected abstract AbstractWebScript getAbstractWebScript();
 
 	@Before
+ /** Init. */
 	public void init() {
 		super.init();
 		getAbstractWebScript().init(container, description);

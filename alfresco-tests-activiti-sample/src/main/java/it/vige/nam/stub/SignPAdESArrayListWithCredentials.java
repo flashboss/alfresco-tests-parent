@@ -42,9 +42,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignPAdESArrayListWithCredentials {
 
+ /** The credentials. */
 	protected Credentials credentials;
 	protected List<byte[]> bufferList;
 	@XmlElement(name = "PAdESPreferences")
+ /** The p ad e s preferences. */
 	protected PAdESPreferences pAdESPreferences;
 
 	/**

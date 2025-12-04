@@ -25,10 +25,16 @@ public class MockWriter extends Writer {
 	public void close() throws IOException {
 	}
 
+ /** Get model. */
 	public Map<String, Object> getModel() {
 		return model;
 	}
 
+ /**
+ * Set model.
+ *
+ * @param model the model
+ */
 	public void setModel(Map<String, Object> model) {
 		this.model = model;
 	}

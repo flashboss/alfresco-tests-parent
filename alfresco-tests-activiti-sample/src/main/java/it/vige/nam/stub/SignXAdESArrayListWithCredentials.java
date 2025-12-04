@@ -42,9 +42,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignXAdESArrayListWithCredentials {
 
+ /** The credentials. */
 	protected Credentials credentials;
 	protected List<byte[]> bufferList;
 	@XmlElement(name = "XAdESPreferences")
+ /** The x ad e s preferences. */
 	protected XAdESPreferences xAdESPreferences;
 
 	/**

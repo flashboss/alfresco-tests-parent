@@ -11,6 +11,7 @@ public abstract class VigeWSContentModel {
 
     private VigeWSContentModel() { }
 
+    /** The vige ws namespace. */
     public static final String VIGE_WS_NAMESPACE = "http://vige.it/model/alfresco-tests-vigews/1.0";
 
     public static final QName DOC_ASPECT= QName.createQName(VIGE_WS_NAMESPACE,"documentsbank");

@@ -40,9 +40,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 public class VerifyPreferences {
 
+ /** The nam. */
 	protected boolean nam;
+ /** The pdf encryption password. */
 	protected String pdfEncryptionPassword;
 	@XmlSchemaType(name = "dateTime")
+ /** The verify on date. */
 	protected XMLGregorianCalendar verifyOnDate;
 
 	/**

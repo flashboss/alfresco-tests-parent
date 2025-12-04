@@ -61,21 +61,48 @@ import org.subethamail.smtp.server.SMTPServer;
  */
 public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
+ /** The spaces store. */
 	protected NodeRef spacesStore;
+ /** The archive. */
 	protected NodeRef archive;
+ /** The sites. */
 	protected NodeRef sites;
+ /** The shared. */
 	protected NodeRef shared;
+ /** The company home. */
 	protected NodeRef companyHome;
+ /** The bpm package. */
 	protected ActivitiScriptNode bpmPackage;
+ /** The initiator. */
 	protected Initiator initiator;
 
+ /**
+ * Constructs a new abstract activiti form.
+ *
+ * @return the result
+ */
 	public AbstractActivitiForm() {
 		super("test-module-context.xml");
 	}
 
+ /**
+ * Init.
+ *
+ * @param variables the variables
+ */
 	public void init(Map<String, Object> variables) {
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
+  /**
+  * Init.
+  *
+  * @param variables the variables
+  */
 		ServiceRegistry serviceRegistry = activitiProcessEngineConfiguration.getServiceRegistry();
+  /**
+  * Init.
+  *
+  * @param variables the variables
+  */
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
 		namespaceService.registerNamespace(NamespaceService.APP_MODEL_PREFIX, NamespaceService.APP_MODEL_1_0_URI);
 		namespaceService.registerNamespace(SiteModel.SITE_MODEL_PREFIX, SiteModel.SITE_MODEL_URL);
@@ -130,6 +157,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		variables.put("utils", utils);
 	}
 
+ /** End. */
 	public void end() {
 		// CLEANING DB
 		deleteAllIdentities(identityService);
@@ -141,16 +169,37 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
 	}
 
+ /**
+ * Insert folder.
+ *
+ * @param parent the parent
+ * @param name the name
+ * @return the node ref
+ */
 	protected NodeRef insertFolder(NodeRef parent, String name) {
 		return NodeUtils.insertFolder(parent, name, ((ActivitiProcessEngineConfiguration) processEngineConfiguration)
 				.getServiceRegistry().getFileFolderService());
 	}
 
+ /**
+ * Insert folder.
+ *
+ * @param parent the parent
+ * @param prefix the prefix
+ * @param localName the local name
+ * @return the node ref
+ */
 	protected NodeRef insertFolder(NodeRef parent, String prefix, String localName) {
 		ServiceRegistry serviceRegistry = ((ActivitiProcessEngineConfiguration) processEngineConfiguration)
 				.getServiceRegistry();
 		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
+  /**
+  * Init.
+  *
+  * @param variables the variables
+  */
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
+  /** The qname. */
 		QName qname = QName.createQName(prefix, localName, namespaceService);
 		return fileFolderService.create(parent, qname.getPrefixString(), ContentModel.TYPE_FOLDER).getNodeRef();
 	}
@@ -169,27 +218,38 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	}
 
 	@Override
+ /** Initialize process engine. */
 	protected void initializeProcessEngine() {
+  /** Initialize process engine. */
 		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+  /** Initialize process engine. */
 		XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 		xmlBeanDefinitionReader.setValidationMode(XmlBeanDefinitionReader.VALIDATION_XSD);
+  /** Initialize process engine. */
 		Resource springResource = new ClassPathResource(activitiConfigurationResource);
 		xmlBeanDefinitionReader.loadBeanDefinitions(springResource);
 		ProcessEngineConfigurationImpl processEngineConfiguration = (ProcessEngineConfigurationImpl) beanFactory
 				.getBean("processEngineConfiguration");
+  /** Initialize process engine. */
 		Map<Object, Object> beans = new SpringBeanFactoryProxyMap(beanFactory);
 		for (String bName : beanFactory.getBeanDefinitionNames()) {
 			BeanDefinition beanDefinition = beanFactory.getBeanDefinition(bName);
 			boolean isAbstract = beanDefinition.isAbstract();
+   /** The class name. */
 			String className = beanDefinition.getBeanClassName();
+   /** The class name. */
 			if (className != null) {
+    /** The simple class name. */
 				String simpleClassName = className.substring(className.lastIndexOf(".") + 1);
+    /** The parent name. */
 				String parentName = beanDefinition.getParentName();
+    /** The parent name. */
 				if (!isAbstract) {
 					if (!bName.equals(simpleClassName) && parentName != null && parentName.equals("baseJavaDelegate")) {
 						beanFactory.registerAlias(bName, simpleClassName);
 					}
 					if (className.equals(PropertySourcesPlaceholderConfigurer.class.getName())) {
+      /** The parent name. */
 						Object bean = beanFactory.getBean(bName);
 						PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer = (PropertySourcesPlaceholderConfigurer) bean;
 						propertyPlaceholderConfigurer.postProcessBeanFactory(beanFactory);
@@ -201,23 +261,38 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		processEngine = processEngineConfiguration.buildProcessEngine();
 	}
 
+ /** The smtp server. */
 	private SMTPServer smtpServer;
 
+ /**
+ * Get smtp server.
+ *
+ * @return the s m t p server
+ */
 	public SMTPServer getSmtpServer() {
 		return smtpServer;
 	}
 
+ /**
+ * Set smtp server.
+ *
+ * @param smtpServer the smtp server
+ */
 	public void setSmtpServer(SMTPServer smtpServer) {
 		this.smtpServer = smtpServer;
 	}
 
+ /** Start mail server. */
 	public void startMailServer() {
+  /** Start mail server. */
 		MockMessageHandlerFactory myFactory = new MockMessageHandlerFactory();
+  /** Start mail server. */
 		smtpServer = new SMTPServer(myFactory);
 		smtpServer.setPort(25000);
 		smtpServer.start();
 	}
 
+ /** Stop mail server. */
 	public void stopMailServer() {
 		smtpServer.stop();
 	}
@@ -262,8 +337,29 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
 	}
 
+ /**
+ * Create group.
+ *
+ * @param identityService the identity service
+ * @param groupId the group id
+ * @param type the type
+ */
 	public void createGroup(IdentityService identityService, String groupId, String type) {
+  /**
+  * Create group.
+  *
+  * @param identityService the identity service
+  * @param groupId the group id
+  * @param type the type
+  */
 		if (identityService.createGroupQuery().groupId(groupId).count() == 0) {
+   /**
+   * Create group.
+   *
+   * @param identityService the identity service
+   * @param groupId the group id
+   * @param type the type
+   */
 			Group newGroup = identityService.newGroup(groupId);
 			newGroup.setName(groupId.substring(0, 1).toUpperCase() + groupId.substring(1));
 			newGroup.setType(type);
@@ -271,19 +367,49 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		}
 	}
 
+ /**
+ * Delete all identities.
+ *
+ * @param identityService the identity service
+ */
 	public void deleteAllIdentities(IdentityService identityService) {
+  /**
+  * Delete all identities.
+  *
+  * @param identityService the identity service
+  */
 		List<User> users = identityService.createUserQuery().list();
+  /**
+  * Delete all identities.
+  *
+  * @param identityService the identity service
+  */
 		for (User user : users) {
 			identityService.deleteUser(user.getId());
 		}
+  /**
+  * Delete all identities.
+  *
+  * @param identityService the identity service
+  */
 		List<Group> groups = identityService.createGroupQuery().list();
 		for (Group group : groups) {
 			identityService.deleteGroup(group.getId());
 		}
 	}
 
+ /**
+ * Delete all histories.
+ *
+ * @param historyService the history service
+ */
 	public void deleteAllHistories(HistoryService historyService) {
 		List<HistoricProcessInstance> historicInstances = historyService.createHistoricProcessInstanceQuery().list();
+  /**
+  * Delete all histories.
+  *
+  * @param historyService the history service
+  */
 		for (HistoricProcessInstance historicProcessInstance : historicInstances)
 			try {
 				historyService.deleteHistoricProcessInstance(historicProcessInstance.getId());
@@ -292,31 +418,103 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 			}
 	}
 
+ /**
+ * Delete all i deployments.
+ *
+ * @param repositoryService the repository service
+ */
 	public void deleteAllIDeployments(RepositoryService repositoryService) {
+  /**
+  * Delete all i deployments.
+  *
+  * @param repositoryService the repository service
+  */
 		List<Deployment> deployments = repositoryService.createDeploymentQuery().list();
+  /**
+  * Delete all i deployments.
+  *
+  * @param repositoryService the repository service
+  */
 		for (Deployment deployment : deployments) {
 			repositoryService.deleteDeployment(deployment.getId());
 		}
 	}
 
+ /**
+ * Get date.
+ *
+ * @param number the number
+ * @return the date
+ */
 	public static Date getDate(int... number) {
+  /**
+  * Get date.
+  *
+  * @param number the number
+  * @return the date
+  */
 		Calendar c1 = getInstance();
 		c1.set(number[0], number[1], number[2], number.length > 3 ? number[3] : 0, number.length > 4 ? number[4] : 0);
 		return c1.getTime();
 	}
 
+ /**
+ * Add hours.
+ *
+ * @param date the date
+ * @param hours the hours
+ * @return the date
+ */
 	public static Date addHours(Date date, int hours) {
+  /**
+  * Add hours.
+  *
+  * @param date the date
+  * @param hours the hours
+  * @return the date
+  */
 		Calendar cal = getInstance(); // creates calendar
 		cal.setTime(date); // sets calendar time/date
 		cal.add(HOUR_OF_DAY, hours); // adds hour
 		return cal.getTime(); // returns new date object, one hour in the future
 	}
 
+ /**
+ * Difference between.
+ *
+ * @param date1 the date1
+ * @param date2 the date2
+ * @param timeUnit the time unit
+ * @return the long
+ */
 	public static long differenceBetween(Date date1, Date date2, TimeUnit timeUnit) {
+  /**
+  * Difference between.
+  *
+  * @param date1 the date1
+  * @param date2 the date2
+  * @param timeUnit the time unit
+  * @return the long
+  */
 		long diffInMillies = date1.getTime() - date2.getTime();
+  /**
+  * Difference between.
+  *
+  * @param date1 the date1
+  * @param date2 the date2
+  * @param timeUnit the time unit
+  * @return the long
+  */
 		return timeUnit.convert(diffInMillies, MILLISECONDS);
 	}
 
+ /**
+ * Is admin.
+ *
+ * @param user the user
+ * @param identityService the identity service
+ * @return the boolean
+ */
 	public static boolean isAdmin(String user, IdentityService identityService) {
 		return identityService.createUserQuery().userId(Authentication.getAuthenticatedUserId()).memberOfGroup("admin")
 				.count() > 0;

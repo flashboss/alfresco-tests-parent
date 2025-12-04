@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class CheckFirstFactor {
 
+ /** The credentials. */
 	protected Credentials credentials;
 
 	/**

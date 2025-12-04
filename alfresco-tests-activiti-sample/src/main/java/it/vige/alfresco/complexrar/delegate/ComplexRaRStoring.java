@@ -28,25 +28,49 @@ import it.vige.common.SignConstants;
  */
 public class ComplexRaRStoring extends ComplexRaRGeneration {
 
+ /** The logger. */
 	private static Log logger = LogFactory.getLog(ComplexRaRStoring.class);
 
+ /** The file folder service. */
 	protected FileFolderService fileFolderService;
 
+ /**
+ * Set file folder service.
+ *
+ * @param fileFolderService the file folder service
+ */
 	public void setFileFolderService(FileFolderService fileFolderService) {
 		this.fileFolderService = fileFolderService;
 	}
 
+ /**
+ * Execute.
+ *
+ * @param execution the execution
+ */
 	public void execute(DelegateExecution execution) throws Exception {
 		logger.debug("Execute start");
+  /**
+  * Execute.
+  *
+  * @param execution the execution
+  */
 		int rarId = (int) execution.getVariable("vigewf_rarId");
+  /**
+  * Execute.
+  *
+  * @param execution the execution
+  */
 		NodeRef rootNodeRef = nodeService.getRootNode(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE);
 		List<NodeRef> results = searchService.selectNodes(rootNodeRef, rarFolder, null, namespaceService, false);
 		if (results.size() == 0) {
 			throw new AlfrescoRuntimeException(rarFolder);
 		}
 		NodeRef rarFolderNodeRef = results.get(0);
+  /** The padded rar id. */
 		String paddedRarId = String.format("%05d", rarId);
 		String rarNodeName = "RAR_" + paddedRarId;
+  /** The rar node name. */
 		Map<QName, Serializable> rarProps = new HashMap<QName, Serializable>();
 		rarProps.put(ContentModel.PROP_NAME, rarNodeName);
 		ChildAssociationRef childAssRef = nodeService.createNode(rarFolderNodeRef, ContentModel.ASSOC_CONTAINS,
@@ -63,6 +87,7 @@ public class ComplexRaRStoring extends ComplexRaRGeneration {
 			fileFolderService.moveFrom(relatedSaSNodeRef, relateSaSParentNodeRef, rarNodeRef, relatedSASName);
 
 			String relatedISaSName;
+   /** The related s a s name. */
 			if (relatedSASName.endsWith(SignConstants.P7M_EXTENSION)) {
 				relatedISaSName = "i" + relatedSASName.replaceFirst("zip." + SignConstants.P7M_EXTENSION, "xml");
 			} else {
@@ -74,12 +99,17 @@ public class ComplexRaRStoring extends ComplexRaRGeneration {
 			fileFolderService.moveFrom(relateISaSNodeRef, relateSaSParentNodeRef, rarNodeRef, relatedISaSName);
 		}
 		logger.debug("I took all the sas files to be sent for conservation ");
+  /** The irar node ref string. */
 		String irarNodeRefString = (String) execution.getVariable("vigewf_relatedIRaR");
+  /** The irar node ref string. */
 		NodeRef irarNodeRef = new NodeRef(irarNodeRefString);
+  /** The irar node ref string. */
 		NodeRef irarParentNodeRef = nodeService.getPrimaryParent(irarNodeRef).getParentRef();
+  /** The irar name. */
 		String irarName = (String) nodeService.getProperty(irarNodeRef, ContentModel.PROP_NAME);
 		logger.debug("Taken name IRAR with the counter value from the Workflow");
 		// adds the aspect to move the content to the new content store
+  /** The irar name. */
 		Map<QName, Serializable> metadataStoreSel = new HashMap<>();
 		metadataStoreSel.put(ContentModel.PROP_STORE_NAME, "storeComplexBankRar");
 		nodeService.addAspect(irarNodeRef, ContentModel.ASPECT_STORE_SELECTOR, metadataStoreSel);

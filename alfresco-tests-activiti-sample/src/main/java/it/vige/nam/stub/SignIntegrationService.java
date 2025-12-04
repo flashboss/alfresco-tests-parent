@@ -35,22 +35,53 @@ public class SignIntegrationService extends Service {
 		WSDL_LOCATION = url;
 	}
 
+ /**
+ * Constructs a new sign integration service.
+ *
+ * @param wsdlLocation the wsdl location
+ * @return the result
+ */
 	public SignIntegrationService(URL wsdlLocation) {
 		super(wsdlLocation, SERVICE);
 	}
 
+ /**
+ * Constructs a new sign integration service.
+ *
+ * @param wsdlLocation the wsdl location
+ * @param serviceName the service name
+ * @return the result
+ */
 	public SignIntegrationService(URL wsdlLocation, QName serviceName) {
 		super(wsdlLocation, serviceName);
 	}
 
+ /**
+ * Constructs a new sign integration service.
+ *
+ * @return the result
+ */
 	public SignIntegrationService() {
 		super(WSDL_LOCATION, SERVICE);
 	}
 
+ /**
+ * Constructs a new sign integration service.
+ *
+ * @param features the features
+ * @return the result
+ */
 	public SignIntegrationService(WebServiceFeature... features) {
 		super(WSDL_LOCATION, SERVICE);
 	}
 
+ /**
+ * Constructs a new sign integration service.
+ *
+ * @param wsdlLocation the wsdl location
+ * @param features the features
+ * @return the result
+ */
 	public SignIntegrationService(URL wsdlLocation, WebServiceFeature... features) {
 		super(wsdlLocation, SERVICE);
 	}
@@ -64,7 +95,13 @@ public class SignIntegrationService extends Service {
 	 * @return returns SignIntegration
 	 */
 	@WebEndpoint(name = "SignIntegrationPort")
+ /**
+ * @return returns SignIntegration
+ */
 	public SignIntegration getSignIntegrationPort() {
+  /**
+  * @return returns SignIntegration
+  */
 		return super.getPort(SignIntegrationPort, SignIntegration.class);
 	}
 
@@ -77,7 +114,19 @@ public class SignIntegrationService extends Service {
 	 * @return returns SignIntegration
 	 */
 	@WebEndpoint(name = "SignIntegrationPort")
+ /**
+ * @param features A list of {@link javax.xml.ws.WebServiceFeature} to configure on the proxy.
+ *     Supported features not in the <code>features</code> parameter will have their default
+ *     values.
+ * @return returns SignIntegration
+ */
 	public SignIntegration getSignIntegrationPort(WebServiceFeature... features) {
+  /**
+  * @param features A list of {@link javax.xml.ws.WebServiceFeature} to configure on the proxy.
+  *     Supported features not in the <code>features</code> parameter will have their default
+  *     values.
+  * @return returns SignIntegration
+  */
 		return super.getPort(SignIntegrationPort, SignIntegration.class, features);
 	}
 

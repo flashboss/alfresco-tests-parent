@@ -55,17 +55,21 @@ public class SimpleTest extends AbstractForm {
 	private final static String version3Content = "new content 3";
 	private final static String version3Label = "2.0";
 
+ /** The document. */
 	private NodeRef document;
 
 	@Before
+ /** Init. */
 	public void init() {
 		super.init();
 
 		// insert a document
+  /** Init. */
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
 		properties.put(PROP_NAME, documentName);
 		properties.put(PROP_DESCRIPTION, documentName);
 		String content = new String(com.adobe.internal.xmp.impl.Base64.encode(documentName));
+  /** The content. */
 		document = insertDocument(spacesStore, documentName, content, properties);
 
 		// verify the document is created
@@ -77,11 +81,14 @@ public class SimpleTest extends AbstractForm {
 	}
 
 	@Test
+ /** Execute. */
 	public void execute() {
 
 		// execute the injected action
+  /** Execute. */
 		Map<String, Serializable> parameterValues = new HashMap<String, Serializable>();
 		parameterValues.put(BackupAction.DOCUMENT_NAME, documentName);
+  /** Execute. */
 		Action action = new ActionImpl(null, null, null, parameterValues);
 		myAction.executeImpl(action, spacesStore);
 
@@ -95,12 +102,14 @@ public class SimpleTest extends AbstractForm {
 	}
 
 	@Test
+ /** Versioned. */
 	public void versioned() {
 		insertVersion(document, versionName, versionContent, versionLabel, MINOR);
 		insertVersion(document, version2Name, version2Content, version2Label, MINOR);
 		insertVersion(document, version3Name, version3Content, version3Label, MAJOR);
 
 		VersionHistory versionHistory = serviceRegistry.getVersionService()
+    /** Versioned. */
 				.getVersionHistory(new NodeRef("workspace://SpacesStore/unexistentNode"));
 		Assert.assertNull("There is no version history", versionHistory);
 		versionHistory = serviceRegistry.getVersionService().getVersionHistory(document);
