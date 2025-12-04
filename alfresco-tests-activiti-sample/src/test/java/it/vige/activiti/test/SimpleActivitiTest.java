@@ -54,7 +54,6 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 	 */
 	private final static String USER_NAME = "gonzo";
 
-	 * @param yyyy" the yyyy"
 	/** The date format. */
 	private final DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm:ss ZZZ yyyy");
 

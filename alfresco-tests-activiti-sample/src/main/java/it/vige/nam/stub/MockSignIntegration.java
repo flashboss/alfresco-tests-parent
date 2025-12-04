@@ -326,7 +326,6 @@ public class MockSignIntegration implements SignIntegration {
 		TimestampReportBean timestampReportBean = new TimestampReportBean();
 		timestampReportBean.setContent(tsd);
 		try {
-	 * @param unitario" the unitario"
 			/** The content. */
 			String content = new String(tsd);
 			Result result = Result.valueOf(content);
