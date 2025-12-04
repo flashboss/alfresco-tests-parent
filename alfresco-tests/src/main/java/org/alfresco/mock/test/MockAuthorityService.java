@@ -34,6 +34,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class MockAuthorityService implements AuthorityService, Serializable {
 
+	/** The group prefix. */
 	private final static String GROUP_PREFIX = "GROUP_";
 
 	/** The node service. */
