@@ -1,7 +1,6 @@
 package org.alfresco.mock.test.script;
 
 import java.io.Serializable;
-
 import org.alfresco.repo.jscript.ScriptLogger;
 import org.alfresco.repo.processor.BaseProcessorExtension;
 import org.apache.commons.logging.Log;
@@ -9,61 +8,123 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  * Mock implementation of Logger for testing purposes.
- * 
+ *
  * @author vige
  */
 public class MockLogger extends BaseProcessorExtension implements Serializable {
-	
-	private static final Log logger = LogFactory.getLog(ScriptLogger.class);
-	private static final SystemOut systemOut = new SystemOut();
+  /** The logger. */
+  private static final Log logger = LogFactory.getLog(ScriptLogger.class);
 
-	public boolean isLoggingEnabled() {
-		return isDebugLoggingEnabled();
-	}
+  /** The system out. */
+  private static final SystemOut systemOut = new SystemOut();
 
-	public void log(String str) {
-		debug(str);
-	}
+  /**
+   * Is logging enabled.
+   *
+   * @return the boolean
+   */
+  public boolean isLoggingEnabled() {
+    return isDebugLoggingEnabled();
+  }
 
-	public boolean isDebugLoggingEnabled() {
-		return logger.isDebugEnabled();
-	}
+  /**
+   * Log.
+   *
+   * @param str the str
+   */
+  public void log(String str) {
+    debug(str);
+  }
 
-	public void debug(String str) {
-		logger.debug(str);
-	}
+  /**
+   * Is debug logging enabled.
+   *
+   * @return the boolean
+   */
+  public boolean isDebugLoggingEnabled() {
+    return logger.isDebugEnabled();
+  }
 
-	public boolean isInfoLoggingEnabled() {
-		return logger.isInfoEnabled();
-	}
+  /**
+   * Debug.
+   *
+   * @param str the str
+   */
+  public void debug(String str) {
+    logger.debug(str);
+  }
 
-	public void info(String str) {
-		logger.info(str);
-	}
+  /**
+   * Is info logging enabled.
+   *
+   * @return the boolean
+   */
+  public boolean isInfoLoggingEnabled() {
+    return logger.isInfoEnabled();
+  }
 
-	public boolean isWarnLoggingEnabled() {
-		return logger.isWarnEnabled();
-	}
+  /**
+   * Info.
+   *
+   * @param str the str
+   */
+  public void info(String str) {
+    logger.info(str);
+  }
 
-	public void warn(String str) {
-		logger.warn(str);
-	}
+  /**
+   * Is warn logging enabled.
+   *
+   * @return the boolean
+   */
+  public boolean isWarnLoggingEnabled() {
+    return logger.isWarnEnabled();
+  }
 
-	public boolean isErrorLoggingEnabled() {
-		return logger.isErrorEnabled();
-	}
+  /**
+   * Warn.
+   *
+   * @param str the str
+   */
+  public void warn(String str) {
+    logger.warn(str);
+  }
 
-	public void error(String str) {
-		logger.error(str);
-	}
+  /**
+   * Is error logging enabled.
+   *
+   * @return the boolean
+   */
+  public boolean isErrorLoggingEnabled() {
+    return logger.isErrorEnabled();
+  }
 
-	public SystemOut getSystem() {
-		return systemOut;
-	}
+  /**
+   * Error.
+   *
+   * @param str the str
+   */
+  public void error(String str) {
+    logger.error(str);
+  }
 
-	public static class SystemOut {
-		public void out(Object str) {
-			System.out.println(str);
-		}
-	}
+  /**
+   * Get system.
+   *
+   * @return the system out
+   */
+  public SystemOut getSystem() {
+    return systemOut;
+  }
+
+  public static class SystemOut {
+    /**
+     * Out.
+     *
+     * @param str the str
+     */
+    public void out(Object str) {
+      System.out.println(str);
+    }
+  }
 }
