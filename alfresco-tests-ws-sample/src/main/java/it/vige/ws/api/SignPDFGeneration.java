@@ -448,7 +448,11 @@ public class SignPDFGeneration extends DeclarativeWebScript {
     this.generateCedra = generateCedra;
   }
 
-  /** Get signer list. */
+  /**
+   * Get signer list.
+   *
+   * @return the hash map
+   */
   public HashMap<String, Signer> getSignerList() {
     return signerList;
   }
