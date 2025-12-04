@@ -56,131 +56,131 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 {
 
 	// Logger
- /**
- * Class providing functionality for Alfresco testing.
- *
- * @author vige
- */
+	/**
+	 * Class providing functionality for Alfresco testing.
+	 *
+	 * @author vige
+	 */
 	private static final Log logger = LogFactory.getLog(NodeListDownloadWebScript.class);
 
- /** The model csv. */
+	/** The model csv. */
 	public static final String MODEL_CSV = "csv";
- /** The model excel. */
+	/** The model excel. */
 	public static final String MODEL_EXCEL = "excel";
 
 	private String[] overHeadings;
- /** The filename base. */
+	/** The filename base. */
 	private String filenameBase;
 
- /** The skip count def. */
+	/** The skip count def. */
 	private String skipCountDef;
- /** The max lines def. */
+	/** The max lines def. */
 	private String maxLinesDef;
- /** The max items def. */
+	/** The max items def. */
 	private String maxItemsDef;
 
- /** The node service. */
+	/** The node service. */
 	private NodeService nodeService;
- /** The open data command. */
+	/** The open data command. */
 	private OpenDataCommand openDataCommand;
 
- /** The namespace service. */
+	/** The namespace service. */
 	private NamespaceService namespaceService;
 	private String[] modelProperties;
- /** The open data date format. */
+	/** The open data date format. */
 	private String openDataDateFormat;
- /** The list separator. */
+	/** The list separator. */
 	private String listSeparator;
 
- /** The search service. */
+	/** The search service. */
 	private SearchService searchService;
-	
- /**
- * Set over headings.
- *
- * @param headingsString the headings string
- */
+
+	/**
+	 * Set over headings.
+	 *
+	 * @param headingsString the headings string
+	 */
 	public void setOverHeadings(String[] headingsString) {
 		this.overHeadings = headingsString;
 	}
 
- /**
- * Get over headings.
- *
- * @return the string[]
- */
+	/**
+	 * Get over headings.
+	 *
+	 * @return the string[]
+	 */
 	public String[] getOverHeadings() {
 		return overHeadings;
 	}
 
- /**
- * Set skip count def.
- *
- * @param skipCountDef the skip count def
- */
+	/**
+	 * Set skip count def.
+	 *
+	 * @param skipCountDef the skip count def
+	 */
 	public void setSkipCountDef(String skipCountDef) {
 		this.skipCountDef = skipCountDef;
 	}
 
- /**
- * Set max lines def.
- *
- * @param maxLinesDef the max lines def
- */
+	/**
+	 * Set max lines def.
+	 *
+	 * @param maxLinesDef the max lines def
+	 */
 	public void setMaxLinesDef(String maxLinesDef) {
 		this.maxLinesDef = maxLinesDef;
 	}
 
- /**
- * Set max items def.
- *
- * @param maxItemsDef the max items def
- */
+	/**
+	 * Set max items def.
+	 *
+	 * @param maxItemsDef the max items def
+	 */
 	public void setMaxItemsDef(String maxItemsDef) {
 		this.maxItemsDef = maxItemsDef;
 	}
 
- /**
- * Set search service.
- *
- * @param searchService the search service
- */
+	/**
+	 * Set search service.
+	 *
+	 * @param searchService the search service
+	 */
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
 
- /**
- * Set model properties.
- *
- * @param modelPropertiesString the model properties string
- */
+	/**
+	 * Set model properties.
+	 *
+	 * @param modelPropertiesString the model properties string
+	 */
 	public void setModelProperties(String[] modelPropertiesString) {
 		this.modelProperties = modelPropertiesString;
 	}
 
- /**
- * Set open data command.
- *
- * @param openDataCommand the open data command
- */
+	/**
+	 * Set open data command.
+	 *
+	 * @param openDataCommand the open data command
+	 */
 	public void setOpenDataCommand(OpenDataCommand openDataCommand) {
 		this.openDataCommand = openDataCommand;
 	}
 
- /**
- * Constructs a new node list download web script.
- *
- * @return the result
- */
+	/**
+	 * Constructs a new node list download web script.
+	 *
+	 * @return the result
+	 */
 	public NodeListDownloadWebScript() {
 		this.filenameBase = "DataListExport";
 	}
 
- /**
- * Set open data date format.
- *
- * @param openDataDateFormat the open data date format
- */
+	/**
+	 * Set open data date format.
+	 *
+	 * @param openDataDateFormat the open data date format
+	 */
 	public void setOpenDataDateFormat(String openDataDateFormat) {
 		this.openDataDateFormat = openDataDateFormat;
 	}
@@ -199,11 +199,11 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		this.namespaceService = namespaceService;
 	}
 
- /**
- * Set list separator.
- *
- * @param listSeparator the list separator
- */
+	/**
+	 * Set list separator.
+	 *
+	 * @param listSeparator the list separator
+	 */
 	public void setListSeparator(String listSeparator) {
 		this.listSeparator = listSeparator;
 	}
@@ -216,19 +216,19 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		// Try to find the datalist they requested
 		String type = req.getParameter("type");
 		logger.debug("Type: " + type);
-  /** The query. */
+		/** The query. */
 		String query = req.getParameter("q");
 		logger.debug("q: " + query);
 		String luceneQuery = "";
-  /** The lucene query. */
+		/** The lucene query. */
 		if (type != null) {
 			luceneQuery = "TYPE:\"" + type + "\"";
-   /** The lucene query. */
+			/** The lucene query. */
 			if (query != null) {
 				luceneQuery += " AND " + query;
 			}
 		} else {
-   /** The lucene query. */
+			/** The lucene query. */
 			if (query != null) {
 				luceneQuery = query;
 			}
@@ -272,44 +272,33 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	 */
 	protected List<Pair<QName, Boolean>> buildPropertiesForHeader(Object resource, String format,
 			WebScriptRequest req) {
-  /** Fetch the properties, in the requested order, from the data list definition */
 		List<Pair<QName, Boolean>> properties = new ArrayList<Pair<QName, Boolean>>();
-  /** Fetch the properties, in the requested order, from the data list definition */
 		for (String qnameString : modelProperties) {
-   /** Fetch the properties, in the requested order, from the data list definition */
 			String[] qnameStringSplitted = qnameString.split(":");
 			String prefix = qnameStringSplitted[0];
 			String localName = qnameStringSplitted[1];
 			try {
 				properties.add(new Pair<QName, Boolean>(QName.createQName(prefix, localName, namespaceService), true));
-   /** The local name. */
 			} catch (NamespaceException e) {
-    /** The local name. */
 				properties.add(new Pair<QName, Boolean>(QName.createQName(prefix, localName), true));
 			}
 		}
 		return properties;
 	}
 
- /**
- * Populate body.
- *
- * @param resource the resource
- * @param csv the csv
- * @param properties the properties
- */
+	/**
+	 * Populate body.
+	 *
+	 * @param resource   the resource
+	 * @param csv        the csv
+	 * @param properties the properties
+	 */
 	protected void populateBody(Object resource, CSVPrinter csv, List<QName> properties) throws IOException {
-  /**
-  * Populate body.
-  *
-  * @param resource the resource
-  * @param csv the csv
-  * @param properties the properties
-  */
 		throw new WebScriptException(Status.STATUS_BAD_REQUEST, "CSV not currently supported");
 	}
 
-	protected Sheet populateBody(Object resource, Workbook workbook, Sheet sheet, List<QName> properties, Map<String,CellStyle> style)
+	protected Sheet populateBody(Object resource, Workbook workbook, Sheet sheet, List<QName> properties,
+			Map<String, CellStyle> style)
 			throws IOException {
 		@SuppressWarnings("unchecked")
 		List<NodeRef> items = (List<NodeRef>) resource;
@@ -319,7 +308,7 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		CellStyle styleNewLines = style.get("styleNewLines");
 
 		// Export the items
-		int rowNum = sheet.getLastRowNum()+1, colNum = 0;
+		int rowNum = sheet.getLastRowNum() + 1, colNum = 0;
 		for (NodeRef item : items) {
 			if (openDataCommand.checkNodeCoreProps(item)) {
 				Row r = sheet.createRow(rowNum);
@@ -339,11 +328,11 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 
 							for (AssociationRef ref : assocs) {
 								NodeRef child = ref.getTargetRef();
-        /** The type. */
+								/** The type. */
 								QName type = nodeService.getType(child);
-        /** The type. */
+								/** The type. */
 								if (ContentModel.TYPE_PERSON.equals(type)) {
-         /** The type. */
+									/** The type. */
 									if (text.length() > 0) {
 										text.append('\n');
 										lines++;
@@ -351,10 +340,10 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 									text.append(nodeService.getProperty(child, ContentModel.PROP_FIRSTNAME));
 									text.append(" ");
 									text.append(nodeService.getProperty(child, ContentModel.PROP_LASTNAME));
-        /** The type. */
+									/** The type. */
 								} else if (ContentModel.TYPE_CONTENT.equals(type)) {
 									// TODO Link to the content
-         /** The type. */
+									/** The type. */
 									if (text.length() > 0) {
 										text.append('\n');
 										lines++;
@@ -368,7 +357,7 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 									NodeRef linkRef = (NodeRef) nodeService.getProperty(child,
 											ContentModel.PROP_LINK_DESTINATION);
 									if (linkRef != null) {
-          /** The type. */
+										/** The type. */
 										if (text.length() > 0) {
 											text.append('\n');
 											lines++;
@@ -392,13 +381,10 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 								}
 							}
 
-       /** The v. */
 							String v = text.toString();
 							c.setCellValue(v);
-       /** The v. */
 							if (lines > 1) {
 								c.setCellStyle(styleNewLines);
-        /** The v. */
 								r.setHeightInPoints(lines * sheet.getDefaultRowHeightInPoints());
 							}
 						} else {
@@ -452,7 +438,7 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 				}
 
 				rowNum++;
-			}		
+			}
 		}
 
 		// Sensible column widths please!
@@ -466,31 +452,15 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		return sheet;
 	}
 
- /**
- * Generate style from w b.
- *
- * @param workbook the workbook
- */
+	/**
+	 * Generate style from w b.
+	 *
+	 * @param workbook the workbook
+	 */
 	protected Map<String, CellStyle> generateStyleFromWB(Workbook workbook) {
-  /**
-  * Generate style from w b.
-  *
-  * @param workbook the workbook
-  */
 		DataFormat formatter = workbook.createDataFormat();
-
-  /**
-  * Generate style from w b.
-  *
-  * @param workbook the workbook
-  */
 		CellStyle styleInt = workbook.createCellStyle();
 		styleInt.setDataFormat(formatter.getFormat("0"));
-  /**
-  * Generate style from w b.
-  *
-  * @param workbook the workbook
-  */
 		CellStyle styleDate = workbook.createCellStyle();
 		styleDate.setDataFormat(formatter.getFormat(openDataDateFormat));
 		CellStyle styleDouble = workbook.createCellStyle();
@@ -503,47 +473,42 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		hlink_font.setUnderline(Font.U_SINGLE);
 		hlink_font.setColor(IndexedColors.BLUE.getIndex());
 		hlink_style.setFont(hlink_font);
-		Map<String,CellStyle> style = new HashMap<>();
+		Map<String, CellStyle> style = new HashMap<>();
 		style.put("styleInt", styleInt);
 		style.put("styleDate", styleDate);
 		style.put("styleDouble", styleDouble);
 		style.put("styleNewLines", styleNewLines);
 		return style;
 	}
+
+	/**
+	 * Execute impl.
+	 *
+	 * @param req    the req
+	 * @param status the status
+	 */
 	@Override
- /**
- * Execute impl.
- *
- * @param req the req
- * @param status the status
- */
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status) {
-  /**
-  * Execute impl.
-  *
-  * @param req the req
-  * @param status the status
-  */
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("success", Boolean.TRUE);
- 
-  /** The format. */
+
+		/** The format. */
 		String format = req.getFormat();
 		if ("csv".equals(format) || "xls".equals(format) || "xlsx".equals(format) || "excel".equals(format)) {
- 
-			//Object resource = identifyResource(format, req);
- 
+
+			// Object resource = identifyResource(format, req);
+
 			try {
-				//generateSpreadsheet(resource, format, req, status, model);
+				// generateSpreadsheet(resource, format, req, status, model);
 				generateSpreadsheet(format, req, status, model);
 				return model;
 			} catch (IOException e) {
 				throw new WebScriptException(Status.STATUS_BAD_REQUEST, "Unable to generate template file", e);
 			}
 		}
- 
+
 		if (allowHtmlFallback()) {
- 
+
 			return model;
 		} else {
 			throw new WebScriptException("Web Script format '" + format + "' is not supported");
@@ -554,15 +519,9 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	 * Generates the spreadsheet, based on the properties in the header and a
 	 * callback for the body.
 	 */
-	public void generateSpreadsheet(/*Object resource,*/ String format, WebScriptRequest req, Status status,
+	public void generateSpreadsheet(/* Object resource, */ String format, WebScriptRequest req, Status status,
 			Map<String, Object> model) throws IOException {
-  /**
-  * Generates the spreadsheet, based on the properties in the header and a callback for the body.
-  */
 		List<NodeRef> resource = new ArrayList<NodeRef>();
-  /**
-  * Generates the spreadsheet, based on the properties in the header and a callback for the body.
-  */
 		List<Pair<QName, Boolean>> propertyDetails = buildPropertiesForHeader(resource, format, req);
 		String[] headings;
 		boolean[] required = new boolean[propertyDetails.size()];
@@ -582,77 +541,74 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 				required[i] = false;
 			}
 		}
- 
+
 		List<QName> properties = new ArrayList<QName>(propertyDetails.size());
 		for (Pair<QName, Boolean> p : propertyDetails) {
 			QName qn = null;
-   /** The qn. */
 			if (p != null) {
-    /** The qn. */
 				qn = p.getFirst();
 			}
 			properties.add(qn);
 		}
 
 		int num = 0;
-  /** The qn. */
 		int skipCount = Integer.parseInt(skipCountDef);
 		int iteration = 0;
-		int maxItems =  Integer.parseInt(maxItemsDef);		
+		int maxItems = Integer.parseInt(maxItemsDef);
 		int maxLines = Integer.parseInt(maxLinesDef);
-		if (req.getParameter("maxItems")!=null) {
+		if (req.getParameter("maxItems") != null) {
 			maxItems = Integer.parseInt(req.getParameter("maxItems"));
 		}
-		if (req.getParameter("skipCount")!=null) {
+		if (req.getParameter("skipCount") != null) {
 			skipCount = Integer.parseInt(req.getParameter("skipCount"));
 		}
-		if (req.getParameter("maxLines")!=null) {
+		if (req.getParameter("maxLines") != null) {
 			maxLines = Integer.parseInt(req.getParameter("maxLines"));
 		}
 		int maxIterations = (maxLines / maxItems) + 1;
 		if (logger.isDebugEnabled()) {
-			logger.debug("Executing NodeList WS with parameters: skipCount= " + skipCount + " , maxItems= " + maxItems + " , maxLines= " + maxLines);
+			logger.debug("Executing NodeList WS with parameters: skipCount= " + skipCount + " , maxItems= " + maxItems
+					+ " , maxLines= " + maxLines);
 			logger.debug("MaxIteration for NodeList ws= " + maxIterations);
 		}
-  /** The filename. */
 		if ("csv".equals(format)) {
 			StringWriter sw = new StringWriter();
 			CSVPrinter csv = new CSVPrinter(sw, CSVFormat.EXCEL);
 			csv.print(headings);
 			csv.println();
-			
+
 			do {
 				resource = identifyResource(format, req, maxItems, skipCount);
 				num = resource.size();
 				skipCount += num;
-				iteration ++;
+				iteration++;
 				if (logger.isDebugEnabled()) {
 					logger.debug("Executing iteration of resources with num: " + num + " and skipCount: " + skipCount);
-					if (iteration==maxIterations)
+					if (iteration == maxIterations)
 						logger.debug("Exiting because max iteration is reached");
-				}	
+				}
 				populateBody(resource, csv, properties);
-				
-			} while (num==maxItems & iteration<maxIterations);
-			//populateBody(resource, csv, properties);
+
+			} while (num == maxItems & iteration < maxIterations);
+			// populateBody(resource, csv, properties);
 
 			model.put(MODEL_CSV, sw.toString());
 		} else {
 			Workbook wb;
 			if ("xlsx".equals(format)) {
 				wb = new XSSFWorkbook();
- 
+
 			} else {
 				wb = new HSSFWorkbook();
- 
+
 			}
- 
+
 			Sheet sheet = wb.createSheet("Export");
 			Row hr = sheet.createRow(0);
 			try {
 				sheet.createFreezePane(0, 1);
 			} catch (IndexOutOfBoundsException e) {
- 
+
 			}
 			Font fb = wb.createFont();
 			fb.setBoldweight(Font.BOLDWEIGHT_BOLD);
@@ -664,11 +620,11 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 			csReq.setFont(fb);
 			CellStyle csOpt = wb.createCellStyle();
 			csOpt.setFont(fi);
- 
+
 			for (int i = 0; i < headings.length; i++) {
 				Cell c = hr.createCell(i);
 				c.setCellValue(headings[i]);
- 
+
 				c.setCellStyle(csReq);
 
 				if (headings[i].length() == 0) {
@@ -677,22 +633,22 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 					sheet.setColumnWidth(i, 18 * 250);
 				}
 			}
-			
-			Map<String,CellStyle> style = generateStyleFromWB(wb);
+
+			Map<String, CellStyle> style = generateStyleFromWB(wb);
 			do {
 				resource = identifyResource(format, req, maxItems, skipCount);
 				num = resource.size();
 				if (logger.isDebugEnabled()) {
 					logger.debug("Executing iteration of resources with num: " + num + " and skipCount: " + skipCount);
-					if (iteration==maxIterations)
+					if (iteration == maxIterations)
 						logger.debug("Exiting because iteration is: " + iteration);
-				}	
+				}
 				skipCount += num;
-				iteration ++;		
+				iteration++;
 				sheet = populateBody(resource, wb, sheet, properties, style);
-			} while (num==maxItems & iteration<maxIterations);
-			//populateBody(resource, wb, sheet, properties);
- 
+			} while (num == maxItems & iteration < maxIterations);
+			// populateBody(resource, wb, sheet, properties);
+
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			wb.write(baos);
 			model.put(MODEL_EXCEL, baos.toByteArray());
@@ -703,7 +659,7 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	protected Map<String, Object> createTemplateParameters(WebScriptRequest req, WebScriptResponse res,
 			Map<String, Object> customParams) {
 		Map<String, Object> model = super.createTemplateParameters(req, res, customParams);
- 
+
 		model.put("req", req);
 		model.put("res", res);
 		model.put("writeExcel", new WriteExcel(res, model, req.getFormat(), filenameBase));
@@ -711,11 +667,11 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	}
 
 	public static class WriteExcel {
-  /** The format. */
+		/** The format. */
 		private String format;
-  /** The filename base. */
+		/** The filename base. */
 		private String filenameBase;
-  /** The res. */
+		/** The res. */
 		private WebScriptResponse res;
 		private Map<String, Object> model;
 
@@ -726,28 +682,28 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 			this.filenameBase = filenameBase;
 		}
 
-  /** Write. */
+		/** Write. */
 		public void write() throws IOException {
 			String filename = filenameBase + "." + format;
- 
-   /** The filename. */
+
+			/** The filename. */
 			if (!"csv".equals(format)) {
 				res.reset();
 			}
- 
+
 			res.addHeader("Content-Disposition", "attachment; filename=" + filename);
- 
-   /** The filename. */
+
+			/** The filename. */
 			if ("csv".equals(format)) {
 				res.getWriter().append((String) model.get(MODEL_CSV));
 			} else {
- 
+
 				if ("xlsx".equals(format)) {
 					res.setContentType(MimetypeMap.MIMETYPE_OPENXML_SPREADSHEET);
 				} else {
 					res.setContentType(MimetypeMap.MIMETYPE_EXCEL);
 				}
- 
+
 				byte[] excel = (byte[]) model.get(MODEL_EXCEL);
 				res.getOutputStream().write(excel);
 			}

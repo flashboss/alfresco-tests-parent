@@ -5,6 +5,7 @@ import org.alfresco.service.cmr.repository.NodeService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
 /**
  * Class providing functionality for Alfresco testing.
  * 
@@ -12,37 +13,44 @@ import org.apache.commons.logging.LogFactory;
  */
 public class OpenDataCommand {
 
- /** The logger. */
+	/** The logger. */
 	private static Log logger = LogFactory.getLog(OpenDataCommand.class);
 
- /** The node service. */
+	/** The node service. */
 	private NodeService nodeService;
 
- /**
- * Constructs a new open data command.
- *
- * @return the result
- */
+	/**
+	 * Constructs a new open data command.
+	 *
+	 * @return the result
+	 */
 	public OpenDataCommand() {
 		super();
 	}
 
- /**
- * Set node service.
- *
- * @param nodeService the node service
- */
+	/**
+	 * Set node service.
+	 *
+	 * @param nodeService the node service
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
-	}
-
-	public boolean checkNodeCoreProps (NodeRef node) {
+	}	
+	
+	/**
+	 * Check node core properties.
+	 *
+	 * @param node the node
+	 * @return the boolean
+	 */
+	public boolean checkNodeCoreProps(NodeRef node) {
 		boolean result = false;
 		if (nodeService.exists(node) &&
-			StringUtils.isNotBlank((String) nodeService.getProperty(node, ActUtil.PROP_OGGETTO_ACT_QNAME))&&
-			nodeService.getProperty(node, ActUtil.PROP_NUMERO_ACT_QNAME)!=null && ((int) nodeService.getProperty(node, ActUtil.PROP_NUMERO_ACT_QNAME)!=0) &&
-			StringUtils.isNotBlank((String) nodeService.getProperty(node, ActUtil.PROP_LEGISLATURE_QNAME))){
-				result = true;
+				StringUtils.isNotBlank((String) nodeService.getProperty(node, ActUtil.PROP_OGGETTO_ACT_QNAME)) &&
+				nodeService.getProperty(node, ActUtil.PROP_NUMERO_ACT_QNAME) != null
+				&& ((int) nodeService.getProperty(node, ActUtil.PROP_NUMERO_ACT_QNAME) != 0) &&
+				StringUtils.isNotBlank((String) nodeService.getProperty(node, ActUtil.PROP_LEGISLATURE_QNAME))) {
+			result = true;
 		} else {
 			logger.error("Il nodo non ha una proprietà necessaria, nodeRef: " + node.toString());
 		}

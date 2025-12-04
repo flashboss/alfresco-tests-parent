@@ -39,27 +39,27 @@ import it.vige.ws.WSSampleModel;
  */
 public class PreviousWSSampleTest extends AbstractWSForm {
 
+	/** The folder wssample. */
 	private final static String FOLDER_WSSAMPLE = "WSSAMPLE-20157726";
+	/** The data modifica. */
 	private final static String dataModifica = "2020-06-19";
 
 	@Autowired
 	private PreviousWSSample previousWSSample;
 
- /** The date format. */
+	/** The date format. */
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
- /** The repository. */
+	/** The repository. */
 	private NodeRef repository;
 
+	/** Init. */
 	@Before
- /** Init. */
 	public void init() {
 		super.init();
-  /** Init. */
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
 		namespaceService.registerNamespace("vigepb", WSSampleModel.PBPDV_NAMESPACE);
 
 		// Creating initial folders and sites
-  /** Init. */
 		NodeRef site = insertFolder(sites, "digital-conservation");
 		insertFolder(site, "documentLibrary");
 
@@ -69,25 +69,22 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 		insertFolder(repository, FOLDER_WSSAMPLE);
 	}
 
+	/**
+	 * Get abstract web script.
+	 *
+	 * @return the abstract web script
+	 */
 	@Override
- /**
- * Get abstract web script.
- *
- * @return the abstract web script
- */
 	protected AbstractWebScript getAbstractWebScript() {
 		return previousWSSample;
 	}
 
+	/** Execute. */
 	@Test
- /** Execute. */
 	public void execute() throws ParseException, IOException {
 
-  /** Execute. */
 		SearchService searchService = serviceRegistry.getSearchService();
-  /** Execute. */
 		NodeService nodeService = serviceRegistry.getNodeService();
-  /** Execute. */
 		Map<String, Serializable> fields = new HashMap<String, Serializable>();
 		{
 			fields.put("date_modified", dataModifica);
@@ -107,18 +104,12 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 		NodeRef result = nodeRefs.get(0);
 		Set<QName> aspects = nodeService.getAspects(result);
 		Assert.assertEquals("One aspect for the folder", 1, aspects.size());
-  /** The aspect. */
 		QName aspect = aspects.iterator().next();
 		Assert.assertEquals("Added an aspect to the WS Sample folder", WSSampleModel.ASPECT_WSSAMPLEFOLDER, aspect);
-  /** The aspect. */
 		Date dateCedra = (Date) nodeService.getProperty(result, WSSampleModel.PROP_UPDATE_PROPERTY);
-  /** The aspect. */
 		Assert.assertEquals("Added the date property", dataModifica, dateFormat.format(dateCedra));
-  /** The aspect. */
 		Map<String, Object> model = webScriptResponse.getModel();
-  /** The aspect. */
 		Assert.assertEquals("Status ok", STATUS_OK + "", model.get("status").toString());
-  /** The aspect. */
 		Assert.assertEquals("Result ok", repository, model.get("node"));
 	}
 

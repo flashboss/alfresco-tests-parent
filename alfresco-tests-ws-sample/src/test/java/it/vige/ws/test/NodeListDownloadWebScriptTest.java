@@ -41,25 +41,21 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 	@Autowired
 	private NodeListDownloadWebScript nodeListDownloadWebScript;
 
- /** The p d l. */
+	/** The p d l. */
 	private NodeRef PDL;
- /** The act. */
+	/** The act. */
 	private NodeRef act;
 
+	/** Init. */
 	@Before
- /** Init. */
 	public void init() {
 		super.init();
 		// initialize repository with test nodes
-  /** Init. */
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
 		namespaceService.registerNamespace("crlacts", ActUtil.CRL_ACTS_MODEL);
-  /** Init. */
 		// NodeRef companyHome = insertFolder(spacesStore,
 		// NamespaceService.APP_MODEL_PREFIX, "company_home");
-  /** Init. */
 		NodeRef crl = insertFolder(companyHome, "CRL");
-  /** Init. */
 		NodeRef gestioneActs = insertFolder(crl, "Gestione Acts");
 		NodeRef legislature = insertFolder(gestioneActs, "XII");
 		NodeRef anno = insertFolder(legislature, "2024");
@@ -70,21 +66,14 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 
 	}
 
- /**
- * Create act.
- *
- * @param PDL the p d l
- * @param name the name
- * @return the node ref
- */
+	/**
+	 * Create act.
+	 *
+	 * @param PDL  the p d l
+	 * @param name the name
+	 * @return the node ref
+	 */
 	private NodeRef createAct(NodeRef PDL, String name) {
-  /**
-  * Create act.
-  *
-  * @param PDL the p d l
-  * @param name the name
-  * @return the node ref
-  */
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>(11);
 		properties.put(ContentModel.PROP_NAME, name);
 		properties.put(ActUtil.PROP_NUMERO_ACT_QNAME, Integer.parseInt(name));
@@ -96,56 +85,40 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 		return insertDocument(PDL, name, "testbytes", properties);
 	}
 
- /**
- * Add state act.
- *
- * @param document the document
- * @param PDL the p d l
- */
+	/**
+	 * Add state act.
+	 *
+	 * @param document the document
+	 * @param PDL      the p d l
+	 */
 	private void addStateAct(NodeRef document, NodeRef PDL) {
-  /**
-  * Add state act.
-  *
-  * @param document the document
-  * @param PDL the p d l
-  */
 		NodeService nodeService = serviceRegistry.getNodeService();
-  /** The name. */
 		String name = (String) nodeService.getProperty(document, ContentModel.PROP_NAME);
 		String nameQ = name + "_target";
-  /**
-  * Create act.
-  *
-  * @param PDL the p d l
-  * @param name the name
-  * @return the node ref
-  */
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>(11);
 		properties.put(ContentModel.PROP_NAME, nameQ);
 		properties.put(ContentModel.TYPE_BASE, ActUtil.PROP_LEGISLATURE_QNAME);
-  /** The name q. */
 		NodeRef target = insertDocument(PDL, nameQ, "testbytes_target", properties);
 
 		nodeService.createAssociation(document, target, ActUtil.PROP_STATE_ACT_QNAME);
 	}
 
+	/**
+	 * Get abstract web script.
+	 *
+	 * @return the abstract web script
+	 */
 	@Override
- /**
- * Get abstract web script.
- *
- * @return the abstract web script
- */
 	protected AbstractWebScript getAbstractWebScript() {
 		return nodeListDownloadWebScript;
 	}
 
+	/** Execute. */
 	@Test
- /** Execute. */
 	public void execute() throws IOException {
 
 		addStateAct(act, PDL);
 		// execute ws
-  /** Execute. */
 		Map<String, Serializable> fields = new HashMap<String, Serializable>();
 		{
 			fields.put("type", "crlacts:actPdl");

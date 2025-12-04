@@ -10,7 +10,6 @@ import org.kie.api.runtime.KieSession;
 
 import java.io.IOException;
 
-
 /**
  * Author: Luca Stancapiano
  */
@@ -21,44 +20,43 @@ import java.io.IOException;
  */
 public class RuleRunner {
 
-/**
-* Class providing functionality for Alfresco testing.
-* 
-* @author vige
-*/
-//	private Log logger = getLog(RuleRunner.class);
+	/**
+	 * Class providing functionality for Alfresco testing.
+	 * 
+	 * @author vige
+	 */
+	// private Log logger = getLog(RuleRunner.class);
 
- /**
- * Run rules.
- *
- * @param rule the rule
- * @param facts the facts
- */
+	/**
+	 * Run rules.
+	 *
+	 * @param rule  the rule
+	 * @param facts the facts
+	 */
 	public void runRules(byte[] rule, Object[] facts) throws IOException {
 
-  /**
-  * Run rules.
-  *
-  * @param rule the rule
-  * @param facts the facts
-  */
+		/**
+		 * Run rules.
+		 *
+		 * @param rule  the rule
+		 * @param facts the facts
+		 */
 		KieServices kieServices = KieServices.Factory.get();
 
-  /**
-  * Run rules.
-  *
-  * @param rule the rule
-  * @param facts the facts
-  */
+		/**
+		 * Run rules.
+		 *
+		 * @param rule  the rule
+		 * @param facts the facts
+		 */
 		KieFileSystem kfs = kieServices.newKieFileSystem();
-		kfs.write( "src/main/resources/drools/rule.drl", kieServices.getResources().newByteArrayResource(rule) );
+		kfs.write("src/main/resources/drools/rule.drl", kieServices.getResources().newByteArrayResource(rule));
 
 		KieBuilder kb = kieServices.newKieBuilder(kfs);
 
 		kb.buildAll();
 
-		if (kb.getResults().hasMessages(Message.Level.ERROR))
-		{
+		if (kb.getResults().hasMessages(Message.Level.ERROR)) {
 			throw new IOException("Build Errors:\n" + kb.getResults());
 		}
 
@@ -68,7 +66,7 @@ public class RuleRunner {
 
 		for (int i = 0; i < facts.length; i++) {
 			Object fact = facts[i];
-//			logger.debug("Inserting fact: " + fact);
+			// logger.debug("Inserting fact: " + fact);
 			kSession.insert(fact);
 		}
 

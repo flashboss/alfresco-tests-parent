@@ -41,65 +41,78 @@ import it.vige.ws.dom.VigeWSContentModel;
  */
 public class UploadDocTest extends AbstractWSForm {
 
+	/** The logger. */
 	private final static Log logger = LogFactory.getLog(UploadDocTest.class);
+	/** The id partner. */
 	private final static String ID_PARTNER = "prova";
+	/** The id pratica. */
 	private final static String ID_PRATICA = "prova";
+	/** The id doc. */
 	private final static String ID_DOC = "prova";
+	/** The nome file. */
 	private final static String NOME_FILE = "unsigned.pdf";
+	/** The descrizione. */
 	private final static String DESCRIZIONE = "descrizione.pdf";
+	/** The trattamento. */
 	private final static String TRATTAMENTO = "3";
+	/** The data scadenza. */
 	private final static String DATA_SCADENZA = "2018-04-19";
+	/** The data emissione. */
 	private final static String DATA_EMISSIONE = "2018-04-19";
+	/** The data creazione. */
 	private final static String DATA_CREAZIONE = "2018-04-23";
+	/** The codice doc. */
 	private final static String CODICE_DOC = "461";
+	/** The categoria tipo. */
 	private final static String CATEGORIA_TIPO = "461";
+	/** The note. */
 	private final static String NOTE = "note";
+	/** The numero doc. */
 	private final static String NUMERO_DOC = "";
+	/** The id user. */
 	private final static String ID_USER = "105";
+	/** The folder dropzone. */
 	private final static String FOLDER_DROPZONE = "/sites/vige-site/documentLibrary/sys/Dropzone";
+	/** The template vars. */
 	private Map<String, String> templateVars;
 
+	/** The upload doc. */
 	@Autowired
 	private UploadDoc uploadDoc;
 
+	/**
+	 * Get abstract web script.
+	 * 
+	 * @return the abstract web script
+	 */
 	@Override
- /**
- * Get abstract web script.
- *
- * @return the abstract web script
- */
 	protected AbstractWebScript getAbstractWebScript() {
 		return uploadDoc;
 	}
 
+	/** Init. */
 	@Before
- /** Init. */
 	public void init() {
 		super.init();
-  /** Init. */
 		templateVars = new HashMap<String, String>();
 		templateVars.put("idpartner", ID_PARTNER);
 		templateVars.put("idpratica", ID_PRATICA);
 		templateVars.put("iddoc", ID_DOC);
 
 		// Creating initial folders and sites
-  /** Init. */
 		NodeRef bdm = insertFolder(sites, "vige-site");
 		NodeRef bdmDL = insertFolder(bdm, "documentLibrary");
 		NodeRef sys = insertFolder(bdmDL, "sys");
 		insertFolder(sys, "Dropzone");
 	}
 
+	/** Execute. */
 	@Test
- /** Execute. */
 	public void execute() throws ParseException, IOException {
 
 		logger.debug("start test");
-  /** Execute. */
 		SearchService searchService = serviceRegistry.getSearchService();
-  /** Execute. */
 		NodeService nodeService = serviceRegistry.getNodeService();
-  /** Execute. */
 		Map<String, Serializable> fields = new HashMap<String, Serializable>();
 		{
 			fields.put("datacreazione", DATA_CREAZIONE);

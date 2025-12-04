@@ -24,8 +24,8 @@ public class DocVigeWS {
     /** The ragione sociale azienda. */
     private String ragioneSocialeAzienda;
 
-
-    public DocVigeWS(String idPratica, DateTime dataCreazionePratica, String numeroPratica, String convenzione, String descrizionePartner, String codiceFiscaleAzienda, String ragioneSocialeAzienda) {
+    public DocVigeWS(String idPratica, DateTime dataCreazionePratica, String numeroPratica, String convenzione,
+            String descrizionePartner, String codiceFiscaleAzienda, String ragioneSocialeAzienda) {
         this.idPratica = idPratica;
         this.numeroPratica = numeroPratica;
         this.convenzione = convenzione;
@@ -36,64 +36,64 @@ public class DocVigeWS {
     }
 
     /**
-    * Get id pratica.
-    *
-    * @return the string
-    */
+     * Get id pratica.
+     *
+     * @return the string
+     */
     public String getIdPratica() {
         return idPratica;
     }
 
     /**
-    * Get numero pratica.
-    *
-    * @return the string
-    */
+     * Get numero pratica.
+     *
+     * @return the string
+     */
     public String getNumeroPratica() {
         return numeroPratica;
     }
 
     /**
-    * Get convenzione.
-    *
-    * @return the string
-    */
+     * Get convenzione.
+     *
+     * @return the string
+     */
     public String getConvenzione() {
         return convenzione;
     }
 
     /**
-    * Get descrizione partner.
-    *
-    * @return the string
-    */
+     * Get descrizione partner.
+     *
+     * @return the string
+     */
     public String getDescrizionePartner() {
         return descrizionePartner;
     }
 
     /**
-    * Get codice fiscale azienda.
-    *
-    * @return the string
-    */
+     * Get codice fiscale azienda.
+     *
+     * @return the string
+     */
     public String getCodiceFiscaleAzienda() {
         return codiceFiscaleAzienda;
     }
 
     /**
-    * Get ragione sociale azienda.
-    *
-    * @return the string
-    */
+     * Get ragione sociale azienda.
+     *
+     * @return the string
+     */
     public String getRagioneSocialeAzienda() {
         return ragioneSocialeAzienda;
     }
 
     /**
-    * Get data creazione pratica.
-    *
-    * @return the date time
-    */
+     * Get data creazione pratica.
+     *
+     * @return the date time
+     */
     public DateTime getDataCreazionePratica() {
         return dataCreazionePratica;
     }

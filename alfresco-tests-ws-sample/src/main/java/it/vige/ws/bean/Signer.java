@@ -7,40 +7,43 @@ package it.vige.ws.bean;
  */
 public class Signer {
 
- /** The username. */
+	/** The username. */
 	private String username;
- /** The password. */
+	/** The password. */
 	private String password;
-	
- /**
- * Get username.
- *
- * @return the string
- */
+
+	/**
+	 * Get username.
+	 *
+	 * @return the string
+	 */
 	public String getUsername() {
 		return username;
 	}
- /**
- * Set username.
- *
- * @param username the username
- */
+
+	/**
+	 * Set username.
+	 *
+	 * @param username the username
+	 */
 	public void setUsername(String username) {
 		this.username = username;
 	}
- /**
- * Get password.
- *
- * @return the string
- */
+
+	/**
+	 * Get password.
+	 *
+	 * @return the string
+	 */
 	public String getPassword() {
 		return password;
 	}
- /**
- * Set password.
- *
- * @param password the password
- */
+
+	/**
+	 * Set password.
+	 *
+	 * @param password the password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
