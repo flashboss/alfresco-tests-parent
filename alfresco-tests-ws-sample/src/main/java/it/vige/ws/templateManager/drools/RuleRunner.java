@@ -1,5 +1,6 @@
 package it.vige.ws.templateManager.drools;
 
+import java.io.IOException;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieBuilder;
 import org.kie.api.builder.KieFileSystem;
@@ -8,11 +9,21 @@ import org.kie.api.builder.Message;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
-import java.io.IOException;
-
-
+/** Author: Luca Stancapiano */
 /**
- * Author: Luca Stancapiano
+ * Class providing functionality for Alfresco testing.
+ *
+ * @author vige
+ */
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
+ */
+/**
+ * Class providing functionality for Alfresco testing.
+ * 
+ * @author vige
  */
 /**
  * Class providing functionality for Alfresco testing.
@@ -21,35 +32,41 @@ import java.io.IOException;
  */
 public class RuleRunner {
 
-//	private Log logger = getLog(RuleRunner.class);
+  //	private Log logger = getLog(RuleRunner.class);
 
-	public void runRules(byte[] rule, Object[] facts) throws IOException {
+  /**
+   * Run rules.
+   *
+   * @param rule the rule
+   * @param facts the facts
+   */
+  public void runRules(byte[] rule, Object[] facts) throws IOException {
 
-		KieServices kieServices = KieServices.Factory.get();
+    KieServices kieServices = KieServices.Factory.get();
 
-		KieFileSystem kfs = kieServices.newKieFileSystem();
-		kfs.write( "src/main/resources/drools/rule.drl", kieServices.getResources().newByteArrayResource(rule) );
+    KieFileSystem kfs = kieServices.newKieFileSystem();
+    kfs.write(
+        "src/main/resources/drools/rule.drl",
+        kieServices.getResources().newByteArrayResource(rule));
 
-		KieBuilder kb = kieServices.newKieBuilder(kfs);
+    KieBuilder kb = kieServices.newKieBuilder(kfs);
 
-		kb.buildAll();
+    kb.buildAll();
 
-		if (kb.getResults().hasMessages(Message.Level.ERROR))
-		{
-			throw new IOException("Build Errors:\n" + kb.getResults());
-		}
+    if (kb.getResults().hasMessages(Message.Level.ERROR)) {
+      throw new IOException("Build Errors:\n" + kb.getResults());
+    }
 
-		KieRepository kieRepository = kieServices.getRepository();
-		KieContainer kContainer = kieServices.newKieContainer(kieRepository.getDefaultReleaseId());
-		KieSession kSession = kContainer.newKieSession();
+    KieRepository kieRepository = kieServices.getRepository();
+    KieContainer kContainer = kieServices.newKieContainer(kieRepository.getDefaultReleaseId());
+    KieSession kSession = kContainer.newKieSession();
 
-		for (int i = 0; i < facts.length; i++) {
-			Object fact = facts[i];
-//			logger.debug("Inserting fact: " + fact);
-			kSession.insert(fact);
-		}
+    for (int i = 0; i < facts.length; i++) {
+      Object fact = facts[i];
+      //			logger.debug("Inserting fact: " + fact);
+      kSession.insert(fact);
+    }
 
-		kSession.fireAllRules();
-
-	}
+    kSession.fireAllRules();
+  }
 }
