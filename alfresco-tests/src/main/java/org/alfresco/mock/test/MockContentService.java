@@ -28,6 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class MockContentService implements ContentService, Serializable {
 
+	/** The folder test. */
 	public final static String FOLDER_TEST = "./target/test-classes/";
 
 	@Autowired
