@@ -1,21 +1,20 @@
-
 package it.vige.nam.stub;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(
+    name = "signPkcs1ArrayList",
+    propOrder = {"credentials", "hashList", "preferences"})
 /**
- * <p>
  * Classe Java per signPkcs1ArrayList complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="signPkcs1ArrayList"&gt;
  *   &lt;complexContent&gt;
@@ -29,83 +28,74 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signPkcs1ArrayList", propOrder = { "credentials", "hashList", "preferences" })
 public class SignPkcs1ArrayList {
 
-	protected Credentials credentials;
-	protected List<byte[]> hashList;
-	protected SignPreferences preferences;
+  /** The credentials. */
+  protected Credentials credentials;
 
-	/**
-	 * Recupera il valore della proprietà credentials.
-	 * 
-	 * @return possible object is {@link Credentials }
-	 * 
-	 */
-	public Credentials getCredentials() {
-		return credentials;
-	}
+  protected List<byte[]> hashList;
 
-	/**
-	 * Imposta il valore della proprietà credentials.
-	 * 
-	 * @param value allowed object is {@link Credentials }
-	 * 
-	 */
-	public void setCredentials(Credentials value) {
-		this.credentials = value;
-	}
+  /** The preferences. */
+  protected SignPreferences preferences;
 
-	/**
-	 * Gets the value of the hashList property.
-	 * 
-	 * <p>
-	 * This accessor method returns a reference to the live list, not a snapshot.
-	 * Therefore any modification you make to the returned list will be present
-	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
-	 * for the hashList property.
-	 * 
-	 * <p>
-	 * For example, to add a new item, do as follows:
-	 * 
-	 * <pre>
-	 * getHashList().add(newItem);
-	 * </pre>
-	 * 
-	 * 
-	 * <p>
-	 * Objects of the following type(s) are allowed in the list byte[]
-	 * 
-	 */
-	public List<byte[]> getHashList() {
-		if (hashList == null) {
-			hashList = new ArrayList<byte[]>();
-		}
-		return this.hashList;
-	}
+  /**
+   * Recupera il valore della proprietà credentials.
+   *
+   * @return possible object is {@link Credentials }
+   */
+  public Credentials getCredentials() {
+    return credentials;
+  }
 
-	/**
-	 * Recupera il valore della proprietà preferences.
-	 * 
-	 * @return possible object is {@link SignPreferences }
-	 * 
-	 */
-	public SignPreferences getPreferences() {
-		return preferences;
-	}
+  /**
+   * Imposta il valore della proprietà credentials.
+   *
+   * @param value allowed object is {@link Credentials }
+   */
+  public void setCredentials(Credentials value) {
+    this.credentials = value;
+  }
 
-	/**
-	 * Imposta il valore della proprietà preferences.
-	 * 
-	 * @param value allowed object is {@link SignPreferences }
-	 * 
-	 */
-	public void setPreferences(SignPreferences value) {
-		this.preferences = value;
-	}
+  /**
+   * Gets the value of the hashList property.
+   *
+   * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any
+   * modification you make to the returned list will be present inside the JAXB object. This is why
+   * there is not a <CODE>set</CODE> method for the hashList property.
+   *
+   * <p>For example, to add a new item, do as follows:
+   *
+   * <pre>
+   * getHashList().add(newItem);
+   * </pre>
+   *
+   * <p>Objects of the following type(s) are allowed in the list byte[]
+   *
+   * @return the result
+   */
+  public List<byte[]> getHashList() {
+    if (hashList == null) {
+      hashList = new ArrayList<byte[]>();
+    }
+    return this.hashList;
+  }
 
+  /**
+   * Recupera il valore della proprietà preferences.
+   *
+   * @return possible object is {@link SignPreferences }
+   */
+  public SignPreferences getPreferences() {
+    return preferences;
+  }
+
+  /**
+   * Imposta il valore della proprietà preferences.
+   *
+   * @param value allowed object is {@link SignPreferences }
+   */
+  public void setPreferences(SignPreferences value) {
+    this.preferences = value;
+  }
 }

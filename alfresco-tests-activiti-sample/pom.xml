@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>it.vige</groupId>
+	<parent>
+		<groupId>it.vige</groupId>
+		<artifactId>alfresco-tests-parent</artifactId>
+		<version>7.4.2.1.1</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
 	<artifactId>alfresco-tests-activiti-sample</artifactId>
 	<name>Alfresco Tests Activiti sample</name>
-	<version>7.4.1.1.10</version>
 	<description>Simple AMP Activiti sample for tests</description>
 	<packaging>jar</packaging>
-	<prerequisites>
-		<maven>3.3.0</maven>
-	</prerequisites>
 
 	<!-- SDK properties have sensible defaults in the SDK parent, but you can 
 		override the properties below to use another version. For more available 
@@ -23,7 +24,7 @@
 		<!-- Properties used in dependency declarations, you don't need to change these -->
 		<alfresco.groupId>org.alfresco</alfresco.groupId>
 		<alfresco.bomDependencyArtifactId>acs-packaging</alfresco.bomDependencyArtifactId>
-		<alfresco.platform.version>7.4.1.3</alfresco.platform.version>
+		<alfresco.platform.version>7.4.2.1</alfresco.platform.version>
 
 		<!-- JRebel Hot reloading of classpath stuff and web resource stuff -->
 		<jrebel.version>1.1.8</jrebel.version>

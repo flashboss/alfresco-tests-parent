@@ -1,18 +1,18 @@
-
 package it.vige.nam.stub;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(
+    name = "wsFaultBean",
+    propOrder = {"error", "message"})
 /**
- * <p>
  * Classe Java per wsFaultBean complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="wsFaultBean"&gt;
  *   &lt;complexContent&gt;
@@ -25,50 +25,48 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "wsFaultBean", propOrder = { "error", "message" })
 public class WsFaultBean {
 
-	protected int error;
-	protected String message;
+  /** The error. */
+  protected int error;
 
-	/**
-	 * Recupera il valore della proprietà error.
-	 * 
-	 */
-	public int getError() {
-		return error;
-	}
+  /** The message. */
+  protected String message;
 
-	/**
-	 * Imposta il valore della proprietà error.
-	 * 
-	 */
-	public void setError(int value) {
-		this.error = value;
-	}
+  /**
+   * Recupera il valore della proprietà error.
+   *
+   * @return the result
+   */
+  public int getError() {
+    return error;
+  }
 
-	/**
-	 * Recupera il valore della proprietà message.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getMessage() {
-		return message;
-	}
+  /**
+   * Imposta il valore della proprietà error.
+   *
+   * @param value the value
+   */
+  public void setError(int value) {
+    this.error = value;
+  }
 
-	/**
-	 * Imposta il valore della proprietà message.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setMessage(String value) {
-		this.message = value;
-	}
+  /**
+   * Recupera il valore della proprietà message.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getMessage() {
+    return message;
+  }
 
+  /**
+   * Imposta il valore della proprietà message.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setMessage(String value) {
+    this.message = value;
+  }
 }

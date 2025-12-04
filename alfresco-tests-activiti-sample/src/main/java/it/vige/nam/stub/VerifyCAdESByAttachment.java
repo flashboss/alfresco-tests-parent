@@ -1,4 +1,3 @@
-
 package it.vige.nam.stub;
 
 import javax.activation.DataHandler;
@@ -8,13 +7,10 @@ import javax.xml.bind.annotation.XmlMimeType;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per verifyCAdESByAttachment complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="verifyCAdESByAttachment"&gt;
  *   &lt;complexContent&gt;
@@ -27,55 +23,53 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "verifyCAdESByAttachment", propOrder = { "inputDataHandler", "preferences" })
+@XmlType(
+    name = "verifyCAdESByAttachment",
+    propOrder = {"inputDataHandler", "preferences"})
 public class VerifyCAdESByAttachment {
 
-	@XmlMimeType("application/octet-stream")
-	protected DataHandler inputDataHandler;
-	protected VerifyPreferences preferences;
+  @XmlMimeType("application/octet-stream")
+  /** The input data handler. */
+  protected DataHandler inputDataHandler;
 
-	/**
-	 * Recupera il valore della proprietà inputDataHandler.
-	 * 
-	 * @return possible object is {@link DataHandler }
-	 * 
-	 */
-	public DataHandler getInputDataHandler() {
-		return inputDataHandler;
-	}
+  /** The preferences. */
+  protected VerifyPreferences preferences;
 
-	/**
-	 * Imposta il valore della proprietà inputDataHandler.
-	 * 
-	 * @param value allowed object is {@link DataHandler }
-	 * 
-	 */
-	public void setInputDataHandler(DataHandler value) {
-		this.inputDataHandler = value;
-	}
+  /**
+   * Recupera il valore della proprietà inputDataHandler.
+   *
+   * @return possible object is {@link DataHandler }
+   */
+  public DataHandler getInputDataHandler() {
+    return inputDataHandler;
+  }
 
-	/**
-	 * Recupera il valore della proprietà preferences.
-	 * 
-	 * @return possible object is {@link VerifyPreferences }
-	 * 
-	 */
-	public VerifyPreferences getPreferences() {
-		return preferences;
-	}
+  /**
+   * Imposta il valore della proprietà inputDataHandler.
+   *
+   * @param value allowed object is {@link DataHandler }
+   */
+  public void setInputDataHandler(DataHandler value) {
+    this.inputDataHandler = value;
+  }
 
-	/**
-	 * Imposta il valore della proprietà preferences.
-	 * 
-	 * @param value allowed object is {@link VerifyPreferences }
-	 * 
-	 */
-	public void setPreferences(VerifyPreferences value) {
-		this.preferences = value;
-	}
+  /**
+   * Recupera il valore della proprietà preferences.
+   *
+   * @return possible object is {@link VerifyPreferences }
+   */
+  public VerifyPreferences getPreferences() {
+    return preferences;
+  }
 
+  /**
+   * Imposta il valore della proprietà preferences.
+   *
+   * @param value allowed object is {@link VerifyPreferences }
+   */
+  public void setPreferences(VerifyPreferences value) {
+    this.preferences = value;
+  }
 }

@@ -1,4 +1,3 @@
-
 package it.vige.nam.stub;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -6,13 +5,10 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per changePassword complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="changePassword"&gt;
  *   &lt;complexContent&gt;
@@ -27,96 +23,94 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "changePassword", propOrder = { "securityCode", "username", "password", "newPassword" })
+@XmlType(
+    name = "changePassword",
+    propOrder = {"securityCode", "username", "password", "newPassword"})
 public class ChangePassword {
 
-	protected String securityCode;
-	protected String username;
-	protected String password;
-	protected String newPassword;
+  /** The security code. */
+  protected String securityCode;
 
-	/**
-	 * Recupera il valore della proprietà securityCode.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getSecurityCode() {
-		return securityCode;
-	}
+  /** The username. */
+  protected String username;
 
-	/**
-	 * Imposta il valore della proprietà securityCode.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setSecurityCode(String value) {
-		this.securityCode = value;
-	}
+  /** The password. */
+  protected String password;
 
-	/**
-	 * Recupera il valore della proprietà username.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getUsername() {
-		return username;
-	}
+  /** The new password. */
+  protected String newPassword;
 
-	/**
-	 * Imposta il valore della proprietà username.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setUsername(String value) {
-		this.username = value;
-	}
+  /**
+   * Recupera il valore della proprietà securityCode.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getSecurityCode() {
+    return securityCode;
+  }
 
-	/**
-	 * Recupera il valore della proprietà password.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getPassword() {
-		return password;
-	}
+  /**
+   * Imposta il valore della proprietà securityCode.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setSecurityCode(String value) {
+    this.securityCode = value;
+  }
 
-	/**
-	 * Imposta il valore della proprietà password.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setPassword(String value) {
-		this.password = value;
-	}
+  /**
+   * Recupera il valore della proprietà username.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getUsername() {
+    return username;
+  }
 
-	/**
-	 * Recupera il valore della proprietà newPassword.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getNewPassword() {
-		return newPassword;
-	}
+  /**
+   * Imposta il valore della proprietà username.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setUsername(String value) {
+    this.username = value;
+  }
 
-	/**
-	 * Imposta il valore della proprietà newPassword.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setNewPassword(String value) {
-		this.newPassword = value;
-	}
+  /**
+   * Recupera il valore della proprietà password.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getPassword() {
+    return password;
+  }
 
+  /**
+   * Imposta il valore della proprietà password.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setPassword(String value) {
+    this.password = value;
+  }
+
+  /**
+   * Recupera il valore della proprietà newPassword.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getNewPassword() {
+    return newPassword;
+  }
+
+  /**
+   * Imposta il valore della proprietà newPassword.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setNewPassword(String value) {
+    this.newPassword = value;
+  }
 }

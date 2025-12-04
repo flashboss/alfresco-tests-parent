@@ -6,42 +6,97 @@ import org.alfresco.repo.jscript.ScriptUtils;
 import org.alfresco.repo.jscript.Search;
 import org.alfresco.service.ServiceRegistry;
 
+/**
+ * Mock implementation of the ActivitiProcessEngineConfiguration class for testing purposes. This
+ * class provides a mock implementation that allows unit and integration tests to run without
+ * requiring a full Alfresco server instance.
+ *
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class ActivitiProcessEngineConfiguration extends StandaloneProcessEngineConfiguration {
 
-	private ServiceRegistry serviceRegistry;
-	private Search searchScript;
-	private MockLogger loggerScript;
-	private ScriptUtils utilsScript;
+  /** The service registry. */
+  private ServiceRegistry serviceRegistry;
 
-	public ServiceRegistry getServiceRegistry() {
-		return serviceRegistry;
-	}
+  /** The search script. */
+  private Search searchScript;
 
-	public void setServiceRegistry(ServiceRegistry serviceRegistry) {
-		this.serviceRegistry = serviceRegistry;
-	}
+  /** The logger script. */
+  private MockLogger loggerScript;
 
-	public Search getSearchScript() {
-		return searchScript;
-	}
+  /** The utils script. */
+  private ScriptUtils utilsScript;
 
-	public void setSearchScript(Search searchScript) {
-		this.searchScript = searchScript;
-	}
+  /**
+   * Gets the service registry.
+   *
+   * @return the service registry
+   */
+  public ServiceRegistry getServiceRegistry() {
+    return serviceRegistry;
+  }
 
-	public MockLogger getLoggerScript() {
-		return loggerScript;
-	}
+  /**
+   * Sets the service registry.
+   *
+   * @param serviceRegistry the service registry
+   */
+  public void setServiceRegistry(ServiceRegistry serviceRegistry) {
+    this.serviceRegistry = serviceRegistry;
+  }
 
-	public void setLoggerScript(MockLogger loggerScript) {
-		this.loggerScript = loggerScript;
-	}
+  /**
+   * Gets the search script.
+   *
+   * @return the search script
+   */
+  public Search getSearchScript() {
+    return searchScript;
+  }
 
-	public ScriptUtils getUtilsScript() {
-		return utilsScript;
-	}
+  /**
+   * Sets the search script.
+   *
+   * @param searchScript the search script
+   */
+  public void setSearchScript(Search searchScript) {
+    this.searchScript = searchScript;
+  }
 
-	public void setUtilsScript(ScriptUtils utilsScript) {
-		this.utilsScript = utilsScript;
-	}
+  /**
+   * Gets the logger script.
+   *
+   * @return the logger script
+   */
+  public MockLogger getLoggerScript() {
+    return loggerScript;
+  }
+
+  /**
+   * Sets the logger script.
+   *
+   * @param loggerScript the logger script
+   */
+  public void setLoggerScript(MockLogger loggerScript) {
+    this.loggerScript = loggerScript;
+  }
+
+  /**
+   * Gets the utils script.
+   *
+   * @return the utils script
+   */
+  public ScriptUtils getUtilsScript() {
+    return utilsScript;
+  }
+
+  /**
+   * Sets the utils script.
+   *
+   * @param utilsScript the utils script
+   */
+  public void setUtilsScript(ScriptUtils utilsScript) {
+    this.utilsScript = utilsScript;
+  }
 }

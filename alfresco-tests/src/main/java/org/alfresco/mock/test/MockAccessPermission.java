@@ -1,67 +1,144 @@
 package org.alfresco.mock.test;
 
 import java.io.Serializable;
-
 import org.alfresco.service.cmr.security.AccessPermission;
 import org.alfresco.service.cmr.security.AccessStatus;
 import org.alfresco.service.cmr.security.AuthorityType;
 
+/**
+ * Mock implementation of the MockAccessPermission class for testing purposes. This class provides a
+ * mock implementation that allows unit and integration tests to run without requiring a full
+ * Alfresco server instance.
+ *
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
 public class MockAccessPermission implements AccessPermission, Serializable {
 
-	private String permission;
-	private AccessStatus accessStatus;
-	private String authority;
-	private AuthorityType authorityType;
-	private int position;
-	private boolean inherited;
-	private boolean setDirectly;
+  /** The permission. */
+  private String permission;
 
-	public MockAccessPermission(String permission, String authority) {
-		super();
-		this.permission = permission;
-		this.authority = authority;
-	}
+  /** The access status. */
+  private AccessStatus accessStatus;
 
-	@Override
-	public String getPermission() {
-		return permission;
-	}
+  /** The authority. */
+  private String authority;
 
-	@Override
-	public AccessStatus getAccessStatus() {
-		return accessStatus;
-	}
+  /** The authority type. */
+  private AuthorityType authorityType;
 
-	@Override
-	public String getAuthority() {
-		return authority;
-	}
+  /** The position. */
+  private int position;
 
-	@Override
-	public AuthorityType getAuthorityType() {
-		return authorityType;
-	}
+  /** The inherited. */
+  private boolean inherited;
 
-	@Override
-	public int getPosition() {
-		return position;
-	}
+  /** The set directly. */
+  private boolean setDirectly;
 
-	@Override
-	public boolean isInherited() {
-		return inherited;
-	}
+  /**
+   * Constructs a new MockAccessPermission with the specified permission and authority.
+   *
+   * @param permission the permission string
+   * @param authority the authority string
+   */
+  public MockAccessPermission(String permission, String authority) {
+    super();
+    this.permission = permission;
+    this.authority = authority;
+  }
 
-	@Override
-	public boolean isSetDirectly() {
-		return setDirectly;
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public String getPermission() {
+    return permission;
+  }
 
-	@Override
-	public String toString() {
-		return "MockAccessPermission [permission=" + permission + ", accessStatus=" + accessStatus + ", authority="
-				+ authority + ", authorityType=" + authorityType + ", position=" + position + ", inherited=" + inherited
-				+ ", setDirectly=" + setDirectly + "]";
-	}
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public AccessStatus getAccessStatus() {
+    return accessStatus;
+  }
 
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public String getAuthority() {
+    return authority;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public AuthorityType getAuthorityType() {
+    return authorityType;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public int getPosition() {
+    return position;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public boolean isInherited() {
+    return inherited;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public boolean isSetDirectly() {
+    return setDirectly;
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * @return the result
+   */
+  @Override
+  public String toString() {
+    return "MockAccessPermission [permission="
+        + permission
+        + ", accessStatus="
+        + accessStatus
+        + ", authority="
+        + authority
+        + ", authorityType="
+        + authorityType
+        + ", position="
+        + position
+        + ", inherited="
+        + inherited
+        + ", setDirectly="
+        + setDirectly
+        + "]";
+  }
 }
