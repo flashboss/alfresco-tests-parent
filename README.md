@@ -12,37 +12,37 @@ This version is for:
 
 Latest versions for each branch (aligned with latest tags):
 
-- 4.2.c.16
-- 4.2.6.6.39
-- 4.2.8.19
-- 5.0.d.36
-- 5.1.g.36
-- 5.2.7.36
-- 5.2.f.37
-- 5.2.g.7
-- 6.0.0-ea.40
-- 6.0.2-ea.28
-- 6.1.0-ea.38
-- 6.2.0-ea.40
-- 6.2.2.26
-- 7.0.0-A20.33
-- 7.1.0.29
-- 7.2.0.21
-- 7.2.1.22
-- 7.3.0.22
-- 7.4.0.19
-- 7.4.0.1.16
-- 7.4.1.1.10
-- 7.4.1.3.11
+- 4.2.c.15
+- 4.2.6.6.38
+- 4.2.8.18
+- 5.0.d.35
+- 5.1.g.35
+- 5.2.7.35
+- 5.2.f.36
+- 5.2.g.8
+- 6.0.0-ea.39
+- 6.0.2-ea.27
+- 6.1.0-ea.37
+- 6.2.0-ea.39
+- 6.2.2.25
+- 7.0.0-A20.32
+- 7.1.0.28
+- 7.2.0.20
+- 7.2.1.21
+- 7.3.0.21
+- 7.4.0.18
+- 7.4.0.1.15
+- 7.4.1.1.9
+- 7.4.1.3.10
 - 7.4.2.1.1
-- 23.1.0.11
+- 23.1.0.10
 
 To start add the dependency in your project sdk module:
 ```
    <dependency>
 		<groupId>it.vige</groupId>
 		<artifactId>alfresco-tests</artifactId>
-		<version>23.2.1.8</version>
+		<version>23.2.1.7</version>
 		<scope>test</scope>
    </dependency>
 ```
