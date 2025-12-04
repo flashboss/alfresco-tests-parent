@@ -14,7 +14,7 @@ Latest versions for each branch (aligned with latest tags):
 
 - 4.2.c.15
 - 4.2.6.6.38
-- 4.2.8.18
+- 4.2.8.20
 - 5.0.d.35
 - 5.1.g.35
 - 5.2.7.35
