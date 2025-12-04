@@ -129,14 +129,14 @@ public class NodeUtils {
 		NodeRef[] nodeArray = nodeRefs.toArray(new NodeRef[0]);
 		Arrays.sort(nodeArray, new Comparator<NodeRef>() {
 
+			/**
+			 * Compare.
+			 *
+			 * @param o1 the o1
+			 * @param o2 the o2
+			 * @return the result
+			 */
 			@Override
-	/**
-	 * Compare.
-	 *
-	 * @param o1 the o1
-	 * @param o2 the o2
-	 * @return the result
-	 */
 			public int compare(NodeRef o1, NodeRef o2) {
 				return o1.getId().compareTo(o2.getId());
 			}

@@ -27,14 +27,14 @@ import org.slf4j.Logger;
  */
 public class ModuleClassLoader extends ClassLoader {
 
-	/** The s e p a r a t o r. */
+/** The s e p a r a t o r. */
     private static final String SEPARATOR = "/";
-	/** The module path. */
+/** The module path. */
     private static final String MODULE_PATH = "target/classes/alfresco/module";
-	/** The module path test. */
+/** The module path test. */
     private static final String MODULE_PATH_TEST = "target/test-classes/alfresco/module";
 
-	/** The logger. */
+/** The logger. */
     private Logger logger = getLogger(getClass());
 
     /**

@@ -550,11 +550,11 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 
 	public class MockFileInfo implements FileInfo {
 
-	/** The node ref. */
+		/** The node ref. */
 		private NodeRef nodeRef;
-	/** The name. */
+		/** The name. */
 		private String name;
-	/** The type q name. */
+		/** The type q name. */
 		private QName typeQName;
 
 	/**
@@ -570,117 +570,117 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 			this.typeQName = typeQName;
 		}
 
+		/**
+		 * Get node ref.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get node ref.
-	 *
-	 * @return the result
-	 */
 		public NodeRef getNodeRef() {
 			return nodeRef;
 		}
 
+		/**
+		 * Is folder.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Is folder.
-	 *
-	 * @return the result
-	 */
 		public boolean isFolder() {
 			return typeQName.equals(ContentModel.TYPE_FOLDER);
 		}
 
+		/**
+		 * Is link.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Is link.
-	 *
-	 * @return the result
-	 */
 		public boolean isLink() {
 			// TODO Auto-generated method stub
 			return false;
 		}
 
+		/**
+		 * Is hidden.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Is hidden.
-	 *
-	 * @return the result
-	 */
 		public boolean isHidden() {
 			// TODO Auto-generated method stub
 			return false;
 		}
 
+		/**
+		 * Get link node ref.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get link node ref.
-	 *
-	 * @return the result
-	 */
 		public NodeRef getLinkNodeRef() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
+		/**
+		 * Get name.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get name.
-	 *
-	 * @return the result
-	 */
 		public String getName() {
 			return name;
 		}
 
+		/**
+		 * Get created date.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get created date.
-	 *
-	 * @return the result
-	 */
 		public Date getCreatedDate() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
+		/**
+		 * Get modified date.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get modified date.
-	 *
-	 * @return the result
-	 */
 		public Date getModifiedDate() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
+		/**
+		 * Get content data.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get content data.
-	 *
-	 * @return the result
-	 */
 		public ContentData getContentData() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
+		/**
+		 * Get properties.
+		 *
+		 */
 		@Override
-	/**
-	 * Get properties.
-	 *
-	 */
 		public Map<QName, Serializable> getProperties() {
 			return nodeService.getProperties(nodeRef);
 		}
 
+		/**
+		 * Get type.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get type.
-	 *
-	 * @return the result
-	 */
 		public QName getType() {
 			return typeQName;
 		}

@@ -45,12 +45,12 @@ public class MockHttpServletRequest implements HttpServletRequest {
 
 		int counter;
 
+		/**
+		 * Read.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Read.
-	 *
-	 * @return the result
-	 */
 		public int read() throws IOException {
 			int result;
 			if (counter >= buffer.length && counter < buffer.length + 1) {

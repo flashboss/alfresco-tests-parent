@@ -657,13 +657,13 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	}
 
 	public static class WriteExcel {
-	/** The format. */
+		/** The format. */
 		private String format;
-	/** The filename base. */
+		/** The filename base. */
 		private String filenameBase;
-	/** The res. */
+		/** The res. */
 		private WebScriptResponse res;
-	/** The model. */
+		/** The model. */
 		private Map<String, Object> model;
 
 	/**

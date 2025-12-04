@@ -9,19 +9,19 @@ import org.joda.time.DateTime;
  */
 public class DocVigeWS {
 
-	/** The id pratica. */
+/** The id pratica. */
     private String idPratica;
-	/** The data creazione pratica. */
+/** The data creazione pratica. */
     private DateTime dataCreazionePratica;
-	/** The numero pratica. */
+/** The numero pratica. */
     private String numeroPratica;
-	/** The convenzione. */
+/** The convenzione. */
     private String convenzione;
-	/** The descrizione partner. */
+/** The descrizione partner. */
     private String descrizionePartner;
-	/** The codice fiscale azienda. */
+/** The codice fiscale azienda. */
     private String codiceFiscaleAzienda;
-	/** The ragione sociale azienda. */
+/** The ragione sociale azienda. */
     private String ragioneSocialeAzienda;
 
 

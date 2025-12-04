@@ -1030,7 +1030,7 @@ public class MockNodeService implements NodeService, Serializable {
 
 	public class MockElement extends Path.Element {
 
-	/** The path. */
+		/** The path. */
 		private String path;
 
 	/**
@@ -1042,23 +1042,23 @@ public class MockNodeService implements NodeService, Serializable {
 			this.path = path;
 		}
 
+		/**
+		 * Get element string.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get element string.
-	 *
-	 * @return the result
-	 */
 		public String getElementString() {
 			return path;
 		}
 
+		/**
+		 * Get base name element.
+		 *
+		 * @param tenantService the tenant service
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get base name element.
-	 *
-	 * @param tenantService the tenant service
-	 * @return the result
-	 */
 		public Element getBaseNameElement(TenantService tenantService) {
 			return this;
 		}

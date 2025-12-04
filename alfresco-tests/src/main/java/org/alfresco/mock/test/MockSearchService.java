@@ -271,7 +271,7 @@ public class MockSearchService implements SearchService, Serializable {
 	 */
 	public class MockResultSet implements ResultSet {
 
-	/** The rows. */
+		/** The rows. */
 		private List<ResultSetRow> rows;
 
 		/**
@@ -283,79 +283,79 @@ public class MockSearchService implements SearchService, Serializable {
 			this.rows = rows;
 		}
 
+		/**
+		 * Length.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Length.
-	 *
-	 * @return the result
-	 */
 		public int length() {
 			return rows.size();
 		}
 
+		/**
+		 * Get number found.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get number found.
-	 *
-	 * @return the result
-	 */
 		public long getNumberFound() {
 			return rows.size();
 		}
 
+		/**
+		 * Get node ref.
+		 *
+		 * @param n the n
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get node ref.
-	 *
-	 * @param n the n
-	 * @return the result
-	 */
 		public NodeRef getNodeRef(int n) {
 			if (rows.size() <= n)
 				return null;
 			return rows.get(n).getNodeRef();
 		}
 
+		/**
+		 * Get score.
+		 *
+		 * @param n the n
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get score.
-	 *
-	 * @param n the n
-	 * @return the result
-	 */
 		public float getScore(int n) {
 			// TODO Auto-generated method stub
 			return 0;
 		}
 
+		/**
+		 * Close.
+		 *
+		 */
 		@Override
-	/**
-	 * Close.
-	 *
-	 */
 		public void close() {
 			// TODO Auto-generated method stub
 
 		}
 
+		/**
+		 * Get row.
+		 *
+		 * @param i the i
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get row.
-	 *
-	 * @param i the i
-	 * @return the result
-	 */
 		public ResultSetRow getRow(int i) {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
+		/**
+		 * Get node refs.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get node refs.
-	 *
-	 * @return the result
-	 */
 		public List<NodeRef> getNodeRefs() {
 			List<NodeRef> result = new ArrayList<NodeRef>();
 			for (ResultSetRow row : rows)
@@ -363,103 +363,103 @@ public class MockSearchService implements SearchService, Serializable {
 			return result;
 		}
 
+		/**
+		 * Get child assoc refs.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get child assoc refs.
-	 *
-	 * @return the result
-	 */
 		public List<ChildAssociationRef> getChildAssocRefs() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
+		/**
+		 * Get child assoc ref.
+		 *
+		 * @param n the n
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get child assoc ref.
-	 *
-	 * @param n the n
-	 * @return the result
-	 */
 		public ChildAssociationRef getChildAssocRef(int n) {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
+		/**
+		 * Get result set meta data.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get result set meta data.
-	 *
-	 * @return the result
-	 */
 		public ResultSetMetaData getResultSetMetaData() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
+		/**
+		 * Get start.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get start.
-	 *
-	 * @return the result
-	 */
 		public int getStart() {
 			// TODO Auto-generated method stub
 			return 0;
 		}
 
+		/**
+		 * Has more.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Has more.
-	 *
-	 * @return the result
-	 */
 		public boolean hasMore() {
 			// TODO Auto-generated method stub
 			return false;
 		}
 
+		/**
+		 * Set bulk fetch.
+		 *
+		 * @param bulkFetch the bulk fetch
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Set bulk fetch.
-	 *
-	 * @param bulkFetch the bulk fetch
-	 * @return the result
-	 */
 		public boolean setBulkFetch(boolean bulkFetch) {
 			// TODO Auto-generated method stub
 			return false;
 		}
 
+		/**
+		 * Get bulk fetch.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get bulk fetch.
-	 *
-	 * @return the result
-	 */
 		public boolean getBulkFetch() {
 			// TODO Auto-generated method stub
 			return false;
 		}
 
+		/**
+		 * Set bulk fetch size.
+		 *
+		 * @param bulkFetchSize the bulk fetch size
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Set bulk fetch size.
-	 *
-	 * @param bulkFetchSize the bulk fetch size
-	 * @return the result
-	 */
 		public int setBulkFetchSize(int bulkFetchSize) {
 			// TODO Auto-generated method stub
 			return 0;
 		}
 
+		/**
+		 * Get bulk fetch size.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get bulk fetch size.
-	 *
-	 * @return the result
-	 */
 		public int getBulkFetchSize() {
 			// TODO Auto-generated method stub
 			return 0;
@@ -471,12 +471,12 @@ public class MockSearchService implements SearchService, Serializable {
 			return null;
 		}
 
+		/**
+		 * Iterator.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Iterator.
-	 *
-	 * @return the result
-	 */
 		public Iterator<ResultSetRow> iterator() {
 			// TODO Auto-generated method stub
 			return rows.iterator();
@@ -488,7 +488,7 @@ public class MockSearchService implements SearchService, Serializable {
 	 */
 	public class MockResultSetRow implements ResultSetRow {
 
-	/** The node ref. */
+		/** The node ref. */
 		private NodeRef nodeRef;
 
 		/**
@@ -500,141 +500,141 @@ public class MockSearchService implements SearchService, Serializable {
 			this.nodeRef = nodeRef;
 		}
 
+		/**
+		 * Get values.
+		 *
+		 */
 		@Override
-	/**
-	 * Get values.
-	 *
-	 */
 		public Map<String, Serializable> getValues() {
 			Map<String, Serializable> map = new HashMap<String, Serializable>();
 			map.put("", nodeRef);
 			return map;
 		}
 
+		/**
+		 * Get value.
+		 *
+		 * @param columnName the column name
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get value.
-	 *
-	 * @param columnName the column name
-	 * @return the result
-	 */
 		public Serializable getValue(String columnName) {
 			return nodeRef;
 		}
 
+		/**
+		 * Get value.
+		 *
+		 * @param qname the qname
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get value.
-	 *
-	 * @param qname the qname
-	 * @return the result
-	 */
 		public Serializable getValue(QName qname) {
 			return nodeService.getProperty(nodeRef, qname);
 		}
 
+		/**
+		 * Get node ref.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get node ref.
-	 *
-	 * @return the result
-	 */
 		public NodeRef getNodeRef() {
 			return nodeRef;
 		}
 
+		/**
+		 * Get node refs.
+		 *
+		 */
 		@Override
-	/**
-	 * Get node refs.
-	 *
-	 */
 		public Map<String, NodeRef> getNodeRefs() {
 			return null;
 		}
 
+		/**
+		 * Get node ref.
+		 *
+		 * @param selectorName the selector name
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get node ref.
-	 *
-	 * @param selectorName the selector name
-	 * @return the result
-	 */
 		public NodeRef getNodeRef(String selectorName) {
 			return nodeRef;
 		}
 
+		/**
+		 * Get score.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get score.
-	 *
-	 * @return the result
-	 */
 		public float getScore() {
 			// TODO Auto-generated method stub
 			return 0;
 		}
 
+		/**
+		 * Get scores.
+		 *
+		 */
 		@Override
-	/**
-	 * Get scores.
-	 *
-	 */
 		public Map<String, Float> getScores() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
+		/**
+		 * Get score.
+		 *
+		 * @param selectorName the selector name
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get score.
-	 *
-	 * @param selectorName the selector name
-	 * @return the result
-	 */
 		public float getScore(String selectorName) {
 			// TODO Auto-generated method stub
 			return 0;
 		}
 
+		/**
+		 * Get result set.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get result set.
-	 *
-	 * @return the result
-	 */
 		public ResultSet getResultSet() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
+		/**
+		 * Get q name.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get q name.
-	 *
-	 * @return the result
-	 */
 		public QName getQName() {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
+		/**
+		 * Get index.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get index.
-	 *
-	 * @return the result
-	 */
 		public int getIndex() {
 			// TODO Auto-generated method stub
 			return 0;
 		}
 
+		/**
+		 * Get child assoc ref.
+		 *
+		 * @return the result
+		 */
 		@Override
-	/**
-	 * Get child assoc ref.
-	 *
-	 * @return the result
-	 */
 		public ChildAssociationRef getChildAssocRef() {
 			// TODO Auto-generated method stub
 			return null;
@@ -963,11 +963,11 @@ public class MockSearchService implements SearchService, Serializable {
 	 */
 	private class MockProperty {
 
-	/** The qname. */
+		/** The qname. */
 		private QName qname;
-	/** The value. */
+		/** The value. */
 		private String value;
-	/** The to delete. */
+		/** The to delete. */
 		private boolean toDelete;
 
 		/**
@@ -1016,9 +1016,9 @@ public class MockSearchService implements SearchService, Serializable {
 	 */
 	private class MockAspect {
 
-	/** The qname. */
+		/** The qname. */
 		private QName qname;
-	/** The to delete. */
+		/** The to delete. */
 		private boolean toDelete;
 
 		/**
