@@ -1,4 +1,3 @@
-
 package it.vige.nam.stub;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,13 +6,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per timestampTSRVerifyResponse complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="timestampTSRVerifyResponse"&gt;
  *   &lt;complexContent&gt;
@@ -25,39 +21,37 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "timestampTSRVerifyResponse", propOrder = { "_return" })
+@XmlType(
+    name = "timestampTSRVerifyResponse",
+    propOrder = {"_return"})
 /**
  * Class providing functionality for Alfresco testing.
- * 
+ *
  * @author vige
  */
 public class TimestampTSRVerifyResponse {
 
-	@XmlElement(name = "return")
-	/** The  return. */
-	protected TimestampReportBean _return;
+  @XmlElement(name = "return")
+  /** The return. */
+  protected TimestampReportBean _return;
 
-	/**
-	 * Recupera il valore della proprietà return.
-	 * 
-	 * @return possible object is {@link TimestampReportBean }
-	 * 
-	 */
-	public TimestampReportBean getReturn() {
-		return _return;
-	}
-	/**
-	 * Imposta il valore della proprietà return.
-	 * 
-	 * @param value allowed object is {@link TimestampReportBean }
-	 * 
-	 */
-	public void setReturn(TimestampReportBean value) {
-		this._return = value;
-	}
+  /**
+   * Recupera il valore della proprietà return.
+   *
+   * @return possible object is {@link TimestampReportBean }
+   */
+  public TimestampReportBean getReturn() {
+    return _return;
+  }
 
+  /**
+   * Imposta il valore della proprietà return.
+   *
+   * @param value allowed object is {@link TimestampReportBean }
+   */
+  public void setReturn(TimestampReportBean value) {
+    this._return = value;
+  }
 }

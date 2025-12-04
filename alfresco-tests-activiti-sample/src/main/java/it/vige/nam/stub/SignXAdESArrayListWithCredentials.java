@@ -1,22 +1,17 @@
-
 package it.vige.nam.stub;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per signXAdESArrayListWithCredentials complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="signXAdESArrayListWithCredentials"&gt;
  *   &lt;complexContent&gt;
@@ -30,88 +25,84 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signXAdESArrayListWithCredentials", propOrder = { "credentials", "bufferList", "xAdESPreferences" })
+@XmlType(
+    name = "signXAdESArrayListWithCredentials",
+    propOrder = {"credentials", "bufferList", "xAdESPreferences"})
 /**
  * Class providing functionality for Alfresco testing.
- * 
+ *
  * @author vige
  */
 public class SignXAdESArrayListWithCredentials {
-	/** The credentials. */
-	protected Credentials credentials;
-	/** The buffer list. */
-	protected List<byte[]> bufferList;
-	@XmlElement(name = "XAdESPreferences")
-	/** The x ad e s preferences. */
-	protected XAdESPreferences xAdESPreferences;
+  /** The credentials. */
+  protected Credentials credentials;
 
-	/**
-	 * Recupera il valore della proprietà credentials.
-	 * 
-	 * @return possible object is {@link Credentials }
-	 * 
-	 */
-	public Credentials getCredentials() {
-		return credentials;
-	}
-	/**
-	 * Imposta il valore della proprietà credentials.
-	 * 
-	 * @param value allowed object is {@link Credentials }
-	 * 
-	 */
-	public void setCredentials(Credentials value) {
-		this.credentials = value;
-	}
-	/**
-	 * Gets the value of the bufferList property.
-	 * 
-	 * <p>
-	 * This accessor method returns a reference to the live list, not a snapshot.
-	 * Therefore any modification you make to the returned list will be present
-	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
-	 * for the bufferList property.
-	 * 
-	 * <p>
-	 * For example, to add a new item, do as follows:
-	 * 
-	 * <pre>
-	 * getBufferList().add(newItem);
-	 * </pre>
-	 * 
-	 * 
-	 * <p>
-	 * Objects of the following type(s) are allowed in the list byte[]
-	 * 
-	 * @return the result
-	 */
-	public List<byte[]> getBufferList() {
-		if (bufferList == null) {
-			bufferList = new ArrayList<byte[]>();
-		}
-		return this.bufferList;
-	}
-	/**
-	 * Recupera il valore della proprietà xAdESPreferences.
-	 * 
-	 * @return possible object is {@link XAdESPreferences }
-	 * 
-	 */
-	public XAdESPreferences getXAdESPreferences() {
-		return xAdESPreferences;
-	}
-	/**
-	 * Imposta il valore della proprietà xAdESPreferences.
-	 * 
-	 * @param value allowed object is {@link XAdESPreferences }
-	 * 
-	 */
-	public void setXAdESPreferences(XAdESPreferences value) {
-		this.xAdESPreferences = value;
-	}
+  /** The buffer list. */
+  protected List<byte[]> bufferList;
 
+  @XmlElement(name = "XAdESPreferences")
+  /** The x ad e s preferences. */
+  protected XAdESPreferences xAdESPreferences;
+
+  /**
+   * Recupera il valore della proprietà credentials.
+   *
+   * @return possible object is {@link Credentials }
+   */
+  public Credentials getCredentials() {
+    return credentials;
+  }
+
+  /**
+   * Imposta il valore della proprietà credentials.
+   *
+   * @param value allowed object is {@link Credentials }
+   */
+  public void setCredentials(Credentials value) {
+    this.credentials = value;
+  }
+
+  /**
+   * Gets the value of the bufferList property.
+   *
+   * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any
+   * modification you make to the returned list will be present inside the JAXB object. This is why
+   * there is not a <CODE>set</CODE> method for the bufferList property.
+   *
+   * <p>For example, to add a new item, do as follows:
+   *
+   * <pre>
+   * getBufferList().add(newItem);
+   * </pre>
+   *
+   * <p>Objects of the following type(s) are allowed in the list byte[]
+   *
+   * @return the result
+   */
+  public List<byte[]> getBufferList() {
+    if (bufferList == null) {
+      bufferList = new ArrayList<byte[]>();
+    }
+    return this.bufferList;
+  }
+
+  /**
+   * Recupera il valore della proprietà xAdESPreferences.
+   *
+   * @return possible object is {@link XAdESPreferences }
+   */
+  public XAdESPreferences getXAdESPreferences() {
+    return xAdESPreferences;
+  }
+
+  /**
+   * Imposta il valore della proprietà xAdESPreferences.
+   *
+   * @param value allowed object is {@link XAdESPreferences }
+   */
+  public void setXAdESPreferences(XAdESPreferences value) {
+    this.xAdESPreferences = value;
+  }
 }

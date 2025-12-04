@@ -1,4 +1,3 @@
-
 package it.vige.nam.stub;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -6,13 +5,10 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per pAdESPreferences complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="pAdESPreferences"&gt;
  *   &lt;complexContent&gt;
@@ -28,114 +24,125 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "pAdESPreferences", propOrder = { "encryptInAnyCase", "encryptionPassword", "page", "signerImage",
-		"signerImageReference" })
+@XmlType(
+    name = "pAdESPreferences",
+    propOrder = {
+      "encryptInAnyCase",
+      "encryptionPassword",
+      "page",
+      "signerImage",
+      "signerImageReference"
+    })
 /**
  * Class providing functionality for Alfresco testing.
- * 
+ *
  * @author vige
  */
 public class PAdESPreferences extends SignPreferences {
-	/** The encrypt in any case. */
-	protected boolean encryptInAnyCase;
-	/** The encryption password. */
-	protected String encryptionPassword;
-	/** The page. */
-	protected int page;
-	/** The signer image. */
-	protected SignerImage signerImage;
-	/** The signer image reference. */
-	protected String signerImageReference;
+  /** The encrypt in any case. */
+  protected boolean encryptInAnyCase;
 
-	/**
-	 * Recupera il valore della proprietà encryptInAnyCase.
-	 * 
-	 * @return the result
-	 */
-	public boolean isEncryptInAnyCase() {
-		return encryptInAnyCase;
-	}
-	/**
-	 * Imposta il valore della proprietà encryptInAnyCase.
-	 * 
-	 * @param value the value
-	 */
-	public void setEncryptInAnyCase(boolean value) {
-		this.encryptInAnyCase = value;
-	}
-	/**
-	 * Recupera il valore della proprietà encryptionPassword.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getEncryptionPassword() {
-		return encryptionPassword;
-	}
-	/**
-	 * Imposta il valore della proprietà encryptionPassword.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setEncryptionPassword(String value) {
-		this.encryptionPassword = value;
-	}
-	/**
-	 * Recupera il valore della proprietà page.
-	 * 
-	 * @return the result
-	 */
-	public int getPage() {
-		return page;
-	}
-	/**
-	 * Imposta il valore della proprietà page.
-	 * 
-	 * @param value the value
-	 */
-	public void setPage(int value) {
-		this.page = value;
-	}
-	/**
-	 * Recupera il valore della proprietà signerImage.
-	 * 
-	 * @return possible object is {@link SignerImage }
-	 * 
-	 */
-	public SignerImage getSignerImage() {
-		return signerImage;
-	}
-	/**
-	 * Imposta il valore della proprietà signerImage.
-	 * 
-	 * @param value allowed object is {@link SignerImage }
-	 * 
-	 */
-	public void setSignerImage(SignerImage value) {
-		this.signerImage = value;
-	}
-	/**
-	 * Recupera il valore della proprietà signerImageReference.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getSignerImageReference() {
-		return signerImageReference;
-	}
-	/**
-	 * Imposta il valore della proprietà signerImageReference.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setSignerImageReference(String value) {
-		this.signerImageReference = value;
-	}
+  /** The encryption password. */
+  protected String encryptionPassword;
 
+  /** The page. */
+  protected int page;
+
+  /** The signer image. */
+  protected SignerImage signerImage;
+
+  /** The signer image reference. */
+  protected String signerImageReference;
+
+  /**
+   * Recupera il valore della proprietà encryptInAnyCase.
+   *
+   * @return the result
+   */
+  public boolean isEncryptInAnyCase() {
+    return encryptInAnyCase;
+  }
+
+  /**
+   * Imposta il valore della proprietà encryptInAnyCase.
+   *
+   * @param value the value
+   */
+  public void setEncryptInAnyCase(boolean value) {
+    this.encryptInAnyCase = value;
+  }
+
+  /**
+   * Recupera il valore della proprietà encryptionPassword.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getEncryptionPassword() {
+    return encryptionPassword;
+  }
+
+  /**
+   * Imposta il valore della proprietà encryptionPassword.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setEncryptionPassword(String value) {
+    this.encryptionPassword = value;
+  }
+
+  /**
+   * Recupera il valore della proprietà page.
+   *
+   * @return the result
+   */
+  public int getPage() {
+    return page;
+  }
+
+  /**
+   * Imposta il valore della proprietà page.
+   *
+   * @param value the value
+   */
+  public void setPage(int value) {
+    this.page = value;
+  }
+
+  /**
+   * Recupera il valore della proprietà signerImage.
+   *
+   * @return possible object is {@link SignerImage }
+   */
+  public SignerImage getSignerImage() {
+    return signerImage;
+  }
+
+  /**
+   * Imposta il valore della proprietà signerImage.
+   *
+   * @param value allowed object is {@link SignerImage }
+   */
+  public void setSignerImage(SignerImage value) {
+    this.signerImage = value;
+  }
+
+  /**
+   * Recupera il valore della proprietà signerImageReference.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getSignerImageReference() {
+    return signerImageReference;
+  }
+
+  /**
+   * Imposta il valore della proprietà signerImageReference.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setSignerImageReference(String value) {
+    this.signerImageReference = value;
+  }
 }

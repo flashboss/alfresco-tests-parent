@@ -1,22 +1,17 @@
-
 package it.vige.nam.stub;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per timestampTSDVerifyResponse complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="timestampTSDVerifyResponse"&gt;
  *   &lt;complexContent&gt;
@@ -28,51 +23,43 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "timestampTSDVerifyResponse", propOrder = { "_return" })
+@XmlType(
+    name = "timestampTSDVerifyResponse",
+    propOrder = {"_return"})
 /**
  * Class providing functionality for Alfresco testing.
- * 
+ *
  * @author vige
  */
 public class TimestampTSDVerifyResponse {
 
-	@XmlElement(name = "return")
-	/** The  return. */
-	protected List<TimestampReportBean> _return;
+  @XmlElement(name = "return")
+  /** The return. */
+  protected List<TimestampReportBean> _return;
 
-	/**
-	 * Gets the value of the return property.
-	 * 
-	 * <p>
-	 * This accessor method returns a reference to the live list, not a snapshot.
-	 * Therefore any modification you make to the returned list will be present
-	 * inside the JAXB object. This is why there is not a <CODE>set</CODE> method
-	 * for the return property.
-	 * 
-	 * <p>
-	 * For example, to add a new item, do as follows:
-	 * 
-	 * <pre>
-	 * getReturn().add(newItem);
-	 * </pre>
-	 * 
-	 * 
-	 * <p>
-	 * Objects of the following type(s) are allowed in the list
-	 * {@link TimestampReportBean }
-	 * 
-	 * 
-	 * @return the result
-	 */
-	public List<TimestampReportBean> getReturn() {
-		if (_return == null) {
-			_return = new ArrayList<TimestampReportBean>();
-		}
-		return this._return;
-	}
-
+  /**
+   * Gets the value of the return property.
+   *
+   * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any
+   * modification you make to the returned list will be present inside the JAXB object. This is why
+   * there is not a <CODE>set</CODE> method for the return property.
+   *
+   * <p>For example, to add a new item, do as follows:
+   *
+   * <pre>
+   * getReturn().add(newItem);
+   * </pre>
+   *
+   * <p>Objects of the following type(s) are allowed in the list {@link TimestampReportBean }
+   *
+   * @return the result
+   */
+  public List<TimestampReportBean> getReturn() {
+    if (_return == null) {
+      _return = new ArrayList<TimestampReportBean>();
+    }
+    return this._return;
+  }
 }

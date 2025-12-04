@@ -1,5 +1,10 @@
 package it.vige.ws.api;
 
+import it.vige.ws.bean.Signer;
+import it.vige.ws.dom.VigeWSContentModel;
+import it.vige.ws.service.SignService;
+import it.vige.ws.templateManager.drools.DroolsConverterImpl;
+import it.vige.ws.utils.GenerationUtils;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,7 +16,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
-
 import org.alfresco.model.ContentModel;
 import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.repository.ChildAssociationRef;
@@ -34,401 +38,427 @@ import org.springframework.extensions.webscripts.WebScriptRequest;
 import org.springframework.extensions.webscripts.servlet.FormData;
 import org.springframework.extensions.webscripts.servlet.FormData.FormField;
 
-import it.vige.ws.bean.Signer;
-import it.vige.ws.dom.VigeWSContentModel;
-import it.vige.ws.service.SignService;
-import it.vige.ws.templateManager.drools.DroolsConverterImpl;
-import it.vige.ws.utils.GenerationUtils;
-
 /**
  * Class providing functionality for Alfresco testing.
- * 
+ *
  * @author vige
  */
 public class SignPDFGeneration extends DeclarativeWebScript {
-	/** The file folder service. */
-	private FileFolderService fileFolderService;
-	/** The node service. */
-	private NodeService nodeService;
-	/** The sign service. */
-	private SignService signService;
-	/** The generation util. */
-	private GenerationUtils generationUtil;
+  /** The file folder service. */
+  private FileFolderService fileFolderService;
 
-	/** The pdf conv secret. */
-	private String pdfConvSecret;
-	/** The generate cedra. */
-	private String generateCedra;
+  /** The node service. */
+  private NodeService nodeService;
 
-	/** The signer list. */
-	private HashMap<String, Signer> signerList;
+  /** The sign service. */
+  private SignService signService;
 
-	/** The date pattern. */
-	private final String datePattern = "yyyy-MM-dd HH:mm:ss";
+  /** The generation util. */
+  private GenerationUtils generationUtil;
 
-	/** The logger. */
-	private Logger logger = Logger.getLogger(SignPDFGeneration.class);
+  /** The pdf conv secret. */
+  private String pdfConvSecret;
 
-	@SuppressWarnings("unchecked")	/**
-	 * Execute impl.
-	 *
-	 * @param req the req
-	 * @param status the status
-	 * @param cache the cache
-	 */
-	@Override
-	public Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
+  /** The generate cedra. */
+  private String generateCedra;
 
-		logger.info(">>> PDF sign generation");
+  /** The signer list. */
+  private HashMap<String, Signer> signerList;
 
-		Map<String, Object> model = new HashMap<>();
-		FormData formData = (FormData) req.parseContent();
+  /** The date pattern. */
+  private final String datePattern = "yyyy-MM-dd HH:mm:ss";
 
-		if (formData == null) {
-			logger.error("Bad Req... No multipart form data received");
-			status.setCode(Status.STATUS_BAD_REQUEST);
-			status.setMessage("Bad Req... No multipart form data received");
-			status.setRedirect(true);
-			return model;
-		}
+  /** The logger. */
+  private Logger logger = Logger.getLogger(SignPDFGeneration.class);
 
-		FormField[] formFields = formData.getFields();
-		Map<String, String> templateArgs = req.getServiceMatch().getTemplateVars();
+  @SuppressWarnings("unchecked")
+  /**
+   * Execute impl.
+   *
+   * @param req the req
+   * @param status the status
+   * @param cache the cache
+   */
+  @Override
+  public Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
-		if (formFields.length == 0 || templateArgs.size() < 4) {
-			logger.error("Mandatory parameters not all completed");
-			status.setCode(Status.STATUS_BAD_REQUEST);
-			status.setMessage("Mandatory parameters not all completed");
-			status.setRedirect(true);
-			return model;
-		}
+    logger.info(">>> PDF sign generation");
 
-		final String idPartner = templateArgs.get("idpartner");
-		final String idPratica = templateArgs.get("idpratica");
-		final String annoCreazionePratica = templateArgs.get("annopratica");
-		final String meseCreazionePratica = templateArgs.get("mesepratica");
+    Map<String, Object> model = new HashMap<>();
+    FormData formData = (FormData) req.parseContent();
 
-		JSONObject json;
+    if (formData == null) {
+      logger.error("Bad Req... No multipart form data received");
+      status.setCode(Status.STATUS_BAD_REQUEST);
+      status.setMessage("Bad Req... No multipart form data received");
+      status.setRedirect(true);
+      return model;
+    }
 
-		try (final InputStream jsonInputStream = formFields[0].getInputStream()) {
-			JSONParser parser = new JSONParser();
-			json = (JSONObject) parser.parse(new InputStreamReader(jsonInputStream));
-			logger.info("json parsed");
-		} catch (IOException | ParseException e) {
-			logger.error("can't parse the json", e);
-			status.setCode(Status.STATUS_INTERNAL_SERVER_ERROR);
-			status.setMessage("can't parse the json");
-			status.setRedirect(true);
-			return model;
-		}
+    FormField[] formFields = formData.getFields();
+    Map<String, String> templateArgs = req.getServiceMatch().getTemplateVars();
 
-		logger.info("Parsing of the json performed");
+    if (formFields.length == 0 || templateArgs.size() < 4) {
+      logger.error("Mandatory parameters not all completed");
+      status.setCode(Status.STATUS_BAD_REQUEST);
+      status.setMessage("Mandatory parameters not all completed");
+      status.setRedirect(true);
+      return model;
+    }
 
-		Set<String> templates = json.keySet();
-		NodeRef destinazioneNodeRef;
+    final String idPartner = templateArgs.get("idpartner");
+    final String idPratica = templateArgs.get("idpratica");
+    final String annoCreazionePratica = templateArgs.get("annopratica");
+    final String meseCreazionePratica = templateArgs.get("mesepratica");
 
-		try {
-			destinazioneNodeRef = generationUtil.getDestinazioneNodeRef(idPartner, idPratica, annoCreazionePratica,
-					meseCreazionePratica, json);
-		} catch (NoSuchElementException e) {
-			logger.error("Dest folder doesn't exist");
-			status.setCode(Status.STATUS_INTERNAL_SERVER_ERROR);
-			status.setMessage("Dest folder doesn't exist");
-			status.setRedirect(true);
-			return model;
-		}
+    JSONObject json;
 
-		logger.info("identified / created the destination path");
+    try (final InputStream jsonInputStream = formFields[0].getInputStream()) {
+      JSONParser parser = new JSONParser();
+      json = (JSONObject) parser.parse(new InputStreamReader(jsonInputStream));
+      logger.info("json parsed");
+    } catch (IOException | ParseException e) {
+      logger.error("can't parse the json", e);
+      status.setCode(Status.STATUS_INTERNAL_SERVER_ERROR);
+      status.setMessage("can't parse the json");
+      status.setRedirect(true);
+      return model;
+    }
 
-		final String dataCreazionePratica = json.get("dataCreazionePratica") != null
-				? (String) json.get("dataCreazionePratica")
-				: "";
+    logger.info("Parsing of the json performed");
 
-		List<String> jsonObjects = new ArrayList<>();
-		// For each template: fillTemplate it and convert it in pdf
-		for (String template : templates) {
+    Set<String> templates = json.keySet();
+    NodeRef destinazioneNodeRef;
 
-			if (json.get(template) instanceof JSONObject) {
+    try {
+      destinazioneNodeRef =
+          generationUtil.getDestinazioneNodeRef(
+              idPartner, idPratica, annoCreazionePratica, meseCreazionePratica, json);
+    } catch (NoSuchElementException e) {
+      logger.error("Dest folder doesn't exist");
+      status.setCode(Status.STATUS_INTERNAL_SERVER_ERROR);
+      status.setMessage("Dest folder doesn't exist");
+      status.setRedirect(true);
+      return model;
+    }
 
-				/*
-				 * Elimino eventuali modelli precedentemente generati per la stessa tipologia di
-				 * documento
-				 */
-				List<ChildAssociationRef> listaFiles = nodeService.getChildAssocs(destinazioneNodeRef);
-				for (ChildAssociationRef figlio : listaFiles) {
-					NodeRef figlioNodeRef = figlio.getChildRef();
+    logger.info("identified / created the destination path");
 
-					if (nodeService.getProperty(figlioNodeRef, VigeWSContentModel.CODICE_DOC).equals(template)) {
-						nodeService.addAspect(figlioNodeRef, ContentModel.ASPECT_TEMPORARY, null);
-						fileFolderService.delete(figlioNodeRef);
-						break;
-					}
-				}
+    final String dataCreazionePratica =
+        json.get("dataCreazionePratica") != null ? (String) json.get("dataCreazionePratica") : "";
 
-				JSONObject contenuto = (JSONObject) json.get(template);
+    List<String> jsonObjects = new ArrayList<>();
+    // For each template: fillTemplate it and convert it in pdf
+    for (String template : templates) {
 
-				/** The multiplo. */
-				String multiplo = (String) contenuto.get("istanzeMultiple");
-				/** The genera. */
-				String genera = (String) contenuto.get("genera");
+      if (json.get(template) instanceof JSONObject) {
 
-				if (!"SI".equals(genera)) {
-					continue;
-				}
+        /*
+         * Elimino eventuali modelli precedentemente generati per la stessa tipologia di
+         * documento
+         */
+        List<ChildAssociationRef> listaFiles = nodeService.getChildAssocs(destinazioneNodeRef);
+        for (ChildAssociationRef figlio : listaFiles) {
+          NodeRef figlioNodeRef = figlio.getChildRef();
 
-				// get the generic metadata for the document
-				Map<String, String> genericMetadata = new HashMap<>();
-				final String idUser = contenuto.get("idUser") != null ? (String) contenuto.get("idUser") : "";
-				final String nomeDoc = contenuto.get("nomeDocumento") != null ? (String) contenuto.get("nomeDocumento")
-						: "";
-				final String categoriaDoc = contenuto.get("descrizioneCategoria") != null
-						? (String) contenuto.get("descrizioneCategoria")
-						: "";
-				final String nomeFile = nomeDoc != null ? nomeDoc + ".pdf" : "";
+          if (nodeService
+              .getProperty(figlioNodeRef, VigeWSContentModel.CODICE_DOC)
+              .equals(template)) {
+            nodeService.addAspect(figlioNodeRef, ContentModel.ASPECT_TEMPORARY, null);
+            fileFolderService.delete(figlioNodeRef);
+            break;
+          }
+        }
 
-				genericMetadata.put("codiceTemplate", template);
-				genericMetadata.put("idPartner", idPartner);
-				genericMetadata.put("idPratica", idPratica);
-				genericMetadata.put("idUser", idUser);
-				genericMetadata.put("nomeDoc", nomeDoc);
-				genericMetadata.put("categoriaDoc", categoriaDoc);
-				genericMetadata.put("nomeFile", nomeFile);
-				genericMetadata.put("dataCreazionePratica", dataCreazionePratica);
-				genericMetadata.put("signDoc",
-						contenuto.get("signDoc") != null ? (String) contenuto.get("signDoc") : "");
-				genericMetadata.put("signUser",
-						contenuto.get("signUser") != null ? (String) contenuto.get("signUser") : "");
-				genericMetadata.put("signPassword",
-						contenuto.get("signPassword") != null ? (String) contenuto.get("signPassword") : "");
+        JSONObject contenuto = (JSONObject) json.get(template);
 
-				if ("SI".equals(multiplo)) {
-					logger.info("Multiple module: " + template);
-					JSONArray datiArray = (JSONArray) contenuto.get("dati");
+        /** The multiplo. */
+        String multiplo = (String) contenuto.get("istanzeMultiple");
+        /** The genera. */
+        String genera = (String) contenuto.get("genera");
 
-					for (int i = 0; i < datiArray.size(); i++) {
-						JSONObject dati = (JSONObject) datiArray.get(i);
+        if (!"SI".equals(genera)) {
+          continue;
+        }
 
-						// check the document id
-						final String idDocumento = dati.get("idDocumento") != null ? (String) dati.get("idDocumento")
-								: "";
-						if (idDocumento.isEmpty()) {
-							logger.error("id_documento cannot be empty");
-							status.setCode(Status.STATUS_INTERNAL_SERVER_ERROR);
-							status.setMessage("id_documento cannot be empty");
-							status.setRedirect(true);
-							return model;
-						}
+        // get the generic metadata for the document
+        Map<String, String> genericMetadata = new HashMap<>();
+        final String idUser =
+            contenuto.get("idUser") != null ? (String) contenuto.get("idUser") : "";
+        final String nomeDoc =
+            contenuto.get("nomeDocumento") != null ? (String) contenuto.get("nomeDocumento") : "";
+        final String categoriaDoc =
+            contenuto.get("descrizioneCategoria") != null
+                ? (String) contenuto.get("descrizioneCategoria")
+                : "";
+        final String nomeFile = nomeDoc != null ? nomeDoc + ".pdf" : "";
 
-						logger.info("doc to generate: " + idPartner + "/" + idPratica + "/" + idDocumento);
+        genericMetadata.put("codiceTemplate", template);
+        genericMetadata.put("idPartner", idPartner);
+        genericMetadata.put("idPratica", idPratica);
+        genericMetadata.put("idUser", idUser);
+        genericMetadata.put("nomeDoc", nomeDoc);
+        genericMetadata.put("categoriaDoc", categoriaDoc);
+        genericMetadata.put("nomeFile", nomeFile);
+        genericMetadata.put("dataCreazionePratica", dataCreazionePratica);
+        genericMetadata.put(
+            "signDoc", contenuto.get("signDoc") != null ? (String) contenuto.get("signDoc") : "");
+        genericMetadata.put(
+            "signUser",
+            contenuto.get("signUser") != null ? (String) contenuto.get("signUser") : "");
+        genericMetadata.put(
+            "signPassword",
+            contenuto.get("signPassword") != null ? (String) contenuto.get("signPassword") : "");
 
-						genericMetadata.put("idDocumento", idDocumento);
-						creaPratica(destinazioneNodeRef, dati, genericMetadata, i);
+        if ("SI".equals(multiplo)) {
+          logger.info("Multiple module: " + template);
+          JSONArray datiArray = (JSONArray) contenuto.get("dati");
 
-						jsonObjects.add("{\"id\" : \"" + idDocumento + "\"}");
-					}
-				} else {
-					// single document
-					logger.info("Single module: " + template);
-					JSONObject dati = (JSONObject) contenuto.get("dati");
+          for (int i = 0; i < datiArray.size(); i++) {
+            JSONObject dati = (JSONObject) datiArray.get(i);
 
-					// check the document id
-					final String idDocumento = dati.get("idDocumento") != null ? (String) dati.get("idDocumento") : "";
-					if (idDocumento.isEmpty()) {
-						logger.error("id_documento can't be empty");
-						status.setCode(Status.STATUS_INTERNAL_SERVER_ERROR);
-						status.setMessage("id_documento can't be empty");
-						status.setRedirect(true);
-						return model;
-					}
+            // check the document id
+            final String idDocumento =
+                dati.get("idDocumento") != null ? (String) dati.get("idDocumento") : "";
+            if (idDocumento.isEmpty()) {
+              logger.error("id_documento cannot be empty");
+              status.setCode(Status.STATUS_INTERNAL_SERVER_ERROR);
+              status.setMessage("id_documento cannot be empty");
+              status.setRedirect(true);
+              return model;
+            }
 
-					genericMetadata.put("idDocumento", idDocumento);
-					creaPratica(destinazioneNodeRef, dati, genericMetadata, -1);
+            logger.info("doc to generate: " + idPartner + "/" + idPratica + "/" + idDocumento);
 
-					jsonObjects.add("{\"id\" : \"" + idDocumento + "\"}");
-				}
-			}
-		}
+            genericMetadata.put("idDocumento", idDocumento);
+            creaPratica(destinazioneNodeRef, dati, genericMetadata, i);
 
-		model.put("generatiList", StringUtils.join(jsonObjects.toArray(), ","));
-		return model;
-	}
-	/**
-	 * 
-	 * @param destinazioneNodeRef
-	 * @param dati
-	 * @param metadata
-	 * @param index
-	 */
-	private void creaPratica(NodeRef destinazioneNodeRef, JSONObject dati, Map<String, String> metadata, int index) {
+            jsonObjects.add("{\"id\" : \"" + idDocumento + "\"}");
+          }
+        } else {
+          // single document
+          logger.info("Single module: " + template);
+          JSONObject dati = (JSONObject) contenuto.get("dati");
 
-		final String codiceTemplate = metadata.get("codiceTemplate");
+          // check the document id
+          final String idDocumento =
+              dati.get("idDocumento") != null ? (String) dati.get("idDocumento") : "";
+          if (idDocumento.isEmpty()) {
+            logger.error("id_documento can't be empty");
+            status.setCode(Status.STATUS_INTERNAL_SERVER_ERROR);
+            status.setMessage("id_documento can't be empty");
+            status.setRedirect(true);
+            return model;
+          }
 
-		final Map<String, String> parsedTemplateJson = generationUtil.parseJsonObject(metadata.get("codiceTemplate"),
-				dati);
-		final NodeRef droolsFileNodeRef = generationUtil.getRegolaDrools(metadata.get("codiceTemplate"));
+          genericMetadata.put("idDocumento", idDocumento);
+          creaPratica(destinazioneNodeRef, dati, genericMetadata, -1);
 
-		// retrieve the template
-		final NodeRef modelloNR = generationUtil.getTemplate(metadata.get("idPartner"), metadata.get("idPratica"),
-				metadata.get("codiceTemplate"));
+          jsonObjects.add("{\"id\" : \"" + idDocumento + "\"}");
+        }
+      }
+    }
 
-		logger.info("successfully retrieved model and rule");
+    model.put("generatiList", StringUtils.join(jsonObjects.toArray(), ","));
+    return model;
+  }
 
-		final DroolsConverterImpl converter = new DroolsConverterImpl();
+  /**
+   * @param destinazioneNodeRef
+   * @param dati
+   * @param metadata
+   * @param index
+   */
+  private void creaPratica(
+      NodeRef destinazioneNodeRef, JSONObject dati, Map<String, String> metadata, int index) {
 
-		try (final InputStream modelloIS = fileFolderService.getReader(modelloNR).getContentInputStream();
-				final InputStream droolsIS = fileFolderService.getReader(droolsFileNodeRef).getContentInputStream();
-				final ByteArrayOutputStream fillResultIS = converter.fillTemplate(modelloIS, droolsIS,
-						parsedTemplateJson, metadata.get("nomeFile"));
-				final InputStream conversionResult = generationUtil.convertToPdf(pdfConvSecret, fillResultIS,
-						metadata.get("nomeFile"))) {
-			// fill the template
+    final String codiceTemplate = metadata.get("codiceTemplate");
 
-			logger.info("document compilation and conversion completed");
+    final Map<String, String> parsedTemplateJson =
+        generationUtil.parseJsonObject(metadata.get("codiceTemplate"), dati);
+    final NodeRef droolsFileNodeRef =
+        generationUtil.getRegolaDrools(metadata.get("codiceTemplate"));
 
-			Map<QName, Serializable> props = new HashMap<>();
-			props.put(VigeWSContentModel.ID_DOC, metadata.get("idDocumento"));
-			props.put(VigeWSContentModel.ID_PARTNER, metadata.get("idPartner"));
-			props.put(VigeWSContentModel.ID_PRATICA, metadata.get("idPratica"));
-			props.put(VigeWSContentModel.ID_USER, metadata.get("idUser"));
+    // retrieve the template
+    final NodeRef modelloNR =
+        generationUtil.getTemplate(
+            metadata.get("idPartner"), metadata.get("idPratica"), metadata.get("codiceTemplate"));
 
-			props.put(VigeWSContentModel.DESC_DOC, metadata.get("nomeDoc"));
-			props.put(VigeWSContentModel.CATEGORIA_TIPO_DOC, metadata.get("categoriaDoc"));
-			props.put(VigeWSContentModel.CODICE_DOC, codiceTemplate);
-			props.put(VigeWSContentModel.NOME_FILE, metadata.get("nomeFile"));
+    logger.info("successfully retrieved model and rule");
 
-			DateTime dataCreazionePratica = DateTime.parse(metadata.get("dataCreazionePratica"),
-					DateTimeFormat.forPattern(datePattern));
-			props.put(VigeWSContentModel.DATA_CREAZIONE_PRATICA, dataCreazionePratica.toDate());
+    final DroolsConverterImpl converter = new DroolsConverterImpl();
 
-			// set the flag for self-generation
-			props.put(VigeWSContentModel.COD_GENERATION, 1);
+    try (final InputStream modelloIS =
+            fileFolderService.getReader(modelloNR).getContentInputStream();
+        final InputStream droolsIS =
+            fileFolderService.getReader(droolsFileNodeRef).getContentInputStream();
+        final ByteArrayOutputStream fillResultIS =
+            converter.fillTemplate(
+                modelloIS, droolsIS, parsedTemplateJson, metadata.get("nomeFile"));
+        final InputStream conversionResult =
+            generationUtil.convertToPdf(pdfConvSecret, fillResultIS, metadata.get("nomeFile"))) {
+      // fill the template
 
-			// save the document
-			final String docName = (index < 0 ? codiceTemplate : codiceTemplate + "_" + index) + ".pdf";
+      logger.info("document compilation and conversion completed");
 
-			if ("S".equals(metadata.get("signDoc")))
-				generationUtil.saveDocument(destinazioneNodeRef, docName, signService.signPADES(conversionResult,
-						metadata.get("signUser"), metadata.get("signPassword")), props);
-			else
-				generationUtil.saveDocument(destinazioneNodeRef, docName, conversionResult, props);
+      Map<QName, Serializable> props = new HashMap<>();
+      props.put(VigeWSContentModel.ID_DOC, metadata.get("idDocumento"));
+      props.put(VigeWSContentModel.ID_PARTNER, metadata.get("idPartner"));
+      props.put(VigeWSContentModel.ID_PRATICA, metadata.get("idPratica"));
+      props.put(VigeWSContentModel.ID_USER, metadata.get("idUser"));
 
-		} catch (Exception e) {
-			logger.info("Document generation error: " + e.getMessage());
-			throw new WebScriptException(500, e.getMessage());
-		}
+      props.put(VigeWSContentModel.DESC_DOC, metadata.get("nomeDoc"));
+      props.put(VigeWSContentModel.CATEGORIA_TIPO_DOC, metadata.get("categoriaDoc"));
+      props.put(VigeWSContentModel.CODICE_DOC, codiceTemplate);
+      props.put(VigeWSContentModel.NOME_FILE, metadata.get("nomeFile"));
 
-		logger.info("End Crea pratica.");
+      DateTime dataCreazionePratica =
+          DateTime.parse(
+              metadata.get("dataCreazionePratica"), DateTimeFormat.forPattern(datePattern));
+      props.put(VigeWSContentModel.DATA_CREAZIONE_PRATICA, dataCreazionePratica.toDate());
 
-	}
-	/**
-	 * Get file folder service.
-	 *
-	 * @return the file folder service
-	 */
-	public FileFolderService getFileFolderService() {
-		return fileFolderService;
-	}
-	/**
-	 * Set file folder service.
-	 *
-	 * @param fileFolderService the file folder service
-	 */
-	public void setFileFolderService(FileFolderService fileFolderService) {
-		this.fileFolderService = fileFolderService;
-	}
-	/**
-	 * Get node service.
-	 *
-	 * @return the node service
-	 */
-	public NodeService getNodeService() {
-		return nodeService;
-	}
-	/**
-	 * Set node service.
-	 *
-	 * @param nodeService the node service
-	 */
-	public void setNodeService(NodeService nodeService) {
-		this.nodeService = nodeService;
-	}
-	/**
-	 * Get sign service.
-	 *
-	 * @return the sign service
-	 */
-	public SignService getSignService() {
-		return signService;
-	}
-	/**
-	 * Set sign service.
-	 *
-	 * @param signService the sign service
-	 */
-	public void setSignService(SignService signService) {
-		this.signService = signService;
-	}
-	/**
-	 * Get generation util.
-	 *
-	 * @return the generation utils
-	 */
-	public GenerationUtils getGenerationUtil() {
-		return generationUtil;
-	}
-	/**
-	 * Set generation util.
-	 *
-	 * @param generationUtil the generation util
-	 */
-	public void setGenerationUtil(GenerationUtils generationUtil) {
-		this.generationUtil = generationUtil;
-	}
-	/**
-	 * Get pdf conv secret.
-	 *
-	 * @return the string
-	 */
-	public String getPdfConvSecret() {
-		return pdfConvSecret;
-	}
-	/**
-	 * Set pdf conv secret.
-	 *
-	 * @param pdfConvSecret the pdf conv secret
-	 */
-	public void setPdfConvSecret(String pdfConvSecret) {
-		this.pdfConvSecret = pdfConvSecret;
-	}
-	/**
-	 * Get generate ceda.
-	 *
-	 * @return the string
-	 */
-	public String getGenerateCeda() {
-		return generateCedra;
-	}
-	/**
-	 * Set generate cedra.
-	 *
-	 * @param generateCedra the generate cedra
-	 */
-	public void setGenerateCedra(String generateCedra) {
-		this.generateCedra = generateCedra;
-	}
-	/**
-	 * Get signer list.
-	 *
-	 */
-	public HashMap<String, Signer> getSignerList() {
-		return signerList;
-	}
-	/**
-	 * Set lista firmatari.
-	 *
-	 * @param signerList the signer list
-	 */
-	public void setListaFirmatari(HashMap<String, Signer> signerList) {
-		this.signerList = signerList;
-	}
+      // set the flag for self-generation
+      props.put(VigeWSContentModel.COD_GENERATION, 1);
+
+      // save the document
+      final String docName = (index < 0 ? codiceTemplate : codiceTemplate + "_" + index) + ".pdf";
+
+      if ("S".equals(metadata.get("signDoc")))
+        generationUtil.saveDocument(
+            destinazioneNodeRef,
+            docName,
+            signService.signPADES(
+                conversionResult, metadata.get("signUser"), metadata.get("signPassword")),
+            props);
+      else generationUtil.saveDocument(destinazioneNodeRef, docName, conversionResult, props);
+
+    } catch (Exception e) {
+      logger.info("Document generation error: " + e.getMessage());
+      throw new WebScriptException(500, e.getMessage());
+    }
+
+    logger.info("End Crea pratica.");
+  }
+
+  /**
+   * Get file folder service.
+   *
+   * @return the file folder service
+   */
+  public FileFolderService getFileFolderService() {
+    return fileFolderService;
+  }
+
+  /**
+   * Set file folder service.
+   *
+   * @param fileFolderService the file folder service
+   */
+  public void setFileFolderService(FileFolderService fileFolderService) {
+    this.fileFolderService = fileFolderService;
+  }
+
+  /**
+   * Get node service.
+   *
+   * @return the node service
+   */
+  public NodeService getNodeService() {
+    return nodeService;
+  }
+
+  /**
+   * Set node service.
+   *
+   * @param nodeService the node service
+   */
+  public void setNodeService(NodeService nodeService) {
+    this.nodeService = nodeService;
+  }
+
+  /**
+   * Get sign service.
+   *
+   * @return the sign service
+   */
+  public SignService getSignService() {
+    return signService;
+  }
+
+  /**
+   * Set sign service.
+   *
+   * @param signService the sign service
+   */
+  public void setSignService(SignService signService) {
+    this.signService = signService;
+  }
+
+  /**
+   * Get generation util.
+   *
+   * @return the generation utils
+   */
+  public GenerationUtils getGenerationUtil() {
+    return generationUtil;
+  }
+
+  /**
+   * Set generation util.
+   *
+   * @param generationUtil the generation util
+   */
+  public void setGenerationUtil(GenerationUtils generationUtil) {
+    this.generationUtil = generationUtil;
+  }
+
+  /**
+   * Get pdf conv secret.
+   *
+   * @return the string
+   */
+  public String getPdfConvSecret() {
+    return pdfConvSecret;
+  }
+
+  /**
+   * Set pdf conv secret.
+   *
+   * @param pdfConvSecret the pdf conv secret
+   */
+  public void setPdfConvSecret(String pdfConvSecret) {
+    this.pdfConvSecret = pdfConvSecret;
+  }
+
+  /**
+   * Get generate ceda.
+   *
+   * @return the string
+   */
+  public String getGenerateCeda() {
+    return generateCedra;
+  }
+
+  /**
+   * Set generate cedra.
+   *
+   * @param generateCedra the generate cedra
+   */
+  public void setGenerateCedra(String generateCedra) {
+    this.generateCedra = generateCedra;
+  }
+
+  /** Get signer list. */
+  public HashMap<String, Signer> getSignerList() {
+    return signerList;
+  }
+
+  /**
+   * Set lista firmatari.
+   *
+   * @param signerList the signer list
+   */
+  public void setListaFirmatari(HashMap<String, Signer> signerList) {
+    this.signerList = signerList;
+  }
 }

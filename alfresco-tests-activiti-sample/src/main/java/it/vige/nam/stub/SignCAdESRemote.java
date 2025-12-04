@@ -1,4 +1,3 @@
-
 package it.vige.nam.stub;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,13 +6,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per signCAdESRemote complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="signCAdESRemote"&gt;
  *   &lt;complexContent&gt;
@@ -27,75 +23,77 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signCAdESRemote", propOrder = { "credentials", "buffer", "cAdESPreferences" })
+@XmlType(
+    name = "signCAdESRemote",
+    propOrder = {"credentials", "buffer", "cAdESPreferences"})
 /**
  * Class providing functionality for Alfresco testing.
- * 
+ *
  * @author vige
  */
 public class SignCAdESRemote {
-	/** The credentials. */
-	protected Credentials credentials;
-	protected byte[] buffer;
-	@XmlElement(name = "CAdESPreferences")
-	/** The c ad e s preferences. */
-	protected CAdESPreferences cAdESPreferences;
+  /** The credentials. */
+  protected Credentials credentials;
 
-	/**
-	 * Recupera il valore della proprietà credentials.
-	 * 
-	 * @return possible object is {@link Credentials }
-	 * 
-	 */
-	public Credentials getCredentials() {
-		return credentials;
-	}
-	/**
-	 * Imposta il valore della proprietà credentials.
-	 * 
-	 * @param value allowed object is {@link Credentials }
-	 * 
-	 */
-	public void setCredentials(Credentials value) {
-		this.credentials = value;
-	}
-	/**
-	 * Recupera il valore della proprietà buffer.
-	 * 
-	 * @return possible object is byte[]
-	 */
-	public byte[] getBuffer() {
-		return buffer;
-	}
-	/**
-	 * Imposta il valore della proprietà buffer.
-	 * 
-	 * @param value allowed object is byte[]
-	 */
-	public void setBuffer(byte[] value) {
-		this.buffer = value;
-	}
-	/**
-	 * Recupera il valore della proprietà cAdESPreferences.
-	 * 
-	 * @return possible object is {@link CAdESPreferences }
-	 * 
-	 */
-	public CAdESPreferences getCAdESPreferences() {
-		return cAdESPreferences;
-	}
-	/**
-	 * Imposta il valore della proprietà cAdESPreferences.
-	 * 
-	 * @param value allowed object is {@link CAdESPreferences }
-	 * 
-	 */
-	public void setCAdESPreferences(CAdESPreferences value) {
-		this.cAdESPreferences = value;
-	}
+  protected byte[] buffer;
 
+  @XmlElement(name = "CAdESPreferences")
+  /** The c ad e s preferences. */
+  protected CAdESPreferences cAdESPreferences;
+
+  /**
+   * Recupera il valore della proprietà credentials.
+   *
+   * @return possible object is {@link Credentials }
+   */
+  public Credentials getCredentials() {
+    return credentials;
+  }
+
+  /**
+   * Imposta il valore della proprietà credentials.
+   *
+   * @param value allowed object is {@link Credentials }
+   */
+  public void setCredentials(Credentials value) {
+    this.credentials = value;
+  }
+
+  /**
+   * Recupera il valore della proprietà buffer.
+   *
+   * @return possible object is byte[]
+   */
+  public byte[] getBuffer() {
+    return buffer;
+  }
+
+  /**
+   * Imposta il valore della proprietà buffer.
+   *
+   * @param value allowed object is byte[]
+   */
+  public void setBuffer(byte[] value) {
+    this.buffer = value;
+  }
+
+  /**
+   * Recupera il valore della proprietà cAdESPreferences.
+   *
+   * @return possible object is {@link CAdESPreferences }
+   */
+  public CAdESPreferences getCAdESPreferences() {
+    return cAdESPreferences;
+  }
+
+  /**
+   * Imposta il valore della proprietà cAdESPreferences.
+   *
+   * @param value allowed object is {@link CAdESPreferences }
+   */
+  public void setCAdESPreferences(CAdESPreferences value) {
+    this.cAdESPreferences = value;
+  }
 }
