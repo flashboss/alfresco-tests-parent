@@ -1,4 +1,3 @@
-
 package it.vige.nam.stub;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,13 +7,10 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
- * <p>
  * Classe Java per verifyOnDate complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="verifyOnDate"&gt;
  *   &lt;complexContent&gt;
@@ -27,59 +23,57 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 /**
  * Class providing functionality for Alfresco testing.
- * 
+ *
  * @author vige
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "verifyOnDate", propOrder = { "signedContent", "verifyDate" })
+@XmlType(
+    name = "verifyOnDate",
+    propOrder = {"signedContent", "verifyDate"})
 public class VerifyOnDate {
 
-	protected byte[] signedContent;
-	/** The verify date. */
-@XmlSchemaType(name = "dateTime")
-	protected XMLGregorianCalendar verifyDate;
+  protected byte[] signedContent;
 
-	/**
-	 * Recupera il valore della proprietà signedContent.
-	 * 
-	 * @return possible object is byte[]
-	 */
-	public byte[] getSignedContent() {
-		return signedContent;
-	}
+  /** The verify date. */
+  @XmlSchemaType(name = "dateTime")
+  protected XMLGregorianCalendar verifyDate;
 
-	/**
-	 * Imposta il valore della proprietà signedContent.
-	 * 
-	 * @param value allowed object is byte[]
-	 */
-	public void setSignedContent(byte[] value) {
-		this.signedContent = value;
-	}
+  /**
+   * Recupera il valore della proprietà signedContent.
+   *
+   * @return possible object is byte[]
+   */
+  public byte[] getSignedContent() {
+    return signedContent;
+  }
 
-	/**
-	 * Recupera il valore della proprietà verifyDate.
-	 * 
-	 * @return possible object is {@link XMLGregorianCalendar }
-	 * 
-	 */
-	public XMLGregorianCalendar getVerifyDate() {
-		return verifyDate;
-	}
+  /**
+   * Imposta il valore della proprietà signedContent.
+   *
+   * @param value allowed object is byte[]
+   */
+  public void setSignedContent(byte[] value) {
+    this.signedContent = value;
+  }
 
-	/**
-	 * Imposta il valore della proprietà verifyDate.
-	 * 
-	 * @param value allowed object is {@link XMLGregorianCalendar }
-	 * 
-	 */
-	public void setVerifyDate(XMLGregorianCalendar value) {
-		this.verifyDate = value;
-	}
+  /**
+   * Recupera il valore della proprietà verifyDate.
+   *
+   * @return possible object is {@link XMLGregorianCalendar }
+   */
+  public XMLGregorianCalendar getVerifyDate() {
+    return verifyDate;
+  }
 
+  /**
+   * Imposta il valore della proprietà verifyDate.
+   *
+   * @param value allowed object is {@link XMLGregorianCalendar }
+   */
+  public void setVerifyDate(XMLGregorianCalendar value) {
+    this.verifyDate = value;
+  }
 }

@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Test class for verifying functionality.
- * 
+ *
  * @author vige
  */
 public class ClasspathTestRunner extends SpringJUnit4ClassRunner {
@@ -19,7 +19,7 @@ public class ClasspathTestRunner extends SpringJUnit4ClassRunner {
    * Constructs a new classpath test runner.
    *
    * @param clazz the clazz
-	 * @return the result
+   * @return the result
    */
   public ClasspathTestRunner(Class<?> clazz) throws InitializationError {
     super(loadFromCustomClassloader(clazz));
@@ -51,18 +51,16 @@ public class ClasspathTestRunner extends SpringJUnit4ClassRunner {
    *
    * @param notifier the notifier
    */
-@Override
+  @Override
   public void run(final RunNotifier notifier) {
-    Runnable runnable = new Runnable() {
-      /**
-       * Run.
-       *
-       */
-@Override
-      public void run() {
-          ClasspathTestRunner.super.run(notifier);
-      }
-  };
+    Runnable runnable =
+        new Runnable() {
+          /** Run. */
+          @Override
+          public void run() {
+            ClasspathTestRunner.super.run(notifier);
+          }
+        };
     Thread thread = new Thread(runnable);
     thread.setContextClassLoader(customClassLoader);
     thread.start();

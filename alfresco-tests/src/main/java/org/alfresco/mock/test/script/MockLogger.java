@@ -1,7 +1,6 @@
 package org.alfresco.mock.test.script;
 
 import java.io.Serializable;
-
 import org.alfresco.repo.jscript.ScriptLogger;
 import org.alfresco.repo.processor.BaseProcessorExtension;
 import org.apache.commons.logging.Log;
@@ -9,124 +8,125 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  * Mock implementation of Logger for testing purposes.
- * 
+ *
  * @author vige
  */
 public class MockLogger extends BaseProcessorExtension implements Serializable {
-	
-	/** The logger. */
-	private static final Log logger = LogFactory.getLog(ScriptLogger.class);
-	/** The system out. */
-	private static final SystemOut systemOut = new SystemOut();
 
-	/**
-	 * Is logging enabled.
-	 *
-	 * @return the boolean
-	 */
-	public boolean isLoggingEnabled() {
-		return isDebugLoggingEnabled();
-	}
+  /** The logger. */
+  private static final Log logger = LogFactory.getLog(ScriptLogger.class);
 
-	/**
-	 * Log.
-	 *
-	 * @param str the str
-	 */
-	public void log(String str) {
-		debug(str);
-	}
+  /** The system out. */
+  private static final SystemOut systemOut = new SystemOut();
 
-	/**
-	 * Is debug logging enabled.
-	 *
-	 * @return the boolean
-	 */
-	public boolean isDebugLoggingEnabled() {
-		return logger.isDebugEnabled();
-	}
+  /**
+   * Is logging enabled.
+   *
+   * @return the boolean
+   */
+  public boolean isLoggingEnabled() {
+    return isDebugLoggingEnabled();
+  }
 
-	/**
-	 * Debug.
-	 *
-	 * @param str the str
-	 */
-	public void debug(String str) {
-		logger.debug(str);
-	}
+  /**
+   * Log.
+   *
+   * @param str the str
+   */
+  public void log(String str) {
+    debug(str);
+  }
 
-	/**
-	 * Is info logging enabled.
-	 *
-	 * @return the boolean
-	 */
-	public boolean isInfoLoggingEnabled() {
-		return logger.isInfoEnabled();
-	}
+  /**
+   * Is debug logging enabled.
+   *
+   * @return the boolean
+   */
+  public boolean isDebugLoggingEnabled() {
+    return logger.isDebugEnabled();
+  }
 
-	/**
-	 * Info.
-	 *
-	 * @param str the str
-	 */
-	public void info(String str) {
-		logger.info(str);
-	}
+  /**
+   * Debug.
+   *
+   * @param str the str
+   */
+  public void debug(String str) {
+    logger.debug(str);
+  }
 
-	/**
-	 * Is warn logging enabled.
-	 *
-	 * @return the boolean
-	 */
-	public boolean isWarnLoggingEnabled() {
-		return logger.isWarnEnabled();
-	}
+  /**
+   * Is info logging enabled.
+   *
+   * @return the boolean
+   */
+  public boolean isInfoLoggingEnabled() {
+    return logger.isInfoEnabled();
+  }
 
-	/**
-	 * Warn.
-	 *
-	 * @param str the str
-	 */
-	public void warn(String str) {
-		logger.warn(str);
-	}
+  /**
+   * Info.
+   *
+   * @param str the str
+   */
+  public void info(String str) {
+    logger.info(str);
+  }
 
-	/**
-	 * Is error logging enabled.
-	 *
-	 * @return the boolean
-	 */
-	public boolean isErrorLoggingEnabled() {
-		return logger.isErrorEnabled();
-	}
+  /**
+   * Is warn logging enabled.
+   *
+   * @return the boolean
+   */
+  public boolean isWarnLoggingEnabled() {
+    return logger.isWarnEnabled();
+  }
 
-	/**
-	 * Error.
-	 *
-	 * @param str the str
-	 */
-	public void error(String str) {
-		logger.error(str);
-	}
+  /**
+   * Warn.
+   *
+   * @param str the str
+   */
+  public void warn(String str) {
+    logger.warn(str);
+  }
 
-	/**
-	 * Get system.
-	 *
-	 * @return the system out
-	 */
-	public SystemOut getSystem() {
-		return systemOut;
-	}
+  /**
+   * Is error logging enabled.
+   *
+   * @return the boolean
+   */
+  public boolean isErrorLoggingEnabled() {
+    return logger.isErrorEnabled();
+  }
 
-	public static class SystemOut {
+  /**
+   * Error.
+   *
+   * @param str the str
+   */
+  public void error(String str) {
+    logger.error(str);
+  }
 
-	/**
-		 * Out.
-		 *
-		 * @param str the str
-		 */
-		public void out(Object str) {
-			System.out.println(str);
-		}
-	}
+  /**
+   * Get system.
+   *
+   * @return the system out
+   */
+  public SystemOut getSystem() {
+    return systemOut;
+  }
+
+  public static class SystemOut {
+
+    /**
+     * Out.
+     *
+     * @param str the str
+     */
+    public void out(Object str) {
+      System.out.println(str);
+    }
+  }
 }
