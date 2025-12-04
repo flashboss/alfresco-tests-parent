@@ -20,6 +20,9 @@ import javax.xml.ws.ResponseWrapper;
 @XmlSeeAlso({ ObjectFactory.class })
 public interface SignIntegration {
 
+	/**
+	 * Sign pkcs1.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signPkcs1", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignPkcs1")
 	@ResponseWrapper(localName = "signPkcs1Response", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignPkcs1Response")
@@ -30,6 +33,9 @@ public interface SignIntegration {
 			@WebParam(name = "preferences", targetNamespace = "") it.vige.nam.stub.SignPreferences preferences)
 			throws WSException;
 
+	/**
+	 * Send otp by s m s.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "sendOtpBySMS", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SendOtpBySMS")
 	@ResponseWrapper(localName = "sendOtpBySMSResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SendOtpBySMSResponse")
@@ -37,6 +43,9 @@ public interface SignIntegration {
 			@WebParam(name = "credentials", targetNamespace = "") it.vige.nam.stub.Credentials credentials)
 			throws WSException;
 
+	/**
+	 * Sign c ad e s.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signCAdES", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignCAdES")
 	@ResponseWrapper(localName = "signCAdESResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignCAdESResponse")
@@ -47,6 +56,9 @@ public interface SignIntegration {
 			@WebParam(name = "CAdESPreferences", targetNamespace = "") it.vige.nam.stub.CAdESPreferences cAdESPreferences)
 			throws WSException;
 
+	/**
+	 * Sign c ad e s remote.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signCAdESRemote", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignCAdESRemote")
 	@ResponseWrapper(localName = "signCAdESRemoteResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignCAdESRemoteResponse")
@@ -71,6 +83,9 @@ public interface SignIntegration {
 			@WebParam(name = "password", targetNamespace = "") java.lang.String password,
 			@WebParam(name = "newPassword", targetNamespace = "") java.lang.String newPassword) throws WSException;
 
+	/**
+	 * Verify on date.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "verifyOnDate", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.VerifyOnDate")
 	@ResponseWrapper(localName = "verifyOnDateResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.VerifyOnDateResponse")
@@ -93,6 +108,9 @@ public interface SignIntegration {
 			@WebParam(name = "username", targetNamespace = "") java.lang.String username,
 			@WebParam(name = "password", targetNamespace = "") java.lang.String password) throws WSException;
 
+	/**
+	 * Open session.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "openSession", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.OpenSession")
 	@ResponseWrapper(localName = "openSessionResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.OpenSessionResponse")
@@ -101,6 +119,9 @@ public interface SignIntegration {
 			@WebParam(name = "credentials", targetNamespace = "") it.vige.nam.stub.Credentials credentials)
 			throws WSException;
 
+	/**
+	 * Check first factor.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "checkFirstFactor", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.CheckFirstFactor")
 	@ResponseWrapper(localName = "checkFirstFactorResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.CheckFirstFactorResponse")
@@ -108,6 +129,9 @@ public interface SignIntegration {
 			@WebParam(name = "credentials", targetNamespace = "") it.vige.nam.stub.Credentials credentials)
 			throws WSException;
 
+	/**
+	 * Sign p ad e s remote.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signPAdESRemote", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignPAdESRemote")
 	@ResponseWrapper(localName = "signPAdESRemoteResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignPAdESRemoteResponse")
@@ -118,6 +142,9 @@ public interface SignIntegration {
 			@WebParam(name = "PAdESPreferences", targetNamespace = "") it.vige.nam.stub.PAdESPreferences pAdESPreferences)
 			throws WSException;
 
+	/**
+	 * Sign c ad e s array list with multi preferences.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signCAdESArrayListWithMultiPreferences", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignCAdESArrayListWithMultiPreferences")
 	@ResponseWrapper(localName = "signCAdESArrayListWithMultiPreferencesResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignCAdESArrayListWithMultiPreferencesResponse")
@@ -128,6 +155,9 @@ public interface SignIntegration {
 			@WebParam(name = "CAdESPreferences", targetNamespace = "") java.util.List<it.vige.nam.stub.CAdESPreferences> cAdESPreferences)
 			throws WSException;
 
+	/**
+	 * Sign p ad e s array list with credentials.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signPAdESArrayListWithCredentials", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignPAdESArrayListWithCredentials")
 	@ResponseWrapper(localName = "signPAdESArrayListWithCredentialsResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignPAdESArrayListWithCredentialsResponse")
@@ -138,6 +168,9 @@ public interface SignIntegration {
 			@WebParam(name = "PAdESPreferences", targetNamespace = "") it.vige.nam.stub.PAdESPreferences pAdESPreferences)
 			throws WSException;
 
+	/**
+	 * Sign c ad e s array list with credentials.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signCAdESArrayListWithCredentials", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignCAdESArrayListWithCredentials")
 	@ResponseWrapper(localName = "signCAdESArrayListWithCredentialsResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignCAdESArrayListWithCredentialsResponse")
@@ -148,6 +181,9 @@ public interface SignIntegration {
 			@WebParam(name = "CAdESPreferences", targetNamespace = "") it.vige.nam.stub.CAdESPreferences cAdESPreferences)
 			throws WSException;
 
+	/**
+	 * Sign with credentials.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signWithCredentials", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignWithCredentials")
 	@ResponseWrapper(localName = "signWithCredentialsResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignWithCredentialsResponse")
@@ -158,6 +194,9 @@ public interface SignIntegration {
 			@WebParam(name = "AdESPreferences", targetNamespace = "") it.vige.nam.stub.SignPreferences adESPreferences)
 			throws WSException;
 
+	/**
+	 * Sign x ad e s array list with multi preferences.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signXAdESArrayListWithMultiPreferences", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignXAdESArrayListWithMultiPreferences")
 	@ResponseWrapper(localName = "signXAdESArrayListWithMultiPreferencesResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignXAdESArrayListWithMultiPreferencesResponse")
@@ -168,6 +207,9 @@ public interface SignIntegration {
 			@WebParam(name = "XAdESPreferences", targetNamespace = "") java.util.List<it.vige.nam.stub.XAdESPreferences> xAdESPreferences)
 			throws WSException;
 
+	/**
+	 * Sign array list with credentials.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signArrayListWithCredentials", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignArrayListWithCredentials")
 	@ResponseWrapper(localName = "signArrayListWithCredentialsResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignArrayListWithCredentialsResponse")
@@ -178,6 +220,9 @@ public interface SignIntegration {
 			@WebParam(name = "AdESPreferences", targetNamespace = "") it.vige.nam.stub.SignPreferences adESPreferences)
 			throws WSException;
 
+	/**
+	 * Get signatures.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "getSignatures", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.GetSignatures")
 	@ResponseWrapper(localName = "getSignaturesResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.GetSignaturesResponse")
@@ -186,6 +231,9 @@ public interface SignIntegration {
 			@WebParam(name = "credentials", targetNamespace = "") it.vige.nam.stub.Credentials credentials)
 			throws WSException;
 
+	/**
+	 * Sign.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "sign", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.Sign")
 	@ResponseWrapper(localName = "signResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignResponse")
@@ -196,6 +244,9 @@ public interface SignIntegration {
 			@WebParam(name = "AdESPreferences", targetNamespace = "") it.vige.nam.stub.SignPreferences adESPreferences)
 			throws WSException;
 
+	/**
+	 * Timestamp t s r verify.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "timestampTSRVerify", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.TimestampTSRVerify")
 	@ResponseWrapper(localName = "timestampTSRVerifyResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.TimestampTSRVerifyResponse")
@@ -204,6 +255,9 @@ public interface SignIntegration {
 			@WebParam(name = "tsr", targetNamespace = "") byte[] tsr,
 			@WebParam(name = "content", targetNamespace = "") byte[] content) throws WSException;
 
+	/**
+	 * Sign x ad e s array list with credentials.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signXAdESArrayListWithCredentials", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignXAdESArrayListWithCredentials")
 	@ResponseWrapper(localName = "signXAdESArrayListWithCredentialsResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignXAdESArrayListWithCredentialsResponse")
@@ -214,6 +268,9 @@ public interface SignIntegration {
 			@WebParam(name = "XAdESPreferences", targetNamespace = "") it.vige.nam.stub.XAdESPreferences xAdESPreferences)
 			throws WSException;
 
+	/**
+	 * Get available signatures.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "getAvailableSignatures", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.GetAvailableSignatures")
 	@ResponseWrapper(localName = "getAvailableSignaturesResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.GetAvailableSignaturesResponse")
@@ -222,6 +279,9 @@ public interface SignIntegration {
 			@WebParam(name = "credentials", targetNamespace = "") it.vige.nam.stub.Credentials credentials)
 			throws WSException;
 
+	/**
+	 * Sign x ad e s.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signXAdES", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignXAdES")
 	@ResponseWrapper(localName = "signXAdESResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignXAdESResponse")
@@ -232,6 +292,9 @@ public interface SignIntegration {
 			@WebParam(name = "XAdESPreferences", targetNamespace = "") it.vige.nam.stub.XAdESPreferences xAdESPreferences)
 			throws WSException;
 
+	/**
+	 * Sign x ad e s remote.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signXAdESRemote", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignXAdESRemote")
 	@ResponseWrapper(localName = "signXAdESRemoteResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignXAdESRemoteResponse")
@@ -242,6 +305,9 @@ public interface SignIntegration {
 			@WebParam(name = "XAdESPreferences", targetNamespace = "") it.vige.nam.stub.XAdESPreferences xAdESPreferences)
 			throws WSException;
 
+	/**
+	 * Sign p ad e s array list.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signPAdESArrayList", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignPAdESArrayList")
 	@ResponseWrapper(localName = "signPAdESArrayListResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignPAdESArrayListResponse")
@@ -253,6 +319,9 @@ public interface SignIntegration {
 			@WebParam(name = "PAdESPreferences", targetNamespace = "") it.vige.nam.stub.PAdESPreferences pAdESPreferences)
 			throws WSException;
 
+	/**
+	 * Enable remote.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "enableRemote", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.EnableRemote")
 	@ResponseWrapper(localName = "enableRemoteResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.EnableRemoteResponse")
@@ -260,6 +329,9 @@ public interface SignIntegration {
 			@WebParam(name = "credentials", targetNamespace = "") it.vige.nam.stub.Credentials credentials)
 			throws WSException;
 
+	/**
+	 * Sign x ad e s array list.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signXAdESArrayList", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignXAdESArrayList")
 	@ResponseWrapper(localName = "signXAdESArrayListResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignXAdESArrayListResponse")
@@ -271,6 +343,9 @@ public interface SignIntegration {
 			@WebParam(name = "XAdESPreferences", targetNamespace = "") it.vige.nam.stub.XAdESPreferences xAdESPreferences)
 			throws WSException;
 
+	/**
+	 * Timestamp t s d verify.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "timestampTSDVerify", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.TimestampTSDVerify")
 	@ResponseWrapper(localName = "timestampTSDVerifyResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.TimestampTSDVerifyResponse")
@@ -278,6 +353,9 @@ public interface SignIntegration {
 	public java.util.List<it.vige.nam.stub.TimestampReportBean> timestampTSDVerify(
 			@WebParam(name = "tsd", targetNamespace = "") byte[] tsd) throws WSException;
 
+	/**
+	 * Sign p ad e s array list with multi preferences.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signPAdESArrayListWithMultiPreferences", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignPAdESArrayListWithMultiPreferences")
 	@ResponseWrapper(localName = "signPAdESArrayListWithMultiPreferencesResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignPAdESArrayListWithMultiPreferencesResponse")
@@ -288,6 +366,9 @@ public interface SignIntegration {
 			@WebParam(name = "PAdESPreferences", targetNamespace = "") java.util.List<it.vige.nam.stub.PAdESPreferences> pAdESPreferences)
 			throws WSException;
 
+	/**
+	 * Sign array list.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signArrayList", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignArrayList")
 	@ResponseWrapper(localName = "signArrayListResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignArrayListResponse")
@@ -299,6 +380,9 @@ public interface SignIntegration {
 			@WebParam(name = "AdESPreferences", targetNamespace = "") it.vige.nam.stub.SignPreferences adESPreferences)
 			throws WSException;
 
+	/**
+	 * Sign p ad e s.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signPAdES", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignPAdES")
 	@ResponseWrapper(localName = "signPAdESResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignPAdESResponse")
@@ -309,6 +393,9 @@ public interface SignIntegration {
 			@WebParam(name = "PAdESPreferences", targetNamespace = "") it.vige.nam.stub.PAdESPreferences pAdESPreferences)
 			throws WSException;
 
+	/**
+	 * Sign pkcs1 array list.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signPkcs1ArrayList", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignPkcs1ArrayList")
 	@ResponseWrapper(localName = "signPkcs1ArrayListResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignPkcs1ArrayListResponse")
@@ -319,6 +406,9 @@ public interface SignIntegration {
 			@WebParam(name = "preferences", targetNamespace = "") it.vige.nam.stub.SignPreferences preferences)
 			throws WSException;
 
+	/**
+	 * Get certificate.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "getCertificate", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.GetCertificate")
 	@ResponseWrapper(localName = "getCertificateResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.GetCertificateResponse")
@@ -326,6 +416,9 @@ public interface SignIntegration {
 	public byte[] getCertificate(@WebParam(name = "username", targetNamespace = "") java.lang.String username,
 			@WebParam(name = "password", targetNamespace = "") java.lang.String password) throws WSException;
 
+	/**
+	 * Change password remote.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "changePasswordRemote", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.ChangePasswordRemote")
 	@ResponseWrapper(localName = "changePasswordRemoteResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.ChangePasswordRemoteResponse")
@@ -333,6 +426,9 @@ public interface SignIntegration {
 			@WebParam(name = "credentials", targetNamespace = "") it.vige.nam.stub.Credentials credentials,
 			@WebParam(name = "newPassword", targetNamespace = "") java.lang.String newPassword) throws WSException;
 
+	/**
+	 * Sign c ad e s array list.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "signCAdESArrayList", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignCAdESArrayList")
 	@ResponseWrapper(localName = "signCAdESArrayListResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.SignCAdESArrayListResponse")
@@ -357,6 +453,9 @@ public interface SignIntegration {
 			@WebParam(name = "username", targetNamespace = "") java.lang.String username,
 			@WebParam(name = "password", targetNamespace = "") java.lang.String password) throws WSException;
 
+	/**
+	 * Check o t p.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "checkOTP", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.CheckOTP")
 	@ResponseWrapper(localName = "checkOTPResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.CheckOTPResponse")
@@ -364,6 +463,9 @@ public interface SignIntegration {
 			@WebParam(name = "credentials", targetNamespace = "") it.vige.nam.stub.Credentials credentials)
 			throws WSException;
 
+	/**
+	 * Verify.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "verify", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.Verify")
 	@ResponseWrapper(localName = "verifyResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.VerifyResponse")
@@ -371,6 +473,9 @@ public interface SignIntegration {
 	public it.vige.nam.stub.SignedDocumentReportBean verify(
 			@WebParam(name = "signedContent", targetNamespace = "") byte[] signedContent) throws WSException;
 
+	/**
+	 * Close session.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "closeSession", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.CloseSession")
 	@ResponseWrapper(localName = "closeSessionResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.CloseSessionResponse")
@@ -378,6 +483,9 @@ public interface SignIntegration {
 			@WebParam(name = "credentials", targetNamespace = "") it.vige.nam.stub.Credentials credentials)
 			throws WSException;
 
+	/**
+	 * Disable remote.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "disableRemote", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.DisableRemote")
 	@ResponseWrapper(localName = "disableRemoteResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.DisableRemoteResponse")
@@ -385,6 +493,9 @@ public interface SignIntegration {
 			@WebParam(name = "credentials", targetNamespace = "") it.vige.nam.stub.Credentials credentials)
 			throws WSException;
 
+	/**
+	 * Verify with preferences.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "verifyWithPreferences", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.VerifyWithPreferences")
 	@ResponseWrapper(localName = "verifyWithPreferencesResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.VerifyWithPreferencesResponse")
@@ -394,6 +505,9 @@ public interface SignIntegration {
 			@WebParam(name = "preferences", targetNamespace = "") it.vige.nam.stub.VerifyPreferences preferences)
 			throws WSException;
 
+	/**
+	 * Timestamp.
+	 */
 	@WebMethod
 	@RequestWrapper(localName = "timestamp", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.Timestamp")
 	@ResponseWrapper(localName = "timestampResponse", targetNamespace = "http://service.ws.nam/", className = "it.vige.nam.stub.TimestampResponse")
