@@ -70,13 +70,13 @@ public class GenerationUtils {
 	private String xmlEnvelope;
 
 	/**
-	 * 
-	 * @param pdfSecret
-	 * @param templateOs
-	 * @param nomeFile
-	 * @return
-	 * @throws IOException
-	 * @throws COSVisitorException
+	 * Convert to pdf.
+	 *
+	 * @param pdfSecret the pdf secret
+	 * @param templateOs the template os
+	 * @param nomeFile the nome file
+	 * @return the input stream
+	 * @throws IOException the io exception
 	 */
 	public InputStream convertToPdf(String pdfSecret, ByteArrayOutputStream templateOs, String nomeFile)
 			throws IOException {
@@ -349,11 +349,11 @@ public class GenerationUtils {
 	}
 
 	/**
-	 * 
-	 * @param pdfStream
-	 * @return
-	 * @throws IOException
-	 * @throws COSVisitorException
+	 * Set PDF metadata.
+	 *
+	 * @param pdfStream the pdf stream
+	 * @return the input stream
+	 * @throws IOException the io exception
 	 */
 	private InputStream setPDFMetadata(InputStream pdfStream) throws IOException {
 
