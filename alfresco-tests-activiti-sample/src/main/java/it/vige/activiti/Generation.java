@@ -24,39 +24,39 @@ import org.apache.commons.logging.LogFactory;
  */
 public class Generation extends BaseJavaDelegate {
 
- /** The logger. */
+	/** The logger. */
 	private static Log logger = LogFactory.getLog(Generation.class);
 
- /** The rar folder. */
+	/** The rar folder. */
 	private String rarFolder;
- /** The node service. */
+	/** The node service. */
 	private NodeService nodeService;
- /** The search service. */
+	/** The search service. */
 	private SearchService searchService;
- /** The namespace service. */
+	/** The namespace service. */
 	private NamespaceService namespaceService;
- /** The file folder service. */
+	/** The file folder service. */
 	private FileFolderService fileFolderService;
 
- /**
- * Execute.
- *
- * @param execution the execution
- */
+	/**
+	 * Execute.
+	 *
+	 * @param execution the execution
+	 */
 	public void execute(DelegateExecution execution) throws Exception {
 		logger.debug("Generation start");
-  /**
-  * Execute.
-  *
-  * @param execution the execution
-  */
+		/**
+		 * Execute.
+		 *
+		 * @param execution the execution
+		 */
 		NodeRef rootNodeRef = nodeService.getRootNode(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE);
 		List<NodeRef> results = searchService.selectNodes(rootNodeRef, rarFolder, null, namespaceService, false);
-  /**
-  * Execute.
-  *
-  * @param execution the execution
-  */
+		/**
+		 * Execute.
+		 *
+		 * @param execution the execution
+		 */
 		if (results.size() == 0) {
 			throw new AlfrescoRuntimeException(rarFolder);
 		}
@@ -73,47 +73,47 @@ public class Generation extends BaseJavaDelegate {
 		execution.setVariable("mywf_rarId", rarCounter);
 	}
 
- /**
- * Set rar folder.
- *
- * @param rarFolder the rar folder
- */
+	/**
+	 * Set rar folder.
+	 *
+	 * @param rarFolder the rar folder
+	 */
 	public void setRarFolder(String rarFolder) {
 		this.rarFolder = rarFolder;
 	}
 
- /**
- * Set node service.
- *
- * @param nodeService the node service
- */
+	/**
+	 * Set node service.
+	 *
+	 * @param nodeService the node service
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
- /**
- * Set search service.
- *
- * @param searchService the search service
- */
+	/**
+	 * Set search service.
+	 *
+	 * @param searchService the search service
+	 */
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
 
- /**
- * Set namespace service.
- *
- * @param namespaceService the namespace service
- */
+	/**
+	 * Set namespace service.
+	 *
+	 * @param namespaceService the namespace service
+	 */
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
 	}
 
- /**
- * Set file folder service.
- *
- * @param fileFolderService the file folder service
- */
+	/**
+	 * Set file folder service.
+	 *
+	 * @param fileFolderService the file folder service
+	 */
 	public void setFileFolderService(FileFolderService fileFolderService) {
 		this.fileFolderService = fileFolderService;
 	}

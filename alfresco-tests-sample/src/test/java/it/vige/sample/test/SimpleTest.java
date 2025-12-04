@@ -38,38 +38,48 @@ import it.vige.sample.BackupAction;
  */
 public class SimpleTest extends AbstractForm {
 
+	/** The backup action. */
 	@Autowired
 	private BackupAction myAction;
 
+	/** The document name. */
 	private final static String documentName = "VALID.pdf";
 
+	/** The version name. */
 	private final static String versionName = "firstVersion.pdf";
+	/** The version content. */
 	private final static String versionContent = "new content";
+	/** The version label. */
 	private final static String versionLabel = "1.0";
 
+	/** The version 2 name. */
 	private final static String version2Name = "secondVersion.pdf";
+	/** The version 2 content. */
 	private final static String version2Content = "new content 2";
+	/** The version 2 label. */
 	private final static String version2Label = "1.1";
 
+	/** The version 3 name. */
 	private final static String version3Name = "thirdVersion.pdf";
+	/** The version 3 content. */
 	private final static String version3Content = "new content 3";
+	/** The version 3 label. */
 	private final static String version3Label = "2.0";
 
- /** The document. */
+	/** The document. */
 	private NodeRef document;
 
+	/** Init. */
 	@Before
- /** Init. */
 	public void init() {
 		super.init();
 
 		// insert a document
-  /** Init. */
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
 		properties.put(PROP_NAME, documentName);
 		properties.put(PROP_DESCRIPTION, documentName);
 		String content = new String(com.adobe.internal.xmp.impl.Base64.encode(documentName));
-  /** The content. */
+		/** The content. */
 		document = insertDocument(spacesStore, documentName, content, properties);
 
 		// verify the document is created
@@ -80,15 +90,13 @@ public class SimpleTest extends AbstractForm {
 		Assert.assertEquals("VALID.pdf is created", documentName, nodeName);
 	}
 
+	/** Execute. */
 	@Test
- /** Execute. */
 	public void execute() {
 
 		// execute the injected action
-  /** Execute. */
 		Map<String, Serializable> parameterValues = new HashMap<String, Serializable>();
 		parameterValues.put(BackupAction.DOCUMENT_NAME, documentName);
-  /** Execute. */
 		Action action = new ActionImpl(null, null, null, parameterValues);
 		myAction.executeImpl(action, spacesStore);
 
@@ -101,15 +109,15 @@ public class SimpleTest extends AbstractForm {
 
 	}
 
+	/** Versioned. */
 	@Test
- /** Versioned. */
 	public void versioned() {
 		insertVersion(document, versionName, versionContent, versionLabel, MINOR);
 		insertVersion(document, version2Name, version2Content, version2Label, MINOR);
 		insertVersion(document, version3Name, version3Content, version3Label, MAJOR);
 
 		VersionHistory versionHistory = serviceRegistry.getVersionService()
-    /** Versioned. */
+				/** Versioned. */
 				.getVersionHistory(new NodeRef("workspace://SpacesStore/unexistentNode"));
 		Assert.assertNull("There is no version history", versionHistory);
 		versionHistory = serviceRegistry.getVersionService().getVersionHistory(document);
