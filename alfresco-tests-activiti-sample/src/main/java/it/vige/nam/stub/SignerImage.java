@@ -40,14 +40,14 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signerImage", propOrder = { "fieldName", "fontName", "fontSize", "height", "image", "imageFilename",
-		"imageURL", "location", "reason", "signerName", "textVisible", "width", "x", "y" })
 /**
  * SignerImage implementation for testing purposes.
  *
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "signerImage", propOrder = { "fieldName", "fontName", "fontSize", "height", "image", "imageFilename",
+		"imageURL", "location", "reason", "signerName", "textVisible", "width", "x", "y" })
 public class SignerImage {
 
 	/** The field name. */

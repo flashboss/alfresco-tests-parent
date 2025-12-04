@@ -31,13 +31,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signCAdESArrayListWithMultiPreferencesResponse", propOrder = { "_return" })
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "signCAdESArrayListWithMultiPreferencesResponse", propOrder = { "_return" })
 public class SignCAdESArrayListWithMultiPreferencesResponse {
 
 	@XmlElement(name = "return")

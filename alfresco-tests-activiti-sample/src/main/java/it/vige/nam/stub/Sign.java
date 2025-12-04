@@ -43,8 +43,8 @@ public class Sign {
 	/** The password. */
 	protected String password;
 	protected byte[] buffer;
-	@XmlElement(name = "AdESPreferences")
 	/** The ad e s preferences. */
+	@XmlElement(name = "AdESPreferences")
 	protected SignPreferences adESPreferences;
 
 	/**

@@ -28,13 +28,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signCAdESResponse", propOrder = { "_return" })
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "signCAdESResponse", propOrder = { "_return" })
 public class SignCAdESResponse {
 
 	@XmlElement(name = "return")

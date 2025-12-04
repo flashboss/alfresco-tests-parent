@@ -34,15 +34,15 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "timeStampPreferences", propOrder = { "filenameInTSD", "outputAsTSD", "outputBase64Encoded",
-		"timestampHashAlgo", "timestampPassword", "timestampUrl", "timestampUsername" })
-@XmlSeeAlso({ SignPreferences.class })
 /**
  * TimeStampPreferences implementation for testing purposes.
  *
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "timeStampPreferences", propOrder = { "filenameInTSD", "outputAsTSD", "outputBase64Encoded",
+		"timestampHashAlgo", "timestampPassword", "timestampUrl", "timestampUsername" })
+@XmlSeeAlso({ SignPreferences.class })
 public class TimeStampPreferences {
 
 	/** The filename in t s d. */

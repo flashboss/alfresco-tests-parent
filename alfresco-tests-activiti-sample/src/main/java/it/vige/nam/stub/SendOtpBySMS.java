@@ -27,13 +27,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "sendOtpBySMS", propOrder = { "credentials" })
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "sendOtpBySMS", propOrder = { "credentials" })
 public class SendOtpBySMS {
 
 	protected Credentials credentials;

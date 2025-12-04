@@ -37,8 +37,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "verifyCAdESByAttachment", propOrder = { "inputDataHandler", "preferences" })
 public class VerifyCAdESByAttachment {
 
-	@XmlMimeType("application/octet-stream")
 	/** The input data handler. */
+	@XmlMimeType("application/octet-stream")
 	protected DataHandler inputDataHandler;
 	/** The preferences. */
 	protected VerifyPreferences preferences;

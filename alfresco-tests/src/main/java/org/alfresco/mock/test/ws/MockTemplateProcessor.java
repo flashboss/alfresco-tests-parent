@@ -24,7 +24,6 @@ public class MockTemplateProcessor implements TemplateProcessor {
 		return false;
 	}
 
-	@Override
 	/**
 	 * Process.
 	 *
@@ -32,6 +31,7 @@ public class MockTemplateProcessor implements TemplateProcessor {
 	 * @param model the model
 	 * @param out the out
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public void process(String template, Object model, Writer out) {
 		if (model instanceof Map)

@@ -43,8 +43,8 @@ public class SignXAdES {
 	/** The password. */
 	protected String password;
 	protected byte[] buffer;
-	@XmlElement(name = "XAdESPreferences")
 	/** The x ad e s preferences. */
+	@XmlElement(name = "XAdESPreferences")
 	protected XAdESPreferences xAdESPreferences;
 
 	/**

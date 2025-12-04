@@ -52,17 +52,17 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  * 
  */
+/**
+ * SignatureReportBean implementation for testing purposes.
+ *
+ * @author vige
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signatureReportBean", propOrder = { "derEncodedSignerCert", "id", "integrity",
 		"issuerCertificateRevocationDate", "issuerCertificateStatus", "issuerDN", "issuerInTrustedList", "keySize",
 		"qcComplianceStatus", "serialNumber", "signatureAlgorithmName", "signatureDate", "signerCertificateNotAfter",
 		"signerCertificateNotBefore", "signerCertificateRevocationDate", "signerCertificateStatus", "subjectDN",
 		"timestampReportBeanList", "trustedSignatureDate" })
-/**
- * SignatureReportBean implementation for testing purposes.
- *
- * @author vige
- */
 public class SignatureReportBean {
 
 	protected byte[] derEncodedSignerCert;
@@ -70,11 +70,11 @@ public class SignatureReportBean {
 	protected String id;
 	/** The integrity. */
 	protected boolean integrity;
-	@XmlSchemaType(name = "dateTime")
 	/** The issuer certificate revocation date. */
+	@XmlSchemaType(name = "dateTime")
 	protected XMLGregorianCalendar issuerCertificateRevocationDate;
-	@XmlSchemaType(name = "string")
 	/** The issuer certificate status. */
+	@XmlSchemaType(name = "string")
 	protected CertificateStatus issuerCertificateStatus;
 	/** The issuer d n. */
 	protected String issuerDN;
@@ -82,32 +82,32 @@ public class SignatureReportBean {
 	protected boolean issuerInTrustedList;
 	/** The key size. */
 	protected int keySize;
-	@XmlSchemaType(name = "string")
 	/** The qc compliance status. */
+	@XmlSchemaType(name = "string")
 	protected Result qcComplianceStatus;
 	/** The serial number. */
 	protected BigInteger serialNumber;
 	/** The signature algorithm name. */
 	protected String signatureAlgorithmName;
-	@XmlSchemaType(name = "dateTime")
 	/** The signature date. */
+	@XmlSchemaType(name = "dateTime")
 	protected XMLGregorianCalendar signatureDate;
-	@XmlSchemaType(name = "dateTime")
 	/** The signer certificate not after. */
+	@XmlSchemaType(name = "dateTime")
 	protected XMLGregorianCalendar signerCertificateNotAfter;
-	@XmlSchemaType(name = "dateTime")
 	/** The signer certificate not before. */
-	protected XMLGregorianCalendar signerCertificateNotBefore;
 	@XmlSchemaType(name = "dateTime")
+	protected XMLGregorianCalendar signerCertificateNotBefore;
 	/** The signer certificate revocation date. */
+	@XmlSchemaType(name = "dateTime")
 	protected XMLGregorianCalendar signerCertificateRevocationDate;
-	@XmlSchemaType(name = "string")
 	/** The signer certificate status. */
+	@XmlSchemaType(name = "string")
 	protected CertificateStatus signerCertificateStatus;
 	/** The subject d n. */
 	protected String subjectDN;
-	@XmlElement(nillable = true)
 	/** The timestamp report bean list. */
+	@XmlElement(nillable = true)
 	protected List<TimestampReportBean> timestampReportBeanList;
 	/** The trusted signature date. */
 	protected boolean trustedSignatureDate;

@@ -41,11 +41,11 @@ public class SignCAdESByAttachment {
 
 	/** The credentials. */
 	protected Credentials credentials;
-	@XmlMimeType("application/octet-stream")
 	/** The input data handler. */
+	@XmlMimeType("application/octet-stream")
 	protected DataHandler inputDataHandler;
-	@XmlElement(name = "CAdESPreferences")
 	/** The c ad e s preferences. */
+	@XmlElement(name = "CAdESPreferences")
 	protected CAdESPreferences cAdESPreferences;
 
 	/**

@@ -44,8 +44,8 @@ public class SignCAdESArrayListWithCredentials {
 	protected Credentials credentials;
 	/** The buffer list. */
 	protected List<byte[]> bufferList;
-	@XmlElement(name = "CAdESPreferences")
 	/** The c ad e s preferences. */
+	@XmlElement(name = "CAdESPreferences")
 	protected CAdESPreferences cAdESPreferences;
 
 	/**

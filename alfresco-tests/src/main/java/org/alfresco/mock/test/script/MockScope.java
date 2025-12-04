@@ -172,13 +172,13 @@ public class MockScope implements Scriptable, Serializable {
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get default value.
 	 *
 	 * @param hint the hint
 	 * @return the result
 	 */
+	@Override
 	@SuppressWarnings("rawtypes")
 	public Object getDefaultValue(Class hint) {
 		// TODO Auto-generated method stub

@@ -47,8 +47,8 @@ public class SignArrayList {
 	protected String password;
 	/** The buffer list. */
 	protected List<byte[]> bufferList;
-	@XmlElement(name = "AdESPreferences")
 	/** The ad e s preferences. */
+	@XmlElement(name = "AdESPreferences")
 	protected SignPreferences adESPreferences;
 
 	/**

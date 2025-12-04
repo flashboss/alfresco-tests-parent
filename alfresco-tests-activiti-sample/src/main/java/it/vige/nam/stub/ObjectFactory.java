@@ -17,12 +17,12 @@ import javax.xml.namespace.QName;
  * methods for each of these are provided in this class.
  * 
  */
-@XmlRegistry
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlRegistry
 public class ObjectFactory {
 
 	private final static QName _SignCAdESByAttachment_QNAME = new QName("http://service.ws.nam/",

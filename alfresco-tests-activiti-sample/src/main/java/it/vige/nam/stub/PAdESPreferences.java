@@ -31,14 +31,14 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "pAdESPreferences", propOrder = { "encryptInAnyCase", "encryptionPassword", "page", "signerImage",
-		"signerImageReference" })
 /**
  * PAdESPreferences implementation for testing purposes.
  *
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "pAdESPreferences", propOrder = { "encryptInAnyCase", "encryptionPassword", "page", "signerImage",
+		"signerImageReference" })
 public class PAdESPreferences extends SignPreferences {
 
 	/** The encrypt in any case. */

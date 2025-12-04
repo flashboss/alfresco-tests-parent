@@ -40,8 +40,8 @@ public class SignXAdESRemote {
 	/** The credentials. */
 	protected Credentials credentials;
 	protected byte[] buffer;
-	@XmlElement(name = "XAdESPreferences")
 	/** The x ad e s preferences. */
+	@XmlElement(name = "XAdESPreferences")
 	protected XAdESPreferences xAdESPreferences;
 
 	/**

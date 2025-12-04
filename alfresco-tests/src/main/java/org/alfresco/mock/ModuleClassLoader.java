@@ -45,13 +45,13 @@ public class ModuleClassLoader extends ClassLoader {
                 .getContextClassLoader());
     }
 
-    @Override
-	/**
+    	/**
 	 * Get resource.
 	 *
 	 * @param name the name
 	 * @return the result
 	 */
+@Override
     public URL getResource(String name) {
         URL url = super.getResource(name);
         if (url == null && name != null && !name.contains(SEPARATOR)) {
@@ -92,14 +92,14 @@ public class ModuleClassLoader extends ClassLoader {
         final List<Path> foundPaths = new ArrayList<>();
 
         Files.walkFileTree(rootPath, new SimpleFileVisitor<Path>() {
-            @Override
-	/**
+            	/**
 	 * Visit file.
 	 *
 	 * @param file the file
 	 * @param attrs the attrs
 	 * @return the result
 	 */
+@Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 String fileName = file.getFileName().toString();
                 if (fileName.contains(searchTerm)) {

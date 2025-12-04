@@ -42,8 +42,8 @@ public class VerifyPreferences {
 	protected boolean nam;
 	/** The pdf encryption password. */
 	protected String pdfEncryptionPassword;
-	@XmlSchemaType(name = "dateTime")
 	/** The verify on date. */
+	@XmlSchemaType(name = "dateTime")
 	protected XMLGregorianCalendar verifyOnDate;
 
 	/**

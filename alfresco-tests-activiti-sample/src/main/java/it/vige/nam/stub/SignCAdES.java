@@ -43,8 +43,8 @@ public class SignCAdES {
 	/** The password. */
 	protected String password;
 	protected byte[] buffer;
-	@XmlElement(name = "CAdESPreferences")
 	/** The c ad e s preferences. */
+	@XmlElement(name = "CAdESPreferences")
 	protected CAdESPreferences cAdESPreferences;
 
 	/**

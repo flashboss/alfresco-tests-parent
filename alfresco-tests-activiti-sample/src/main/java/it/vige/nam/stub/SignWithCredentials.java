@@ -40,8 +40,8 @@ public class SignWithCredentials {
 	/** The credentials. */
 	protected Credentials credentials;
 	protected byte[] buffer;
-	@XmlElement(name = "AdESPreferences")
 	/** The ad e s preferences. */
+	@XmlElement(name = "AdESPreferences")
 	protected SignPreferences adESPreferences;
 
 	/**

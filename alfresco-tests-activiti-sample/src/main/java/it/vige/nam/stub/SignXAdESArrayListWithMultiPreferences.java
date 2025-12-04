@@ -33,22 +33,22 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signXAdESArrayListWithMultiPreferences", propOrder = { "credentials", "bufferList",
-		"xAdESPreferences" })
 /**
  * SignXAdESArrayListWithMultiPreferences implementation for testing purposes.
  *
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "signXAdESArrayListWithMultiPreferences", propOrder = { "credentials", "bufferList",
+		"xAdESPreferences" })
 public class SignXAdESArrayListWithMultiPreferences {
 
 	/** The credentials. */
 	protected Credentials credentials;
 	/** The buffer list. */
 	protected List<byte[]> bufferList;
-	@XmlElement(name = "XAdESPreferences")
 	/** The x ad e s preferences. */
+	@XmlElement(name = "XAdESPreferences")
 	protected List<XAdESPreferences> xAdESPreferences;
 
 	/**
