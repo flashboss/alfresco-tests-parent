@@ -642,6 +642,12 @@ public class MockSearchService implements SearchService, Serializable {
 
 	}
 
+	/**
+	 * Get properties from query.
+	 *
+	 * @param query the query
+	 * @return the result
+	 */
 	private List<MockProperty> getPropertiesFromQuery(String query) {
 		List<MockProperty> properties = new ArrayList<MockProperty>();
 		String[] segments = query.split(" (?i)AND | (?i)OR ");
@@ -667,6 +673,12 @@ public class MockSearchService implements SearchService, Serializable {
 		return properties;
 	}
 
+	/**
+	 * Get aspects from query.
+	 *
+	 * @param query the query
+	 * @return the result
+	 */
 	private List<MockAspect> getAspectsFromQuery(String query) {
 		List<MockAspect> aspects = new ArrayList<MockAspect>();
 		String[] segments = query.split(" (?i)AND | (?i)OR ");
@@ -692,6 +704,13 @@ public class MockSearchService implements SearchService, Serializable {
 		return aspects;
 	}
 
+	/**
+	 * Get segment from query.
+	 *
+	 * @param query the query
+	 * @param segment the segment
+	 * @return the result
+	 */
 	private String getSegmentFromQuery(String query, String segment) {
 		if (query.contains(segment)) {
 			query = query.substring(query.indexOf(segment) + segment.length());
@@ -701,6 +720,13 @@ public class MockSearchService implements SearchService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Has type.
+	 *
+	 * @param type the type
+	 * @param nodeRef the node ref
+	 * @return the result
+	 */
 	private boolean hasType(String type, NodeRef nodeRef) {
 		if (type == null)
 			return true;
@@ -711,6 +737,13 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 	}
 
+	/**
+	 * Has properties.
+	 *
+	 * @param properties the properties
+	 * @param nodeRef the node ref
+	 * @return the result
+	 */
 	private boolean hasProperties(List<MockProperty> properties, NodeRef nodeRef) {
 		List<Boolean> results = new ArrayList<Boolean>();
 		if (properties.isEmpty())
@@ -746,6 +779,13 @@ public class MockSearchService implements SearchService, Serializable {
 		return result;
 	}
 
+	/**
+	 * Has aspects.
+	 *
+	 * @param aspects the aspects
+	 * @param nodeRef the node ref
+	 * @return the result
+	 */
 	private boolean hasAspects(List<MockAspect> aspects, NodeRef nodeRef) {
 		List<Boolean> results = new ArrayList<Boolean>();
 		if (aspects.isEmpty())
@@ -763,6 +803,16 @@ public class MockSearchService implements SearchService, Serializable {
 		return result;
 	}
 
+	/**
+	 * Has path.
+	 *
+	 * @param store the store
+	 * @param path the path
+	 * @param subpaths the subpaths
+	 * @param wildcardsNumber the wildcards number
+	 * @param nodeRef the node ref
+	 * @return the result
+	 */
 	private boolean hasPath(StoreRef store, String path, String[] subpaths, int wildcardsNumber, NodeRef nodeRef) {
 		String nodepath = getNodeService().getPathAsString(nodeRef);
 		if (store == null || path == null)
@@ -821,6 +871,14 @@ public class MockSearchService implements SearchService, Serializable {
 			return null;
 	}
 
+	/**
+	 * X p a t h query.
+	 *
+	 * @param store the store
+	 * @param query the query
+	 * @param nodeRefs the node refs
+	 * @param rows the rows
+	 */
 	private void XPATHQuery(StoreRef store, String query, List<NodeRef> nodeRefs, List<ResultSetRow> rows) {
 		query = prepare(query, store);
 		String[] subpaths = getSubpaths(query);
@@ -836,6 +894,14 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 	}
 
+	/**
+	 * F t s query.
+	 *
+	 * @param store the store
+	 * @param query the query
+	 * @param nodeRefs the node refs
+	 * @param rows the rows
+	 */
 	private void FTSQuery(StoreRef store, String query, List<NodeRef> nodeRefs, List<ResultSetRow> rows) {
 		String path = getSegmentFromQuery(query, "PATH:\"");
 		if (path != null) {
@@ -863,6 +929,13 @@ public class MockSearchService implements SearchService, Serializable {
 		}
 	}
 
+	/**
+	 * Prepare.
+	 *
+	 * @param query the query
+	 * @param store the store
+	 * @return the result
+	 */
 	private String prepare(String query, StoreRef store) {
 		query = ISO9075.decode(query).trim();
 		String prefix = MockContentService.FOLDER_TEST;

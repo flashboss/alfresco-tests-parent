@@ -723,6 +723,15 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		this.namespaceService = namespaceService;
 	}
 
+	/**
+	 * Recursive deep.
+	 *
+	 * @param contextNodeRef the context node ref
+	 * @param filter the filter
+	 * @param result the result
+	 * @param withFiles the with files
+	 * @return the result
+	 */
 	private List<FileInfo> recursiveDeep(NodeRef contextNodeRef, SubFolderFilter filter, List<FileInfo> result,
 			boolean withFiles) {
 		List<FileInfo> nodes = null;
@@ -737,6 +746,12 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		return result;
 	}
 
+	/**
+	 * Recursive copy.
+	 *
+	 * @param sourceNodeRef the source node ref
+	 * @param targetParentRef the target parent ref
+	 */
 	private void recursiveCopy(NodeRef sourceNodeRef, NodeRef targetParentRef) {
 		List<ChildAssociationRef> children = nodeService.getChildAssocs(sourceNodeRef);
 		for (ChildAssociationRef child : children) {

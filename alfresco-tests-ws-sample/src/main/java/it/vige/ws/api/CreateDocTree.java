@@ -106,6 +106,12 @@ public class CreateDocTree extends DeclarativeWebScript {
 		return model;
 	}
 
+	/**
+	 * Create destinazione.
+	 *
+	 * @param idPartner the id partner
+	 * @param pratica the pratica
+	 */
 	private void createDestinazione(String idPartner, DocVigeWS pratica) throws NoSuchElementException {
 
 		// Check if the Questions folder exists ...

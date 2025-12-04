@@ -666,6 +666,14 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	/** The model. */
 		private Map<String, Object> model;
 
+	/**
+	 * Write excel.
+	 *
+	 * @param res the res
+	 * @param model the model
+	 * @param format the format
+	 * @param filenameBase the filename base
+	 */
 		private WriteExcel(WebScriptResponse res, Map<String, Object> model, String format, String filenameBase) {
 			this.res = res;
 			this.model = model;

@@ -70,6 +70,13 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 
 	}
 
+	/**
+	 * Create act.
+	 *
+	 * @param PDL the p d l
+	 * @param name the name
+	 * @return the result
+	 */
 	private NodeRef createAct(NodeRef PDL, String name) {
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>(11);
 		properties.put(ContentModel.PROP_NAME, name);
@@ -82,6 +89,12 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 		return insertDocument(PDL, name, "testbytes", properties);
 	}
 
+	/**
+	 * Add state act.
+	 *
+	 * @param document the document
+	 * @param PDL the p d l
+	 */
 	private void addStateAct(NodeRef document, NodeRef PDL) {
 		NodeService nodeService = serviceRegistry.getNodeService();
 		String name = (String) nodeService.getProperty(document, ContentModel.PROP_NAME);

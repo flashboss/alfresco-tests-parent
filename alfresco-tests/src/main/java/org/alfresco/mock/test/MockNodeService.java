@@ -778,6 +778,13 @@ public class MockNodeService implements NodeService, Serializable {
 		return new AssociationRef(sourceRef, assocTypeQName, targetRef);
 	}
 
+	/**
+	 * Create all association.
+	 *
+	 * @param qnameAssocs the qname assocs
+	 * @param nodeRef the node ref
+	 * @param assocTypeQName the assoc type q name
+	 */
 	private void createAllAssociation(Map<QName, Set<NodeRef>> qnameAssocs, NodeRef nodeRef, QName assocTypeQName)
 			throws InvalidNodeRefException, AssociationExistsException {
 		Set<NodeRef> nodeRefs = qnameAssocs.get(assocTypeQName);
@@ -806,6 +813,13 @@ public class MockNodeService implements NodeService, Serializable {
 
 	}
 
+	/**
+	 * Remove all association.
+	 *
+	 * @param qnameAssocs the qname assocs
+	 * @param nodeRef the node ref
+	 * @param assocTypeQName the assoc type q name
+	 */
 	private void removeAllAssociation(Map<QName, Set<NodeRef>> qnameAssocs, NodeRef nodeRef, QName assocTypeQName)
 			throws InvalidNodeRefException {
 		Set<NodeRef> nodeRefs = qnameAssocs.get(assocTypeQName);
@@ -1051,6 +1065,11 @@ public class MockNodeService implements NodeService, Serializable {
 
 	}
 
+	/**
+	 * Get not null properties.
+	 *
+	 * @param nodeRef the node ref
+	 */
 	private Map<QName, Serializable> getNotNullProperties(NodeRef nodeRef) {
 		Map<QName, Serializable> properties = getProperties(nodeRef);
 		if (properties == null) {

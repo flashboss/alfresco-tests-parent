@@ -506,6 +506,12 @@ public class MockSignIntegration implements SignIntegration {
 		return null;
 	}
 
+	/**
+	 * Date to calendar.
+	 *
+	 * @param date the date
+	 * @return the result
+	 */
 	private XMLGregorianCalendar dateToCalendar(Date date) {
 		XMLGregorianCalendar xmlDate = null;
 		GregorianCalendar gc = new GregorianCalendar();

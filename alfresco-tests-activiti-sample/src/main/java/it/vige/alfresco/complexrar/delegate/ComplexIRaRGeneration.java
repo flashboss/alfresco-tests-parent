@@ -96,6 +96,12 @@ public class ComplexIRaRGeneration extends BaseJavaDelegate {
 		return irarNodeRef;
 	}
 
+	/**
+	 * Generate i ra r model.
+	 *
+	 * @param rarId the rar id
+	 * @param execution the execution
+	 */
 	private Map<String, Serializable> generateIRaRModel(int rarId, DelegateExecution execution) {
 		Map<String, Serializable> model = new HashMap<String, Serializable>();
 		execution.getVariable("");

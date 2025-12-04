@@ -79,6 +79,10 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 		}
 	}
 
+	/**
+	 * Remove filtered values.
+	 *
+	 */
 	private void removeFilteredValues() {
 		for (NodeRef key : keySet()) {
 			if (!haveToAdd(get(key).getAbsolutePath()))
@@ -86,6 +90,12 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 		}
 	}
 
+	/**
+	 * Have to add.
+	 *
+	 * @param absolutePath the absolute path
+	 * @return the result
+	 */
 	private boolean haveToAdd(String absolutePath) {
 		return !absolutePath.endsWith(MockContentService.FOLDER_TEST.substring(0, 21))
 				&& !absolutePath.endsWith(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE)

@@ -144,12 +144,25 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		return model;
 	}
 
+	/**
+	 * Redirect status.
+	 *
+	 * @param status the status
+	 * @param message the message
+	 */
 	private void redirectStatus(Status status, String message) {
 		status.setCode(500);
 		status.setMessage(message);
 		status.setRedirect(true);
 	}
 
+	/**
+	 * Get posizionida conservare as node ref.
+	 *
+	 * @param dateFrom the date from
+	 * @param dateTo the date to
+	 * @return the result
+	 */
 	private List<NodeRef> getPosizionidaConservareAsNodeRef(DateTime dateFrom, DateTime dateTo) {
 		ResultSet folderRs = serviceRegistry.getSearchService().query(this.storeRef,
 				SearchService.LANGUAGE_FTS_ALFRESCO,
@@ -165,6 +178,11 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		return praticheFolderList;
 	}
 
+	/**
+	 * Get conservazione folder.
+	 *
+	 * @return the result
+	 */
 	private NodeRef getConservazioneFolder() {
 		ResultSet folderRs = serviceRegistry.getSearchService().query(this.storeRef,
 				SearchService.LANGUAGE_FTS_ALFRESCO, conservazioneFolderTemplate);
@@ -174,6 +192,12 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		return folderRs.getNodeRef(0);
 	}
 
+	/**
+	 * Get last document date for w s sample.
+	 *
+	 * @param folderWSSample the folder w s sample
+	 * @return the result
+	 */
 	private Date getLastDocumentDateForWSSample(NodeRef folderWSSample) {
 		NodeService nodeService = serviceRegistry.getNodeService();
 		SearchService searchService = serviceRegistry.getSearchService();
@@ -192,6 +216,12 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		return date;
 	}
 
+	/**
+	 * Aggiorna aspetto w s sample.
+	 *
+	 * @param folderWSSample the folder w s sample
+	 * @param dateModify the date modify
+	 */
 	private void aggiornaAspettoWSSample(NodeRef folderWSSample, Date dateModify) {
 		NodeService nodeService = serviceRegistry.getNodeService();
 		if (!nodeService.hasAspect(folderWSSample, WSSampleModel.ASPECT_WSSAMPLEFOLDER)) {

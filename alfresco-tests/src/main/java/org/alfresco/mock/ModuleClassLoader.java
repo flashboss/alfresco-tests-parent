@@ -81,6 +81,13 @@ public class ModuleClassLoader extends ClassLoader {
         return pathResult;
     }
 
+	/**
+	 * Find first file containing term.
+	 *
+	 * @param rootPath the root path
+	 * @param searchTerm the search term
+	 * @return the result
+	 */
     private Path findFirstFileContainingTerm(Path rootPath, final String searchTerm) throws IOException {
         final List<Path> foundPaths = new ArrayList<>();
 

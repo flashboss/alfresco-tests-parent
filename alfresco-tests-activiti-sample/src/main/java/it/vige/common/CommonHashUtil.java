@@ -66,10 +66,21 @@ public class CommonHashUtil {
 		nodeService.setProperty(nodeRef, HashModel.PROP_HASH_VALUE, hashPropeties.get(HashModel.PROP_HASH_VALUE));
 	}
 
+	/**
+	 * Remove aspect.
+	 *
+	 * @param nodeRef the node ref
+	 */
 	private void removeAspect(NodeRef nodeRef) {
 		nodeService.removeAspect(nodeRef, HashModel.ASPECT_HASHABLE);
 	}
 
+	/**
+	 * Compute hash.
+	 *
+	 * @param contentStream the content stream
+	 * @return the result
+	 */
 	private String computeHash(InputStream contentStream) {
 		MessageDigest messageDigest = null;
 		try {
@@ -98,6 +109,12 @@ public class CommonHashUtil {
 		return convertByteArrayToHex(digest);
 	}
 
+	/**
+	 * Convert byte array to hex.
+	 *
+	 * @param array the array
+	 * @return the result
+	 */
 	private String convertByteArrayToHex(byte[] array) {
 		StringBuffer hashValue = new StringBuffer();
 		for (int i = 0; i < array.length; i++) {
