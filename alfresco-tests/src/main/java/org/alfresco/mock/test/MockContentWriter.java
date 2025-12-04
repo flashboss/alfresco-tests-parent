@@ -337,6 +337,7 @@ public class MockContentWriter implements ContentWriter {
 	 *
 	 * @param text the text
 	 * @param output the output
+	 * @throws IOException the io exception
 	 */
 	public static void addEntryToZip(String text, OutputStream output) throws IOException {
 		InputStream inputStream = new ByteArrayInputStream(text.getBytes());

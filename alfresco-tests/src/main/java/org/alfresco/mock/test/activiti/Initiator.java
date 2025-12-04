@@ -17,6 +17,7 @@ public class Initiator implements Serializable {
 	/**
 	 * Get properties.
 	 *
+	 * @return the properties
 	 */
 	public Map<String, String> getProperties() {
 		return properties;

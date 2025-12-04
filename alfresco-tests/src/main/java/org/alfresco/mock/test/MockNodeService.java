@@ -1083,6 +1083,7 @@ public class MockNodeService implements NodeService, Serializable {
 	/**
 	 * Get node refs.
 	 *
+	 * @return the node refs
 	 */
 	public Map<NodeRef, File> getNodeRefs() {
 		return nodeRefs;

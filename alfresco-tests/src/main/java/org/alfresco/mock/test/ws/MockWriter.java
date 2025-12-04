@@ -44,6 +44,7 @@ public class MockWriter extends Writer {
 	/**
 	 * Get model.
 	 *
+	 * @return the model
 	 */
 	public Map<String, Object> getModel() {
 		return model;

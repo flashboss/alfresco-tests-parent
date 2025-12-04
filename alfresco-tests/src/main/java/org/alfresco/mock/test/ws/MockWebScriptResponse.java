@@ -180,6 +180,7 @@ public class MockWebScriptResponse implements WebScriptResponse {
 	/**
 	 * Get model.
 	 *
+	 * @return the model
 	 */
 	public Map<String, Object> getModel() {
 		return mockWriter.getModel();
