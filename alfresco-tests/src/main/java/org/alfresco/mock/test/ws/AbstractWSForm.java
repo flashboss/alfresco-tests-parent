@@ -20,20 +20,20 @@ public abstract class AbstractWSForm extends AbstractForm {
 	/** The container. */
 	@Autowired
 	private Container container;
-	
+
 	/** The description. */
 	@Autowired
 	private Description description;
-	
+
 	/** The date format. */
 	protected DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmm");
 
-	protected abstract AbstractWebScript getAbstractWebScript();	/**
+	protected abstract AbstractWebScript getAbstractWebScript();
+
+	/**
 	 * Init.
 	 *
 	 */
-
-
 	@Before
 	public void init() {
 		super.init();

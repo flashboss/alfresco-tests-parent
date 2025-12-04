@@ -20,7 +20,7 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 	 * Constructs a new filtered hash map.
 	 *
 	 * @param initialCapacity the initial capacity
-	 * @param loadFactor the load factor
+	 * @param loadFactor      the load factor
 	 * @return the result
 	 */
 	public FilteredHashMap(int initialCapacity, float loadFactor) {
@@ -55,43 +55,43 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 	public FilteredHashMap(Map<NodeRef, File> m) {
 		super(m);
 		removeFilteredValues();
-	}	/**
+	}
+
+	/**
 	 * Put if absent.
 	 *
-	 * @param key the key
+	 * @param key   the key
 	 * @param value the value
 	 * @return the file
 	 */
-
-
 	@Override
 	public File putIfAbsent(NodeRef key, File value) {
 		if (haveToAdd(value.getAbsolutePath()))
 			return super.putIfAbsent(key, value);
 		else
 			return null;
-	}	/**
+	}
+
+	/**
 	 * Put.
 	 *
-	 * @param key the key
+	 * @param key   the key
 	 * @param value the value
 	 * @return the file
 	 */
-
-
 	@Override
 	public File put(NodeRef key, File value) {
 		if (haveToAdd(value.getAbsolutePath()))
 			return super.put(key, value);
 		else
 			return null;
-	}	/**
+	}
+
+	/**
 	 * Put all.
 	 *
 	 * @param m the m
 	 */
-
-
 	@Override
 	public void putAll(Map<? extends NodeRef, ? extends File> m) {
 		super.putAll(filterMap(m));
@@ -104,42 +104,42 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 			return super.merge(key, value, remappingFunction);
 		else
 			return null;
-	}	/**
+	}
+
+	/**
 	 * Replace all.
 	 *
 	 * @param function the function
 	 */
-
-
 	@Override
 	public void replaceAll(BiFunction<? super NodeRef, ? super File, ? extends File> function) {
 		super.replaceAll(function);
 		removeFilteredValues();
-	}	/**
+	}
+
+	/**
 	 * Replace.
 	 *
-	 * @param key the key
+	 * @param key      the key
 	 * @param oldValue the old value
 	 * @param newValue the new value
 	 * @return the boolean
 	 */
-
-
 	@Override
 	public boolean replace(NodeRef key, File oldValue, File newValue) {
 		if (haveToAdd(newValue.getAbsolutePath()))
 			return super.replace(key, oldValue, newValue);
 		else
 			return false;
-	}	/**
+	}
+
+	/**
 	 * Replace.
 	 *
-	 * @param key the key
+	 * @param key   the key
 	 * @param value the value
 	 * @return the file
 	 */
-
-
 	@Override
 	public File replace(NodeRef key, File value) {
 		if (haveToAdd(value.getAbsolutePath()))

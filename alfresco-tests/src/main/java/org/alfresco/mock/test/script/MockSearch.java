@@ -15,24 +15,24 @@ import org.alfresco.service.cmr.repository.StoreRef;
  * 
  * @author vige
  */
-public class MockSearch extends Search implements Serializable, Externalizable {	/**
+public class MockSearch extends Search implements Serializable, Externalizable {
+	/**
 	 * Write external.
 	 *
 	 * @param out the out
 	 */
-
-
 	@Override
 	public void writeExternal(ObjectOutput out) throws IOException {
 		out.writeObject(services);
 		out.writeChars(getExtensionName());
 		out.writeObject(storeRef);
-	}	/**
+	}
+
+	/**
 	 * Read external.
 	 *
 	 * @param in the in
 	 */
-
 
 	@Override
 	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {

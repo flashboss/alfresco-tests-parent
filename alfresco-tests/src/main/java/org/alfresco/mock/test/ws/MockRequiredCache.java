@@ -7,33 +7,32 @@ import org.springframework.extensions.webscripts.Description.RequiredCache;
  * 
  * @author vige
  */
-public class MockRequiredCache implements RequiredCache {	/**
+public class MockRequiredCache implements RequiredCache {
+	/**
 	 * Get never cache.
 	 *
 	 * @return the boolean
 	 */
-
-
 	@Override
 	public boolean getNeverCache() {
 		return false;
-	}	/**
+	}
+
+	/**
 	 * Get is public.
 	 *
 	 * @return the boolean
 	 */
-
-
 	@Override
 	public boolean getIsPublic() {
 		return false;
-	}	/**
+	}
+
+	/**
 	 * Get must revalidate.
 	 *
 	 * @return the boolean
 	 */
-
-
 	@Override
 	public boolean getMustRevalidate() {
 		return false;

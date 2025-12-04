@@ -13,7 +13,7 @@ import org.apache.commons.logging.LogFactory;
  * @author vige
  */
 public class MockLogger extends BaseProcessorExtension implements Serializable {
-	
+
 	/** The logger. */
 	private static final Log logger = LogFactory.getLog(ScriptLogger.class);
 	/** The system out. */
@@ -120,7 +120,7 @@ public class MockLogger extends BaseProcessorExtension implements Serializable {
 
 	public static class SystemOut {
 
-	/**
+		/**
 		 * Out.
 		 *
 		 * @param str the str

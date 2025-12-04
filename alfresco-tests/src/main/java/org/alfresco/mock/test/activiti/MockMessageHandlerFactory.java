@@ -43,35 +43,38 @@ public class MockMessageHandlerFactory implements MessageHandlerFactory {
 	class Handler implements MessageHandler {
 		MessageContext ctx;
 
-	/**
+		/**
 		 * Constructs a new handler.
 		 *
 		 * @param ctx the ctx
-	 * @return the result
+		 * @return the result
 		 */
 		public Handler(MessageContext ctx) {
 			this.ctx = ctx;
 		}
 
-	/**
+		/**
 		 * Prints the from mail
-	 * @param from the from
+		 * 
+		 * @param from the from
 		 */
 		public void from(String from) throws RejectException {
 			logger.info("FROM:" + from);
 		}
 
-	/**
+		/**
 		 * Prints the recipient mail
-	 * @param recipient the recipient
+		 * 
+		 * @param recipient the recipient
 		 */
 		public void recipient(String recipient) throws RejectException {
 			logger.info("RECIPIENT:" + recipient);
 		}
 
-	/**
+		/**
 		 * Prints the body of the message
-	 * @param data the data
+		 * 
+		 * @param data the data
 		 */
 		public void data(InputStream data) throws IOException {
 			logger.info("MAIL DATA");
@@ -80,18 +83,18 @@ public class MockMessageHandlerFactory implements MessageHandlerFactory {
 			logger.info("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
 		}
 
-	/**
+		/**
 		 * Prints if the message is created
 		 */
 		public void done() {
 			logger.info("Finished");
 		}
 
-	/**
+		/**
 		 * Utility convert a stream in a string
 		 * 
 		 * @param is
-		 *            The stream to convert
+		 *           The stream to convert
 		 * @return The converted string
 		 */
 		public String convertStreamToString(InputStream is) {

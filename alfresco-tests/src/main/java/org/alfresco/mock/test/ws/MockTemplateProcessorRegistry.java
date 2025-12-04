@@ -8,25 +8,24 @@ import org.springframework.extensions.webscripts.TemplateProcessorRegistry;
  * 
  * @author vige
  */
-public class MockTemplateProcessorRegistry extends TemplateProcessorRegistry {	/**
+public class MockTemplateProcessorRegistry extends TemplateProcessorRegistry {
+	/**
 	 * Find valid template path.
 	 *
 	 * @param path the path
 	 * @return the string
 	 */
-
-
 	@Override
 	public String findValidTemplatePath(final String path) {
 		return "";
-	}	/**
+	}
+
+	/**
 	 * Get template processor.
 	 *
 	 * @param path the path
 	 * @return the template processor
 	 */
-
-	
 	@Override
 	public TemplateProcessor getTemplateProcessor(String path) {
 		return new MockTemplateProcessor();

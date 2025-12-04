@@ -36,138 +36,138 @@ public class MockContainer implements Container {
 		formats.put("json", MimetypeMap.MIMETYPE_JSON);
 		formats.put("xls", MimetypeMap.MIMETYPE_EXCEL);
 		formatRegistry.addFormats(null, formats);
-	}	/**
+	}
+
+	/**
 	 * Get name.
 	 *
 	 * @return the string
 	 */
-
-
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
 		return null;
-	}	/**
+	}
+
+	/**
 	 * Get description.
 	 *
 	 * @return the server model
 	 */
-
-
 	@Override
 	public ServerModel getDescription() {
 		// TODO Auto-generated method stub
 		return null;
-	}	/**
+	}
+
+	/**
 	 * Get script processor registry.
 	 *
 	 * @return the script processor registry
 	 */
-
-
 	@Override
 	public ScriptProcessorRegistry getScriptProcessorRegistry() {
 		return scriptProcessorRegistry;
-	}	/**
+	}
+
+	/**
 	 * Get script parameter factory registry.
 	 *
 	 * @return the script parameter factory registry
 	 */
-
-
 	@Override
 	public ScriptParameterFactoryRegistry getScriptParameterFactoryRegistry() {
 		// TODO Auto-generated method stub
 		return null;
-	}	/**
+	}
+
+	/**
 	 * Get script parameters.
 	 *
 	 */
-
-
 	@Override
 	public Map<String, Object> getScriptParameters() {
 		// TODO Auto-generated method stub
 		return null;
-	}	/**
+	}
+
+	/**
 	 * Get template processor registry.
 	 *
 	 * @return the template processor registry
 	 */
-
-
 	@Override
 	public TemplateProcessorRegistry getTemplateProcessorRegistry() {
 		return templateProcessorRegistry;
-	}	/**
+	}
+
+	/**
 	 * Get template parameters.
 	 *
 	 */
-
-
 	@Override
 	public Map<String, Object> getTemplateParameters() {
 		// TODO Auto-generated method stub
 		return templateParameters;
-	}	/**
+	}
+
+	/**
 	 * Get format registry.
 	 *
 	 * @return the format registry
 	 */
-
-
 	@Override
 	public FormatRegistry getFormatRegistry() {
 		return formatRegistry;
-	}	/**
+	}
+
+	/**
 	 * Get registry.
 	 *
 	 * @return the registry
 	 */
-
-
 	@Override
 	public Registry getRegistry() {
 		// TODO Auto-generated method stub
 		return null;
-	}	/**
+	}
+
+	/**
 	 * Get search path.
 	 *
 	 * @return the search path
 	 */
-
-
 	@Override
 	public SearchPath getSearchPath() {
 		return searchPath;
-	}	/**
+	}
+
+	/**
 	 * Get config service.
 	 *
 	 * @return the config service
 	 */
-
-
 	@Override
 	public ConfigService getConfigService() {
 		// TODO Auto-generated method stub
 		return null;
-	}	/**
+	}
+
+	/**
 	 * Allow callbacks.
 	 *
 	 * @return the boolean
 	 */
-
-
 	@Override
 	public boolean allowCallbacks() {
 		// TODO Auto-generated method stub
 		return false;
-	}	/**
+	}
+
+	/**
 	 * Reset.
 	 *
 	 */
-
-
 	@Override
 	public void reset() {
 		// TODO Auto-generated method stub

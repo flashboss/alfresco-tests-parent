@@ -115,7 +115,7 @@ public abstract class AbstractForm {
 	 * Insert folder.
 	 *
 	 * @param parent the parent
-	 * @param name the name
+	 * @param name   the name
 	 * @return the node ref
 	 */
 	protected NodeRef insertFolder(NodeRef parent, String name) {
@@ -126,8 +126,8 @@ public abstract class AbstractForm {
 	/**
 	 * Insert folder.
 	 *
-	 * @param parent the parent
-	 * @param prefix the prefix
+	 * @param parent    the parent
+	 * @param prefix    the prefix
 	 * @param localName the local name
 	 * @return the node ref
 	 */
@@ -135,7 +135,7 @@ public abstract class AbstractForm {
 		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
 
-	/** The qname. */
+		/** The qname. */
 		QName qname = QName.createQName(prefix, localName, namespaceService);
 		return fileFolderService.create(parent, qname.getPrefixString(), ContentModel.TYPE_FOLDER).getNodeRef();
 	}
@@ -143,9 +143,9 @@ public abstract class AbstractForm {
 	/**
 	 * Insert document.
 	 *
-	 * @param parent the parent
-	 * @param name the name
-	 * @param text the text
+	 * @param parent     the parent
+	 * @param name       the name
+	 * @param text       the text
 	 * @param properties the properties
 	 * @return the node ref
 	 */
@@ -156,9 +156,9 @@ public abstract class AbstractForm {
 	/**
 	 * Insert document.
 	 *
-	 * @param parent the parent
-	 * @param name the name
-	 * @param text the text
+	 * @param parent     the parent
+	 * @param name       the name
+	 * @param text       the text
 	 * @param properties the properties
 	 * @return the node ref
 	 */
@@ -166,11 +166,31 @@ public abstract class AbstractForm {
 		return NodeUtils.insertDocument(parent, name, text, properties, serviceRegistry);
 	}
 
+	/**
+	 * Insert version.
+	 *
+	 * @param nodeRef the node ref
+	 * @param name    the name
+	 * @param text    the text
+	 * @param version the version
+	 * @param versionType the version type
+	 * @return the node ref	
+	 */
 	protected NodeRef insertVersion(NodeRef nodeRef, String name, String text, String version,
 			VersionType versionType) {
 		return NodeUtils.insertVersion(nodeRef, name, text, version, versionType, serviceRegistry);
 	}
 
+	/**
+	 * Insert zip.
+	 *
+	 * @param parent the parent
+	 * @param zipName the zip name
+	 * @param entryName the entry name
+	 * @param text the text
+	 * @param properties the properties
+	 * @return the node ref
+	 */
 	protected NodeRef insertZip(NodeRef parent, String zipName, String entryName, String text,
 			Map<QName, Serializable> properties) throws IOException {
 		return ZipUtils.insertZip(parent, zipName, entryName, text, properties, serviceRegistry);
@@ -187,7 +207,7 @@ public abstract class AbstractForm {
 		byte[] contentBytes = IOUtils.toByteArray(inputStream);
 		byte[] hash = digest.digest(contentBytes);
 
-	/** The hash orig string. */
+		/** The hash orig string. */
 		String hashOrigString = Base64.encodeBase64String(hash);
 		return hashOrigString;
 	}
@@ -196,7 +216,7 @@ public abstract class AbstractForm {
 	 * Get object from xml.
 	 *
 	 * @param createdNodeRef the created node ref
-	 * @param objectClass the object class
+	 * @param objectClass    the object class
 	 */
 	protected <T> T getObjectFromXml(NodeRef createdNodeRef, Class<T> objectClass) throws Exception {
 		ContentService contentService = serviceRegistry.getContentService();

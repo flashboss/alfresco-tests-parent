@@ -166,7 +166,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	 * Insert folder.
 	 *
 	 * @param parent the parent
-	 * @param name the name
+	 * @param name   the name
 	 * @return the node ref
 	 */
 	protected NodeRef insertFolder(NodeRef parent, String name) {
@@ -177,8 +177,8 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	/**
 	 * Insert folder.
 	 *
-	 * @param parent the parent
-	 * @param prefix the prefix
+	 * @param parent    the parent
+	 * @param prefix    the prefix
 	 * @param localName the local name
 	 * @return the node ref
 	 */
@@ -188,7 +188,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
 		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
 
-	/** The qname. */
+		/** The qname. */
 		QName qname = QName.createQName(prefix, localName, namespaceService);
 		return fileFolderService.create(parent, qname.getPrefixString(), ContentModel.TYPE_FOLDER).getNodeRef();
 	}
@@ -196,9 +196,9 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	/**
 	 * Insert document.
 	 *
-	 * @param parent the parent
-	 * @param name the name
-	 * @param text the text
+	 * @param parent     the parent
+	 * @param name       the name
+	 * @param text       the text
 	 * @param properties the properties
 	 * @return the node ref
 	 */
@@ -213,11 +213,12 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
 		return ZipUtils.insertZip(parent, zipName, entryName, text, properties,
 				activitiProcessEngineConfiguration.getServiceRegistry());
-	}	/**
+	}
+
+	/**
 	 * Initialize process engine.
 	 *
 	 */
-
 
 	@Override
 	protected void initializeProcessEngine() {
@@ -339,8 +340,8 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	 * Create group.
 	 *
 	 * @param identityService the identity service
-	 * @param groupId the group id
-	 * @param type the type
+	 * @param groupId         the group id
+	 * @param type            the type
 	 */
 	public void createGroup(IdentityService identityService, String groupId, String type) {
 		if (identityService.createGroupQuery().groupId(groupId).count() == 0) {
@@ -409,7 +410,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	/**
 	 * Add hours.
 	 *
-	 * @param date the date
+	 * @param date  the date
 	 * @param hours the hours
 	 * @return the date
 	 */
@@ -423,8 +424,8 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	/**
 	 * Difference between.
 	 *
-	 * @param date1 the date1
-	 * @param date2 the date2
+	 * @param date1    the date1
+	 * @param date2    the date2
 	 * @param timeUnit the time unit
 	 * @return the long
 	 */
@@ -436,7 +437,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	/**
 	 * Is admin.
 	 *
-	 * @param user the user
+	 * @param user            the user
 	 * @param identityService the identity service
 	 * @return the boolean
 	 */
