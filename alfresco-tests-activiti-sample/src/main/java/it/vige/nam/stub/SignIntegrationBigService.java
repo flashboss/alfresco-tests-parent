@@ -73,7 +73,7 @@ public class SignIntegrationBigService extends Service {
 	 * @return the result
 	 */
 	public SignIntegrationBigService(WebServiceFeature... features) {
-		super(WSDL_LOCATION, SERVICE, features);
+		super(WSDL_LOCATION, SERVICE);
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class SignIntegrationBigService extends Service {
 	 * @return the result
 	 */
 	public SignIntegrationBigService(URL wsdlLocation, WebServiceFeature... features) {
-		super(wsdlLocation, SERVICE, features);
+		super(wsdlLocation, SERVICE);
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class SignIntegrationBigService extends Service {
 	 * @return the result
 	 */
 	public SignIntegrationBigService(URL wsdlLocation, QName serviceName, WebServiceFeature... features) {
-		super(wsdlLocation, serviceName, features);
+		super(wsdlLocation, serviceName);
 	}
 
 	/**

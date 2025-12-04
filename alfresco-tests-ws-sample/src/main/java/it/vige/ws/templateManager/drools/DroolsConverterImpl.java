@@ -40,7 +40,6 @@ public class DroolsConverterImpl {
 
 	Logger logger = Logger.getLogger("FILE2");
 
-	 * @param hh:mm:ss" the hh:mm:ss"
 	/** The date format. */
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	/** The converted date format. */
