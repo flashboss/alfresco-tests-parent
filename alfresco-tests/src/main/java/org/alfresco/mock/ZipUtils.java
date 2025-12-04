@@ -32,6 +32,7 @@ import org.alfresco.service.namespace.QName;
  */
 public class ZipUtils {
 
+  /** The temp dir. */
   public static final File TEMP_DIR = new File(MockContentService.FOLDER_TEST + "temp");
 
   /**
