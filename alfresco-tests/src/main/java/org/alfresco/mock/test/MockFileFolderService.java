@@ -433,9 +433,6 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	 */
 @Override
 	public FileInfo getFileInfo(NodeRef nodeRef) {
-
-	 * @param file.getName( the file.get name(
-	/** The qname. */
 		QName qname = ContentModel.TYPE_CONTENT;
 		File file = getNodeService().getNodeRefs().get(nodeRef);
 		if (file == null)
