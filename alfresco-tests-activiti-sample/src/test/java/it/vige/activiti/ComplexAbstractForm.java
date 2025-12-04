@@ -40,7 +40,6 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 	 */
 	protected final static String USER_NAME = "gonzo";
 
-	 * @param yyyy" the yyyy"
 	/** The date format. */
 	protected final DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm:ss ZZZ yyyy");
 
