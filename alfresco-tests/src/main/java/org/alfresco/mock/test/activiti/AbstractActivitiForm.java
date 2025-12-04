@@ -213,13 +213,13 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
 		return ZipUtils.insertZip(parent, zipName, entryName, text, properties,
 				activitiProcessEngineConfiguration.getServiceRegistry());
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Initialize process engine.
 	 *
 	 */
+
+
+	@Override
 	protected void initializeProcessEngine() {
 		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 		XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);

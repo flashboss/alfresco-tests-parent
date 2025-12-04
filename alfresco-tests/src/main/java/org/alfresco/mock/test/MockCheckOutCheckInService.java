@@ -22,15 +22,15 @@ public class MockCheckOutCheckInService implements CheckOutCheckInService, Seria
 	public NodeRef checkout(NodeRef nodeRef, NodeRef destinationParentNodeRef, QName destinationAssocTypeQName,
 			QName destinationAssocQName) {
 		return checkout(nodeRef);
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Checkout.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the node ref
 	 */
+
+
+	@Override
 	public NodeRef checkout(NodeRef nodeRef) {
 		checkedOut = true;
 		return nodeRef;
@@ -40,10 +40,7 @@ public class MockCheckOutCheckInService implements CheckOutCheckInService, Seria
 	public NodeRef checkin(NodeRef workingCopyNodeRef, Map<String, Serializable> versionProperties, String contentUrl,
 			boolean keepCheckedOut) {
 		return checkin(workingCopyNodeRef, versionProperties);
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Checkin.
 	 *
 	 * @param workingCopyNodeRef the working copy node ref
@@ -51,75 +48,78 @@ public class MockCheckOutCheckInService implements CheckOutCheckInService, Seria
 	 * @param contentUrl the content url
 	 * @return the node ref
 	 */
-	public NodeRef checkin(NodeRef workingCopyNodeRef, Map<String, Serializable> versionProperties, String contentUrl) {
-		return checkin(workingCopyNodeRef, versionProperties);
-	}
+
 
 	@Override
-	/**
+	public NodeRef checkin(NodeRef workingCopyNodeRef, Map<String, Serializable> versionProperties, String contentUrl) {
+		return checkin(workingCopyNodeRef, versionProperties);
+	}	/**
 	 * Checkin.
 	 *
 	 * @param workingCopyNodeRef the working copy node ref
 	 * @param versionProperties the version properties
 	 * @return the node ref
 	 */
+
+
+	@Override
 	public NodeRef checkin(NodeRef workingCopyNodeRef, Map<String, Serializable> versionProperties) {
 		checkedOut = false;
 		return workingCopyNodeRef;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Cancel checkout.
 	 *
 	 * @param workingCopyNodeRef the working copy node ref
 	 * @return the node ref
 	 */
+
+
+	@Override
 	public NodeRef cancelCheckout(NodeRef workingCopyNodeRef) {
 		checkedOut = false;
 		return workingCopyNodeRef;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get working copy.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the node ref
 	 */
-	public NodeRef getWorkingCopy(NodeRef nodeRef) {
-		return nodeRef;
-	}
+
 
 	@Override
-	/**
+	public NodeRef getWorkingCopy(NodeRef nodeRef) {
+		return nodeRef;
+	}	/**
 	 * Get checked out.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the node ref
 	 */
-	public NodeRef getCheckedOut(NodeRef nodeRef) {
-		return nodeRef;
-	}
+
 
 	@Override
-	/**
+	public NodeRef getCheckedOut(NodeRef nodeRef) {
+		return nodeRef;
+	}	/**
 	 * Is working copy.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the boolean
 	 */
-	public boolean isWorkingCopy(NodeRef nodeRef) {
-		return checkedOut;
-	}
+
 
 	@Override
-	/**
+	public boolean isWorkingCopy(NodeRef nodeRef) {
+		return checkedOut;
+	}	/**
 	 * Is checked out.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the boolean
 	 */
+
+
+	@Override
 	public boolean isCheckedOut(NodeRef nodeRef) {
 		return checkedOut;
 	}

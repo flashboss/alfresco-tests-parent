@@ -51,16 +51,16 @@ public class PreviousWSSample extends DeclarativeWebScript {
 	private StoreRef storeRef = new StoreRef(StoreRef.PROTOCOL_WORKSPACE, "SpacesStore");
 
 	/** The fmt. */
-	private SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
-
-	@Override
-	/**
+	private SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");	/**
 	 * Execute impl.
 	 *
 	 * @param req the req
 	 * @param status the status
 	 * @param cache the cache
 	 */
+
+
+	@Override
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
 		// -- 1 -- VARIABLE INITIALIZATION

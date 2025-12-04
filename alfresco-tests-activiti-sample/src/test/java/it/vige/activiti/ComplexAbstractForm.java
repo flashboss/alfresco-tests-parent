@@ -44,14 +44,14 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 	protected final DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm:ss ZZZ yyyy");
 
 	/** The generation folder. */
-	protected NodeRef generationFolder;
-
-	@Override
-	/**
+	protected NodeRef generationFolder;	/**
 	 * Init.
 	 *
 	 * @param variables the variables
 	 */
+
+
+	@Override
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;

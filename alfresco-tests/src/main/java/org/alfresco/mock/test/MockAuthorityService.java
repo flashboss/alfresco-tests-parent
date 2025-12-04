@@ -37,109 +37,109 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 
 	private final static String GROUP_PREFIX = "GROUP_";
 
-	@Autowired
 	/** The node service. */
+	@Autowired
 	private NodeService nodeService;
 
 	/** The authority nodes. */
-	private Map<String, NodeRef> authorityNodes = new HashMap<String, NodeRef>();
-
-	@Override
-	/**
+	private Map<String, NodeRef> authorityNodes = new HashMap<String, NodeRef>();	/**
 	 * Has admin authority.
 	 *
 	 * @return the boolean
 	 */
+
+
+	@Override
 	public boolean hasAdminAuthority() {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Is admin authority.
 	 *
 	 * @param authorityName the authority name
 	 * @return the boolean
 	 */
+
+
+	@Override
 	public boolean isAdminAuthority(String authorityName) {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Has guest authority.
 	 *
 	 * @return the boolean
 	 */
+
+
+	@Override
 	public boolean hasGuestAuthority() {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Is guest authority.
 	 *
 	 * @param authorityName the authority name
 	 * @return the boolean
 	 */
+
+
+	@Override
 	public boolean isGuestAuthority(String authorityName) {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Count users.
 	 *
 	 * @return the long
 	 */
+
+
+	@Override
 	public long countUsers() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Count groups.
 	 *
 	 * @return the long
 	 */
+
+
+	@Override
 	public long countGroups() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get authorities.
 	 *
 	 * @return the set
 	 */
-	public Set<String> getAuthorities() {
-		return authorityNodes.keySet();
-	}
+
 
 	@Override
-	/**
+	public Set<String> getAuthorities() {
+		return authorityNodes.keySet();
+	}	/**
 	 * Get authorities for user.
 	 *
 	 * @param userName the user name
 	 * @return the set
 	 */
-	public Set<String> getAuthoritiesForUser(String userName) {
-		return getAuthorities();
-	}
+
 
 	@Override
-	/**
+	public Set<String> getAuthoritiesForUser(String userName) {
+		return getAuthorities();
+	}	/**
 	 * Get all authorities.
 	 *
 	 * @param type the type
 	 * @return the set
 	 */
+
+
+	@Override
 	public Set<String> getAllAuthorities(AuthorityType type) {
 		return getAuthorities();
 	}
@@ -158,27 +158,27 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		mainList.addAll(authorityNodes.keySet());
 		PagingResults<String> authorities = new MockPagingResults<String>(mainList);
 		return authorities;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get all root authorities.
 	 *
 	 * @param type the type
 	 * @return the set
 	 */
-	public Set<String> getAllRootAuthorities(AuthorityType type) {
-		return getAuthorities();
-	}
+
 
 	@Override
-	/**
+	public Set<String> getAllRootAuthorities(AuthorityType type) {
+		return getAuthorities();
+	}	/**
 	 * Create authority.
 	 *
 	 * @param type the type
 	 * @param shortName the short name
 	 * @return the string
 	 */
+
+
+	@Override
 	public String createAuthority(AuthorityType type, String shortName) {
 		return createAuthority(type, shortName, null, null);
 	}
@@ -198,69 +198,66 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		NodeRef node = nodeService.createNode(authorities, ASSOC_CONTAINS, assocQName, TYPE_CONTENT).getChildRef();
 		authorityNodes.put(name, node);
 		return name;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Add authority.
 	 *
 	 * @param parentName the parent name
 	 * @param childName the child name
 	 */
-	public void addAuthority(String parentName, String childName) {
-		createAuthority(null, childName);
-	}
+
 
 	@Override
-	/**
+	public void addAuthority(String parentName, String childName) {
+		createAuthority(null, childName);
+	}	/**
 	 * Add authority.
 	 *
 	 * @param parentNames the parent names
 	 * @param childName the child name
 	 */
+
+
+	@Override
 	public void addAuthority(Collection<String> parentNames, String childName) {
 		if (parentNames != null)
 			for (String parentName : parentNames)
 				addAuthority(parentName, childName);
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Remove authority.
 	 *
 	 * @param parentName the parent name
 	 * @param childName the child name
 	 */
+
+
+	@Override
 	public void removeAuthority(String parentName, String childName) {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Delete authority.
 	 *
 	 * @param name the name
 	 */
+
+
+	@Override
 	public void deleteAuthority(String name) {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Delete authority.
 	 *
 	 * @param name the name
 	 * @param cascade the cascade
 	 */
+
+
+	@Override
 	public void deleteAuthority(String name, boolean cascade) {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get contained authorities.
 	 *
 	 * @param type the type
@@ -268,13 +265,13 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 	 * @param immediate the immediate
 	 * @return the set
 	 */
+
+
+	@Override
 	public Set<String> getContainedAuthorities(AuthorityType type, String name, boolean immediate) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get containing authorities.
 	 *
 	 * @param type the type
@@ -282,6 +279,9 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 	 * @param immediate the immediate
 	 * @return the set
 	 */
+
+
+	@Override
 	public Set<String> getContainingAuthorities(AuthorityType type, String name, boolean immediate) {
 		// TODO Auto-generated method stub
 		return null;
@@ -292,169 +292,169 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 			AuthorityFilter filter, int size) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get short name.
 	 *
 	 * @param name the name
 	 * @return the string
 	 */
-	public String getShortName(String name) {
-		return name.replaceAll(GROUP_PREFIX, "");
-	}
+
 
 	@Override
-	/**
+	public String getShortName(String name) {
+		return name.replaceAll(GROUP_PREFIX, "");
+	}	/**
 	 * Get name.
 	 *
 	 * @param type the type
 	 * @param shortName the short name
 	 * @return the string
 	 */
-	public String getName(AuthorityType type, String shortName) {
-		return GROUP_PREFIX + shortName;
-	}
+
 
 	@Override
-	/**
+	public String getName(AuthorityType type, String shortName) {
+		return GROUP_PREFIX + shortName;
+	}	/**
 	 * Authority exists.
 	 *
 	 * @param name the name
 	 * @return the boolean
 	 */
-	public boolean authorityExists(String name) {
-		return authorityNodes.get(name) != null;
-	}
+
 
 	@Override
-	/**
+	public boolean authorityExists(String name) {
+		return authorityNodes.get(name) != null;
+	}	/**
 	 * Get authority display name.
 	 *
 	 * @param name the name
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getAuthorityDisplayName(String name) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Set authority display name.
 	 *
 	 * @param authorityName the authority name
 	 * @param authorityDisplayName the authority display name
 	 */
+
+
+	@Override
 	public void setAuthorityDisplayName(String authorityName, String authorityDisplayName) {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get authority node ref.
 	 *
 	 * @param name the name
 	 * @return the node ref
 	 */
-	public NodeRef getAuthorityNodeRef(String name) {
-		return authorityNodes.get(name);
-	}
+
 
 	@Override
-	/**
+	public NodeRef getAuthorityNodeRef(String name) {
+		return authorityNodes.get(name);
+	}	/**
 	 * Get or create zone.
 	 *
 	 * @param zoneName the zone name
 	 * @return the node ref
 	 */
+
+
+	@Override
 	public NodeRef getOrCreateZone(String zoneName) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get zone.
 	 *
 	 * @param zoneName the zone name
 	 * @return the node ref
 	 */
+
+
+	@Override
 	public NodeRef getZone(String zoneName) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get authority zones.
 	 *
 	 * @param name the name
 	 * @return the set
 	 */
+
+
+	@Override
 	public Set<String> getAuthorityZones(String name) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get all authorities in zone.
 	 *
 	 * @param zoneName the zone name
 	 * @param type the type
 	 * @return the set
 	 */
+
+
+	@Override
 	public Set<String> getAllAuthoritiesInZone(String zoneName, AuthorityType type) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get all root authorities in zone.
 	 *
 	 * @param zoneName the zone name
 	 * @param type the type
 	 * @return the set
 	 */
+
+
+	@Override
 	public Set<String> getAllRootAuthoritiesInZone(String zoneName, AuthorityType type) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Add authority to zones.
 	 *
 	 * @param authorityName the authority name
 	 * @param zones the zones
 	 */
+
+
+	@Override
 	public void addAuthorityToZones(String authorityName, Set<String> zones) {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Remove authority from zones.
 	 *
 	 * @param authorityName the authority name
 	 * @param zones the zones
 	 */
+
+
+	@Override
 	public void removeAuthorityFromZones(String authorityName, Set<String> zones) {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get default zones.
 	 *
 	 * @return the set
 	 */
+
+
+	@Override
 	public Set<String> getDefaultZones() {
 		// TODO Auto-generated method stub
 		return null;

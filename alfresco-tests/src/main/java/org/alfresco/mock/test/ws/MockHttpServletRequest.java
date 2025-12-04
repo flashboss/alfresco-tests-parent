@@ -43,15 +43,14 @@ public class MockHttpServletRequest implements HttpServletRequest {
 	/** The servlet input stream. */
 	private ServletInputStream servletInputStream = new ServletInputStream() {
 
-		int counter;
-
-		@Override
-
-	/**
+		int counter;	/**
 		 * Read.
 		 *
 		 * @return the int
 		 */
+
+
+		@Override
 		public int read() throws IOException {
 			int result;
 			if (counter >= buffer.length && counter < buffer.length + 1) {
@@ -117,91 +116,91 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		}
 		buffer = concatAll(buffer, head, new byte[] { 45, 45, 13, 10 });
 		this.fields = fields;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get attribute.
 	 *
 	 * @param name the name
 	 * @return the object
 	 */
+
+
+	@Override
 	public Object getAttribute(String name) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get attribute names.
 	 *
 	 * @return the enumeration
 	 */
+
+
+	@Override
 	public Enumeration<?> getAttributeNames() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get character encoding.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getCharacterEncoding() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Set character encoding.
 	 *
 	 * @param env the env
 	 */
+
+
+	@Override
 	public void setCharacterEncoding(String env) throws UnsupportedEncodingException {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get content length.
 	 *
 	 * @return the int
 	 */
+
+
+	@Override
 	public int getContentLength() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get content type.
 	 *
 	 * @return the string
 	 */
-	public String getContentType() {
-		return "multipart/form-data=null, boundary=----WebKitFormBoundaryFUwwPQgv8AD2KZvR";
-	}
+
 
 	@Override
-	/**
+	public String getContentType() {
+		return "multipart/form-data=null, boundary=----WebKitFormBoundaryFUwwPQgv8AD2KZvR";
+	}	/**
 	 * Get input stream.
 	 *
 	 * @return the servlet input stream
 	 */
-	public ServletInputStream getInputStream() throws IOException {
-		return servletInputStream;
-	}
+
 
 	@Override
-	/**
+	public ServletInputStream getInputStream() throws IOException {
+		return servletInputStream;
+	}	/**
 	 * Get parameter.
 	 *
 	 * @param name the name
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getParameter(String name) {
 		NodeService nodeService = serviceRegistry.getNodeService();
 		Serializable value = fields.get(name);
@@ -211,518 +210,518 @@ public class MockHttpServletRequest implements HttpServletRequest {
 			return (String) nodeService.getProperty((NodeRef) value, ContentModel.PROP_NAME);
 		else
 			return value + "";
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get parameter names.
 	 *
 	 * @return the enumeration
 	 */
+
+
+	@Override
 	public Enumeration<?> getParameterNames() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get parameter values.
 	 *
 	 * @param name the name
 	 * @return the string[]
 	 */
+
+
+	@Override
 	public String[] getParameterValues(String name) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get parameter map.
 	 *
 	 */
+
+
+	@Override
 	public Map<?, ?> getParameterMap() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get protocol.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getProtocol() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get scheme.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getScheme() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get server name.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getServerName() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get server port.
 	 *
 	 * @return the int
 	 */
+
+
+	@Override
 	public int getServerPort() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get reader.
 	 *
 	 * @return the buffered reader
 	 */
+
+
+	@Override
 	public BufferedReader getReader() throws IOException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get remote addr.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getRemoteAddr() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get remote host.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getRemoteHost() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Set attribute.
 	 *
 	 * @param name the name
 	 * @param o the o
 	 */
+
+
+	@Override
 	public void setAttribute(String name, Object o) {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Remove attribute.
 	 *
 	 * @param name the name
 	 */
+
+
+	@Override
 	public void removeAttribute(String name) {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get locale.
 	 *
 	 * @return the locale
 	 */
+
+
+	@Override
 	public Locale getLocale() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get locales.
 	 *
 	 * @return the enumeration
 	 */
+
+
+	@Override
 	public Enumeration<?> getLocales() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Is secure.
 	 *
 	 * @return the boolean
 	 */
+
+
+	@Override
 	public boolean isSecure() {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get request dispatcher.
 	 *
 	 * @param path the path
 	 * @return the request dispatcher
 	 */
+
+
+	@Override
 	public RequestDispatcher getRequestDispatcher(String path) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get real path.
 	 *
 	 * @param path the path
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getRealPath(String path) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get remote port.
 	 *
 	 * @return the int
 	 */
+
+
+	@Override
 	public int getRemotePort() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get local name.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getLocalName() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get local addr.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getLocalAddr() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get local port.
 	 *
 	 * @return the int
 	 */
+
+
+	@Override
 	public int getLocalPort() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get auth type.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getAuthType() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get cookies.
 	 *
 	 * @return the cookie[]
 	 */
+
+
+	@Override
 	public Cookie[] getCookies() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get date header.
 	 *
 	 * @param name the name
 	 * @return the long
 	 */
+
+
+	@Override
 	public long getDateHeader(String name) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get header.
 	 *
 	 * @param name the name
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getHeader(String name) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get headers.
 	 *
 	 * @param name the name
 	 * @return the enumeration
 	 */
+
+
+	@Override
 	public Enumeration<?> getHeaders(String name) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get header names.
 	 *
 	 * @return the enumeration
 	 */
+
+
+	@Override
 	public Enumeration<?> getHeaderNames() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get int header.
 	 *
 	 * @param name the name
 	 * @return the int
 	 */
+
+
+	@Override
 	public int getIntHeader(String name) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get method.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getMethod() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get path info.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getPathInfo() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get path translated.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getPathTranslated() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get context path.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getContextPath() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get query string.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getQueryString() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get remote user.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getRemoteUser() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Is user in role.
 	 *
 	 * @param role the role
 	 * @return the boolean
 	 */
+
+
+	@Override
 	public boolean isUserInRole(String role) {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get user principal.
 	 *
 	 * @return the principal
 	 */
+
+
+	@Override
 	public Principal getUserPrincipal() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get requested session id.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getRequestedSessionId() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get request u r i.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getRequestURI() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get request u r l.
 	 *
 	 * @return the string buffer
 	 */
+
+
+	@Override
 	public StringBuffer getRequestURL() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get servlet path.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String getServletPath() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get session.
 	 *
 	 * @param create the create
 	 * @return the http session
 	 */
+
+
+	@Override
 	public HttpSession getSession(boolean create) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get session.
 	 *
 	 * @return the http session
 	 */
+
+
+	@Override
 	public HttpSession getSession() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Is requested session id valid.
 	 *
 	 * @return the boolean
 	 */
+
+
+	@Override
 	public boolean isRequestedSessionIdValid() {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Is requested session id from cookie.
 	 *
 	 * @return the boolean
 	 */
+
+
+	@Override
 	public boolean isRequestedSessionIdFromCookie() {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Is requested session id from u r l.
 	 *
 	 * @return the boolean
 	 */
+
+
+	@Override
 	public boolean isRequestedSessionIdFromURL() {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Is requested session id from url.
 	 *
 	 * @return the boolean
 	 */
+
+
+	@Override
 	public boolean isRequestedSessionIdFromUrl() {
 		// TODO Auto-generated method stub
 		return false;

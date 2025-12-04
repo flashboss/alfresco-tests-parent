@@ -23,22 +23,22 @@ public class MockActivitiScriptNode extends ActivitiScriptNode {
 	 */
 	public MockActivitiScriptNode(NodeRef nodeRef, ServiceRegistry services) {
 		super(nodeRef, services);
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Save.
 	 *
 	 */
-	public void save() {
-	}
+
 
 	@Override
-	/**
+	public void save() {
+	}	/**
 	 * Set scope.
 	 *
 	 * @param scope the scope
 	 */
+
+
+	@Override
 	public void setScope(Scriptable scope) {
 		Context.enter();
 		this.scope = new MockScope();

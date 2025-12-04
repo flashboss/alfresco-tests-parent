@@ -39,16 +39,13 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class MockSearchService implements SearchService, Serializable {
 
-	@Autowired
 	/** The node service. */
+	@Autowired
 	private NodeService nodeService;
 
-	@Autowired
 	/** The namespace service. */
-	private NamespaceService namespaceService;
-
-	@Override
-	/**
+	@Autowired
+	private NamespaceService namespaceService;	/**
 	 * Query.
 	 *
 	 * @param store the store
@@ -56,6 +53,9 @@ public class MockSearchService implements SearchService, Serializable {
 	 * @param query the query
 	 * @return the result set
 	 */
+
+
+	@Override
 	public ResultSet query(StoreRef store, String language, String query) {
 		MockNodeService nodeService = getNodeService();
 		List<ResultSetRow> rows = new ArrayList<ResultSetRow>();
@@ -71,10 +71,7 @@ public class MockSearchService implements SearchService, Serializable {
 	public ResultSet query(StoreRef store, String language, String query,
 			QueryParameterDefinition[] queryParameterDefinitions) {
 		return query(store, language, query);
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Query.
 	 *
 	 * @param store the store
@@ -82,18 +79,21 @@ public class MockSearchService implements SearchService, Serializable {
 	 * @param queryParameters the query parameters
 	 * @return the result set
 	 */
+
+
+	@Override
 	public ResultSet query(StoreRef store, QName queryId, QueryParameter[] queryParameters) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Query.
 	 *
 	 * @param searchParameters the search parameters
 	 * @return the result set
 	 */
+
+
+	@Override
 	public ResultSet query(SearchParameters searchParameters) {
 		ResultSet resultSet = query(searchParameters.getStores().get(0), searchParameters.getLanguage(),
 				searchParameters.getQuery());
@@ -140,10 +140,7 @@ public class MockSearchService implements SearchService, Serializable {
 			boolean followAllParentLinks, String language) throws InvalidNodeRefException, XPathException {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Contains.
 	 *
 	 * @param nodeRef the node ref
@@ -151,14 +148,14 @@ public class MockSearchService implements SearchService, Serializable {
 	 * @param googleLikePattern the google like pattern
 	 * @return the boolean
 	 */
+
+
+	@Override
 	public boolean contains(NodeRef nodeRef, QName propertyQName, String googleLikePattern)
 			throws InvalidNodeRefException {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Contains.
 	 *
 	 * @param nodeRef the node ref
@@ -167,14 +164,14 @@ public class MockSearchService implements SearchService, Serializable {
 	 * @param defaultOperator the default operator
 	 * @return the boolean
 	 */
+
+
+	@Override
 	public boolean contains(NodeRef nodeRef, QName propertyQName, String googleLikePattern, Operator defaultOperator)
 			throws InvalidNodeRefException {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Like.
 	 *
 	 * @param nodeRef the node ref
@@ -183,6 +180,9 @@ public class MockSearchService implements SearchService, Serializable {
 	 * @param includeFTS the include f t s
 	 * @return the boolean
 	 */
+
+
+	@Override
 	public boolean like(NodeRef nodeRef, QName propertyQName, String sqlLikePattern, boolean includeFTS)
 			throws InvalidNodeRefException {
 		// TODO Auto-generated method stub
@@ -237,257 +237,236 @@ public class MockSearchService implements SearchService, Serializable {
 		 */
 		public MockResultSet(List<ResultSetRow> rows) {
 			this.rows = rows;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Length.
 		 *
 		 * @return the int
 		 */
-		public int length() {
-			return rows.size();
-		}
+
 
 		@Override
-
-	/**
+		public int length() {
+			return rows.size();
+		}	/**
 		 * Get number found.
 		 *
 		 * @return the long
 		 */
-		public long getNumberFound() {
-			return rows.size();
-		}
+
 
 		@Override
-
-	/**
+		public long getNumberFound() {
+			return rows.size();
+		}	/**
 		 * Get node ref.
 		 *
 		 * @param n the n
 		 * @return the node ref
 		 */
+
+
+		@Override
 		public NodeRef getNodeRef(int n) {
 			if (rows.size() <= n)
 				return null;
 			return rows.get(n).getNodeRef();
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get score.
 		 *
 		 * @param n the n
 		 * @return the float
 		 */
+
+
+		@Override
 		public float getScore(int n) {
 			// TODO Auto-generated method stub
 			return 0;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Close.
 		 *
 		 */
+
+
+		@Override
 		public void close() {
 			// TODO Auto-generated method stub
 
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get row.
 		 *
 		 * @param i the i
 		 * @return the result set row
 		 */
+
+
+		@Override
 		public ResultSetRow getRow(int i) {
 			// TODO Auto-generated method stub
 			return null;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get node refs.
 		 *
 		 * @return the list
 		 */
+
+
+		@Override
 		public List<NodeRef> getNodeRefs() {
 			List<NodeRef> result = new ArrayList<NodeRef>();
 			for (ResultSetRow row : rows)
 				result.add(row.getNodeRef());
 			return result;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get child assoc refs.
 		 *
 		 * @return the list
 		 */
+
+
+		@Override
 		public List<ChildAssociationRef> getChildAssocRefs() {
 			// TODO Auto-generated method stub
 			return null;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get child assoc ref.
 		 *
 		 * @param n the n
 		 * @return the child association ref
 		 */
+
+
+		@Override
 		public ChildAssociationRef getChildAssocRef(int n) {
 			// TODO Auto-generated method stub
 			return null;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get result set meta data.
 		 *
 		 * @return the result set meta data
 		 */
+
+
+		@Override
 		public ResultSetMetaData getResultSetMetaData() {
 			// TODO Auto-generated method stub
 			return null;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get start.
 		 *
 		 * @return the int
 		 */
+
+
+		@Override
 		public int getStart() {
 			// TODO Auto-generated method stub
 			return 0;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Has more.
 		 *
 		 * @return the boolean
 		 */
+
+
+		@Override
 		public boolean hasMore() {
 			// TODO Auto-generated method stub
 			return false;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Set bulk fetch.
 		 *
 		 * @param bulkFetch the bulk fetch
 		 * @return the boolean
 		 */
+
+
+		@Override
 		public boolean setBulkFetch(boolean bulkFetch) {
 			// TODO Auto-generated method stub
 			return false;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get bulk fetch.
 		 *
 		 * @return the boolean
 		 */
+
+
+		@Override
 		public boolean getBulkFetch() {
 			// TODO Auto-generated method stub
 			return false;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Set bulk fetch size.
 		 *
 		 * @param bulkFetchSize the bulk fetch size
 		 * @return the int
 		 */
+
+
+		@Override
 		public int setBulkFetchSize(int bulkFetchSize) {
 			// TODO Auto-generated method stub
 			return 0;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get bulk fetch size.
 		 *
 		 * @return the int
 		 */
+
+
+		@Override
 		public int getBulkFetchSize() {
 			// TODO Auto-generated method stub
 			return 0;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get field facet.
 		 *
 		 * @param field the field
 		 */
+
+
+		@Override
 		public List<Pair<String, Integer>> getFieldFacet(String field) {
 			// TODO Auto-generated method stub
 			return null;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Iterator.
 		 *
 		 * @return the iterator
 		 */
+
+
+		@Override
 		public Iterator<ResultSetRow> iterator() {
 			// TODO Auto-generated method stub
 			return rows.iterator();
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get facet queries.
 		 *
 		 */
-		public Map<String, Integer> getFacetQueries() {
-			return facetQueries;
-		}
+
 
 		@Override
-
-	/**
+		public Map<String, Integer> getFacetQueries() {
+			return facetQueries;
+		}	/**
 		 * Get spell check result.
 		 *
 		 * @return the spell check result
 		 */
-		public SpellCheckResult getSpellCheckResult() {
-			return spellCheckResult;
-		}
+
 
 		@Override
-
-	/**
+		public SpellCheckResult getSpellCheckResult() {
+			return spellCheckResult;
+		}	/**
 		 * Get highlighting.
 		 *
 		 */
+
+
+		@Override
 		public Map<NodeRef, List<Pair<String, List<String>>>> getHighlighting() {
 			return highLights;
 		}
@@ -506,156 +485,143 @@ public class MockSearchService implements SearchService, Serializable {
 		 */
 		public MockResultSetRow(NodeRef nodeRef) {
 			this.nodeRef = nodeRef;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get values.
 		 *
 		 */
+
+
+		@Override
 		public Map<String, Serializable> getValues() {
 			Map<String, Serializable> map = new HashMap<String, Serializable>();
 			map.put("", nodeRef);
 			return map;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get value.
 		 *
 		 * @param columnName the column name
 		 * @return the serializable
 		 */
-		public Serializable getValue(String columnName) {
-			return nodeRef;
-		}
+
 
 		@Override
-
-	/**
+		public Serializable getValue(String columnName) {
+			return nodeRef;
+		}	/**
 		 * Get value.
 		 *
 		 * @param qname the qname
 		 * @return the serializable
 		 */
-		public Serializable getValue(QName qname) {
-			return nodeService.getProperty(nodeRef, qname);
-		}
+
 
 		@Override
-
-	/**
+		public Serializable getValue(QName qname) {
+			return nodeService.getProperty(nodeRef, qname);
+		}	/**
 		 * Get node ref.
 		 *
 		 * @return the node ref
 		 */
-		public NodeRef getNodeRef() {
-			return nodeRef;
-		}
+
 
 		@Override
-
-	/**
+		public NodeRef getNodeRef() {
+			return nodeRef;
+		}	/**
 		 * Get node refs.
 		 *
 		 */
-		public Map<String, NodeRef> getNodeRefs() {
-			return null;
-		}
+
 
 		@Override
-
-	/**
+		public Map<String, NodeRef> getNodeRefs() {
+			return null;
+		}	/**
 		 * Get node ref.
 		 *
 		 * @param selectorName the selector name
 		 * @return the node ref
 		 */
-		public NodeRef getNodeRef(String selectorName) {
-			return nodeRef;
-		}
+
 
 		@Override
-
-	/**
+		public NodeRef getNodeRef(String selectorName) {
+			return nodeRef;
+		}	/**
 		 * Get score.
 		 *
 		 * @return the float
 		 */
+
+
+		@Override
 		public float getScore() {
 			// TODO Auto-generated method stub
 			return 0;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get scores.
 		 *
 		 */
+
+
+		@Override
 		public Map<String, Float> getScores() {
 			// TODO Auto-generated method stub
 			return null;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get score.
 		 *
 		 * @param selectorName the selector name
 		 * @return the float
 		 */
+
+
+		@Override
 		public float getScore(String selectorName) {
 			// TODO Auto-generated method stub
 			return 0;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get result set.
 		 *
 		 * @return the result set
 		 */
+
+
+		@Override
 		public ResultSet getResultSet() {
 			// TODO Auto-generated method stub
 			return null;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get q name.
 		 *
 		 * @return the q name
 		 */
+
+
+		@Override
 		public QName getQName() {
 			// TODO Auto-generated method stub
 			return null;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get index.
 		 *
 		 * @return the int
 		 */
+
+
+		@Override
 		public int getIndex() {
 			// TODO Auto-generated method stub
 			return 0;
-		}
-
-		@Override
-
-	/**
+		}	/**
 		 * Get child assoc ref.
 		 *
 		 * @return the child association ref
 		 */
+
+
+		@Override
 		public ChildAssociationRef getChildAssocRef() {
 			// TODO Auto-generated method stub
 			return null;

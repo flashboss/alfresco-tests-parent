@@ -488,14 +488,14 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		style.put("styleDouble", styleDouble);
 		style.put("styleNewLines", styleNewLines);
 		return style;
-	}
-	@Override
-	/**
+	}	/**
 	 * Execute impl.
 	 *
 	 * @param req the req
 	 * @param status the status
 	 */
+
+	@Override
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("success", Boolean.TRUE);

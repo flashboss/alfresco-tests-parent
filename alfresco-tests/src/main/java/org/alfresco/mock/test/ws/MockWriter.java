@@ -14,7 +14,6 @@ public class MockWriter extends Writer {
 	/** The model. */
 	private Map<String, Object> model;
 
-	@Override
 	/**
 	 * Write.
 	 *
@@ -22,22 +21,23 @@ public class MockWriter extends Writer {
 	 * @param off the off
 	 * @param len the len
 	 */
+	@Override
 	public void write(char[] cbuf, int off, int len) throws IOException {
 	}
 
-	@Override
 	/**
 	 * Flush.
 	 *
 	 */
+	@Override
 	public void flush() throws IOException {
 	}
 
-	@Override
 	/**
 	 * Close.
 	 *
 	 */
+	@Override
 	public void close() throws IOException {
 	}
 

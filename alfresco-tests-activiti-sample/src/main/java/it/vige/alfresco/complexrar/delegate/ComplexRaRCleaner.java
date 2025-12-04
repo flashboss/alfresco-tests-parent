@@ -13,14 +13,14 @@ import org.mozilla.javascript.NativeArray;
  * 
  * @author vige
  */
-public class ComplexRaRCleaner extends BaseJavaDelegate {
-
-	@Override
-	/**
+public class ComplexRaRCleaner extends BaseJavaDelegate {	/**
 	 * Execute.
 	 *
 	 * @param execution the execution
 	 */
+
+
+	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 		ActivitiScriptNode bpmPackage = (ActivitiScriptNode) execution.getVariable("bpm_package");
 		@SuppressWarnings("unchecked")

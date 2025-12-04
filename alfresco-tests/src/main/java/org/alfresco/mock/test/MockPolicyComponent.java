@@ -24,36 +24,36 @@ import org.alfresco.service.namespace.QName;
  * 
  * @author vige
  */
-public class MockPolicyComponent implements PolicyComponent {
-
-	@Override
-	/**
+public class MockPolicyComponent implements PolicyComponent {	/**
 	 * Register class policy.
 	 *
 	 * @param policy the policy
 	 */
+
+
+	@Override
 	public <P extends ClassPolicy> ClassPolicyDelegate<P> registerClassPolicy(Class<P> policy) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Register property policy.
 	 *
 	 * @param policy the policy
 	 */
+
+
+	@Override
 	public <P extends PropertyPolicy> PropertyPolicyDelegate<P> registerPropertyPolicy(Class<P> policy) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Register association policy.
 	 *
 	 * @param policy the policy
 	 */
+
+
+	@Override
 	public <P extends AssociationPolicy> AssociationPolicyDelegate<P> registerAssociationPolicy(Class<P> policy) {
 		// TODO Auto-generated method stub
 		return null;
@@ -69,29 +69,29 @@ public class MockPolicyComponent implements PolicyComponent {
 	public Collection<PolicyDefinition> getRegisteredPolicies() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get registered policy.
 	 *
 	 * @param policyType the policy type
 	 * @param policy the policy
 	 * @return the policy definition
 	 */
+
+
+	@Override
 	public PolicyDefinition<Policy> getRegisteredPolicy(PolicyType policyType, QName policy) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Is registered policy.
 	 *
 	 * @param policyType the policy type
 	 * @param policy the policy
 	 * @return the boolean
 	 */
+
+
+	@Override
 	public boolean isRegisteredPolicy(PolicyType policyType, QName policy) {
 		// TODO Auto-generated method stub
 		return false;
@@ -151,14 +151,14 @@ public class MockPolicyComponent implements PolicyComponent {
 			Behaviour behaviour) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Remove class definition.
 	 *
 	 * @param definition the definition
 	 */
+
+
+	@Override
 	public void removeClassDefinition(BehaviourDefinition<ClassBehaviourBinding> definition) {
 		// TODO Auto-generated method stub
 		

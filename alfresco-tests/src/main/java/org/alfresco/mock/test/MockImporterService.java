@@ -32,16 +32,13 @@ import com.google.gdata.util.common.io.CharStreams;
  */
 public class MockImporterService implements ImporterService, Serializable {
 
-	@Autowired
 	/** The node service. */
+	@Autowired
 	private NodeService nodeService;
 
-	@Autowired
 	/** The content service. */
-	private ContentService contentService;
-
-	@Override
-	/**
+	@Autowired
+	private ContentService contentService;	/**
 	 * Import view.
 	 *
 	 * @param viewReader the view reader
@@ -49,6 +46,9 @@ public class MockImporterService implements ImporterService, Serializable {
 	 * @param binding the binding
 	 * @param progress the progress
 	 */
+
+
+	@Override
 	public void importView(Reader viewReader, Location location, ImporterBinding binding, ImporterProgress progress)
 			throws ImporterException {
 		// TODO Auto-generated method stub

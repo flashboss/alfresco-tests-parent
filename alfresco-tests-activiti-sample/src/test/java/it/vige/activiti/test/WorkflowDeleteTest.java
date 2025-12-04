@@ -28,13 +28,13 @@ import it.vige.common.SignConstants;
  * 
  * @author vige
  */
-public class WorkflowDeleteTest extends ComplexAbstractForm {
-
-	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/ComplexRaRProcess.bpmn" })
-	/**
+public class WorkflowDeleteTest extends ComplexAbstractForm {	/**
 	 * Test human.
 	 *
 	 */
+
+
+	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/ComplexRaRProcess.bpmn" })
 	public void testHuman() throws ParseException {
 		Map<String, Object> variables = new HashMap<String, Object>();
 		init(variables);

@@ -184,14 +184,14 @@ public class ComplexIRaRGeneration extends BaseJavaDelegate {
 	 */
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Execute.
 	 *
 	 * @param execution the execution
 	 */
+
+
+	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 		int rarId = (int) execution.getVariable("vigewf_rarId");
 		logger.info("COMPLEX bank IRaRGeneration start for rar " + rarId);

@@ -37,15 +37,15 @@ public class ModuleClassLoader extends ClassLoader {
     public ModuleClassLoader() {
         super(currentThread()
                 .getContextClassLoader());
-    }
-
-    @Override
-    /**
+    }    /**
      * Get resource.
      *
      * @param name the name
      * @return the u r l
      */
+
+
+    @Override
     public URL getResource(String name) {
         URL url = super.getResource(name);
         if (url == null && name != null && !name.contains(SEPARATOR)) {

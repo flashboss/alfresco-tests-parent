@@ -39,84 +39,84 @@ public class MockAccessPermission implements AccessPermission, Serializable {
 		super();
 		this.permission = permission;
 		this.authority = authority;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get permission.
 	 *
 	 * @return the string
 	 */
-	public String getPermission() {
-		return permission;
-	}
+
 
 	@Override
-	/**
+	public String getPermission() {
+		return permission;
+	}	/**
 	 * Get access status.
 	 *
 	 * @return the access status
 	 */
-	public AccessStatus getAccessStatus() {
-		return accessStatus;
-	}
+
 
 	@Override
-	/**
+	public AccessStatus getAccessStatus() {
+		return accessStatus;
+	}	/**
 	 * Get authority.
 	 *
 	 * @return the string
 	 */
-	public String getAuthority() {
-		return authority;
-	}
+
 
 	@Override
-	/**
+	public String getAuthority() {
+		return authority;
+	}	/**
 	 * Get authority type.
 	 *
 	 * @return the authority type
 	 */
-	public AuthorityType getAuthorityType() {
-		return authorityType;
-	}
+
 
 	@Override
-	/**
+	public AuthorityType getAuthorityType() {
+		return authorityType;
+	}	/**
 	 * Get position.
 	 *
 	 * @return the int
 	 */
-	public int getPosition() {
-		return position;
-	}
+
 
 	@Override
-	/**
+	public int getPosition() {
+		return position;
+	}	/**
 	 * Is inherited.
 	 *
 	 * @return the boolean
 	 */
-	public boolean isInherited() {
-		return inherited;
-	}
+
 
 	@Override
-	/**
+	public boolean isInherited() {
+		return inherited;
+	}	/**
 	 * Is set directly.
 	 *
 	 * @return the boolean
 	 */
-	public boolean isSetDirectly() {
-		return setDirectly;
-	}
+
 
 	@Override
-	/**
+	public boolean isSetDirectly() {
+		return setDirectly;
+	}	/**
 	 * To string.
 	 *
 	 * @return the string
 	 */
+
+
+	@Override
 	public String toString() {
 		return "MockAccessPermission [permission=" + permission + ", accessStatus=" + accessStatus + ", authority="
 				+ authority + ", authorityType=" + authorityType + ", position=" + position + ", inherited=" + inherited

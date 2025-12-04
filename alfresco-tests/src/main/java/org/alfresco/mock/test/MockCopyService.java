@@ -24,12 +24,12 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class MockCopyService implements CopyService, Serializable {
 
-	@Autowired
 	/** The file folder service. */
+	@Autowired
 	private FileFolderService fileFolderService;
 
-	@Autowired
 	/** The node service. */
+	@Autowired
 	private NodeService nodeService;
 
 	@Override
@@ -54,10 +54,7 @@ public class MockCopyService implements CopyService, Serializable {
 			QName assocQName, boolean copyChildren) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Copy.
 	 *
 	 * @param sourceNodeRef the source node ref
@@ -66,53 +63,56 @@ public class MockCopyService implements CopyService, Serializable {
 	 * @param assocQName the assoc q name
 	 * @return the node ref
 	 */
-	public NodeRef copy(NodeRef sourceNodeRef, NodeRef targetParentNodeRef, QName assocTypeQName, QName assocQName) {
-		return copy(sourceNodeRef, targetParentNodeRef, assocTypeQName, assocQName, false);
-	}
+
 
 	@Override
-	/**
+	public NodeRef copy(NodeRef sourceNodeRef, NodeRef targetParentNodeRef, QName assocTypeQName, QName assocQName) {
+		return copy(sourceNodeRef, targetParentNodeRef, assocTypeQName, assocQName, false);
+	}	/**
 	 * Copy.
 	 *
 	 * @param sourceNodeRef the source node ref
 	 * @param destinationNodeRef the destination node ref
 	 */
-	public void copy(NodeRef sourceNodeRef, NodeRef destinationNodeRef) {
-		copy(sourceNodeRef, destinationNodeRef, ContentModel.ASSOC_CONTAINS, ContentModel.ASSOC_CHILDREN);
-	}
+
 
 	@Override
-	/**
+	public void copy(NodeRef sourceNodeRef, NodeRef destinationNodeRef) {
+		copy(sourceNodeRef, destinationNodeRef, ContentModel.ASSOC_CONTAINS, ContentModel.ASSOC_CHILDREN);
+	}	/**
 	 * Get original.
 	 *
 	 * @param copiedNodeRef the copied node ref
 	 * @return the node ref
 	 */
+
+
+	@Override
 	public NodeRef getOriginal(NodeRef copiedNodeRef) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get copies.
 	 *
 	 * @param nodeRef the node ref
 	 * @return the list
 	 */
+
+
+	@Override
 	public List<NodeRef> getCopies(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Get copies.
 	 *
 	 * @param originalNodeRef the original node ref
 	 * @param pagingRequest the paging request
 	 * @return the paging results
 	 */
+
+
+	@Override
 	public PagingResults<CopyInfo> getCopies(NodeRef originalNodeRef, PagingRequest pagingRequest) {
 		// TODO Auto-generated method stub
 		return null;

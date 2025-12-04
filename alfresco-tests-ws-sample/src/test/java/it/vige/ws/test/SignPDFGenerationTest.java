@@ -55,29 +55,29 @@ public class SignPDFGenerationTest extends AbstractWSForm {
 	/** The template vars. */
 	private Map<String, String> templateVars;
 
-	@Autowired
 	/** The sign p d f generation. */
+	@Autowired
 	private SignPDFGeneration signPDFGeneration;
 
-	@Autowired
 	/** The node service. */
+	@Autowired
 	private NodeService nodeService;
 
-	@Override
 	/**
 	 * Get abstract web script.
 	 *
 	 * @return the abstract web script
 	 */
+	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return signPDFGeneration;
 	}
 
-	@Before
 	/**
 	 * Init.
 	 *
 	 */
+	@Before
 	public void init() {
 		super.init();
 		templateVars = new HashMap<String, String>();
@@ -114,18 +114,20 @@ public class SignPDFGenerationTest extends AbstractWSForm {
 		}
 	}
 
-	@Test
 	/**
 	 * Execute.
 	 *
+	 * @throws ParseException if parsing fails
+	 * @throws IOException if IO error occurs
 	 */
+	@Test
 	public void execute() throws ParseException, IOException {
 
 		logger.debug("start test");
 		SearchService searchService = serviceRegistry.getSearchService();
 		InputStream jsonStream = this.getClass().getClassLoader().getResourceAsStream("json_lecters.json");
 
-	/** The json. */
+		/** The json. */
 		String json = new String(ByteStreams.toByteArray(jsonStream));
 		Map<String, Serializable> fields = new HashMap<String, Serializable>();
 		{

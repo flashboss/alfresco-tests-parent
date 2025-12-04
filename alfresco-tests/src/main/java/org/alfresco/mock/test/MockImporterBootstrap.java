@@ -22,25 +22,25 @@ public class MockImporterBootstrap extends AbstractLifecycleBean {
     /** The use existing store. */
     private boolean useExistingStore = false;
     /** The bootstrap views. */
-    private List<Properties> bootstrapViews;
-
-	@Override
-	/**
+    private List<Properties> bootstrapViews;	/**
 	 * On bootstrap.
 	 *
 	 * @param event the event
 	 */
+
+
+	@Override
 	protected void onBootstrap(ApplicationEvent event) {
 		logger.debug(useExistingStore + "");
 		logger.debug(bootstrapViews + "");
-	}
-
-	@Override
-	/**
+	}	/**
 	 * On shutdown.
 	 *
 	 * @param event the event
 	 */
+
+
+	@Override
 	protected void onShutdown(ApplicationEvent event) {
 		// TODO Auto-generated method stub
 		

@@ -55,44 +55,44 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 	public FilteredHashMap(Map<NodeRef, File> m) {
 		super(m);
 		removeFilteredValues();
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Put if absent.
 	 *
 	 * @param key the key
 	 * @param value the value
 	 * @return the file
 	 */
+
+
+	@Override
 	public File putIfAbsent(NodeRef key, File value) {
 		if (haveToAdd(value.getAbsolutePath()))
 			return super.putIfAbsent(key, value);
 		else
 			return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Put.
 	 *
 	 * @param key the key
 	 * @param value the value
 	 * @return the file
 	 */
+
+
+	@Override
 	public File put(NodeRef key, File value) {
 		if (haveToAdd(value.getAbsolutePath()))
 			return super.put(key, value);
 		else
 			return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Put all.
 	 *
 	 * @param m the m
 	 */
+
+
+	@Override
 	public void putAll(Map<? extends NodeRef, ? extends File> m) {
 		super.putAll(filterMap(m));
 	}
@@ -104,21 +104,18 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 			return super.merge(key, value, remappingFunction);
 		else
 			return null;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Replace all.
 	 *
 	 * @param function the function
 	 */
+
+
+	@Override
 	public void replaceAll(BiFunction<? super NodeRef, ? super File, ? extends File> function) {
 		super.replaceAll(function);
 		removeFilteredValues();
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Replace.
 	 *
 	 * @param key the key
@@ -126,21 +123,24 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 	 * @param newValue the new value
 	 * @return the boolean
 	 */
+
+
+	@Override
 	public boolean replace(NodeRef key, File oldValue, File newValue) {
 		if (haveToAdd(newValue.getAbsolutePath()))
 			return super.replace(key, oldValue, newValue);
 		else
 			return false;
-	}
-
-	@Override
-	/**
+	}	/**
 	 * Replace.
 	 *
 	 * @param key the key
 	 * @param value the value
 	 * @return the file
 	 */
+
+
+	@Override
 	public File replace(NodeRef key, File value) {
 		if (haveToAdd(value.getAbsolutePath()))
 			return super.replace(key, value);
