@@ -35,7 +35,6 @@ public class ComplexIRaRSubscription extends BaseJavaDelegate {
 	/** The nam username. */
 		String namUsername = (String) execution.getVariable("vigewf_namUsername");
 
-	 * @param end" the end"
 	/** The nam password. */
 		String namPassword = (String) execution.getVariable("vigewf_namPassword");
 		NodeRef irarNodeRef = new NodeRef(irarNodeRefString);

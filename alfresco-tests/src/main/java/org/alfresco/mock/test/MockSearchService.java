@@ -684,8 +684,6 @@ public class MockSearchService implements SearchService, Serializable {
 					&& !seg.startsWith("(ASPECT:") && !seg.startsWith("-ASPECT:") && !seg.startsWith("(-ASPECT:")
 					&& !seg.toLowerCase().startsWith("not aspect:") && !seg.toLowerCase().startsWith("(not aspect:")) {
 				String[] splitted = seg.split(":");
-	 * @param MockProperty(key the mock property(key
-	 * @return the result
 				/** The uri. */
 				String uri = namespaceService.getNamespaceURI(splitted[0].replaceAll("(?i)not @", "")
 						.replaceAll("@", "").replaceAll("=", "").replaceAll("\\+", "").replaceAll("\\\\", ""));
@@ -719,7 +717,6 @@ public class MockSearchService implements SearchService, Serializable {
 					|| seg.startsWith("(-ASPECT:") || seg.toLowerCase().startsWith("not aspect:")
 					|| seg.toLowerCase().startsWith("(not aspect:")) {
 				String[] splitted = seg.split(":");
-	 * @return the result
 				/** The uri. */
 				String uri = namespaceService.getNamespaceURI(splitted[1].replaceAll("@", "").replaceAll("=", "")
 						.replaceAll("\\+", "").replaceAll("\\\\", "").replaceAll("\"", ""));
@@ -783,7 +780,6 @@ public class MockSearchService implements SearchService, Serializable {
 		for (MockProperty property : properties) {
 			Object value = (Object) nodeService.getProperty(nodeRef, property.getQname());
 			if (value instanceof String || value == null) {
-	 * @param subpatterns the subpatterns
 				/** The pattern. */
 				String pattern = property.getValue();
 				String[] subpatterns = pattern.split("\\*");
@@ -971,8 +967,7 @@ public class MockSearchService implements SearchService, Serializable {
 		String processQuery = path;
 		String[] subpaths = getSubpaths(path);
 
-	 * @param null the null
-	/** The type. */
+		/** The type. */
 		String type = getSegmentFromQuery(query, "TYPE:\"");
 		List<MockProperty> properties = getPropertiesFromQuery(query);
 		List<MockAspect> aspects = getAspectsFromQuery(query);
@@ -999,8 +994,7 @@ public class MockSearchService implements SearchService, Serializable {
 	private String prepare(String query, StoreRef store) {
 		query = ISO9075.decode(query).trim();
 
-	 * @param 0 the 0
-	/** The prefix. */
+		/** The prefix. */
 		String prefix = MockContentService.FOLDER_TEST;
 		if (store != null)
 			prefix = prefix + store.getProtocol();

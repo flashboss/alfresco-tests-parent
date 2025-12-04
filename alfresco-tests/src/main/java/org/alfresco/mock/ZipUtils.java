@@ -48,7 +48,6 @@ public class ZipUtils {
 		ZipEntry zipEntry = zis.getNextEntry();
 		while (zipEntry != null) {
 			String[] filePaths = zipEntry.getName().split("/");
-	 * @param zis.read(buffer the zis.read(buffer
 			/** The file name. */
 			String fileName = filePaths[filePaths.length - 1];
 			File newFile = new File(targetDirectory + "/" + fileName);

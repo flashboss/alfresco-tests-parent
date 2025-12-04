@@ -413,7 +413,6 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return rules != null && !rules.isEmpty();
 	}
 
-	@Override
 	/**
 	 * Has non inherited rules.
 	 *
@@ -491,7 +490,6 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return getRules(nodeRef).size();
 	}
 
-	@Override
 	/**
 	 * Get nodes supplying rule sets.
 	 *
@@ -503,7 +501,6 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return new ArrayList<>();
 	}
 
-	@Override
 	/**
 	 * Get folders inheriting rule set.
 	 *
@@ -522,7 +519,6 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return new ArrayList<>(folders);
 	}
 
-	@Override
 	/**
 	 * Get folders linking to rule set.
 	 *
@@ -546,17 +542,16 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return rulesByNodeRef.get(nodeRef);
 	}
 
-	@Override
 	/**
 	 * Save rule.
 	 *
 	 * @param nodeRef the node ref
 	 * @param rule the rule
-	 * @return the rule
 	 */
-	public Rule saveRule(NodeRef nodeRef, Rule rule) {
+	@Override
+	public void saveRule(NodeRef nodeRef, Rule rule) {
 		if (nodeRef == null || rule == null) {
-			return null;
+			return;
 		}
 
 		List<Rule> rules = rulesByFolder.get(nodeRef);
@@ -586,8 +581,6 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 
 		// Store ownership
 		ruleOwnership.put(rule, nodeRef);
-
-		return rule;
 	}
 
 	@Override
@@ -746,7 +739,6 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return actionOwnership.get(action);
 	}
 
-	@Override
 	/**
 	 * Get owning node ref.
 	 *
@@ -779,7 +771,6 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return folderToRuleSet.get(nodeRef);
 	}
 
-	@Override
 	/**
 	 * Get linked from rule nodes.
 	 *
@@ -788,10 +779,9 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 	 */
 	public List<NodeRef> getLinkedFromRuleNodes(NodeRef nodeRef) {
 		List<NodeRef> folders = ruleSetToFolders.get(nodeRef);
-		return folders != null ? new ArrayList<>(folders) : new ArrayList<>();
+		return folders != null ? new ArrayList<NodeRef>(folders) : new ArrayList<NodeRef>();
 	}
 
-	@Override
 	/**
 	 * Get rule set node.
 	 *
@@ -802,7 +792,6 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return folderToRuleSet.get(folderNodeRef);
 	}
 
-	@Override
 	/**
 	 * Is rule set associated with folder.
 	 *
@@ -815,7 +804,6 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return ruleSetNodeRef != null && ruleSetNodeRef.equals(associatedRuleSet);
 	}
 
-	@Override
 	/**
 	 * Is rule associated with rule set.
 	 *
@@ -828,7 +816,6 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		return ruleSetNodeRef != null && ruleSetNodeRef.equals(associatedRuleSet);
 	}
 
-	@Override
 	/**
 	 * Is rule set shared.
 	 *

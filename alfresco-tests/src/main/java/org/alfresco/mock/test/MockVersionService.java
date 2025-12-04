@@ -134,8 +134,7 @@ public class MockVersionService implements VersionService, Serializable {
 	/** The version. */
 		String version = versionProperties.getOrDefault(PROP_VERSION_LABEL.getLocalName(), "").toString();
 
-	 * @param null the null
-	/** The version type. */
+		/** The version type. */
 		String versionType = versionProperties.getOrDefault(Version2Model.PROP_VERSION_TYPE, "").toString();
 		nodeService.setProperty(nodeRef, PROP_VERSION_LABEL, version);
 		nodeService.setProperty(nodeRef, PROP_VERSION_TYPE, versionProperties.get(Version2Model.PROP_VERSION_TYPE));

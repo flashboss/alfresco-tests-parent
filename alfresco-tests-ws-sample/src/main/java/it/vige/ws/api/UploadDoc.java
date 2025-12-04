@@ -273,7 +273,6 @@ public class UploadDoc extends DeclarativeWebScript {
 			// Check if the dropzone folder exists ...
 			DateTime dataCreazione = DateTime.parse(dataCreazionePratica);
 
-	 * @param dropzoneQuery the dropzone query
 			/** The dropzone query. */
 			String dropzoneQuery = "PATH:\"" + dropzonePath + "\"";
 			ResultSet siteRS = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,

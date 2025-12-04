@@ -276,10 +276,8 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		List<Pair<QName, Boolean>> properties = new ArrayList<Pair<QName, Boolean>>();
 		for (String qnameString : modelProperties) {
 			String[] qnameStringSplitted = qnameString.split(":");
-	 * @param Boolean>(QName.createQName(prefix the boolean>( q name.create q name(prefix
 			/** The prefix. */
 			String prefix = qnameStringSplitted[0];
-	 * @param Boolean>(QName.createQName(prefix the boolean>( q name.create q name(prefix
 			/** The local name. */
 			String localName = qnameStringSplitted[1];
 			try {
@@ -387,10 +385,9 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 									}
 								} else {
 									System.err.println("TODO: handle " + type + " for " + child);
-								}
 							}
+						}
 
-	 * @param sheet.getDefaultRowHeightInPoints( the sheet.get default row height in points(
 							/** The v. */
 							String v = text.toString();
 							c.setCellValue(v);

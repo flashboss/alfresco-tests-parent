@@ -102,8 +102,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 					vbytes = new byte[stream.available()];
 					stream.read(vbytes);
 					Map<String, String> parameters = new HashMap<String, String>();
-	 * @param ex the ex
-	 * @return the result
 					/** The name. */
 					String name = file.getName();
 					parameters.put("filename", name);
