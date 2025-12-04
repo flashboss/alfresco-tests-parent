@@ -1,51 +1,76 @@
 package it.vige.activiti.service;
 
+import it.vige.common.SignConstants;
 import java.io.InputStream;
-
 import org.alfresco.model.ContentModel;
 import org.alfresco.service.cmr.repository.ContentReader;
 import org.alfresco.service.cmr.repository.ContentService;
 import org.alfresco.service.cmr.repository.ContentWriter;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
-
-import it.vige.common.SignConstants;
+import org.apache.commons.io.IOUtils;
 
 /**
  * Class providing functionality for Alfresco testing.
- * 
+ *
  * @author vige
  */
 public class SignService {
+  /** The content service. */
+  private ContentService contentService;
 
-	private ContentService contentService;
-	private NodeService nodeService;
+  /** The node service. */
+  private NodeService nodeService;
 
-	public boolean signCAdESWithTimeStamp(NodeRef nodeRef, String username, String password) {
-		boolean status = false;
-		ContentReader reader = contentService.getReader(nodeRef, ContentModel.PROP_CONTENT);
-		InputStream signedInputStream = null;
-		try (InputStream contentInputStream = reader.getContentInputStream()) {
-			signedInputStream = contentInputStream;
-			ContentWriter contentWriter = contentService.getWriter(nodeRef, ContentModel.PROP_CONTENT, Boolean.TRUE);
-			contentWriter.setMimetype(SignConstants.P7M_MIMETYPE);
-			contentWriter.putContent(signedInputStream);
-			nodeService.setProperty(nodeRef, ContentModel.PROP_NAME,
-					(String) nodeService.getProperty(nodeRef, ContentModel.PROP_NAME) + "."
-							+ SignConstants.P7M_EXTENSION);
-			status = true;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return status;
-	}
+  /**
+   * Sign c ad e s with time stamp.
+   *
+   * @param nodeRef the node ref
+   * @param username the username
+   * @param password the password
+   * @return the boolean
+   */
+  public boolean signCAdESWithTimeStamp(NodeRef nodeRef, String username, String password) {
+    boolean status = false;
+    ContentReader reader = contentService.getReader(nodeRef, ContentModel.PROP_CONTENT);
+    InputStream contentInputStream = null;
+    InputStream signedInputStream = null;
+    try {
+      contentInputStream = reader.getContentInputStream();
+      signedInputStream = contentInputStream;
+      ContentWriter contentWriter =
+          contentService.getWriter(nodeRef, ContentModel.PROP_CONTENT, Boolean.TRUE);
+      contentWriter.setMimetype(SignConstants.P7M_MIMETYPE);
+      contentWriter.putContent(signedInputStream);
+      nodeService.setProperty(
+          nodeRef,
+          ContentModel.PROP_NAME,
+          (String) nodeService.getProperty(nodeRef, ContentModel.PROP_NAME)
+              + "."
+              + SignConstants.P7M_EXTENSION);
+      status = true;
+    } finally {
+      IOUtils.closeQuietly(contentInputStream);
+      IOUtils.closeQuietly(signedInputStream);
+    }
+    return status;
+  }
 
-	public void setContentService(ContentService contentService) {
-		this.contentService = contentService;
-	}
+  /**
+   * Set content service.
+   *
+   * @param contentService the content service
+   */
+  public void setContentService(ContentService contentService) {
+    this.contentService = contentService;
+  }
 
-	public void setNodeService(NodeService nodeService) {
-		this.nodeService = nodeService;
-	}
-
+  /**
+   * Set node service.
+   *
+   * @param nodeService the node service
+   */
+  public void setNodeService(NodeService nodeService) {
+    this.nodeService = nodeService;
+  }
 }

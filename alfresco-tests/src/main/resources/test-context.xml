@@ -172,14 +172,11 @@
 		<property name="templateService">
 			<ref bean="templateService" />
 		</property>
-		<property name="transactionService">
-			<ref bean="transactionService" />
-		</property>
-		<property name="renditionService2">
-			<ref bean="renditionService2" />
-		</property>
 		<property name="solrFacetHelper">
 			<ref bean="solrFacetHelper" />
+		</property>
+		<property name="transactionService">
+			<ref bean="TransactionService" />
 		</property>
 		<property name="authenticationService">
 			<ref bean="authenticationService" />
@@ -209,6 +206,17 @@
 			<ref bean="actionService" />
 		</property>
 	</bean>
+	<bean id="solrFacetRawProperties"
+		class="org.springframework.beans.factory.config.ListFactoryBean">
+		<property name="sourceList">
+			<list />
+		</property>
+	</bean>
+	<bean id="solrFacetHelper"
+		class="org.alfresco.mock.test.MockSolrFacetHelper">
+		<constructor-arg index="0"
+			ref="solrFacetRawProperties" />
+	</bean>
 	<bean id="action-executer" abstract="true" />
 	<alias name="mimetypeService" alias="MimetypeService" />
 	<alias name="authenticationService" alias="AuthenticationService" />
@@ -224,19 +232,6 @@
 		class="org.alfresco.mock.test.MockNamespaceService" />
 	<bean id="templateService"
 		class="org.alfresco.mock.test.MockTemplateService" />
-	<bean id="renditionService2"
-		class="org.alfresco.mock.test.MockRenditionService2" />
-	<bean id="solrFacetRawProperties"
-		class="org.springframework.beans.factory.config.ListFactoryBean">
-		<property name="sourceList">
-			<list />
-		</property>
-	</bean>
-	<bean id="solrFacetHelper"
-		class="org.alfresco.mock.test.MockSolrFacetHelper">
-		<constructor-arg index="0"
-			ref="solrFacetRawProperties" />
-	</bean>
 	<alias name="namespaceService" alias="NamespaceService" />
 	<alias name="versionService" alias="VersionService" />
 	<alias name="ServiceRegistry" alias="services" />

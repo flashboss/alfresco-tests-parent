@@ -8,45 +8,91 @@ import org.alfresco.service.ServiceRegistry;
 
 /**
  * Class providing functionality for Alfresco testing.
- * 
+ *
  * @author vige
  */
 public class ActivitiProcessEngineConfiguration extends StandaloneProcessEngineConfiguration {
+  /** The service registry. */
+  private ServiceRegistry serviceRegistry;
 
-	private ServiceRegistry serviceRegistry;
-	private Search searchScript;
-	private MockLogger loggerScript;
-	private ScriptUtils utilsScript;
+  /** The search script. */
+  private Search searchScript;
 
-	public ServiceRegistry getServiceRegistry() {
-		return serviceRegistry;
-	}
+  /** The logger script. */
+  private MockLogger loggerScript;
 
-	public void setServiceRegistry(ServiceRegistry serviceRegistry) {
-		this.serviceRegistry = serviceRegistry;
-	}
+  /** The utils script. */
+  private ScriptUtils utilsScript;
 
-	public Search getSearchScript() {
-		return searchScript;
-	}
+  /**
+   * Get service registry.
+   *
+   * @return the service registry
+   */
+  public ServiceRegistry getServiceRegistry() {
+    return serviceRegistry;
+  }
 
-	public void setSearchScript(Search searchScript) {
-		this.searchScript = searchScript;
-	}
+  /**
+   * Set service registry.
+   *
+   * @param serviceRegistry the service registry
+   */
+  public void setServiceRegistry(ServiceRegistry serviceRegistry) {
+    this.serviceRegistry = serviceRegistry;
+  }
 
-	public MockLogger getLoggerScript() {
-		return loggerScript;
-	}
+  /**
+   * Get search script.
+   *
+   * @return the search
+   */
+  public Search getSearchScript() {
+    return searchScript;
+  }
 
-	public void setLoggerScript(MockLogger loggerScript) {
-		this.loggerScript = loggerScript;
-	}
+  /**
+   * Set search script.
+   *
+   * @param searchScript the search script
+   */
+  public void setSearchScript(Search searchScript) {
+    this.searchScript = searchScript;
+  }
 
-	public ScriptUtils getUtilsScript() {
-		return utilsScript;
-	}
+  /**
+   * Get logger script.
+   *
+   * @return the mock logger
+   */
+  public MockLogger getLoggerScript() {
+    return loggerScript;
+  }
 
-	public void setUtilsScript(ScriptUtils utilsScript) {
-		this.utilsScript = utilsScript;
-	}
+  /**
+   * Set logger script.
+   *
+   * @param loggerScript the logger script
+   */
+  public void setLoggerScript(MockLogger loggerScript) {
+    this.loggerScript = loggerScript;
+  }
+
+  /**
+   * Get utils script.
+   *
+   * @return the script utils
+   */
+  public ScriptUtils getUtilsScript() {
+    return utilsScript;
+  }
+
+  /**
+   * Set utils script.
+   *
+   * @param utilsScript the utils script
+   */
+  public void setUtilsScript(ScriptUtils utilsScript) {
+    this.utilsScript = utilsScript;
+  }
 }
