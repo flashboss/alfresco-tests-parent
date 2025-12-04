@@ -11,22 +11,29 @@ import org.springframework.extensions.webscripts.Container;
 import org.springframework.extensions.webscripts.Description;
 
 /**
- * Abstract base class providing common functionality for tests.
- * 
+ * Mock implementation of AbstractWSForm for testing purposes.
+ *
  * @author vige
  */
 public abstract class AbstractWSForm extends AbstractForm {
 
+	/** The container. */
 	@Autowired
 	private Container container;
 	
+	/** The description. */
 	@Autowired
 	private Description description;
 	
+	/** The date format. */
 	protected DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmm");
 
 	protected abstract AbstractWebScript getAbstractWebScript();
 
+	/**
+	 * Init.
+	 *
+	 */
 	@Before
 	public void init() {
 		super.init();

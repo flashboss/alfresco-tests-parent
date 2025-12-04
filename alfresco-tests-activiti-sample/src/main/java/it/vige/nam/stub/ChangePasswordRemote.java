@@ -26,18 +26,18 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  * 
- * 
+ *
+ *
+ * @author vige
+ 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "changePasswordRemote", propOrder = { "credentials", "newPassword" })
-/**
- * Class providing functionality for Alfresco testing.
- * 
- * @author vige
- */
 public class ChangePasswordRemote {
 
+	/** The credentials. */
 	protected Credentials credentials;
+	/** The new password. */
 	protected String newPassword;
 
 	/**

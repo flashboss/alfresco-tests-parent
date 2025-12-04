@@ -22,23 +22,32 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction&gt;
  * &lt;/simpleType&gt;
  * </pre>
- * 
+ *
+ *
+ * @author vige
+ 
  */
 @XmlType(name = "signEngineImpl")
 @XmlEnum
-/**
- * Class providing functionality for Alfresco testing.
- * 
- * @author vige
- */
 public enum SignEngineImpl {
 
 	LOCAL, STATIC, DYNAMIC;
 
+	/**
+	 * Value.
+	 *
+	 * @return the result
+	 */
 	public String value() {
 		return name();
 	}
 
+	/**
+	 * From value.
+	 *
+	 * @param v the v
+	 * @return the result
+	 */
 	public static SignEngineImpl fromValue(String v) {
 		return valueOf(v);
 	}

@@ -47,8 +47,8 @@ import org.springframework.extensions.webscripts.WebScriptResponse;
 import it.vige.ws.utils.OpenDataCommand;
 
 /**
- * Class providing functionality for Alfresco testing.
- * 
+ * NodeListDownloadWebScript implementation for testing purposes.
+ *
  * @author vige
  */
 public class NodeListDownloadWebScript extends DeclarativeWebScript
@@ -62,22 +62,37 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	public static final String MODEL_EXCEL = "excel";
 
 	private String[] overHeadings;
+	/** The filename base. */
 	private String filenameBase;
 
+	/** The skip count def. */
 	private String skipCountDef;
+	/** The max lines def. */
 	private String maxLinesDef;
+	/** The max items def. */
 	private String maxItemsDef;
 
+	/** The node service. */
 	private NodeService nodeService;
+	/** The open data command. */
 	private OpenDataCommand openDataCommand;
 
+	/** The namespace service. */
 	private NamespaceService namespaceService;
 	private String[] modelProperties;
+	/** The open data date format. */
 	private String openDataDateFormat;
+	/** The list separator. */
 	private String listSeparator;
 
+	/** The search service. */
 	private SearchService searchService;
 	
+	/**
+	 * Set over headings.
+	 *
+	 * @param headingsString the headings string
+	 */
 	public void setOverHeadings(String[] headingsString) {
 		this.overHeadings = headingsString;
 	}
@@ -86,34 +101,73 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		return overHeadings;
 	}
 
+	/**
+	 * Set skip count def.
+	 *
+	 * @param skipCountDef the skip count def
+	 */
 	public void setSkipCountDef(String skipCountDef) {
 		this.skipCountDef = skipCountDef;
 	}
 
+	/**
+	 * Set max lines def.
+	 *
+	 * @param maxLinesDef the max lines def
+	 */
 	public void setMaxLinesDef(String maxLinesDef) {
 		this.maxLinesDef = maxLinesDef;
 	}
 
+	/**
+	 * Set max items def.
+	 *
+	 * @param maxItemsDef the max items def
+	 */
 	public void setMaxItemsDef(String maxItemsDef) {
 		this.maxItemsDef = maxItemsDef;
 	}
 
+	/**
+	 * Set search service.
+	 *
+	 * @param searchService the search service
+	 */
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
 
+	/**
+	 * Set model properties.
+	 *
+	 * @param modelPropertiesString the model properties string
+	 */
 	public void setModelProperties(String[] modelPropertiesString) {
 		this.modelProperties = modelPropertiesString;
 	}
 
+	/**
+	 * Set open data command.
+	 *
+	 * @param openDataCommand the open data command
+	 */
 	public void setOpenDataCommand(OpenDataCommand openDataCommand) {
 		this.openDataCommand = openDataCommand;
 	}
 
+	/**
+	 * Constructs a new NodeListDownloadWebScript.
+	 *
+	 */
 	public NodeListDownloadWebScript() {
 		this.filenameBase = "DataListExport";
 	}
 
+	/**
+	 * Set open data date format.
+	 *
+	 * @param openDataDateFormat the open data date format
+	 */
 	public void setOpenDataDateFormat(String openDataDateFormat) {
 		this.openDataDateFormat = openDataDateFormat;
 	}
@@ -132,6 +186,11 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		this.namespaceService = namespaceService;
 	}
 
+	/**
+	 * Set list separator.
+	 *
+	 * @param listSeparator the list separator
+	 */
 	public void setListSeparator(String listSeparator) {
 		this.listSeparator = listSeparator;
 	}
@@ -210,10 +269,27 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		return properties;
 	}
 
+	/**
+	 * Populate body.
+	 *
+	 * @param resource the resource
+	 * @param csv the csv
+	 * @param properties the properties
+	 */
 	protected void populateBody(Object resource, CSVPrinter csv, List<QName> properties) throws IOException {
 		throw new WebScriptException(Status.STATUS_BAD_REQUEST, "CSV not currently supported");
 	}
 
+	/**
+	 * Populate body.
+	 *
+	 * @param resource the resource
+	 * @param workbook the workbook
+	 * @param sheet the sheet
+	 * @param properties the properties
+	 * @param style the style
+	 * @return the result
+	 */
 	protected Sheet populateBody(Object resource, Workbook workbook, Sheet sheet, List<QName> properties, Map<String,CellStyle> style)
 			throws IOException {
 		@SuppressWarnings("unchecked")
@@ -362,6 +438,11 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		return sheet;
 	}
 
+	/**
+	 * Generate style from w b.
+	 *
+	 * @param workbook the workbook
+	 */
 	protected Map<String, CellStyle> generateStyleFromWB(Workbook workbook) {
 		DataFormat formatter = workbook.createDataFormat();
 
@@ -386,6 +467,12 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		style.put("styleNewLines", styleNewLines);
 		return style;
 	}
+	/**
+	 * Execute impl.
+	 *
+	 * @param req the req
+	 * @param status the status
+	 */
 	@Override
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status) {
 		Map<String, Object> model = new HashMap<String, Object>();
@@ -551,6 +638,13 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		}
 	}
 
+	/**
+	 * Create template parameters.
+	 *
+	 * @param req the req
+	 * @param res the res
+	 * @param customParams the custom params
+	 */
 	@Override
 	protected Map<String, Object> createTemplateParameters(WebScriptRequest req, WebScriptResponse res,
 			Map<String, Object> customParams) {
@@ -563,11 +657,23 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	}
 
 	public static class WriteExcel {
+		/** The format. */
 		private String format;
+		/** The filename base. */
 		private String filenameBase;
+		/** The res. */
 		private WebScriptResponse res;
+		/** The model. */
 		private Map<String, Object> model;
 
+	/**
+	 * Write excel.
+	 *
+	 * @param res the res
+	 * @param model the model
+	 * @param format the format
+	 * @param filenameBase the filename base
+	 */
 		private WriteExcel(WebScriptResponse res, Map<String, Object> model, String format, String filenameBase) {
 			this.res = res;
 			this.model = model;
@@ -575,6 +681,10 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 			this.filenameBase = filenameBase;
 		}
 
+	/**
+	 * Write.
+	 *
+	 */
 		public void write() throws IOException {
 			String filename = filenameBase + "." + format;
  

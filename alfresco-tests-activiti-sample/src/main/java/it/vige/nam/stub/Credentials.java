@@ -30,22 +30,26 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  * 
- * 
+ *
+ *
+ * @author vige
+ 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "credentials", propOrder = { "idOtp", "otp", "password", "securityCode", "sessionKey", "username" })
-/**
- * Class providing functionality for Alfresco testing.
- * 
- * @author vige
- */
 public class Credentials {
 
+	/** The id otp. */
 	protected int idOtp;
+	/** The otp. */
 	protected String otp;
+	/** The password. */
 	protected String password;
+	/** The security code. */
 	protected String securityCode;
+	/** The session key. */
 	protected String sessionKey;
+	/** The username. */
 	protected String username;
 
 	/**

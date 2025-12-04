@@ -33,8 +33,8 @@ import it.vige.ws.PreviousWSSample;
 import it.vige.ws.WSSampleModel;
 
 /**
- * Test class for verifying functionality.
- * 
+ * PreviousWSSampleTest implementation for testing purposes.
+ *
  * @author vige
  */
 public class PreviousWSSampleTest extends AbstractWSForm {
@@ -42,12 +42,19 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 	private final static String FOLDER_WSSAMPLE = "WSSAMPLE-20157726";
 	private final static String dataModifica = "2020-06-19";
 
+	/** The previous w s sample. */
 	@Autowired
 	private PreviousWSSample previousWSSample;
 
+	/** The date format. */
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	/** The repository. */
 	private NodeRef repository;
 
+	/**
+	 * Init.
+	 *
+	 */
 	@Before
 	public void init() {
 		super.init();
@@ -64,11 +71,20 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 		insertFolder(repository, FOLDER_WSSAMPLE);
 	}
 
+	/**
+	 * Get abstract web script.
+	 *
+	 * @return the result
+	 */
 	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return previousWSSample;
 	}
 
+	/**
+	 * Execute.
+	 *
+	 */
 	@Test
 	public void execute() throws ParseException, IOException {
 

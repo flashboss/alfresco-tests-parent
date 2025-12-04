@@ -32,18 +32,25 @@ import it.vige.ws.api.NodeListDownloadWebScript;
 import it.vige.ws.utils.ActUtil;
 
 /**
- * Test class for verifying functionality.
- * 
+ * NodeListDownloadWebScriptTest implementation for testing purposes.
+ *
  * @author vige
  */
 public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 
+	/** The node list download web script. */
 	@Autowired
 	private NodeListDownloadWebScript nodeListDownloadWebScript;
 
+	/** The p d l. */
 	private NodeRef PDL;
+	/** The act. */
 	private NodeRef act;
 
+	/**
+	 * Init.
+	 *
+	 */
 	@Before
 	public void init() {
 		super.init();
@@ -63,6 +70,13 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 
 	}
 
+	/**
+	 * Create act.
+	 *
+	 * @param PDL the p d l
+	 * @param name the name
+	 * @return the result
+	 */
 	private NodeRef createAct(NodeRef PDL, String name) {
 		Map<QName, Serializable> properties = new HashMap<QName, Serializable>(11);
 		properties.put(ContentModel.PROP_NAME, name);
@@ -75,6 +89,12 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 		return insertDocument(PDL, name, "testbytes", properties);
 	}
 
+	/**
+	 * Add state act.
+	 *
+	 * @param document the document
+	 * @param PDL the p d l
+	 */
 	private void addStateAct(NodeRef document, NodeRef PDL) {
 		NodeService nodeService = serviceRegistry.getNodeService();
 		String name = (String) nodeService.getProperty(document, ContentModel.PROP_NAME);
@@ -87,11 +107,20 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 		nodeService.createAssociation(document, target, ActUtil.PROP_STATE_ACT_QNAME);
 	}
 
+	/**
+	 * Get abstract web script.
+	 *
+	 * @return the result
+	 */
 	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return nodeListDownloadWebScript;
 	}
 
+	/**
+	 * Execute.
+	 *
+	 */
 	@Test
 	public void execute() throws IOException {
 

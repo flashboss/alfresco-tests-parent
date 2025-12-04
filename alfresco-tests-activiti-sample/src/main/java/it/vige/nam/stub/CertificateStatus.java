@@ -22,23 +22,32 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction&gt;
  * &lt;/simpleType&gt;
  * </pre>
- * 
+ *
+ *
+ * @author vige
+ 
  */
 @XmlType(name = "certificateStatus")
 @XmlEnum
-/**
- * Class providing functionality for Alfresco testing.
- * 
- * @author vige
- */
 public enum CertificateStatus {
 
 	VALID, REVOKED, UNKNOWN;
 
+	/**
+	 * Value.
+	 *
+	 * @return the result
+	 */
 	public String value() {
 		return name();
 	}
 
+	/**
+	 * From value.
+	 *
+	 * @param v the v
+	 * @return the result
+	 */
 	public static CertificateStatus fromValue(String v) {
 		return valueOf(v);
 	}

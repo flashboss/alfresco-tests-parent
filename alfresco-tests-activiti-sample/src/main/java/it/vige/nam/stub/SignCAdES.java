@@ -29,21 +29,22 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  * 
- * 
+ *
+ *
+ * @author vige
+ 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signCAdES", propOrder = { "username", "password", "buffer", "cAdESPreferences" })
-/**
- * Class providing functionality for Alfresco testing.
- * 
- * @author vige
- */
 public class SignCAdES {
 
+	/** The username. */
 	protected String username;
+	/** The password. */
 	protected String password;
 	protected byte[] buffer;
 	@XmlElement(name = "CAdESPreferences")
+	/** The c ad e s preferences. */
 	protected CAdESPreferences cAdESPreferences;
 
 	/**

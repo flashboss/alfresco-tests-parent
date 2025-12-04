@@ -25,19 +25,28 @@ import com.google.gdata.util.common.base.Charsets;
 import com.google.gdata.util.common.io.CharStreams;
 
 /**
- * Mock implementation of the Alfresco ImporterService for testing purposes.
- * Provides stub implementations for testing without a running Alfresco server.
- * 
+ * Mock implementation of MockImporterService for testing purposes.
+ *
  * @author vige
  */
 public class MockImporterService implements ImporterService, Serializable {
 
+	/** The node service. */
 	@Autowired
 	private NodeService nodeService;
 
+	/** The content service. */
 	@Autowired
 	private ContentService contentService;
 
+	/**
+	 * Import view.
+	 *
+	 * @param viewReader the view reader
+	 * @param location the location
+	 * @param binding the binding
+	 * @param progress the progress
+	 */
 	@Override
 	public void importView(Reader viewReader, Location location, ImporterBinding binding, ImporterProgress progress)
 			throws ImporterException {
@@ -45,6 +54,14 @@ public class MockImporterService implements ImporterService, Serializable {
 
 	}
 
+	/**
+	 * Import view.
+	 *
+	 * @param importHandler the import handler
+	 * @param location the location
+	 * @param binding the binding
+	 * @param progress the progress
+	 */
 	@Override
 	public void importView(ImportPackageHandler importHandler, Location location, ImporterBinding binding,
 			ImporterProgress progress) throws ImporterException {

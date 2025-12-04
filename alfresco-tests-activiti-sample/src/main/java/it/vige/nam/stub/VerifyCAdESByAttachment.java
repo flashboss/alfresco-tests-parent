@@ -28,19 +28,19 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  * 
- * 
+ *
+ *
+ * @author vige
+ 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "verifyCAdESByAttachment", propOrder = { "inputDataHandler", "preferences" })
-/**
- * Class providing functionality for Alfresco testing.
- * 
- * @author vige
- */
 public class VerifyCAdESByAttachment {
 
 	@XmlMimeType("application/octet-stream")
+	/** The input data handler. */
 	protected DataHandler inputDataHandler;
+	/** The preferences. */
 	protected VerifyPreferences preferences;
 
 	/**

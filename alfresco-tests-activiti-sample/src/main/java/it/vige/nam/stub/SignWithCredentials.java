@@ -28,20 +28,20 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  * 
- * 
+ *
+ *
+ * @author vige
+ 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signWithCredentials", propOrder = { "credentials", "buffer", "adESPreferences" })
-/**
- * Class providing functionality for Alfresco testing.
- * 
- * @author vige
- */
 public class SignWithCredentials {
 
+	/** The credentials. */
 	protected Credentials credentials;
 	protected byte[] buffer;
 	@XmlElement(name = "AdESPreferences")
+	/** The ad e s preferences. */
 	protected SignPreferences adESPreferences;
 
 	/**

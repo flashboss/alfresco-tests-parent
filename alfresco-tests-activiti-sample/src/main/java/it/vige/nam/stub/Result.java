@@ -24,23 +24,32 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/restriction&gt;
  * &lt;/simpleType&gt;
  * </pre>
- * 
+ *
+ *
+ * @author vige
+ 
  */
 @XmlType(name = "result")
 @XmlEnum
-/**
- * Class providing functionality for Alfresco testing.
- * 
- * @author vige
- */
 public enum Result {
 
 	VALID, INVALID, UNDETERMINED, VALID_WITH_WARNINGS, INFORMATION;
 
+	/**
+	 * Value.
+	 *
+	 * @return the result
+	 */
 	public String value() {
 		return name();
 	}
 
+	/**
+	 * From value.
+	 *
+	 * @param v the v
+	 * @return the result
+	 */
 	public static Result fromValue(String v) {
 		return valueOf(v);
 	}

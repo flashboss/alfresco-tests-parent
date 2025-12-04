@@ -30,22 +30,34 @@ import org.alfresco.service.cmr.repository.NodeService;
 import org.apache.commons.io.IOUtils;
 
 /**
- * Mock implementation of ContentWriter for testing purposes.
- * 
+ * Mock implementation of MockContentWriter for testing purposes.
+ *
  * @author vige
  */
 public class MockContentWriter implements ContentWriter {
 
+	/** The file. */
 	private File file;
 
+	/** The mimetype. */
 	private String mimetype;
 
+	/** The content prop. */
 	private ContentDataWithId contentProp;
 
+	/** The node. */
 	private NodeRef node;
 
+	/** The node service. */
 	private NodeService nodeService;
 
+	/**
+	 * Constructs a new MockContentWriter.
+	 *
+	 * @param file the file
+	 * @param node the node
+	 * @param nodeService the node service
+	 */
 	public MockContentWriter(File file, NodeRef node, NodeService nodeService) {
 		this.node = node;
 		this.nodeService = nodeService;
@@ -72,64 +84,119 @@ public class MockContentWriter implements ContentWriter {
 		}
 	}
 
+	/**
+	 * Is channel open.
+	 *
+	 * @return the result
+	 */
 	@Override
 	public boolean isChannelOpen() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 * Add listener.
+	 *
+	 * @param listener the listener
+	 */
 	@Override
 	public void addListener(ContentStreamListener listener) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * Get size.
+	 *
+	 * @return the result
+	 */
 	@Override
 	public long getSize() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	/**
+	 * Get content data.
+	 *
+	 * @return the result
+	 */
 	@Override
 	public ContentData getContentData() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Get content url.
+	 *
+	 * @return the result
+	 */
 	@Override
 	public String getContentUrl() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Get mimetype.
+	 *
+	 * @return the result
+	 */
 	@Override
 	public String getMimetype() {
 		return mimetype;
 	}
 
+	/**
+	 * Set mimetype.
+	 *
+	 * @param mimetype the mimetype
+	 */
 	@Override
 	public void setMimetype(String mimetype) {
 		this.mimetype = mimetype;
 		contentProp = new ContentDataWithId(ContentDataWithId.setMimetype(contentProp, mimetype), contentProp.getId());
 	}
 
+	/**
+	 * Get encoding.
+	 *
+	 * @return the result
+	 */
 	@Override
 	public String getEncoding() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Set encoding.
+	 *
+	 * @param encoding the encoding
+	 */
 	@Override
 	public void setEncoding(String encoding) {
 		contentProp = new ContentDataWithId(ContentDataWithId.setEncoding(contentProp, encoding), contentProp.getId());
 	}
 
+	/**
+	 * Get locale.
+	 *
+	 * @return the result
+	 */
 	@Override
 	public Locale getLocale() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Set locale.
+	 *
+	 * @param locale the locale
+	 */
 	@Override
 	public void setLocale(Locale locale) {
 		contentProp = new ContentDataWithId(new ContentData(contentProp.getContentUrl(), contentProp.getMimetype(),
@@ -137,29 +204,55 @@ public class MockContentWriter implements ContentWriter {
 
 	}
 
+	/**
+	 * Get reader.
+	 *
+	 * @return the result
+	 */
 	@Override
 	public ContentReader getReader() throws ContentIOException {
 		return new FileContentReader(file);
 	}
 
+	/**
+	 * Is closed.
+	 *
+	 * @return the result
+	 */
 	@Override
 	public boolean isClosed() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 * Get writable channel.
+	 *
+	 * @return the result
+	 */
 	@Override
 	public WritableByteChannel getWritableChannel() throws ContentIOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Get file channel.
+	 *
+	 * @param truncate the truncate
+	 * @return the result
+	 */
 	@Override
 	public FileChannel getFileChannel(boolean truncate) throws ContentIOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Get content output stream.
+	 *
+	 * @return the result
+	 */
 	@Override
 	public OutputStream getContentOutputStream() throws ContentIOException {
 		try (FileOutputStream fom = new FileOutputStream(file)) {
@@ -169,11 +262,21 @@ public class MockContentWriter implements ContentWriter {
 		}
 	}
 
+	/**
+	 * Put content.
+	 *
+	 * @param reader the reader
+	 */
 	@Override
 	public void putContent(ContentReader reader) throws ContentIOException {
 		putContent(reader.getContentInputStream());
 	}
 
+	/**
+	 * Put content.
+	 *
+	 * @param is the is
+	 */
 	@Override
 	public void putContent(InputStream is) throws ContentIOException {
 		try (FileOutputStream fom = new FileOutputStream(file)) {
@@ -184,6 +287,11 @@ public class MockContentWriter implements ContentWriter {
 		}
 	}
 
+	/**
+	 * Put content.
+	 *
+	 * @param file the file
+	 */
 	@Override
 	public void putContent(File file) throws ContentIOException {
 		try (FileInputStream fim = new FileInputStream(file)) {
@@ -193,23 +301,43 @@ public class MockContentWriter implements ContentWriter {
 		}
 	}
 
+	/**
+	 * Put content.
+	 *
+	 * @param content the content
+	 */
 	@Override
 	public void putContent(String content) throws ContentIOException {
 		putContent(new ByteArrayInputStream(content.getBytes()));
 	}
 
+	/**
+	 * Guess mimetype.
+	 *
+	 * @param filename the filename
+	 */
 	@Override
 	public void guessMimetype(String filename) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * Guess encoding.
+	 *
+	 */
 	@Override
 	public void guessEncoding() {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * Add entry to zip.
+	 *
+	 * @param text the text
+	 * @param output the output
+	 */
 	public static void addEntryToZip(String text, OutputStream output) throws IOException {
 		InputStream inputStream = new ByteArrayInputStream(text.getBytes());
 		ZipOutputStream zipOut = new ZipOutputStream(output);

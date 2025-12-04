@@ -19,24 +19,39 @@ import java.util.List;
 import org.slf4j.Logger;
 
 /**
- * Class providing functionality for Alfresco testing.
- * 
+ * Custom classloader that searches for resources in Alfresco module paths.
+ * Extends the default classloader to find resources in target/classes/alfresco/module
+ * and target/test-classes/alfresco/module directories.
+ *
  * @author vige
  */
 public class ModuleClassLoader extends ClassLoader {
 
+/** The s e p a r a t o r. */
     private static final String SEPARATOR = "/";
+/** The module path. */
     private static final String MODULE_PATH = "target/classes/alfresco/module";
+/** The module path test. */
     private static final String MODULE_PATH_TEST = "target/test-classes/alfresco/module";
 
+/** The logger. */
     private Logger logger = getLogger(getClass());
 
+    /**
+     * Constructs a new ModuleClassLoader using the current thread's context classloader.
+     */
     public ModuleClassLoader() {
         super(currentThread()
                 .getContextClassLoader());
     }
 
     @Override
+	/**
+	 * Get resource.
+	 *
+	 * @param name the name
+	 * @return the result
+	 */
     public URL getResource(String name) {
         URL url = super.getResource(name);
         if (url == null && name != null && !name.contains(SEPARATOR)) {
@@ -47,6 +62,13 @@ public class ModuleClassLoader extends ClassLoader {
         return url;
     }
 
+    /**
+     * Finds a resource in the specified module path.
+     *
+     * @param modulePath the path to search in
+     * @param searchTerm the term to search for
+     * @return the URL of the found resource, or null if not found
+     */
     public URL find(String modulePath, String searchTerm) {
         URL pathResult = null;
         URI directoryPath = new File(modulePath).toURI();
@@ -59,11 +81,25 @@ public class ModuleClassLoader extends ClassLoader {
         return pathResult;
     }
 
+	/**
+	 * Find first file containing term.
+	 *
+	 * @param rootPath the root path
+	 * @param searchTerm the search term
+	 * @return the result
+	 */
     private Path findFirstFileContainingTerm(Path rootPath, final String searchTerm) throws IOException {
         final List<Path> foundPaths = new ArrayList<>();
 
         Files.walkFileTree(rootPath, new SimpleFileVisitor<Path>() {
             @Override
+	/**
+	 * Visit file.
+	 *
+	 * @param file the file
+	 * @param attrs the attrs
+	 * @return the result
+	 */
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 String fileName = file.getFileName().toString();
                 if (fileName.contains(searchTerm)) {

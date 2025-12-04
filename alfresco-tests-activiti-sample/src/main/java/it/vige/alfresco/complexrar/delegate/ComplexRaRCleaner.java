@@ -9,12 +9,17 @@ import org.alfresco.repo.workflow.activiti.BaseJavaDelegate;
 import org.mozilla.javascript.NativeArray;
 
 /**
- * Class providing functionality for Alfresco testing.
- * 
+ * ComplexRaRCleaner implementation for testing purposes.
+ *
  * @author vige
  */
 public class ComplexRaRCleaner extends BaseJavaDelegate {
 
+	/**
+	 * Execute.
+	 *
+	 * @param execution the execution
+	 */
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 		ActivitiScriptNode bpmPackage = (ActivitiScriptNode) execution.getVariable("bpm_package");

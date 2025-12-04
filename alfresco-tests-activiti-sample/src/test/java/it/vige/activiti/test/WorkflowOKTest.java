@@ -24,12 +24,16 @@ import it.vige.activiti.ComplexAbstractForm;
 import it.vige.common.SignConstants;
 
 /**
- * Test class for verifying functionality.
- * 
+ * WorkflowOKTest implementation for testing purposes.
+ *
  * @author vige
  */
 public class WorkflowOKTest extends ComplexAbstractForm {
 
+	/**
+	 * Test human.
+	 *
+	 */
 	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/ComplexRaRProcess.bpmn" })
 	public void testHuman() throws ParseException {
 		Map<String, Object> variables = new HashMap<String, Object>();

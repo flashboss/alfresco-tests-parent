@@ -22,20 +22,32 @@ import it.vige.common.ConservationModel;
 import it.vige.common.SignConstants;
 
 /**
- * Class providing functionality for Alfresco testing.
- * 
+ * ComplexRaRStoring implementation for testing purposes.
+ *
  * @author vige
  */
 public class ComplexRaRStoring extends ComplexRaRGeneration {
 
+	/** The logger. */
 	private static Log logger = LogFactory.getLog(ComplexRaRStoring.class);
 
+	/** The file folder service. */
 	protected FileFolderService fileFolderService;
 
+	/**
+	 * Set file folder service.
+	 *
+	 * @param fileFolderService the file folder service
+	 */
 	public void setFileFolderService(FileFolderService fileFolderService) {
 		this.fileFolderService = fileFolderService;
 	}
 
+	/**
+	 * Execute.
+	 *
+	 * @param execution the execution
+	 */
 	public void execute(DelegateExecution execution) throws Exception {
 		logger.debug("Execute start");
 		int rarId = (int) execution.getVariable("vigewf_rarId");

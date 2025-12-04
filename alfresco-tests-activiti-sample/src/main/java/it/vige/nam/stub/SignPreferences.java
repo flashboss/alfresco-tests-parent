@@ -30,22 +30,24 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  * 
- * 
+ *
+ *
+ * @author vige
+ 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signPreferences", propOrder = { "hashAlgorithm", "signEngineImpl", "signType", "withTimestamp" })
 @XmlSeeAlso({ CAdESPreferences.class })
-/**
- * Class providing functionality for Alfresco testing.
- * 
- * @author vige
- */
 public class SignPreferences extends TimeStampPreferences {
 
+	/** The hash algorithm. */
 	protected String hashAlgorithm;
 	@XmlSchemaType(name = "string")
+	/** The sign engine impl. */
 	protected SignEngineImpl signEngineImpl;
+	/** The sign type. */
 	protected int signType;
+	/** The with timestamp. */
 	protected boolean withTimestamp;
 
 	/**

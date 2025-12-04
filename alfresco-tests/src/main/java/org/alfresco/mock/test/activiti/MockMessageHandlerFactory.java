@@ -19,10 +19,22 @@ import org.subethamail.smtp.RejectException;
  * @author lucastancapiano
  *
  */
+/**
+ * Mock implementation of MockMessageHandlerFactory for testing purposes.
+ *
+ * @author vige
+ */
 public class MockMessageHandlerFactory implements MessageHandlerFactory {
 
+	/** The logger. */
 	private Logger logger = getLogger(getClass());
 
+	/**
+	 * Create.
+	 *
+	 * @param ctx the ctx
+	 * @return the result
+	 */
 	public MessageHandler create(MessageContext ctx) {
 		return new Handler(ctx);
 	}
@@ -36,6 +48,11 @@ public class MockMessageHandlerFactory implements MessageHandlerFactory {
 	class Handler implements MessageHandler {
 		MessageContext ctx;
 
+	/**
+	 * Constructs a new Handler.
+	 *
+	 * @param ctx the ctx
+	 */
 		public Handler(MessageContext ctx) {
 			this.ctx = ctx;
 		}

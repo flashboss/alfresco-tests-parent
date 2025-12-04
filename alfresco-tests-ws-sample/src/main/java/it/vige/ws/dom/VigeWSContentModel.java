@@ -3,12 +3,16 @@ package it.vige.ws.dom;
 import org.alfresco.service.namespace.QName;
 
 /**
- * Model constants defining QNames and namespace URIs.
- * 
+ * VigeWSContentModel implementation for testing purposes.
+ *
  * @author vige
  */
 public abstract class VigeWSContentModel {
 
+	/**
+	 * Vige w s content model.
+	 *
+	 */
     private VigeWSContentModel() { }
 
     public static final String VIGE_WS_NAMESPACE = "http://vige.it/model/alfresco-tests-vigews/1.0";

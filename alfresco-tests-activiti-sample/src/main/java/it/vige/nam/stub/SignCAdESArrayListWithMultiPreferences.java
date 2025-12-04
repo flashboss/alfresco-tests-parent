@@ -37,15 +37,18 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "signCAdESArrayListWithMultiPreferences", propOrder = { "credentials", "bufferList",
 		"cAdESPreferences" })
 /**
- * Class providing functionality for Alfresco testing.
- * 
+ * SignCAdESArrayListWithMultiPreferences implementation for testing purposes.
+ *
  * @author vige
  */
 public class SignCAdESArrayListWithMultiPreferences {
 
+	/** The credentials. */
 	protected Credentials credentials;
+	/** The buffer list. */
 	protected List<byte[]> bufferList;
 	@XmlElement(name = "CAdESPreferences")
+	/** The c ad e s preferences. */
 	protected List<CAdESPreferences> cAdESPreferences;
 
 	/**

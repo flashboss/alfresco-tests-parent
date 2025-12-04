@@ -26,18 +26,18 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  * 
- * 
+ *
+ *
+ * @author vige
+ 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "wsFaultBean", propOrder = { "error", "message" })
-/**
- * Bean class for data transfer.
- * 
- * @author vige
- */
 public class WsFaultBean {
 
+	/** The error. */
 	protected int error;
+	/** The message. */
 	protected String message;
 
 	/**

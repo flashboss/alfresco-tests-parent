@@ -36,8 +36,8 @@ import org.junit.Assert;
 import it.vige.activiti.SimpleModel;
 
 /**
- * Test class for verifying functionality.
- * 
+ * SimpleActivitiTest implementation for testing purposes.
+ *
  * @author vige
  */
 public class SimpleActivitiTest extends AbstractActivitiForm {
@@ -54,14 +54,23 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 	 */
 	private final static String USER_NAME = "gonzo";
 
+	/** The date format. */
 	private final DateFormat dateFormat = new SimpleDateFormat("MMM dd HH:mm:ss ZZZ yyyy");
 
+	/** The generation folder. */
 	private NodeRef generationFolder;
 
+	/** The initiator. */
 	private Initiator initiator = new Initiator();
 
+	/** The generation folder name. */
 	private String generationFolderName = "20191024_154711";
 
+	/**
+	 * Init.
+	 *
+	 * @param variables the variables
+	 */
 	@Override
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
@@ -133,6 +142,10 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		}
 	}
 
+	/**
+	 * Test workflow.
+	 *
+	 */
 	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/SimpleProcess.bpmn" })
 	public void testWorkflow() throws ParseException {
 		Map<String, Object> variables = new HashMap<String, Object>();

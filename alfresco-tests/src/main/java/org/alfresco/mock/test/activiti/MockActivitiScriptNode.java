@@ -8,20 +8,35 @@ import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 
 /**
- * Mock implementation of ActivitiScriptNode for testing purposes.
- * 
+ * Mock implementation of MockActivitiScriptNode for testing purposes.
+ *
  * @author vige
  */
 public class MockActivitiScriptNode extends ActivitiScriptNode {
 
+	/**
+	 * Constructs a new MockActivitiScriptNode.
+	 *
+	 * @param nodeRef the node ref
+	 * @param services the services
+	 */
 	public MockActivitiScriptNode(NodeRef nodeRef, ServiceRegistry services) {
 		super(nodeRef, services);
 	}
 
+	/**
+	 * Save.
+	 *
+	 */
 	@Override
 	public void save() {
 	}
 
+	/**
+	 * Set scope.
+	 *
+	 * @param scope the scope
+	 */
 	@Override
 	public void setScope(Scriptable scope) {
 		Context.enter();

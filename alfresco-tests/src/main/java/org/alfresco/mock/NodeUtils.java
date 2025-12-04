@@ -31,21 +31,50 @@ import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 
 /**
- * Utility class providing helper methods.
- * 
+ * Utility class providing static helper methods for creating and manipulating
+ * nodes in a mock Alfresco repository.
+ *
  * @author vige
  */
 public class NodeUtils {
 
+	/**
+	 * Inserts a new folder node.
+	 *
+	 * @param parent the parent node reference
+	 * @param name the folder name
+	 * @param fileFolderService the file folder service
+	 * @return the created folder node reference
+	 */
 	public static NodeRef insertFolder(NodeRef parent, String name, FileFolderService fileFolderService) {
 		return fileFolderService.create(parent, name, ContentModel.TYPE_FOLDER).getNodeRef();
 	}
 
+	/**
+	 * Inserts a new document node with text content.
+	 *
+	 * @param parent the parent node reference
+	 * @param name the document name
+	 * @param text the text content
+	 * @param properties the document properties
+	 * @param serviceRegistry the service registry
+	 * @return the created document node reference
+	 */
 	public static NodeRef insertDocument(NodeRef parent, String name, String text, Map<QName, Serializable> properties,
 			ServiceRegistry serviceRegistry) {
 		return insertDocument(parent, name, text.getBytes(), properties, serviceRegistry);
 	}
 
+	/**
+	 * Inserts a new document node with byte array content.
+	 *
+	 * @param parent the parent node reference
+	 * @param name the document name
+	 * @param text the byte array content
+	 * @param properties the document properties
+	 * @param serviceRegistry the service registry
+	 * @return the created document node reference
+	 */
 	public static NodeRef insertDocument(NodeRef parent, String name, byte[] text, Map<QName, Serializable> properties,
 			ServiceRegistry serviceRegistry) {
 		NodeService nodeService = serviceRegistry.getNodeService();
@@ -67,6 +96,17 @@ public class NodeUtils {
 		return node;
 	}
 
+	/**
+	 * Inserts a new version for a document node.
+	 *
+	 * @param nodeRef the node reference to version
+	 * @param name the version name
+	 * @param text the version content
+	 * @param version the version label
+	 * @param versionType the version type (MAJOR or MINOR)
+	 * @param serviceRegistry the service registry
+	 * @return the frozen state node reference of the created version
+	 */
 	public static NodeRef insertVersion(NodeRef nodeRef, String name, String text, String version, VersionType versionType,
 			ServiceRegistry serviceRegistry) {
 		VersionService versionService = serviceRegistry.getVersionService();
@@ -79,10 +119,23 @@ public class NodeUtils {
 		return versionRef.getFrozenStateNodeRef();
 	}
 
+	/**
+	 * Sorts node references by their ID.
+	 *
+	 * @param nodeRefs the set of node references to sort
+	 * @return a sorted list of node references
+	 */
 	public static List<NodeRef> sortByName(Set<NodeRef> nodeRefs) {
 		NodeRef[] nodeArray = nodeRefs.toArray(new NodeRef[0]);
 		Arrays.sort(nodeArray, new Comparator<NodeRef>() {
 
+			/**
+			 * Compare.
+			 *
+			 * @param o1 the o1
+			 * @param o2 the o2
+			 * @return the result
+			 */
 			@Override
 			public int compare(NodeRef o1, NodeRef o2) {
 				return o1.getId().compareTo(o2.getId());
@@ -91,6 +144,12 @@ public class NodeUtils {
 		return Arrays.asList(nodeArray);
 	}
 
+	/**
+	 * Generates a UUID based on the node path.
+	 *
+	 * @param nodePath the node path
+	 * @return the generated UUID string
+	 */
 	public static String generateUUID(String nodePath) {
 		if (nodePath.equals(FOLDER_TEST + PROTOCOL_WORKSPACE))
 			return FOLDER_TEST + PROTOCOL_WORKSPACE.hashCode() + "";

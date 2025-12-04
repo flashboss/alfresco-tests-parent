@@ -32,21 +32,23 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType&gt;
  * </pre>
  * 
- * 
+ *
+ *
+ * @author vige
+ 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "signCAdESArrayList", propOrder = { "username", "password", "bufferList", "cAdESPreferences" })
-/**
- * Class providing functionality for Alfresco testing.
- * 
- * @author vige
- */
 public class SignCAdESArrayList {
 
+	/** The username. */
 	protected String username;
+	/** The password. */
 	protected String password;
+	/** The buffer list. */
 	protected List<byte[]> bufferList;
 	@XmlElement(name = "CAdESPreferences")
+	/** The c ad e s preferences. */
 	protected CAdESPreferences cAdESPreferences;
 
 	/**

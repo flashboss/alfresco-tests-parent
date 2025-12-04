@@ -17,19 +17,30 @@ import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Mock implementation of the Alfresco CopyService for testing purposes.
- * Provides stub implementations for testing without a running Alfresco server.
- * 
+ * Mock implementation of MockCopyService for testing purposes.
+ *
  * @author vige
  */
 public class MockCopyService implements CopyService, Serializable {
 
+	/** The file folder service. */
 	@Autowired
 	private FileFolderService fileFolderService;
 
+	/** The node service. */
 	@Autowired
 	private NodeService nodeService;
 
+	/**
+	 * Copy.
+	 *
+	 * @param sourceNodeRef the source node ref
+	 * @param targetParentNodeRef the target parent node ref
+	 * @param assocTypeQName the assoc type q name
+	 * @param assocQName the assoc q name
+	 * @param copyChildren the copy children
+	 * @return the result
+	 */
 	@Override
 	public NodeRef copy(NodeRef sourceNodeRef, NodeRef targetParentNodeRef, QName assocTypeQName, QName assocQName,
 			boolean copyChildren) {
@@ -45,6 +56,16 @@ public class MockCopyService implements CopyService, Serializable {
 		return result;
 	}
 
+	/**
+	 * Copy and rename.
+	 *
+	 * @param sourceNodeRef the source node ref
+	 * @param targetParentNodeRef the target parent node ref
+	 * @param assocTypeQName the assoc type q name
+	 * @param assocQName the assoc q name
+	 * @param copyChildren the copy children
+	 * @return the result
+	 */
 	@Override
 	public NodeRef copyAndRename(NodeRef sourceNodeRef, NodeRef targetParentNodeRef, QName assocTypeQName,
 			QName assocQName, boolean copyChildren) {
@@ -52,34 +73,76 @@ public class MockCopyService implements CopyService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Copy.
+	 *
+	 * @param sourceNodeRef the source node ref
+	 * @param targetParentNodeRef the target parent node ref
+	 * @param assocTypeQName the assoc type q name
+	 * @param assocQName the assoc q name
+	 * @return the result
+	 */
 	@Override
 	public NodeRef copy(NodeRef sourceNodeRef, NodeRef targetParentNodeRef, QName assocTypeQName, QName assocQName) {
 		return copy(sourceNodeRef, targetParentNodeRef, assocTypeQName, assocQName, false);
 	}
 
+	/**
+	 * Copy.
+	 *
+	 * @param sourceNodeRef the source node ref
+	 * @param destinationNodeRef the destination node ref
+	 */
 	@Override
 	public void copy(NodeRef sourceNodeRef, NodeRef destinationNodeRef) {
 		copy(sourceNodeRef, destinationNodeRef, ContentModel.ASSOC_CONTAINS, ContentModel.ASSOC_CHILDREN);
 	}
 
+	/**
+	 * Get original.
+	 *
+	 * @param copiedNodeRef the copied node ref
+	 * @return the result
+	 */
 	@Override
 	public NodeRef getOriginal(NodeRef copiedNodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Get copies.
+	 *
+	 * @param nodeRef the node ref
+	 * @return the result
+	 */
 	@Override
 	public List<NodeRef> getCopies(NodeRef nodeRef) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Get copies.
+	 *
+	 * @param originalNodeRef the original node ref
+	 * @param pagingRequest the paging request
+	 * @return the result
+	 */
 	@Override
 	public PagingResults<CopyInfo> getCopies(NodeRef originalNodeRef, PagingRequest pagingRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Get copies.
+	 *
+	 * @param originalNodeRef the original node ref
+	 * @param copyParentNodeRef the copy parent node ref
+	 * @param pagingRequest the paging request
+	 * @return the result
+	 */
 	@Override
 	public PagingResults<CopyInfo> getCopies(NodeRef originalNodeRef, NodeRef copyParentNodeRef,
 			PagingRequest pagingRequest) {
@@ -87,6 +150,15 @@ public class MockCopyService implements CopyService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Get top level node new name.
+	 *
+	 * @param sourceNodeRef the source node ref
+	 * @param targetParentRef the target parent ref
+	 * @param assocTypeQName the assoc type q name
+	 * @param assocQName the assoc q name
+	 * @return the result
+	 */
 	@Override
 	public String getTopLevelNodeNewName(NodeRef sourceNodeRef, NodeRef targetParentRef, QName assocTypeQName,
 			QName assocQName) {

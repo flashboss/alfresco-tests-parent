@@ -35,8 +35,8 @@ import it.vige.ws.api.UploadDoc;
 import it.vige.ws.dom.VigeWSContentModel;
 
 /**
- * Test class for verifying functionality.
- * 
+ * UploadDocTest implementation for testing purposes.
+ *
  * @author vige
  */
 public class UploadDocTest extends AbstractWSForm {
@@ -57,16 +57,27 @@ public class UploadDocTest extends AbstractWSForm {
 	private final static String NUMERO_DOC = "";
 	private final static String ID_USER = "105";
 	private final static String FOLDER_DROPZONE = "/sites/vige-site/documentLibrary/sys/Dropzone";
+	/** The template vars. */
 	private Map<String, String> templateVars;
 
+	/** The upload doc. */
 	@Autowired
 	private UploadDoc uploadDoc;
 
+	/**
+	 * Get abstract web script.
+	 *
+	 * @return the result
+	 */
 	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return uploadDoc;
 	}
 
+	/**
+	 * Init.
+	 *
+	 */
 	@Before
 	public void init() {
 		super.init();
@@ -82,6 +93,10 @@ public class UploadDocTest extends AbstractWSForm {
 		insertFolder(sys, "Dropzone");
 	}
 
+	/**
+	 * Execute.
+	 *
+	 */
 	@Test
 	public void execute() throws ParseException, IOException {
 

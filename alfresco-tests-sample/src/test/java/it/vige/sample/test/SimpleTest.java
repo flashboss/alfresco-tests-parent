@@ -32,12 +32,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import it.vige.sample.BackupAction;
 
 /**
- * Test class for verifying functionality.
- * 
+ * SimpleTest implementation for testing purposes.
+ *
  * @author vige
  */
 public class SimpleTest extends AbstractForm {
 
+	/** The my action. */
 	@Autowired
 	private BackupAction myAction;
 
@@ -55,8 +56,13 @@ public class SimpleTest extends AbstractForm {
 	private final static String version3Content = "new content 3";
 	private final static String version3Label = "2.0";
 
+	/** The document. */
 	private NodeRef document;
 
+	/**
+	 * Init.
+	 *
+	 */
 	@Before
 	public void init() {
 		super.init();
@@ -76,6 +82,10 @@ public class SimpleTest extends AbstractForm {
 		Assert.assertEquals("VALID.pdf is created", documentName, nodeName);
 	}
 
+	/**
+	 * Execute.
+	 *
+	 */
 	@Test
 	public void execute() {
 
@@ -94,6 +104,10 @@ public class SimpleTest extends AbstractForm {
 
 	}
 
+	/**
+	 * Versioned.
+	 *
+	 */
 	@Test
 	public void versioned() {
 		insertVersion(document, versionName, versionContent, versionLabel, MINOR);

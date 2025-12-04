@@ -22,39 +22,63 @@ import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Mock implementation of the Alfresco ContentService for testing purposes.
- * Provides stub implementations for testing without a running Alfresco server.
- * 
+ * Mock implementation of MockContentService for testing purposes.
+ *
  * @author vige
  */
 public class MockContentService implements ContentService, Serializable {
 
 	public final static String FOLDER_TEST = "./target/test-classes/";
 
+	/** The node service. */
 	@Autowired
 	private NodeService nodeService;
 
+	/** The mimetype service. */
 	@Autowired
 	private MimetypeService mimetypeService;
 
+	/**
+	 * Get store total space.
+	 *
+	 * @return the result
+	 */
 	@Override
 	public long getStoreTotalSpace() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	/**
+	 * Get store free space.
+	 *
+	 * @return the result
+	 */
 	@Override
 	public long getStoreFreeSpace() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	/**
+	 * Get raw reader.
+	 *
+	 * @param contentUrl the content url
+	 * @return the result
+	 */
 	@Override
 	public ContentReader getRawReader(String contentUrl) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Get reader.
+	 *
+	 * @param nodeRef the node ref
+	 * @param propertyQName the property q name
+	 * @return the result
+	 */
 	@Override
 	public ContentReader getReader(NodeRef nodeRef, QName propertyQName)
 			throws InvalidNodeRefException, InvalidTypeException {
@@ -65,6 +89,14 @@ public class MockContentService implements ContentService, Serializable {
 		return contentReader;
 	}
 
+	/**
+	 * Get writer.
+	 *
+	 * @param nodeRef the node ref
+	 * @param propertyQName the property q name
+	 * @param update the update
+	 * @return the result
+	 */
 	@Override
 	public ContentWriter getWriter(NodeRef nodeRef, QName propertyQName, boolean update)
 			throws InvalidNodeRefException, InvalidTypeException {
@@ -72,12 +104,23 @@ public class MockContentService implements ContentService, Serializable {
 		return new MockContentWriter(file, nodeRef, nodeService);
 	}
 
+	/**
+	 * Get temp writer.
+	 *
+	 * @return the result
+	 */
 	@Override
 	public ContentWriter getTempWriter() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Transform.
+	 *
+	 * @param reader the reader
+	 * @param writer the writer
+	 */
 	@Override
 	public void transform(ContentReader reader, ContentWriter writer)
 			throws NoTransformerException, ContentIOException {
@@ -85,6 +128,13 @@ public class MockContentService implements ContentService, Serializable {
 
 	}
 
+	/**
+	 * Transform.
+	 *
+	 * @param reader the reader
+	 * @param writer the writer
+	 * @param options the options
+	 */
 	@Override
 	public void transform(ContentReader reader, ContentWriter writer, Map<String, Object> options)
 			throws NoTransformerException, ContentIOException {
@@ -92,6 +142,13 @@ public class MockContentService implements ContentService, Serializable {
 
 	}
 
+	/**
+	 * Transform.
+	 *
+	 * @param reader the reader
+	 * @param writer the writer
+	 * @param options the options
+	 */
 	@Override
 	public void transform(ContentReader reader, ContentWriter writer, TransformationOptions options)
 			throws NoTransformerException, ContentIOException {
@@ -99,12 +156,29 @@ public class MockContentService implements ContentService, Serializable {
 
 	}
 
+	/**
+	 * Get transformer.
+	 *
+	 * @param sourceMimetype the source mimetype
+	 * @param targetMimetype the target mimetype
+	 * @return the result
+	 */
 	@Override
 	public ContentTransformer getTransformer(String sourceMimetype, String targetMimetype) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Get transformers.
+	 *
+	 * @param sourceUrl the source url
+	 * @param sourceMimetype the source mimetype
+	 * @param sourceSize the source size
+	 * @param targetMimetype the target mimetype
+	 * @param options the options
+	 * @return the result
+	 */
 	@Override
 	public List<ContentTransformer> getTransformers(String sourceUrl, String sourceMimetype, long sourceSize,
 			String targetMimetype, TransformationOptions options) {
@@ -112,6 +186,16 @@ public class MockContentService implements ContentService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Get transformer.
+	 *
+	 * @param sourceUrl the source url
+	 * @param sourceMimetype the source mimetype
+	 * @param sourceSize the source size
+	 * @param targetMimetype the target mimetype
+	 * @param options the options
+	 * @return the result
+	 */
 	@Override
 	public ContentTransformer getTransformer(String sourceUrl, String sourceMimetype, long sourceSize,
 			String targetMimetype, TransformationOptions options) {
@@ -119,6 +203,14 @@ public class MockContentService implements ContentService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Get transformer.
+	 *
+	 * @param sourceMimetype the source mimetype
+	 * @param targetMimetype the target mimetype
+	 * @param options the options
+	 * @return the result
+	 */
 	@Override
 	public ContentTransformer getTransformer(String sourceMimetype, String targetMimetype,
 			TransformationOptions options) {
@@ -126,12 +218,29 @@ public class MockContentService implements ContentService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Get max source size bytes.
+	 *
+	 * @param sourceMimetype the source mimetype
+	 * @param targetMimetype the target mimetype
+	 * @param options the options
+	 * @return the result
+	 */
 	@Override
 	public long getMaxSourceSizeBytes(String sourceMimetype, String targetMimetype, TransformationOptions options) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	/**
+	 * Get active transformers.
+	 *
+	 * @param sourceMimetype the source mimetype
+	 * @param sourceSize the source size
+	 * @param targetMimetype the target mimetype
+	 * @param options the options
+	 * @return the result
+	 */
 	@Override
 	public List<ContentTransformer> getActiveTransformers(String sourceMimetype, long sourceSize, String targetMimetype,
 			TransformationOptions options) {
@@ -139,6 +248,14 @@ public class MockContentService implements ContentService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Get active transformers.
+	 *
+	 * @param sourceMimetype the source mimetype
+	 * @param targetMimetype the target mimetype
+	 * @param options the options
+	 * @return the result
+	 */
 	@Override
 	public List<ContentTransformer> getActiveTransformers(String sourceMimetype, String targetMimetype,
 			TransformationOptions options) {
@@ -146,36 +263,76 @@ public class MockContentService implements ContentService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Get image transformer.
+	 *
+	 * @return the result
+	 */
 	@Override
 	public ContentTransformer getImageTransformer() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Is transformable.
+	 *
+	 * @param reader the reader
+	 * @param writer the writer
+	 * @return the result
+	 */
 	@Override
 	public boolean isTransformable(ContentReader reader, ContentWriter writer) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 * Is transformable.
+	 *
+	 * @param reader the reader
+	 * @param writer the writer
+	 * @param options the options
+	 * @return the result
+	 */
 	@Override
 	public boolean isTransformable(ContentReader reader, ContentWriter writer, TransformationOptions options) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 * Get node service.
+	 *
+	 * @return the result
+	 */
 	public MockNodeService getNodeService() {
 		return (MockNodeService) nodeService;
 	}
 
+	/**
+	 * Get mimetype service.
+	 *
+	 * @return the result
+	 */
 	public MimetypeService getMimetypeService() {
 		return mimetypeService;
 	}
 
+	/**
+	 * Set mimetype service.
+	 *
+	 * @param mimetypeService the mimetype service
+	 */
 	public void setMimetypeService(MimetypeService mimetypeService) {
 		this.mimetypeService = mimetypeService;
 	}
 
+	/**
+	 * Set node service.
+	 *
+	 * @param nodeService the node service
+	 */
 	public void setNodeService(MockNodeService nodeService) {
 		this.nodeService = nodeService;
 	}
