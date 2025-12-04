@@ -16,6 +16,7 @@
 		<groupId>org.alfresco.maven</groupId>
 		<artifactId>alfresco-sdk-parent</artifactId>
 		<version>2.1.0</version>
+		<relativePath/>
 	</parent>
 	
 	<properties>
