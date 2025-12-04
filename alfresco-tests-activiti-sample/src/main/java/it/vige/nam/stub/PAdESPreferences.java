@@ -41,15 +41,15 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class PAdESPreferences extends SignPreferences {
 
- /** The encrypt in any case. */
+	/** The encrypt in any case. */
 	protected boolean encryptInAnyCase;
- /** The encryption password. */
+	/** The encryption password. */
 	protected String encryptionPassword;
- /** The page. */
+	/** The page. */
 	protected int page;
- /** The signer image. */
+	/** The signer image. */
 	protected SignerImage signerImage;
- /** The signer image reference. */
+	/** The signer image reference. */
 	protected String signerImageReference;
 
 	/**

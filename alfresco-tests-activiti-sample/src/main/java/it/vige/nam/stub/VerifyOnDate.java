@@ -41,7 +41,7 @@ public class VerifyOnDate {
 
 	protected byte[] signedContent;
 	@XmlSchemaType(name = "dateTime")
- /** The verify date. */
+	/** The verify date. */
 	protected XMLGregorianCalendar verifyDate;
 
 	/**

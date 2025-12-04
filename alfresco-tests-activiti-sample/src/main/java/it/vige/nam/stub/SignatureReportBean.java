@@ -66,49 +66,49 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class SignatureReportBean {
 
 	protected byte[] derEncodedSignerCert;
- /** The id. */
+	/** The id. */
 	protected String id;
- /** The integrity. */
+	/** The integrity. */
 	protected boolean integrity;
 	@XmlSchemaType(name = "dateTime")
- /** The issuer certificate revocation date. */
+	/** The issuer certificate revocation date. */
 	protected XMLGregorianCalendar issuerCertificateRevocationDate;
 	@XmlSchemaType(name = "string")
- /** The issuer certificate status. */
+	/** The issuer certificate status. */
 	protected CertificateStatus issuerCertificateStatus;
- /** The issuer d n. */
+	/** The issuer d n. */
 	protected String issuerDN;
- /** The issuer in trusted list. */
+	/** The issuer in trusted list. */
 	protected boolean issuerInTrustedList;
- /** The key size. */
+	/** The key size. */
 	protected int keySize;
 	@XmlSchemaType(name = "string")
- /** The qc compliance status. */
+	/** The qc compliance status. */
 	protected Result qcComplianceStatus;
- /** The serial number. */
+	/** The serial number. */
 	protected BigInteger serialNumber;
- /** The signature algorithm name. */
+	/** The signature algorithm name. */
 	protected String signatureAlgorithmName;
 	@XmlSchemaType(name = "dateTime")
- /** The signature date. */
+	/** The signature date. */
 	protected XMLGregorianCalendar signatureDate;
 	@XmlSchemaType(name = "dateTime")
- /** The signer certificate not after. */
+	/** The signer certificate not after. */
 	protected XMLGregorianCalendar signerCertificateNotAfter;
 	@XmlSchemaType(name = "dateTime")
- /** The signer certificate not before. */
+	/** The signer certificate not before. */
 	protected XMLGregorianCalendar signerCertificateNotBefore;
 	@XmlSchemaType(name = "dateTime")
- /** The signer certificate revocation date. */
+	/** The signer certificate revocation date. */
 	protected XMLGregorianCalendar signerCertificateRevocationDate;
 	@XmlSchemaType(name = "string")
- /** The signer certificate status. */
+	/** The signer certificate status. */
 	protected CertificateStatus signerCertificateStatus;
- /** The subject d n. */
+	/** The subject d n. */
 	protected String subjectDN;
 	@XmlElement(nillable = true)
 	protected List<TimestampReportBean> timestampReportBeanList;
- /** The trusted signature date. */
+	/** The trusted signature date. */
 	protected boolean trustedSignatureDate;
 
 	/**

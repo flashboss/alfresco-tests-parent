@@ -43,13 +43,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignArrayList {
 
- /** The username. */
+	/** The username. */
 	protected String username;
- /** The password. */
+	/** The password. */
 	protected String password;
 	protected List<byte[]> bufferList;
 	@XmlElement(name = "AdESPreferences")
- /** The ad e s preferences. */
+	/** The ad e s preferences. */
 	protected SignPreferences adESPreferences;
 
 	/**

@@ -40,9 +40,9 @@ import javax.xml.bind.annotation.XmlType;
 public class VerifyCAdESByAttachment {
 
 	@XmlMimeType("application/octet-stream")
- /** The input data handler. */
+	/** The input data handler. */
 	protected DataHandler inputDataHandler;
- /** The preferences. */
+	/** The preferences. */
 	protected VerifyPreferences preferences;
 
 	/**

@@ -39,11 +39,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignXAdESRemote {
 
- /** The credentials. */
+	/** The credentials. */
 	protected Credentials credentials;
 	protected byte[] buffer;
 	@XmlElement(name = "XAdESPreferences")
- /** The x ad e s preferences. */
+	/** The x ad e s preferences. */
 	protected XAdESPreferences xAdESPreferences;
 
 	/**

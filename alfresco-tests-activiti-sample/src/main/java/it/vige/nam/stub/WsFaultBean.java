@@ -37,9 +37,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class WsFaultBean {
 
- /** The error. */
+	/** The error. */
 	protected int error;
- /** The message. */
+	/** The message. */
 	protected String message;
 
 	/**

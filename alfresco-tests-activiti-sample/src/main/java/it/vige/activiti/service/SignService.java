@@ -18,29 +18,21 @@ import it.vige.common.SignConstants;
  */
 public class SignService {
 
- /** The content service. */
+	/** The content service. */
 	private ContentService contentService;
- /** The node service. */
+	/** The node service. */
 	private NodeService nodeService;
 
- /**
- * Sign c ad e s with time stamp.
- *
- * @param nodeRef the node ref
- * @param username the username
- * @param password the password
- * @return the boolean
- */
+	/**
+	 * Sign c ad e s with time stamp.
+	 *
+	 * @param nodeRef  the node ref
+	 * @param username the username
+	 * @param password the password
+	 * @return the boolean
+	 */
 	public boolean signCAdESWithTimeStamp(NodeRef nodeRef, String username, String password) {
 		boolean status = false;
-  /**
-  * Sign c ad e s with time stamp.
-  *
-  * @param nodeRef the node ref
-  * @param username the username
-  * @param password the password
-  * @return the boolean
-  */
 		ContentReader reader = contentService.getReader(nodeRef, ContentModel.PROP_CONTENT);
 		InputStream signedInputStream = null;
 		try (InputStream contentInputStream = reader.getContentInputStream()) {
@@ -58,20 +50,20 @@ public class SignService {
 		return status;
 	}
 
- /**
- * Set content service.
- *
- * @param contentService the content service
- */
+	/**
+	 * Set content service.
+	 *
+	 * @param contentService the content service
+	 */
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}
 
- /**
- * Set node service.
- *
- * @param nodeService the node service
- */
+	/**
+	 * Set node service.
+	 *
+	 * @param nodeService the node service
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}

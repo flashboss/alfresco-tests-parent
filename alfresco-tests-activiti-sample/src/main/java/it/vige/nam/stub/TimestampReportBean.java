@@ -55,35 +55,35 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 public class TimestampReportBean {
 
- /** The comment. */
+	/** The comment. */
 	protected String comment;
 	protected byte[] content;
- /** The content filename. */
+	/** The content filename. */
 	protected String contentFilename;
- /** The content mime type. */
+	/** The content mime type. */
 	protected String contentMimeType;
 	@XmlSchemaType(name = "dateTime")
- /** The date. */
+	/** The date. */
 	protected XMLGregorianCalendar date;
- /** The hash algorithm. */
+	/** The hash algorithm. */
 	protected String hashAlgorithm;
- /** The index. */
+	/** The index. */
 	protected int index;
- /** The issuer. */
+	/** The issuer. */
 	protected String issuer;
- /** The serial number. */
+	/** The serial number. */
 	protected BigInteger serialNumber;
- /** The signature algorithm. */
+	/** The signature algorithm. */
 	protected String signatureAlgorithm;
 	@XmlSchemaType(name = "string")
- /** The signature verification status. */
+	/** The signature verification status. */
 	protected Result signatureVerificationStatus;
 	protected byte[] timestampCertData;
 	@XmlSchemaType(name = "string")
- /** The timestamp certificate status. */
+	/** The timestamp certificate status. */
 	protected CertificateStatus timestampCertificateStatus;
 	@XmlSchemaType(name = "string")
- /** The trusted list verification status. */
+	/** The trusted list verification status. */
 	protected Result trustedListVerificationStatus;
 
 	/**

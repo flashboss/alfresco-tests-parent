@@ -24,54 +24,40 @@ import org.apache.commons.logging.LogFactory;
  */
 public class CommonHashUtil {
 
- /** The logger. */
+	/** The logger. */
 	private static Log logger = LogFactory.getLog(CommonHashUtil.class);
- /** The hash type. */
+	/** The hash type. */
 	private String hashType;
- /** The buffer size. */
+	/** The buffer size. */
 	private static final int BUFFER_SIZE = 1 << 8;
 
- /** The node service. */
+	/** The node service. */
 	private NodeService nodeService;
- /** The content service. */
+	/** The content service. */
 	private ContentService contentService;
 
- /**
- * Set hash.
- *
- * @param nodeRef the node ref
- */
+	/**
+	 * Set hash.
+	 *
+	 * @param nodeRef the node ref
+	 */
 	public void setHash(NodeRef nodeRef) {
-  /**
-  * Set hash.
-  *
-  * @param nodeRef the node ref
-  */
 		ContentReader contentReader = contentService.getReader(nodeRef, ContentModel.PROP_CONTENT);
-  /**
-  * Set hash.
-  *
-  * @param nodeRef the node ref
-  */
 		if (contentReader == null || contentReader.getSize() == 0) {
 			logger.error("Content is null or empty, removing aspect.");
 			removeAspect(nodeRef);
 			return;
 		}
 		InputStream contentStream = contentReader.getContentInputStream();
-  /** The hash value. */
 		String hashValue = computeHash(contentStream);
-  /** The hash value. */
 		if (hashValue == null) {
 			removeAspect(nodeRef);
 			return;
 		}
 
-  /** The hash value. */
 		Map<QName, Serializable> hashPropeties = new HashMap<QName, Serializable>();
 		hashPropeties.put(HashModel.PROP_HASH_TYPE, hashType);
 		hashPropeties.put(HashModel.PROP_HASH_VALUE, hashValue);
-  /** The hash value. */
 		if (nodeService.hasAspect(nodeRef, HashModel.ASPECT_HASHABLE)) {
 			nodeService.addAspect(nodeRef, HashModel.ASPECT_HASHABLE, hashPropeties);
 		}
@@ -80,37 +66,25 @@ public class CommonHashUtil {
 		nodeService.setProperty(nodeRef, HashModel.PROP_HASH_VALUE, hashPropeties.get(HashModel.PROP_HASH_VALUE));
 	}
 
- /**
- * Remove aspect.
- *
- * @param nodeRef the node ref
- */
+	/**
+	 * Remove aspect.
+	 *
+	 * @param nodeRef the node ref
+	 */
 	private void removeAspect(NodeRef nodeRef) {
 		nodeService.removeAspect(nodeRef, HashModel.ASPECT_HASHABLE);
 	}
 
- /**
- * Compute hash.
- *
- * @param contentStream the content stream
- * @return the string
- */
+	/**
+	 * Compute hash.
+	 *
+	 * @param contentStream the content stream
+	 * @return the string
+	 */
 	private String computeHash(InputStream contentStream) {
 		MessageDigest messageDigest = null;
 		try {
-   /**
-   * Compute hash.
-   *
-   * @param contentStream the content stream
-   * @return the string
-   */
 			messageDigest = MessageDigest.getInstance(hashType);
-  /**
-  * Compute hash.
-  *
-  * @param contentStream the content stream
-  * @return the string
-  */
 		} catch (NoSuchAlgorithmException e) {
 			logger.error("Unable to process algorith type: " + hashType);
 			return null;
@@ -135,62 +109,48 @@ public class CommonHashUtil {
 		return convertByteArrayToHex(digest);
 	}
 
- /**
- * Convert byte array to hex.
- *
- * @param array the array
- * @return the string
- */
+	/**
+	 * Convert byte array to hex.
+	 *
+	 * @param array the array
+	 * @return the string
+	 */
 	private String convertByteArrayToHex(byte[] array) {
-  /**
-  * Convert byte array to hex.
-  *
-  * @param array the array
-  * @return the string
-  */
 		StringBuffer hashValue = new StringBuffer();
-  /**
-  * Convert byte array to hex.
-  *
-  * @param array the array
-  * @return the string
-  */
 		for (int i = 0; i < array.length; i++) {
-   /** The hex. */
 			String hex = Integer.toHexString(0xFF & array[i]);
-   /** The hex. */
 			if (hex.length() == 1) {
 				hashValue.append('0');
 			}
 			hashValue.append(hex);
 		}
-  /** The hex. */
+		/** The hex. */
 		return hashValue.toString().toUpperCase();
 	}
 
- /**
- * Set hash type.
- *
- * @param hashType the hash type
- */
+	/**
+	 * Set hash type.
+	 *
+	 * @param hashType the hash type
+	 */
 	public void setHashType(String hashType) {
 		this.hashType = hashType;
 	}
 
- /**
- * Set node service.
- *
- * @param nodeService the node service
- */
+	/**
+	 * Set node service.
+	 *
+	 * @param nodeService the node service
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
 
- /**
- * Set content service.
- *
- * @param contentService the content service
- */
+	/**
+	 * Set content service.
+	 *
+	 * @param contentService the content service
+	 */
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}

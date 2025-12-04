@@ -39,11 +39,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignWithCredentials {
 
- /** The credentials. */
+	/** The credentials. */
 	protected Credentials credentials;
 	protected byte[] buffer;
 	@XmlElement(name = "AdESPreferences")
- /** The ad e s preferences. */
+	/** The ad e s preferences. */
 	protected SignPreferences adESPreferences;
 
 	/**

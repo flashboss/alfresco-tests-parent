@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignPAdESArrayListWithMultiPreferences {
 
- /** The credentials. */
+	/** The credentials. */
 	protected Credentials credentials;
 	protected List<byte[]> bufferList;
 	@XmlElement(name = "PAdESPreferences")

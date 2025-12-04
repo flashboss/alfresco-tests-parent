@@ -21,39 +21,19 @@ import it.vige.common.HashModel;
  */
 public class ComplexRaRCheck extends BaseJavaDelegate {
 
- /** The node service. */
+	/** The node service. */
 	private NodeService nodeService;
 
- /**
- * Execute.
- *
- * @param execution the execution
- */
+	/**
+	 * Execute.
+	 *
+	 * @param execution the execution
+	 */
 	public void execute(DelegateExecution execution) throws Exception {
 		// Check duplicates
-  /**
-  * Execute.
-  *
-  * @param execution the execution
-  */
 		List<String> duplicatedPdvs = new ArrayList<String>();
-  /**
-  * Execute.
-  *
-  * @param execution the execution
-  */
 		List<String> unsignedPdvs = new ArrayList<String>();
-  /**
-  * Execute.
-  *
-  * @param execution the execution
-  */
 		Map<String, String> sass = new HashMap<String, String>();
-  /**
-  * Execute.
-  *
-  * @param execution the execution
-  */
 		ActivitiScriptNode bpmPackage = (ActivitiScriptNode) execution.getVariable("bpm_package");
 		List<ChildAssociationRef> relatedSaSsChild = nodeService.getChildAssocs(bpmPackage.getNodeRef());
 		for (ChildAssociationRef relatedSaSChild : relatedSaSsChild) {
@@ -62,7 +42,7 @@ public class ComplexRaRCheck extends BaseJavaDelegate {
 				duplicatedPdvs.add(relatedSaSNodeRef.toString());
 			} else {
 				String sasHash = (String) nodeService.getProperty(relatedSaSNodeRef, HashModel.PROP_HASH_VALUE);
-    /** The sas hash. */
+				/** The sas hash. */
 				if (sass.containsValue(sasHash)) {
 					duplicatedPdvs.add(relatedSaSNodeRef.toString());
 				} else {
@@ -71,7 +51,6 @@ public class ComplexRaRCheck extends BaseJavaDelegate {
 			}
 
 		}
-  /** The sas hash. */
 		List<String> relatedSaSsCleaned = new ArrayList<String>();
 		relatedSaSsCleaned.addAll(sass.keySet());
 		execution.setVariable("vigewf_relatedSaSsCleaned", relatedSaSsCleaned);
@@ -79,11 +58,11 @@ public class ComplexRaRCheck extends BaseJavaDelegate {
 		execution.setVariable("vigewf_reviewUnsignedSaSError", unsignedPdvs);
 	}
 
- /**
- * Set node service.
- *
- * @param nodeService the node service
- */
+	/**
+	 * Set node service.
+	 *
+	 * @param nodeService the node service
+	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}

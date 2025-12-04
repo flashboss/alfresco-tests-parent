@@ -18,66 +18,66 @@ public class WSException extends Exception {
 
 	private it.vige.nam.stub.WsFaultBean wsException;
 
- /**
- * Constructs a new w s exception.
- *
- * @return the result
- */
+	/**
+	 * Constructs a new w s exception.
+	 *
+	 * @return the result
+	 */
 	public WSException() {
 		super();
 	}
 
- /**
- * Constructs a new w s exception.
- *
- * @param message the message
- * @return the result
- */
+	/**
+	 * Constructs a new w s exception.
+	 *
+	 * @param message the message
+	 * @return the result
+	 */
 	public WSException(String message) {
 		super(message);
 	}
 
- /**
- * Constructs a new w s exception.
- *
- * @param message the message
- * @param cause the cause
- * @return the result
- */
+	/**
+	 * Constructs a new w s exception.
+	 *
+	 * @param message the message
+	 * @param cause   the cause
+	 * @return the result
+	 */
 	public WSException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
- /**
- * Constructs a new w s exception.
- *
- * @param message the message
- * @param wsException the ws exception
- * @return the result
- */
+	/**
+	 * Constructs a new w s exception.
+	 *
+	 * @param message     the message
+	 * @param wsException the ws exception
+	 * @return the result
+	 */
 	public WSException(String message, it.vige.nam.stub.WsFaultBean wsException) {
 		super(message);
 		this.wsException = wsException;
 	}
 
- /**
- * Constructs a new w s exception.
- *
- * @param message the message
- * @param wsException the ws exception
- * @param cause the cause
- * @return the result
- */
+	/**
+	 * Constructs a new w s exception.
+	 *
+	 * @param message     the message
+	 * @param wsException the ws exception
+	 * @param cause       the cause
+	 * @return the result
+	 */
 	public WSException(String message, it.vige.nam.stub.WsFaultBean wsException, Throwable cause) {
 		super(message, cause);
 		this.wsException = wsException;
 	}
 
- /**
- * Get fault info.
- *
- * @return the it.vige.nam.stub. ws fault bean
- */
+	/**
+	 * Get fault info.
+	 *
+	 * @return the it.vige.nam.stub. ws fault bean
+	 */
 	public it.vige.nam.stub.WsFaultBean getFaultInfo() {
 		return this.wsException;
 	}

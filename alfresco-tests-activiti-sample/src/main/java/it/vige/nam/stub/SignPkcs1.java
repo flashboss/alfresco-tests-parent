@@ -38,10 +38,10 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignPkcs1 {
 
- /** The credentials. */
+	/** The credentials. */
 	protected Credentials credentials;
 	protected byte[] hash;
- /** The preferences. */
+	/** The preferences. */
 	protected SignPreferences preferences;
 
 	/**

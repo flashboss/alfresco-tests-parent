@@ -40,13 +40,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignPAdES {
 
- /** The username. */
+	/** The username. */
 	protected String username;
- /** The password. */
+	/** The password. */
 	protected String password;
 	protected byte[] buffer;
 	@XmlElement(name = "PAdESPreferences")
- /** The p ad e s preferences. */
+	/** The p ad e s preferences. */
 	protected PAdESPreferences pAdESPreferences;
 
 	/**

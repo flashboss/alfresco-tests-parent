@@ -42,14 +42,14 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignPreferences extends TimeStampPreferences {
 
- /** The hash algorithm. */
+	/** The hash algorithm. */
 	protected String hashAlgorithm;
 	@XmlSchemaType(name = "string")
- /** The sign engine impl. */
+	/** The sign engine impl. */
 	protected SignEngineImpl signEngineImpl;
- /** The sign type. */
+	/** The sign type. */
 	protected int signType;
- /** The with timestamp. */
+	/** The with timestamp. */
 	protected boolean withTimestamp;
 
 	/**

@@ -45,18 +45,8 @@ public class Generation extends BaseJavaDelegate {
 	 */
 	public void execute(DelegateExecution execution) throws Exception {
 		logger.debug("Generation start");
-		/**
-		 * Execute.
-		 *
-		 * @param execution the execution
-		 */
 		NodeRef rootNodeRef = nodeService.getRootNode(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE);
 		List<NodeRef> results = searchService.selectNodes(rootNodeRef, rarFolder, null, namespaceService, false);
-		/**
-		 * Execute.
-		 *
-		 * @param execution the execution
-		 */
 		if (results.size() == 0) {
 			throw new AlfrescoRuntimeException(rarFolder);
 		}

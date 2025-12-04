@@ -45,19 +45,19 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class TimeStampPreferences {
 
- /** The filename in t s d. */
+	/** The filename in t s d. */
 	protected String filenameInTSD;
- /** The output as t s d. */
+	/** The output as t s d. */
 	protected boolean outputAsTSD;
- /** The output base64 encoded. */
+	/** The output base64 encoded. */
 	protected boolean outputBase64Encoded;
- /** The timestamp hash algo. */
+	/** The timestamp hash algo. */
 	protected String timestampHashAlgo;
- /** The timestamp password. */
+	/** The timestamp password. */
 	protected String timestampPassword;
- /** The timestamp url. */
+	/** The timestamp url. */
 	protected String timestampUrl;
- /** The timestamp username. */
+	/** The timestamp username. */
 	protected String timestampUsername;
 
 	/**

@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class EnableRemote {
 
- /** The credentials. */
+	/** The credentials. */
 	protected Credentials credentials;
 
 	/**

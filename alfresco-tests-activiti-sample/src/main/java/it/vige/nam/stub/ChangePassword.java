@@ -39,13 +39,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class ChangePassword {
 
- /** The security code. */
+	/** The security code. */
 	protected String securityCode;
- /** The username. */
+	/** The username. */
 	protected String username;
- /** The password. */
+	/** The password. */
 	protected String password;
- /** The new password. */
+	/** The new password. */
 	protected String newPassword;
 
 	/**

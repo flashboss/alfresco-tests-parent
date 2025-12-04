@@ -38,11 +38,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class Disable {
 
- /** The security code. */
+	/** The security code. */
 	protected String securityCode;
- /** The username. */
+	/** The username. */
 	protected String username;
- /** The password. */
+	/** The password. */
 	protected String password;
 
 	/**

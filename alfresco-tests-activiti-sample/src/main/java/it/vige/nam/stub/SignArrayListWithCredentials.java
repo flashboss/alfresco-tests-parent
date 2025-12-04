@@ -42,11 +42,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 public class SignArrayListWithCredentials {
 
- /** The credentials. */
+	/** The credentials. */
 	protected Credentials credentials;
 	protected List<byte[]> bufferList;
 	@XmlElement(name = "AdESPreferences")
- /** The ad e s preferences. */
+	/** The ad e s preferences. */
 	protected SignPreferences adESPreferences;
 
 	/**
