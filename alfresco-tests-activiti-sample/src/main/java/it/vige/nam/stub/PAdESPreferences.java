@@ -40,7 +40,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class PAdESPreferences extends SignPreferences {
-
 	/** The encrypt in any case. */
 	protected boolean encryptInAnyCase;
 	/** The encryption password. */
@@ -60,7 +59,6 @@ public class PAdESPreferences extends SignPreferences {
 	public boolean isEncryptInAnyCase() {
 		return encryptInAnyCase;
 	}
-
 	/**
 	 * Imposta il valore della proprietà encryptInAnyCase.
 	 * 
@@ -69,7 +67,6 @@ public class PAdESPreferences extends SignPreferences {
 	public void setEncryptInAnyCase(boolean value) {
 		this.encryptInAnyCase = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà encryptionPassword.
 	 * 
@@ -79,7 +76,6 @@ public class PAdESPreferences extends SignPreferences {
 	public String getEncryptionPassword() {
 		return encryptionPassword;
 	}
-
 	/**
 	 * Imposta il valore della proprietà encryptionPassword.
 	 * 
@@ -89,7 +85,6 @@ public class PAdESPreferences extends SignPreferences {
 	public void setEncryptionPassword(String value) {
 		this.encryptionPassword = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà page.
 	 * 
@@ -98,7 +93,6 @@ public class PAdESPreferences extends SignPreferences {
 	public int getPage() {
 		return page;
 	}
-
 	/**
 	 * Imposta il valore della proprietà page.
 	 * 
@@ -107,7 +101,6 @@ public class PAdESPreferences extends SignPreferences {
 	public void setPage(int value) {
 		this.page = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà signerImage.
 	 * 
@@ -117,7 +110,6 @@ public class PAdESPreferences extends SignPreferences {
 	public SignerImage getSignerImage() {
 		return signerImage;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signerImage.
 	 * 
@@ -127,7 +119,6 @@ public class PAdESPreferences extends SignPreferences {
 	public void setSignerImage(SignerImage value) {
 		this.signerImage = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà signerImageReference.
 	 * 
@@ -137,7 +128,6 @@ public class PAdESPreferences extends SignPreferences {
 	public String getSignerImageReference() {
 		return signerImageReference;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signerImageReference.
 	 * 

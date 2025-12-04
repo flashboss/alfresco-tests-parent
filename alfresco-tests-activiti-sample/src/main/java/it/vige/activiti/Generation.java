@@ -23,7 +23,6 @@ import org.apache.commons.logging.LogFactory;
  * @author vige
  */
 public class Generation extends BaseJavaDelegate {
-
 	/** The logger. */
 	private static Log logger = LogFactory.getLog(Generation.class);
 
@@ -62,7 +61,6 @@ public class Generation extends BaseJavaDelegate {
 		}
 		execution.setVariable("mywf_rarId", rarCounter);
 	}
-
 	/**
 	 * Set rar folder.
 	 *
@@ -71,7 +69,6 @@ public class Generation extends BaseJavaDelegate {
 	public void setRarFolder(String rarFolder) {
 		this.rarFolder = rarFolder;
 	}
-
 	/**
 	 * Set node service.
 	 *
@@ -80,7 +77,6 @@ public class Generation extends BaseJavaDelegate {
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
-
 	/**
 	 * Set search service.
 	 *
@@ -89,7 +85,6 @@ public class Generation extends BaseJavaDelegate {
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
-
 	/**
 	 * Set namespace service.
 	 *
@@ -98,7 +93,6 @@ public class Generation extends BaseJavaDelegate {
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
 	}
-
 	/**
 	 * Set file folder service.
 	 *

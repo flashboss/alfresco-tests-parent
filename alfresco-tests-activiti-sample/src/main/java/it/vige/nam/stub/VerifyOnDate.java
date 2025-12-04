@@ -52,7 +52,6 @@ public class VerifyOnDate {
 	public byte[] getSignedContent() {
 		return signedContent;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signedContent.
 	 * 
@@ -61,7 +60,6 @@ public class VerifyOnDate {
 	public void setSignedContent(byte[] value) {
 		this.signedContent = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà verifyDate.
 	 * 
@@ -71,7 +69,6 @@ public class VerifyOnDate {
 	public XMLGregorianCalendar getVerifyDate() {
 		return verifyDate;
 	}
-
 	/**
 	 * Imposta il valore della proprietà verifyDate.
 	 * 

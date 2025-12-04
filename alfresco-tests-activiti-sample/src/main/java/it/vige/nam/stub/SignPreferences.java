@@ -41,7 +41,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class SignPreferences extends TimeStampPreferences {
-
 	/** The hash algorithm. */
 	protected String hashAlgorithm;
 	@XmlSchemaType(name = "string")
@@ -61,7 +60,6 @@ public class SignPreferences extends TimeStampPreferences {
 	public String getHashAlgorithm() {
 		return hashAlgorithm;
 	}
-
 	/**
 	 * Imposta il valore della proprietà hashAlgorithm.
 	 * 
@@ -71,7 +69,6 @@ public class SignPreferences extends TimeStampPreferences {
 	public void setHashAlgorithm(String value) {
 		this.hashAlgorithm = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà signEngineImpl.
 	 * 
@@ -81,7 +78,6 @@ public class SignPreferences extends TimeStampPreferences {
 	public SignEngineImpl getSignEngineImpl() {
 		return signEngineImpl;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signEngineImpl.
 	 * 
@@ -91,7 +87,6 @@ public class SignPreferences extends TimeStampPreferences {
 	public void setSignEngineImpl(SignEngineImpl value) {
 		this.signEngineImpl = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà signType.
 	 * 
@@ -100,7 +95,6 @@ public class SignPreferences extends TimeStampPreferences {
 	public int getSignType() {
 		return signType;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signType.
 	 * 
@@ -109,7 +103,6 @@ public class SignPreferences extends TimeStampPreferences {
 	public void setSignType(int value) {
 		this.signType = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà withTimestamp.
 	 * 
@@ -118,7 +111,6 @@ public class SignPreferences extends TimeStampPreferences {
 	public boolean isWithTimestamp() {
 		return withTimestamp;
 	}
-
 	/**
 	 * Imposta il valore della proprietà withTimestamp.
 	 * 

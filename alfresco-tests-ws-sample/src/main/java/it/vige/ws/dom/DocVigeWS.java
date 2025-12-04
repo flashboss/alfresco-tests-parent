@@ -8,8 +8,7 @@ import org.joda.time.DateTime;
  * @author vige
  */
 public class DocVigeWS {
-
-    /** The id pratica. */
+	/** The id pratica. */
     private String idPratica;
     /** The data creazione pratica. */
     private DateTime dataCreazionePratica;
@@ -45,8 +44,7 @@ public class DocVigeWS {
         this.ragioneSocialeAzienda = ragioneSocialeAzienda;
         this.dataCreazionePratica = dataCreazionePratica;
     }
-
-    /**
+	/**
      * Get id pratica.
      *
      * @return the string
@@ -54,8 +52,7 @@ public class DocVigeWS {
     public String getIdPratica() {
         return idPratica;
     }
-
-    /**
+	/**
      * Get numero pratica.
      *
      * @return the string
@@ -63,8 +60,7 @@ public class DocVigeWS {
     public String getNumeroPratica() {
         return numeroPratica;
     }
-
-    /**
+	/**
      * Get convenzione.
      *
      * @return the string
@@ -72,8 +68,7 @@ public class DocVigeWS {
     public String getConvenzione() {
         return convenzione;
     }
-
-    /**
+	/**
      * Get descrizione partner.
      *
      * @return the string
@@ -81,8 +76,7 @@ public class DocVigeWS {
     public String getDescrizionePartner() {
         return descrizionePartner;
     }
-
-    /**
+	/**
      * Get codice fiscale azienda.
      *
      * @return the string
@@ -90,8 +84,7 @@ public class DocVigeWS {
     public String getCodiceFiscaleAzienda() {
         return codiceFiscaleAzienda;
     }
-
-    /**
+	/**
      * Get ragione sociale azienda.
      *
      * @return the string
@@ -99,8 +92,7 @@ public class DocVigeWS {
     public String getRagioneSocialeAzienda() {
         return ragioneSocialeAzienda;
     }
-
-    /**
+	/**
      * Get data creazione pratica.
      *
      * @return the date time

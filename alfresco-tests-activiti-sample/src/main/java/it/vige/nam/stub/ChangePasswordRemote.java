@@ -36,7 +36,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class ChangePasswordRemote {
-
 	/** The credentials. */
 	protected Credentials credentials;
 	/** The new password. */
@@ -51,7 +50,6 @@ public class ChangePasswordRemote {
 	public Credentials getCredentials() {
 		return credentials;
 	}
-
 	/**
 	 * Imposta il valore della proprietà credentials.
 	 * 
@@ -61,7 +59,6 @@ public class ChangePasswordRemote {
 	public void setCredentials(Credentials value) {
 		this.credentials = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà newPassword.
 	 * 
@@ -71,7 +68,6 @@ public class ChangePasswordRemote {
 	public String getNewPassword() {
 		return newPassword;
 	}
-
 	/**
 	 * Imposta il valore della proprietà newPassword.
 	 * 

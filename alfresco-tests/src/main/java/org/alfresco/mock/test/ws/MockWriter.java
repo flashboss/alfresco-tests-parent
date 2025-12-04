@@ -10,7 +10,6 @@ import java.util.Map;
  * @author vige
  */
 public class MockWriter extends Writer {
-
 	/** The model. */
 	private Map<String, Object> model;
 
@@ -24,7 +23,6 @@ public class MockWriter extends Writer {
 	@Override
 	public void write(char[] cbuf, int off, int len) throws IOException {
 	}
-
 	/**
 	 * Flush.
 	 *
@@ -32,7 +30,6 @@ public class MockWriter extends Writer {
 	@Override
 	public void flush() throws IOException {
 	}
-
 	/**
 	 * Close.
 	 *
@@ -40,7 +37,6 @@ public class MockWriter extends Writer {
 	@Override
 	public void close() throws IOException {
 	}
-
 	/**
 	 * Get model.
 	 *
@@ -48,7 +44,6 @@ public class MockWriter extends Writer {
 	public Map<String, Object> getModel() {
 		return model;
 	}
-
 	/**
 	 * Set model.
 	 *

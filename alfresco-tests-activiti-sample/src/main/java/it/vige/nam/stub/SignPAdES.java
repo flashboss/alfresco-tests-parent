@@ -39,7 +39,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class SignPAdES {
-
 	/** The username. */
 	protected String username;
 	/** The password. */
@@ -58,7 +57,6 @@ public class SignPAdES {
 	public String getUsername() {
 		return username;
 	}
-
 	/**
 	 * Imposta il valore della proprietà username.
 	 * 
@@ -68,7 +66,6 @@ public class SignPAdES {
 	public void setUsername(String value) {
 		this.username = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà password.
 	 * 
@@ -78,7 +75,6 @@ public class SignPAdES {
 	public String getPassword() {
 		return password;
 	}
-
 	/**
 	 * Imposta il valore della proprietà password.
 	 * 
@@ -88,7 +84,6 @@ public class SignPAdES {
 	public void setPassword(String value) {
 		this.password = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà buffer.
 	 * 
@@ -97,7 +92,6 @@ public class SignPAdES {
 	public byte[] getBuffer() {
 		return buffer;
 	}
-
 	/**
 	 * Imposta il valore della proprietà buffer.
 	 * 
@@ -106,7 +100,6 @@ public class SignPAdES {
 	public void setBuffer(byte[] value) {
 		this.buffer = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà pAdESPreferences.
 	 * 
@@ -116,7 +109,6 @@ public class SignPAdES {
 	public PAdESPreferences getPAdESPreferences() {
 		return pAdESPreferences;
 	}
-
 	/**
 	 * Imposta il valore della proprietà pAdESPreferences.
 	 * 

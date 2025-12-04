@@ -37,7 +37,6 @@ import it.vige.ws.utils.ActUtil;
  * @author vige
  */
 public class NodeListDownloadWebScriptTest extends AbstractWSForm {
-
 	/** The node list download web script. */
 	@Autowired
 	private NodeListDownloadWebScript nodeListDownloadWebScript;
@@ -49,8 +48,6 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 	 * Init.
 	 *
 	 */
-
-
 	@Before
 	public void init() {
 		super.init();
@@ -69,7 +66,6 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 		act = createAct(PDL, "1");
 
 	}
-
 	/**
 	 * Create act.
 	 *
@@ -88,7 +84,6 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 
 		return insertDocument(PDL, name, "testbytes", properties);
 	}
-
 	/**
 	 * Add state act.
 	 *
@@ -109,22 +104,20 @@ public class NodeListDownloadWebScriptTest extends AbstractWSForm {
 		NodeRef target = insertDocument(PDL, nameQ, "testbytes_target", properties);
 
 		nodeService.createAssociation(document, target, ActUtil.PROP_STATE_ACT_QNAME);
-	}	/**
+	}
+	/**
 	 * Get abstract web script.
 	 *
 	 * @return the abstract web script
 	 */
-
-
 	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return nodeListDownloadWebScript;
-	}	/**
+	}
+	/**
 	 * Execute.
 	 *
 	 */
-
-
 	@Test
 	public void execute() throws IOException {
 

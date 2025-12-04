@@ -19,7 +19,6 @@ public class MockTemplateProcessorRegistry extends TemplateProcessorRegistry {
 	public String findValidTemplatePath(final String path) {
 		return "";
 	}
-
 	/**
 	 * Get template processor.
 	 *

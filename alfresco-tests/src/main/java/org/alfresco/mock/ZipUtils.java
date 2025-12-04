@@ -62,7 +62,6 @@ public class ZipUtils {
 		zis.closeEntry();
 		zis.close();
 	}
-
 	/**
 	 * Get zip entry content.
 	 *
@@ -77,7 +76,6 @@ public class ZipUtils {
 			 * @param pathname the pathname
 			 * @return the boolean
 			 */
-
 			@Override
 			public boolean accept(File pathname) {
 				return pathname.getName().startsWith(documentName);
@@ -90,7 +88,6 @@ public class ZipUtils {
 		}
 		return new String(bytes);
 	}
-
 	/**
 	 * Get zip entry content.
 	 *
@@ -105,7 +102,6 @@ public class ZipUtils {
 		}
 		return new String(bytes);
 	}
-
 	/**
 	 * Add entry to zip.
 	 *

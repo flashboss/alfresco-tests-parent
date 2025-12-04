@@ -53,8 +53,6 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 	 * Init.
 	 *
 	 */
-
-
 	@Before
 	public void init() {
 		super.init();
@@ -69,22 +67,20 @@ public class PreviousWSSampleTest extends AbstractWSForm {
 		NodeRef bankSiteDL = insertFolder(bankSite, "documentLibrary");
 		repository = insertFolder(bankSiteDL, "repository");
 		insertFolder(repository, FOLDER_WSSAMPLE);
-	}	/**
+	}
+	/**
 	 * Get abstract web script.
 	 *
 	 * @return the abstract web script
 	 */
-
-
 	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return previousWSSample;
-	}	/**
+	}
+	/**
 	 * Execute.
 	 *
 	 */
-
-
 	@Test
 	public void execute() throws ParseException, IOException {
 

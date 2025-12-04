@@ -8,7 +8,6 @@ import org.alfresco.service.namespace.QName;
  * @author vige
  */
 public interface WSSampleModel {
-
 	/** The pbpdv namespace. */
 	String PBPDV_NAMESPACE = "http://www.vige.it/pb/conservation/model/1.0";
 	/** The aspect wssamplefolder. */

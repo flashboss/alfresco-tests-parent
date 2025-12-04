@@ -6,7 +6,6 @@ package it.vige.ws.service;
  * @author vige
  */
 public class NoteReportBean {
-
 	/**
 	 * Get type.
 	 *
@@ -15,7 +14,6 @@ public class NoteReportBean {
 	public int getType() {
 		return 3;
 	}
-
 	/**
 	 * Get description.
 	 *

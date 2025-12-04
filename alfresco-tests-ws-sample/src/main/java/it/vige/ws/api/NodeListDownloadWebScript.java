@@ -98,7 +98,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	public void setOverHeadings(String[] headingsString) {
 		this.overHeadings = headingsString;
 	}
-
 	/**
 	 * Get over headings.
 	 *
@@ -107,7 +106,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	public String[] getOverHeadings() {
 		return overHeadings;
 	}
-
 	/**
 	 * Set skip count def.
 	 *
@@ -116,7 +114,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	public void setSkipCountDef(String skipCountDef) {
 		this.skipCountDef = skipCountDef;
 	}
-
 	/**
 	 * Set max lines def.
 	 *
@@ -125,7 +122,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	public void setMaxLinesDef(String maxLinesDef) {
 		this.maxLinesDef = maxLinesDef;
 	}
-
 	/**
 	 * Set max items def.
 	 *
@@ -134,7 +130,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	public void setMaxItemsDef(String maxItemsDef) {
 		this.maxItemsDef = maxItemsDef;
 	}
-
 	/**
 	 * Set search service.
 	 *
@@ -143,7 +138,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
-
 	/**
 	 * Set model properties.
 	 *
@@ -152,7 +146,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	public void setModelProperties(String[] modelPropertiesString) {
 		this.modelProperties = modelPropertiesString;
 	}
-
 	/**
 	 * Set open data command.
 	 *
@@ -161,7 +154,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	public void setOpenDataCommand(OpenDataCommand openDataCommand) {
 		this.openDataCommand = openDataCommand;
 	}
-
 	/**
 	 * Constructs a new node list download web script.
 	 *
@@ -170,7 +162,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	public NodeListDownloadWebScript() {
 		this.filenameBase = "DataListExport";
 	}
-
 	/**
 	 * Set open data date format.
 	 *
@@ -179,21 +170,18 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	public void setOpenDataDateFormat(String openDataDateFormat) {
 		this.openDataDateFormat = openDataDateFormat;
 	}
-
 	/**
 	 * @param nodeService
 	 */
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
-
 	/**
 	 * @param namespaceService
 	 */
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
 	}
-
 	/**
 	 * Set list separator.
 	 *
@@ -202,7 +190,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	public void setListSeparator(String listSeparator) {
 		this.listSeparator = listSeparator;
 	}
-
 	/**
 	 * Identify the datalist
 	 * @param format the format
@@ -258,7 +245,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		return result;
 
 	}
-
 	/**
 	 * We don't have a HTML version
 	 * @return the result
@@ -266,7 +252,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	protected boolean allowHtmlFallback() {
 		return false;
 	}
-
 	/**
 	 * Fetch the properties, in the requested order, from the data list
 	 * definition
@@ -288,7 +273,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		}
 		return properties;
 	}
-
 	/**
 	 * Populate body.
 	 *
@@ -299,7 +283,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	protected void populateBody(Object resource, CSVPrinter csv, List<QName> properties) throws IOException {
 		throw new WebScriptException(Status.STATUS_BAD_REQUEST, "CSV not currently supported");
 	}
-
 	/**
 	 * Populate body.
 	 *
@@ -387,8 +370,7 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 									System.err.println("TODO: handle " + type + " for " + child);
 							}
 						}
-
-							/** The v. */
+	/** The v. */
 							String v = text.toString();
 							c.setCellValue(v);
 							if (lines > 1) {
@@ -459,7 +441,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		}
 		return sheet;
 	}
-
 	/**
 	 * Generate style from w b.
 	 *
@@ -488,13 +469,13 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 		style.put("styleDouble", styleDouble);
 		style.put("styleNewLines", styleNewLines);
 		return style;
-	}	/**
+	}
+	/**
 	 * Execute impl.
 	 *
 	 * @param req the req
 	 * @param status the status
 	 */
-
 	@Override
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status) {
 		Map<String, Object> model = new HashMap<String, Object>();
@@ -523,7 +504,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 			throw new WebScriptException("Web Script format '" + format + "' is not supported");
 		}
 	}
-
 	/**
 	 * Generates the spreadsheet, based on the properties in the header and a
 	 * callback for the body.
@@ -675,7 +655,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 	}
 
 	public static class WriteExcel {
-
 	/** The format. */
 		private String format;
 
@@ -703,7 +682,6 @@ public class NodeListDownloadWebScript extends DeclarativeWebScript
 			this.format = format;
 			this.filenameBase = filenameBase;
 		}
-
 	/**
 		 * Write.
 		 *

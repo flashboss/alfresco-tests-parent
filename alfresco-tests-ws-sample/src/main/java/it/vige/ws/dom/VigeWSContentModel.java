@@ -10,8 +10,7 @@ import org.alfresco.service.namespace.QName;
 public abstract class VigeWSContentModel {
 
     private VigeWSContentModel() { }
-
-    /** The vige ws namespace. */
+	/** The vige ws namespace. */
     public static final String VIGE_WS_NAMESPACE = "http://vige.it/model/alfresco-tests-vigews/1.0";
 
     /** The doc aspect. */

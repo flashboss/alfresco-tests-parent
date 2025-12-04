@@ -50,7 +50,6 @@ public class OpenSessionResponse {
 	public String getReturn() {
 		return _return;
 	}
-
 	/**
 	 * Imposta il valore della proprietà return.
 	 * 

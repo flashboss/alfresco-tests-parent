@@ -7,7 +7,6 @@ import org.alfresco.service.namespace.QName;
  * @author vige
  */
 public class ActUtil {
-
 	/** The crl acts model. */
 	public static final String CRL_ACTS_MODEL = "http://www.vige.it/content/model/acts/1.0";
 	/** The type act pdl. */

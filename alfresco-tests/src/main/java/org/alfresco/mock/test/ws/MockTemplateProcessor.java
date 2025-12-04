@@ -22,7 +22,6 @@ public class MockTemplateProcessor implements TemplateProcessor {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Process.
 	 *
@@ -36,7 +35,6 @@ public class MockTemplateProcessor implements TemplateProcessor {
 		if (model instanceof Map)
 			((MockWriter) out).setModel((Map<String, Object>) model);
 	}
-
 	/**
 	 * Process string.
 	 *
@@ -49,7 +47,6 @@ public class MockTemplateProcessor implements TemplateProcessor {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Get default encoding.
 	 *
@@ -60,7 +57,6 @@ public class MockTemplateProcessor implements TemplateProcessor {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Reset.
 	 *

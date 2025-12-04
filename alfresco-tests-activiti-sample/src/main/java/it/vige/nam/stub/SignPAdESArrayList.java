@@ -42,7 +42,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class SignPAdESArrayList {
-
 	/** The username. */
 	protected String username;
 	/** The password. */
@@ -62,7 +61,6 @@ public class SignPAdESArrayList {
 	public String getUsername() {
 		return username;
 	}
-
 	/**
 	 * Imposta il valore della proprietà username.
 	 * 
@@ -72,7 +70,6 @@ public class SignPAdESArrayList {
 	public void setUsername(String value) {
 		this.username = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà password.
 	 * 
@@ -82,7 +79,6 @@ public class SignPAdESArrayList {
 	public String getPassword() {
 		return password;
 	}
-
 	/**
 	 * Imposta il valore della proprietà password.
 	 * 
@@ -92,7 +88,6 @@ public class SignPAdESArrayList {
 	public void setPassword(String value) {
 		this.password = value;
 	}
-
 	/**
 	 * Gets the value of the bufferList property.
 	 * 
@@ -121,7 +116,6 @@ public class SignPAdESArrayList {
 		}
 		return this.bufferList;
 	}
-
 	/**
 	 * Recupera il valore della proprietà pAdESPreferences.
 	 * 
@@ -131,7 +125,6 @@ public class SignPAdESArrayList {
 	public PAdESPreferences getPAdESPreferences() {
 		return pAdESPreferences;
 	}
-
 	/**
 	 * Imposta il valore della proprietà pAdESPreferences.
 	 * 

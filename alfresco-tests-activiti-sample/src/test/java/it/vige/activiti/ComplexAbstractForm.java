@@ -49,8 +49,6 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 	 *
 	 * @param variables the variables
 	 */
-
-
 	@Override
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
@@ -83,7 +81,6 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 		// Always reset authenticated user to avoid any mistakes
 		identityService.setAuthenticatedUserId(USER_NAME);
 	}
-
 	/**
 	 * Create demo users for the application
 	 * 
@@ -103,7 +100,6 @@ public class ComplexAbstractForm extends AbstractActivitiForm {
 		initiator.getProperties().put("lastName", "The Great");
 		initiator.getProperties().put("userName", USER_NAME);
 	}
-
 	/**
 	 * Create demo groups for teh application
 	 * 

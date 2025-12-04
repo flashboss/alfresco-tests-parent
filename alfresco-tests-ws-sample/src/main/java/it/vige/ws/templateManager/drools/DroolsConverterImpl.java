@@ -81,14 +81,12 @@ public class DroolsConverterImpl {
 						paddedValue = StringUtils.rightPad(value, length);
 					}
 				}
-
-				/** The new text. */
+	/** The new text. */
 				String newText = runText.replace(templateField, paddedValue);
 				r.setText(newText, 0);
 			}
 		}
 	}
-
 	/**
 	 * Replace date.
 	 *
@@ -119,7 +117,6 @@ public class DroolsConverterImpl {
 			}
 		}
 	}
-
 	/**
 	 * Replace currency.
 	 *
@@ -159,7 +156,6 @@ public class DroolsConverterImpl {
 			}
 		}
 	}
-
 	/**
 	 * Replace multivalue.
 	 *
@@ -196,7 +192,6 @@ public class DroolsConverterImpl {
 			}
 		}
 	}
-
 	/**
 	 * Check if continue.
 	 *
@@ -209,7 +204,6 @@ public class DroolsConverterImpl {
 		String runText = r.getText(0);
 		return runText != null && runText.contains("${");
 	}
-
 	/**
 	 * Convert a single template based on the drools rule file and
 	 * information extracted from the json

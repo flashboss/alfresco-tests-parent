@@ -12,7 +12,6 @@ import org.alfresco.service.cmr.security.AuthorityType;
  * @author vige
  */
 public class MockAccessPermission implements AccessPermission, Serializable {
-
 	/** The permission. */
 	private String permission;
 	/** The access status. */
@@ -40,7 +39,6 @@ public class MockAccessPermission implements AccessPermission, Serializable {
 		this.permission = permission;
 		this.authority = authority;
 	}
-
 	/**
 	 * Get permission.
 	 *
@@ -50,7 +48,6 @@ public class MockAccessPermission implements AccessPermission, Serializable {
 	public String getPermission() {
 		return permission;
 	}
-
 	/**
 	 * Get access status.
 	 *
@@ -60,7 +57,6 @@ public class MockAccessPermission implements AccessPermission, Serializable {
 	public AccessStatus getAccessStatus() {
 		return accessStatus;
 	}
-
 	/**
 	 * Get authority.
 	 *
@@ -70,7 +66,6 @@ public class MockAccessPermission implements AccessPermission, Serializable {
 	public String getAuthority() {
 		return authority;
 	}
-
 	/**
 	 * Get authority type.
 	 *
@@ -80,7 +75,6 @@ public class MockAccessPermission implements AccessPermission, Serializable {
 	public AuthorityType getAuthorityType() {
 		return authorityType;
 	}
-
 	/**
 	 * Get position.
 	 *
@@ -90,7 +84,6 @@ public class MockAccessPermission implements AccessPermission, Serializable {
 	public int getPosition() {
 		return position;
 	}
-
 	/**
 	 * Is inherited.
 	 *
@@ -100,7 +93,6 @@ public class MockAccessPermission implements AccessPermission, Serializable {
 	public boolean isInherited() {
 		return inherited;
 	}
-
 	/**
 	 * Is set directly.
 	 *
@@ -110,7 +102,6 @@ public class MockAccessPermission implements AccessPermission, Serializable {
 	public boolean isSetDirectly() {
 		return setDirectly;
 	}
-
 	/**
 	 * To string.
 	 *

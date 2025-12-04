@@ -40,7 +40,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class SignPkcs1ArrayList {
-
 	/** The credentials. */
 	protected Credentials credentials;
 	/** The hash list. */
@@ -57,7 +56,6 @@ public class SignPkcs1ArrayList {
 	public Credentials getCredentials() {
 		return credentials;
 	}
-
 	/**
 	 * Imposta il valore della proprietà credentials.
 	 * 
@@ -67,7 +65,6 @@ public class SignPkcs1ArrayList {
 	public void setCredentials(Credentials value) {
 		this.credentials = value;
 	}
-
 	/**
 	 * Gets the value of the hashList property.
 	 * 
@@ -96,7 +93,6 @@ public class SignPkcs1ArrayList {
 		}
 		return this.hashList;
 	}
-
 	/**
 	 * Recupera il valore della proprietà preferences.
 	 * 
@@ -106,7 +102,6 @@ public class SignPkcs1ArrayList {
 	public SignPreferences getPreferences() {
 		return preferences;
 	}
-
 	/**
 	 * Imposta il valore della proprietà preferences.
 	 * 

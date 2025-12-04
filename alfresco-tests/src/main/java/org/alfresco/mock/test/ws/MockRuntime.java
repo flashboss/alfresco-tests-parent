@@ -13,7 +13,6 @@ import org.springframework.extensions.webscripts.WebScriptSession;
  * @author vige
  */
 public class MockRuntime implements Runtime {
-
 	/** The template parameters. */
 	private Map<String, Object> templateParameters = new HashMap<String, Object>();
 
@@ -27,7 +26,6 @@ public class MockRuntime implements Runtime {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get session.
 	 *
@@ -38,7 +36,6 @@ public class MockRuntime implements Runtime {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get container.
 	 *
@@ -49,7 +46,6 @@ public class MockRuntime implements Runtime {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get script parameters.
 	 *
@@ -59,7 +55,6 @@ public class MockRuntime implements Runtime {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get template parameters.
 	 *

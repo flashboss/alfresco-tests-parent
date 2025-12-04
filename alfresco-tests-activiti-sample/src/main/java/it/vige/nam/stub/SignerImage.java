@@ -49,7 +49,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class SignerImage {
-
 	/** The field name. */
 	protected String fieldName;
 	/** The font name. */
@@ -87,7 +86,6 @@ public class SignerImage {
 	public String getFieldName() {
 		return fieldName;
 	}
-
 	/**
 	 * Imposta il valore della proprietà fieldName.
 	 * 
@@ -97,7 +95,6 @@ public class SignerImage {
 	public void setFieldName(String value) {
 		this.fieldName = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà fontName.
 	 * 
@@ -107,7 +104,6 @@ public class SignerImage {
 	public String getFontName() {
 		return fontName;
 	}
-
 	/**
 	 * Imposta il valore della proprietà fontName.
 	 * 
@@ -117,7 +113,6 @@ public class SignerImage {
 	public void setFontName(String value) {
 		this.fontName = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà fontSize.
 	 * 
@@ -126,7 +121,6 @@ public class SignerImage {
 	public int getFontSize() {
 		return fontSize;
 	}
-
 	/**
 	 * Imposta il valore della proprietà fontSize.
 	 * 
@@ -135,7 +129,6 @@ public class SignerImage {
 	public void setFontSize(int value) {
 		this.fontSize = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà height.
 	 * 
@@ -144,7 +137,6 @@ public class SignerImage {
 	public int getHeight() {
 		return height;
 	}
-
 	/**
 	 * Imposta il valore della proprietà height.
 	 * 
@@ -153,7 +145,6 @@ public class SignerImage {
 	public void setHeight(int value) {
 		this.height = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà image.
 	 * 
@@ -162,7 +153,6 @@ public class SignerImage {
 	public byte[] getImage() {
 		return image;
 	}
-
 	/**
 	 * Imposta il valore della proprietà image.
 	 * 
@@ -171,7 +161,6 @@ public class SignerImage {
 	public void setImage(byte[] value) {
 		this.image = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà imageFilename.
 	 * 
@@ -181,7 +170,6 @@ public class SignerImage {
 	public String getImageFilename() {
 		return imageFilename;
 	}
-
 	/**
 	 * Imposta il valore della proprietà imageFilename.
 	 * 
@@ -191,7 +179,6 @@ public class SignerImage {
 	public void setImageFilename(String value) {
 		this.imageFilename = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà imageURL.
 	 * 
@@ -201,7 +188,6 @@ public class SignerImage {
 	public String getImageURL() {
 		return imageURL;
 	}
-
 	/**
 	 * Imposta il valore della proprietà imageURL.
 	 * 
@@ -211,7 +197,6 @@ public class SignerImage {
 	public void setImageURL(String value) {
 		this.imageURL = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà location.
 	 * 
@@ -221,7 +206,6 @@ public class SignerImage {
 	public String getLocation() {
 		return location;
 	}
-
 	/**
 	 * Imposta il valore della proprietà location.
 	 * 
@@ -231,7 +215,6 @@ public class SignerImage {
 	public void setLocation(String value) {
 		this.location = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà reason.
 	 * 
@@ -241,7 +224,6 @@ public class SignerImage {
 	public String getReason() {
 		return reason;
 	}
-
 	/**
 	 * Imposta il valore della proprietà reason.
 	 * 
@@ -251,7 +233,6 @@ public class SignerImage {
 	public void setReason(String value) {
 		this.reason = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà signerName.
 	 * 
@@ -261,7 +242,6 @@ public class SignerImage {
 	public String getSignerName() {
 		return signerName;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signerName.
 	 * 
@@ -271,7 +251,6 @@ public class SignerImage {
 	public void setSignerName(String value) {
 		this.signerName = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà textVisible.
 	 * 
@@ -280,7 +259,6 @@ public class SignerImage {
 	public boolean isTextVisible() {
 		return textVisible;
 	}
-
 	/**
 	 * Imposta il valore della proprietà textVisible.
 	 * 
@@ -289,7 +267,6 @@ public class SignerImage {
 	public void setTextVisible(boolean value) {
 		this.textVisible = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà width.
 	 * 
@@ -298,7 +275,6 @@ public class SignerImage {
 	public int getWidth() {
 		return width;
 	}
-
 	/**
 	 * Imposta il valore della proprietà width.
 	 * 
@@ -307,7 +283,6 @@ public class SignerImage {
 	public void setWidth(int value) {
 		this.width = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà x.
 	 * 
@@ -316,7 +291,6 @@ public class SignerImage {
 	public int getX() {
 		return x;
 	}
-
 	/**
 	 * Imposta il valore della proprietà x.
 	 * 
@@ -325,7 +299,6 @@ public class SignerImage {
 	public void setX(int value) {
 		this.x = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà y.
 	 * 
@@ -334,7 +307,6 @@ public class SignerImage {
 	public int getY() {
 		return y;
 	}
-
 	/**
 	 * Imposta il valore della proprietà y.
 	 * 

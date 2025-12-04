@@ -34,7 +34,6 @@ import net.sf.acegisecurity.providers.ProviderNotFoundException;
  * @author vige
  */
 public class PreviousWSSample extends DeclarativeWebScript {
-
 	/** The service registry. */
 	private ServiceRegistry serviceRegistry;
 
@@ -58,8 +57,6 @@ public class PreviousWSSample extends DeclarativeWebScript {
 	 * @param status the status
 	 * @param cache the cache
 	 */
-
-
 	@Override
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
@@ -145,7 +142,6 @@ public class PreviousWSSample extends DeclarativeWebScript {
 
 		return model;
 	}
-
 	/**
 	 * Redirect status.
 	 *
@@ -157,7 +153,6 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		status.setMessage(message);
 		status.setRedirect(true);
 	}
-
 	/**
 	 * Get posizionida conservare as node ref.
 	 *
@@ -179,7 +174,6 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		}
 		return praticheFolderList;
 	}
-
 	/**
 	 * Get conservazione folder.
 	 *
@@ -193,7 +187,6 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		}
 		return folderRs.getNodeRef(0);
 	}
-
 	/**
 	 * Get last document date for w s sample.
 	 *
@@ -219,7 +212,6 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		}
 		return date;
 	}
-
 	/**
 	 * Aggiorna aspetto w s sample.
 	 *
@@ -235,7 +227,6 @@ public class PreviousWSSample extends DeclarativeWebScript {
 		} else
 			nodeService.setProperty(folderWSSample, WSSampleModel.PROP_UPDATE_PROPERTY, dateModify);
 	}
-
 	/**
 	 * Set service registry.
 	 *
@@ -244,7 +235,6 @@ public class PreviousWSSample extends DeclarativeWebScript {
 	public void setServiceRegistry(ServiceRegistry serviceRegistry) {
 		this.serviceRegistry = serviceRegistry;
 	}
-
 	/**
 	 * Set conservazione folder template.
 	 *
@@ -253,7 +243,6 @@ public class PreviousWSSample extends DeclarativeWebScript {
 	public void setConservazioneFolderTemplate(String conservazioneFolderTemplate) {
 		this.conservazioneFolderTemplate = conservazioneFolderTemplate;
 	}
-
 	/**
 	 * Set repository folder template w s sample.
 	 *
@@ -262,7 +251,6 @@ public class PreviousWSSample extends DeclarativeWebScript {
 	public void setRepositoryFolderTemplateWSSample(String repositoryFolderTemplateWSSample) {
 		this.repositoryFolderTemplateWSSample = repositoryFolderTemplateWSSample;
 	}
-
 	/**
 	 * Set documents w s sample folder template.
 	 *

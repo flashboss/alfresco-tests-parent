@@ -36,7 +36,6 @@ import it.vige.common.ConservationModel;
  * @author vige
  */
 public class ComplexIRaRGeneration extends BaseJavaDelegate {
-
 	/** The logger. */
 	private static Log logger = LogFactory.getLog(ComplexIRaRGeneration.class);
 
@@ -99,7 +98,6 @@ public class ComplexIRaRGeneration extends BaseJavaDelegate {
 		logger.debug("generateIRaR end");
 		return irarNodeRef;
 	}
-
 	/**
 	 * Generate i ra r model.
 	 *
@@ -122,7 +120,6 @@ public class ComplexIRaRGeneration extends BaseJavaDelegate {
 		return model;
 
 	}
-
 	/**
 	 * Set irar template.
 	 *
@@ -131,7 +128,6 @@ public class ComplexIRaRGeneration extends BaseJavaDelegate {
 	public void setIrarTemplate(String irarTemplate) {
 		this.irarTemplate = irarTemplate;
 	}
-
 	/**
 	 * Set irar folder.
 	 *
@@ -140,7 +136,6 @@ public class ComplexIRaRGeneration extends BaseJavaDelegate {
 	public void setIrarFolder(String irarFolder) {
 		this.irarFolder = irarFolder;
 	}
-
 	/**
 	 * Set template service.
 	 *
@@ -149,7 +144,6 @@ public class ComplexIRaRGeneration extends BaseJavaDelegate {
 	public void setTemplateService(TemplateService templateService) {
 		this.templateService = templateService;
 	}
-
 	/**
 	 * Set node service.
 	 *
@@ -158,7 +152,6 @@ public class ComplexIRaRGeneration extends BaseJavaDelegate {
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
-
 	/**
 	 * Set content service.
 	 *
@@ -167,7 +160,6 @@ public class ComplexIRaRGeneration extends BaseJavaDelegate {
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}
-
 	/**
 	 * Set namespace service.
 	 *
@@ -176,7 +168,6 @@ public class ComplexIRaRGeneration extends BaseJavaDelegate {
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
 	}
-
 	/**
 	 * Set search service.
 	 *
@@ -184,13 +175,12 @@ public class ComplexIRaRGeneration extends BaseJavaDelegate {
 	 */
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
-	}	/**
+	}
+	/**
 	 * Execute.
 	 *
 	 * @param execution the execution
 	 */
-
-
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 		int rarId = (int) execution.getVariable("vigewf_rarId");

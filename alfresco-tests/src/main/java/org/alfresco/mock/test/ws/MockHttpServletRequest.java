@@ -117,7 +117,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		buffer = concatAll(buffer, head, new byte[] { 45, 45, 13, 10 });
 		this.fields = fields;
 	}
-
 	/**
 	 * Get attribute.
 	 *
@@ -129,19 +128,16 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get attribute names.
 	 *
 	 * @return the enumeration
 	 */
-
 	@Override
 	public Enumeration<?> getAttributeNames() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get character encoding.
 	 *
@@ -152,7 +148,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Set character encoding.
 	 *
@@ -163,7 +158,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Get content length.
 	 *
@@ -174,7 +168,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	/**
 	 * Get content type.
 	 *
@@ -184,7 +177,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 	public String getContentType() {
 		return "multipart/form-data=null, boundary=----WebKitFormBoundaryFUwwPQgv8AD2KZvR";
 	}
-
 	/**
 	 * Get input stream.
 	 *
@@ -194,7 +186,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 	public ServletInputStream getInputStream() throws IOException {
 		return servletInputStream;
 	}
-
 	/**
 	 * Get parameter.
 	 *
@@ -212,7 +203,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		else
 			return value + "";
 	}
-
 	/**
 	 * Get parameter names.
 	 *
@@ -223,7 +213,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get parameter values.
 	 *
@@ -235,7 +224,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get parameter map.
 	 *
@@ -245,7 +233,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get protocol.
 	 *
@@ -256,7 +243,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get scheme.
 	 *
@@ -267,7 +253,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get server name.
 	 *
@@ -278,7 +263,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get server port.
 	 *
@@ -289,7 +273,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	/**
 	 * Get reader.
 	 *
@@ -300,7 +283,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get remote addr.
 	 *
@@ -311,7 +293,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get remote host.
 	 *
@@ -322,7 +303,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Set attribute.
 	 *
@@ -334,7 +314,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Remove attribute.
 	 *
@@ -345,7 +324,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Get locale.
 	 *
@@ -356,7 +334,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get locales.
 	 *
@@ -367,19 +344,16 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Is secure.
 	 *
 	 * @return the boolean
 	 */
-
 	@Override
 	public boolean isSecure() {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Get request dispatcher.
 	 *
@@ -391,7 +365,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get real path.
 	 *
@@ -403,7 +376,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get remote port.
 	 *
@@ -414,7 +386,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	/**
 	 * Get local name.
 	 *
@@ -425,7 +396,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get local addr.
 	 *
@@ -436,7 +406,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get local port.
 	 *
@@ -447,7 +416,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	/**
 	 * Get auth type.
 	 *
@@ -458,7 +426,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get cookies.
 	 *
@@ -469,7 +436,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get date header.
 	 *
@@ -481,7 +447,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	/**
 	 * Get header.
 	 *
@@ -493,7 +458,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get headers.
 	 *
@@ -505,7 +469,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get header names.
 	 *
@@ -516,7 +479,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get int header.
 	 *
@@ -528,7 +490,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	/**
 	 * Get method.
 	 *
@@ -539,7 +500,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get path info.
 	 *
@@ -550,7 +510,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get path translated.
 	 *
@@ -561,7 +520,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get context path.
 	 *
@@ -572,7 +530,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get query string.
 	 *
@@ -583,7 +540,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get remote user.
 	 *
@@ -594,7 +550,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Is user in role.
 	 *
@@ -606,7 +561,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Get user principal.
 	 *
@@ -617,7 +571,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get requested session id.
 	 *
@@ -628,7 +581,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get request u r i.
 	 *
@@ -639,7 +591,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get request u r l.
 	 *
@@ -650,7 +601,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get servlet path.
 	 *
@@ -661,7 +611,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get session.
 	 *
@@ -673,7 +622,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get session.
 	 *
@@ -684,7 +632,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Is requested session id valid.
 	 *
@@ -695,7 +642,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Is requested session id from cookie.
 	 *
@@ -706,7 +652,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Is requested session id from u r l.
 	 *
@@ -717,7 +662,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Is requested session id from url.
 	 *
@@ -728,7 +672,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Get field.
 	 *
@@ -745,7 +688,6 @@ public class MockHttpServletRequest implements HttpServletRequest {
 				contentDisposition += "; " + parameter + "=\"" + parameters.get(parameter) + "\"";
 		return contentDisposition.getBytes();
 	}
-
 	/**
 	 * Concat all.
 	 *

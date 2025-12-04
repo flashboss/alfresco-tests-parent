@@ -18,7 +18,6 @@ import it.vige.common.SignConstants;
  * @author vige
  */
 public class SignService {
-
 	/** The content service. */
 	private ContentService contentService;
 	/** The node service. */
@@ -53,7 +52,6 @@ public class SignService {
 		}
 		return status;
 	}
-
 	/**
 	 * Set content service.
 	 *
@@ -62,7 +60,6 @@ public class SignService {
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}
-
 	/**
 	 * Set node service.
 	 *

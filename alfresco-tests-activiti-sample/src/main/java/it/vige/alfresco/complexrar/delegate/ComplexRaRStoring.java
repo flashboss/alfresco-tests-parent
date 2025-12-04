@@ -27,7 +27,6 @@ import it.vige.common.SignConstants;
  * @author vige
  */
 public class ComplexRaRStoring extends ComplexRaRGeneration {
-
 	/** The logger. */
 	private static Log logger = LogFactory.getLog(ComplexRaRStoring.class);
 
@@ -42,7 +41,6 @@ public class ComplexRaRStoring extends ComplexRaRGeneration {
 	public void setFileFolderService(FileFolderService fileFolderService) {
 		this.fileFolderService = fileFolderService;
 	}
-
 	/**
 	 * Execute.
 	 *

@@ -27,13 +27,11 @@ public class MockSearch extends Search implements Serializable, Externalizable {
 		out.writeChars(getExtensionName());
 		out.writeObject(storeRef);
 	}
-
 	/**
 	 * Read external.
 	 *
 	 * @param in the in
 	 */
-
 	@Override
 	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
 		services = (ServiceRegistry) in.readObject();

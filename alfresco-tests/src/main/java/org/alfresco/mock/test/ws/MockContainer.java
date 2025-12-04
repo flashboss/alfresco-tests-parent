@@ -20,7 +20,6 @@ import org.springframework.extensions.webscripts.TemplateProcessorRegistry;
  * @author vige
  */
 public class MockContainer implements Container {
-
 	/** The template parameters. */
 	private Map<String, Object> templateParameters = new HashMap<String, Object>();
 	/** The search path. */
@@ -37,7 +36,6 @@ public class MockContainer implements Container {
 		formats.put("xls", MimetypeMap.MIMETYPE_EXCEL);
 		formatRegistry.addFormats(null, formats);
 	}
-
 	/**
 	 * Get name.
 	 *
@@ -48,7 +46,6 @@ public class MockContainer implements Container {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get description.
 	 *
@@ -59,7 +56,6 @@ public class MockContainer implements Container {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get script processor registry.
 	 *
@@ -69,7 +65,6 @@ public class MockContainer implements Container {
 	public ScriptProcessorRegistry getScriptProcessorRegistry() {
 		return scriptProcessorRegistry;
 	}
-
 	/**
 	 * Get script parameter factory registry.
 	 *
@@ -80,7 +75,6 @@ public class MockContainer implements Container {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get script parameters.
 	 *
@@ -90,7 +84,6 @@ public class MockContainer implements Container {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get template processor registry.
 	 *
@@ -100,7 +93,6 @@ public class MockContainer implements Container {
 	public TemplateProcessorRegistry getTemplateProcessorRegistry() {
 		return templateProcessorRegistry;
 	}
-
 	/**
 	 * Get template parameters.
 	 *
@@ -110,7 +102,6 @@ public class MockContainer implements Container {
 		// TODO Auto-generated method stub
 		return templateParameters;
 	}
-
 	/**
 	 * Get format registry.
 	 *
@@ -120,7 +111,6 @@ public class MockContainer implements Container {
 	public FormatRegistry getFormatRegistry() {
 		return formatRegistry;
 	}
-
 	/**
 	 * Get registry.
 	 *
@@ -131,7 +121,6 @@ public class MockContainer implements Container {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get search path.
 	 *
@@ -141,7 +130,6 @@ public class MockContainer implements Container {
 	public SearchPath getSearchPath() {
 		return searchPath;
 	}
-
 	/**
 	 * Get config service.
 	 *
@@ -152,7 +140,6 @@ public class MockContainer implements Container {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Allow callbacks.
 	 *
@@ -163,7 +150,6 @@ public class MockContainer implements Container {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Reset.
 	 *

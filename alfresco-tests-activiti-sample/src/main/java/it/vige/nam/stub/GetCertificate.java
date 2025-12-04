@@ -36,7 +36,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class GetCertificate {
-
 	/** The username. */
 	protected String username;
 	/** The password. */
@@ -51,7 +50,6 @@ public class GetCertificate {
 	public String getUsername() {
 		return username;
 	}
-
 	/**
 	 * Imposta il valore della proprietà username.
 	 * 
@@ -61,7 +59,6 @@ public class GetCertificate {
 	public void setUsername(String value) {
 		this.username = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà password.
 	 * 
@@ -71,7 +68,6 @@ public class GetCertificate {
 	public String getPassword() {
 		return password;
 	}
-
 	/**
 	 * Imposta il valore della proprietà password.
 	 * 

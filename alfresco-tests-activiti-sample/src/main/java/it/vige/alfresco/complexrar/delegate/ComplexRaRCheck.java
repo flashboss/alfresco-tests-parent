@@ -20,7 +20,6 @@ import it.vige.common.HashModel;
  * @author vige
  */
 public class ComplexRaRCheck extends BaseJavaDelegate {
-
 	/** The node service. */
 	private NodeService nodeService;
 
@@ -57,7 +56,6 @@ public class ComplexRaRCheck extends BaseJavaDelegate {
 		execution.setVariable("vigewf_reviewDuplicatedSaSError", duplicatedPdvs);
 		execution.setVariable("vigewf_reviewUnsignedSaSError", unsignedPdvs);
 	}
-
 	/**
 	 * Set node service.
 	 *

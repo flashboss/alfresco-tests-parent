@@ -40,7 +40,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class Credentials {
-
 	/** The id otp. */
 	protected int idOtp;
 	/** The otp. */
@@ -62,7 +61,6 @@ public class Credentials {
 	public int getIdOtp() {
 		return idOtp;
 	}
-
 	/**
 	 * Imposta il valore della proprietà idOtp.
 	 * 
@@ -71,7 +69,6 @@ public class Credentials {
 	public void setIdOtp(int value) {
 		this.idOtp = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà otp.
 	 * 
@@ -81,7 +78,6 @@ public class Credentials {
 	public String getOtp() {
 		return otp;
 	}
-
 	/**
 	 * Imposta il valore della proprietà otp.
 	 * 
@@ -91,7 +87,6 @@ public class Credentials {
 	public void setOtp(String value) {
 		this.otp = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà password.
 	 * 
@@ -101,7 +96,6 @@ public class Credentials {
 	public String getPassword() {
 		return password;
 	}
-
 	/**
 	 * Imposta il valore della proprietà password.
 	 * 
@@ -111,7 +105,6 @@ public class Credentials {
 	public void setPassword(String value) {
 		this.password = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà securityCode.
 	 * 
@@ -121,7 +114,6 @@ public class Credentials {
 	public String getSecurityCode() {
 		return securityCode;
 	}
-
 	/**
 	 * Imposta il valore della proprietà securityCode.
 	 * 
@@ -131,7 +123,6 @@ public class Credentials {
 	public void setSecurityCode(String value) {
 		this.securityCode = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà sessionKey.
 	 * 
@@ -141,7 +132,6 @@ public class Credentials {
 	public String getSessionKey() {
 		return sessionKey;
 	}
-
 	/**
 	 * Imposta il valore della proprietà sessionKey.
 	 * 
@@ -151,7 +141,6 @@ public class Credentials {
 	public void setSessionKey(String value) {
 		this.sessionKey = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà username.
 	 * 
@@ -161,7 +150,6 @@ public class Credentials {
 	public String getUsername() {
 		return username;
 	}
-
 	/**
 	 * Imposta il valore della proprietà username.
 	 * 

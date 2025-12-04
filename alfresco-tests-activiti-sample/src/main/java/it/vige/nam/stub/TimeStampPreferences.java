@@ -44,7 +44,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class TimeStampPreferences {
-
 	/** The filename in t s d. */
 	protected String filenameInTSD;
 	/** The output as t s d. */
@@ -69,7 +68,6 @@ public class TimeStampPreferences {
 	public String getFilenameInTSD() {
 		return filenameInTSD;
 	}
-
 	/**
 	 * Imposta il valore della proprietà filenameInTSD.
 	 * 
@@ -79,7 +77,6 @@ public class TimeStampPreferences {
 	public void setFilenameInTSD(String value) {
 		this.filenameInTSD = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà outputAsTSD.
 	 * 
@@ -88,7 +85,6 @@ public class TimeStampPreferences {
 	public boolean isOutputAsTSD() {
 		return outputAsTSD;
 	}
-
 	/**
 	 * Imposta il valore della proprietà outputAsTSD.
 	 * 
@@ -97,7 +93,6 @@ public class TimeStampPreferences {
 	public void setOutputAsTSD(boolean value) {
 		this.outputAsTSD = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà outputBase64Encoded.
 	 * 
@@ -106,7 +101,6 @@ public class TimeStampPreferences {
 	public boolean isOutputBase64Encoded() {
 		return outputBase64Encoded;
 	}
-
 	/**
 	 * Imposta il valore della proprietà outputBase64Encoded.
 	 * 
@@ -115,7 +109,6 @@ public class TimeStampPreferences {
 	public void setOutputBase64Encoded(boolean value) {
 		this.outputBase64Encoded = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà timestampHashAlgo.
 	 * 
@@ -125,7 +118,6 @@ public class TimeStampPreferences {
 	public String getTimestampHashAlgo() {
 		return timestampHashAlgo;
 	}
-
 	/**
 	 * Imposta il valore della proprietà timestampHashAlgo.
 	 * 
@@ -135,7 +127,6 @@ public class TimeStampPreferences {
 	public void setTimestampHashAlgo(String value) {
 		this.timestampHashAlgo = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà timestampPassword.
 	 * 
@@ -145,7 +136,6 @@ public class TimeStampPreferences {
 	public String getTimestampPassword() {
 		return timestampPassword;
 	}
-
 	/**
 	 * Imposta il valore della proprietà timestampPassword.
 	 * 
@@ -155,7 +145,6 @@ public class TimeStampPreferences {
 	public void setTimestampPassword(String value) {
 		this.timestampPassword = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà timestampUrl.
 	 * 
@@ -165,7 +154,6 @@ public class TimeStampPreferences {
 	public String getTimestampUrl() {
 		return timestampUrl;
 	}
-
 	/**
 	 * Imposta il valore della proprietà timestampUrl.
 	 * 
@@ -175,7 +163,6 @@ public class TimeStampPreferences {
 	public void setTimestampUrl(String value) {
 		this.timestampUrl = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà timestampUsername.
 	 * 
@@ -185,7 +172,6 @@ public class TimeStampPreferences {
 	public String getTimestampUsername() {
 		return timestampUsername;
 	}
-
 	/**
 	 * Imposta il valore della proprietà timestampUsername.
 	 * 

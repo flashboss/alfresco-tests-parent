@@ -9,7 +9,6 @@ import java.util.List;
  * @author vige
  */
 public class SignedDocumentReportBean {
-
 	/**
 	 * Is overall verified.
 	 *
@@ -18,7 +17,6 @@ public class SignedDocumentReportBean {
 	public boolean isOverallVerified() {
 		return true;
 	}
-
 	/**
 	 * Get note report list.
 	 *
@@ -27,7 +25,6 @@ public class SignedDocumentReportBean {
 	public List<NoteReportBean> getNoteReportList() {
 		return new ArrayList<NoteReportBean>();
 	}
-	
 	/**
 	 * Get signature format.
 	 *

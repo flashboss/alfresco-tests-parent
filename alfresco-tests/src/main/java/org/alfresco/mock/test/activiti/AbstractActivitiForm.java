@@ -60,7 +60,6 @@ import org.subethamail.smtp.server.SMTPServer;
  * @author vige
  */
 public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
-
 	/** The spaces store. */
 	protected NodeRef spacesStore;
 	/** The archive. */
@@ -84,7 +83,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	public AbstractActivitiForm() {
 		super("test-module-context.xml");
 	}
-
 	/**
 	 * Init.
 	 *
@@ -146,7 +144,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		variables.put("logger", logger);
 		variables.put("utils", utils);
 	}
-
 	/**
 	 * End.
 	 *
@@ -161,7 +158,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		stopMailServer();
 
 	}
-
 	/**
 	 * Insert folder.
 	 *
@@ -173,7 +169,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		return NodeUtils.insertFolder(parent, name, ((ActivitiProcessEngineConfiguration) processEngineConfiguration)
 				.getServiceRegistry().getFileFolderService());
 	}
-
 	/**
 	 * Insert folder.
 	 *
@@ -192,7 +187,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		QName qname = QName.createQName(prefix, localName, namespaceService);
 		return fileFolderService.create(parent, qname.getPrefixString(), ContentModel.TYPE_FOLDER).getNodeRef();
 	}
-
 	/**
 	 * Insert document.
 	 *
@@ -214,12 +208,10 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		return ZipUtils.insertZip(parent, zipName, entryName, text, properties,
 				activitiProcessEngineConfiguration.getServiceRegistry());
 	}
-
 	/**
 	 * Initialize process engine.
 	 *
 	 */
-
 	@Override
 	protected void initializeProcessEngine() {
 		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
@@ -255,7 +247,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		processEngineConfiguration.setBeans(beans);
 		processEngine = processEngineConfiguration.buildProcessEngine();
 	}
-
 	/** The smtp server. */
 	private SMTPServer smtpServer;
 
@@ -267,7 +258,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	public SMTPServer getSmtpServer() {
 		return smtpServer;
 	}
-
 	/**
 	 * Set smtp server.
 	 *
@@ -276,7 +266,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 	public void setSmtpServer(SMTPServer smtpServer) {
 		this.smtpServer = smtpServer;
 	}
-
 	/**
 	 * Start mail server.
 	 *
@@ -287,7 +276,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		smtpServer.setPort(25000);
 		smtpServer.start();
 	}
-
 	/**
 	 * Stop mail server.
 	 *
@@ -335,7 +323,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		}
 
 	}
-
 	/**
 	 * Create group.
 	 *
@@ -351,7 +338,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 			identityService.saveGroup(newGroup);
 		}
 	}
-
 	/**
 	 * Delete all identities.
 	 *
@@ -367,7 +353,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 			identityService.deleteGroup(group.getId());
 		}
 	}
-
 	/**
 	 * Delete all histories.
 	 *
@@ -382,7 +367,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
 			}
 	}
-
 	/**
 	 * Delete all i deployments.
 	 *
@@ -394,7 +378,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 			repositoryService.deleteDeployment(deployment.getId());
 		}
 	}
-
 	/**
 	 * Get date.
 	 *
@@ -406,7 +389,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		c1.set(number[0], number[1], number[2], number.length > 3 ? number[3] : 0, number.length > 4 ? number[4] : 0);
 		return c1.getTime();
 	}
-
 	/**
 	 * Add hours.
 	 *
@@ -420,7 +402,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		cal.add(HOUR_OF_DAY, hours); // adds hour
 		return cal.getTime(); // returns new date object, one hour in the future
 	}
-
 	/**
 	 * Difference between.
 	 *
@@ -433,7 +414,6 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		long diffInMillies = date1.getTime() - date2.getTime();
 		return timeUnit.convert(diffInMillies, MILLISECONDS);
 	}
-
 	/**
 	 * Is admin.
 	 *

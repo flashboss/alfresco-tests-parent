@@ -38,7 +38,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class SignCAdESRemote {
-
 	/** The credentials. */
 	protected Credentials credentials;
 	protected byte[] buffer;
@@ -55,7 +54,6 @@ public class SignCAdESRemote {
 	public Credentials getCredentials() {
 		return credentials;
 	}
-
 	/**
 	 * Imposta il valore della proprietà credentials.
 	 * 
@@ -65,7 +63,6 @@ public class SignCAdESRemote {
 	public void setCredentials(Credentials value) {
 		this.credentials = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà buffer.
 	 * 
@@ -74,7 +71,6 @@ public class SignCAdESRemote {
 	public byte[] getBuffer() {
 		return buffer;
 	}
-
 	/**
 	 * Imposta il valore della proprietà buffer.
 	 * 
@@ -83,7 +79,6 @@ public class SignCAdESRemote {
 	public void setBuffer(byte[] value) {
 		this.buffer = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà cAdESPreferences.
 	 * 
@@ -93,7 +88,6 @@ public class SignCAdESRemote {
 	public CAdESPreferences getCAdESPreferences() {
 		return cAdESPreferences;
 	}
-
 	/**
 	 * Imposta il valore della proprietà cAdESPreferences.
 	 * 

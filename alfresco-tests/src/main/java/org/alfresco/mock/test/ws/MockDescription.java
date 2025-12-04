@@ -18,7 +18,6 @@ import org.springframework.extensions.webscripts.TypeDescription;
  * @author vige
  */
 public class MockDescription implements Description {
-
 	/** The required cache. */
 	private RequiredCache requiredCache = new MockRequiredCache();
 
@@ -31,7 +30,6 @@ public class MockDescription implements Description {
 	public String getId() {
 		return "test";
 	}
-
 	/**
 	 * Get short name.
 	 *
@@ -42,7 +40,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get description.
 	 *
@@ -53,7 +50,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get store path.
 	 *
@@ -64,7 +60,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get script path.
 	 *
@@ -75,7 +70,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get package.
 	 *
@@ -86,7 +80,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get desc path.
 	 *
@@ -97,7 +90,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get desc document.
 	 *
@@ -108,19 +100,16 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get kind.
 	 *
 	 * @return the string
 	 */
-
 	@Override
 	public String getKind() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get familys.
 	 *
@@ -131,7 +120,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get required authentication.
 	 *
@@ -142,7 +130,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get run as.
 	 *
@@ -153,7 +140,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get required transaction.
 	 *
@@ -164,7 +150,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get required transaction parameters.
 	 *
@@ -175,7 +160,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get required cache.
 	 *
@@ -185,7 +169,6 @@ public class MockDescription implements Description {
 	public RequiredCache getRequiredCache() {
 		return requiredCache;
 	}
-
 	/**
 	 * Get method.
 	 *
@@ -196,7 +179,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get u r is.
 	 *
@@ -207,7 +189,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get format style.
 	 *
@@ -218,7 +199,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get default format.
 	 *
@@ -229,7 +209,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get negotiated formats.
 	 *
@@ -240,7 +219,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get extensions.
 	 *
@@ -250,7 +228,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get lifecycle.
 	 *
@@ -261,7 +238,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get multipart processing.
 	 *
@@ -272,7 +248,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Set multipart processing.
 	 *
@@ -283,7 +258,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Get arguments.
 	 *
@@ -294,7 +268,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get request types.
 	 *
@@ -305,7 +278,6 @@ public class MockDescription implements Description {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get response types.
 	 *

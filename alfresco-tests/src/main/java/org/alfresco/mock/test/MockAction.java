@@ -16,7 +16,6 @@ import org.alfresco.service.cmr.repository.NodeRef;
  * @author vige
  */
 public class MockAction implements Action {
-
 	/** The name. */
 	private String name;
 
@@ -32,7 +31,6 @@ public class MockAction implements Action {
 	public MockAction(String name) {
 		this.name = name;
 	}
-
 	/**
 	 * Constructs a new mock action.
 	 *
@@ -44,7 +42,6 @@ public class MockAction implements Action {
 		this(name);
 		this.params = params;
 	}
-
 	/**
 	 * Get id.
 	 *
@@ -54,7 +51,6 @@ public class MockAction implements Action {
 	public String getId() {
 		return name;
 	}
-
 	/**
 	 * Get parameter values.
 	 *
@@ -63,7 +59,6 @@ public class MockAction implements Action {
 	public Map<String, Serializable> getParameterValues() {
 		return params;
 	}
-
 	/**
 	 * Get parameter value.
 	 *
@@ -74,7 +69,6 @@ public class MockAction implements Action {
 	public Serializable getParameterValue(String name) {
 		return params.get(name);
 	}
-
 	/**
 	 * Set parameter values.
 	 *
@@ -85,7 +79,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Set parameter value.
 	 *
@@ -97,7 +90,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Get node ref.
 	 *
@@ -108,7 +100,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get action definition name.
 	 *
@@ -119,7 +110,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get title.
 	 *
@@ -130,7 +120,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Set title.
 	 *
@@ -141,7 +130,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Get description.
 	 *
@@ -152,7 +140,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Set description.
 	 *
@@ -163,7 +150,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Get track status.
 	 *
@@ -174,7 +160,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Set track status.
 	 *
@@ -185,7 +170,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Get execute asychronously.
 	 *
@@ -196,7 +180,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Set execute asynchronously.
 	 *
@@ -207,7 +190,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Get compensating action.
 	 *
@@ -218,7 +200,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Set compensating action.
 	 *
@@ -229,7 +210,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Get created date.
 	 *
@@ -240,7 +220,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get creator.
 	 *
@@ -251,7 +230,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get modified date.
 	 *
@@ -262,7 +240,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get modifier.
 	 *
@@ -273,7 +250,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Has action conditions.
 	 *
@@ -284,7 +260,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Index of action condition.
 	 *
@@ -296,7 +271,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	/**
 	 * Get action conditions.
 	 *
@@ -307,7 +281,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get action condition.
 	 *
@@ -319,7 +292,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Add action condition.
 	 *
@@ -330,7 +302,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Add action condition.
 	 *
@@ -342,7 +313,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Set action condition.
 	 *
@@ -354,7 +324,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Remove action condition.
 	 *
@@ -365,7 +334,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Remove all action conditions.
 	 *
@@ -375,7 +343,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Add parameter values.
 	 *
@@ -386,7 +353,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Get execution start date.
 	 *
@@ -397,7 +363,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get execution end date.
 	 *
@@ -408,7 +373,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get execution status.
 	 *
@@ -419,7 +383,6 @@ public class MockAction implements Action {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get execution failure message.
 	 *

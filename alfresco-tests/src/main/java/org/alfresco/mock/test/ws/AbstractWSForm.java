@@ -16,7 +16,6 @@ import org.springframework.extensions.webscripts.Description;
  * @author vige
  */
 public abstract class AbstractWSForm extends AbstractForm {
-
 	/** The container. */
 	@Autowired
 	private Container container;

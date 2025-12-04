@@ -12,7 +12,6 @@ import org.alfresco.service.cmr.repository.ScriptProcessor;
  * @author vige
  */
 public class MockScriptService extends ScriptServiceImpl implements Serializable {
-
 	/** The script processor. */
 	private ScriptProcessor scriptProcessor;	/**
 	 * Lookup script processor.
@@ -20,13 +19,10 @@ public class MockScriptService extends ScriptServiceImpl implements Serializable
 	 * @param name the name
 	 * @return the script processor
 	 */
-
-
 	@Override
 	protected ScriptProcessor lookupScriptProcessor(String name) {
 		return scriptProcessor;
 	}
-
 	/**
 	 * Get script processor.
 	 *
@@ -35,7 +31,6 @@ public class MockScriptService extends ScriptServiceImpl implements Serializable
 	public ScriptProcessor getScriptProcessor() {
 		return scriptProcessor;
 	}
-
 	/**
 	 * Set script processor.
 	 *

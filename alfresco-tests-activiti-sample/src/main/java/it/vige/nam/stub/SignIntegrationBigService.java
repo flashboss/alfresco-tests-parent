@@ -35,7 +35,6 @@ public class SignIntegrationBigService extends Service {
 		}
 		WSDL_LOCATION = url;
 	}
-
 	/**
 	 * Constructs a new sign integration big service.
 	 *
@@ -45,7 +44,6 @@ public class SignIntegrationBigService extends Service {
 	public SignIntegrationBigService(URL wsdlLocation) {
 		super(wsdlLocation, SERVICE);
 	}
-
 	/**
 	 * Constructs a new sign integration big service.
 	 *
@@ -56,7 +54,6 @@ public class SignIntegrationBigService extends Service {
 	public SignIntegrationBigService(URL wsdlLocation, QName serviceName) {
 		super(wsdlLocation, serviceName);
 	}
-
 	/**
 	 * Constructs a new sign integration big service.
 	 *
@@ -65,7 +62,6 @@ public class SignIntegrationBigService extends Service {
 	public SignIntegrationBigService() {
 		super(WSDL_LOCATION, SERVICE);
 	}
-
 	/**
 	 * Constructs a new sign integration big service.
 	 *
@@ -75,7 +71,6 @@ public class SignIntegrationBigService extends Service {
 	public SignIntegrationBigService(WebServiceFeature... features) {
 		super(WSDL_LOCATION, SERVICE);
 	}
-
 	/**
 	 * Constructs a new sign integration big service.
 	 *
@@ -86,7 +81,6 @@ public class SignIntegrationBigService extends Service {
 	public SignIntegrationBigService(URL wsdlLocation, WebServiceFeature... features) {
 		super(wsdlLocation, SERVICE);
 	}
-
 	/**
 	 * Constructs a new sign integration big service.
 	 *
@@ -98,7 +92,6 @@ public class SignIntegrationBigService extends Service {
 	public SignIntegrationBigService(URL wsdlLocation, QName serviceName, WebServiceFeature... features) {
 		super(wsdlLocation, serviceName);
 	}
-
 	/**
 	 *
 	 * @return returns SignIntegrationBig
@@ -107,7 +100,6 @@ public class SignIntegrationBigService extends Service {
 	public SignIntegrationBig getSignIntegrationBigPort() {
 		return super.getPort(SignIntegrationBigPort, SignIntegrationBig.class);
 	}
-
 	/**
 	 * 
 	 * @param features A list of {@link javax.xml.ws.WebServiceFeature} to configure

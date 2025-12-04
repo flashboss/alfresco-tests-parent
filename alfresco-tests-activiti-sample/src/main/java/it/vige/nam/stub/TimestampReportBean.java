@@ -54,7 +54,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * @author vige
  */
 public class TimestampReportBean {
-
 	/** The comment. */
 	protected String comment;
 	protected byte[] content;
@@ -95,7 +94,6 @@ public class TimestampReportBean {
 	public String getComment() {
 		return comment;
 	}
-
 	/**
 	 * Imposta il valore della proprietà comment.
 	 * 
@@ -105,7 +103,6 @@ public class TimestampReportBean {
 	public void setComment(String value) {
 		this.comment = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà content.
 	 * 
@@ -114,7 +111,6 @@ public class TimestampReportBean {
 	public byte[] getContent() {
 		return content;
 	}
-
 	/**
 	 * Imposta il valore della proprietà content.
 	 * 
@@ -123,7 +119,6 @@ public class TimestampReportBean {
 	public void setContent(byte[] value) {
 		this.content = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà contentFilename.
 	 * 
@@ -133,7 +128,6 @@ public class TimestampReportBean {
 	public String getContentFilename() {
 		return contentFilename;
 	}
-
 	/**
 	 * Imposta il valore della proprietà contentFilename.
 	 * 
@@ -143,7 +137,6 @@ public class TimestampReportBean {
 	public void setContentFilename(String value) {
 		this.contentFilename = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà contentMimeType.
 	 * 
@@ -153,7 +146,6 @@ public class TimestampReportBean {
 	public String getContentMimeType() {
 		return contentMimeType;
 	}
-
 	/**
 	 * Imposta il valore della proprietà contentMimeType.
 	 * 
@@ -163,7 +155,6 @@ public class TimestampReportBean {
 	public void setContentMimeType(String value) {
 		this.contentMimeType = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà date.
 	 * 
@@ -173,7 +164,6 @@ public class TimestampReportBean {
 	public XMLGregorianCalendar getDate() {
 		return date;
 	}
-
 	/**
 	 * Imposta il valore della proprietà date.
 	 * 
@@ -183,7 +173,6 @@ public class TimestampReportBean {
 	public void setDate(XMLGregorianCalendar value) {
 		this.date = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà hashAlgorithm.
 	 * 
@@ -193,7 +182,6 @@ public class TimestampReportBean {
 	public String getHashAlgorithm() {
 		return hashAlgorithm;
 	}
-
 	/**
 	 * Imposta il valore della proprietà hashAlgorithm.
 	 * 
@@ -203,7 +191,6 @@ public class TimestampReportBean {
 	public void setHashAlgorithm(String value) {
 		this.hashAlgorithm = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà index.
 	 * 
@@ -212,7 +199,6 @@ public class TimestampReportBean {
 	public int getIndex() {
 		return index;
 	}
-
 	/**
 	 * Imposta il valore della proprietà index.
 	 * 
@@ -221,7 +207,6 @@ public class TimestampReportBean {
 	public void setIndex(int value) {
 		this.index = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà issuer.
 	 * 
@@ -231,7 +216,6 @@ public class TimestampReportBean {
 	public String getIssuer() {
 		return issuer;
 	}
-
 	/**
 	 * Imposta il valore della proprietà issuer.
 	 * 
@@ -241,7 +225,6 @@ public class TimestampReportBean {
 	public void setIssuer(String value) {
 		this.issuer = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà serialNumber.
 	 * 
@@ -251,7 +234,6 @@ public class TimestampReportBean {
 	public BigInteger getSerialNumber() {
 		return serialNumber;
 	}
-
 	/**
 	 * Imposta il valore della proprietà serialNumber.
 	 * 
@@ -261,7 +243,6 @@ public class TimestampReportBean {
 	public void setSerialNumber(BigInteger value) {
 		this.serialNumber = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà signatureAlgorithm.
 	 * 
@@ -271,7 +252,6 @@ public class TimestampReportBean {
 	public String getSignatureAlgorithm() {
 		return signatureAlgorithm;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signatureAlgorithm.
 	 * 
@@ -281,7 +261,6 @@ public class TimestampReportBean {
 	public void setSignatureAlgorithm(String value) {
 		this.signatureAlgorithm = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà signatureVerificationStatus.
 	 * 
@@ -291,7 +270,6 @@ public class TimestampReportBean {
 	public Result getSignatureVerificationStatus() {
 		return signatureVerificationStatus;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signatureVerificationStatus.
 	 * 
@@ -301,7 +279,6 @@ public class TimestampReportBean {
 	public void setSignatureVerificationStatus(Result value) {
 		this.signatureVerificationStatus = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà timestampCertData.
 	 * 
@@ -310,7 +287,6 @@ public class TimestampReportBean {
 	public byte[] getTimestampCertData() {
 		return timestampCertData;
 	}
-
 	/**
 	 * Imposta il valore della proprietà timestampCertData.
 	 * 
@@ -319,7 +295,6 @@ public class TimestampReportBean {
 	public void setTimestampCertData(byte[] value) {
 		this.timestampCertData = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà timestampCertificateStatus.
 	 * 
@@ -329,7 +304,6 @@ public class TimestampReportBean {
 	public CertificateStatus getTimestampCertificateStatus() {
 		return timestampCertificateStatus;
 	}
-
 	/**
 	 * Imposta il valore della proprietà timestampCertificateStatus.
 	 * 
@@ -339,7 +313,6 @@ public class TimestampReportBean {
 	public void setTimestampCertificateStatus(CertificateStatus value) {
 		this.timestampCertificateStatus = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà trustedListVerificationStatus.
 	 * 
@@ -349,7 +322,6 @@ public class TimestampReportBean {
 	public Result getTrustedListVerificationStatus() {
 		return trustedListVerificationStatus;
 	}
-
 	/**
 	 * Imposta il valore della proprietà trustedListVerificationStatus.
 	 * 

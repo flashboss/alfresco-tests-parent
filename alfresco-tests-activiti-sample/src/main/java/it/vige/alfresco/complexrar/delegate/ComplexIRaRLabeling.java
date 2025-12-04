@@ -11,7 +11,6 @@ import org.apache.commons.logging.LogFactory;
  * @author vige
  */
 public class ComplexIRaRLabeling extends BaseJavaDelegate {
-
 	/** The logger. */
 	private static Log logger = LogFactory.getLog(ComplexIRaRLabeling.class);
 

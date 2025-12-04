@@ -44,7 +44,6 @@ import it.vige.ws.service.SignedDocumentReportBean;
  * @author vige
  */
 public class UploadDoc extends DeclarativeWebScript {
-
 	/** The logger. */
 	private Logger logger = Logger.getLogger(UploadDoc.class);
 
@@ -69,8 +68,6 @@ public class UploadDoc extends DeclarativeWebScript {
 	 * @param status the status
 	 * @param cache the cache
 	 */
-
-
 	@Override
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
@@ -389,7 +386,6 @@ public class UploadDoc extends DeclarativeWebScript {
 		status.setCode(Status.STATUS_CREATED);
 		return model;
 	}
-
 	/**
 	 * Set file folder service.
 	 *
@@ -398,7 +394,6 @@ public class UploadDoc extends DeclarativeWebScript {
 	public void setFileFolderService(FileFolderService fileFolderService) {
 		this.fileFolderService = fileFolderService;
 	}
-
 	/**
 	 * Set search service.
 	 *
@@ -407,7 +402,6 @@ public class UploadDoc extends DeclarativeWebScript {
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
-
 	/**
 	 * Set node service.
 	 *
@@ -416,7 +410,6 @@ public class UploadDoc extends DeclarativeWebScript {
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
-
 	/**
 	 * Set content service.
 	 *
@@ -425,7 +418,6 @@ public class UploadDoc extends DeclarativeWebScript {
 	public void setContentService(ContentService contentService) {
 		this.contentService = contentService;
 	}
-
 	/**
 	 * Set version service.
 	 *
@@ -434,7 +426,6 @@ public class UploadDoc extends DeclarativeWebScript {
 	public void setVersionService(VersionService versionService) {
 		this.versionService = versionService;
 	}
-
 	/**
 	 * Set dropzone path.
 	 *
@@ -443,7 +434,6 @@ public class UploadDoc extends DeclarativeWebScript {
 	public void setDropzonePath(String dropzonePath) {
 		this.dropzonePath = dropzonePath;
 	}
-
 	/**
 	 * Set sign service.
 	 *
@@ -452,7 +442,6 @@ public class UploadDoc extends DeclarativeWebScript {
 	public void setSignService(SignService signService) {
 		this.signService = signService;
 	}
-
 	/**
 	 * Set applica marca.
 	 *

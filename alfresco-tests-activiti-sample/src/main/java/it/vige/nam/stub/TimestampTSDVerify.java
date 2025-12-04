@@ -46,7 +46,6 @@ public class TimestampTSDVerify {
 	public byte[] getTsd() {
 		return tsd;
 	}
-
 	/**
 	 * Imposta il valore della proprietà tsd.
 	 * 

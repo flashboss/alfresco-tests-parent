@@ -20,7 +20,6 @@ public class MockScope implements Scriptable, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get.
 	 *
@@ -33,7 +32,6 @@ public class MockScope implements Scriptable, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get.
 	 *
@@ -46,7 +44,6 @@ public class MockScope implements Scriptable, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Has.
 	 *
@@ -59,7 +56,6 @@ public class MockScope implements Scriptable, Serializable {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Has.
 	 *
@@ -72,7 +68,6 @@ public class MockScope implements Scriptable, Serializable {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Put.
 	 *
@@ -85,7 +80,6 @@ public class MockScope implements Scriptable, Serializable {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Put.
 	 *
@@ -98,7 +92,6 @@ public class MockScope implements Scriptable, Serializable {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Delete.
 	 *
@@ -109,7 +102,6 @@ public class MockScope implements Scriptable, Serializable {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Delete.
 	 *
@@ -120,7 +112,6 @@ public class MockScope implements Scriptable, Serializable {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Get prototype.
 	 *
@@ -131,7 +122,6 @@ public class MockScope implements Scriptable, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Set prototype.
 	 *
@@ -142,7 +132,6 @@ public class MockScope implements Scriptable, Serializable {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Get parent scope.
 	 *
@@ -153,7 +142,6 @@ public class MockScope implements Scriptable, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Set parent scope.
 	 *
@@ -164,7 +152,6 @@ public class MockScope implements Scriptable, Serializable {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Get ids.
 	 *
@@ -175,7 +162,6 @@ public class MockScope implements Scriptable, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get default value.
 	 *
@@ -188,7 +174,6 @@ public class MockScope implements Scriptable, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Has instance.
 	 *

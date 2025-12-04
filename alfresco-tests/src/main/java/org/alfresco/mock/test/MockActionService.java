@@ -31,7 +31,6 @@ import org.springframework.context.ApplicationContext;
  * @author vige
  */
 public class MockActionService implements ActionService, RuntimeActionService, Serializable {
-
 	/** The app context. */
 	@Autowired
 	private ApplicationContext appContext;
@@ -47,7 +46,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get action definitions.
 	 *
@@ -58,7 +56,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get action definitions.
 	 *
@@ -70,7 +67,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get action condition definition.
 	 *
@@ -82,7 +78,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get action condition definitions.
 	 *
@@ -93,7 +88,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get parameter constraint.
 	 *
@@ -105,7 +99,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get parameter constraints.
 	 *
@@ -116,7 +109,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Create action.
 	 *
@@ -127,7 +119,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 	public Action createAction(String name) {
 		return new MockAction(name);
 	}
-
 	/**
 	 * Create action.
 	 *
@@ -139,7 +130,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 	public Action createAction(String name, Map<String, Serializable> params) {
 		return new MockAction(name, params);
 	}
-
 	/**
 	 * Create composite action.
 	 *
@@ -150,7 +140,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Create action condition.
 	 *
@@ -162,7 +151,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Create action condition.
 	 *
@@ -175,7 +163,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Create composite action condition.
 	 *
@@ -186,7 +173,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Execute action.
 	 *
@@ -204,7 +190,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 			e.printStackTrace();
 		}
 	}
-
 	/**
 	 * Execute action.
 	 *
@@ -217,7 +202,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Execute action.
 	 *
@@ -231,7 +215,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 			boolean executeAsynchronously) {
 		executeAction(action, actionedUponNodeRef);
 	}
-
 	/**
 	 * Evaluate action.
 	 *
@@ -244,7 +227,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Evaluate action condition.
 	 *
@@ -257,7 +239,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Save action.
 	 *
@@ -269,7 +250,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Get actions.
 	 *
@@ -281,7 +261,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get action.
 	 *
@@ -294,7 +273,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Remove action.
 	 *
@@ -306,7 +284,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Remove all actions.
 	 *
@@ -317,7 +294,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Post commit.
 	 *
@@ -327,7 +303,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'postCommit'");
 	}
-
 	/**
 	 * Register action condition evaluator.
 	 *
@@ -337,7 +312,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 	public void registerActionConditionEvaluator(ActionConditionEvaluator actionConditionEvaluator) {
 		// TODO Auto-generated method stub
 	}
-
 	/**
 	 * Register action executer.
 	 *
@@ -347,7 +321,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 	public void registerActionExecuter(ActionExecuter actionExecuter) {
 		// TODO Auto-generated method stub
 	}
-
 	/**
 	 * Register parameter constraint.
 	 *
@@ -357,7 +330,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 	public void registerParameterConstraint(ParameterConstraint parameterConstraint) {
 		// TODO Auto-generated method stub
 	}
-
 	/**
 	 * Create action.
 	 *
@@ -368,7 +340,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 	public Action createAction(NodeRef actionNodeRef) {
 		return null;
 	}
-
 	/**
 	 * Create action node ref.
 	 *
@@ -382,7 +353,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 	public NodeRef createActionNodeRef(Action action, NodeRef parentNodeRef, QName assocTypeName, QName assocName) {
 		return null;
 	}
-
 	/**
 	 * Save action impl.
 	 *
@@ -393,7 +363,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 	public void saveActionImpl(NodeRef actionNodeRef, Action action) {
 		// TODO Auto-generated method stub
 	}
-
 	/**
 	 * Execute action impl.
 	 *
@@ -408,7 +377,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 			boolean executedAsynchronously, Set<String> actionChain) {
 		// TODO Auto-generated method stub
 	}
-
 	/**
 	 * Direct action execution.
 	 *
@@ -419,7 +387,6 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 	public void directActionExecution(Action action, NodeRef actionedUponNodeRef) {
 		// TODO Auto-generated method stub
 	}
-
 	/**
 	 * On log exception.
 	 *

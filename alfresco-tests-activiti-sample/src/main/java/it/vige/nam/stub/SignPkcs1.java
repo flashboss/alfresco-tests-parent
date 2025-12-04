@@ -37,7 +37,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class SignPkcs1 {
-
 	/** The credentials. */
 	protected Credentials credentials;
 	protected byte[] hash;
@@ -53,7 +52,6 @@ public class SignPkcs1 {
 	public Credentials getCredentials() {
 		return credentials;
 	}
-
 	/**
 	 * Imposta il valore della proprietà credentials.
 	 * 
@@ -63,7 +61,6 @@ public class SignPkcs1 {
 	public void setCredentials(Credentials value) {
 		this.credentials = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà hash.
 	 * 
@@ -72,7 +69,6 @@ public class SignPkcs1 {
 	public byte[] getHash() {
 		return hash;
 	}
-
 	/**
 	 * Imposta il valore della proprietà hash.
 	 * 
@@ -81,7 +77,6 @@ public class SignPkcs1 {
 	public void setHash(byte[] value) {
 		this.hash = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà preferences.
 	 * 
@@ -91,7 +86,6 @@ public class SignPkcs1 {
 	public SignPreferences getPreferences() {
 		return preferences;
 	}
-
 	/**
 	 * Imposta il valore della proprietà preferences.
 	 * 

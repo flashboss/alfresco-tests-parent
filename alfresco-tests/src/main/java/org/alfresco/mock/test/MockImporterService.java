@@ -31,7 +31,6 @@ import com.google.gdata.util.common.io.CharStreams;
  * @author vige
  */
 public class MockImporterService implements ImporterService, Serializable {
-
 	/** The node service. */
 	@Autowired
 	private NodeService nodeService;
@@ -46,8 +45,6 @@ public class MockImporterService implements ImporterService, Serializable {
 	 * @param binding the binding
 	 * @param progress the progress
 	 */
-
-
 	@Override
 	public void importView(Reader viewReader, Location location, ImporterBinding binding, ImporterProgress progress)
 			throws ImporterException {

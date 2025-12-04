@@ -34,7 +34,6 @@ public class SignIntegrationService extends Service {
 		}
 		WSDL_LOCATION = url;
 	}
-
 	/**
 	 * Constructs a new sign integration service.
 	 *
@@ -44,7 +43,6 @@ public class SignIntegrationService extends Service {
 	public SignIntegrationService(URL wsdlLocation) {
 		super(wsdlLocation, SERVICE);
 	}
-
 	/**
 	 * Constructs a new sign integration service.
 	 *
@@ -55,7 +53,6 @@ public class SignIntegrationService extends Service {
 	public SignIntegrationService(URL wsdlLocation, QName serviceName) {
 		super(wsdlLocation, serviceName);
 	}
-
 	/**
 	 * Constructs a new sign integration service.
 	 *
@@ -64,7 +61,6 @@ public class SignIntegrationService extends Service {
 	public SignIntegrationService() {
 		super(WSDL_LOCATION, SERVICE);
 	}
-
 	/**
 	 * Constructs a new sign integration service.
 	 *
@@ -74,7 +70,6 @@ public class SignIntegrationService extends Service {
 	public SignIntegrationService(WebServiceFeature... features) {
 		super(WSDL_LOCATION, SERVICE);
 	}
-
 	/**
 	 * Constructs a new sign integration service.
 	 *
@@ -85,7 +80,6 @@ public class SignIntegrationService extends Service {
 	public SignIntegrationService(URL wsdlLocation, WebServiceFeature... features) {
 		super(wsdlLocation, SERVICE);
 	}
-
 	/**
 	 * Constructs a new sign integration service.
 	 *
@@ -97,7 +91,6 @@ public class SignIntegrationService extends Service {
 	public SignIntegrationService(URL wsdlLocation, QName serviceName, WebServiceFeature... features) {
 		super(wsdlLocation, serviceName);
 	}
-
 	/**
 	 *
 	 * @return returns SignIntegration
@@ -106,7 +99,6 @@ public class SignIntegrationService extends Service {
 	public SignIntegration getSignIntegrationPort() {
 		return super.getPort(SignIntegrationPort, SignIntegration.class);
 	}
-
 	/**
 	 * 
 	 * @param features A list of {@link javax.xml.ws.WebServiceFeature} to configure

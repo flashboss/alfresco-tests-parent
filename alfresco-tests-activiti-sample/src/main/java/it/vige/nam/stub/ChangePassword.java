@@ -38,7 +38,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class ChangePassword {
-
 	/** The security code. */
 	protected String securityCode;
 	/** The username. */
@@ -57,7 +56,6 @@ public class ChangePassword {
 	public String getSecurityCode() {
 		return securityCode;
 	}
-
 	/**
 	 * Imposta il valore della proprietà securityCode.
 	 * 
@@ -67,7 +65,6 @@ public class ChangePassword {
 	public void setSecurityCode(String value) {
 		this.securityCode = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà username.
 	 * 
@@ -77,7 +74,6 @@ public class ChangePassword {
 	public String getUsername() {
 		return username;
 	}
-
 	/**
 	 * Imposta il valore della proprietà username.
 	 * 
@@ -87,7 +83,6 @@ public class ChangePassword {
 	public void setUsername(String value) {
 		this.username = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà password.
 	 * 
@@ -97,7 +92,6 @@ public class ChangePassword {
 	public String getPassword() {
 		return password;
 	}
-
 	/**
 	 * Imposta il valore della proprietà password.
 	 * 
@@ -107,7 +101,6 @@ public class ChangePassword {
 	public void setPassword(String value) {
 		this.password = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà newPassword.
 	 * 
@@ -117,7 +110,6 @@ public class ChangePassword {
 	public String getNewPassword() {
 		return newPassword;
 	}
-
 	/**
 	 * Imposta il valore della proprietà newPassword.
 	 * 

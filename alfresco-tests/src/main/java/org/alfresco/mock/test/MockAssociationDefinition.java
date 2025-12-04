@@ -22,7 +22,6 @@ public class MockAssociationDefinition implements AssociationDefinition {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get name.
 	 *
@@ -33,7 +32,6 @@ public class MockAssociationDefinition implements AssociationDefinition {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get title.
 	 *
@@ -44,7 +42,6 @@ public class MockAssociationDefinition implements AssociationDefinition {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get description.
 	 *
@@ -55,7 +52,6 @@ public class MockAssociationDefinition implements AssociationDefinition {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get title.
 	 *
@@ -67,7 +63,6 @@ public class MockAssociationDefinition implements AssociationDefinition {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get description.
 	 *
@@ -79,7 +74,6 @@ public class MockAssociationDefinition implements AssociationDefinition {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Is child.
 	 *
@@ -89,7 +83,6 @@ public class MockAssociationDefinition implements AssociationDefinition {
 	public boolean isChild() {
 		return true;
 	}
-
 	/**
 	 * Is protected.
 	 *
@@ -100,7 +93,6 @@ public class MockAssociationDefinition implements AssociationDefinition {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Get source class.
 	 *
@@ -111,7 +103,6 @@ public class MockAssociationDefinition implements AssociationDefinition {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get source role name.
 	 *
@@ -122,7 +113,6 @@ public class MockAssociationDefinition implements AssociationDefinition {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Is source mandatory.
 	 *
@@ -133,7 +123,6 @@ public class MockAssociationDefinition implements AssociationDefinition {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Is source many.
 	 *
@@ -144,7 +133,6 @@ public class MockAssociationDefinition implements AssociationDefinition {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Get target class.
 	 *
@@ -155,7 +143,6 @@ public class MockAssociationDefinition implements AssociationDefinition {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get target role name.
 	 *
@@ -166,7 +153,6 @@ public class MockAssociationDefinition implements AssociationDefinition {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Is target mandatory.
 	 *
@@ -177,7 +163,6 @@ public class MockAssociationDefinition implements AssociationDefinition {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Is target mandatory enforced.
 	 *
@@ -188,7 +173,6 @@ public class MockAssociationDefinition implements AssociationDefinition {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Is target many.
 	 *

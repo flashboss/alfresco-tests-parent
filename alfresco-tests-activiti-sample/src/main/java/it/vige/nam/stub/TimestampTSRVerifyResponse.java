@@ -50,7 +50,6 @@ public class TimestampTSRVerifyResponse {
 	public TimestampReportBean getReturn() {
 		return _return;
 	}
-
 	/**
 	 * Imposta il valore della proprietà return.
 	 * 

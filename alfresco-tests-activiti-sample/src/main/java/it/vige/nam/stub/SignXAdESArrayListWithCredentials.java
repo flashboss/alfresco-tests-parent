@@ -41,7 +41,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class SignXAdESArrayListWithCredentials {
-
 	/** The credentials. */
 	protected Credentials credentials;
 	/** The buffer list. */
@@ -59,7 +58,6 @@ public class SignXAdESArrayListWithCredentials {
 	public Credentials getCredentials() {
 		return credentials;
 	}
-
 	/**
 	 * Imposta il valore della proprietà credentials.
 	 * 
@@ -69,7 +67,6 @@ public class SignXAdESArrayListWithCredentials {
 	public void setCredentials(Credentials value) {
 		this.credentials = value;
 	}
-
 	/**
 	 * Gets the value of the bufferList property.
 	 * 
@@ -98,7 +95,6 @@ public class SignXAdESArrayListWithCredentials {
 		}
 		return this.bufferList;
 	}
-
 	/**
 	 * Recupera il valore della proprietà xAdESPreferences.
 	 * 
@@ -108,7 +104,6 @@ public class SignXAdESArrayListWithCredentials {
 	public XAdESPreferences getXAdESPreferences() {
 		return xAdESPreferences;
 	}
-
 	/**
 	 * Imposta il valore della proprietà xAdESPreferences.
 	 * 

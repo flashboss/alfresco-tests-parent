@@ -48,7 +48,6 @@ public class TimestampTSRVerify {
 	public byte[] getTsr() {
 		return tsr;
 	}
-
 	/**
 	 * Imposta il valore della proprietà tsr.
 	 * 
@@ -57,7 +56,6 @@ public class TimestampTSRVerify {
 	public void setTsr(byte[] value) {
 		this.tsr = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà content.
 	 * 
@@ -66,7 +64,6 @@ public class TimestampTSRVerify {
 	public byte[] getContent() {
 		return content;
 	}
-
 	/**
 	 * Imposta il valore della proprietà content.
 	 * 

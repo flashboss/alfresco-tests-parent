@@ -43,7 +43,6 @@ public class ObjectFactory {
 	 */
 	public ObjectFactory() {
 	}
-
 	/**
 	 * Create an instance of {@link SignCAdESByAttachment }
 	 * 
@@ -52,7 +51,6 @@ public class ObjectFactory {
 	public SignCAdESByAttachment createSignCAdESByAttachment() {
 		return new SignCAdESByAttachment();
 	}
-
 	/**
 	 * Create an instance of {@link SignCAdESByAttachmentResponse }
 	 * 
@@ -61,7 +59,6 @@ public class ObjectFactory {
 	public SignCAdESByAttachmentResponse createSignCAdESByAttachmentResponse() {
 		return new SignCAdESByAttachmentResponse();
 	}
-
 	/**
 	 * Create an instance of {@link VerifyCAdESByAttachment }
 	 * 
@@ -70,7 +67,6 @@ public class ObjectFactory {
 	public VerifyCAdESByAttachment createVerifyCAdESByAttachment() {
 		return new VerifyCAdESByAttachment();
 	}
-
 	/**
 	 * Create an instance of {@link VerifyCAdESByAttachmentResponse }
 	 * 
@@ -79,7 +75,6 @@ public class ObjectFactory {
 	public VerifyCAdESByAttachmentResponse createVerifyCAdESByAttachmentResponse() {
 		return new VerifyCAdESByAttachmentResponse();
 	}
-
 	/**
 	 * Create an instance of {@link WsFaultBean }
 	 * 
@@ -88,7 +83,6 @@ public class ObjectFactory {
 	public WsFaultBean createWsFaultBean() {
 		return new WsFaultBean();
 	}
-
 	/**
 	 * Create an instance of {@link VerifyPreferences }
 	 * 
@@ -97,7 +91,6 @@ public class ObjectFactory {
 	public VerifyPreferences createVerifyPreferences() {
 		return new VerifyPreferences();
 	}
-
 	/**
 	 * Create an instance of {@link SignedDocumentReportBean }
 	 * 
@@ -106,7 +99,6 @@ public class ObjectFactory {
 	public SignedDocumentReportBean createSignedDocumentReportBean() {
 		return new SignedDocumentReportBean();
 	}
-
 	/**
 	 * Create an instance of {@link NoteReportBean }
 	 * 
@@ -115,7 +107,6 @@ public class ObjectFactory {
 	public NoteReportBean createNoteReportBean() {
 		return new NoteReportBean();
 	}
-
 	/**
 	 * Create an instance of {@link SignatureReportBean }
 	 * 
@@ -124,7 +115,6 @@ public class ObjectFactory {
 	public SignatureReportBean createSignatureReportBean() {
 		return new SignatureReportBean();
 	}
-
 	/**
 	 * Create an instance of {@link TimestampReportBean }
 	 * 
@@ -133,7 +123,6 @@ public class ObjectFactory {
 	public TimestampReportBean createTimestampReportBean() {
 		return new TimestampReportBean();
 	}
-
 	/**
 	 * Create an instance of {@link Credentials }
 	 * 
@@ -142,7 +131,6 @@ public class ObjectFactory {
 	public Credentials createCredentials() {
 		return new Credentials();
 	}
-
 	/**
 	 * Create an instance of {@link CAdESPreferences }
 	 * 
@@ -151,7 +139,6 @@ public class ObjectFactory {
 	public CAdESPreferences createCAdESPreferences() {
 		return new CAdESPreferences();
 	}
-
 	/**
 	 * Create an instance of {@link SignPreferences }
 	 * 
@@ -160,7 +147,6 @@ public class ObjectFactory {
 	public SignPreferences createSignPreferences() {
 		return new SignPreferences();
 	}
-
 	/**
 	 * Create an instance of {@link TimeStampPreferences }
 	 * 
@@ -169,7 +155,6 @@ public class ObjectFactory {
 	public TimeStampPreferences createTimeStampPreferences() {
 		return new TimeStampPreferences();
 	}
-
 	/**
 	 * Create an instance of {@link JAXBElement
 	 * }{@code <}{@link SignCAdESByAttachment }{@code >}}
@@ -182,7 +167,6 @@ public class ObjectFactory {
 		return new JAXBElement<SignCAdESByAttachment>(_SignCAdESByAttachment_QNAME, SignCAdESByAttachment.class, null,
 				value);
 	}
-
 	/**
 	 * Create an instance of {@link JAXBElement
 	 * }{@code <}{@link SignCAdESByAttachmentResponse }{@code >}}
@@ -195,7 +179,6 @@ public class ObjectFactory {
 		return new JAXBElement<SignCAdESByAttachmentResponse>(_SignCAdESByAttachmentResponse_QNAME,
 				SignCAdESByAttachmentResponse.class, null, value);
 	}
-
 	/**
 	 * Create an instance of {@link JAXBElement
 	 * }{@code <}{@link VerifyCAdESByAttachment }{@code >}}
@@ -208,7 +191,6 @@ public class ObjectFactory {
 		return new JAXBElement<VerifyCAdESByAttachment>(_VerifyCAdESByAttachment_QNAME, VerifyCAdESByAttachment.class,
 				null, value);
 	}
-
 	/**
 	 * Create an instance of {@link JAXBElement
 	 * }{@code <}{@link VerifyCAdESByAttachmentResponse }{@code >}}
@@ -221,7 +203,6 @@ public class ObjectFactory {
 		return new JAXBElement<VerifyCAdESByAttachmentResponse>(_VerifyCAdESByAttachmentResponse_QNAME,
 				VerifyCAdESByAttachmentResponse.class, null, value);
 	}
-
 	/**
 	 * Create an instance of {@link JAXBElement }{@code <}{@link WsFaultBean
 	 * }{@code >}}

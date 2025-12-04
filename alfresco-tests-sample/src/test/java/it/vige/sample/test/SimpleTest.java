@@ -37,7 +37,6 @@ import it.vige.sample.BackupAction;
  * @author vige
  */
 public class SimpleTest extends AbstractForm {
-
 	/** The my action. */
 	@Autowired
 	private BackupAction myAction;
@@ -61,8 +60,6 @@ public class SimpleTest extends AbstractForm {
 	 * Init.
 	 *
 	 */
-
-
 	@Before
 	public void init() {
 		super.init();
@@ -84,12 +81,11 @@ public class SimpleTest extends AbstractForm {
 	/** The node name. */
 		String nodeName = (String) serviceRegistry.getNodeService().getProperty(docs.getNodeRefs().get(0), PROP_NAME);
 		Assert.assertEquals("VALID.pdf is created", documentName, nodeName);
-	}	/**
+	}
+	/**
 	 * Execute.
 	 *
 	 */
-
-
 	@Test
 	public void execute() {
 
@@ -108,12 +104,11 @@ public class SimpleTest extends AbstractForm {
 		String nodeName = (String) serviceRegistry.getNodeService().getProperty(docs.getNodeRefs().get(0), PROP_NAME);
 		Assert.assertEquals("VALID.pdf.bak is created", documentName + ".bak", nodeName);
 
-	}	/**
+	}
+	/**
 	 * Versioned.
 	 *
 	 */
-
-
 	@Test
 	public void versioned() {
 		insertVersion(document, versionName, versionContent, versionLabel, MINOR);

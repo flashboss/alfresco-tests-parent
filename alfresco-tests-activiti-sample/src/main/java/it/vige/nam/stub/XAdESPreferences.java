@@ -35,7 +35,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class XAdESPreferences extends SignPreferences {
-
 	/** The sign element. */
 	protected String signElement;
 
@@ -48,7 +47,6 @@ public class XAdESPreferences extends SignPreferences {
 	public String getSignElement() {
 		return signElement;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signElement.
 	 * 

@@ -17,7 +17,6 @@ public class MockRequiredCache implements RequiredCache {
 	public boolean getNeverCache() {
 		return false;
 	}
-
 	/**
 	 * Get is public.
 	 *
@@ -27,7 +26,6 @@ public class MockRequiredCache implements RequiredCache {
 	public boolean getIsPublic() {
 		return false;
 	}
-
 	/**
 	 * Get must revalidate.
 	 *

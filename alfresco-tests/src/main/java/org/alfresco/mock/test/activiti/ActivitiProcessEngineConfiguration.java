@@ -12,7 +12,6 @@ import org.alfresco.service.ServiceRegistry;
  * @author vige
  */
 public class ActivitiProcessEngineConfiguration extends StandaloneProcessEngineConfiguration {
-
 	/** The service registry. */
 	private ServiceRegistry serviceRegistry;
 	/** The search script. */
@@ -30,7 +29,6 @@ public class ActivitiProcessEngineConfiguration extends StandaloneProcessEngineC
 	public ServiceRegistry getServiceRegistry() {
 		return serviceRegistry;
 	}
-
 	/**
 	 * Set service registry.
 	 *
@@ -39,7 +37,6 @@ public class ActivitiProcessEngineConfiguration extends StandaloneProcessEngineC
 	public void setServiceRegistry(ServiceRegistry serviceRegistry) {
 		this.serviceRegistry = serviceRegistry;
 	}
-
 	/**
 	 * Get search script.
 	 *
@@ -48,7 +45,6 @@ public class ActivitiProcessEngineConfiguration extends StandaloneProcessEngineC
 	public Search getSearchScript() {
 		return searchScript;
 	}
-
 	/**
 	 * Set search script.
 	 *
@@ -57,7 +53,6 @@ public class ActivitiProcessEngineConfiguration extends StandaloneProcessEngineC
 	public void setSearchScript(Search searchScript) {
 		this.searchScript = searchScript;
 	}
-
 	/**
 	 * Get logger script.
 	 *
@@ -66,7 +61,6 @@ public class ActivitiProcessEngineConfiguration extends StandaloneProcessEngineC
 	public MockLogger getLoggerScript() {
 		return loggerScript;
 	}
-
 	/**
 	 * Set logger script.
 	 *
@@ -75,7 +69,6 @@ public class ActivitiProcessEngineConfiguration extends StandaloneProcessEngineC
 	public void setLoggerScript(MockLogger loggerScript) {
 		this.loggerScript = loggerScript;
 	}
-
 	/**
 	 * Get utils script.
 	 *
@@ -84,7 +77,6 @@ public class ActivitiProcessEngineConfiguration extends StandaloneProcessEngineC
 	public ScriptUtils getUtilsScript() {
 		return utilsScript;
 	}
-
 	/**
 	 * Set utils script.
 	 *

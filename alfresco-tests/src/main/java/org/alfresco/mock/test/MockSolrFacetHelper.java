@@ -12,7 +12,6 @@ import org.alfresco.repo.search.impl.solr.facet.SolrFacetHelper;
  * @author vige
  */
 public class MockSolrFacetHelper extends SolrFacetHelper implements Serializable {
-
 	/**
 	 * Constructs a new mock solr facet helper.
 	 *

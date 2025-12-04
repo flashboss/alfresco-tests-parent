@@ -23,7 +23,6 @@ import org.apache.commons.logging.LogFactory;
  * @author vige
  */
 public class CommonHashUtil {
-
 	/** The logger. */
 	private static Log logger = LogFactory.getLog(CommonHashUtil.class);
 	/** The hash type. */
@@ -67,7 +66,6 @@ public class CommonHashUtil {
 		nodeService.setProperty(nodeRef, HashModel.PROP_HASH_TYPE, hashPropeties.get(HashModel.PROP_HASH_TYPE));
 		nodeService.setProperty(nodeRef, HashModel.PROP_HASH_VALUE, hashPropeties.get(HashModel.PROP_HASH_VALUE));
 	}
-
 	/**
 	 * Remove aspect.
 	 *
@@ -76,7 +74,6 @@ public class CommonHashUtil {
 	private void removeAspect(NodeRef nodeRef) {
 		nodeService.removeAspect(nodeRef, HashModel.ASPECT_HASHABLE);
 	}
-
 	/**
 	 * Compute hash.
 	 *
@@ -110,7 +107,6 @@ public class CommonHashUtil {
 		byte[] digest = messageDigest.digest();
 		return convertByteArrayToHex(digest);
 	}
-
 	/**
 	 * Convert byte array to hex.
 	 *
@@ -129,7 +125,6 @@ public class CommonHashUtil {
 		}
 		return hashValue.toString().toUpperCase();
 	}
-
 	/**
 	 * Set hash type.
 	 *
@@ -138,7 +133,6 @@ public class CommonHashUtil {
 	public void setHashType(String hashType) {
 		this.hashType = hashType;
 	}
-
 	/**
 	 * Set node service.
 	 *
@@ -147,7 +141,6 @@ public class CommonHashUtil {
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
-
 	/**
 	 * Set content service.
 	 *

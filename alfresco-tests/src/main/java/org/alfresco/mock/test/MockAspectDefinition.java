@@ -21,7 +21,6 @@ import org.alfresco.service.namespace.QName;
  * @author vige
  */
 public class MockAspectDefinition implements AspectDefinition, Serializable {
-
 	/** The name. */
 	private QName name;
 
@@ -34,7 +33,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 	public MockAspectDefinition(QName name) {
 		this.name = name;
 	}
-
 	/**
 	 * Get model.
 	 *
@@ -44,7 +42,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 	public ModelDefinition getModel() {
 		return new MockModelDefinition(name);
 	}
-
 	/**
 	 * Get name.
 	 *
@@ -55,7 +52,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get title.
 	 *
@@ -66,7 +62,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get description.
 	 *
@@ -77,7 +72,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get title.
 	 *
@@ -89,7 +83,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get description.
 	 *
@@ -101,7 +94,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get parent name.
 	 *
@@ -112,7 +104,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Is aspect.
 	 *
@@ -123,7 +114,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Get archive.
 	 *
@@ -134,7 +124,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get included in super type query.
 	 *
@@ -145,7 +134,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get properties.
 	 *
@@ -154,7 +142,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 	public Map<QName, PropertyDefinition> getProperties() {
 		return new HashMap<QName, PropertyDefinition>();
 	}
-
 	/**
 	 * Get default values.
 	 *
@@ -164,7 +151,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get associations.
 	 *
@@ -174,7 +160,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Is container.
 	 *
@@ -185,7 +170,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Get child associations.
 	 *
@@ -195,7 +179,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get default aspects.
 	 *
@@ -206,7 +189,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get default aspect names.
 	 *
@@ -217,7 +199,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get default aspects.
 	 *
@@ -229,7 +210,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get analyser resource bundle name.
 	 *
@@ -240,7 +220,6 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get parent class definition.
 	 *

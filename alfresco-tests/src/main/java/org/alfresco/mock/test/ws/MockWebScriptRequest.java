@@ -21,7 +21,6 @@ import org.springframework.extensions.webscripts.servlet.FormData;
  * @author vige
  */
 public class MockWebScriptRequest implements WebScriptRequest {
-
 	/** The format. */
 	private String format;
 	/** The form data. */
@@ -47,7 +46,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		parameterNames = new String[0];
 		headerNames = new String[0];
 	}
-
 	/**
 	 * Get service match.
 	 *
@@ -57,7 +55,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 	public Match getServiceMatch() {
 		return serviceMatch;
 	}
-
 	/**
 	 * Get server path.
 	 *
@@ -68,7 +65,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get context path.
 	 *
@@ -79,7 +75,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get service context path.
 	 *
@@ -90,7 +85,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get service path.
 	 *
@@ -101,7 +95,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get u r l.
 	 *
@@ -112,7 +105,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get path info.
 	 *
@@ -123,7 +115,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get query string.
 	 *
@@ -134,7 +125,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get parameter names.
 	 *
@@ -144,7 +134,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 	public String[] getParameterNames() {
 		return parameterNames;
 	}
-
 	/**
 	 * Get parameter.
 	 *
@@ -155,7 +144,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 	public String getParameter(String name) {
 		return httpServletRequest.getParameter(name);
 	}
-
 	/**
 	 * Get parameter values.
 	 *
@@ -167,7 +155,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get header names.
 	 *
@@ -177,7 +164,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 	public String[] getHeaderNames() {
 		return headerNames;
 	}
-
 	/**
 	 * Get header.
 	 *
@@ -189,7 +175,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get header values.
 	 *
@@ -201,7 +186,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get extension path.
 	 *
@@ -212,7 +196,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get content type.
 	 *
@@ -223,7 +206,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get content.
 	 *
@@ -234,7 +216,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Parse content.
 	 *
@@ -244,7 +225,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 	public Object parseContent() {
 		return formData;
 	}
-
 	/**
 	 * Is guest.
 	 *
@@ -255,7 +235,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Get format.
 	 *
@@ -265,7 +244,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 	public String getFormat() {
 		return format;
 	}
-
 	/**
 	 * Get format style.
 	 *
@@ -276,7 +254,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get agent.
 	 *
@@ -287,7 +264,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get j s o n callback.
 	 *
@@ -298,7 +274,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Force success status.
 	 *
@@ -309,7 +284,6 @@ public class MockWebScriptRequest implements WebScriptRequest {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	/**
 	 * Get runtime.
 	 *

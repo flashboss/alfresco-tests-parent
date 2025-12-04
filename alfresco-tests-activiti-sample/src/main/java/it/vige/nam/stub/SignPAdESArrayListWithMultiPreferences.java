@@ -42,7 +42,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class SignPAdESArrayListWithMultiPreferences {
-
 	/** The credentials. */
 	protected Credentials credentials;
 	/** The buffer list. */
@@ -60,7 +59,6 @@ public class SignPAdESArrayListWithMultiPreferences {
 	public Credentials getCredentials() {
 		return credentials;
 	}
-
 	/**
 	 * Imposta il valore della proprietà credentials.
 	 * 
@@ -70,7 +68,6 @@ public class SignPAdESArrayListWithMultiPreferences {
 	public void setCredentials(Credentials value) {
 		this.credentials = value;
 	}
-
 	/**
 	 * Gets the value of the bufferList property.
 	 * 
@@ -99,7 +96,6 @@ public class SignPAdESArrayListWithMultiPreferences {
 		}
 		return this.bufferList;
 	}
-
 	/**
 	 * Gets the value of the pAdESPreferences property.
 	 * 

@@ -49,7 +49,6 @@ public class Timestamp {
 	public byte[] getContent() {
 		return content;
 	}
-
 	/**
 	 * Imposta il valore della proprietà content.
 	 * 
@@ -58,7 +57,6 @@ public class Timestamp {
 	public void setContent(byte[] value) {
 		this.content = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà preferences.
 	 * 
@@ -68,7 +66,6 @@ public class Timestamp {
 	public TimeStampPreferences getPreferences() {
 		return preferences;
 	}
-
 	/**
 	 * Imposta il valore della proprietà preferences.
 	 * 

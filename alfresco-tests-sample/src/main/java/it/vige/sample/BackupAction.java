@@ -30,8 +30,6 @@ public class BackupAction extends ActionExecuterAbstractBase {
 	 * @param action the action
 	 * @param actionedUponNodeRef the actioned upon node ref
 	 */
-
-
 	@Override
 	public void executeImpl(Action action, NodeRef actionedUponNodeRef) {
 
@@ -39,19 +37,17 @@ public class BackupAction extends ActionExecuterAbstractBase {
 		String documentName = (String) action.getParameterValue(DOCUMENT_NAME);
 		fileFolderService.create(actionedUponNodeRef, documentName + "." + extension, ContentModel.TYPE_CONTENT);
 
-	}	/**
+	}
+	/**
 	 * Add parameter definitions.
 	 *
 	 * @param paramList the param list
 	 */
-
-
 	@Override
 	protected void addParameterDefinitions(List<ParameterDefinition> paramList) {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Set extension.
 	 *

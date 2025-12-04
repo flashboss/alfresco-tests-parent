@@ -45,7 +45,6 @@ public enum Result {
 	public String value() {
 		return name();
 	}
-
 	/**
 	 * From value.
 	 *

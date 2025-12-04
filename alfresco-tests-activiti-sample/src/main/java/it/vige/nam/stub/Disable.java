@@ -37,7 +37,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class Disable {
-
 	/** The security code. */
 	protected String securityCode;
 	/** The username. */
@@ -54,7 +53,6 @@ public class Disable {
 	public String getSecurityCode() {
 		return securityCode;
 	}
-
 	/**
 	 * Imposta il valore della proprietà securityCode.
 	 * 
@@ -64,7 +62,6 @@ public class Disable {
 	public void setSecurityCode(String value) {
 		this.securityCode = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà username.
 	 * 
@@ -74,7 +71,6 @@ public class Disable {
 	public String getUsername() {
 		return username;
 	}
-
 	/**
 	 * Imposta il valore della proprietà username.
 	 * 
@@ -84,7 +80,6 @@ public class Disable {
 	public void setUsername(String value) {
 		this.username = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà password.
 	 * 
@@ -94,7 +89,6 @@ public class Disable {
 	public String getPassword() {
 		return password;
 	}
-
 	/**
 	 * Imposta il valore della proprietà password.
 	 * 

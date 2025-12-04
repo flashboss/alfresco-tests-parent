@@ -10,7 +10,6 @@ import java.util.Map;
  * @author vige
  */
 public class DocParam {
-
 	/** The doc. */
 	private XWPFDocument doc;
 	/** The json map. */
@@ -32,7 +31,6 @@ public class DocParam {
 		this.jsonMap = jsonMap;
 		this.converter = converter;
 	}
-
 	/**
 	 * Get doc.
 	 *
@@ -41,7 +39,6 @@ public class DocParam {
 	public XWPFDocument getDoc() {
 		return doc;
 	}
-
 	/**
 	 * Set doc.
 	 *
@@ -50,7 +47,6 @@ public class DocParam {
 	public void setDoc(XWPFDocument doc) {
 		this.doc = doc;
 	}
-
 	/**
 	 * Get json map.
 	 *
@@ -58,7 +54,6 @@ public class DocParam {
 	public Map<String, String> getJsonMap() {
 		return jsonMap;
 	}
-
 	/**
 	 * Set json map.
 	 *
@@ -67,7 +62,6 @@ public class DocParam {
 	public void setJsonMap(Map<String, String> jsonMap) {
 		this.jsonMap = jsonMap;
 	}
-
 	/**
 	 * Get converter.
 	 *
@@ -76,7 +70,6 @@ public class DocParam {
 	public DroolsConverterImpl getConverter() {
 		return converter;
 	}
-
 	/**
 	 * Set converter.
 	 *

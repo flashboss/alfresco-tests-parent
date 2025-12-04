@@ -69,8 +69,6 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 	 *
 	 * @param variables the variables
 	 */
-
-
 	@Override
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
@@ -103,7 +101,6 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		variables.put("logger", logger);
 		variables.put("mywf_starterRaR", "Human");
 	}
-
 	/**
 	 * Create demo users for the application
 	 * 
@@ -123,7 +120,6 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		initiator.getProperties().put("lastName", "The Great");
 		initiator.getProperties().put("userName", USER_NAME);
 	}
-
 	/**
 	 * Create demo groups for teh application
 	 * 
@@ -140,12 +136,11 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		for (String groupId : securityGroups) {
 			createGroup(identityService, groupId, "security-role");
 		}
-	}	/**
+	}
+	/**
 	 * Test workflow.
 	 *
 	 */
-
-
 	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/SimpleProcess.bpmn" })
 	public void testWorkflow() throws ParseException {
 		Map<String, Object> variables = new HashMap<String, Object>();

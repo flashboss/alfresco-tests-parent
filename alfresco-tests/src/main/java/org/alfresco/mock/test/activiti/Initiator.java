@@ -10,7 +10,6 @@ import java.util.Map;
  * @author vige
  */
 public class Initiator implements Serializable {
-
 	/** The properties. */
 	private Map<String, String> properties = new HashMap<String, String>();
 
@@ -21,7 +20,6 @@ public class Initiator implements Serializable {
 	public Map<String, String> getProperties() {
 		return properties;
 	}
-
 	/**
 	 * Set properties.
 	 *

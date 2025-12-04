@@ -54,7 +54,6 @@ public class VerifyCAdESByAttachment {
 	public DataHandler getInputDataHandler() {
 		return inputDataHandler;
 	}
-
 	/**
 	 * Imposta il valore della proprietà inputDataHandler.
 	 * 
@@ -64,7 +63,6 @@ public class VerifyCAdESByAttachment {
 	public void setInputDataHandler(DataHandler value) {
 		this.inputDataHandler = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà preferences.
 	 * 
@@ -74,7 +72,6 @@ public class VerifyCAdESByAttachment {
 	public VerifyPreferences getPreferences() {
 		return preferences;
 	}
-
 	/**
 	 * Imposta il valore della proprietà preferences.
 	 * 

@@ -39,7 +39,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * @author vige
  */
 public class VerifyPreferences {
-
 	/** The nam. */
 	protected boolean nam;
 	/** The pdf encryption password. */
@@ -56,7 +55,6 @@ public class VerifyPreferences {
 	public boolean isNam() {
 		return nam;
 	}
-
 	/**
 	 * Imposta il valore della proprietà nam.
 	 * 
@@ -65,7 +63,6 @@ public class VerifyPreferences {
 	public void setNam(boolean value) {
 		this.nam = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà pdfEncryptionPassword.
 	 * 
@@ -75,7 +72,6 @@ public class VerifyPreferences {
 	public String getPdfEncryptionPassword() {
 		return pdfEncryptionPassword;
 	}
-
 	/**
 	 * Imposta il valore della proprietà pdfEncryptionPassword.
 	 * 
@@ -85,7 +81,6 @@ public class VerifyPreferences {
 	public void setPdfEncryptionPassword(String value) {
 		this.pdfEncryptionPassword = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà verifyOnDate.
 	 * 
@@ -95,7 +90,6 @@ public class VerifyPreferences {
 	public XMLGregorianCalendar getVerifyOnDate() {
 		return verifyOnDate;
 	}
-
 	/**
 	 * Imposta il valore della proprietà verifyOnDate.
 	 * 

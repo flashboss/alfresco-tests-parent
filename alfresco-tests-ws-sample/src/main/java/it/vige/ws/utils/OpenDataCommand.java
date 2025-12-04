@@ -11,7 +11,6 @@ import org.apache.commons.logging.LogFactory;
  * @author vige
  */
 public class OpenDataCommand {
-
 	/** The logger. */
 	private static Log logger = LogFactory.getLog(OpenDataCommand.class);
 
@@ -26,7 +25,6 @@ public class OpenDataCommand {
 	public OpenDataCommand() {
 		super();
 	}
-
 	/**
 	 * Set node service.
 	 *
@@ -35,7 +33,6 @@ public class OpenDataCommand {
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
-
 	/**
 	 * Check node core props.
 	 *

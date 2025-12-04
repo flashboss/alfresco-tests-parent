@@ -50,7 +50,6 @@ public class VerifyOnDateResponse {
 	public SignedDocumentReportBean getReturn() {
 		return _return;
 	}
-
 	/**
 	 * Imposta il valore della proprietà return.
 	 * 

@@ -43,7 +43,6 @@ public enum CertificateStatus {
 	public String value() {
 		return name();
 	}
-
 	/**
 	 * From value.
 	 *

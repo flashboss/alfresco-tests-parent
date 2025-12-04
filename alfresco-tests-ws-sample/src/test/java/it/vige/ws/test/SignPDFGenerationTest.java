@@ -72,7 +72,6 @@ public class SignPDFGenerationTest extends AbstractWSForm {
 	protected AbstractWebScript getAbstractWebScript() {
 		return signPDFGeneration;
 	}
-
 	/**
 	 * Init.
 	 *
@@ -113,7 +112,6 @@ public class SignPDFGenerationTest extends AbstractWSForm {
 			logger.error(ex);
 		}
 	}
-
 	/**
 	 * Execute.
 	 *

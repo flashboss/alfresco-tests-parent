@@ -14,7 +14,6 @@ import it.vige.activiti.service.SignService;
  * @author vige
  */
 public class ComplexIRaRSubscription extends BaseJavaDelegate {
-
 	/** The logger. */
 	private static Log logger = LogFactory.getLog(ComplexIRaRSubscription.class);
 
@@ -42,7 +41,6 @@ public class ComplexIRaRSubscription extends BaseJavaDelegate {
 		execution.setVariable("vigewf_rar_irar_subscription_error", !result);
 		logger.debug("Execute end");
 	}
-
 	/**
 	 * Set sign service.
 	 *

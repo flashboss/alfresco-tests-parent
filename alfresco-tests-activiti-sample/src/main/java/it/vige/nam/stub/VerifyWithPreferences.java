@@ -49,7 +49,6 @@ public class VerifyWithPreferences {
 	public byte[] getSignedContent() {
 		return signedContent;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signedContent.
 	 * 
@@ -58,7 +57,6 @@ public class VerifyWithPreferences {
 	public void setSignedContent(byte[] value) {
 		this.signedContent = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà preferences.
 	 * 
@@ -68,7 +66,6 @@ public class VerifyWithPreferences {
 	public VerifyPreferences getPreferences() {
 		return preferences;
 	}
-
 	/**
 	 * Imposta il valore della proprietà preferences.
 	 * 

@@ -40,7 +40,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class SignCAdESByAttachment {
-
 	/** The credentials. */
 	protected Credentials credentials;
 	@XmlMimeType("application/octet-stream")
@@ -59,7 +58,6 @@ public class SignCAdESByAttachment {
 	public Credentials getCredentials() {
 		return credentials;
 	}
-
 	/**
 	 * Imposta il valore della proprietà credentials.
 	 * 
@@ -69,7 +67,6 @@ public class SignCAdESByAttachment {
 	public void setCredentials(Credentials value) {
 		this.credentials = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà inputDataHandler.
 	 * 
@@ -79,7 +76,6 @@ public class SignCAdESByAttachment {
 	public DataHandler getInputDataHandler() {
 		return inputDataHandler;
 	}
-
 	/**
 	 * Imposta il valore della proprietà inputDataHandler.
 	 * 
@@ -89,7 +85,6 @@ public class SignCAdESByAttachment {
 	public void setInputDataHandler(DataHandler value) {
 		this.inputDataHandler = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà cAdESPreferences.
 	 * 
@@ -99,7 +94,6 @@ public class SignCAdESByAttachment {
 	public CAdESPreferences getCAdESPreferences() {
 		return cAdESPreferences;
 	}
-
 	/**
 	 * Imposta il valore della proprietà cAdESPreferences.
 	 * 

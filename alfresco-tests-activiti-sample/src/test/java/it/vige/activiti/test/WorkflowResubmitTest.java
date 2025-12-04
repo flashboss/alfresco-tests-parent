@@ -28,12 +28,11 @@ import it.vige.common.SignConstants;
  * 
  * @author vige
  */
-public class WorkflowResubmitTest extends ComplexAbstractForm {	/**
+public class WorkflowResubmitTest extends ComplexAbstractForm {
+	/**
 	 * Test human.
 	 *
 	 */
-
-
 	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/ComplexRaRProcess.bpmn" })
 	public void testHuman() throws ParseException {
 		Map<String, Object> variables = new HashMap<String, Object>();

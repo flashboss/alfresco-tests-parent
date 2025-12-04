@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author vige
  */
 public class MockNodeLocatorService implements NodeLocatorService, Serializable {
-
 	/** The search service. */
 	@Autowired
 	private SearchService searchService;	/**
@@ -28,8 +27,6 @@ public class MockNodeLocatorService implements NodeLocatorService, Serializable 
 	 * @param params the params
 	 * @return the node ref
 	 */
-
-
 	@Override
 	public NodeRef getNode(String locatorName, NodeRef source, Map<String, Serializable> params) {
 		if (params != null && params.get("query") != null)
@@ -37,14 +34,13 @@ public class MockNodeLocatorService implements NodeLocatorService, Serializable 
 					.getNodeRef(0);
 		else
 			return null;
-	}	/**
+	}
+	/**
 	 * Register.
 	 *
 	 * @param locatorName the locator name
 	 * @param locator the locator
 	 */
-
-
 	@Override
 	public void register(String locatorName, NodeLocator locator) {
 		// TODO Auto-generated method stub

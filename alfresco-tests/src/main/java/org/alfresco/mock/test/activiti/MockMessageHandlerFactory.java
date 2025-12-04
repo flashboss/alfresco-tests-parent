@@ -20,7 +20,6 @@ import org.subethamail.smtp.RejectException;
  *
  */
 public class MockMessageHandlerFactory implements MessageHandlerFactory {
-
 	/** The logger. */
 	private Logger logger = getLogger(getClass());
 
@@ -33,7 +32,6 @@ public class MockMessageHandlerFactory implements MessageHandlerFactory {
 	public MessageHandler create(MessageContext ctx) {
 		return new Handler(ctx);
 	}
-
 	/**
 	 * Print the message and its properties
 	 * 
@@ -52,8 +50,7 @@ public class MockMessageHandlerFactory implements MessageHandlerFactory {
 		public Handler(MessageContext ctx) {
 			this.ctx = ctx;
 		}
-
-		/**
+	/**
 		 * Prints the from mail
 		 * 
 		 * @param from the from
@@ -61,8 +58,7 @@ public class MockMessageHandlerFactory implements MessageHandlerFactory {
 		public void from(String from) throws RejectException {
 			logger.info("FROM:" + from);
 		}
-
-		/**
+	/**
 		 * Prints the recipient mail
 		 * 
 		 * @param recipient the recipient
@@ -70,8 +66,7 @@ public class MockMessageHandlerFactory implements MessageHandlerFactory {
 		public void recipient(String recipient) throws RejectException {
 			logger.info("RECIPIENT:" + recipient);
 		}
-
-		/**
+	/**
 		 * Prints the body of the message
 		 * 
 		 * @param data the data
@@ -82,15 +77,13 @@ public class MockMessageHandlerFactory implements MessageHandlerFactory {
 			logger.info(this.convertStreamToString(data));
 			logger.info("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
 		}
-
-		/**
+	/**
 		 * Prints if the message is created
 		 */
 		public void done() {
 			logger.info("Finished");
 		}
-
-		/**
+	/**
 		 * Utility convert a stream in a string
 		 * 
 		 * @param is

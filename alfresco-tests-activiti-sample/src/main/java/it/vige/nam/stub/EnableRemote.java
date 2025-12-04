@@ -35,7 +35,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class EnableRemote {
-
 	/** The credentials. */
 	protected Credentials credentials;
 
@@ -48,7 +47,6 @@ public class EnableRemote {
 	public Credentials getCredentials() {
 		return credentials;
 	}
-
 	/**
 	 * Imposta il valore della proprietà credentials.
 	 * 

@@ -6,7 +6,6 @@ package it.vige.ws.bean;
  * @author vige
  */
 public class Signer {
-
 	/** The username. */
 	private String username;
 	/** The password. */
@@ -20,7 +19,6 @@ public class Signer {
 	public String getUsername() {
 		return username;
 	}
-
 	/**
 	 * Set username.
 	 *
@@ -29,7 +27,6 @@ public class Signer {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
 	/**
 	 * Get password.
 	 *
@@ -38,7 +35,6 @@ public class Signer {
 	public String getPassword() {
 		return password;
 	}
-
 	/**
 	 * Set password.
 	 *

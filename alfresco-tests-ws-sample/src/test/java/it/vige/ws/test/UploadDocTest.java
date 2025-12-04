@@ -67,17 +67,14 @@ public class UploadDocTest extends AbstractWSForm {
 	 *
 	 * @return the abstract web script
 	 */
-
-
 	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return uploadDoc;
-	}	/**
+	}
+	/**
 	 * Init.
 	 *
 	 */
-
-
 	@Before
 	public void init() {
 		super.init();
@@ -91,12 +88,11 @@ public class UploadDocTest extends AbstractWSForm {
 		NodeRef bdmDL = insertFolder(bdm, "documentLibrary");
 		NodeRef sys = insertFolder(bdmDL, "sys");
 		insertFolder(sys, "Dropzone");
-	}	/**
+	}
+	/**
 	 * Execute.
 	 *
 	 */
-
-
 	@Test
 	public void execute() throws ParseException, IOException {
 

@@ -24,7 +24,6 @@ import it.vige.common.ConservationModel;
  * @author vige
  */
 public class ComplexRaRGeneration extends BaseJavaDelegate {
-
 	/** The logger. */
 	private static Log logger = LogFactory.getLog(ComplexRaRGeneration.class);
 
@@ -48,7 +47,6 @@ public class ComplexRaRGeneration extends BaseJavaDelegate {
 	public void setRarFolder(String rarFolder) {
 		this.rarFolder = rarFolder;
 	}
-
 	/**
 	 * Set node service.
 	 *
@@ -57,7 +55,6 @@ public class ComplexRaRGeneration extends BaseJavaDelegate {
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
-
 	/**
 	 * Set search service.
 	 *
@@ -66,7 +63,6 @@ public class ComplexRaRGeneration extends BaseJavaDelegate {
 	public void setSearchService(SearchService searchService) {
 		this.searchService = searchService;
 	}
-
 	/**
 	 * Set namespace service.
 	 *
@@ -75,7 +71,6 @@ public class ComplexRaRGeneration extends BaseJavaDelegate {
 	public void setNamespaceService(NamespaceService namespaceService) {
 		this.namespaceService = namespaceService;
 	}
-
 	/**
 	 * Execute.
 	 *
@@ -99,7 +94,6 @@ public class ComplexRaRGeneration extends BaseJavaDelegate {
 		}
 		execution.setVariable("vigewf_rarId", rarCounter);
 	}
-
 	/**
 	 * Get complex hash util.
 	 *
@@ -108,7 +102,6 @@ public class ComplexRaRGeneration extends BaseJavaDelegate {
 	public ComplexHashUtil getComplexHashUtil() {
 		return complexHashUtil;
 	}
-
 	/**
 	 * Set complex hash util.
 	 *

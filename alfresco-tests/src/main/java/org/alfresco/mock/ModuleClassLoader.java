@@ -18,8 +18,7 @@ import org.slf4j.Logger;
  * @author vige
  */
 public class ModuleClassLoader extends ClassLoader {
-
-    /** The s e p a r a t o r. */
+	/** The s e p a r a t o r. */
     private static final String SEPARATOR = "/";
     /** The module path. */
     private static final String MODULE_PATH = "target/classes/alfresco/module";
@@ -37,14 +36,13 @@ public class ModuleClassLoader extends ClassLoader {
     public ModuleClassLoader() {
         super(currentThread()
                 .getContextClassLoader());
-    }    /**
+    }
+	/**
      * Get resource.
      *
      * @param name the name
      * @return the u r l
      */
-
-
     @Override
     public URL getResource(String name) {
         URL url = super.getResource(name);
@@ -55,8 +53,7 @@ public class ModuleClassLoader extends ClassLoader {
         }
         return url;
     }
-
-    /**
+	/**
      * Find.
      *
      * @param modulePath the module path

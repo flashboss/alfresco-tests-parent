@@ -51,7 +51,6 @@ import com.tradeshift.test.remote.RemoteTestRunner;
  * @author vige
  */
 public abstract class AbstractForm {
-
 	/** The service registry. */
 	@Autowired
 	protected ServiceRegistry serviceRegistry;
@@ -169,12 +168,12 @@ public abstract class AbstractForm {
 	/**
 	 * Insert version.
 	 *
-	 * @param nodeRef the node ref
-	 * @param name    the name
-	 * @param text    the text
-	 * @param version the version
+	 * @param nodeRef     the node ref
+	 * @param name        the name
+	 * @param text        the text
+	 * @param version     the version
 	 * @param versionType the version type
-	 * @return the node ref	
+	 * @return the node ref
 	 */
 	protected NodeRef insertVersion(NodeRef nodeRef, String name, String text, String version,
 			VersionType versionType) {
@@ -184,10 +183,10 @@ public abstract class AbstractForm {
 	/**
 	 * Insert zip.
 	 *
-	 * @param parent the parent
-	 * @param zipName the zip name
-	 * @param entryName the entry name
-	 * @param text the text
+	 * @param parent     the parent
+	 * @param zipName    the zip name
+	 * @param entryName  the entry name
+	 * @param text       the text
 	 * @param properties the properties
 	 * @return the node ref
 	 */

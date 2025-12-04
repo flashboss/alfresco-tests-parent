@@ -48,7 +48,6 @@ public class GetCertificateResponse {
 	public byte[] getReturn() {
 		return _return;
 	}
-
 	/**
 	 * Imposta il valore della proprietà return.
 	 * 

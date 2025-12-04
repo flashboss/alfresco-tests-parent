@@ -120,7 +120,6 @@ public class SignatureReportBean {
 	public byte[] getDerEncodedSignerCert() {
 		return derEncodedSignerCert;
 	}
-
 	/**
 	 * Imposta il valore della proprietà derEncodedSignerCert.
 	 * 
@@ -129,7 +128,6 @@ public class SignatureReportBean {
 	public void setDerEncodedSignerCert(byte[] value) {
 		this.derEncodedSignerCert = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà id.
 	 * 
@@ -139,7 +137,6 @@ public class SignatureReportBean {
 	public String getId() {
 		return id;
 	}
-
 	/**
 	 * Imposta il valore della proprietà id.
 	 * 
@@ -149,7 +146,6 @@ public class SignatureReportBean {
 	public void setId(String value) {
 		this.id = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà integrity.
 	 * 
@@ -158,7 +154,6 @@ public class SignatureReportBean {
 	public boolean isIntegrity() {
 		return integrity;
 	}
-
 	/**
 	 * Imposta il valore della proprietà integrity.
 	 * 
@@ -167,7 +162,6 @@ public class SignatureReportBean {
 	public void setIntegrity(boolean value) {
 		this.integrity = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà issuerCertificateRevocationDate.
 	 * 
@@ -177,7 +171,6 @@ public class SignatureReportBean {
 	public XMLGregorianCalendar getIssuerCertificateRevocationDate() {
 		return issuerCertificateRevocationDate;
 	}
-
 	/**
 	 * Imposta il valore della proprietà issuerCertificateRevocationDate.
 	 * 
@@ -187,7 +180,6 @@ public class SignatureReportBean {
 	public void setIssuerCertificateRevocationDate(XMLGregorianCalendar value) {
 		this.issuerCertificateRevocationDate = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà issuerCertificateStatus.
 	 * 
@@ -197,7 +189,6 @@ public class SignatureReportBean {
 	public CertificateStatus getIssuerCertificateStatus() {
 		return issuerCertificateStatus;
 	}
-
 	/**
 	 * Imposta il valore della proprietà issuerCertificateStatus.
 	 * 
@@ -207,7 +198,6 @@ public class SignatureReportBean {
 	public void setIssuerCertificateStatus(CertificateStatus value) {
 		this.issuerCertificateStatus = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà issuerDN.
 	 * 
@@ -217,7 +207,6 @@ public class SignatureReportBean {
 	public String getIssuerDN() {
 		return issuerDN;
 	}
-
 	/**
 	 * Imposta il valore della proprietà issuerDN.
 	 * 
@@ -227,7 +216,6 @@ public class SignatureReportBean {
 	public void setIssuerDN(String value) {
 		this.issuerDN = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà issuerInTrustedList.
 	 * 
@@ -236,7 +224,6 @@ public class SignatureReportBean {
 	public boolean isIssuerInTrustedList() {
 		return issuerInTrustedList;
 	}
-
 	/**
 	 * Imposta il valore della proprietà issuerInTrustedList.
 	 * 
@@ -245,7 +232,6 @@ public class SignatureReportBean {
 	public void setIssuerInTrustedList(boolean value) {
 		this.issuerInTrustedList = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà keySize.
 	 * 
@@ -254,7 +240,6 @@ public class SignatureReportBean {
 	public int getKeySize() {
 		return keySize;
 	}
-
 	/**
 	 * Imposta il valore della proprietà keySize.
 	 * 
@@ -263,7 +248,6 @@ public class SignatureReportBean {
 	public void setKeySize(int value) {
 		this.keySize = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà qcComplianceStatus.
 	 * 
@@ -273,7 +257,6 @@ public class SignatureReportBean {
 	public Result getQcComplianceStatus() {
 		return qcComplianceStatus;
 	}
-
 	/**
 	 * Imposta il valore della proprietà qcComplianceStatus.
 	 * 
@@ -283,7 +266,6 @@ public class SignatureReportBean {
 	public void setQcComplianceStatus(Result value) {
 		this.qcComplianceStatus = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà serialNumber.
 	 * 
@@ -293,7 +275,6 @@ public class SignatureReportBean {
 	public BigInteger getSerialNumber() {
 		return serialNumber;
 	}
-
 	/**
 	 * Imposta il valore della proprietà serialNumber.
 	 * 
@@ -303,7 +284,6 @@ public class SignatureReportBean {
 	public void setSerialNumber(BigInteger value) {
 		this.serialNumber = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà signatureAlgorithmName.
 	 * 
@@ -313,7 +293,6 @@ public class SignatureReportBean {
 	public String getSignatureAlgorithmName() {
 		return signatureAlgorithmName;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signatureAlgorithmName.
 	 * 
@@ -323,7 +302,6 @@ public class SignatureReportBean {
 	public void setSignatureAlgorithmName(String value) {
 		this.signatureAlgorithmName = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà signatureDate.
 	 * 
@@ -333,7 +311,6 @@ public class SignatureReportBean {
 	public XMLGregorianCalendar getSignatureDate() {
 		return signatureDate;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signatureDate.
 	 * 
@@ -343,7 +320,6 @@ public class SignatureReportBean {
 	public void setSignatureDate(XMLGregorianCalendar value) {
 		this.signatureDate = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà signerCertificateNotAfter.
 	 * 
@@ -353,7 +329,6 @@ public class SignatureReportBean {
 	public XMLGregorianCalendar getSignerCertificateNotAfter() {
 		return signerCertificateNotAfter;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signerCertificateNotAfter.
 	 * 
@@ -363,7 +338,6 @@ public class SignatureReportBean {
 	public void setSignerCertificateNotAfter(XMLGregorianCalendar value) {
 		this.signerCertificateNotAfter = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà signerCertificateNotBefore.
 	 * 
@@ -373,7 +347,6 @@ public class SignatureReportBean {
 	public XMLGregorianCalendar getSignerCertificateNotBefore() {
 		return signerCertificateNotBefore;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signerCertificateNotBefore.
 	 * 
@@ -383,7 +356,6 @@ public class SignatureReportBean {
 	public void setSignerCertificateNotBefore(XMLGregorianCalendar value) {
 		this.signerCertificateNotBefore = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà signerCertificateRevocationDate.
 	 * 
@@ -393,7 +365,6 @@ public class SignatureReportBean {
 	public XMLGregorianCalendar getSignerCertificateRevocationDate() {
 		return signerCertificateRevocationDate;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signerCertificateRevocationDate.
 	 * 
@@ -403,7 +374,6 @@ public class SignatureReportBean {
 	public void setSignerCertificateRevocationDate(XMLGregorianCalendar value) {
 		this.signerCertificateRevocationDate = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà signerCertificateStatus.
 	 * 
@@ -413,7 +383,6 @@ public class SignatureReportBean {
 	public CertificateStatus getSignerCertificateStatus() {
 		return signerCertificateStatus;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signerCertificateStatus.
 	 * 
@@ -423,7 +392,6 @@ public class SignatureReportBean {
 	public void setSignerCertificateStatus(CertificateStatus value) {
 		this.signerCertificateStatus = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà subjectDN.
 	 * 
@@ -433,7 +401,6 @@ public class SignatureReportBean {
 	public String getSubjectDN() {
 		return subjectDN;
 	}
-
 	/**
 	 * Imposta il valore della proprietà subjectDN.
 	 * 
@@ -443,7 +410,6 @@ public class SignatureReportBean {
 	public void setSubjectDN(String value) {
 		this.subjectDN = value;
 	}
-
 	/**
 	 * Gets the value of the timestampReportBeanList property.
 	 * 
@@ -474,7 +440,6 @@ public class SignatureReportBean {
 		}
 		return this.timestampReportBeanList;
 	}
-
 	/**
 	 * Recupera il valore della proprietà trustedSignatureDate.
 	 * 
@@ -483,7 +448,6 @@ public class SignatureReportBean {
 	public boolean isTrustedSignatureDate() {
 		return trustedSignatureDate;
 	}
-
 	/**
 	 * Imposta il valore della proprietà trustedSignatureDate.
 	 * 

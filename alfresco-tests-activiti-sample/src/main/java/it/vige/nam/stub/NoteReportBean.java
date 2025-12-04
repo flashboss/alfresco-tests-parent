@@ -39,7 +39,6 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 public class NoteReportBean {
-
 	/** The about. */
 	protected int about;
 	/** The description. */
@@ -59,7 +58,6 @@ public class NoteReportBean {
 	public int getAbout() {
 		return about;
 	}
-
 	/**
 	 * Imposta il valore della proprietà about.
 	 * 
@@ -68,7 +66,6 @@ public class NoteReportBean {
 	public void setAbout(int value) {
 		this.about = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà description.
 	 * 
@@ -78,7 +75,6 @@ public class NoteReportBean {
 	public String getDescription() {
 		return description;
 	}
-
 	/**
 	 * Imposta il valore della proprietà description.
 	 * 
@@ -88,7 +84,6 @@ public class NoteReportBean {
 	public void setDescription(String value) {
 		this.description = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà policy.
 	 * 
@@ -97,7 +92,6 @@ public class NoteReportBean {
 	public int getPolicy() {
 		return policy;
 	}
-
 	/**
 	 * Imposta il valore della proprietà policy.
 	 * 
@@ -106,7 +100,6 @@ public class NoteReportBean {
 	public void setPolicy(int value) {
 		this.policy = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà synopsis.
 	 * 
@@ -116,7 +109,6 @@ public class NoteReportBean {
 	public String getSynopsis() {
 		return synopsis;
 	}
-
 	/**
 	 * Imposta il valore della proprietà synopsis.
 	 * 
@@ -126,7 +118,6 @@ public class NoteReportBean {
 	public void setSynopsis(String value) {
 		this.synopsis = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà type.
 	 * 
@@ -135,7 +126,6 @@ public class NoteReportBean {
 	public int getType() {
 		return type;
 	}
-
 	/**
 	 * Imposta il valore della proprietà type.
 	 * 

@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author vige
  */
 public class MockTransactionService implements TransactionService, Serializable {
-
 	/** The retrying transaction helper. */
 	@Autowired
 	private RetryingTransactionHelper retryingTransactionHelper;	/**
@@ -23,106 +22,95 @@ public class MockTransactionService implements TransactionService, Serializable 
 	 *
 	 * @return the boolean
 	 */
-
-
 	@Override
 	public boolean getAllowWrite() {
 		// TODO Auto-generated method stub
 		return false;
-	}	/**
+	}
+	/**
 	 * Is read only.
 	 *
 	 * @return the boolean
 	 */
-
-
 	@Override
 	public boolean isReadOnly() {
 		// TODO Auto-generated method stub
 		return false;
-	}	/**
+	}
+	/**
 	 * Get user transaction.
 	 *
 	 * @return the user transaction
 	 */
-
-
 	@Override
 	public UserTransaction getUserTransaction() {
 		return new MockUserTransaction();
-	}	/**
+	}
+	/**
 	 * Get user transaction.
 	 *
 	 * @param readOnly the read only
 	 * @return the user transaction
 	 */
-
-
 	@Override
 	public UserTransaction getUserTransaction(boolean readOnly) {
 		// TODO Auto-generated method stub
 		return null;
-	}	/**
+	}
+	/**
 	 * Get user transaction.
 	 *
 	 * @param readOnly the read only
 	 * @param ignoreSystemReadOnly the ignore system read only
 	 * @return the user transaction
 	 */
-
-
 	@Override
 	public UserTransaction getUserTransaction(boolean readOnly, boolean ignoreSystemReadOnly) {
 		// TODO Auto-generated method stub
 		return null;
-	}	/**
+	}
+	/**
 	 * Get non propagating user transaction.
 	 *
 	 * @return the user transaction
 	 */
-
-
 	@Override
 	public UserTransaction getNonPropagatingUserTransaction() {
 		// TODO Auto-generated method stub
 		return null;
-	}	/**
+	}
+	/**
 	 * Get non propagating user transaction.
 	 *
 	 * @param readOnly the read only
 	 * @return the user transaction
 	 */
-
-
 	@Override
 	public UserTransaction getNonPropagatingUserTransaction(boolean readOnly) {
 		// TODO Auto-generated method stub
 		return null;
-	}	/**
+	}
+	/**
 	 * Get non propagating user transaction.
 	 *
 	 * @param readOnly the read only
 	 * @param ignoreSystemReadOnly the ignore system read only
 	 * @return the user transaction
 	 */
-
-
 	@Override
 	public UserTransaction getNonPropagatingUserTransaction(boolean readOnly, boolean ignoreSystemReadOnly) {
 		// TODO Auto-generated method stub
 		return null;
-	}	/**
+	}
+	/**
 	 * Get retrying transaction helper.
 	 *
 	 * @return the retrying transaction helper
 	 */
-
-
 	@Override
 	public RetryingTransactionHelper getRetryingTransactionHelper() {
 		return retryingTransactionHelper;
 	}
-
 	/**
 	 * Set retrying transaction helper.
 	 *

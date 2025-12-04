@@ -15,7 +15,6 @@ import org.springframework.extensions.webscripts.WebScriptResponse;
  * @author vige
  */
 public class MockWebScriptResponse implements WebScriptResponse {
-
 	/** The mock writer. */
 	private MockWriter mockWriter = new MockWriter();
 
@@ -29,7 +28,6 @@ public class MockWebScriptResponse implements WebScriptResponse {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Set header.
 	 *
@@ -41,7 +39,6 @@ public class MockWebScriptResponse implements WebScriptResponse {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Add header.
 	 *
@@ -53,7 +50,6 @@ public class MockWebScriptResponse implements WebScriptResponse {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Set content type.
 	 *
@@ -64,7 +60,6 @@ public class MockWebScriptResponse implements WebScriptResponse {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Set content encoding.
 	 *
@@ -75,7 +70,6 @@ public class MockWebScriptResponse implements WebScriptResponse {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Set cache.
 	 *
@@ -86,7 +80,6 @@ public class MockWebScriptResponse implements WebScriptResponse {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Get writer.
 	 *
@@ -96,7 +89,6 @@ public class MockWebScriptResponse implements WebScriptResponse {
 	public Writer getWriter() throws IOException {
 		return mockWriter;
 	}
-
 	/**
 	 * Get output stream.
 	 *
@@ -107,7 +99,6 @@ public class MockWebScriptResponse implements WebScriptResponse {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Reset.
 	 *
@@ -117,7 +108,6 @@ public class MockWebScriptResponse implements WebScriptResponse {
 		// TODO Auto-generated method stub
 
 	}
-
 	/**
 	 * Encode script url.
 	 *
@@ -129,7 +119,6 @@ public class MockWebScriptResponse implements WebScriptResponse {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Encode resource url.
 	 *
@@ -141,7 +130,6 @@ public class MockWebScriptResponse implements WebScriptResponse {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get encode script url function.
 	 *
@@ -153,7 +141,6 @@ public class MockWebScriptResponse implements WebScriptResponse {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get encode resource url function.
 	 *
@@ -165,7 +152,6 @@ public class MockWebScriptResponse implements WebScriptResponse {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get runtime.
 	 *
@@ -176,7 +162,6 @@ public class MockWebScriptResponse implements WebScriptResponse {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	/**
 	 * Get model.
 	 *

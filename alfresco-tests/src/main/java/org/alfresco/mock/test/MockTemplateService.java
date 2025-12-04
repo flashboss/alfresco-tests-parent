@@ -17,33 +17,32 @@ import org.alfresco.service.cmr.repository.TemplateService;
  * 
  * @author vige
  */
-public class MockTemplateService implements TemplateService, Serializable {	/**
+public class MockTemplateService implements TemplateService, Serializable {
+	/**
 	 * Process template.
 	 *
 	 * @param template the template
 	 * @param model the model
 	 * @return the string
 	 */
-
-
 	@Override
 	public String processTemplate(String template, Object model) throws TemplateException {
 		// TODO Auto-generated method stub
 		return null;
-	}	/**
+	}
+	/**
 	 * Process template.
 	 *
 	 * @param template the template
 	 * @param model the model
 	 * @param out the out
 	 */
-
-
 	@Override
 	public void processTemplate(String template, Object model, Writer out) throws TemplateException {
 		// TODO Auto-generated method stub
 
-	}	/**
+	}
+	/**
 	 * Process template.
 	 *
 	 * @param engine the engine
@@ -51,12 +50,11 @@ public class MockTemplateService implements TemplateService, Serializable {	/**
 	 * @param model the model
 	 * @return the string
 	 */
-
-
 	@Override
 	public String processTemplate(String engine, String template, Object model) throws TemplateException {
 		return engine;
-	}	/**
+	}
+	/**
 	 * Process template.
 	 *
 	 * @param engine the engine
@@ -64,13 +62,12 @@ public class MockTemplateService implements TemplateService, Serializable {	/**
 	 * @param model the model
 	 * @param out the out
 	 */
-
-
 	@Override
 	public void processTemplate(String engine, String template, Object model, Writer out) throws TemplateException {
 		// TODO Auto-generated method stub
 
-	}	/**
+	}
+	/**
 	 * Process template.
 	 *
 	 * @param engine the engine
@@ -79,14 +76,13 @@ public class MockTemplateService implements TemplateService, Serializable {	/**
 	 * @param locale the locale
 	 * @return the string
 	 */
-
-
 	@Override
 	public String processTemplate(String engine, String templateRef, Object model, Locale locale)
 			throws TemplateException {
 		// TODO Auto-generated method stub
 		return null;
-	}	/**
+	}
+	/**
 	 * Process template string.
 	 *
 	 * @param engine the engine
@@ -94,13 +90,12 @@ public class MockTemplateService implements TemplateService, Serializable {	/**
 	 * @param model the model
 	 * @return the string
 	 */
-
-
 	@Override
 	public String processTemplateString(String engine, String template, Object model) throws TemplateException {
 		// TODO Auto-generated method stub
 		return null;
-	}	/**
+	}
+	/**
 	 * Process template string.
 	 *
 	 * @param engine the engine
@@ -108,32 +103,28 @@ public class MockTemplateService implements TemplateService, Serializable {	/**
 	 * @param model the model
 	 * @param out the out
 	 */
-
-
 	@Override
 	public void processTemplateString(String engine, String template, Object model, Writer out)
 			throws TemplateException {
 		// TODO Auto-generated method stub
 
-	}	/**
+	}
+	/**
 	 * Get template processor.
 	 *
 	 * @param engine the engine
 	 * @return the template processor
 	 */
-
-
 	@Override
 	public TemplateProcessor getTemplateProcessor(String engine) {
 		// TODO Auto-generated method stub
 		return null;
-	}	/**
+	}
+	/**
 	 * Register template processor.
 	 *
 	 * @param templateProcessor the template processor
 	 */
-
-
 	@Override
 	public void registerTemplateProcessor(TemplateProcessor templateProcessor) {
 		// TODO Auto-generated method stub

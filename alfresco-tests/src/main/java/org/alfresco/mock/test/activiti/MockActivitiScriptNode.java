@@ -13,7 +13,6 @@ import org.mozilla.javascript.Scriptable;
  * @author vige
  */
 public class MockActivitiScriptNode extends ActivitiScriptNode {
-
 	/**
 	 * Constructs a new mock activiti script node.
 	 *
@@ -24,7 +23,6 @@ public class MockActivitiScriptNode extends ActivitiScriptNode {
 	public MockActivitiScriptNode(NodeRef nodeRef, ServiceRegistry services) {
 		super(nodeRef, services);
 	}
-
 	/**
 	 * Save.
 	 *
@@ -32,7 +30,6 @@ public class MockActivitiScriptNode extends ActivitiScriptNode {
 	@Override
 	public void save() {
 	}
-
 	/**
 	 * Set scope.
 	 *

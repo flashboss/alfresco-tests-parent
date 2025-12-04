@@ -46,7 +46,6 @@ public class Verify {
 	public byte[] getSignedContent() {
 		return signedContent;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signedContent.
 	 * 

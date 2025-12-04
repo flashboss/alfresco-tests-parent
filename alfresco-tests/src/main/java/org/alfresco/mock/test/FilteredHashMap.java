@@ -15,7 +15,6 @@ import org.alfresco.service.cmr.repository.StoreRef;
  * @author vige
  */
 public class FilteredHashMap extends HashMap<NodeRef, File> {
-
 	/**
 	 * Constructs a new filtered hash map.
 	 *
@@ -26,7 +25,6 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 	public FilteredHashMap(int initialCapacity, float loadFactor) {
 		super(initialCapacity, loadFactor);
 	}
-
 	/**
 	 * Constructs a new filtered hash map.
 	 *
@@ -36,7 +34,6 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 	public FilteredHashMap(int initialCapacity) {
 		super(initialCapacity);
 	}
-
 	/**
 	 * Constructs a new filtered hash map.
 	 *
@@ -45,7 +42,6 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 	public FilteredHashMap() {
 		super();
 	}
-
 	/**
 	 * Constructs a new filtered hash map.
 	 *
@@ -56,7 +52,6 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 		super(m);
 		removeFilteredValues();
 	}
-
 	/**
 	 * Put if absent.
 	 *
@@ -71,7 +66,6 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 		else
 			return null;
 	}
-
 	/**
 	 * Put.
 	 *
@@ -86,7 +80,6 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 		else
 			return null;
 	}
-
 	/**
 	 * Put all.
 	 *
@@ -105,7 +98,6 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 		else
 			return null;
 	}
-
 	/**
 	 * Replace all.
 	 *
@@ -116,7 +108,6 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 		super.replaceAll(function);
 		removeFilteredValues();
 	}
-
 	/**
 	 * Replace.
 	 *
@@ -132,7 +123,6 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 		else
 			return false;
 	}
-
 	/**
 	 * Replace.
 	 *
@@ -147,7 +137,6 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 		else
 			return null;
 	}
-
 	/**
 	 * Remove filtered values.
 	 *
@@ -158,7 +147,6 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 				remove(x.getKey());
 		});
 	}
-
 	/**
 	 * Filter map.
 	 *
@@ -168,7 +156,6 @@ public class FilteredHashMap extends HashMap<NodeRef, File> {
 		return map.entrySet().stream().filter(x -> haveToAdd(x.getValue().getAbsolutePath()))
 				.collect(Collectors.toMap(x -> x.getKey(), x -> x.getValue()));
 	}
-
 	/**
 	 * Have to add.
 	 *

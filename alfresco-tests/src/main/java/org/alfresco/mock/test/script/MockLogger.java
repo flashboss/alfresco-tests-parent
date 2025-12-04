@@ -13,7 +13,6 @@ import org.apache.commons.logging.LogFactory;
  * @author vige
  */
 public class MockLogger extends BaseProcessorExtension implements Serializable {
-
 	/** The logger. */
 	private static final Log logger = LogFactory.getLog(ScriptLogger.class);
 	/** The system out. */
@@ -27,7 +26,6 @@ public class MockLogger extends BaseProcessorExtension implements Serializable {
 	public boolean isLoggingEnabled() {
 		return isDebugLoggingEnabled();
 	}
-
 	/**
 	 * Log.
 	 *
@@ -36,7 +34,6 @@ public class MockLogger extends BaseProcessorExtension implements Serializable {
 	public void log(String str) {
 		debug(str);
 	}
-
 	/**
 	 * Is debug logging enabled.
 	 *
@@ -45,7 +42,6 @@ public class MockLogger extends BaseProcessorExtension implements Serializable {
 	public boolean isDebugLoggingEnabled() {
 		return logger.isDebugEnabled();
 	}
-
 	/**
 	 * Debug.
 	 *
@@ -54,7 +50,6 @@ public class MockLogger extends BaseProcessorExtension implements Serializable {
 	public void debug(String str) {
 		logger.debug(str);
 	}
-
 	/**
 	 * Is info logging enabled.
 	 *
@@ -63,7 +58,6 @@ public class MockLogger extends BaseProcessorExtension implements Serializable {
 	public boolean isInfoLoggingEnabled() {
 		return logger.isInfoEnabled();
 	}
-
 	/**
 	 * Info.
 	 *
@@ -72,7 +66,6 @@ public class MockLogger extends BaseProcessorExtension implements Serializable {
 	public void info(String str) {
 		logger.info(str);
 	}
-
 	/**
 	 * Is warn logging enabled.
 	 *
@@ -81,7 +74,6 @@ public class MockLogger extends BaseProcessorExtension implements Serializable {
 	public boolean isWarnLoggingEnabled() {
 		return logger.isWarnEnabled();
 	}
-
 	/**
 	 * Warn.
 	 *
@@ -90,7 +82,6 @@ public class MockLogger extends BaseProcessorExtension implements Serializable {
 	public void warn(String str) {
 		logger.warn(str);
 	}
-
 	/**
 	 * Is error logging enabled.
 	 *
@@ -99,7 +90,6 @@ public class MockLogger extends BaseProcessorExtension implements Serializable {
 	public boolean isErrorLoggingEnabled() {
 		return logger.isErrorEnabled();
 	}
-
 	/**
 	 * Error.
 	 *
@@ -108,7 +98,6 @@ public class MockLogger extends BaseProcessorExtension implements Serializable {
 	public void error(String str) {
 		logger.error(str);
 	}
-
 	/**
 	 * Get system.
 	 *
@@ -119,8 +108,7 @@ public class MockLogger extends BaseProcessorExtension implements Serializable {
 	}
 
 	public static class SystemOut {
-
-		/**
+	/**
 		 * Out.
 		 *
 		 * @param str the str

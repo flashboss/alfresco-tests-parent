@@ -11,7 +11,6 @@ import org.apache.log4j.Logger;
  * @author vige
  */
 public class SignService {
-
 	/** The logger. */
 	private final Logger logger = Logger.getLogger(SignService.class);
 
@@ -27,7 +26,6 @@ public class SignService {
 
 		return new SignedDocumentReportBean();
 	}
-
 	/**
 	 * Sign p a d e s.
 	 *
@@ -40,7 +38,6 @@ public class SignService {
 		logger.debug("start single sign");
 		return new ByteArrayInputStream(new byte[0]);
 	}
-
 	/**
 	 * 
 	 * @param inputStream

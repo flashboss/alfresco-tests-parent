@@ -79,7 +79,6 @@ public class SignedDocumentReportBean {
 	public XMLGregorianCalendar getCheckDate() {
 		return checkDate;
 	}
-
 	/**
 	 * Imposta il valore della proprietà checkDate.
 	 * 
@@ -89,7 +88,6 @@ public class SignedDocumentReportBean {
 	public void setCheckDate(XMLGregorianCalendar value) {
 		this.checkDate = value;
 	}
-
 	/**
 	 * Gets the value of the noteReportList property.
 	 * 
@@ -120,7 +118,6 @@ public class SignedDocumentReportBean {
 		}
 		return this.noteReportList;
 	}
-
 	/**
 	 * Recupera il valore della proprietà nrOfSignatures.
 	 * 
@@ -129,7 +126,6 @@ public class SignedDocumentReportBean {
 	public int getNrOfSignatures() {
 		return nrOfSignatures;
 	}
-
 	/**
 	 * Imposta il valore della proprietà nrOfSignatures.
 	 * 
@@ -138,7 +134,6 @@ public class SignedDocumentReportBean {
 	public void setNrOfSignatures(int value) {
 		this.nrOfSignatures = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà overallVerified.
 	 * 
@@ -147,7 +142,6 @@ public class SignedDocumentReportBean {
 	public boolean isOverallVerified() {
 		return overallVerified;
 	}
-
 	/**
 	 * Imposta il valore della proprietà overallVerified.
 	 * 
@@ -156,7 +150,6 @@ public class SignedDocumentReportBean {
 	public void setOverallVerified(boolean value) {
 		this.overallVerified = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà plainDocument.
 	 * 
@@ -165,7 +158,6 @@ public class SignedDocumentReportBean {
 	public byte[] getPlainDocument() {
 		return plainDocument;
 	}
-
 	/**
 	 * Imposta il valore della proprietà plainDocument.
 	 * 
@@ -174,7 +166,6 @@ public class SignedDocumentReportBean {
 	public void setPlainDocument(byte[] value) {
 		this.plainDocument = value;
 	}
-
 	/**
 	 * Recupera il valore della proprietà signatureFormat.
 	 * 
@@ -184,7 +175,6 @@ public class SignedDocumentReportBean {
 	public String getSignatureFormat() {
 		return signatureFormat;
 	}
-
 	/**
 	 * Imposta il valore della proprietà signatureFormat.
 	 * 
@@ -194,7 +184,6 @@ public class SignedDocumentReportBean {
 	public void setSignatureFormat(String value) {
 		this.signatureFormat = value;
 	}
-
 	/**
 	 * Gets the value of the signatureReportList property.
 	 * 
@@ -225,7 +214,6 @@ public class SignedDocumentReportBean {
 		}
 		return this.signatureReportList;
 	}
-
 	/**
 	 * Recupera il valore della proprietà verificationDate.
 	 * 
@@ -235,7 +223,6 @@ public class SignedDocumentReportBean {
 	public XMLGregorianCalendar getVerificationDate() {
 		return verificationDate;
 	}
-
 	/**
 	 * Imposta il valore della proprietà verificationDate.
 	 * 

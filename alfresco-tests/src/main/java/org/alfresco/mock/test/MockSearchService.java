@@ -38,23 +38,22 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author vige
  */
 public class MockSearchService implements SearchService, Serializable {
-
 	/** The node service. */
 	@Autowired
 	private NodeService nodeService;
 
 	/** The namespace service. */
 	@Autowired
-	private NamespaceService namespaceService;	/**
+	private NamespaceService namespaceService;
+
+	/**
 	 * Query.
 	 *
-	 * @param store the store
+	 * @param store    the store
 	 * @param language the language
-	 * @param query the query
+	 * @param query    the query
 	 * @return the result set
 	 */
-
-
 	@Override
 	public ResultSet query(StoreRef store, String language, String query) {
 		MockNodeService nodeService = getNodeService();
@@ -71,28 +70,28 @@ public class MockSearchService implements SearchService, Serializable {
 	public ResultSet query(StoreRef store, String language, String query,
 			QueryParameterDefinition[] queryParameterDefinitions) {
 		return query(store, language, query);
-	}	/**
+	}
+
+	/**
 	 * Query.
 	 *
-	 * @param store the store
-	 * @param queryId the query id
+	 * @param store           the store
+	 * @param queryId         the query id
 	 * @param queryParameters the query parameters
 	 * @return the result set
 	 */
-
-
 	@Override
 	public ResultSet query(StoreRef store, QName queryId, QueryParameter[] queryParameters) {
 		// TODO Auto-generated method stub
 		return null;
-	}	/**
+	}
+
+	/**
 	 * Query.
 	 *
 	 * @param searchParameters the search parameters
 	 * @return the result set
 	 */
-
-
 	@Override
 	public ResultSet query(SearchParameters searchParameters) {
 		ResultSet resultSet = query(searchParameters.getStores().get(0), searchParameters.getLanguage(),
@@ -140,48 +139,48 @@ public class MockSearchService implements SearchService, Serializable {
 			boolean followAllParentLinks, String language) throws InvalidNodeRefException, XPathException {
 		// TODO Auto-generated method stub
 		return null;
-	}	/**
+	}
+
+	/**
 	 * Contains.
 	 *
-	 * @param nodeRef the node ref
-	 * @param propertyQName the property q name
+	 * @param nodeRef           the node ref
+	 * @param propertyQName     the property q name
 	 * @param googleLikePattern the google like pattern
 	 * @return the boolean
 	 */
-
-
 	@Override
 	public boolean contains(NodeRef nodeRef, QName propertyQName, String googleLikePattern)
 			throws InvalidNodeRefException {
 		// TODO Auto-generated method stub
 		return false;
-	}	/**
+	}
+
+	/**
 	 * Contains.
 	 *
-	 * @param nodeRef the node ref
-	 * @param propertyQName the property q name
+	 * @param nodeRef           the node ref
+	 * @param propertyQName     the property q name
 	 * @param googleLikePattern the google like pattern
-	 * @param defaultOperator the default operator
+	 * @param defaultOperator   the default operator
 	 * @return the boolean
 	 */
-
-
 	@Override
 	public boolean contains(NodeRef nodeRef, QName propertyQName, String googleLikePattern, Operator defaultOperator)
 			throws InvalidNodeRefException {
 		// TODO Auto-generated method stub
 		return false;
-	}	/**
+	}
+
+	/**
 	 * Like.
 	 *
-	 * @param nodeRef the node ref
-	 * @param propertyQName the property q name
+	 * @param nodeRef        the node ref
+	 * @param propertyQName  the property q name
 	 * @param sqlLikePattern the sql like pattern
-	 * @param includeFTS the include f t s
+	 * @param includeFTS     the include f t s
 	 * @return the boolean
 	 */
-
-
 	@Override
 	public boolean like(NodeRef nodeRef, QName propertyQName, String sqlLikePattern, boolean includeFTS)
 			throws InvalidNodeRefException {
@@ -217,255 +216,254 @@ public class MockSearchService implements SearchService, Serializable {
 	}
 
 	public class MockResultSet implements ResultSet {
-
-	/** The rows. */
+		/** The rows. */
 		private List<ResultSetRow> rows;
 
 		private Map<NodeRef, List<Pair<String, List<String>>>> highLights = new HashMap<NodeRef, List<Pair<String, List<String>>>>();
 
-	/** The facet queries. */
+		/** The facet queries. */
 		private Map<String, Integer> facetQueries = new HashMap<String, Integer>();
 
-	/** The spell check result. */
+		/** The spell check result. */
 		private SpellCheckResult spellCheckResult = new SpellCheckResult(null, null, true);
 
-	/**
+		/**
 		 * Constructs a new mock result set.
 		 *
 		 * @param rows the rows
-	 * @return the result
+		 * @return the result
 		 */
 		public MockResultSet(List<ResultSetRow> rows) {
 			this.rows = rows;
-		}	/**
+		}
+
+		/**
 		 * Length.
 		 *
 		 * @return the int
 		 */
-
-
 		@Override
 		public int length() {
 			return rows.size();
-		}	/**
+		}
+
+		/**
 		 * Get number found.
 		 *
 		 * @return the long
 		 */
-
-
 		@Override
 		public long getNumberFound() {
 			return rows.size();
-		}	/**
+		}
+
+		/**
 		 * Get node ref.
 		 *
 		 * @param n the n
 		 * @return the node ref
 		 */
-
-
 		@Override
 		public NodeRef getNodeRef(int n) {
 			if (rows.size() <= n)
 				return null;
 			return rows.get(n).getNodeRef();
-		}	/**
+		}
+
+		/**
 		 * Get score.
 		 *
 		 * @param n the n
 		 * @return the float
 		 */
-
-
 		@Override
 		public float getScore(int n) {
 			// TODO Auto-generated method stub
 			return 0;
-		}	/**
+		}
+
+		/**
 		 * Close.
 		 *
 		 */
-
-
 		@Override
 		public void close() {
 			// TODO Auto-generated method stub
 
-		}	/**
+		}
+
+		/**
 		 * Get row.
 		 *
 		 * @param i the i
 		 * @return the result set row
 		 */
-
-
 		@Override
 		public ResultSetRow getRow(int i) {
 			// TODO Auto-generated method stub
 			return null;
-		}	/**
+		}
+
+		/**
 		 * Get node refs.
 		 *
 		 * @return the list
 		 */
-
-
 		@Override
 		public List<NodeRef> getNodeRefs() {
 			List<NodeRef> result = new ArrayList<NodeRef>();
 			for (ResultSetRow row : rows)
 				result.add(row.getNodeRef());
 			return result;
-		}	/**
+		}
+
+		/**
 		 * Get child assoc refs.
 		 *
 		 * @return the list
 		 */
-
-
 		@Override
 		public List<ChildAssociationRef> getChildAssocRefs() {
 			// TODO Auto-generated method stub
 			return null;
-		}	/**
+		}
+
+		/**
 		 * Get child assoc ref.
 		 *
 		 * @param n the n
 		 * @return the child association ref
 		 */
-
-
 		@Override
 		public ChildAssociationRef getChildAssocRef(int n) {
 			// TODO Auto-generated method stub
 			return null;
-		}	/**
+		}
+
+		/**
 		 * Get result set meta data.
 		 *
 		 * @return the result set meta data
 		 */
-
-
 		@Override
 		public ResultSetMetaData getResultSetMetaData() {
 			// TODO Auto-generated method stub
 			return null;
-		}	/**
+		}
+
+		/**
 		 * Get start.
 		 *
 		 * @return the int
 		 */
-
-
 		@Override
 		public int getStart() {
 			// TODO Auto-generated method stub
 			return 0;
-		}	/**
+		}
+
+		/**
 		 * Has more.
 		 *
 		 * @return the boolean
 		 */
-
-
 		@Override
 		public boolean hasMore() {
 			// TODO Auto-generated method stub
 			return false;
-		}	/**
+		}
+
+		/**
 		 * Set bulk fetch.
 		 *
 		 * @param bulkFetch the bulk fetch
 		 * @return the boolean
 		 */
-
-
 		@Override
 		public boolean setBulkFetch(boolean bulkFetch) {
 			// TODO Auto-generated method stub
 			return false;
-		}	/**
+		}
+
+		/**
 		 * Get bulk fetch.
 		 *
 		 * @return the boolean
 		 */
-
-
 		@Override
 		public boolean getBulkFetch() {
 			// TODO Auto-generated method stub
 			return false;
-		}	/**
+		}
+
+		/**
 		 * Set bulk fetch size.
 		 *
 		 * @param bulkFetchSize the bulk fetch size
 		 * @return the int
 		 */
-
-
 		@Override
 		public int setBulkFetchSize(int bulkFetchSize) {
 			// TODO Auto-generated method stub
 			return 0;
-		}	/**
+		}
+
+		/**
 		 * Get bulk fetch size.
 		 *
 		 * @return the int
 		 */
-
-
 		@Override
 		public int getBulkFetchSize() {
 			// TODO Auto-generated method stub
 			return 0;
-		}	/**
+		}
+
+		/**
 		 * Get field facet.
 		 *
 		 * @param field the field
 		 */
-
-
 		@Override
 		public List<Pair<String, Integer>> getFieldFacet(String field) {
 			// TODO Auto-generated method stub
 			return null;
-		}	/**
+		}
+
+		/**
 		 * Iterator.
 		 *
 		 * @return the iterator
 		 */
-
-
 		@Override
 		public Iterator<ResultSetRow> iterator() {
 			// TODO Auto-generated method stub
 			return rows.iterator();
-		}	/**
+		}
+
+		/**
 		 * Get facet queries.
 		 *
 		 */
-
-
 		@Override
 		public Map<String, Integer> getFacetQueries() {
 			return facetQueries;
-		}	/**
+		}
+
+		/**
 		 * Get spell check result.
 		 *
 		 * @return the spell check result
 		 */
-
-
 		@Override
 		public SpellCheckResult getSpellCheckResult() {
 			return spellCheckResult;
-		}	/**
+		}
+
+		/**
 		 * Get highlighting.
 		 *
 		 */
-
-
 		@Override
 		public Map<NodeRef, List<Pair<String, List<String>>>> getHighlighting() {
 			return highLights;
@@ -473,154 +471,153 @@ public class MockSearchService implements SearchService, Serializable {
 	}
 
 	public class MockResultSetRow implements ResultSetRow {
-
-	/** The node ref. */
+		/** The node ref. */
 		private NodeRef nodeRef;
 
-	/**
+		/**
 		 * Constructs a new mock result set row.
 		 *
 		 * @param nodeRef the node ref
-	 * @return the result
+		 * @return the result
 		 */
 		public MockResultSetRow(NodeRef nodeRef) {
 			this.nodeRef = nodeRef;
-		}	/**
+		}
+
+		/**
 		 * Get values.
 		 *
 		 */
-
-
 		@Override
 		public Map<String, Serializable> getValues() {
 			Map<String, Serializable> map = new HashMap<String, Serializable>();
 			map.put("", nodeRef);
 			return map;
-		}	/**
+		}
+
+		/**
 		 * Get value.
 		 *
 		 * @param columnName the column name
 		 * @return the serializable
 		 */
-
-
 		@Override
 		public Serializable getValue(String columnName) {
 			return nodeRef;
-		}	/**
+		}
+
+		/**
 		 * Get value.
 		 *
 		 * @param qname the qname
 		 * @return the serializable
 		 */
-
-
 		@Override
 		public Serializable getValue(QName qname) {
 			return nodeService.getProperty(nodeRef, qname);
-		}	/**
+		}
+
+		/**
 		 * Get node ref.
 		 *
 		 * @return the node ref
 		 */
-
-
 		@Override
 		public NodeRef getNodeRef() {
 			return nodeRef;
-		}	/**
+		}
+
+		/**
 		 * Get node refs.
 		 *
 		 */
-
-
 		@Override
 		public Map<String, NodeRef> getNodeRefs() {
 			return null;
-		}	/**
+		}
+
+		/**
 		 * Get node ref.
 		 *
 		 * @param selectorName the selector name
 		 * @return the node ref
 		 */
-
-
 		@Override
 		public NodeRef getNodeRef(String selectorName) {
 			return nodeRef;
-		}	/**
+		}
+
+		/**
 		 * Get score.
 		 *
 		 * @return the float
 		 */
-
-
 		@Override
 		public float getScore() {
 			// TODO Auto-generated method stub
 			return 0;
-		}	/**
+		}
+
+		/**
 		 * Get scores.
 		 *
 		 */
-
-
 		@Override
 		public Map<String, Float> getScores() {
 			// TODO Auto-generated method stub
 			return null;
-		}	/**
+		}
+
+		/**
 		 * Get score.
 		 *
 		 * @param selectorName the selector name
 		 * @return the float
 		 */
-
-
 		@Override
 		public float getScore(String selectorName) {
 			// TODO Auto-generated method stub
 			return 0;
-		}	/**
+		}
+
+		/**
 		 * Get result set.
 		 *
 		 * @return the result set
 		 */
-
-
 		@Override
 		public ResultSet getResultSet() {
 			// TODO Auto-generated method stub
 			return null;
-		}	/**
+		}
+
+		/**
 		 * Get q name.
 		 *
 		 * @return the q name
 		 */
-
-
 		@Override
 		public QName getQName() {
 			// TODO Auto-generated method stub
 			return null;
-		}	/**
+		}
+
+		/**
 		 * Get index.
 		 *
 		 * @return the int
 		 */
-
-
 		@Override
 		public int getIndex() {
 			// TODO Auto-generated method stub
 			return 0;
-		}	/**
+		}
+
+		/**
 		 * Get child assoc ref.
 		 *
 		 * @return the child association ref
 		 */
-
-
 		@Override
 		public ChildAssociationRef getChildAssocRef() {
 			// TODO Auto-generated method stub
@@ -700,7 +697,7 @@ public class MockSearchService implements SearchService, Serializable {
 	/**
 	 * Get segment from query.
 	 *
-	 * @param query the query
+	 * @param query   the query
 	 * @param segment the segment
 	 * @return the string
 	 */
@@ -716,7 +713,7 @@ public class MockSearchService implements SearchService, Serializable {
 	/**
 	 * Has type.
 	 *
-	 * @param type the type
+	 * @param type    the type
 	 * @param nodeRef the node ref
 	 * @return the boolean
 	 */
@@ -736,7 +733,7 @@ public class MockSearchService implements SearchService, Serializable {
 	 * Has properties.
 	 *
 	 * @param properties the properties
-	 * @param nodeRef the node ref
+	 * @param nodeRef    the node ref
 	 * @return the boolean
 	 */
 	private boolean hasProperties(List<MockProperty> properties, NodeRef nodeRef) {
@@ -802,16 +799,16 @@ public class MockSearchService implements SearchService, Serializable {
 	/**
 	 * Has path.
 	 *
-	 * @param store the store
-	 * @param path the path
-	 * @param subpaths the subpaths
+	 * @param store           the store
+	 * @param path            the path
+	 * @param subpaths        the subpaths
 	 * @param wildcardsNumber the wildcards number
-	 * @param nodeRef the node ref
+	 * @param nodeRef         the node ref
 	 * @return the boolean
 	 */
 	private boolean hasPath(StoreRef store, String path, String[] subpaths, int wildcardsNumber, NodeRef nodeRef) {
 
-	/** The nodepath. */
+		/** The nodepath. */
 		String nodepath = getNodeService().getPathAsString(nodeRef);
 		if (store == null || path == null)
 			return true;
@@ -820,7 +817,7 @@ public class MockSearchService implements SearchService, Serializable {
 		nodepath = nodepath
 				.substring(nodepath.indexOf(MockContentService.FOLDER_TEST) + MockContentService.FOLDER_TEST.length());
 
-	/** The last nodepath. */
+		/** The last nodepath. */
 		String lastNodepath = "";
 		if (nodepath.indexOf("/") >= 0) {
 			nodepath = nodepath.substring(nodepath.indexOf("/"));
@@ -887,17 +884,17 @@ public class MockSearchService implements SearchService, Serializable {
 	/**
 	 * X p a t h query.
 	 *
-	 * @param store the store
-	 * @param query the query
+	 * @param store    the store
+	 * @param query    the query
 	 * @param nodeRefs the node refs
-	 * @param rows the rows
+	 * @param rows     the rows
 	 */
 	private void XPATHQuery(StoreRef store, String query, List<NodeRef> nodeRefs, List<ResultSetRow> rows) {
 		query = prepare(query, store);
 		String[] subpaths = getSubpaths(query);
 		int wildcardsNumber = 0;
 
-	/** The process query. */
+		/** The process query. */
 		String processQuery = query;
 		while (processQuery.endsWith("/*")) {
 			wildcardsNumber++;
@@ -912,14 +909,14 @@ public class MockSearchService implements SearchService, Serializable {
 	/**
 	 * F t s query.
 	 *
-	 * @param store the store
-	 * @param query the query
+	 * @param store    the store
+	 * @param query    the query
 	 * @param nodeRefs the node refs
-	 * @param rows the rows
+	 * @param rows     the rows
 	 */
 	private void FTSQuery(StoreRef store, String query, List<NodeRef> nodeRefs, List<ResultSetRow> rows) {
 
-	/** The path. */
+		/** The path. */
 		String path = getSegmentFromQuery(query, "PATH:\"");
 		if (path != null) {
 			path = prepare(path, store);
@@ -928,8 +925,7 @@ public class MockSearchService implements SearchService, Serializable {
 			if (!path.startsWith("/"))
 				path = "/" + path;
 		}
-
-	/** The process query. */
+		/** The process query. */
 		String processQuery = path;
 		String[] subpaths = getSubpaths(path);
 
@@ -968,7 +964,7 @@ public class MockSearchService implements SearchService, Serializable {
 		if (index >= 0)
 			query = query.substring(index + prefix.length());
 
-	/** The result. */
+		/** The result. */
 		String result = "";
 		String[] slashes = query.split("/");
 		for (int i = 0; i < slashes.length; i++) {
@@ -985,23 +981,22 @@ public class MockSearchService implements SearchService, Serializable {
 	}
 
 	private class MockProperty {
-
-	/** The qname. */
+		/** The qname. */
 		private QName qname;
 
-	/** The value. */
+		/** The value. */
 		private String value;
 
-	/** The to delete. */
+		/** The to delete. */
 		private boolean toDelete;
 
-	/**
+		/**
 		 * Constructs a new mock property.
 		 *
-		 * @param qname the qname
-		 * @param value the value
+		 * @param qname    the qname
+		 * @param value    the value
 		 * @param toDelete the to delete
-	 * @return the result
+		 * @return the result
 		 */
 		public MockProperty(QName qname, String value, boolean toDelete) {
 			this.qname = qname;
@@ -1009,7 +1004,7 @@ public class MockSearchService implements SearchService, Serializable {
 			this.toDelete = toDelete;
 		}
 
-	/**
+		/**
 		 * Get qname.
 		 *
 		 * @return the q name
@@ -1018,7 +1013,7 @@ public class MockSearchService implements SearchService, Serializable {
 			return qname;
 		}
 
-	/**
+		/**
 		 * Get value.
 		 *
 		 * @return the string
@@ -1027,7 +1022,7 @@ public class MockSearchService implements SearchService, Serializable {
 			return value;
 		}
 
-	/**
+		/**
 		 * Is to delete.
 		 *
 		 * @return the boolean
@@ -1038,26 +1033,25 @@ public class MockSearchService implements SearchService, Serializable {
 	}
 
 	private class MockAspect {
-
-	/** The qname. */
+		/** The qname. */
 		private QName qname;
 
-	/** The to delete. */
+		/** The to delete. */
 		private boolean toDelete;
 
-	/**
+		/**
 		 * Constructs a new mock aspect.
 		 *
-		 * @param qname the qname
+		 * @param qname    the qname
 		 * @param toDelete the to delete
-	 * @return the result
+		 * @return the result
 		 */
 		public MockAspect(QName qname, boolean toDelete) {
 			this.qname = qname;
 			this.toDelete = toDelete;
 		}
 
-	/**
+		/**
 		 * Get qname.
 		 *
 		 * @return the q name
@@ -1066,7 +1060,7 @@ public class MockSearchService implements SearchService, Serializable {
 			return qname;
 		}
 
-	/**
+		/**
 		 * Is to delete.
 		 *
 		 * @return the boolean

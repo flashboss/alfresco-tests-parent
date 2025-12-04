@@ -46,7 +46,6 @@ import it.vige.ws.utils.GenerationUtils;
  * @author vige
  */
 public class SignPDFGeneration extends DeclarativeWebScript {
-
 	/** The file folder service. */
 	private FileFolderService fileFolderService;
 	/** The node service. */
@@ -77,7 +76,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	 * @param status the status
 	 * @param cache the cache
 	 */
-
 	@Override
 	public Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
@@ -254,7 +252,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 		model.put("generatiList", StringUtils.join(jsonObjects.toArray(), ","));
 		return model;
 	}
-
 	/**
 	 * 
 	 * @param destinazioneNodeRef
@@ -323,7 +320,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 		logger.info("End Crea pratica.");
 
 	}
-
 	/**
 	 * Get file folder service.
 	 *
@@ -332,7 +328,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	public FileFolderService getFileFolderService() {
 		return fileFolderService;
 	}
-
 	/**
 	 * Set file folder service.
 	 *
@@ -341,7 +336,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	public void setFileFolderService(FileFolderService fileFolderService) {
 		this.fileFolderService = fileFolderService;
 	}
-
 	/**
 	 * Get node service.
 	 *
@@ -350,7 +344,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	public NodeService getNodeService() {
 		return nodeService;
 	}
-
 	/**
 	 * Set node service.
 	 *
@@ -359,7 +352,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	public void setNodeService(NodeService nodeService) {
 		this.nodeService = nodeService;
 	}
-
 	/**
 	 * Get sign service.
 	 *
@@ -368,7 +360,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	public SignService getSignService() {
 		return signService;
 	}
-
 	/**
 	 * Set sign service.
 	 *
@@ -377,7 +368,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	public void setSignService(SignService signService) {
 		this.signService = signService;
 	}
-
 	/**
 	 * Get generation util.
 	 *
@@ -386,7 +376,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	public GenerationUtils getGenerationUtil() {
 		return generationUtil;
 	}
-
 	/**
 	 * Set generation util.
 	 *
@@ -395,7 +384,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	public void setGenerationUtil(GenerationUtils generationUtil) {
 		this.generationUtil = generationUtil;
 	}
-
 	/**
 	 * Get pdf conv secret.
 	 *
@@ -404,7 +392,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	public String getPdfConvSecret() {
 		return pdfConvSecret;
 	}
-
 	/**
 	 * Set pdf conv secret.
 	 *
@@ -413,7 +400,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	public void setPdfConvSecret(String pdfConvSecret) {
 		this.pdfConvSecret = pdfConvSecret;
 	}
-
 	/**
 	 * Get generate ceda.
 	 *
@@ -422,7 +408,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	public String getGenerateCeda() {
 		return generateCedra;
 	}
-
 	/**
 	 * Set generate cedra.
 	 *
@@ -431,7 +416,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	public void setGenerateCedra(String generateCedra) {
 		this.generateCedra = generateCedra;
 	}
-
 	/**
 	 * Get signer list.
 	 *
@@ -439,7 +423,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	public HashMap<String, Signer> getSignerList() {
 		return signerList;
 	}
-
 	/**
 	 * Set lista firmatari.
 	 *

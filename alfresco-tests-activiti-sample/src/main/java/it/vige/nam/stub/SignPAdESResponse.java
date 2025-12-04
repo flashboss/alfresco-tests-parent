@@ -48,7 +48,6 @@ public class SignPAdESResponse {
 	public byte[] getReturn() {
 		return _return;
 	}
-
 	/**
 	 * Imposta il valore della proprietà return.
 	 * 

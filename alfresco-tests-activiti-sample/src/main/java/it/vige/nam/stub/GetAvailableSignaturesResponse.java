@@ -49,7 +49,6 @@ public class GetAvailableSignaturesResponse {
 	public long getReturn() {
 		return _return;
 	}
-
 	/**
 	 * Imposta il valore della proprietà return.
 	 * 

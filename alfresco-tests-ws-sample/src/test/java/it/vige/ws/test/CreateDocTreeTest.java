@@ -54,17 +54,14 @@ public class CreateDocTreeTest extends AbstractWSForm {
 	 *
 	 * @return the abstract web script
 	 */
-
-
 	@Override
 	protected AbstractWebScript getAbstractWebScript() {
 		return createDocTree;
-	}	/**
+	}
+	/**
 	 * Init.
 	 *
 	 */
-
-
 	@Before
 	public void init() {
 		super.init();
@@ -76,12 +73,11 @@ public class CreateDocTreeTest extends AbstractWSForm {
 		NodeRef bdm = insertFolder(sites, "vige-site");
 		NodeRef bdmDL = insertFolder(bdm, "documentLibrary");
 		insertFolder(bdmDL, "Questions");
-	}	/**
+	}
+	/**
 	 * Execute.
 	 *
 	 */
-
-
 	@Test
 	public void execute() throws ParseException, IOException {
 

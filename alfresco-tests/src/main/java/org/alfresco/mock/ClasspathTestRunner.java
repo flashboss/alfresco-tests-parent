@@ -26,7 +26,7 @@ public class ClasspathTestRunner extends SpringJUnit4ClassRunner {
   }
 
   // Loads a class in the custom classloader
-  /**
+	/**
    * Load from custom classloader.
    *
    * @param clazz the clazz
@@ -44,8 +44,7 @@ public class ClasspathTestRunner extends SpringJUnit4ClassRunner {
       throw new InitializationError(e);
     }
   }
-
-  /**
+	/**
    * Run.
    *
    * @param notifier the notifier

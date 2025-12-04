@@ -36,7 +36,6 @@ import org.alfresco.service.namespace.QName;
  * @author vige
  */
 public class NodeUtils {
-
 	/**
 	 * Insert folder.
 	 *
@@ -88,7 +87,6 @@ public class NodeUtils {
 		Version versionRef = versionService.createVersion(nodeRef, versionProperties);
 		return versionRef.getFrozenStateNodeRef();
 	}
-
 	/**
 	 * Sort by name.
 	 *
@@ -104,8 +102,6 @@ public class NodeUtils {
 			 * @param o2 the o2
 			 * @return the int
 			 */
-
-
 			@Override
 			public int compare(NodeRef o1, NodeRef o2) {
 				return o1.getId().compareTo(o2.getId());
@@ -113,7 +109,6 @@ public class NodeUtils {
 		});
 		return Arrays.asList(nodeArray);
 	}
-
 	/**
 	 * Generate u u i d.
 	 *
