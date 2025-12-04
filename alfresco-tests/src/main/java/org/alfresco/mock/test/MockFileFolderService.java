@@ -66,6 +66,17 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		return result;
 	}
 
+	/**
+	 * List.
+	 *
+	 * @param contextNodeRef the context node ref
+	 * @param files the files
+	 * @param folders the folders
+	 * @param ignoreTypeQNames the ignore type q names
+	 * @param sortProps the sort props
+	 * @param pagingRequest the paging request
+	 * @return the result
+	 */
 	@Override
 	public PagingResults<FileInfo> list(NodeRef contextNodeRef, boolean files, boolean folders,
 			Set<QName> ignoreTypeQNames, List<Pair<QName, Boolean>> sortProps, PagingRequest pagingRequest) {
@@ -74,6 +85,18 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		return pagingResults;
 	}
 
+	/**
+	 * List.
+	 *
+	 * @param contextNodeRef the context node ref
+	 * @param files the files
+	 * @param folders the folders
+	 * @param pattern the pattern
+	 * @param ignoreTypeQNames the ignore type q names
+	 * @param sortProps the sort props
+	 * @param pagingRequest the paging request
+	 * @return the result
+	 */
 	@Override
 	public PagingResults<FileInfo> list(NodeRef contextNodeRef, boolean files, boolean folders, String pattern,
 			Set<QName> ignoreTypeQNames, List<Pair<QName, Boolean>> sortProps, PagingRequest pagingRequest) {
@@ -165,6 +188,16 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Search.
+	 *
+	 * @param contextNodeRef the context node ref
+	 * @param namePattern the name pattern
+	 * @param fileSearch the file search
+	 * @param folderSearch the folder search
+	 * @param includeSubFolders the include sub folders
+	 * @return the result
+	 */
 	@Override
 	public List<FileInfo> search(NodeRef contextNodeRef, String namePattern, boolean fileSearch, boolean folderSearch,
 			boolean includeSubFolders) {

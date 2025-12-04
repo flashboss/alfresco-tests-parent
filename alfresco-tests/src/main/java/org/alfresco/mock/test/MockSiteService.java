@@ -47,6 +47,16 @@ public class MockSiteService implements SiteService, Serializable {
 	@Autowired
 	private NodeService nodeService;
 
+	/**
+	 * Create site.
+	 *
+	 * @param sitePreset the site preset
+	 * @param shortName the short name
+	 * @param title the title
+	 * @param description the description
+	 * @param isPublic the is public
+	 * @return the result
+	 */
 	@Override
 	public SiteInfo createSite(String sitePreset, String shortName, String title, String description,
 			boolean isPublic) {
@@ -73,12 +83,33 @@ public class MockSiteService implements SiteService, Serializable {
 		return false;
 	}
 
+	/**
+	 * Create site.
+	 *
+	 * @param sitePreset the site preset
+	 * @param shortName the short name
+	 * @param title the title
+	 * @param description the description
+	 * @param visibility the visibility
+	 * @return the result
+	 */
 	@Override
 	public SiteInfo createSite(String sitePreset, String shortName, String title, String description,
 			SiteVisibility visibility) {
 		return createSite(sitePreset, shortName, title, description, visibility == PUBLIC);
 	}
 
+	/**
+	 * Create site.
+	 *
+	 * @param sitePreset the site preset
+	 * @param shortName the short name
+	 * @param title the title
+	 * @param description the description
+	 * @param visibility the visibility
+	 * @param siteType the site type
+	 * @return the result
+	 */
 	@Override
 	public SiteInfo createSite(String sitePreset, String shortName, String title, String description,
 			SiteVisibility visibility, QName siteType) {
@@ -149,6 +180,14 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+	 * List sites.
+	 *
+	 * @param filterProps the filter props
+	 * @param sortProps the sort props
+	 * @param pagingRequest the paging request
+	 * @return the result
+	 */
 	@Override
 	public PagingResults<SiteInfo> listSites(List<FilterProp> filterProps, List<Pair<QName, Boolean>> sortProps,
 			PagingRequest pagingRequest) {
@@ -241,6 +280,15 @@ public class MockSiteService implements SiteService, Serializable {
 
 	}
 
+	/**
+	 * List members.
+	 *
+	 * @param shortName the short name
+	 * @param nameFilter the name filter
+	 * @param roleFilter the role filter
+	 * @param collapseGroups the collapse groups
+	 * @param callback the callback
+	 */
 	@Override
 	public void listMembers(String shortName, String nameFilter, String roleFilter, boolean collapseGroups,
 			SiteMembersCallback callback) {
@@ -262,6 +310,15 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+	 * List members.
+	 *
+	 * @param shortName the short name
+	 * @param nameFilter the name filter
+	 * @param roleFilter the role filter
+	 * @param size the size
+	 * @param collapseGroups the collapse groups
+	 */
 	@Override
 	public Map<String, String> listMembers(String shortName, String nameFilter, String roleFilter, int size,
 			boolean collapseGroups) {
@@ -269,6 +326,16 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+	 * List members info.
+	 *
+	 * @param shortName the short name
+	 * @param nameFilter the name filter
+	 * @param roleFilter the role filter
+	 * @param size the size
+	 * @param collapseGroups the collapse groups
+	 * @return the result
+	 */
 	@Override
 	public List<SiteMemberInfo> listMembersInfo(String shortName, String nameFilter, String roleFilter, int size,
 			boolean collapseGroups) {
@@ -276,6 +343,15 @@ public class MockSiteService implements SiteService, Serializable {
 		return null;
 	}
 
+	/**
+	 * List members paged.
+	 *
+	 * @param shortName the short name
+	 * @param collapseGroups the collapse groups
+	 * @param sortProps the sort props
+	 * @param pagingRequest the paging request
+	 * @return the result
+	 */
 	@Override
 	public PagingResults<SiteMembership> listMembersPaged(String shortName, boolean collapseGroups,
 			List<Pair<SortFields, Boolean>> sortProps, PagingRequest pagingRequest) {
@@ -334,6 +410,15 @@ public class MockSiteService implements SiteService, Serializable {
 
 	}
 
+	/**
+	 * Create container.
+	 *
+	 * @param shortName the short name
+	 * @param componentId the component id
+	 * @param containerType the container type
+	 * @param containerProperties the container properties
+	 * @return the result
+	 */
 	@Override
 	public NodeRef createContainer(String shortName, String componentId, QName containerType,
 			Map<QName, Serializable> containerProperties) {
@@ -451,6 +536,14 @@ public class MockSiteService implements SiteService, Serializable {
 
 	}
 
+	/**
+	 * List sites paged.
+	 *
+	 * @param userName the user name
+	 * @param sortProps the sort props
+	 * @param pagingRequest the paging request
+	 * @return the result
+	 */
 	@Override
 	public PagingResults<SiteMembership> listSitesPaged(String userName, List<Pair<SortFields, Boolean>> sortProps,
 			PagingRequest pagingRequest) {

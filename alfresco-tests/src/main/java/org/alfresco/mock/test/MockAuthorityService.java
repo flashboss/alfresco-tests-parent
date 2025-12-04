@@ -143,6 +143,17 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		return getAuthorities();
 	}
 
+	/**
+	 * Get authorities info.
+	 *
+	 * @param type the type
+	 * @param zoneName the zone name
+	 * @param displayNameFilter the display name filter
+	 * @param sortBy the sort by
+	 * @param sortAscending the sort ascending
+	 * @param pagingRequest the paging request
+	 * @return the result
+	 */
 	@Override
 	public PagingResults<AuthorityInfo> getAuthoritiesInfo(AuthorityType type, String zoneName,
 			String displayNameFilter, String sortBy, boolean sortAscending, PagingRequest pagingRequest) {
@@ -150,6 +161,17 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Get authorities.
+	 *
+	 * @param type the type
+	 * @param zoneName the zone name
+	 * @param displayNameFilter the display name filter
+	 * @param sortByDisplayName the sort by display name
+	 * @param sortAscending the sort ascending
+	 * @param pagingRequest the paging request
+	 * @return the result
+	 */
 	@Override
 	public PagingResults<String> getAuthorities(AuthorityType type, String zoneName, String displayNameFilter,
 			boolean sortByDisplayName, boolean sortAscending, PagingRequest pagingRequest) {
@@ -182,6 +204,15 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		return createAuthority(type, shortName, null, null);
 	}
 
+	/**
+	 * Create authority.
+	 *
+	 * @param type the type
+	 * @param shortName the short name
+	 * @param authorityDisplayName the authority display name
+	 * @param authorityZones the authority zones
+	 * @return the result
+	 */
 	@Override
 	public String createAuthority(AuthorityType type, String shortName, String authorityDisplayName,
 			Set<String> authorityZones) {
@@ -282,6 +313,16 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Get containing authorities in zone.
+	 *
+	 * @param type the type
+	 * @param name the name
+	 * @param zoneName the zone name
+	 * @param filter the filter
+	 * @param size the size
+	 * @return the result
+	 */
 	@Override
 	public Set<String> getContainingAuthoritiesInZone(AuthorityType type, String name, String zoneName,
 			AuthorityFilter filter, int size) {
@@ -455,6 +496,16 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Find authorities.
+	 *
+	 * @param type the type
+	 * @param parentAuthority the parent authority
+	 * @param immediate the immediate
+	 * @param displayNamePattern the display name pattern
+	 * @param zoneName the zone name
+	 * @return the result
+	 */
 	@Override
 	public Set<String> findAuthorities(AuthorityType type, String parentAuthority, boolean immediate,
 			String displayNamePattern, String zoneName) {

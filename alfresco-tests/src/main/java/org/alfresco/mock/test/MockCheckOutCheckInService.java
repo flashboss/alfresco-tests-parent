@@ -17,6 +17,15 @@ public class MockCheckOutCheckInService implements CheckOutCheckInService, Seria
 	/** The checked out. */
 	private boolean checkedOut;
 
+	/**
+	 * Checkout.
+	 *
+	 * @param nodeRef the node ref
+	 * @param destinationParentNodeRef the destination parent node ref
+	 * @param destinationAssocTypeQName the destination assoc type q name
+	 * @param destinationAssocQName the destination assoc q name
+	 * @return the result
+	 */
 	@Override
 	public NodeRef checkout(NodeRef nodeRef, NodeRef destinationParentNodeRef, QName destinationAssocTypeQName,
 			QName destinationAssocQName) {
@@ -35,6 +44,15 @@ public class MockCheckOutCheckInService implements CheckOutCheckInService, Seria
 		return nodeRef;
 	}
 
+	/**
+	 * Checkin.
+	 *
+	 * @param workingCopyNodeRef the working copy node ref
+	 * @param versionProperties the version properties
+	 * @param contentUrl the content url
+	 * @param keepCheckedOut the keep checked out
+	 * @return the result
+	 */
 	@Override
 	public NodeRef checkin(NodeRef workingCopyNodeRef, Map<String, Serializable> versionProperties, String contentUrl,
 			boolean keepCheckedOut) {

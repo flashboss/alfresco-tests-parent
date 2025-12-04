@@ -113,18 +113,42 @@ public class MockSignIntegration implements SignIntegration {
 		return null;
 	}
 
+	/**
+	 * Sign c ad e s array list with multi preferences.
+	 *
+	 * @param credentials the credentials
+	 * @param bufferList the buffer list
+	 * @param cAdESPreferences the c ad e s preferences
+	 * @return the result
+	 */
 	@Override
 	public List<byte[]> signCAdESArrayListWithMultiPreferences(Credentials credentials, List<byte[]> bufferList,
 			List<CAdESPreferences> cAdESPreferences) throws WSException {
 		return null;
 	}
 
+	/**
+	 * Sign p ad e s array list with credentials.
+	 *
+	 * @param credentials the credentials
+	 * @param bufferList the buffer list
+	 * @param pAdESPreferences the p ad e s preferences
+	 * @return the result
+	 */
 	@Override
 	public List<byte[]> signPAdESArrayListWithCredentials(Credentials credentials, List<byte[]> bufferList,
 			PAdESPreferences pAdESPreferences) throws WSException {
 		return null;
 	}
 
+	/**
+	 * Sign c ad e s array list with credentials.
+	 *
+	 * @param credentials the credentials
+	 * @param bufferList the buffer list
+	 * @param cAdESPreferences the c ad e s preferences
+	 * @return the result
+	 */
 	@Override
 	public List<byte[]> signCAdESArrayListWithCredentials(Credentials credentials, List<byte[]> bufferList,
 			CAdESPreferences cAdESPreferences) throws WSException {
@@ -151,12 +175,28 @@ public class MockSignIntegration implements SignIntegration {
 		return bufferStr.getBytes();
 	}
 
+	/**
+	 * Sign x ad e s array list with multi preferences.
+	 *
+	 * @param credentials the credentials
+	 * @param bufferList the buffer list
+	 * @param xAdESPreferences the x ad e s preferences
+	 * @return the result
+	 */
 	@Override
 	public List<byte[]> signXAdESArrayListWithMultiPreferences(Credentials credentials, List<byte[]> bufferList,
 			List<XAdESPreferences> xAdESPreferences) throws WSException {
 		return null;
 	}
 
+	/**
+	 * Sign array list with credentials.
+	 *
+	 * @param credentials the credentials
+	 * @param bufferList the buffer list
+	 * @param adESPreferences the ad e s preferences
+	 * @return the result
+	 */
 	@Override
 	public List<byte[]> signArrayListWithCredentials(Credentials credentials, List<byte[]> bufferList,
 			SignPreferences adESPreferences) throws WSException {
@@ -192,6 +232,14 @@ public class MockSignIntegration implements SignIntegration {
 		return null;
 	}
 
+	/**
+	 * Sign x ad e s array list with credentials.
+	 *
+	 * @param credentials the credentials
+	 * @param bufferList the buffer list
+	 * @param xAdESPreferences the x ad e s preferences
+	 * @return the result
+	 */
 	@Override
 	public List<byte[]> signXAdESArrayListWithCredentials(Credentials credentials, List<byte[]> bufferList,
 			XAdESPreferences xAdESPreferences) throws WSException {
@@ -221,6 +269,15 @@ public class MockSignIntegration implements SignIntegration {
 		return null;
 	}
 
+	/**
+	 * Sign p ad e s array list.
+	 *
+	 * @param username the username
+	 * @param password the password
+	 * @param bufferList the buffer list
+	 * @param pAdESPreferences the p ad e s preferences
+	 * @return the result
+	 */
 	@Override
 	public List<byte[]> signPAdESArrayList(String username, String password, List<byte[]> bufferList,
 			PAdESPreferences pAdESPreferences) throws WSException {
@@ -237,6 +294,15 @@ public class MockSignIntegration implements SignIntegration {
 		
 	}
 
+	/**
+	 * Sign x ad e s array list.
+	 *
+	 * @param username the username
+	 * @param password the password
+	 * @param bufferList the buffer list
+	 * @param xAdESPreferences the x ad e s preferences
+	 * @return the result
+	 */
 	@Override
 	public List<byte[]> signXAdESArrayList(String username, String password, List<byte[]> bufferList,
 			XAdESPreferences xAdESPreferences) throws WSException {
@@ -265,12 +331,29 @@ public class MockSignIntegration implements SignIntegration {
 		return Arrays.asList(new TimestampReportBean[] { timestampReportBean });
 	}
 
+	/**
+	 * Sign p ad e s array list with multi preferences.
+	 *
+	 * @param credentials the credentials
+	 * @param bufferList the buffer list
+	 * @param pAdESPreferences the p ad e s preferences
+	 * @return the result
+	 */
 	@Override
 	public List<byte[]> signPAdESArrayListWithMultiPreferences(Credentials credentials, List<byte[]> bufferList,
 			List<PAdESPreferences> pAdESPreferences) throws WSException {
 		return null;
 	}
 
+	/**
+	 * Sign array list.
+	 *
+	 * @param username the username
+	 * @param password the password
+	 * @param bufferList the buffer list
+	 * @param adESPreferences the ad e s preferences
+	 * @return the result
+	 */
 	@Override
 	public List<byte[]> signArrayList(String username, String password, List<byte[]> bufferList,
 			SignPreferences adESPreferences) throws WSException {
@@ -313,6 +396,15 @@ public class MockSignIntegration implements SignIntegration {
 		
 	}
 
+	/**
+	 * Sign c ad e s array list.
+	 *
+	 * @param username the username
+	 * @param password the password
+	 * @param bufferList the buffer list
+	 * @param cAdESPreferences the c ad e s preferences
+	 * @return the result
+	 */
 	@Override
 	public List<byte[]> signCAdESArrayList(String username, String password, List<byte[]> bufferList,
 			CAdESPreferences cAdESPreferences) throws WSException {

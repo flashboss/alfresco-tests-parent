@@ -118,6 +118,14 @@ public class MockVersionService implements VersionService, Serializable {
 		return versions.toArray(new Version[0])[versions.size() - 1];
 	}
 
+	/**
+	 * Create version.
+	 *
+	 * @param nodeRef the node ref
+	 * @param versionProperties the version properties
+	 * @param versionChildren the version children
+	 * @return the result
+	 */
 	@Override
 	public Collection<Version> createVersion(NodeRef nodeRef, Map<String, Serializable> versionProperties,
 			boolean versionChildren) throws ReservedVersionNameException, AspectMissingException {
@@ -278,6 +286,16 @@ public class MockVersionService implements VersionService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Restore.
+	 *
+	 * @param nodeRef the node ref
+	 * @param parentNodeRef the parent node ref
+	 * @param assocTypeQName the assoc type q name
+	 * @param assocQName the assoc q name
+	 * @param deep the deep
+	 * @return the result
+	 */
 	@Override
 	public NodeRef restore(NodeRef nodeRef, NodeRef parentNodeRef, QName assocTypeQName, QName assocQName,
 			boolean deep) {

@@ -216,6 +216,14 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 
 	}
 
+	/**
+	 * Execute action.
+	 *
+	 * @param action the action
+	 * @param actionedUponNodeRef the actioned upon node ref
+	 * @param checkConditions the check conditions
+	 * @param executeAsynchronously the execute asynchronously
+	 */
 	@Override
 	public void executeAction(Action action, NodeRef actionedUponNodeRef, boolean checkConditions,
 			boolean executeAsynchronously) {
@@ -383,6 +391,15 @@ public class MockActionService implements ActionService, RuntimeActionService, S
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * Execute action impl.
+	 *
+	 * @param action the action
+	 * @param actionedUponNodeRef the actioned upon node ref
+	 * @param checkConditions the check conditions
+	 * @param executedAsynchronously the executed asynchronously
+	 * @param actionChain the action chain
+	 */
 	@Override
 	public void executeActionImpl(Action action, NodeRef actionedUponNodeRef, boolean checkConditions,
 			boolean executedAsynchronously, Set<String> actionChain) {

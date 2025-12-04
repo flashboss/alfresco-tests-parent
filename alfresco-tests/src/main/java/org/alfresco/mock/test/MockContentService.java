@@ -169,6 +169,16 @@ public class MockContentService implements ContentService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Get transformers.
+	 *
+	 * @param sourceUrl the source url
+	 * @param sourceMimetype the source mimetype
+	 * @param sourceSize the source size
+	 * @param targetMimetype the target mimetype
+	 * @param options the options
+	 * @return the result
+	 */
 	@Override
 	public List<ContentTransformer> getTransformers(String sourceUrl, String sourceMimetype, long sourceSize,
 			String targetMimetype, TransformationOptions options) {
@@ -176,6 +186,16 @@ public class MockContentService implements ContentService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Get transformer.
+	 *
+	 * @param sourceUrl the source url
+	 * @param sourceMimetype the source mimetype
+	 * @param sourceSize the source size
+	 * @param targetMimetype the target mimetype
+	 * @param options the options
+	 * @return the result
+	 */
 	@Override
 	public ContentTransformer getTransformer(String sourceUrl, String sourceMimetype, long sourceSize,
 			String targetMimetype, TransformationOptions options) {
@@ -183,6 +203,14 @@ public class MockContentService implements ContentService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Get transformer.
+	 *
+	 * @param sourceMimetype the source mimetype
+	 * @param targetMimetype the target mimetype
+	 * @param options the options
+	 * @return the result
+	 */
 	@Override
 	public ContentTransformer getTransformer(String sourceMimetype, String targetMimetype,
 			TransformationOptions options) {
@@ -204,6 +232,15 @@ public class MockContentService implements ContentService, Serializable {
 		return 0;
 	}
 
+	/**
+	 * Get active transformers.
+	 *
+	 * @param sourceMimetype the source mimetype
+	 * @param sourceSize the source size
+	 * @param targetMimetype the target mimetype
+	 * @param options the options
+	 * @return the result
+	 */
 	@Override
 	public List<ContentTransformer> getActiveTransformers(String sourceMimetype, long sourceSize, String targetMimetype,
 			TransformationOptions options) {
@@ -211,6 +248,14 @@ public class MockContentService implements ContentService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Get active transformers.
+	 *
+	 * @param sourceMimetype the source mimetype
+	 * @param targetMimetype the target mimetype
+	 * @param options the options
+	 * @return the result
+	 */
 	@Override
 	public List<ContentTransformer> getActiveTransformers(String sourceMimetype, String targetMimetype,
 			TransformationOptions options) {

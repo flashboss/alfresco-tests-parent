@@ -177,12 +177,31 @@ public class MockNodeService implements NodeService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Create node.
+	 *
+	 * @param parentRef the parent ref
+	 * @param assocTypeQName the assoc type q name
+	 * @param assocQName the assoc q name
+	 * @param nodeTypeQName the node type q name
+	 * @return the result
+	 */
 	@Override
 	public ChildAssociationRef createNode(NodeRef parentRef, QName assocTypeQName, QName assocQName,
 			QName nodeTypeQName) throws InvalidNodeRefException, InvalidTypeException {
 		return createNode(parentRef, assocTypeQName, assocQName, nodeTypeQName, null);
 	}
 
+	/**
+	 * Create node.
+	 *
+	 * @param parentRef the parent ref
+	 * @param assocTypeQName the assoc type q name
+	 * @param assocQName the assoc q name
+	 * @param nodeTypeQName the node type q name
+	 * @param properties the properties
+	 * @return the result
+	 */
 	@Override
 	public ChildAssociationRef createNode(NodeRef parentRef, QName assocTypeQName, QName assocQName,
 			QName nodeTypeQName, Map<QName, Serializable> properties)
@@ -232,6 +251,15 @@ public class MockNodeService implements NodeService, Serializable {
 		return new ChildAssociationRef(assocTypeQName, parentRef, assocQName, nodeRef);
 	}
 
+	/**
+	 * Move node.
+	 *
+	 * @param nodeToMoveRef the node to move ref
+	 * @param newParentRef the new parent ref
+	 * @param assocTypeQName the assoc type q name
+	 * @param assocQName the assoc q name
+	 * @return the result
+	 */
 	@Override
 	public ChildAssociationRef moveNode(NodeRef nodeToMoveRef, NodeRef newParentRef, QName assocTypeQName,
 			QName assocQName) throws InvalidNodeRefException {
@@ -382,6 +410,15 @@ public class MockNodeService implements NodeService, Serializable {
 		return association;
 	}
 
+	/**
+	 * Add child.
+	 *
+	 * @param parentRefs the parent refs
+	 * @param childRef the child ref
+	 * @param assocTypeQName the assoc type q name
+	 * @param qname the qname
+	 * @return the result
+	 */
 	@Override
 	public List<ChildAssociationRef> addChild(Collection<NodeRef> parentRefs, NodeRef childRef, QName assocTypeQName,
 			QName qname) throws InvalidNodeRefException {
@@ -549,6 +586,14 @@ public class MockNodeService implements NodeService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Get parent assocs.
+	 *
+	 * @param nodeRef the node ref
+	 * @param typeQNamePattern the type q name pattern
+	 * @param qnamePattern the qname pattern
+	 * @return the result
+	 */
 	@Override
 	public List<ChildAssociationRef> getParentAssocs(NodeRef nodeRef, QNamePattern typeQNamePattern,
 			QNamePattern qnamePattern) throws InvalidNodeRefException {
@@ -574,18 +619,45 @@ public class MockNodeService implements NodeService, Serializable {
 		return result;
 	}
 
+	/**
+	 * Get child assocs.
+	 *
+	 * @param nodeRef the node ref
+	 * @param typeQNamePattern the type q name pattern
+	 * @param qnamePattern the qname pattern
+	 * @return the result
+	 */
 	@Override
 	public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef, QNamePattern typeQNamePattern,
 			QNamePattern qnamePattern) throws InvalidNodeRefException {
 		return getChildAssocs(nodeRef);
 	}
 
+	/**
+	 * Get child assocs.
+	 *
+	 * @param nodeRef the node ref
+	 * @param typeQNamePattern the type q name pattern
+	 * @param qnamePattern the qname pattern
+	 * @param maxResults the max results
+	 * @param preload the preload
+	 * @return the result
+	 */
 	@Override
 	public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef, QNamePattern typeQNamePattern,
 			QNamePattern qnamePattern, int maxResults, boolean preload) throws InvalidNodeRefException {
 		return getChildAssocs(nodeRef, typeQNamePattern, qnamePattern, preload);
 	}
 
+	/**
+	 * Get child assocs.
+	 *
+	 * @param nodeRef the node ref
+	 * @param typeQNamePattern the type q name pattern
+	 * @param qnamePattern the qname pattern
+	 * @param preload the preload
+	 * @return the result
+	 */
 	@Override
 	public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef, QNamePattern typeQNamePattern,
 			QNamePattern qnamePattern, boolean preload) throws InvalidNodeRefException {
@@ -610,6 +682,14 @@ public class MockNodeService implements NodeService, Serializable {
 		return result;
 	}
 
+	/**
+	 * Get child assocs by property value.
+	 *
+	 * @param nodeRef the node ref
+	 * @param propertyQName the property q name
+	 * @param value the value
+	 * @return the result
+	 */
 	@Override
 	public List<ChildAssociationRef> getChildAssocsByPropertyValue(NodeRef nodeRef, QName propertyQName,
 			Serializable value) {
@@ -636,6 +716,14 @@ public class MockNodeService implements NodeService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Get children by name.
+	 *
+	 * @param nodeRef the node ref
+	 * @param assocTypeQName the assoc type q name
+	 * @param childNames the child names
+	 * @return the result
+	 */
 	@Override
 	public List<ChildAssociationRef> getChildrenByName(NodeRef nodeRef, QName assocTypeQName,
 			Collection<String> childNames) {
@@ -658,6 +746,13 @@ public class MockNodeService implements NodeService, Serializable {
 		return childAssociationRef;
 	}
 
+	/**
+	 * Get child assocs without parent assocs of type.
+	 *
+	 * @param parent the parent
+	 * @param assocTypeQName the assoc type q name
+	 * @return the result
+	 */
 	@Override
 	public Collection<ChildAssociationRef> getChildAssocsWithoutParentAssocsOfType(NodeRef parent,
 			QName assocTypeQName) {
@@ -783,6 +878,15 @@ public class MockNodeService implements NodeService, Serializable {
 		return assRefs;
 	}
 
+	/**
+	 * Get target assocs by property value.
+	 *
+	 * @param sourceRef the source ref
+	 * @param qnamePattern the qname pattern
+	 * @param propertyQName the property q name
+	 * @param propertyValue the property value
+	 * @return the result
+	 */
 	@Override
 	public List<AssociationRef> getTargetAssocsByPropertyValue(NodeRef sourceRef, QNamePattern qnamePattern,
 			QName propertyQName, Serializable propertyValue) {
@@ -869,6 +973,15 @@ public class MockNodeService implements NodeService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Restore node.
+	 *
+	 * @param archivedNodeRef the archived node ref
+	 * @param destinationParentNodeRef the destination parent node ref
+	 * @param assocTypeQName the assoc type q name
+	 * @param assocQName the assoc q name
+	 * @return the result
+	 */
 	@Override
 	public NodeRef restoreNode(NodeRef archivedNodeRef, NodeRef destinationParentNodeRef, QName assocTypeQName,
 			QName assocQName) {

@@ -66,6 +66,15 @@ public class MockSearchService implements SearchService, Serializable {
 		return new MockResultSet(rows);
 	}
 
+	/**
+	 * Query.
+	 *
+	 * @param store the store
+	 * @param language the language
+	 * @param query the query
+	 * @param queryParameterDefinitions the query parameter definitions
+	 * @return the result
+	 */
 	@Override
 	public ResultSet query(StoreRef store, String language, String query,
 			QueryParameterDefinition[] queryParameterDefinitions) {
@@ -106,6 +115,16 @@ public class MockSearchService implements SearchService, Serializable {
 		return resultSet;
 	}
 
+	/**
+	 * Select nodes.
+	 *
+	 * @param contextNodeRef the context node ref
+	 * @param xpath the xpath
+	 * @param parameters the parameters
+	 * @param namespacePrefixResolver the namespace prefix resolver
+	 * @param followAllParentLinks the follow all parent links
+	 * @return the result
+	 */
 	@Override
 	public List<NodeRef> selectNodes(NodeRef contextNodeRef, String xpath, QueryParameterDefinition[] parameters,
 			NamespacePrefixResolver namespacePrefixResolver, boolean followAllParentLinks)
@@ -117,6 +136,17 @@ public class MockSearchService implements SearchService, Serializable {
 		return result;
 	}
 
+	/**
+	 * Select nodes.
+	 *
+	 * @param contextNodeRef the context node ref
+	 * @param xpath the xpath
+	 * @param parameters the parameters
+	 * @param namespacePrefixResolver the namespace prefix resolver
+	 * @param followAllParentLinks the follow all parent links
+	 * @param language the language
+	 * @return the result
+	 */
 	@Override
 	public List<NodeRef> selectNodes(NodeRef contextNodeRef, String xpath, QueryParameterDefinition[] parameters,
 			NamespacePrefixResolver namespacePrefixResolver, boolean followAllParentLinks, String language)
@@ -125,6 +155,16 @@ public class MockSearchService implements SearchService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Select properties.
+	 *
+	 * @param contextNodeRef the context node ref
+	 * @param xpath the xpath
+	 * @param parameters the parameters
+	 * @param namespacePrefixResolver the namespace prefix resolver
+	 * @param followAllParentLinks the follow all parent links
+	 * @return the result
+	 */
 	@Override
 	public List<Serializable> selectProperties(NodeRef contextNodeRef, String xpath,
 			QueryParameterDefinition[] parameters, NamespacePrefixResolver namespacePrefixResolver,
@@ -133,6 +173,17 @@ public class MockSearchService implements SearchService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Select properties.
+	 *
+	 * @param contextNodeRef the context node ref
+	 * @param xpath the xpath
+	 * @param parameters the parameters
+	 * @param namespacePrefixResolver the namespace prefix resolver
+	 * @param followAllParentLinks the follow all parent links
+	 * @param language the language
+	 * @return the result
+	 */
 	@Override
 	public List<Serializable> selectProperties(NodeRef contextNodeRef, String xpath,
 			QueryParameterDefinition[] parameters, NamespacePrefixResolver namespacePrefixResolver,

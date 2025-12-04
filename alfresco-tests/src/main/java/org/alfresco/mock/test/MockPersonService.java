@@ -126,6 +126,13 @@ public class MockPersonService implements PersonService, Serializable {
 		
 	}
 
+	/**
+	 * Set person properties.
+	 *
+	 * @param userName the user name
+	 * @param properties the properties
+	 * @param autoCreateHomeFolder the auto create home folder
+	 */
 	@Override
 	public void setPersonProperties(String userName, Map<QName, Serializable> properties,
 			boolean autoCreateHomeFolder) {
@@ -226,6 +233,15 @@ public class MockPersonService implements PersonService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Get people.
+	 *
+	 * @param pattern the pattern
+	 * @param filterProps the filter props
+	 * @param sortProps the sort props
+	 * @param pagingRequest the paging request
+	 * @return the result
+	 */
 	@Override
 	public PagingResults<PersonInfo> getPeople(String pattern, List<QName> filterProps,
 			List<Pair<QName, Boolean>> sortProps, PagingRequest pagingRequest) {
@@ -233,6 +249,15 @@ public class MockPersonService implements PersonService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Get people.
+	 *
+	 * @param stringPropFilters the string prop filters
+	 * @param filterIgnoreCase the filter ignore case
+	 * @param sortProps the sort props
+	 * @param pagingRequest the paging request
+	 * @return the result
+	 */
 	@Override
 	public PagingResults<PersonInfo> getPeople(List<Pair<QName, String>> stringPropFilters, boolean filterIgnoreCase,
 			List<Pair<QName, Boolean>> sortProps, PagingRequest pagingRequest) {
@@ -240,6 +265,18 @@ public class MockPersonService implements PersonService, Serializable {
 		return null;
 	}
 
+	/**
+	 * Get people.
+	 *
+	 * @param pattern the pattern
+	 * @param filterStringProps the filter string props
+	 * @param inclusiveAspects the inclusive aspects
+	 * @param exclusiveAspects the exclusive aspects
+	 * @param includeAdministraotrs the include administraotrs
+	 * @param sortProps the sort props
+	 * @param pagingRequest the paging request
+	 * @return the result
+	 */
 	@Override
 	public PagingResults<PersonInfo> getPeople(String pattern, List<QName> filterStringProps,
 			Set<QName> inclusiveAspects, Set<QName> exclusiveAspects, boolean includeAdministraotrs,

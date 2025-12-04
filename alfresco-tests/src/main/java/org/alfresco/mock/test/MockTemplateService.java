@@ -139,6 +139,15 @@ public class MockTemplateService implements TemplateService, Serializable {
 
 	}
 
+	/**
+	 * Build default model.
+	 *
+	 * @param person the person
+	 * @param companyHome the company home
+	 * @param userHome the user home
+	 * @param template the template
+	 * @param imageResolver the image resolver
+	 */
 	@Override
 	public Map<String, Object> buildDefaultModel(NodeRef person, NodeRef companyHome, NodeRef userHome,
 			NodeRef template, TemplateImageResolver imageResolver) {

@@ -208,6 +208,14 @@ public class MockRuleService implements RuleService, RuntimeRuleService,
 		addRulePendingExecution(actionableNodeRef, actionedUponNodeRef, rule, false);
 	}
 
+	/**
+	 * Add rule pending execution.
+	 *
+	 * @param actionableNodeRef the actionable node ref
+	 * @param actionedUponNodeRef the actioned upon node ref
+	 * @param rule the rule
+	 * @param executeAtEnd the execute at end
+	 */
 	@Override
 	public void addRulePendingExecution(NodeRef actionableNodeRef, NodeRef actionedUponNodeRef, Rule rule,
 			boolean executeAtEnd) {

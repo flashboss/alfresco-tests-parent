@@ -54,6 +54,14 @@ public class MockImporterService implements ImporterService, Serializable {
 
 	}
 
+	/**
+	 * Import view.
+	 *
+	 * @param importHandler the import handler
+	 * @param location the location
+	 * @param binding the binding
+	 * @param progress the progress
+	 */
 	@Override
 	public void importView(ImportPackageHandler importHandler, Location location, ImporterBinding binding,
 			ImporterProgress progress) throws ImporterException {

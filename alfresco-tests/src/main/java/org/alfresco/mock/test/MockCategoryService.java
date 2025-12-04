@@ -72,6 +72,15 @@ public class MockCategoryService implements CategoryService {
 		return null;
 	}
 
+	/**
+	 * Get root categories.
+	 *
+	 * @param storeRef the store ref
+	 * @param aspectName the aspect name
+	 * @param pagingRequest the paging request
+	 * @param sortByName the sort by name
+	 * @return the result
+	 */
 	@Override
 	public PagingResults<ChildAssociationRef> getRootCategories(StoreRef storeRef, QName aspectName,
 			PagingRequest pagingRequest, boolean sortByName) {
@@ -107,6 +116,15 @@ public class MockCategoryService implements CategoryService {
 		return null;
 	}
 
+	/**
+	 * Get root categories.
+	 *
+	 * @param storeRef the store ref
+	 * @param aspectName the aspect name
+	 * @param name the name
+	 * @param create the create
+	 * @return the result
+	 */
 	@Override
 	public Collection<ChildAssociationRef> getRootCategories(StoreRef storeRef, QName aspectName, String name,
 			boolean create) {
@@ -195,6 +213,16 @@ public class MockCategoryService implements CategoryService {
 		return null;
 	}
 
+	/**
+	 * Get root categories.
+	 *
+	 * @param storeRef the store ref
+	 * @param aspectName the aspect name
+	 * @param pagingRequest the paging request
+	 * @param sortByName the sort by name
+	 * @param filter the filter
+	 * @return the result
+	 */
 	@Override
 	public PagingResults<ChildAssociationRef> getRootCategories(StoreRef storeRef, QName aspectName,
 			PagingRequest pagingRequest, boolean sortByName, String filter) {

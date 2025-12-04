@@ -21,6 +21,14 @@ import org.alfresco.service.cmr.transfer.TransferTarget;
  */
 public class MockTransferServiceImpl2 implements TransferService2 {
 
+	/**
+	 * Transfer.
+	 *
+	 * @param targetName the target name
+	 * @param definition the definition
+	 * @param callback the callback collection
+	 * @return the transfer end event
+	 */
 	@Override
 	public TransferEndEvent transfer(String targetName, TransferDefinition definition,
 			Collection<TransferCallback> callback) throws TransferFailureException {
@@ -84,6 +92,20 @@ public class MockTransferServiceImpl2 implements TransferService2 {
 		
 	}
 
+	/**
+	 * Create and save transfer target.
+	 *
+	 * @param name the name
+	 * @param title the title
+	 * @param description the description
+	 * @param endpointProtocol the endpoint protocol
+	 * @param endpointHost the endpoint host
+	 * @param endpointPort the endpoint port
+	 * @param endpointPath the endpoint path
+	 * @param username the username
+	 * @param password the password
+	 * @return the result
+	 */
 	@Override
 	public TransferTarget createAndSaveTransferTarget(String name, String title, String description,
 			String endpointProtocol, String endpointHost, int endpointPort, String endpointPath, String username,

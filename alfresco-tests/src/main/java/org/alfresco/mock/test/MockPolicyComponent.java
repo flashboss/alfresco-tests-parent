@@ -81,6 +81,14 @@ public class MockPolicyComponent implements PolicyComponent {
 		return false;
 	}
 
+	/**
+	 * Bind class behaviour.
+	 *
+	 * @param policy the policy
+	 * @param className the class name
+	 * @param behaviour the behaviour
+	 * @return the result
+	 */
 	@Override
 	public BehaviourDefinition<ClassBehaviourBinding> bindClassBehaviour(QName policy, QName className,
 			Behaviour behaviour) {
@@ -88,6 +96,14 @@ public class MockPolicyComponent implements PolicyComponent {
 		return null;
 	}
 
+	/**
+	 * Bind class behaviour.
+	 *
+	 * @param policy the policy
+	 * @param service the service
+	 * @param behaviour the behaviour
+	 * @return the result
+	 */
 	@Override
 	public BehaviourDefinition<ServiceBehaviourBinding> bindClassBehaviour(QName policy, Object service,
 			Behaviour behaviour) {
@@ -122,6 +138,14 @@ public class MockPolicyComponent implements PolicyComponent {
 		return null;
 	}
 
+	/**
+	 * Bind property behaviour.
+	 *
+	 * @param policy the policy
+	 * @param service the service
+	 * @param behaviour the behaviour
+	 * @return the result
+	 */
 	@Override
 	public BehaviourDefinition<ServiceBehaviourBinding> bindPropertyBehaviour(QName policy, Object service,
 			Behaviour behaviour) {
@@ -145,6 +169,14 @@ public class MockPolicyComponent implements PolicyComponent {
 		return null;
 	}
 
+	/**
+	 * Bind association behaviour.
+	 *
+	 * @param policy the policy
+	 * @param service the service
+	 * @param behaviour the behaviour
+	 * @return the result
+	 */
 	@Override
 	public BehaviourDefinition<ServiceBehaviourBinding> bindAssociationBehaviour(QName policy, Object service,
 			Behaviour behaviour) {
