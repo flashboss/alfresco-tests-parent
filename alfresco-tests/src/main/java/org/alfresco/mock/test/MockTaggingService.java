@@ -365,4 +365,16 @@ public class MockTaggingService implements TaggingService {
     // TODO Auto-generated method stub
     return null;
   }
+
+  /**
+   * Find tagged nodes and count by tag name.
+   *
+   * @param storeRef the store ref
+   * @return the list
+   */
+  @Override
+  public List<Pair<String, Integer>> findTaggedNodesAndCountByTagName(StoreRef storeRef) {
+    // TODO Auto-generated method stub
+    return null;
+  }
 }

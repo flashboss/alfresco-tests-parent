@@ -1,6 +1,5 @@
 package org.alfresco.mock.test;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.alfresco.service.cmr.version.Version;
@@ -11,7 +10,7 @@ import org.alfresco.service.cmr.version.VersionHistory;
  *
  * @author vige
  */
-public class MockVersionHistory implements VersionHistory, Serializable {
+public class MockVersionHistory implements VersionHistory {
   /** The versions. */
   private Collection<Version> versions = new ArrayList<Version>();
 
