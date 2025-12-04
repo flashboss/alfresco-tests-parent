@@ -9,31 +9,31 @@ import org.alfresco.repo.dictionary.DictionaryListener;
  */
 public class MockDictionaryBootstrap implements DictionaryListener {
 
-	@Override
 	/**
 	 * On dictionary init.
 	 *
 	 */
+@Override
 	public void onDictionaryInit() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * After dictionary destroy.
 	 *
 	 */
+@Override
 	public void afterDictionaryDestroy() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	/**
 	 * After dictionary init.
 	 *
 	 */
+@Override
 	public void afterDictionaryInit() {
 		// TODO Auto-generated method stub
 		

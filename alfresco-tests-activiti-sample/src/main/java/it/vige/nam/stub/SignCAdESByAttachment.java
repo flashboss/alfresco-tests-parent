@@ -32,22 +32,22 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signCAdESByAttachment", propOrder = { "credentials", "inputDataHandler", "cAdESPreferences" })
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "signCAdESByAttachment", propOrder = { "credentials", "inputDataHandler", "cAdESPreferences" })
 public class SignCAdESByAttachment {
 
 	/** The credentials. */
 	protected Credentials credentials;
-	@XmlMimeType("application/octet-stream")
 	/** The input data handler. */
+@XmlMimeType("application/octet-stream")
 	protected DataHandler inputDataHandler;
-	@XmlElement(name = "CAdESPreferences")
 	/** The c ad e s preferences. */
+@XmlElement(name = "CAdESPreferences")
 	protected CAdESPreferences cAdESPreferences;
 
 	/**

@@ -40,117 +40,117 @@ public class MockVersion implements Version {
 		this.versionProperties = versionProperties;
 	}
 
-	@Override
 	/**
 	 * Get created date.
 	 *
 	 * @return the date
 	 */
+@Override
 	public Date getCreatedDate() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get creator.
 	 *
 	 * @return the string
 	 */
+@Override
 	public String getCreator() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get frozen modified date.
 	 *
 	 * @return the date
 	 */
+@Override
 	public Date getFrozenModifiedDate() {
 		return new Date();
 	}
 
-	@Override
 	/**
 	 * Get frozen modifier.
 	 *
 	 * @return the string
 	 */
+@Override
 	public String getFrozenModifier() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get version label.
 	 *
 	 * @return the string
 	 */
+@Override
 	public String getVersionLabel() {
 		return (String) versionProperties.get(Version2Model.PROP_QNAME_VERSION_LABEL.getLocalName());
 	}
 
-	@Override
 	/**
 	 * Get version type.
 	 *
 	 * @return the version type
 	 */
+@Override
 	public VersionType getVersionType() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get description.
 	 *
 	 * @return the string
 	 */
+@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get version properties.
 	 *
 	 */
+@Override
 	public Map<String, Serializable> getVersionProperties() {
 		return versionProperties;
 	}
 
-	@Override
 	/**
 	 * Get version property.
 	 *
 	 * @param name the name
 	 * @return the serializable
 	 */
+@Override
 	public Serializable getVersionProperty(String name) {
 		return versionProperties.get(name);
 	}
 
-	@Override
 	/**
 	 * Get versioned node ref.
 	 *
 	 * @return the node ref
 	 */
+@Override
 	public NodeRef getVersionedNodeRef() {
 		return versionedNodeRef;
 	}
 
-	@Override
 	/**
 	 * Get frozen state node ref.
 	 *
 	 * @return the node ref
 	 */
+@Override
 	public NodeRef getFrozenStateNodeRef() {
 		return frozenStateNodeRef;
 	}

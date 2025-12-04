@@ -55,7 +55,6 @@ public class CreateDocTree extends DeclarativeWebScript {
 	/** The date pattern. */
 	private final String datePattern = "yyyy-MM-dd";
 
-	@Override
 	/**
 	 * Execute impl.
 	 *
@@ -63,6 +62,7 @@ public class CreateDocTree extends DeclarativeWebScript {
 	 * @param status the status
 	 * @param cache the cache
 	 */
+@Override
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
 		Map<String, Object> model = new HashMap<>();

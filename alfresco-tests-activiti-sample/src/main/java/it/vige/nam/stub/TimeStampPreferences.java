@@ -34,15 +34,15 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "timeStampPreferences", propOrder = { "filenameInTSD", "outputAsTSD", "outputBase64Encoded",
-		"timestampHashAlgo", "timestampPassword", "timestampUrl", "timestampUsername" })
-@XmlSeeAlso({ SignPreferences.class })
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "timeStampPreferences", propOrder = { "filenameInTSD", "outputAsTSD", "outputBase64Encoded",
+		"timestampHashAlgo", "timestampPassword", "timestampUrl", "timestampUsername" })
+@XmlSeeAlso({ SignPreferences.class })
 public class TimeStampPreferences {
 
 	/** The filename in t s d. */

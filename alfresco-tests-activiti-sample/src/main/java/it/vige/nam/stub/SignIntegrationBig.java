@@ -13,13 +13,13 @@ import javax.xml.ws.ResponseWrapper;
  * Generated source version: 3.1.11
  * 
  */
-@WebService(targetNamespace = "http://service.ws.nam/", name = "SignIntegrationBig")
-@XmlSeeAlso({ ObjectFactory.class })
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@WebService(targetNamespace = "http://service.ws.nam/", name = "SignIntegrationBig")
+@XmlSeeAlso({ ObjectFactory.class })
 public interface SignIntegrationBig {
 
 	@WebMethod

@@ -66,7 +66,6 @@ public class UploadDoc extends DeclarativeWebScript {
 	/** The pades description. */
 	String PADES_DESCRIPTION = "The sign does not respect the PAdES format as it does not take into account the entire document";
 
-	@Override
 	/**
 	 * Execute impl.
 	 *
@@ -74,6 +73,7 @@ public class UploadDoc extends DeclarativeWebScript {
 	 * @param status the status
 	 * @param cache the cache
 	 */
+@Override
 	protected Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
 		Map<String, Object> model = new HashMap<>();

@@ -99,7 +99,6 @@ public class NodeUtils {
 		NodeRef[] nodeArray = nodeRefs.toArray(new NodeRef[0]);
 		Arrays.sort(nodeArray, new Comparator<NodeRef>() {
 
-			@Override
 			/**
 			 * Compare.
 			 *
@@ -107,6 +106,7 @@ public class NodeUtils {
 			 * @param o2 the o2
 			 * @return the int
 			 */
+@Override
 			public int compare(NodeRef o1, NodeRef o2) {
 				return o1.getId().compareTo(o2.getId());
 			}

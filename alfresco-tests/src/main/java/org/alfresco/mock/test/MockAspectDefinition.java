@@ -35,218 +35,218 @@ public class MockAspectDefinition implements AspectDefinition, Serializable {
 		this.name = name;
 	}
 
-	@Override
 	/**
 	 * Get model.
 	 *
 	 * @return the model definition
 	 */
+@Override
 	public ModelDefinition getModel() {
 		return new MockModelDefinition(name);
 	}
 
-	@Override
 	/**
 	 * Get name.
 	 *
 	 * @return the q name
 	 */
+@Override
 	public QName getName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get title.
 	 *
 	 * @return the string
 	 */
+@Override
 	public String getTitle() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get description.
 	 *
 	 * @return the string
 	 */
+@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get title.
 	 *
 	 * @param messageLookup the message lookup
 	 * @return the string
 	 */
+@Override
 	public String getTitle(MessageLookup messageLookup) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get description.
 	 *
 	 * @param messageLookup the message lookup
 	 * @return the string
 	 */
+@Override
 	public String getDescription(MessageLookup messageLookup) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get parent name.
 	 *
 	 * @return the q name
 	 */
+@Override
 	public QName getParentName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Is aspect.
 	 *
 	 * @return the boolean
 	 */
+@Override
 	public boolean isAspect() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Get archive.
 	 *
 	 * @return the boolean
 	 */
+@Override
 	public Boolean getArchive() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get included in super type query.
 	 *
 	 * @return the boolean
 	 */
+@Override
 	public Boolean getIncludedInSuperTypeQuery() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get properties.
 	 *
 	 */
+@Override
 	public Map<QName, PropertyDefinition> getProperties() {
 		return new HashMap<QName, PropertyDefinition>();
 	}
 
-	@Override
 	/**
 	 * Get default values.
 	 *
 	 */
+@Override
 	public Map<QName, Serializable> getDefaultValues() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get associations.
 	 *
 	 */
+@Override
 	public Map<QName, AssociationDefinition> getAssociations() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Is container.
 	 *
 	 * @return the boolean
 	 */
+@Override
 	public boolean isContainer() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	/**
 	 * Get child associations.
 	 *
 	 */
+@Override
 	public Map<QName, ChildAssociationDefinition> getChildAssociations() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get default aspects.
 	 *
 	 * @return the list
 	 */
+@Override
 	public List<AspectDefinition> getDefaultAspects() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get default aspect names.
 	 *
 	 * @return the set
 	 */
+@Override
 	public Set<QName> getDefaultAspectNames() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get default aspects.
 	 *
 	 * @param inherited the inherited
 	 * @return the list
 	 */
+@Override
 	public List<AspectDefinition> getDefaultAspects(boolean inherited) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get analyser resource bundle name.
 	 *
 	 * @return the string
 	 */
+@Override
 	public String getAnalyserResourceBundleName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	/**
 	 * Get parent class definition.
 	 *
 	 * @return the class definition
 	 */
+@Override
 	public ClassDefinition getParentClassDefinition() {
 		// TODO Auto-generated method stub
 		return null;

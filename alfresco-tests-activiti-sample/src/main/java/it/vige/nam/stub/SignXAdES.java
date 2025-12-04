@@ -31,13 +31,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signXAdES", propOrder = { "username", "password", "buffer", "xAdESPreferences" })
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "signXAdES", propOrder = { "username", "password", "buffer", "xAdESPreferences" })
 public class SignXAdES {
 
 	/** The username. */
@@ -45,8 +45,8 @@ public class SignXAdES {
 	/** The password. */
 	protected String password;
 	protected byte[] buffer;
-	@XmlElement(name = "XAdESPreferences")
 	/** The x ad e s preferences. */
+@XmlElement(name = "XAdESPreferences")
 	protected XAdESPreferences xAdESPreferences;
 
 	/**

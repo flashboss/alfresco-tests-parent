@@ -28,13 +28,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signWithCredentialsResponse", propOrder = { "_return" })
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "signWithCredentialsResponse", propOrder = { "_return" })
 public class SignWithCredentialsResponse {
 
 	@XmlElement(name = "return")

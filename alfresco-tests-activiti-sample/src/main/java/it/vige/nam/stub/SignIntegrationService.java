@@ -13,12 +13,12 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 3.1.11
  * 
  */
-@WebServiceClient(name = "SignIntegrationService", wsdlLocation = "classpath:wsdl/SignIntegrationService.wsdl", targetNamespace = "http://service.ws.nam/")
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@WebServiceClient(name = "SignIntegrationService", wsdlLocation = "classpath:wsdl/SignIntegrationService.wsdl", targetNamespace = "http://service.ws.nam/")
 public class SignIntegrationService extends Service {
 
 	public final static URL WSDL_LOCATION;

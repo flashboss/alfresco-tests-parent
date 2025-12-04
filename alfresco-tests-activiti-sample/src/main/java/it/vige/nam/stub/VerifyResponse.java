@@ -28,17 +28,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "verifyResponse", propOrder = { "_return" })
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "verifyResponse", propOrder = { "_return" })
 public class VerifyResponse {
 
-	@XmlElement(name = "return")
 	/** The  return. */
+@XmlElement(name = "return")
 	protected SignedDocumentReportBean _return;
 
 	/**

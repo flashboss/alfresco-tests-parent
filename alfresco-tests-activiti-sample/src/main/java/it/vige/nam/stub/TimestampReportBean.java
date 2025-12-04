@@ -44,15 +44,15 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "timestampReportBean", propOrder = { "comment", "content", "contentFilename", "contentMimeType", "date",
-		"hashAlgorithm", "index", "issuer", "serialNumber", "signatureAlgorithm", "signatureVerificationStatus",
-		"timestampCertData", "timestampCertificateStatus", "trustedListVerificationStatus" })
 /**
  * Bean class for data transfer.
  * 
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "timestampReportBean", propOrder = { "comment", "content", "contentFilename", "contentMimeType", "date",
+		"hashAlgorithm", "index", "issuer", "serialNumber", "signatureAlgorithm", "signatureVerificationStatus",
+		"timestampCertData", "timestampCertificateStatus", "trustedListVerificationStatus" })
 public class TimestampReportBean {
 
 	/** The comment. */
@@ -62,8 +62,8 @@ public class TimestampReportBean {
 	protected String contentFilename;
 	/** The content mime type. */
 	protected String contentMimeType;
-	@XmlSchemaType(name = "dateTime")
 	/** The date. */
+@XmlSchemaType(name = "dateTime")
 	protected XMLGregorianCalendar date;
 	/** The hash algorithm. */
 	protected String hashAlgorithm;
@@ -75,15 +75,15 @@ public class TimestampReportBean {
 	protected BigInteger serialNumber;
 	/** The signature algorithm. */
 	protected String signatureAlgorithm;
-	@XmlSchemaType(name = "string")
 	/** The signature verification status. */
+@XmlSchemaType(name = "string")
 	protected Result signatureVerificationStatus;
 	protected byte[] timestampCertData;
-	@XmlSchemaType(name = "string")
 	/** The timestamp certificate status. */
+@XmlSchemaType(name = "string")
 	protected CertificateStatus timestampCertificateStatus;
-	@XmlSchemaType(name = "string")
 	/** The trusted list verification status. */
+@XmlSchemaType(name = "string")
 	protected Result trustedListVerificationStatus;
 
 	/**

@@ -26,13 +26,13 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  * 
  */
-@XmlType(name = "result")
-@XmlEnum
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlType(name = "result")
+@XmlEnum
 public enum Result {
 
 	VALID, INVALID, UNDETERMINED, VALID_WITH_WARNINGS, INFORMATION;

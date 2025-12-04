@@ -8,12 +8,12 @@ import javax.xml.ws.WebFault;
  * Generated source version: 3.1.11
  */
 
-@WebFault(name = "WSException", targetNamespace = "http://service.ws.nam/")
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@WebFault(name = "WSException", targetNamespace = "http://service.ws.nam/")
 public class WSException extends Exception {
 
 	private it.vige.nam.stub.WsFaultBean wsException;

@@ -11,7 +11,6 @@ import org.alfresco.repo.transaction.RetryingTransactionHelper;
  */
 public class MockRetryingTransactionHelper extends RetryingTransactionHelper implements Serializable {
 
-	@Override
 	/**
 	 * Do in transaction.
 	 *
@@ -19,6 +18,7 @@ public class MockRetryingTransactionHelper extends RetryingTransactionHelper imp
 	 * @param readOnly the read only
 	 * @param requiresNew the requires new
 	 */
+@Override
 	public <R> R doInTransaction(RetryingTransactionCallback<R> cb, boolean readOnly, boolean requiresNew) {
 		try {
 			return cb.execute();

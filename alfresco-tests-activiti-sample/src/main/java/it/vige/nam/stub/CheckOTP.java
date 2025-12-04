@@ -27,13 +27,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "checkOTP", propOrder = { "credentials" })
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "checkOTP", propOrder = { "credentials" })
 public class CheckOTP {
 
 	/** The credentials. */

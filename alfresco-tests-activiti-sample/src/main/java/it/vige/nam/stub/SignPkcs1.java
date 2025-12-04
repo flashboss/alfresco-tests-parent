@@ -29,13 +29,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signPkcs1", propOrder = { "credentials", "hash", "preferences" })
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "signPkcs1", propOrder = { "credentials", "hash", "preferences" })
 public class SignPkcs1 {
 
 	/** The credentials. */

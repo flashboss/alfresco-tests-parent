@@ -31,21 +31,21 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "verifyPreferences", propOrder = { "nam", "pdfEncryptionPassword", "verifyOnDate" })
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "verifyPreferences", propOrder = { "nam", "pdfEncryptionPassword", "verifyOnDate" })
 public class VerifyPreferences {
 
 	/** The nam. */
 	protected boolean nam;
 	/** The pdf encryption password. */
 	protected String pdfEncryptionPassword;
-	@XmlSchemaType(name = "dateTime")
 	/** The verify on date. */
+@XmlSchemaType(name = "dateTime")
 	protected XMLGregorianCalendar verifyOnDate;
 
 	/**

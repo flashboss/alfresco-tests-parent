@@ -27,13 +27,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "timestampTSDVerify", propOrder = { "tsd" })
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "timestampTSDVerify", propOrder = { "tsd" })
 public class TimestampTSDVerify {
 
 	protected byte[] tsd;

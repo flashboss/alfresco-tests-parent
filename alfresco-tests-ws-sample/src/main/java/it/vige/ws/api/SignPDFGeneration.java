@@ -70,8 +70,6 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	/** The logger. */
 	private Logger logger = Logger.getLogger(SignPDFGeneration.class);
 
-	@SuppressWarnings("unchecked")
-	@Override
 	/**
 	 * Execute impl.
 	 *
@@ -79,6 +77,8 @@ public class SignPDFGeneration extends DeclarativeWebScript {
 	 * @param status the status
 	 * @param cache the cache
 	 */
+	@SuppressWarnings("unchecked")
+@Override
 	public Map<String, Object> executeImpl(WebScriptRequest req, Status status, Cache cache) {
 
 		logger.info(">>> PDF sign generation");

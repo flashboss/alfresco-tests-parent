@@ -31,17 +31,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signArrayListWithCredentialsResponse", propOrder = { "_return" })
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "signArrayListWithCredentialsResponse", propOrder = { "_return" })
 public class SignArrayListWithCredentialsResponse {
 
-	@XmlElement(name = "return")
 	/** The  return. */
+@XmlElement(name = "return")
 	protected List<byte[]> _return;
 
 	/**

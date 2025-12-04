@@ -42,18 +42,18 @@ import org.springframework.test.context.ContextConfiguration;
 import com.tradeshift.test.remote.Remote;
 import com.tradeshift.test.remote.RemoteTestRunner;
 
-@RunWith(RemoteTestRunner.class)
-@Remote(runnerClass = ClasspathTestRunner.class)
-@ContextConfiguration("classpath:test-module-context.xml")
 /**
  * Abstract base class providing common functionality for tests.
  * 
  * @author vige
  */
+@RunWith(RemoteTestRunner.class)
+@Remote(runnerClass = ClasspathTestRunner.class)
+@ContextConfiguration("classpath:test-module-context.xml")
 public abstract class AbstractForm {
 
-	@Autowired
 	/** The service registry. */
+@Autowired
 	protected ServiceRegistry serviceRegistry;
 
 	/** The spaces store. */

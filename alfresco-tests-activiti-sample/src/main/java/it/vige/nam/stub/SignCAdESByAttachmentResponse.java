@@ -30,18 +30,18 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signCAdESByAttachmentResponse", propOrder = { "_return" })
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "signCAdESByAttachmentResponse", propOrder = { "_return" })
 public class SignCAdESByAttachmentResponse {
 
-	@XmlElement(name = "return")
-	@XmlMimeType("application/octet-stream")
 	/** The  return. */
+	@XmlElement(name = "return")
+@XmlMimeType("application/octet-stream")
 	protected DataHandler _return;
 
 	/**

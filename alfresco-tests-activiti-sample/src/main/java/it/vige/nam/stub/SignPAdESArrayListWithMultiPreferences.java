@@ -33,22 +33,22 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signPAdESArrayListWithMultiPreferences", propOrder = { "credentials", "bufferList",
-		"pAdESPreferences" })
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "signPAdESArrayListWithMultiPreferences", propOrder = { "credentials", "bufferList",
+		"pAdESPreferences" })
 public class SignPAdESArrayListWithMultiPreferences {
 
 	/** The credentials. */
 	protected Credentials credentials;
 	/** The buffer list. */
 	protected List<byte[]> bufferList;
-	@XmlElement(name = "PAdESPreferences")
 	/** The p ad e s preferences. */
+@XmlElement(name = "PAdESPreferences")
 	protected List<PAdESPreferences> pAdESPreferences;
 
 	/**

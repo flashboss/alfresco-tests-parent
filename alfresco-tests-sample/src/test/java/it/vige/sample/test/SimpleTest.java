@@ -38,8 +38,8 @@ import it.vige.sample.BackupAction;
  */
 public class SimpleTest extends AbstractForm {
 
-	@Autowired
 	/** The my action. */
+@Autowired
 	private BackupAction myAction;
 
 	private final static String documentName = "VALID.pdf";
@@ -59,11 +59,11 @@ public class SimpleTest extends AbstractForm {
 	/** The document. */
 	private NodeRef document;
 
-	@Before
 	/**
 	 * Init.
 	 *
 	 */
+@Before
 	public void init() {
 		super.init();
 
@@ -86,11 +86,11 @@ public class SimpleTest extends AbstractForm {
 		Assert.assertEquals("VALID.pdf is created", documentName, nodeName);
 	}
 
-	@Test
 	/**
 	 * Execute.
 	 *
 	 */
+@Test
 	public void execute() {
 
 		// execute the injected action
@@ -110,11 +110,11 @@ public class SimpleTest extends AbstractForm {
 
 	}
 
-	@Test
 	/**
 	 * Versioned.
 	 *
 	 */
+@Test
 	public void versioned() {
 		insertVersion(document, versionName, versionContent, versionLabel, MINOR);
 		insertVersion(document, version2Name, version2Content, version2Label, MINOR);

@@ -67,12 +67,12 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 	/** The generation folder name. */
 	private String generationFolderName = "20191024_154711";
 
-	@Override
 	/**
 	 * Init.
 	 *
 	 * @param variables the variables
 	 */
+@Override
 	public void init(Map<String, Object> variables) {
 		super.init(variables);
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
@@ -143,11 +143,11 @@ public class SimpleActivitiTest extends AbstractActivitiForm {
 		}
 	}
 
-	@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/SimpleProcess.bpmn" })
 	/**
 	 * Test workflow.
 	 *
 	 */
+@Deployment(resources = { "alfresco/module/alfresco-tests-activiti-sample/workflow/SimpleProcess.bpmn" })
 	public void testWorkflow() throws ParseException {
 		Map<String, Object> variables = new HashMap<String, Object>();
 		init(variables);

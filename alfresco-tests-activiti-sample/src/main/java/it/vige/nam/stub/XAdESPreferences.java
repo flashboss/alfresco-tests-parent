@@ -27,13 +27,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "xAdESPreferences", propOrder = { "signElement" })
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "xAdESPreferences", propOrder = { "signElement" })
 public class XAdESPreferences extends SignPreferences {
 
 	/** The sign element. */

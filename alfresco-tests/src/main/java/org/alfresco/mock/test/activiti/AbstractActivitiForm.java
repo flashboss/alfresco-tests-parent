@@ -215,11 +215,11 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 				activitiProcessEngineConfiguration.getServiceRegistry());
 	}
 
-	@Override
 	/**
 	 * Initialize process engine.
 	 *
 	 */
+@Override
 	protected void initializeProcessEngine() {
 		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 		XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);

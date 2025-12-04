@@ -24,13 +24,13 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  * 
  */
-@XmlType(name = "certificateStatus")
-@XmlEnum
 /**
  * Class providing functionality for Alfresco testing.
  * 
  * @author vige
  */
+@XmlType(name = "certificateStatus")
+@XmlEnum
 public enum CertificateStatus {
 
 	VALID, REVOKED, UNKNOWN;
