@@ -50,7 +50,11 @@ public class DocParam {
     this.doc = doc;
   }
 
-  /** Get json map. */
+  /**
+   * Get json map.
+   *
+   * @return the map
+   */
   public Map<String, String> getJsonMap() {
     return jsonMap;
   }
