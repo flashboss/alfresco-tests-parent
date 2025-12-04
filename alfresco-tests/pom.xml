@@ -59,6 +59,21 @@
 		</developer>
 	</developers>
 
+    <dependencyManagement>
+        <dependencies>
+            <!-- Setup what versions of the different Alfresco artifacts that will
+                be used (depends on alfresco.version), so we don't have to specify version
+                in any of the dependency definitions in our POM. For more info see: http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Importing_Dependencies -->
+            <dependency>
+                <groupId>${alfresco.groupId}</groupId>
+                <artifactId>alfresco-platform-distribution</artifactId>
+                <version>${alfresco.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -98,13 +113,8 @@
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
 			<version>2.3.1</version>
+			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.glassfish.jaxb</groupId>
-			<artifactId>jaxb-runtime</artifactId>
-			<version>2.3.1</version>
-		</dependency>
-
     </dependencies>
 
     <!--
