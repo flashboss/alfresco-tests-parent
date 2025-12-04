@@ -62,6 +62,7 @@ public class MockNodeService implements NodeService, Serializable {
   private static Map<NodeRef, Map<QName, Set<NodeRef>>> trgAssociations =
       new HashMap<NodeRef, Map<QName, Set<NodeRef>>>();
 
+  /** The primary parent. */
   public static final QName PRIMARY_PARENT = QName.createQName("primary_parent");
 
   /** The namespace service. */
