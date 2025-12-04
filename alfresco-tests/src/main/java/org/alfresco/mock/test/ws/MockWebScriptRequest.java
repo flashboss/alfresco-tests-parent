@@ -35,6 +35,15 @@ public class MockWebScriptRequest implements WebScriptRequest {
 	/** The http servlet request. */
 	private HttpServletRequest httpServletRequest;
 
+	/**
+	 * Constructs a new MockWebScriptRequest.
+	 *
+	 * @param format the format
+	 * @param templateVars the template variables
+	 * @param webScript the web script
+	 * @param requestFields the request fields
+	 * @param serviceRegistry the service registry
+	 */
 	public MockWebScriptRequest(String format, Map<String, String> templateVars, WebScript webScript,
 			Map<String, Serializable> requestFields, ServiceRegistry serviceRegistry) {
 		this.format = format;

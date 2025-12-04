@@ -122,6 +122,15 @@ public class MockPolicyComponent implements PolicyComponent {
 		
 	}
 
+	/**
+	 * Bind property behaviour.
+	 *
+	 * @param policy the policy
+	 * @param className the class name
+	 * @param propertyName the property name
+	 * @param behaviour the behaviour
+	 * @return the result
+	 */
 	@Override
 	@SuppressWarnings("all")
 	public BehaviourDefinition bindPropertyBehaviour(QName policy, QName className,
@@ -130,6 +139,14 @@ public class MockPolicyComponent implements PolicyComponent {
 		return null;
 	}
 
+	/**
+	 * Bind property behaviour.
+	 *
+	 * @param policy the policy
+	 * @param className the class name
+	 * @param behaviour the behaviour
+	 * @return the result
+	 */
 	@Override
 	@SuppressWarnings("all")
 	public BehaviourDefinition bindPropertyBehaviour(QName policy, QName className,
@@ -153,6 +170,15 @@ public class MockPolicyComponent implements PolicyComponent {
 		return null;
 	}
 
+	/**
+	 * Bind association behaviour.
+	 *
+	 * @param policy the policy
+	 * @param className the class name
+	 * @param assocName the association name
+	 * @param behaviour the behaviour
+	 * @return the result
+	 */
 	@Override
 	@SuppressWarnings("all")
 	public BehaviourDefinition bindAssociationBehaviour(QName policy, QName className,
@@ -161,6 +187,14 @@ public class MockPolicyComponent implements PolicyComponent {
 		return null;
 	}
 
+	/**
+	 * Bind association behaviour.
+	 *
+	 * @param policy the policy
+	 * @param className the class name
+	 * @param behaviour the behaviour
+	 * @return the result
+	 */
 	@Override
 	@SuppressWarnings("all")
 	public BehaviourDefinition bindAssociationBehaviour(QName policy, QName className,

@@ -32,6 +32,13 @@ public class MockVersion implements Version {
 		versionProperties = new HashMap<String, Serializable>();
 	}
 
+	/**
+	 * Constructs a new MockVersion.
+	 *
+	 * @param frozenStateNodeRef the frozen state node ref
+	 * @param versionedNodeRef the versioned node ref
+	 * @param versionProperties the version properties
+	 */
 	public MockVersion(NodeRef frozenStateNodeRef, NodeRef versionedNodeRef,
 			Map<String, Serializable> versionProperties) {
 		this.frozenStateNodeRef = frozenStateNodeRef;

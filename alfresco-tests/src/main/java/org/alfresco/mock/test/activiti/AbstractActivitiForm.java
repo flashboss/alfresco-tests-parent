@@ -288,6 +288,19 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		smtpServer.stop();
 	}
 
+	/**
+	 * Creates a user in the identity service.
+	 *
+	 * @param identityService the identity service
+	 * @param userId the user id
+	 * @param firstName the first name
+	 * @param lastName the last name
+	 * @param password the password
+	 * @param email the email
+	 * @param imageResource the image resource
+	 * @param groups the groups
+	 * @param userInfo the user info
+	 */
 	public void createUser(IdentityService identityService, String userId, String firstName, String lastName,
 			String password, String email, String imageResource, List<String> groups, List<String> userInfo) {
 
