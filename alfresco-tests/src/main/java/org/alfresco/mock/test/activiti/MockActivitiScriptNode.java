@@ -14,33 +14,28 @@ import org.mozilla.javascript.Scriptable;
  */
 public class MockActivitiScriptNode extends ActivitiScriptNode {
 
-	/**
-	 * Constructs a new MockActivitiScriptNode.
-	 *
-	 * @param nodeRef the node ref
-	 * @param services the services
-	 */
-	public MockActivitiScriptNode(NodeRef nodeRef, ServiceRegistry services) {
-		super(nodeRef, services);
-	}
+  /**
+   * Constructs a new MockActivitiScriptNode.
+   *
+   * @param nodeRef the node ref
+   * @param services the services
+   */
+  public MockActivitiScriptNode(NodeRef nodeRef, ServiceRegistry services) {
+    super(nodeRef, services);
+  }
 
-	/**
-	 * Save.
-	 *
-	 */
-	@Override
-	public void save() {
-	}
+  /** Save. */
+  @Override
+  public void save() {}
 
-	/**
-	 * Set scope.
-	 *
-	 * @param scope the scope
-	 */
-	@Override
-	public void setScope(Scriptable scope) {
-		Context.enter();
-		this.scope = new MockScope();
-	}
-
+  /**
+   * Set scope.
+   *
+   * @param scope the scope
+   */
+  @Override
+  public void setScope(Scriptable scope) {
+    Context.enter();
+    this.scope = new MockScope();
+  }
 }

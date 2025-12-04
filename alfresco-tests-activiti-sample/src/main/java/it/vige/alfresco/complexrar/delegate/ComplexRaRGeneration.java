@@ -1,7 +1,8 @@
 package it.vige.alfresco.complexrar.delegate;
 
+import it.vige.alfresco.complexrar.util.ComplexHashUtil;
+import it.vige.common.ConservationModel;
 import java.util.List;
-
 import org.activiti.engine.delegate.DelegateExecution;
 import org.alfresco.error.AlfrescoRuntimeException;
 import org.alfresco.repo.workflow.activiti.ActivitiScriptNode;
@@ -15,9 +16,6 @@ import org.alfresco.service.namespace.NamespaceService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import it.vige.alfresco.complexrar.util.ComplexHashUtil;
-import it.vige.common.ConservationModel;
-
 /**
  * ComplexRaRGeneration implementation for testing purposes.
  *
@@ -25,97 +23,103 @@ import it.vige.common.ConservationModel;
  */
 public class ComplexRaRGeneration extends BaseJavaDelegate {
 
-	/** The logger. */
-	private static Log logger = LogFactory.getLog(ComplexRaRGeneration.class);
+  /** The logger. */
+  private static Log logger = LogFactory.getLog(ComplexRaRGeneration.class);
 
-	/** The complex hash util. */
-	private ComplexHashUtil complexHashUtil;
+  /** The complex hash util. */
+  private ComplexHashUtil complexHashUtil;
 
-	/** The rar folder. */
-	protected String rarFolder;
-	/** The node service. */
-	protected NodeService nodeService;
-	/** The search service. */
-	protected SearchService searchService;
-	/** The namespace service. */
-	protected NamespaceService namespaceService;
+  /** The rar folder. */
+  protected String rarFolder;
 
-	/**
-	 * Set rar folder.
-	 *
-	 * @param rarFolder the rar folder
-	 */
-	public void setRarFolder(String rarFolder) {
-		this.rarFolder = rarFolder;
-	}
+  /** The node service. */
+  protected NodeService nodeService;
 
-	/**
-	 * Set node service.
-	 *
-	 * @param nodeService the node service
-	 */
-	public void setNodeService(NodeService nodeService) {
-		this.nodeService = nodeService;
-	}
+  /** The search service. */
+  protected SearchService searchService;
 
-	/**
-	 * Set search service.
-	 *
-	 * @param searchService the search service
-	 */
-	public void setSearchService(SearchService searchService) {
-		this.searchService = searchService;
-	}
+  /** The namespace service. */
+  protected NamespaceService namespaceService;
 
-	/**
-	 * Set namespace service.
-	 *
-	 * @param namespaceService the namespace service
-	 */
-	public void setNamespaceService(NamespaceService namespaceService) {
-		this.namespaceService = namespaceService;
-	}
+  /**
+   * Set rar folder.
+   *
+   * @param rarFolder the rar folder
+   */
+  public void setRarFolder(String rarFolder) {
+    this.rarFolder = rarFolder;
+  }
 
-	/**
-	 * Execute.
-	 *
-	 * @param execution the execution
-	 */
-	public void execute(DelegateExecution execution) throws Exception {
-		logger.debug("RaRGeneration start");
-		NodeRef rootNodeRef = nodeService.getRootNode(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE);
-		List<NodeRef> results = searchService.selectNodes(rootNodeRef, rarFolder, null, namespaceService, false);
-		if (results.size() == 0) {
-			throw new AlfrescoRuntimeException(rarFolder);
-		}
-		NodeRef irarFolderNodeRef = results.get(0);
-		logger.debug("RaRGeneration nodo trovato:" + irarFolderNodeRef.getId());
-		int rarCounter = (int) nodeService.getProperty(irarFolderNodeRef, ConservationModel.PROP_RAR_ID_COUNTER);
-		nodeService.setProperty(irarFolderNodeRef, ConservationModel.PROP_RAR_ID_COUNTER, rarCounter + 1);
-		ActivitiScriptNode bpmPackage = (ActivitiScriptNode) execution.getVariable("bpm_package");
-		List<ChildAssociationRef> relatedSaSsChild = nodeService.getChildAssocs(bpmPackage.getNodeRef());
-		for (ChildAssociationRef relatedSaSChild : relatedSaSsChild) {
-			complexHashUtil.setHash(relatedSaSChild.getChildRef());
-		}
-		execution.setVariable("vigewf_rarId", rarCounter);
-	}
+  /**
+   * Set node service.
+   *
+   * @param nodeService the node service
+   */
+  public void setNodeService(NodeService nodeService) {
+    this.nodeService = nodeService;
+  }
 
-	/**
-	 * Get complex hash util.
-	 *
-	 * @return the result
-	 */
-	public ComplexHashUtil getComplexHashUtil() {
-		return complexHashUtil;
-	}
+  /**
+   * Set search service.
+   *
+   * @param searchService the search service
+   */
+  public void setSearchService(SearchService searchService) {
+    this.searchService = searchService;
+  }
 
-	/**
-	 * Set complex hash util.
-	 *
-	 * @param complexHashUtil the complex hash util
-	 */
-	public void setComplexHashUtil(ComplexHashUtil complexHashUtil) {
-		this.complexHashUtil = complexHashUtil;
-	}
+  /**
+   * Set namespace service.
+   *
+   * @param namespaceService the namespace service
+   */
+  public void setNamespaceService(NamespaceService namespaceService) {
+    this.namespaceService = namespaceService;
+  }
 
+  /**
+   * Execute.
+   *
+   * @param execution the execution
+   */
+  public void execute(DelegateExecution execution) throws Exception {
+    logger.debug("RaRGeneration start");
+    NodeRef rootNodeRef = nodeService.getRootNode(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE);
+    List<NodeRef> results =
+        searchService.selectNodes(rootNodeRef, rarFolder, null, namespaceService, false);
+    if (results.size() == 0) {
+      throw new AlfrescoRuntimeException(rarFolder);
+    }
+    NodeRef irarFolderNodeRef = results.get(0);
+    logger.debug("RaRGeneration nodo trovato:" + irarFolderNodeRef.getId());
+    int rarCounter =
+        (int) nodeService.getProperty(irarFolderNodeRef, ConservationModel.PROP_RAR_ID_COUNTER);
+    nodeService.setProperty(
+        irarFolderNodeRef, ConservationModel.PROP_RAR_ID_COUNTER, rarCounter + 1);
+    ActivitiScriptNode bpmPackage = (ActivitiScriptNode) execution.getVariable("bpm_package");
+    List<ChildAssociationRef> relatedSaSsChild =
+        nodeService.getChildAssocs(bpmPackage.getNodeRef());
+    for (ChildAssociationRef relatedSaSChild : relatedSaSsChild) {
+      complexHashUtil.setHash(relatedSaSChild.getChildRef());
+    }
+    execution.setVariable("vigewf_rarId", rarCounter);
+  }
+
+  /**
+   * Get complex hash util.
+   *
+   * @return the result
+   */
+  public ComplexHashUtil getComplexHashUtil() {
+    return complexHashUtil;
+  }
+
+  /**
+   * Set complex hash util.
+   *
+   * @param complexHashUtil the complex hash util
+   */
+  public void setComplexHashUtil(ComplexHashUtil complexHashUtil) {
+    this.complexHashUtil = complexHashUtil;
+  }
 }

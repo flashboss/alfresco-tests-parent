@@ -1,5 +1,17 @@
 package it.vige.ws.templateManager.drools;
 
+import static org.apache.pdfbox.io.IOUtils.toByteArray;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.math.BigDecimal;
+import java.text.*;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.poi.POIXMLProperties.CoreProperties;
@@ -15,225 +27,218 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.StatelessKieSession;
 import org.springframework.extensions.webscripts.WebScriptException;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigDecimal;
-import java.text.*;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import static org.apache.pdfbox.io.IOUtils.toByteArray;
-
 /**
  * Author: Luca Stancapiano
  *
  * @author vige
-
  */
 public class DroolsConverterImpl {
 
-	Logger logger = Logger.getLogger("FILE2");
+  Logger logger = Logger.getLogger("FILE2");
 
-	/** The date format. */
-	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-	/** The converted date format. */
-	private DateFormat convertedDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-	/** The json map. */
-	private Map<String, String> jsonMap;
+  /** The date format. */
+  private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
-	/**
-	 * Replace.
-	 *
-	 * @param r the r
-	 * @param templateField the template field
-	 * @param jsonField the json field
-	 */
-	public void replace(XWPFRun r, String templateField, String jsonField) {
-		String runText = r.getText(0);
+  /** The converted date format. */
+  private DateFormat convertedDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-		if (runText != null && runText.contains(templateField)) {
+  /** The json map. */
+  private Map<String, String> jsonMap;
 
-			String value = jsonMap.get(jsonField);
+  /**
+   * Replace.
+   *
+   * @param r the r
+   * @param templateField the template field
+   * @param jsonField the json field
+   */
+  public void replace(XWPFRun r, String templateField, String jsonField) {
+    String runText = r.getText(0);
 
-			if (value != null) {
+    if (runText != null && runText.contains(templateField)) {
 
-				// padding is added, if any
-				Pattern pattern = Pattern.compile(">(\\d\\d)}$");
-				Matcher m = pattern.matcher(templateField);
+      String value = jsonMap.get(jsonField);
 
-				String paddedValue = value;
-				if (m.find()) {
-					String lString = m.group(1);
+      if (value != null) {
 
-					int length = lString != null ? Integer.valueOf(lString) : -1;
-					if (length > 0) {
-						paddedValue = StringUtils.rightPad(value, length);
-					}
-				}
+        // padding is added, if any
+        Pattern pattern = Pattern.compile(">(\\d\\d)}$");
+        Matcher m = pattern.matcher(templateField);
 
-				String newText = runText.replace(templateField, paddedValue);
-				r.setText(newText, 0);
-			}
-		}
-	}
+        String paddedValue = value;
+        if (m.find()) {
+          String lString = m.group(1);
 
-	/**
-	 * Replace date.
-	 *
-	 * @param r the r
-	 * @param templateField the template field
-	 * @param jsonField the json field
-	 */
-	public void replaceDate(XWPFRun r, String templateField, String jsonField) {
-		String runText = r.getText(0);
-		if (runText != null && runText.contains(templateField)) {
+          int length = lString != null ? Integer.valueOf(lString) : -1;
+          if (length > 0) {
+            paddedValue = StringUtils.rightPad(value, length);
+          }
+        }
 
-			String value = jsonMap.get(jsonField);
-			if (value != null) {
-				String newText;
-				try {
-					Date dateValue = dateFormat.parse(value);
-					String fdate = convertedDateFormat.format(dateValue);
-					newText = runText.replace(templateField, fdate);
-				} catch (ParseException e) {
-					newText = runText.replace(templateField, "");
-				}
+        String newText = runText.replace(templateField, paddedValue);
+        r.setText(newText, 0);
+      }
+    }
+  }
 
-				r.setText(newText, 0);
-			}
-		}
-	}
+  /**
+   * Replace date.
+   *
+   * @param r the r
+   * @param templateField the template field
+   * @param jsonField the json field
+   */
+  public void replaceDate(XWPFRun r, String templateField, String jsonField) {
+    String runText = r.getText(0);
+    if (runText != null && runText.contains(templateField)) {
 
-	/**
-	 * Replace currency.
-	 *
-	 * @param r the r
-	 * @param templateField the template field
-	 * @param jsonField the json field
-	 */
-	public void replaceCurrency(XWPFRun r, String templateField, String jsonField) {
-		String runText = r.getText(0);
-		if (runText != null && runText.contains(templateField)) {
+      String value = jsonMap.get(jsonField);
+      if (value != null) {
+        String newText;
+        try {
+          Date dateValue = dateFormat.parse(value);
+          String fdate = convertedDateFormat.format(dateValue);
+          newText = runText.replace(templateField, fdate);
+        } catch (ParseException e) {
+          newText = runText.replace(templateField, "");
+        }
 
-			String value = jsonMap.get(jsonField);
-			if (value != null) {
-				String newText;
-				try {
-					BigDecimal bdValue = new BigDecimal(value);
+        r.setText(newText, 0);
+      }
+    }
+  }
 
-					Locale locale = new Locale("it", "IT");
-					String pattern = "€ ###,###,##0.00";
+  /**
+   * Replace currency.
+   *
+   * @param r the r
+   * @param templateField the template field
+   * @param jsonField the json field
+   */
+  public void replaceCurrency(XWPFRun r, String templateField, String jsonField) {
+    String runText = r.getText(0);
+    if (runText != null && runText.contains(templateField)) {
 
-					DecimalFormat decimalFormat = (DecimalFormat) NumberFormat.getNumberInstance(locale);
-					decimalFormat.applyPattern(pattern);
+      String value = jsonMap.get(jsonField);
+      if (value != null) {
+        String newText;
+        try {
+          BigDecimal bdValue = new BigDecimal(value);
 
-					String fValuta = decimalFormat.format(bdValue);
-					newText = runText.replace(templateField, fValuta);
-				} catch (IllegalArgumentException e) {
-					logger.error("Currency parsing error: " + e.getMessage());
-					newText = runText.replace(templateField, "");
-				}
+          Locale locale = new Locale("it", "IT");
+          String pattern = "€ ###,###,##0.00";
 
-				r.setText(newText, 0);
-			}
-		}
-	}
+          DecimalFormat decimalFormat = (DecimalFormat) NumberFormat.getNumberInstance(locale);
+          decimalFormat.applyPattern(pattern);
 
-	/**
-	 * Replace multivalue.
-	 *
-	 * @param r the r
-	 * @param templateField the template field
-	 * @param jsonField the json field
-	 */
-	public void replaceMultivalue(XWPFRun r, String templateField, String jsonField) {
-		String runText = r.getText(0);
-		String value = jsonMap.get(jsonField);
+          String fValuta = decimalFormat.format(bdValue);
+          newText = runText.replace(templateField, fValuta);
+        } catch (IllegalArgumentException e) {
+          logger.error("Currency parsing error: " + e.getMessage());
+          newText = runText.replace(templateField, "");
+        }
 
-		if (value != null && runText.length() > 0) {
+        r.setText(newText, 0);
+      }
+    }
+  }
 
-			String templateKey = templateField.substring(2, templateField.length() - 1);
+  /**
+   * Replace multivalue.
+   *
+   * @param r the r
+   * @param templateField the template field
+   * @param jsonField the json field
+   */
+  public void replaceMultivalue(XWPFRun r, String templateField, String jsonField) {
+    String runText = r.getText(0);
+    String value = jsonMap.get(jsonField);
 
-			if (runText != null && runText.contains(templateField)) {
+    if (value != null && runText.length() > 0) {
 
-				String newTextStep1 = runText.replaceAll("\\$\\{" + templateKey + "\\|\\*\\}", "X");
+      String templateKey = templateField.substring(2, templateField.length() - 1);
 
-				String newTextStep2 = newTextStep1.replaceAll("\\$\\{" + templateKey + "\\|" + value + "\\}", "X");
+      if (runText != null && runText.contains(templateField)) {
 
-				String newTextFinal = newTextStep2.replaceAll("\\$\\{" + templateKey + "\\|\\w{1,10}\\}", " ");
+        String newTextStep1 = runText.replaceAll("\\$\\{" + templateKey + "\\|\\*\\}", "X");
 
-				r.setText(newTextFinal, 0);
+        String newTextStep2 =
+            newTextStep1.replaceAll("\\$\\{" + templateKey + "\\|" + value + "\\}", "X");
 
-			}
-		}
-	}
+        String newTextFinal =
+            newTextStep2.replaceAll("\\$\\{" + templateKey + "\\|\\w{1,10}\\}", " ");
 
-	/**
-	 * Check if continue.
-	 *
-	 * @param r the r
-	 * @return the result
-	 */
-	public boolean checkIfContinue(XWPFRun r) {
-		String runText = r.getText(0);
-		return runText != null && runText.contains("${");
-	}
+        r.setText(newTextFinal, 0);
+      }
+    }
+  }
 
-	/**
-	 * Convert a single template based on the drools rule file and
-	 * information extracted from the json
-	 * 
-	 * @param templateIS
-	 * @param droolsRuleIS
-	 * @param jsonMap
-	 * @return
-	 * @throws Exception
-	 */
-	public ByteArrayOutputStream fillTemplate(InputStream templateIS, InputStream droolsRuleIS,
-			Map<String, String> jsonMap, String nomeFile) throws IOException {
-		this.jsonMap = jsonMap;
-		// fill in the document
-		XWPFDocument template = new XWPFDocument(templateIS);
+  /**
+   * Check if continue.
+   *
+   * @param r the r
+   * @return the result
+   */
+  public boolean checkIfContinue(XWPFRun r) {
+    String runText = r.getText(0);
+    return runText != null && runText.contains("${");
+  }
 
-		byte[] rule = toByteArray(droolsRuleIS);
-		final DocParam docParam = new DocParam(template, jsonMap, this);
+  /**
+   * Convert a single template based on the drools rule file and information extracted from the json
+   *
+   * @param templateIS
+   * @param droolsRuleIS
+   * @param jsonMap
+   * @return
+   * @throws Exception
+   */
+  public ByteArrayOutputStream fillTemplate(
+      InputStream templateIS,
+      InputStream droolsRuleIS,
+      Map<String, String> jsonMap,
+      String nomeFile)
+      throws IOException {
+    this.jsonMap = jsonMap;
+    // fill in the document
+    XWPFDocument template = new XWPFDocument(templateIS);
 
-		final KieServices kieServices = KieServices.Factory.get();
+    byte[] rule = toByteArray(droolsRuleIS);
+    final DocParam docParam = new DocParam(template, jsonMap, this);
 
-		KieFileSystem kfs = kieServices.newKieFileSystem();
-		kfs.write("src/main/resources/drools/rule.drl", kieServices.getResources().newByteArrayResource(rule));
-		KieBuilder kb = kieServices.newKieBuilder(kfs).buildAll();
+    final KieServices kieServices = KieServices.Factory.get();
 
-		if (kb.getResults().hasMessages(Message.Level.ERROR)) {
-			throw new WebScriptException("Error in substitution rules " + kb.getResults());
-		}
+    KieFileSystem kfs = kieServices.newKieFileSystem();
+    kfs.write(
+        "src/main/resources/drools/rule.drl",
+        kieServices.getResources().newByteArrayResource(rule));
+    KieBuilder kb = kieServices.newKieBuilder(kfs).buildAll();
 
-		KieRepository kieRepository = kieServices.getRepository();
-		KieContainer kContainer = kieServices.newKieContainer(kieRepository.getDefaultReleaseId());
-		StatelessKieSession kSession = kContainer.newStatelessKieSession();
+    if (kb.getResults().hasMessages(Message.Level.ERROR)) {
+      throw new WebScriptException("Error in substitution rules " + kb.getResults());
+    }
 
-		// exec drools rule (stateless)
-		kSession.execute(docParam);
+    KieRepository kieRepository = kieServices.getRepository();
+    KieContainer kContainer = kieServices.newKieContainer(kieRepository.getDefaultReleaseId());
+    StatelessKieSession kSession = kContainer.newStatelessKieSession();
 
-		ByteArrayOutputStream templateOs = new ByteArrayOutputStream();
+    // exec drools rule (stateless)
+    kSession.execute(docParam);
 
-		/* Imposto i metadati del documento */
-		try (XWPFWordExtractor word = new XWPFWordExtractor(template)) {
+    ByteArrayOutputStream templateOs = new ByteArrayOutputStream();
 
-			CoreProperties info = word.getCoreProperties();
-			info.setTitle(nomeFile);
-			info.setSubjectProperty(nomeFile);
-			info.setCreator("Sample Bank - http://www.vige.it/");
-			template.write(templateOs);
-		}
+    /* Imposto i metadati del documento */
+    try (XWPFWordExtractor word = new XWPFWordExtractor(template)) {
 
-		logger.info("template compilation completed");
+      CoreProperties info = word.getCoreProperties();
+      info.setTitle(nomeFile);
+      info.setSubjectProperty(nomeFile);
+      info.setCreator("Sample Bank - http://www.vige.it/");
+      template.write(templateOs);
+    }
 
-		return templateOs;
-	}
+    logger.info("template compilation completed");
 
+    return templateOs;
+  }
 }

@@ -1,4 +1,3 @@
-
 package it.vige.nam.stub;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,13 +6,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per getSignaturesResponse complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="getSignaturesResponse"&gt;
  *   &lt;complexContent&gt;
@@ -25,35 +21,28 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 /**
  * Class providing functionality for Alfresco testing.
- * 
+ *
  * @author vige
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getSignaturesResponse", propOrder = { "_return" })
+@XmlType(
+    name = "getSignaturesResponse",
+    propOrder = {"_return"})
 public class GetSignaturesResponse {
 
-	@XmlElement(name = "return")
-	protected long _return;
+  @XmlElement(name = "return")
+  protected long _return;
 
-	/**
-	 * Recupera il valore della proprietà return.
-	 * 
-	 */
-	public long getReturn() {
-		return _return;
-	}
+  /** Recupera il valore della proprietà return. */
+  public long getReturn() {
+    return _return;
+  }
 
-	/**
-	 * Imposta il valore della proprietà return.
-	 * 
-	 */
-	public void setReturn(long value) {
-		this._return = value;
-	}
-
+  /** Imposta il valore della proprietà return. */
+  public void setReturn(long value) {
+    this._return = value;
+  }
 }

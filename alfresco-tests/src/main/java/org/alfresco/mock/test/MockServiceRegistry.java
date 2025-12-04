@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.util.Collection;
-
 import org.alfresco.opencmis.dictionary.CMISDictionaryService;
 import org.alfresco.opencmis.search.CMISQueryService;
 import org.alfresco.repo.admin.SysAdminParams;
@@ -66,511 +65,510 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 
 /**
- * Mock implementation of the Alfresco ServiceRegistry for testing purposes.
- * Provides stub implementations for testing without a running Alfresco server.
- * 
+ * Mock implementation of the Alfresco ServiceRegistry for testing purposes. Provides stub
+ * implementations for testing without a running Alfresco server.
+ *
  * @author vige
  */
 public class MockServiceRegistry implements BeanFactoryAware, ServiceRegistry, Externalizable {
 
-	private NodeService nodeService;
+  private NodeService nodeService;
 
-	private ContentService contentService;
+  private ContentService contentService;
 
-	private SearchService searchService;
+  private SearchService searchService;
 
-	private FileFolderService fileFolderService;
+  private FileFolderService fileFolderService;
 
-	private NodeLocatorService nodeLocatorService;
+  private NodeLocatorService nodeLocatorService;
 
-	private NamespaceService namespaceService;
+  private NamespaceService namespaceService;
 
-	private ScriptService scriptService;
+  private ScriptService scriptService;
 
-	private MimetypeService mimetypeService;
+  private MimetypeService mimetypeService;
 
-	private ImporterService importerService;
+  private ImporterService importerService;
 
-	private PermissionService permissionService;
+  private PermissionService permissionService;
 
-	private TemplateService templateService;
+  private TemplateService templateService;
 
-	private SolrFacetHelper solrFacetHelper;
+  private SolrFacetHelper solrFacetHelper;
 
-	private TransactionService transactionService;
+  private TransactionService transactionService;
 
-	private DictionaryService dictionaryService;
+  private DictionaryService dictionaryService;
 
-	private MutableAuthenticationService authenticationService;
+  private MutableAuthenticationService authenticationService;
 
-	private VersionService versionService;
+  private VersionService versionService;
 
-	private CopyService copyService;
+  private CopyService copyService;
 
-	private CheckOutCheckInService checkOutCheckInService;
+  private CheckOutCheckInService checkOutCheckInService;
 
-	private SiteService siteService;
+  private SiteService siteService;
 
-	private PersonService personService;
+  private PersonService personService;
 
-	private AuthorityService authorityService;
+  private AuthorityService authorityService;
 
-	private ActionService actionService;
+  private ActionService actionService;
 
-	@Override
-	public Collection<QName> getServices() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public Collection<QName> getServices() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public boolean isServiceProvided(QName service) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+  @Override
+  public boolean isServiceProvided(QName service) {
+    // TODO Auto-generated method stub
+    return false;
+  }
 
-	@Override
-	public Object getService(QName service) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public Object getService(QName service) {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public DescriptorService getDescriptorService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public DescriptorService getDescriptorService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public TransactionService getTransactionService() {
-		return transactionService;
-	}
+  @Override
+  public TransactionService getTransactionService() {
+    return transactionService;
+  }
 
-	@Override
-	public RetryingTransactionHelper getRetryingTransactionHelper() {
-		return transactionService.getRetryingTransactionHelper();
-	}
+  @Override
+  public RetryingTransactionHelper getRetryingTransactionHelper() {
+    return transactionService.getRetryingTransactionHelper();
+  }
 
-	@Override
-	public NamespaceService getNamespaceService() {
-		return namespaceService;
-	}
+  @Override
+  public NamespaceService getNamespaceService() {
+    return namespaceService;
+  }
 
-	@Override
-	public MutableAuthenticationService getAuthenticationService() {
-		return authenticationService;
-	}
+  @Override
+  public MutableAuthenticationService getAuthenticationService() {
+    return authenticationService;
+  }
 
-	@Override
-	public NodeService getNodeService() {
-		return nodeService;
-	}
+  @Override
+  public NodeService getNodeService() {
+    return nodeService;
+  }
 
-	@Override
-	public ContentService getContentService() {
-		return contentService;
-	}
+  @Override
+  public ContentService getContentService() {
+    return contentService;
+  }
 
-	@Override
-	public MimetypeService getMimetypeService() {
-		return mimetypeService;
-	}
-
-	@Override
-	public ContentFilterLanguagesService getContentFilterLanguagesService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public SearchService getSearchService() {
-		return searchService;
-	}
-
-	@Override
-	public VersionService getVersionService() {
-		return versionService;
-	}
-
-	@Override
-	public LockService getLockService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public JobLockService getJobLockService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public DictionaryService getDictionaryService() {
-		return dictionaryService;
-	}
-
-	@Override
-	public CopyService getCopyService() {
-		return copyService;
-	}
-
-	@Override
-	public CheckOutCheckInService getCheckOutCheckInService() {
-		return checkOutCheckInService;
-	}
-
-	@Override
-	public CategoryService getCategoryService() {
-		return null;
-	}
-
-	@Override
-	public ImporterService getImporterService() {
-		return importerService;
-	}
-
-	@Override
-	public ExporterService getExporterService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public RuleService getRuleService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ActionService getActionService() {
-		return actionService;
-	}
-
-	@Override
-	public PermissionService getPermissionService() {
-		return permissionService;
-	}
-
-	@Override
-	public AuthorityService getAuthorityService() {
-		return authorityService;
-	}
-
-	@Override
-	public TemplateService getTemplateService() {
-		return templateService;
-	}
-
-	@Override
-	public FileFolderService getFileFolderService() {
-		return fileFolderService;
-	}
-
-	@Override
-	public ScriptService getScriptService() {
-		return scriptService;
-	}
-
-	@Override
-	public WorkflowService getWorkflowService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public NotificationService getNotificationService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public AuditService getAuditService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public OwnableService getOwnableService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PersonService getPersonService() {
-		return personService;
-	}
-
-	@Override
-	public SiteService getSiteService() {
-		return siteService;
-	}
-
-	@Override
-	public AttributeService getAttributeService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public MultilingualContentService getMultilingualContentService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public EditionService getEditionService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ThumbnailService getThumbnailService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public TaggingService getTaggingService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public FormService getFormService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public RenditionService getRenditionService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public RatingService getRatingService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public NodeLocatorService getNodeLocatorService() {
-		return nodeLocatorService;
-	}
-
-	@Override
-	public BlogService getBlogService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public CalendarService getCalendarService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public InvitationService getInvitationService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ImapService getImapService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PublicServiceAccessService getPublicServiceAccessService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public RepoAdminService getRepoAdminService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public SysAdminParams getSysAdminParams() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public WebDavService getWebDavService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void setFileFolderService(FileFolderService fileFolderService) {
-		this.fileFolderService = fileFolderService;
-	}
-
-	public void setContentService(ContentService contentService) {
-		this.contentService = contentService;
-	}
-
-	public void setNodeService(NodeService nodeService) {
-		this.nodeService = nodeService;
-	}
-
-	public void setSearchService(SearchService searchService) {
-		this.searchService = searchService;
-	}
-
-	public void setNodeLocatorService(NodeLocatorService nodeLocatorService) {
-		this.nodeLocatorService = nodeLocatorService;
-	}
-
-	public void setNamespaceService(NamespaceService namespaceService) {
-		this.namespaceService = namespaceService;
-	}
-
-	public void setMimetypeService(MimetypeService mimetypeService) {
-		this.mimetypeService = mimetypeService;
-	}
-
-	public void setScriptService(ScriptService scriptService) {
-		this.scriptService = scriptService;
-	}
-
-	public void setImporterService(ImporterService importerService) {
-		this.importerService = importerService;
-	}
-
-	public void setPermissionService(PermissionService permissionService) {
-		this.permissionService = permissionService;
-	}
-
-	public void setTemplateService(TemplateService templateService) {
-		this.templateService = templateService;
-	}
-
-	@Override
-	public CMISDictionaryService getCMISDictionaryService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public CMISQueryService getCMISQueryService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public SolrFacetHelper getSolrFacetHelper() {
-		return solrFacetHelper;
-	}
-
-	@Override
-	public FacetLabelDisplayHandlerRegistry getFacetLabelDisplayHandlerRegistry() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void setSolrFacetHelper(SolrFacetHelper solrFacetHelper) {
-		this.solrFacetHelper = solrFacetHelper;
-	}
-
-	@Override
-	public void writeExternal(ObjectOutput out) throws IOException {
-		out.writeObject(namespaceService);
-		out.writeObject(mimetypeService);
-		out.writeObject(scriptService);
-		out.writeObject(importerService);
-		out.writeObject(permissionService);
-		out.writeObject(templateService);
-		out.writeObject(nodeService);
-		out.writeObject(actionService);
-		out.writeObject(authenticationService);
-		out.writeObject(authorityService);
-		out.writeObject(contentService);
-		out.writeObject(copyService);
-		out.writeObject(checkOutCheckInService);
-		out.writeObject(dictionaryService);
-		out.writeObject(fileFolderService);
-		out.writeObject(nodeLocatorService);
-		out.writeObject(personService);
-		out.writeObject(searchService);
-		out.writeObject(siteService);
-		out.writeObject(transactionService);
-		out.writeObject(versionService);
-	}
-
-	@Override
-	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-		namespaceService = (NamespaceService) in.readObject();
-		mimetypeService = (MimetypeService) in.readObject();
-		scriptService = (ScriptService) in.readObject();
-		importerService = (ImporterService) in.readObject();
-		permissionService = (PermissionService) in.readObject();
-		templateService = (TemplateService) in.readObject();
-		nodeService = (NodeService) in.readObject();
-		actionService = (ActionService) in.readObject();
-		authenticationService = (MutableAuthenticationService) in.readObject();
-		authorityService = (AuthorityService) in.readObject();
-		contentService = (ContentService) in.readObject();
-		copyService = (CopyService) in.readObject();
-		checkOutCheckInService = (CheckOutCheckInService) in.readObject();
-		dictionaryService = (DictionaryService) in.readObject();
-		fileFolderService = (FileFolderService) in.readObject();
-		nodeLocatorService = (NodeLocatorService) in.readObject();
-		personService = (PersonService) in.readObject();
-		searchService = (SearchService) in.readObject();
-		siteService = (SiteService) in.readObject();
-		transactionService = (TransactionService) in.readObject();
-		versionService = (VersionService) in.readObject();
-	}
-
-	public void setAuthenticationService(MutableAuthenticationService authenticationService) {
-		this.authenticationService = authenticationService;
-	}
-
-	public void setTransactionService(TransactionService transactionService) {
-		this.transactionService = transactionService;
-	}
-
-	public void setDictionaryService(DictionaryService dictionaryService) {
-		this.dictionaryService = dictionaryService;
-	}
-
-	public void setVersionService(VersionService versionService) {
-		this.versionService = versionService;
-	}
-
-	public void setCopyService(CopyService copyService) {
-		this.copyService = copyService;
-	}
-
-	public void setCheckOutCheckInService(CheckOutCheckInService checkOutCheckInService) {
-		this.checkOutCheckInService = checkOutCheckInService;
-	}
-
-	public void setSiteService(SiteService siteService) {
-		this.siteService = siteService;
-	}
-
-	public void setPersonService(PersonService personService) {
-		this.personService = personService;
-	}
-
-	public void setAuthorityService(AuthorityService authorityService) {
-		this.authorityService = authorityService;
-	}
-
-	public void setActionService(ActionService actionService) {
-		this.actionService = actionService;
-	}
-
+  @Override
+  public MimetypeService getMimetypeService() {
+    return mimetypeService;
+  }
+
+  @Override
+  public ContentFilterLanguagesService getContentFilterLanguagesService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public SearchService getSearchService() {
+    return searchService;
+  }
+
+  @Override
+  public VersionService getVersionService() {
+    return versionService;
+  }
+
+  @Override
+  public LockService getLockService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public JobLockService getJobLockService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public DictionaryService getDictionaryService() {
+    return dictionaryService;
+  }
+
+  @Override
+  public CopyService getCopyService() {
+    return copyService;
+  }
+
+  @Override
+  public CheckOutCheckInService getCheckOutCheckInService() {
+    return checkOutCheckInService;
+  }
+
+  @Override
+  public CategoryService getCategoryService() {
+    return null;
+  }
+
+  @Override
+  public ImporterService getImporterService() {
+    return importerService;
+  }
+
+  @Override
+  public ExporterService getExporterService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public RuleService getRuleService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public ActionService getActionService() {
+    return actionService;
+  }
+
+  @Override
+  public PermissionService getPermissionService() {
+    return permissionService;
+  }
+
+  @Override
+  public AuthorityService getAuthorityService() {
+    return authorityService;
+  }
+
+  @Override
+  public TemplateService getTemplateService() {
+    return templateService;
+  }
+
+  @Override
+  public FileFolderService getFileFolderService() {
+    return fileFolderService;
+  }
+
+  @Override
+  public ScriptService getScriptService() {
+    return scriptService;
+  }
+
+  @Override
+  public WorkflowService getWorkflowService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public NotificationService getNotificationService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public AuditService getAuditService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public OwnableService getOwnableService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public PersonService getPersonService() {
+    return personService;
+  }
+
+  @Override
+  public SiteService getSiteService() {
+    return siteService;
+  }
+
+  @Override
+  public AttributeService getAttributeService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public MultilingualContentService getMultilingualContentService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public EditionService getEditionService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public ThumbnailService getThumbnailService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public TaggingService getTaggingService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public FormService getFormService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public RenditionService getRenditionService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public RatingService getRatingService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public NodeLocatorService getNodeLocatorService() {
+    return nodeLocatorService;
+  }
+
+  @Override
+  public BlogService getBlogService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public CalendarService getCalendarService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public InvitationService getInvitationService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public ImapService getImapService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public PublicServiceAccessService getPublicServiceAccessService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public RepoAdminService getRepoAdminService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public SysAdminParams getSysAdminParams() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public WebDavService getWebDavService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+    // TODO Auto-generated method stub
+
+  }
+
+  public void setFileFolderService(FileFolderService fileFolderService) {
+    this.fileFolderService = fileFolderService;
+  }
+
+  public void setContentService(ContentService contentService) {
+    this.contentService = contentService;
+  }
+
+  public void setNodeService(NodeService nodeService) {
+    this.nodeService = nodeService;
+  }
+
+  public void setSearchService(SearchService searchService) {
+    this.searchService = searchService;
+  }
+
+  public void setNodeLocatorService(NodeLocatorService nodeLocatorService) {
+    this.nodeLocatorService = nodeLocatorService;
+  }
+
+  public void setNamespaceService(NamespaceService namespaceService) {
+    this.namespaceService = namespaceService;
+  }
+
+  public void setMimetypeService(MimetypeService mimetypeService) {
+    this.mimetypeService = mimetypeService;
+  }
+
+  public void setScriptService(ScriptService scriptService) {
+    this.scriptService = scriptService;
+  }
+
+  public void setImporterService(ImporterService importerService) {
+    this.importerService = importerService;
+  }
+
+  public void setPermissionService(PermissionService permissionService) {
+    this.permissionService = permissionService;
+  }
+
+  public void setTemplateService(TemplateService templateService) {
+    this.templateService = templateService;
+  }
+
+  @Override
+  public CMISDictionaryService getCMISDictionaryService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public CMISQueryService getCMISQueryService() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public SolrFacetHelper getSolrFacetHelper() {
+    return solrFacetHelper;
+  }
+
+  @Override
+  public FacetLabelDisplayHandlerRegistry getFacetLabelDisplayHandlerRegistry() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  public void setSolrFacetHelper(SolrFacetHelper solrFacetHelper) {
+    this.solrFacetHelper = solrFacetHelper;
+  }
+
+  @Override
+  public void writeExternal(ObjectOutput out) throws IOException {
+    out.writeObject(namespaceService);
+    out.writeObject(mimetypeService);
+    out.writeObject(scriptService);
+    out.writeObject(importerService);
+    out.writeObject(permissionService);
+    out.writeObject(templateService);
+    out.writeObject(nodeService);
+    out.writeObject(actionService);
+    out.writeObject(authenticationService);
+    out.writeObject(authorityService);
+    out.writeObject(contentService);
+    out.writeObject(copyService);
+    out.writeObject(checkOutCheckInService);
+    out.writeObject(dictionaryService);
+    out.writeObject(fileFolderService);
+    out.writeObject(nodeLocatorService);
+    out.writeObject(personService);
+    out.writeObject(searchService);
+    out.writeObject(siteService);
+    out.writeObject(transactionService);
+    out.writeObject(versionService);
+  }
+
+  @Override
+  public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+    namespaceService = (NamespaceService) in.readObject();
+    mimetypeService = (MimetypeService) in.readObject();
+    scriptService = (ScriptService) in.readObject();
+    importerService = (ImporterService) in.readObject();
+    permissionService = (PermissionService) in.readObject();
+    templateService = (TemplateService) in.readObject();
+    nodeService = (NodeService) in.readObject();
+    actionService = (ActionService) in.readObject();
+    authenticationService = (MutableAuthenticationService) in.readObject();
+    authorityService = (AuthorityService) in.readObject();
+    contentService = (ContentService) in.readObject();
+    copyService = (CopyService) in.readObject();
+    checkOutCheckInService = (CheckOutCheckInService) in.readObject();
+    dictionaryService = (DictionaryService) in.readObject();
+    fileFolderService = (FileFolderService) in.readObject();
+    nodeLocatorService = (NodeLocatorService) in.readObject();
+    personService = (PersonService) in.readObject();
+    searchService = (SearchService) in.readObject();
+    siteService = (SiteService) in.readObject();
+    transactionService = (TransactionService) in.readObject();
+    versionService = (VersionService) in.readObject();
+  }
+
+  public void setAuthenticationService(MutableAuthenticationService authenticationService) {
+    this.authenticationService = authenticationService;
+  }
+
+  public void setTransactionService(TransactionService transactionService) {
+    this.transactionService = transactionService;
+  }
+
+  public void setDictionaryService(DictionaryService dictionaryService) {
+    this.dictionaryService = dictionaryService;
+  }
+
+  public void setVersionService(VersionService versionService) {
+    this.versionService = versionService;
+  }
+
+  public void setCopyService(CopyService copyService) {
+    this.copyService = copyService;
+  }
+
+  public void setCheckOutCheckInService(CheckOutCheckInService checkOutCheckInService) {
+    this.checkOutCheckInService = checkOutCheckInService;
+  }
+
+  public void setSiteService(SiteService siteService) {
+    this.siteService = siteService;
+  }
+
+  public void setPersonService(PersonService personService) {
+    this.personService = personService;
+  }
+
+  public void setAuthorityService(AuthorityService authorityService) {
+    this.authorityService = authorityService;
+  }
+
+  public void setActionService(ActionService actionService) {
+    this.actionService = actionService;
+  }
 }

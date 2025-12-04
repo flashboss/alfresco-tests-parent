@@ -1,4 +1,3 @@
-
 package it.vige.nam.stub;
 
 import javax.activation.DataHandler;
@@ -9,13 +8,10 @@ import javax.xml.bind.annotation.XmlMimeType;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per signCAdESByAttachment complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="signCAdESByAttachment"&gt;
  *   &lt;complexContent&gt;
@@ -29,83 +25,77 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- *
  *
  * @author vige
- 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signCAdESByAttachment", propOrder = { "credentials", "inputDataHandler", "cAdESPreferences" })
+@XmlType(
+    name = "signCAdESByAttachment",
+    propOrder = {"credentials", "inputDataHandler", "cAdESPreferences"})
 public class SignCAdESByAttachment {
 
-	/** The credentials. */
-	protected Credentials credentials;
-	/** The input data handler. */
-	@XmlMimeType("application/octet-stream")
-	protected DataHandler inputDataHandler;
-	/** The c ad e s preferences. */
-	@XmlElement(name = "CAdESPreferences")
-	protected CAdESPreferences cAdESPreferences;
+  /** The credentials. */
+  protected Credentials credentials;
 
-	/**
-	 * Recupera il valore della proprietà credentials.
-	 * 
-	 * @return possible object is {@link Credentials }
-	 * 
-	 */
-	public Credentials getCredentials() {
-		return credentials;
-	}
+  /** The input data handler. */
+  @XmlMimeType("application/octet-stream")
+  protected DataHandler inputDataHandler;
 
-	/**
-	 * Imposta il valore della proprietà credentials.
-	 * 
-	 * @param value allowed object is {@link Credentials }
-	 * 
-	 */
-	public void setCredentials(Credentials value) {
-		this.credentials = value;
-	}
+  /** The c ad e s preferences. */
+  @XmlElement(name = "CAdESPreferences")
+  protected CAdESPreferences cAdESPreferences;
 
-	/**
-	 * Recupera il valore della proprietà inputDataHandler.
-	 * 
-	 * @return possible object is {@link DataHandler }
-	 * 
-	 */
-	public DataHandler getInputDataHandler() {
-		return inputDataHandler;
-	}
+  /**
+   * Recupera il valore della proprietà credentials.
+   *
+   * @return possible object is {@link Credentials }
+   */
+  public Credentials getCredentials() {
+    return credentials;
+  }
 
-	/**
-	 * Imposta il valore della proprietà inputDataHandler.
-	 * 
-	 * @param value allowed object is {@link DataHandler }
-	 * 
-	 */
-	public void setInputDataHandler(DataHandler value) {
-		this.inputDataHandler = value;
-	}
+  /**
+   * Imposta il valore della proprietà credentials.
+   *
+   * @param value allowed object is {@link Credentials }
+   */
+  public void setCredentials(Credentials value) {
+    this.credentials = value;
+  }
 
-	/**
-	 * Recupera il valore della proprietà cAdESPreferences.
-	 * 
-	 * @return possible object is {@link CAdESPreferences }
-	 * 
-	 */
-	public CAdESPreferences getCAdESPreferences() {
-		return cAdESPreferences;
-	}
+  /**
+   * Recupera il valore della proprietà inputDataHandler.
+   *
+   * @return possible object is {@link DataHandler }
+   */
+  public DataHandler getInputDataHandler() {
+    return inputDataHandler;
+  }
 
-	/**
-	 * Imposta il valore della proprietà cAdESPreferences.
-	 * 
-	 * @param value allowed object is {@link CAdESPreferences }
-	 * 
-	 */
-	public void setCAdESPreferences(CAdESPreferences value) {
-		this.cAdESPreferences = value;
-	}
+  /**
+   * Imposta il valore della proprietà inputDataHandler.
+   *
+   * @param value allowed object is {@link DataHandler }
+   */
+  public void setInputDataHandler(DataHandler value) {
+    this.inputDataHandler = value;
+  }
 
+  /**
+   * Recupera il valore della proprietà cAdESPreferences.
+   *
+   * @return possible object is {@link CAdESPreferences }
+   */
+  public CAdESPreferences getCAdESPreferences() {
+    return cAdESPreferences;
+  }
+
+  /**
+   * Imposta il valore della proprietà cAdESPreferences.
+   *
+   * @param value allowed object is {@link CAdESPreferences }
+   */
+  public void setCAdESPreferences(CAdESPreferences value) {
+    this.cAdESPreferences = value;
+  }
 }

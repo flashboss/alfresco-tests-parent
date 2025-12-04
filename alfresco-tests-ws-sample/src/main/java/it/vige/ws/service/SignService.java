@@ -2,7 +2,6 @@ package it.vige.ws.service;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-
 import org.apache.log4j.Logger;
 
 /**
@@ -12,43 +11,42 @@ import org.apache.log4j.Logger;
  */
 public class SignService {
 
-	/** The logger. */
-	private final Logger logger = Logger.getLogger(SignService.class);
+  /** The logger. */
+  private final Logger logger = Logger.getLogger(SignService.class);
 
-	/**
-	 * Verifica.
-	 *
-	 * @param contentToVerify the content to verify
-	 * @return the result
-	 */
-	public SignedDocumentReportBean verifica(byte[] contentToVerify) throws Exception {
+  /**
+   * Verifica.
+   *
+   * @param contentToVerify the content to verify
+   * @return the result
+   */
+  public SignedDocumentReportBean verifica(byte[] contentToVerify) throws Exception {
 
-		logger.debug("start verifica");
+    logger.debug("start verifica");
 
-		return new SignedDocumentReportBean();
-	}
+    return new SignedDocumentReportBean();
+  }
 
-	/**
-	 * Sign p a d e s.
-	 *
-	 * @param inputStream the input stream
-	 * @param username the username
-	 * @param password the password
-	 * @return the result
-	 */
-	public InputStream signPADES(InputStream inputStream, String username, String password) throws Exception {
-		logger.debug("start single sign");
-		return new ByteArrayInputStream(new byte[0]);
-	}
+  /**
+   * Sign p a d e s.
+   *
+   * @param inputStream the input stream
+   * @param username the username
+   * @param password the password
+   * @return the result
+   */
+  public InputStream signPADES(InputStream inputStream, String username, String password)
+      throws Exception {
+    logger.debug("start single sign");
+    return new ByteArrayInputStream(new byte[0]);
+  }
 
-	/**
-	 * 
-	 * @param inputStream
-	 * @return
-	 */
-	public byte[] applicaMarcaTemporale(byte[] inputByte) throws Exception {
+  /**
+   * @param inputStream
+   * @return
+   */
+  public byte[] applicaMarcaTemporale(byte[] inputByte) throws Exception {
 
-		return new byte[0];
-	}
-
+    return new byte[0];
+  }
 }

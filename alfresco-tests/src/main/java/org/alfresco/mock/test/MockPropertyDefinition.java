@@ -3,7 +3,6 @@ package org.alfresco.mock.test;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
-
 import org.alfresco.repo.dictionary.Facetable;
 import org.alfresco.repo.dictionary.IndexTokenisationMode;
 import org.alfresco.service.cmr.dictionary.ClassDefinition;
@@ -16,163 +15,162 @@ import org.alfresco.service.namespace.QName;
 
 /**
  * Mock implementation of PropertyDefinition for testing purposes.
- * 
+ *
  * @author vige
  */
 public class MockPropertyDefinition implements PropertyDefinition, Serializable {
 
-	private QName name;
+  private QName name;
 
-	public MockPropertyDefinition(QName name) {
-		this.name = name;
-	}
+  public MockPropertyDefinition(QName name) {
+    this.name = name;
+  }
 
-	@Override
-	public ModelDefinition getModel() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public ModelDefinition getModel() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public QName getName() {
-		return name;
-	}
+  @Override
+  public QName getName() {
+    return name;
+  }
 
-	@Override
-	public String getTitle() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public String getTitle() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public String getDescription() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public String getTitle(MessageLookup messageLookup) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public String getTitle(MessageLookup messageLookup) {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public String getDescription(MessageLookup messageLookup) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public String getDescription(MessageLookup messageLookup) {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public String getDefaultValue() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public String getDefaultValue() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public DataTypeDefinition getDataType() {
-		return new MockDataTypeDefinition();
-	}
+  @Override
+  public DataTypeDefinition getDataType() {
+    return new MockDataTypeDefinition();
+  }
 
-	@Override
-	public ClassDefinition getContainerClass() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public ClassDefinition getContainerClass() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public boolean isOverride() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+  @Override
+  public boolean isOverride() {
+    // TODO Auto-generated method stub
+    return false;
+  }
 
-	@Override
-	public boolean isMultiValued() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+  @Override
+  public boolean isMultiValued() {
+    // TODO Auto-generated method stub
+    return false;
+  }
 
-	@Override
-	public boolean isMandatory() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+  @Override
+  public boolean isMandatory() {
+    // TODO Auto-generated method stub
+    return false;
+  }
 
-	@Override
-	public boolean isMandatoryEnforced() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+  @Override
+  public boolean isMandatoryEnforced() {
+    // TODO Auto-generated method stub
+    return false;
+  }
 
-	@Override
-	public boolean isProtected() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+  @Override
+  public boolean isProtected() {
+    // TODO Auto-generated method stub
+    return false;
+  }
 
-	@Override
-	public boolean isIndexed() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+  @Override
+  public boolean isIndexed() {
+    // TODO Auto-generated method stub
+    return false;
+  }
 
-	@Override
-	public boolean isStoredInIndex() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+  @Override
+  public boolean isStoredInIndex() {
+    // TODO Auto-generated method stub
+    return false;
+  }
 
-	@Override
-	public IndexTokenisationMode getIndexTokenisationMode() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public IndexTokenisationMode getIndexTokenisationMode() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public boolean isIndexedAtomically() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+  @Override
+  public boolean isIndexedAtomically() {
+    // TODO Auto-generated method stub
+    return false;
+  }
 
-	@Override
-	public List<ConstraintDefinition> getConstraints() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public List<ConstraintDefinition> getConstraints() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public String getAnalyserResourceBundleName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public String getAnalyserResourceBundleName() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public String resolveAnalyserClassName(Locale locale) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public String resolveAnalyserClassName(Locale locale) {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public String resolveAnalyserClassName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public String resolveAnalyserClassName() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public String getTitle(MessageLookup messageLookup, Locale locale) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public String getTitle(MessageLookup messageLookup, Locale locale) {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public String getDescription(MessageLookup messageLookup, Locale locale) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public String getDescription(MessageLookup messageLookup, Locale locale) {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public Facetable getFacetable() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+  @Override
+  public Facetable getFacetable() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 }

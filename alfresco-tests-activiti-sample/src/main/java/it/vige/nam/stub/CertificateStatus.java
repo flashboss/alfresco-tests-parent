@@ -1,18 +1,15 @@
-
 package it.vige.nam.stub;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per certificateStatus.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * <p>
- * 
+ *
  * <pre>
  * &lt;simpleType name="certificateStatus"&gt;
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
@@ -23,33 +20,31 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/simpleType&gt;
  * </pre>
  *
- *
  * @author vige
- 
  */
 @XmlType(name = "certificateStatus")
 @XmlEnum
 public enum CertificateStatus {
+  VALID,
+  REVOKED,
+  UNKNOWN;
 
-	VALID, REVOKED, UNKNOWN;
+  /**
+   * Value.
+   *
+   * @return the result
+   */
+  public String value() {
+    return name();
+  }
 
-	/**
-	 * Value.
-	 *
-	 * @return the result
-	 */
-	public String value() {
-		return name();
-	}
-
-	/**
-	 * From value.
-	 *
-	 * @param v the v
-	 * @return the result
-	 */
-	public static CertificateStatus fromValue(String v) {
-		return valueOf(v);
-	}
-
+  /**
+   * From value.
+   *
+   * @param v the v
+   * @return the result
+   */
+  public static CertificateStatus fromValue(String v) {
+    return valueOf(v);
+  }
 }

@@ -1,4 +1,3 @@
-
 package it.vige.nam.stub;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -6,13 +5,10 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per signerImage complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="signerImage"&gt;
  *   &lt;complexContent&gt;
@@ -37,8 +33,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 /**
  * SignerImage implementation for testing purposes.
@@ -46,290 +40,268 @@ import javax.xml.bind.annotation.XmlType;
  * @author vige
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signerImage", propOrder = { "fieldName", "fontName", "fontSize", "height", "image", "imageFilename",
-		"imageURL", "location", "reason", "signerName", "textVisible", "width", "x", "y" })
+@XmlType(
+    name = "signerImage",
+    propOrder = {
+      "fieldName",
+      "fontName",
+      "fontSize",
+      "height",
+      "image",
+      "imageFilename",
+      "imageURL",
+      "location",
+      "reason",
+      "signerName",
+      "textVisible",
+      "width",
+      "x",
+      "y"
+    })
 public class SignerImage {
 
-	/** The field name. */
-	protected String fieldName;
-	/** The font name. */
-	protected String fontName;
-	/** The font size. */
-	protected int fontSize;
-	/** The height. */
-	protected int height;
-	protected byte[] image;
-	/** The image filename. */
-	protected String imageFilename;
-	/** The image u r l. */
-	protected String imageURL;
-	/** The location. */
-	protected String location;
-	/** The reason. */
-	protected String reason;
-	/** The signer name. */
-	protected String signerName;
-	/** The text visible. */
-	protected boolean textVisible;
-	/** The width. */
-	protected int width;
-	/** The x. */
-	protected int x;
-	/** The y. */
-	protected int y;
+  /** The field name. */
+  protected String fieldName;
 
-	/**
-	 * Recupera il valore della proprietà fieldName.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getFieldName() {
-		return fieldName;
-	}
+  /** The font name. */
+  protected String fontName;
 
-	/**
-	 * Imposta il valore della proprietà fieldName.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setFieldName(String value) {
-		this.fieldName = value;
-	}
+  /** The font size. */
+  protected int fontSize;
 
-	/**
-	 * Recupera il valore della proprietà fontName.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getFontName() {
-		return fontName;
-	}
+  /** The height. */
+  protected int height;
 
-	/**
-	 * Imposta il valore della proprietà fontName.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setFontName(String value) {
-		this.fontName = value;
-	}
+  protected byte[] image;
 
-	/**
-	 * Recupera il valore della proprietà fontSize.
-	 * 
-	 */
-	public int getFontSize() {
-		return fontSize;
-	}
+  /** The image filename. */
+  protected String imageFilename;
 
-	/**
-	 * Imposta il valore della proprietà fontSize.
-	 * 
-	 */
-	public void setFontSize(int value) {
-		this.fontSize = value;
-	}
+  /** The image u r l. */
+  protected String imageURL;
 
-	/**
-	 * Recupera il valore della proprietà height.
-	 * 
-	 */
-	public int getHeight() {
-		return height;
-	}
+  /** The location. */
+  protected String location;
 
-	/**
-	 * Imposta il valore della proprietà height.
-	 * 
-	 */
-	public void setHeight(int value) {
-		this.height = value;
-	}
+  /** The reason. */
+  protected String reason;
 
-	/**
-	 * Recupera il valore della proprietà image.
-	 * 
-	 * @return possible object is byte[]
-	 */
-	public byte[] getImage() {
-		return image;
-	}
+  /** The signer name. */
+  protected String signerName;
 
-	/**
-	 * Imposta il valore della proprietà image.
-	 * 
-	 * @param value allowed object is byte[]
-	 */
-	public void setImage(byte[] value) {
-		this.image = value;
-	}
+  /** The text visible. */
+  protected boolean textVisible;
 
-	/**
-	 * Recupera il valore della proprietà imageFilename.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getImageFilename() {
-		return imageFilename;
-	}
+  /** The width. */
+  protected int width;
 
-	/**
-	 * Imposta il valore della proprietà imageFilename.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setImageFilename(String value) {
-		this.imageFilename = value;
-	}
+  /** The x. */
+  protected int x;
 
-	/**
-	 * Recupera il valore della proprietà imageURL.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getImageURL() {
-		return imageURL;
-	}
+  /** The y. */
+  protected int y;
 
-	/**
-	 * Imposta il valore della proprietà imageURL.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setImageURL(String value) {
-		this.imageURL = value;
-	}
+  /**
+   * Recupera il valore della proprietà fieldName.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getFieldName() {
+    return fieldName;
+  }
 
-	/**
-	 * Recupera il valore della proprietà location.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getLocation() {
-		return location;
-	}
+  /**
+   * Imposta il valore della proprietà fieldName.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setFieldName(String value) {
+    this.fieldName = value;
+  }
 
-	/**
-	 * Imposta il valore della proprietà location.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setLocation(String value) {
-		this.location = value;
-	}
+  /**
+   * Recupera il valore della proprietà fontName.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getFontName() {
+    return fontName;
+  }
 
-	/**
-	 * Recupera il valore della proprietà reason.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getReason() {
-		return reason;
-	}
+  /**
+   * Imposta il valore della proprietà fontName.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setFontName(String value) {
+    this.fontName = value;
+  }
 
-	/**
-	 * Imposta il valore della proprietà reason.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setReason(String value) {
-		this.reason = value;
-	}
+  /** Recupera il valore della proprietà fontSize. */
+  public int getFontSize() {
+    return fontSize;
+  }
 
-	/**
-	 * Recupera il valore della proprietà signerName.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getSignerName() {
-		return signerName;
-	}
+  /** Imposta il valore della proprietà fontSize. */
+  public void setFontSize(int value) {
+    this.fontSize = value;
+  }
 
-	/**
-	 * Imposta il valore della proprietà signerName.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setSignerName(String value) {
-		this.signerName = value;
-	}
+  /** Recupera il valore della proprietà height. */
+  public int getHeight() {
+    return height;
+  }
 
-	/**
-	 * Recupera il valore della proprietà textVisible.
-	 * 
-	 */
-	public boolean isTextVisible() {
-		return textVisible;
-	}
+  /** Imposta il valore della proprietà height. */
+  public void setHeight(int value) {
+    this.height = value;
+  }
 
-	/**
-	 * Imposta il valore della proprietà textVisible.
-	 * 
-	 */
-	public void setTextVisible(boolean value) {
-		this.textVisible = value;
-	}
+  /**
+   * Recupera il valore della proprietà image.
+   *
+   * @return possible object is byte[]
+   */
+  public byte[] getImage() {
+    return image;
+  }
 
-	/**
-	 * Recupera il valore della proprietà width.
-	 * 
-	 */
-	public int getWidth() {
-		return width;
-	}
+  /**
+   * Imposta il valore della proprietà image.
+   *
+   * @param value allowed object is byte[]
+   */
+  public void setImage(byte[] value) {
+    this.image = value;
+  }
 
-	/**
-	 * Imposta il valore della proprietà width.
-	 * 
-	 */
-	public void setWidth(int value) {
-		this.width = value;
-	}
+  /**
+   * Recupera il valore della proprietà imageFilename.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getImageFilename() {
+    return imageFilename;
+  }
 
-	/**
-	 * Recupera il valore della proprietà x.
-	 * 
-	 */
-	public int getX() {
-		return x;
-	}
+  /**
+   * Imposta il valore della proprietà imageFilename.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setImageFilename(String value) {
+    this.imageFilename = value;
+  }
 
-	/**
-	 * Imposta il valore della proprietà x.
-	 * 
-	 */
-	public void setX(int value) {
-		this.x = value;
-	}
+  /**
+   * Recupera il valore della proprietà imageURL.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getImageURL() {
+    return imageURL;
+  }
 
-	/**
-	 * Recupera il valore della proprietà y.
-	 * 
-	 */
-	public int getY() {
-		return y;
-	}
+  /**
+   * Imposta il valore della proprietà imageURL.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setImageURL(String value) {
+    this.imageURL = value;
+  }
 
-	/**
-	 * Imposta il valore della proprietà y.
-	 * 
-	 */
-	public void setY(int value) {
-		this.y = value;
-	}
+  /**
+   * Recupera il valore della proprietà location.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getLocation() {
+    return location;
+  }
 
+  /**
+   * Imposta il valore della proprietà location.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setLocation(String value) {
+    this.location = value;
+  }
+
+  /**
+   * Recupera il valore della proprietà reason.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getReason() {
+    return reason;
+  }
+
+  /**
+   * Imposta il valore della proprietà reason.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setReason(String value) {
+    this.reason = value;
+  }
+
+  /**
+   * Recupera il valore della proprietà signerName.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getSignerName() {
+    return signerName;
+  }
+
+  /**
+   * Imposta il valore della proprietà signerName.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setSignerName(String value) {
+    this.signerName = value;
+  }
+
+  /** Recupera il valore della proprietà textVisible. */
+  public boolean isTextVisible() {
+    return textVisible;
+  }
+
+  /** Imposta il valore della proprietà textVisible. */
+  public void setTextVisible(boolean value) {
+    this.textVisible = value;
+  }
+
+  /** Recupera il valore della proprietà width. */
+  public int getWidth() {
+    return width;
+  }
+
+  /** Imposta il valore della proprietà width. */
+  public void setWidth(int value) {
+    this.width = value;
+  }
+
+  /** Recupera il valore della proprietà x. */
+  public int getX() {
+    return x;
+  }
+
+  /** Imposta il valore della proprietà x. */
+  public void setX(int value) {
+    this.x = value;
+  }
+
+  /** Recupera il valore della proprietà y. */
+  public int getY() {
+    return y;
+  }
+
+  /** Imposta il valore della proprietà y. */
+  public void setY(int value) {
+    this.y = value;
+  }
 }

@@ -2,7 +2,6 @@ package org.alfresco.mock.test.ws;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
 import org.alfresco.mock.test.AbstractForm;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,27 +16,21 @@ import org.springframework.extensions.webscripts.Description;
  */
 public abstract class AbstractWSForm extends AbstractForm {
 
-	/** The container. */
-	@Autowired
-	private Container container;
-	
-	/** The description. */
-	@Autowired
-	private Description description;
-	
-	/** The date format. */
-	protected DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmm");
+  /** The container. */
+  @Autowired private Container container;
 
-	protected abstract AbstractWebScript getAbstractWebScript();
+  /** The description. */
+  @Autowired private Description description;
 
-	/**
-	 * Init.
-	 *
-	 */
-	@Before
-	public void init() {
-		super.init();
-		getAbstractWebScript().init(container, description);
-	}
+  /** The date format. */
+  protected DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmm");
 
+  protected abstract AbstractWebScript getAbstractWebScript();
+
+  /** Init. */
+  @Before
+  public void init() {
+    super.init();
+    getAbstractWebScript().init(container, description);
+  }
 }

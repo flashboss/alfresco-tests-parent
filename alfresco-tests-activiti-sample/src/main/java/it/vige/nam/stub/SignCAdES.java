@@ -1,4 +1,3 @@
-
 package it.vige.nam.stub;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,13 +6,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per signCAdES complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="signCAdES"&gt;
  *   &lt;complexContent&gt;
@@ -28,101 +24,96 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- *
  *
  * @author vige
- 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "signCAdES", propOrder = { "username", "password", "buffer", "cAdESPreferences" })
+@XmlType(
+    name = "signCAdES",
+    propOrder = {"username", "password", "buffer", "cAdESPreferences"})
 public class SignCAdES {
 
-	/** The username. */
-	protected String username;
-	/** The password. */
-	protected String password;
-	protected byte[] buffer;
-	/** The c ad e s preferences. */
-	@XmlElement(name = "CAdESPreferences")
-	protected CAdESPreferences cAdESPreferences;
+  /** The username. */
+  protected String username;
 
-	/**
-	 * Recupera il valore della proprietà username.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getUsername() {
-		return username;
-	}
+  /** The password. */
+  protected String password;
 
-	/**
-	 * Imposta il valore della proprietà username.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setUsername(String value) {
-		this.username = value;
-	}
+  protected byte[] buffer;
 
-	/**
-	 * Recupera il valore della proprietà password.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getPassword() {
-		return password;
-	}
+  /** The c ad e s preferences. */
+  @XmlElement(name = "CAdESPreferences")
+  protected CAdESPreferences cAdESPreferences;
 
-	/**
-	 * Imposta il valore della proprietà password.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setPassword(String value) {
-		this.password = value;
-	}
+  /**
+   * Recupera il valore della proprietà username.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getUsername() {
+    return username;
+  }
 
-	/**
-	 * Recupera il valore della proprietà buffer.
-	 * 
-	 * @return possible object is byte[]
-	 */
-	public byte[] getBuffer() {
-		return buffer;
-	}
+  /**
+   * Imposta il valore della proprietà username.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setUsername(String value) {
+    this.username = value;
+  }
 
-	/**
-	 * Imposta il valore della proprietà buffer.
-	 * 
-	 * @param value allowed object is byte[]
-	 */
-	public void setBuffer(byte[] value) {
-		this.buffer = value;
-	}
+  /**
+   * Recupera il valore della proprietà password.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getPassword() {
+    return password;
+  }
 
-	/**
-	 * Recupera il valore della proprietà cAdESPreferences.
-	 * 
-	 * @return possible object is {@link CAdESPreferences }
-	 * 
-	 */
-	public CAdESPreferences getCAdESPreferences() {
-		return cAdESPreferences;
-	}
+  /**
+   * Imposta il valore della proprietà password.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setPassword(String value) {
+    this.password = value;
+  }
 
-	/**
-	 * Imposta il valore della proprietà cAdESPreferences.
-	 * 
-	 * @param value allowed object is {@link CAdESPreferences }
-	 * 
-	 */
-	public void setCAdESPreferences(CAdESPreferences value) {
-		this.cAdESPreferences = value;
-	}
+  /**
+   * Recupera il valore della proprietà buffer.
+   *
+   * @return possible object is byte[]
+   */
+  public byte[] getBuffer() {
+    return buffer;
+  }
 
+  /**
+   * Imposta il valore della proprietà buffer.
+   *
+   * @param value allowed object is byte[]
+   */
+  public void setBuffer(byte[] value) {
+    this.buffer = value;
+  }
+
+  /**
+   * Recupera il valore della proprietà cAdESPreferences.
+   *
+   * @return possible object is {@link CAdESPreferences }
+   */
+  public CAdESPreferences getCAdESPreferences() {
+    return cAdESPreferences;
+  }
+
+  /**
+   * Imposta il valore della proprietà cAdESPreferences.
+   *
+   * @param value allowed object is {@link CAdESPreferences }
+   */
+  public void setCAdESPreferences(CAdESPreferences value) {
+    this.cAdESPreferences = value;
+  }
 }

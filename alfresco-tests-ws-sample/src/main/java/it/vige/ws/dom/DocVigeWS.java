@@ -9,103 +9,115 @@ import org.joda.time.DateTime;
  */
 public class DocVigeWS {
 
-/** The id pratica. */
-    private String idPratica;
-/** The data creazione pratica. */
-    private DateTime dataCreazionePratica;
-/** The numero pratica. */
-    private String numeroPratica;
-/** The convenzione. */
-    private String convenzione;
-/** The descrizione partner. */
-    private String descrizionePartner;
-/** The codice fiscale azienda. */
-    private String codiceFiscaleAzienda;
-/** The ragione sociale azienda. */
-    private String ragioneSocialeAzienda;
+  /** The id pratica. */
+  private String idPratica;
 
+  /** The data creazione pratica. */
+  private DateTime dataCreazionePratica;
 
-	/**
-	 * Constructs a new DocVigeWS.
-	 *
-	 * @param idPratica the id pratica
-	 * @param dataCreazionePratica the data creazione pratica
-	 * @param numeroPratica the numero pratica
-	 * @param convenzione the convenzione
-	 * @param descrizionePartner the descrizione partner
-	 * @param codiceFiscaleAzienda the codice fiscale azienda
-	 * @param ragioneSocialeAzienda the ragione sociale azienda
-	 */
-    public DocVigeWS(String idPratica, DateTime dataCreazionePratica, String numeroPratica, String convenzione, String descrizionePartner, String codiceFiscaleAzienda, String ragioneSocialeAzienda) {
-        this.idPratica = idPratica;
-        this.numeroPratica = numeroPratica;
-        this.convenzione = convenzione;
-        this.descrizionePartner = descrizionePartner;
-        this.codiceFiscaleAzienda = codiceFiscaleAzienda;
-        this.ragioneSocialeAzienda = ragioneSocialeAzienda;
-        this.dataCreazionePratica = dataCreazionePratica;
-    }
+  /** The numero pratica. */
+  private String numeroPratica;
 
-	/**
-	 * Get id pratica.
-	 *
-	 * @return the result
-	 */
-    public String getIdPratica() {
-        return idPratica;
-    }
+  /** The convenzione. */
+  private String convenzione;
 
-	/**
-	 * Get numero pratica.
-	 *
-	 * @return the result
-	 */
-    public String getNumeroPratica() {
-        return numeroPratica;
-    }
+  /** The descrizione partner. */
+  private String descrizionePartner;
 
-	/**
-	 * Get convenzione.
-	 *
-	 * @return the result
-	 */
-    public String getConvenzione() {
-        return convenzione;
-    }
+  /** The codice fiscale azienda. */
+  private String codiceFiscaleAzienda;
 
-	/**
-	 * Get descrizione partner.
-	 *
-	 * @return the result
-	 */
-    public String getDescrizionePartner() {
-        return descrizionePartner;
-    }
+  /** The ragione sociale azienda. */
+  private String ragioneSocialeAzienda;
 
-	/**
-	 * Get codice fiscale azienda.
-	 *
-	 * @return the result
-	 */
-    public String getCodiceFiscaleAzienda() {
-        return codiceFiscaleAzienda;
-    }
+  /**
+   * Constructs a new DocVigeWS.
+   *
+   * @param idPratica the id pratica
+   * @param dataCreazionePratica the data creazione pratica
+   * @param numeroPratica the numero pratica
+   * @param convenzione the convenzione
+   * @param descrizionePartner the descrizione partner
+   * @param codiceFiscaleAzienda the codice fiscale azienda
+   * @param ragioneSocialeAzienda the ragione sociale azienda
+   */
+  public DocVigeWS(
+      String idPratica,
+      DateTime dataCreazionePratica,
+      String numeroPratica,
+      String convenzione,
+      String descrizionePartner,
+      String codiceFiscaleAzienda,
+      String ragioneSocialeAzienda) {
+    this.idPratica = idPratica;
+    this.numeroPratica = numeroPratica;
+    this.convenzione = convenzione;
+    this.descrizionePartner = descrizionePartner;
+    this.codiceFiscaleAzienda = codiceFiscaleAzienda;
+    this.ragioneSocialeAzienda = ragioneSocialeAzienda;
+    this.dataCreazionePratica = dataCreazionePratica;
+  }
 
-	/**
-	 * Get ragione sociale azienda.
-	 *
-	 * @return the result
-	 */
-    public String getRagioneSocialeAzienda() {
-        return ragioneSocialeAzienda;
-    }
+  /**
+   * Get id pratica.
+   *
+   * @return the result
+   */
+  public String getIdPratica() {
+    return idPratica;
+  }
 
-	/**
-	 * Get data creazione pratica.
-	 *
-	 * @return the result
-	 */
-    public DateTime getDataCreazionePratica() {
-        return dataCreazionePratica;
-    }
+  /**
+   * Get numero pratica.
+   *
+   * @return the result
+   */
+  public String getNumeroPratica() {
+    return numeroPratica;
+  }
+
+  /**
+   * Get convenzione.
+   *
+   * @return the result
+   */
+  public String getConvenzione() {
+    return convenzione;
+  }
+
+  /**
+   * Get descrizione partner.
+   *
+   * @return the result
+   */
+  public String getDescrizionePartner() {
+    return descrizionePartner;
+  }
+
+  /**
+   * Get codice fiscale azienda.
+   *
+   * @return the result
+   */
+  public String getCodiceFiscaleAzienda() {
+    return codiceFiscaleAzienda;
+  }
+
+  /**
+   * Get ragione sociale azienda.
+   *
+   * @return the result
+   */
+  public String getRagioneSocialeAzienda() {
+    return ragioneSocialeAzienda;
+  }
+
+  /**
+   * Get data creazione pratica.
+   *
+   * @return the result
+   */
+  public DateTime getDataCreazionePratica() {
+    return dataCreazionePratica;
+  }
 }

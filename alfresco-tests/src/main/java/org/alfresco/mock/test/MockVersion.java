@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.alfresco.repo.version.Version2Model;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.version.Version;
@@ -17,148 +16,145 @@ import org.alfresco.service.cmr.version.VersionType;
  */
 public class MockVersion implements Version {
 
-	/** The version properties. */
-	private Map<String, Serializable> versionProperties;
-	/** The frozen state node ref. */
-	private NodeRef frozenStateNodeRef;
-	/** The versioned node ref. */
-	private NodeRef versionedNodeRef;
+  /** The version properties. */
+  private Map<String, Serializable> versionProperties;
 
-	/**
-	 * Constructs a new MockVersion.
-	 *
-	 */
-	public MockVersion() {
-		versionProperties = new HashMap<String, Serializable>();
-	}
+  /** The frozen state node ref. */
+  private NodeRef frozenStateNodeRef;
 
-	/**
-	 * Constructs a new MockVersion.
-	 *
-	 * @param frozenStateNodeRef the frozen state node ref
-	 * @param versionedNodeRef the versioned node ref
-	 * @param versionProperties the version properties
-	 */
-	public MockVersion(NodeRef frozenStateNodeRef, NodeRef versionedNodeRef,
-			Map<String, Serializable> versionProperties) {
-		this.frozenStateNodeRef = frozenStateNodeRef;
-		this.versionedNodeRef = versionedNodeRef;
-		this.versionProperties = versionProperties;
-	}
+  /** The versioned node ref. */
+  private NodeRef versionedNodeRef;
 
-	/**
-	 * Get created date.
-	 *
-	 * @return the result
-	 */
-	@Override
-	public Date getCreatedDate() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /** Constructs a new MockVersion. */
+  public MockVersion() {
+    versionProperties = new HashMap<String, Serializable>();
+  }
 
-	/**
-	 * Get creator.
-	 *
-	 * @return the result
-	 */
-	@Override
-	public String getCreator() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /**
+   * Constructs a new MockVersion.
+   *
+   * @param frozenStateNodeRef the frozen state node ref
+   * @param versionedNodeRef the versioned node ref
+   * @param versionProperties the version properties
+   */
+  public MockVersion(
+      NodeRef frozenStateNodeRef,
+      NodeRef versionedNodeRef,
+      Map<String, Serializable> versionProperties) {
+    this.frozenStateNodeRef = frozenStateNodeRef;
+    this.versionedNodeRef = versionedNodeRef;
+    this.versionProperties = versionProperties;
+  }
 
-	/**
-	 * Get frozen modified date.
-	 *
-	 * @return the result
-	 */
-	@Override
-	public Date getFrozenModifiedDate() {
-		return new Date();
-	}
+  /**
+   * Get created date.
+   *
+   * @return the result
+   */
+  @Override
+  public Date getCreatedDate() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	/**
-	 * Get frozen modifier.
-	 *
-	 * @return the result
-	 */
-	@Override
-	public String getFrozenModifier() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /**
+   * Get creator.
+   *
+   * @return the result
+   */
+  @Override
+  public String getCreator() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	/**
-	 * Get version label.
-	 *
-	 * @return the result
-	 */
-	@Override
-	public String getVersionLabel() {
-		return (String) versionProperties.get(Version2Model.PROP_QNAME_VERSION_LABEL.getLocalName());
-	}
+  /**
+   * Get frozen modified date.
+   *
+   * @return the result
+   */
+  @Override
+  public Date getFrozenModifiedDate() {
+    return new Date();
+  }
 
-	/**
-	 * Get version type.
-	 *
-	 * @return the result
-	 */
-	@Override
-	public VersionType getVersionType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /**
+   * Get frozen modifier.
+   *
+   * @return the result
+   */
+  @Override
+  public String getFrozenModifier() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	/**
-	 * Get description.
-	 *
-	 * @return the result
-	 */
-	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /**
+   * Get version label.
+   *
+   * @return the result
+   */
+  @Override
+  public String getVersionLabel() {
+    return (String) versionProperties.get(Version2Model.PROP_QNAME_VERSION_LABEL.getLocalName());
+  }
 
-	/**
-	 * Get version properties.
-	 *
-	 */
-	@Override
-	public Map<String, Serializable> getVersionProperties() {
-		return versionProperties;
-	}
+  /**
+   * Get version type.
+   *
+   * @return the result
+   */
+  @Override
+  public VersionType getVersionType() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	/**
-	 * Get version property.
-	 *
-	 * @param name the name
-	 * @return the result
-	 */
-	@Override
-	public Serializable getVersionProperty(String name) {
-		return versionProperties.get(name);
-	}
+  /**
+   * Get description.
+   *
+   * @return the result
+   */
+  @Override
+  public String getDescription() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	/**
-	 * Get versioned node ref.
-	 *
-	 * @return the result
-	 */
-	@Override
-	public NodeRef getVersionedNodeRef() {
-		return versionedNodeRef;
-	}
+  /** Get version properties. */
+  @Override
+  public Map<String, Serializable> getVersionProperties() {
+    return versionProperties;
+  }
 
-	/**
-	 * Get frozen state node ref.
-	 *
-	 * @return the result
-	 */
-	@Override
-	public NodeRef getFrozenStateNodeRef() {
-		return frozenStateNodeRef;
-	}
+  /**
+   * Get version property.
+   *
+   * @param name the name
+   * @return the result
+   */
+  @Override
+  public Serializable getVersionProperty(String name) {
+    return versionProperties.get(name);
+  }
 
+  /**
+   * Get versioned node ref.
+   *
+   * @return the result
+   */
+  @Override
+  public NodeRef getVersionedNodeRef() {
+    return versionedNodeRef;
+  }
+
+  /**
+   * Get frozen state node ref.
+   *
+   * @return the result
+   */
+  @Override
+  public NodeRef getFrozenStateNodeRef() {
+    return frozenStateNodeRef;
+  }
 }

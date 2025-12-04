@@ -1,4 +1,3 @@
-
 package it.vige.nam.stub;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -6,13 +5,10 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * <p>
  * Classe Java per disable complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="disable"&gt;
  *   &lt;complexContent&gt;
@@ -26,81 +22,75 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- *
  *
  * @author vige
- 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "disable", propOrder = { "securityCode", "username", "password" })
+@XmlType(
+    name = "disable",
+    propOrder = {"securityCode", "username", "password"})
 public class Disable {
 
-	/** The security code. */
-	protected String securityCode;
-	/** The username. */
-	protected String username;
-	/** The password. */
-	protected String password;
+  /** The security code. */
+  protected String securityCode;
 
-	/**
-	 * Recupera il valore della proprietà securityCode.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getSecurityCode() {
-		return securityCode;
-	}
+  /** The username. */
+  protected String username;
 
-	/**
-	 * Imposta il valore della proprietà securityCode.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setSecurityCode(String value) {
-		this.securityCode = value;
-	}
+  /** The password. */
+  protected String password;
 
-	/**
-	 * Recupera il valore della proprietà username.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getUsername() {
-		return username;
-	}
+  /**
+   * Recupera il valore della proprietà securityCode.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getSecurityCode() {
+    return securityCode;
+  }
 
-	/**
-	 * Imposta il valore della proprietà username.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setUsername(String value) {
-		this.username = value;
-	}
+  /**
+   * Imposta il valore della proprietà securityCode.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setSecurityCode(String value) {
+    this.securityCode = value;
+  }
 
-	/**
-	 * Recupera il valore della proprietà password.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getPassword() {
-		return password;
-	}
+  /**
+   * Recupera il valore della proprietà username.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getUsername() {
+    return username;
+  }
 
-	/**
-	 * Imposta il valore della proprietà password.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setPassword(String value) {
-		this.password = value;
-	}
+  /**
+   * Imposta il valore della proprietà username.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setUsername(String value) {
+    this.username = value;
+  }
 
+  /**
+   * Recupera il valore della proprietà password.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getPassword() {
+    return password;
+  }
+
+  /**
+   * Imposta il valore della proprietà password.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setPassword(String value) {
+    this.password = value;
+  }
 }
