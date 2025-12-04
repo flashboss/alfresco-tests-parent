@@ -2,47 +2,62 @@ package org.alfresco.mock.test.ws;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import org.springframework.extensions.webscripts.Container;
 import org.springframework.extensions.webscripts.Runtime;
 import org.springframework.extensions.webscripts.WebScriptSession;
 
 /**
  * Mock implementation of Runtime for testing purposes.
- * 
+ *
  * @author vige
  */
 public class MockRuntime implements Runtime {
-	
-	private Map<String, Object> templateParameters = new HashMap<String, Object>();
+  /** The template parameters. */
+  private Map<String, Object> templateParameters = new HashMap<String, Object>();
 
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /**
+   * Get name.
+   *
+   * @return the string
+   */
+  @Override
+  public String getName() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public WebScriptSession getSession() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /**
+   * Get session.
+   *
+   * @return the web script session
+   */
+  @Override
+  public WebScriptSession getSession() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public Container getContainer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /**
+   * Get container.
+   *
+   * @return the container
+   */
+  @Override
+  public Container getContainer() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public Map<String, Object> getScriptParameters() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  /** Get script parameters. */
+  @Override
+  public Map<String, Object> getScriptParameters() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public Map<String, Object> getTemplateParameters() {
-		return templateParameters;
-	}
-
+  /** Get template parameters. */
+  @Override
+  public Map<String, Object> getTemplateParameters() {
+    return templateParameters;
+  }
 }

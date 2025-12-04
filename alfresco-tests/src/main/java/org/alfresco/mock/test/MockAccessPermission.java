@@ -1,72 +1,141 @@
 package org.alfresco.mock.test;
 
 import java.io.Serializable;
-
 import org.alfresco.service.cmr.security.AccessPermission;
 import org.alfresco.service.cmr.security.AccessStatus;
 import org.alfresco.service.cmr.security.AuthorityType;
 
 /**
  * Mock implementation of AccessPermission for testing purposes.
- * 
+ *
  * @author vige
  */
 public class MockAccessPermission implements AccessPermission, Serializable {
+  /** The permission. */
+  private String permission;
 
-	private String permission;
-	private AccessStatus accessStatus;
-	private String authority;
-	private AuthorityType authorityType;
-	private int position;
-	private boolean inherited;
-	private boolean setDirectly;
+  /** The access status. */
+  private AccessStatus accessStatus;
 
-	public MockAccessPermission(String permission, String authority) {
-		super();
-		this.permission = permission;
-		this.authority = authority;
-	}
+  /** The authority. */
+  private String authority;
 
-	@Override
-	public String getPermission() {
-		return permission;
-	}
+  /** The authority type. */
+  private AuthorityType authorityType;
 
-	@Override
-	public AccessStatus getAccessStatus() {
-		return accessStatus;
-	}
+  /** The position. */
+  private int position;
 
-	@Override
-	public String getAuthority() {
-		return authority;
-	}
+  /** The inherited. */
+  private boolean inherited;
 
-	@Override
-	public AuthorityType getAuthorityType() {
-		return authorityType;
-	}
+  /** The set directly. */
+  private boolean setDirectly;
 
-	@Override
-	public int getPosition() {
-		return position;
-	}
+  /**
+   * Constructs a new mock access permission.
+   *
+   * @param permission the permission
+   * @param authority the authority
+   * @return the result
+   */
+  public MockAccessPermission(String permission, String authority) {
+    super();
+    this.permission = permission;
+    this.authority = authority;
+  }
 
-	@Override
-	public boolean isInherited() {
-		return inherited;
-	}
+  /**
+   * Get permission.
+   *
+   * @return the string
+   */
+  @Override
+  public String getPermission() {
+    return permission;
+  }
 
-	@Override
-	public boolean isSetDirectly() {
-		return setDirectly;
-	}
+  /**
+   * Get access status.
+   *
+   * @return the access status
+   */
+  @Override
+  public AccessStatus getAccessStatus() {
+    return accessStatus;
+  }
 
-	@Override
-	public String toString() {
-		return "MockAccessPermission [permission=" + permission + ", accessStatus=" + accessStatus + ", authority="
-				+ authority + ", authorityType=" + authorityType + ", position=" + position + ", inherited=" + inherited
-				+ ", setDirectly=" + setDirectly + "]";
-	}
+  /**
+   * Get authority.
+   *
+   * @return the string
+   */
+  @Override
+  public String getAuthority() {
+    return authority;
+  }
 
+  /**
+   * Get authority type.
+   *
+   * @return the authority type
+   */
+  @Override
+  public AuthorityType getAuthorityType() {
+    return authorityType;
+  }
+
+  /**
+   * Get position.
+   *
+   * @return the int
+   */
+  @Override
+  public int getPosition() {
+    return position;
+  }
+
+  /**
+   * Is inherited.
+   *
+   * @return the boolean
+   */
+  @Override
+  public boolean isInherited() {
+    return inherited;
+  }
+
+  /**
+   * Is set directly.
+   *
+   * @return the boolean
+   */
+  @Override
+  public boolean isSetDirectly() {
+    return setDirectly;
+  }
+
+  /**
+   * To string.
+   *
+   * @return the string
+   */
+  @Override
+  public String toString() {
+    return "MockAccessPermission [permission="
+        + permission
+        + ", accessStatus="
+        + accessStatus
+        + ", authority="
+        + authority
+        + ", authorityType="
+        + authorityType
+        + ", position="
+        + position
+        + ", inherited="
+        + inherited
+        + ", setDirectly="
+        + setDirectly
+        + "]";
+  }
 }

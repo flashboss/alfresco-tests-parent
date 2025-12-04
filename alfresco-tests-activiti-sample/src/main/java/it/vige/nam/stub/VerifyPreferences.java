@@ -1,4 +1,3 @@
-
 package it.vige.nam.stub;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -8,13 +7,10 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
- * <p>
  * Classe Java per verifyPreferences complex type.
- * 
- * <p>
- * Il seguente frammento di schema specifica il contenuto previsto contenuto in
- * questa classe.
- * 
+ *
+ * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ *
  * <pre>
  * &lt;complexType name="verifyPreferences"&gt;
  *   &lt;complexContent&gt;
@@ -28,77 +24,78 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "verifyPreferences", propOrder = { "nam", "pdfEncryptionPassword", "verifyOnDate" })
+@XmlType(
+    name = "verifyPreferences",
+    propOrder = {"nam", "pdfEncryptionPassword", "verifyOnDate"})
 /**
  * Class providing functionality for Alfresco testing.
- * 
+ *
  * @author vige
  */
 public class VerifyPreferences {
+  /** The nam. */
+  protected boolean nam;
 
-	protected boolean nam;
-	protected String pdfEncryptionPassword;
-	@XmlSchemaType(name = "dateTime")
-	protected XMLGregorianCalendar verifyOnDate;
+  /** The pdf encryption password. */
+  protected String pdfEncryptionPassword;
 
-	/**
-	 * Recupera il valore della proprietà nam.
-	 * 
-	 */
-	public boolean isNam() {
-		return nam;
-	}
+  @XmlSchemaType(name = "dateTime")
+  /** The verify on date. */
+  protected XMLGregorianCalendar verifyOnDate;
 
-	/**
-	 * Imposta il valore della proprietà nam.
-	 * 
-	 */
-	public void setNam(boolean value) {
-		this.nam = value;
-	}
+  /**
+   * Recupera il valore della proprietà nam.
+   *
+   * @return the result
+   */
+  public boolean isNam() {
+    return nam;
+  }
 
-	/**
-	 * Recupera il valore della proprietà pdfEncryptionPassword.
-	 * 
-	 * @return possible object is {@link String }
-	 * 
-	 */
-	public String getPdfEncryptionPassword() {
-		return pdfEncryptionPassword;
-	}
+  /**
+   * Imposta il valore della proprietà nam.
+   *
+   * @param value the value
+   */
+  public void setNam(boolean value) {
+    this.nam = value;
+  }
 
-	/**
-	 * Imposta il valore della proprietà pdfEncryptionPassword.
-	 * 
-	 * @param value allowed object is {@link String }
-	 * 
-	 */
-	public void setPdfEncryptionPassword(String value) {
-		this.pdfEncryptionPassword = value;
-	}
+  /**
+   * Recupera il valore della proprietà pdfEncryptionPassword.
+   *
+   * @return possible object is {@link String }
+   */
+  public String getPdfEncryptionPassword() {
+    return pdfEncryptionPassword;
+  }
 
-	/**
-	 * Recupera il valore della proprietà verifyOnDate.
-	 * 
-	 * @return possible object is {@link XMLGregorianCalendar }
-	 * 
-	 */
-	public XMLGregorianCalendar getVerifyOnDate() {
-		return verifyOnDate;
-	}
+  /**
+   * Imposta il valore della proprietà pdfEncryptionPassword.
+   *
+   * @param value allowed object is {@link String }
+   */
+  public void setPdfEncryptionPassword(String value) {
+    this.pdfEncryptionPassword = value;
+  }
 
-	/**
-	 * Imposta il valore della proprietà verifyOnDate.
-	 * 
-	 * @param value allowed object is {@link XMLGregorianCalendar }
-	 * 
-	 */
-	public void setVerifyOnDate(XMLGregorianCalendar value) {
-		this.verifyOnDate = value;
-	}
+  /**
+   * Recupera il valore della proprietà verifyOnDate.
+   *
+   * @return possible object is {@link XMLGregorianCalendar }
+   */
+  public XMLGregorianCalendar getVerifyOnDate() {
+    return verifyOnDate;
+  }
 
+  /**
+   * Imposta il valore della proprietà verifyOnDate.
+   *
+   * @param value allowed object is {@link XMLGregorianCalendar }
+   */
+  public void setVerifyOnDate(XMLGregorianCalendar value) {
+    this.verifyOnDate = value;
+  }
 }

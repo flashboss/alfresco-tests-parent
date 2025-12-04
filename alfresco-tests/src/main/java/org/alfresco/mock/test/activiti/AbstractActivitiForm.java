@@ -14,7 +14,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
 import org.activiti.engine.ActivitiObjectNotFoundException;
 import org.activiti.engine.HistoryService;
 import org.activiti.engine.IdentityService;
@@ -56,274 +55,437 @@ import org.subethamail.smtp.server.SMTPServer;
 
 /**
  * Abstract base class providing common functionality for tests.
- * 
+ *
  * @author vige
  */
 public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
+  /** The spaces store. */
+  protected NodeRef spacesStore;
 
-	protected NodeRef spacesStore;
-	protected NodeRef archive;
-	protected NodeRef sites;
-	protected NodeRef shared;
-	protected NodeRef companyHome;
-	protected ActivitiScriptNode bpmPackage;
-	protected Initiator initiator;
+  /** The archive. */
+  protected NodeRef archive;
 
-	public AbstractActivitiForm() {
-		super("test-module-context.xml");
-	}
+  /** The sites. */
+  protected NodeRef sites;
 
-	public void init(Map<String, Object> variables) {
-		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
-		ServiceRegistry serviceRegistry = activitiProcessEngineConfiguration.getServiceRegistry();
-		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
-		namespaceService.registerNamespace(NamespaceService.APP_MODEL_PREFIX, NamespaceService.APP_MODEL_1_0_URI);
-		namespaceService.registerNamespace(SiteModel.SITE_MODEL_PREFIX, SiteModel.SITE_MODEL_URL);
-		namespaceService.registerNamespace(NamespaceService.CONTENT_MODEL_PREFIX,
-				NamespaceService.CONTENT_MODEL_1_0_URI);
-		namespaceService.registerNamespace(NamespaceService.SYSTEM_MODEL_PREFIX, NamespaceService.SYSTEM_MODEL_1_0_URI);
+  /** The shared. */
+  protected NodeRef shared;
 
-		// remove the old documents
-		MockNodeService nodeService = (MockNodeService) serviceRegistry.getNodeService();
-		MockVersionService versionService = (MockVersionService) serviceRegistry.getVersionService();
-		nodeService.init();
-		versionService.init();
-		try {
-			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE));
-			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_ARCHIVE));
-			FileUtils.deleteDirectory(ZipUtils.TEMP_DIR);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+  /** The company home. */
+  protected NodeRef companyHome;
 
-		initiator = new Initiator();
-		// create the initial folders
-		NodeRef root = insertFolder(new NodeRef(new StoreRef("", ""), ""), ".");
-		NodeRef workspaceRoot = insertFolder(root, StoreRef.PROTOCOL_WORKSPACE);
-		spacesStore = insertFolder(workspaceRoot, NamespaceService.APP_MODEL_PREFIX,
-				STORE_REF_WORKSPACE_SPACESSTORE.getIdentifier());
-		companyHome = insertFolder(spacesStore, NamespaceService.APP_MODEL_PREFIX, "company_home");
-		NodeRef system = insertFolder(spacesStore, NamespaceService.SYSTEM_MODEL_PREFIX, "system");
-		archive = insertFolder(root, StoreRef.PROTOCOL_ARCHIVE);
-		sites = insertFolder(companyHome, SiteModel.SITE_MODEL_PREFIX, SiteModel.TYPE_SITES.getLocalName());
-		shared = insertFolder(companyHome, NamespaceService.APP_MODEL_PREFIX, "shared");
-		insertFolder(system, SiteModel.SITE_MODEL_PREFIX, "authorities");
-		NodeRef workflow = insertFolder(spacesStore, "workflow");
-		NodeRef packages = insertFolder(workflow, "packages");
-		NodeRef bpmPackageFolder = insertFolder(packages, "pkg_919f220e-870a-4c56-ba11-5030ee5325f0");
-		bpmPackage = new MockActivitiScriptNode(bpmPackageFolder, serviceRegistry);
-		variables.put("bpm_package", bpmPackage);
+  /** The bpm package. */
+  protected ActivitiScriptNode bpmPackage;
 
-		// STARTING MAIL SERVER
-		startMailServer();
+  /** The initiator. */
+  protected Initiator initiator;
 
-		// TEST GROUPS AND USERS
-		initDemoGroups(identityService);
-		initDemoUsers(identityService);
+  /**
+   * Constructs a new abstract activiti form.
+   *
+   * @return the result
+   */
+  public AbstractActivitiForm() {
+    super("test-module-context.xml");
+  }
 
-		Search search = activitiProcessEngineConfiguration.getSearchScript();
-		MockLogger logger = activitiProcessEngineConfiguration.getLoggerScript();
-		ScriptUtils utils = activitiProcessEngineConfiguration.getUtilsScript();
-		variables.put("initiator", initiator);
-		variables.put("search", search);
-		variables.put("logger", logger);
-		variables.put("utils", utils);
-	}
+  /**
+   * Init.
+   *
+   * @param variables the variables
+   */
+  public void init(Map<String, Object> variables) {
+    ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration =
+        (ActivitiProcessEngineConfiguration) processEngineConfiguration;
+    ServiceRegistry serviceRegistry = activitiProcessEngineConfiguration.getServiceRegistry();
+    NamespaceService namespaceService = serviceRegistry.getNamespaceService();
+    namespaceService.registerNamespace(
+        NamespaceService.APP_MODEL_PREFIX, NamespaceService.APP_MODEL_1_0_URI);
+    namespaceService.registerNamespace(SiteModel.SITE_MODEL_PREFIX, SiteModel.SITE_MODEL_URL);
+    namespaceService.registerNamespace(
+        NamespaceService.CONTENT_MODEL_PREFIX, NamespaceService.CONTENT_MODEL_1_0_URI);
+    namespaceService.registerNamespace(
+        NamespaceService.SYSTEM_MODEL_PREFIX, NamespaceService.SYSTEM_MODEL_1_0_URI);
 
-	public void end() {
-		// CLEANING DB
-		deleteAllIdentities(identityService);
-		deleteAllHistories(historyService);
-		deleteAllIDeployments(repositoryService);
+    // remove the old documents
+    MockNodeService nodeService = (MockNodeService) serviceRegistry.getNodeService();
+    MockVersionService versionService = (MockVersionService) serviceRegistry.getVersionService();
+    nodeService.init();
+    versionService.init();
+    try {
+      FileUtils.deleteDirectory(
+          new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE));
+      FileUtils.deleteDirectory(
+          new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_ARCHIVE));
+      FileUtils.deleteDirectory(ZipUtils.TEMP_DIR);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
 
-		// STOP MAIL SERVER
-		stopMailServer();
+    initiator = new Initiator();
+    // create the initial folders
+    NodeRef root = insertFolder(new NodeRef(new StoreRef("", ""), ""), ".");
+    NodeRef workspaceRoot = insertFolder(root, StoreRef.PROTOCOL_WORKSPACE);
+    spacesStore =
+        insertFolder(
+            workspaceRoot,
+            NamespaceService.APP_MODEL_PREFIX,
+            STORE_REF_WORKSPACE_SPACESSTORE.getIdentifier());
+    companyHome = insertFolder(spacesStore, NamespaceService.APP_MODEL_PREFIX, "company_home");
+    NodeRef system = insertFolder(spacesStore, NamespaceService.SYSTEM_MODEL_PREFIX, "system");
+    archive = insertFolder(root, StoreRef.PROTOCOL_ARCHIVE);
+    sites =
+        insertFolder(companyHome, SiteModel.SITE_MODEL_PREFIX, SiteModel.TYPE_SITES.getLocalName());
+    shared = insertFolder(companyHome, NamespaceService.APP_MODEL_PREFIX, "shared");
+    insertFolder(system, SiteModel.SITE_MODEL_PREFIX, "authorities");
+    NodeRef workflow = insertFolder(spacesStore, "workflow");
+    NodeRef packages = insertFolder(workflow, "packages");
+    NodeRef bpmPackageFolder = insertFolder(packages, "pkg_919f220e-870a-4c56-ba11-5030ee5325f0");
+    bpmPackage = new MockActivitiScriptNode(bpmPackageFolder, serviceRegistry);
+    variables.put("bpm_package", bpmPackage);
 
-	}
+    // STARTING MAIL SERVER
+    startMailServer();
 
-	protected NodeRef insertFolder(NodeRef parent, String name) {
-		return NodeUtils.insertFolder(parent, name, ((ActivitiProcessEngineConfiguration) processEngineConfiguration)
-				.getServiceRegistry().getFileFolderService());
-	}
+    // TEST GROUPS AND USERS
+    initDemoGroups(identityService);
+    initDemoUsers(identityService);
 
-	protected NodeRef insertFolder(NodeRef parent, String prefix, String localName) {
-		ServiceRegistry serviceRegistry = ((ActivitiProcessEngineConfiguration) processEngineConfiguration)
-				.getServiceRegistry();
-		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
-		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
-		QName qname = QName.createQName(prefix, localName, namespaceService);
-		return fileFolderService.create(parent, qname.getPrefixString(), ContentModel.TYPE_FOLDER).getNodeRef();
-	}
+    Search search = activitiProcessEngineConfiguration.getSearchScript();
+    MockLogger logger = activitiProcessEngineConfiguration.getLoggerScript();
+    ScriptUtils utils = activitiProcessEngineConfiguration.getUtilsScript();
+    variables.put("initiator", initiator);
+    variables.put("search", search);
+    variables.put("logger", logger);
+    variables.put("utils", utils);
+  }
 
-	protected NodeRef insertDocument(NodeRef parent, String name, String text, Map<QName, Serializable> properties) {
-		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
-		return NodeUtils.insertDocument(parent, name, text, properties,
-				activitiProcessEngineConfiguration.getServiceRegistry());
-	}
+  /** End. */
+  public void end() {
+    // CLEANING DB
+    deleteAllIdentities(identityService);
+    deleteAllHistories(historyService);
+    deleteAllIDeployments(repositoryService);
 
-	protected NodeRef insertZip(NodeRef parent, String zipName, String entryName, String text,
-			Map<QName, Serializable> properties) throws IOException {
-		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;
-		return ZipUtils.insertZip(parent, zipName, entryName, text, properties,
-				activitiProcessEngineConfiguration.getServiceRegistry());
-	}
+    // STOP MAIL SERVER
+    stopMailServer();
+  }
 
-	@Override
-	protected void initializeProcessEngine() {
-		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
-		XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
-		xmlBeanDefinitionReader.setValidationMode(XmlBeanDefinitionReader.VALIDATION_XSD);
-		Resource springResource = new ClassPathResource(activitiConfigurationResource);
-		xmlBeanDefinitionReader.loadBeanDefinitions(springResource);
-		ProcessEngineConfigurationImpl processEngineConfiguration = (ProcessEngineConfigurationImpl) beanFactory
-				.getBean("processEngineConfiguration");
-		Map<Object, Object> beans = new SpringBeanFactoryProxyMap(beanFactory);
-		for (String bName : beanFactory.getBeanDefinitionNames()) {
-			BeanDefinition beanDefinition = beanFactory.getBeanDefinition(bName);
-			boolean isAbstract = beanDefinition.isAbstract();
-			String className = beanDefinition.getBeanClassName();
-			if (className != null) {
-				String simpleClassName = className.substring(className.lastIndexOf(".") + 1);
-				String parentName = beanDefinition.getParentName();
-				if (!isAbstract) {
-					if (!bName.equals(simpleClassName) && parentName != null && parentName.equals("baseJavaDelegate")) {
-						beanFactory.registerAlias(bName, simpleClassName);
-					}
-					if (className.equals(PropertyPlaceholderConfigurer.class.getName())) {
-						Object bean = beanFactory.getBean(bName);
-						PropertyPlaceholderConfigurer propertyPlaceholderConfigurer = (PropertyPlaceholderConfigurer) bean;
-						propertyPlaceholderConfigurer.postProcessBeanFactory(beanFactory);
-					}
-				}
-			}
-		}
-		processEngineConfiguration.setBeans(beans);
-		processEngine = processEngineConfiguration.buildProcessEngine();
-	}
+  /**
+   * Insert folder.
+   *
+   * @param parent the parent
+   * @param name the name
+   * @return the node ref
+   */
+  protected NodeRef insertFolder(NodeRef parent, String name) {
+    return NodeUtils.insertFolder(
+        parent,
+        name,
+        ((ActivitiProcessEngineConfiguration) processEngineConfiguration)
+            .getServiceRegistry()
+            .getFileFolderService());
+  }
 
-	private SMTPServer smtpServer;
+  /**
+   * Insert folder.
+   *
+   * @param parent the parent
+   * @param prefix the prefix
+   * @param localName the local name
+   * @return the node ref
+   */
+  protected NodeRef insertFolder(NodeRef parent, String prefix, String localName) {
+    ServiceRegistry serviceRegistry =
+        ((ActivitiProcessEngineConfiguration) processEngineConfiguration).getServiceRegistry();
+    FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
+    NamespaceService namespaceService = serviceRegistry.getNamespaceService();
 
-	public SMTPServer getSmtpServer() {
-		return smtpServer;
-	}
+    /** The qname. */
+    QName qname = QName.createQName(prefix, localName, namespaceService);
+    return fileFolderService
+        .create(parent, qname.getPrefixString(), ContentModel.TYPE_FOLDER)
+        .getNodeRef();
+  }
 
-	public void setSmtpServer(SMTPServer smtpServer) {
-		this.smtpServer = smtpServer;
-	}
+  /**
+   * Insert document.
+   *
+   * @param parent the parent
+   * @param name the name
+   * @param text the text
+   * @param properties the properties
+   * @return the node ref
+   */
+  protected NodeRef insertDocument(
+      NodeRef parent, String name, String text, Map<QName, Serializable> properties) {
+    ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration =
+        (ActivitiProcessEngineConfiguration) processEngineConfiguration;
+    return NodeUtils.insertDocument(
+        parent, name, text, properties, activitiProcessEngineConfiguration.getServiceRegistry());
+  }
 
-	public void startMailServer() {
-		MockMessageHandlerFactory myFactory = new MockMessageHandlerFactory();
-		smtpServer = new SMTPServer(myFactory);
-		smtpServer.setPort(25000);
-		smtpServer.start();
-	}
+  protected NodeRef insertZip(
+      NodeRef parent,
+      String zipName,
+      String entryName,
+      String text,
+      Map<QName, Serializable> properties)
+      throws IOException {
+    ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration =
+        (ActivitiProcessEngineConfiguration) processEngineConfiguration;
+    return ZipUtils.insertZip(
+        parent,
+        zipName,
+        entryName,
+        text,
+        properties,
+        activitiProcessEngineConfiguration.getServiceRegistry());
+  }
 
-	public void stopMailServer() {
-		smtpServer.stop();
-	}
+  /** Initialize process engine. */
+  @Override
+  protected void initializeProcessEngine() {
+    DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+    XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
+    xmlBeanDefinitionReader.setValidationMode(XmlBeanDefinitionReader.VALIDATION_XSD);
+    Resource springResource = new ClassPathResource(activitiConfigurationResource);
+    xmlBeanDefinitionReader.loadBeanDefinitions(springResource);
+    ProcessEngineConfigurationImpl processEngineConfiguration =
+        (ProcessEngineConfigurationImpl) beanFactory.getBean("processEngineConfiguration");
+    Map<Object, Object> beans = new SpringBeanFactoryProxyMap(beanFactory);
+    for (String bName : beanFactory.getBeanDefinitionNames()) {
+      BeanDefinition beanDefinition = beanFactory.getBeanDefinition(bName);
+      boolean isAbstract = beanDefinition.isAbstract();
+      /** The class name. */
+      String className = beanDefinition.getBeanClassName();
+      if (className != null) {
+        /** The simple class name. */
+        String simpleClassName = className.substring(className.lastIndexOf(".") + 1);
+        /** The parent name. */
+        String parentName = beanDefinition.getParentName();
+        if (!isAbstract) {
+          if (!bName.equals(simpleClassName)
+              && parentName != null
+              && parentName.equals("baseJavaDelegate")) {
+            beanFactory.registerAlias(bName, simpleClassName);
+          }
+          if (className.equals(PropertyPlaceholderConfigurer.class.getName())) {
+            Object bean = beanFactory.getBean(bName);
+            PropertyPlaceholderConfigurer propertyPlaceholderConfigurer =
+                (PropertyPlaceholderConfigurer) bean;
+            propertyPlaceholderConfigurer.postProcessBeanFactory(beanFactory);
+          }
+        }
+      }
+    }
+    processEngineConfiguration.setBeans(beans);
+    processEngine = processEngineConfiguration.buildProcessEngine();
+  }
 
-	public void createUser(IdentityService identityService, String userId, String firstName, String lastName,
-			String password, String email, String imageResource, List<String> groups, List<String> userInfo) {
+  /** The smtp server. */
+  private SMTPServer smtpServer;
 
-		if (identityService.createUserQuery().userId(userId).count() == 0) {
+  /**
+   * Get smtp server.
+   *
+   * @return the s m t p server
+   */
+  public SMTPServer getSmtpServer() {
+    return smtpServer;
+  }
 
-			// Following data can already be set by demo setup script
+  /**
+   * Set smtp server.
+   *
+   * @param smtpServer the smtp server
+   */
+  public void setSmtpServer(SMTPServer smtpServer) {
+    this.smtpServer = smtpServer;
+  }
 
-			User user = identityService.newUser(userId);
-			user.setFirstName(firstName);
-			user.setLastName(lastName);
-			user.setPassword(password);
-			user.setEmail(email);
-			identityService.saveUser(user);
+  /** Start mail server. */
+  public void startMailServer() {
+    MockMessageHandlerFactory myFactory = new MockMessageHandlerFactory();
+    smtpServer = new SMTPServer(myFactory);
+    smtpServer.setPort(25000);
+    smtpServer.start();
+  }
 
-			if (groups != null) {
-				for (String group : groups) {
-					identityService.createMembership(userId, group);
-				}
-			}
-		}
+  /** Stop mail server. */
+  public void stopMailServer() {
+    smtpServer.stop();
+  }
 
-		// Following data is not set by demo setup script
+  public void createUser(
+      IdentityService identityService,
+      String userId,
+      String firstName,
+      String lastName,
+      String password,
+      String email,
+      String imageResource,
+      List<String> groups,
+      List<String> userInfo) {
 
-		// image
-		if (imageResource != null) {
-			byte[] pictureBytes = readInputStream(this.getClass().getClassLoader().getResourceAsStream(imageResource),
-					null);
-			Picture picture = new Picture(pictureBytes, "image/jpeg");
-			identityService.setUserPicture(userId, picture);
-		}
+    if (identityService.createUserQuery().userId(userId).count() == 0) {
 
-		// user info
-		if (userInfo != null) {
-			for (int i = 0; i < userInfo.size(); i += 2) {
-				identityService.setUserInfo(userId, userInfo.get(i), userInfo.get(i + 1));
-			}
-		}
+      // Following data can already be set by demo setup script
 
-	}
+      User user = identityService.newUser(userId);
+      user.setFirstName(firstName);
+      user.setLastName(lastName);
+      user.setPassword(password);
+      user.setEmail(email);
+      identityService.saveUser(user);
 
-	public void createGroup(IdentityService identityService, String groupId, String type) {
-		if (identityService.createGroupQuery().groupId(groupId).count() == 0) {
-			Group newGroup = identityService.newGroup(groupId);
-			newGroup.setName(groupId.substring(0, 1).toUpperCase() + groupId.substring(1));
-			newGroup.setType(type);
-			identityService.saveGroup(newGroup);
-		}
-	}
+      if (groups != null) {
+        for (String group : groups) {
+          identityService.createMembership(userId, group);
+        }
+      }
+    }
 
-	public void deleteAllIdentities(IdentityService identityService) {
-		List<User> users = identityService.createUserQuery().list();
-		for (User user : users) {
-			identityService.deleteUser(user.getId());
-		}
-		List<Group> groups = identityService.createGroupQuery().list();
-		for (Group group : groups) {
-			identityService.deleteGroup(group.getId());
-		}
-	}
+    // Following data is not set by demo setup script
 
-	public void deleteAllHistories(HistoryService historyService) {
-		List<HistoricProcessInstance> historicInstances = historyService.createHistoricProcessInstanceQuery().list();
-		for (HistoricProcessInstance historicProcessInstance : historicInstances)
-			try {
-				historyService.deleteHistoricProcessInstance(historicProcessInstance.getId());
-			} catch (ActivitiObjectNotFoundException ex) {
+    // image
+    if (imageResource != null) {
+      byte[] pictureBytes =
+          readInputStream(
+              this.getClass().getClassLoader().getResourceAsStream(imageResource), null);
+      Picture picture = new Picture(pictureBytes, "image/jpeg");
+      identityService.setUserPicture(userId, picture);
+    }
 
-			}
-	}
+    // user info
+    if (userInfo != null) {
+      for (int i = 0; i < userInfo.size(); i += 2) {
+        identityService.setUserInfo(userId, userInfo.get(i), userInfo.get(i + 1));
+      }
+    }
+  }
 
-	public void deleteAllIDeployments(RepositoryService repositoryService) {
-		List<Deployment> deployments = repositoryService.createDeploymentQuery().list();
-		for (Deployment deployment : deployments) {
-			repositoryService.deleteDeployment(deployment.getId());
-		}
-	}
+  /**
+   * Create group.
+   *
+   * @param identityService the identity service
+   * @param groupId the group id
+   * @param type the type
+   */
+  public void createGroup(IdentityService identityService, String groupId, String type) {
+    if (identityService.createGroupQuery().groupId(groupId).count() == 0) {
+      Group newGroup = identityService.newGroup(groupId);
+      newGroup.setName(groupId.substring(0, 1).toUpperCase() + groupId.substring(1));
+      newGroup.setType(type);
+      identityService.saveGroup(newGroup);
+    }
+  }
 
-	public static Date getDate(int... number) {
-		Calendar c1 = getInstance();
-		c1.set(number[0], number[1], number[2], number.length > 3 ? number[3] : 0, number.length > 4 ? number[4] : 0);
-		return c1.getTime();
-	}
+  /**
+   * Delete all identities.
+   *
+   * @param identityService the identity service
+   */
+  public void deleteAllIdentities(IdentityService identityService) {
+    List<User> users = identityService.createUserQuery().list();
+    for (User user : users) {
+      identityService.deleteUser(user.getId());
+    }
+    List<Group> groups = identityService.createGroupQuery().list();
+    for (Group group : groups) {
+      identityService.deleteGroup(group.getId());
+    }
+  }
 
-	public static Date addHours(Date date, int hours) {
-		Calendar cal = getInstance(); // creates calendar
-		cal.setTime(date); // sets calendar time/date
-		cal.add(HOUR_OF_DAY, hours); // adds hour
-		return cal.getTime(); // returns new date object, one hour in the future
-	}
+  /**
+   * Delete all histories.
+   *
+   * @param historyService the history service
+   */
+  public void deleteAllHistories(HistoryService historyService) {
+    List<HistoricProcessInstance> historicInstances =
+        historyService.createHistoricProcessInstanceQuery().list();
+    for (HistoricProcessInstance historicProcessInstance : historicInstances)
+      try {
+        historyService.deleteHistoricProcessInstance(historicProcessInstance.getId());
+      } catch (ActivitiObjectNotFoundException ex) {
 
-	public static long differenceBetween(Date date1, Date date2, TimeUnit timeUnit) {
-		long diffInMillies = date1.getTime() - date2.getTime();
-		return timeUnit.convert(diffInMillies, MILLISECONDS);
-	}
+      }
+  }
 
-	public static boolean isAdmin(String user, IdentityService identityService) {
-		return identityService.createUserQuery().userId(Authentication.getAuthenticatedUserId()).memberOfGroup("admin")
-				.count() > 0;
-	}
+  /**
+   * Delete all i deployments.
+   *
+   * @param repositoryService the repository service
+   */
+  public void deleteAllIDeployments(RepositoryService repositoryService) {
+    List<Deployment> deployments = repositoryService.createDeploymentQuery().list();
+    for (Deployment deployment : deployments) {
+      repositoryService.deleteDeployment(deployment.getId());
+    }
+  }
 
-	public abstract void initDemoUsers(IdentityService identityService);
+  /**
+   * Get date.
+   *
+   * @param number the number
+   * @return the date
+   */
+  public static Date getDate(int... number) {
+    Calendar c1 = getInstance();
+    c1.set(
+        number[0],
+        number[1],
+        number[2],
+        number.length > 3 ? number[3] : 0,
+        number.length > 4 ? number[4] : 0);
+    return c1.getTime();
+  }
 
-	public abstract void initDemoGroups(IdentityService identityService);
+  /**
+   * Add hours.
+   *
+   * @param date the date
+   * @param hours the hours
+   * @return the date
+   */
+  public static Date addHours(Date date, int hours) {
+    Calendar cal = getInstance(); // creates calendar
+    cal.setTime(date); // sets calendar time/date
+    cal.add(HOUR_OF_DAY, hours); // adds hour
+    return cal.getTime(); // returns new date object, one hour in the future
+  }
 
+  /**
+   * Difference between.
+   *
+   * @param date1 the date1
+   * @param date2 the date2
+   * @param timeUnit the time unit
+   * @return the long
+   */
+  public static long differenceBetween(Date date1, Date date2, TimeUnit timeUnit) {
+    long diffInMillies = date1.getTime() - date2.getTime();
+    return timeUnit.convert(diffInMillies, MILLISECONDS);
+  }
+
+  /**
+   * Is admin.
+   *
+   * @param user the user
+   * @param identityService the identity service
+   * @return the boolean
+   */
+  public static boolean isAdmin(String user, IdentityService identityService) {
+    return identityService
+            .createUserQuery()
+            .userId(Authentication.getAuthenticatedUserId())
+            .memberOfGroup("admin")
+            .count()
+        > 0;
+  }
+
+  public abstract void initDemoUsers(IdentityService identityService);
+
+  public abstract void initDemoGroups(IdentityService identityService);
 }
