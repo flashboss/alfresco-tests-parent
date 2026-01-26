@@ -5,7 +5,7 @@
     <parent>
         <groupId>it.vige</groupId>
         <artifactId>alfresco-tests-parent</artifactId>
-		<version>23.2.1.9</version>
+		<version>25.2.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>it.vige</groupId>
@@ -15,14 +15,14 @@
     <packaging>jar</packaging>
     <properties>
         <!-- Alfresco Maven Plugin version to use -->
-        <alfresco.sdk.version>4.8.0</alfresco.sdk.version>
+        <alfresco.sdk.version>4.12.0</alfresco.sdk.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- Properties used in dependency declarations, you don't need to change these -->
         <alfresco.groupId>org.alfresco</alfresco.groupId>
         <alfresco.bomDependencyArtifactId>acs-packaging</alfresco.bomDependencyArtifactId>
-        <alfresco.platform.version>23.2.1</alfresco.platform.version>
+        <alfresco.platform.version>25.2.0</alfresco.platform.version>
 
         <!-- JRebel Hot reloading of classpath stuff and web resource stuff -->
         <jrebel.version>1.1.8</jrebel.version>
