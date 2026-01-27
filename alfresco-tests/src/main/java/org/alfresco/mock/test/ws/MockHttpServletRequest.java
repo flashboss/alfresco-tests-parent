@@ -40,8 +40,10 @@ import org.alfresco.service.cmr.repository.NodeService;
 import org.apache.commons.io.FileUtils;
 
 /**
- * Mock implementation of the MockHttpServletRequest class for testing purposes. This class provides
- * a mock implementation that allows unit and integration tests to run without requiring a full
+ * Mock implementation of the MockHttpServletRequest class for testing purposes.
+ * This class provides
+ * a mock implementation that allows unit and integration tests to run without
+ * requiring a full
  * Alfresco server instance.
  *
  * @author lucastancapiano
@@ -56,6 +58,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
 
 	/** The service registry. */
 	private ServiceRegistry serviceRegistry;
+
+	ServletContext servletContext = new MockServletContext();
 
 	/** The servlet input stream. */
 	private ServletInputStream servletInputStream = new ServletInputStream() {
@@ -94,12 +98,13 @@ public class MockHttpServletRequest implements HttpServletRequest {
 		@Override
 		public void setReadListener(ReadListener readListener) {
 			// TODO Auto-generated method stub
-			
+
 		}
 	};
 
 	/**
-	 * Constructs a new MockHttpServletRequest with the specified fields and service registry.
+	 * Constructs a new MockHttpServletRequest with the specified fields and service
+	 * registry.
 	 *
 	 * @param fields          the fields map
 	 * @param serviceRegistry the service registry
@@ -722,8 +727,7 @@ public class MockHttpServletRequest implements HttpServletRequest {
 	 */
 	@Override
 	public ServletContext getServletContext() {
-		// TODO Auto-generated method stub
-		return null;
+		return servletContext;
 	}
 
 	/**
@@ -865,7 +869,7 @@ public class MockHttpServletRequest implements HttpServletRequest {
 	@Override
 	public void login(String username, String password) throws ServletException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**
@@ -876,7 +880,7 @@ public class MockHttpServletRequest implements HttpServletRequest {
 	@Override
 	public void logout() throws ServletException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**
