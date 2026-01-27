@@ -99,4 +99,10 @@ public class MockRenditionService2 implements RenditionService2, Serializable {
     // TODO Auto-generated method stub
 
   }
+
+  @Override
+  public void forceRenditionsContentHashCode(NodeRef sourceNodeRef) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'forceRenditionsContentHashCode'");
+  }
 }
