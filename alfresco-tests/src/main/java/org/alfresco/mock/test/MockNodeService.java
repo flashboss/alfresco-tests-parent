@@ -65,6 +65,10 @@ public class MockNodeService implements NodeService, Serializable {
   /** The primary parent. */
   public static final QName PRIMARY_PARENT = QName.createQName("primary_parent");
 
+  public static final QName ASSOC_QNAME = QName.createQName("assoc_qname");
+
+  public static final QName ASSOC_TYPE_QNAME = QName.createQName("assoc_type_qname");
+
   /** The namespace service. */
   @Autowired private NamespaceService namespaceService;
 
@@ -242,9 +246,17 @@ public class MockNodeService implements NodeService, Serializable {
       setProperty(nodeRef, ContentModel.PROP_NAME, assocQName.getLocalName());
       setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
       setProperty(nodeRef, ContentModel.PROP_CREATED, new Date());
-    } else setProperties(nodeRef, new HashMap<>(properties));
+    } else {
+      setProperties(nodeRef, new HashMap<>(properties));
+      if (getProperty(nodeRef, ContentModel.PROP_NAME) == null)
+        setProperty(nodeRef, ContentModel.PROP_NAME, assocQName.getLocalName());
+    }
     if (getProperty(nodeRef, PRIMARY_PARENT) == null)
       setProperty(nodeRef, PRIMARY_PARENT, parentRef);
+    if (getProperty(nodeRef, ASSOC_QNAME) == null)
+      setProperty(nodeRef, ASSOC_QNAME, assocQName);
+    if (getProperty(nodeRef, ASSOC_TYPE_QNAME) == null)
+      setProperty(nodeRef, ASSOC_TYPE_QNAME, assocTypeQName);
     File file = new File(pathStr);
     setProperty(nodeRef, ContentModel.TYPE_BASE, nodeTypeQName);
     setProperty(nodeRef, ContentModel.PROP_NODE_UUID, nodeRef.getId());
@@ -670,10 +682,14 @@ public class MockNodeService implements NodeService, Serializable {
   /** The name. */
   @Override
   public NodeRef getChildByName(NodeRef nodeRef, QName assocTypeQName, String childName) {
+    assertNodeExists(nodeRef);
     List<ChildAssociationRef> children = getChildAssocs(nodeRef);
     for (ChildAssociationRef ref : children) {
+      if (assocTypeQName != null && !matchesAssocType(assocTypeQName, ref.getTypeQName()))
+        continue;
       String name = (String) getProperty(ref.getChildRef(), ContentModel.PROP_NAME);
-      if (name.equals(childName)) return ref.getChildRef();
+      if (childName != null && childName.equals(name))
+        return ref.getChildRef();
     }
     return null;
   }
@@ -997,6 +1013,48 @@ public class MockNodeService implements NodeService, Serializable {
    *
    * @param nodeRef the node ref
    */
+  
+  private void assertNodeExists(NodeRef nodeRef) {
+    if (nodeRef == null || !exists(nodeRef)) {
+      throw new InvalidNodeRefException(nodeRef);
+    }
+  }
+
+  private boolean matchesAssocType(QNamePattern typeQNamePattern, QName assocType) {
+    if (typeQNamePattern == null || typeQNamePattern.isMatch(assocType)) {
+      return true;
+    }
+    if (typeQNamePattern instanceof QName) {
+      QName requested = (QName) typeQNamePattern;
+      return isPrimaryChildAssoc(requested) && isPrimaryChildAssoc(assocType);
+    }
+    return false;
+  }
+
+  private boolean isPrimaryChildAssoc(QName qname) {
+    return ContentModel.ASSOC_CONTAINS.equals(qname) || ContentModel.ASSOC_CHILDREN.equals(qname);
+  }
+
+  private QName getAssocQName(NodeRef nodeRef) {
+    Serializable stored = getProperty(nodeRef, ASSOC_QNAME);
+    if (stored instanceof QName) {
+      return (QName) stored;
+    }
+    String name = (String) getProperty(nodeRef, ContentModel.PROP_NAME);
+    if (name != null) {
+      return QName.createQName(name);
+    }
+    return getType(nodeRef);
+  }
+
+  private QName getAssocTypeQName(NodeRef nodeRef) {
+    Serializable stored = getProperty(nodeRef, ASSOC_TYPE_QNAME);
+    if (stored instanceof QName) {
+      return (QName) stored;
+    }
+    return ContentModel.ASSOC_CONTAINS;
+  }
+
   private Map<QName, Serializable> getNotNullProperties(NodeRef nodeRef) {
     Map<QName, Serializable> properties = getProperties(nodeRef);
     if (properties == null) {
