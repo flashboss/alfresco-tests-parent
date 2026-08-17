@@ -447,6 +447,13 @@ public class MockNodeService implements NodeService {
 			return null;
 	}
 
+	public String getPathAsString(NodeRef nodeRef) throws InvalidNodeRefException {
+		Path path = getPath(nodeRef);
+		if (path != null)
+			return path.toString().replace("\", "/");
+		return null;
+	}
+
 	@Override
 	public List<Path> getPaths(NodeRef nodeRef, boolean primaryOnly) throws InvalidNodeRefException {
 		// TODO Auto-generated method stub
