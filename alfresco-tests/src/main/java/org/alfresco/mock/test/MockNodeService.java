@@ -644,16 +644,18 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
  /** The parent path. */
 	public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef) throws InvalidNodeRefException {
-  /** The parent path. */
+		assertNodeExists(nodeRef);
 		List<ChildAssociationRef> result = new ArrayList<ChildAssociationRef>();
-  /** The parent path. */
+		String parentPath = getPathAsString(nodeRef);
+		if (parentPath == null)
+			return result;
 		for (NodeRef node : nodeRefs.keySet()) {
-   /** The parent path. */
 			Path path = getPath(node);
-   /** The parent path. */
-			String parentPath = path.subPath(path.size() - 2).toString();
-			if (getPath(nodeRef).toString().equals(parentPath))
-				result.add(new ChildAssociationRef(ContentModel.ASSOC_CONTAINS, nodeRef, getType(node), node));
+			if (path == null || path.size() < 2)
+				continue;
+			String childParentPath = path.subPath(path.size() - 2).toString();
+			if (parentPath.equals(childParentPath))
+				result.add(new ChildAssociationRef(getAssocTypeQName(node), nodeRef, getAssocQName(node), node));
 		}
 		return result;
 	}
@@ -770,10 +772,8 @@ public class MockNodeService implements NodeService, Serializable {
   * @return the child association ref
   */
 		NodeRef result = (NodeRef) getProperty(nodeRef, PRIMARY_PARENT);
-  /** The child q name. */
-		QName childQName = QName.createQName((String) getProperty(nodeRef, ContentModel.PROP_NAME));
-		ChildAssociationRef childAssociationRef = new ChildAssociationRef(ContentModel.ASSOC_CONTAINS, result,
-				childQName, nodeRef, true, -1);
+		ChildAssociationRef childAssociationRef = new ChildAssociationRef(getAssocTypeQName(nodeRef), result,
+				getAssocQName(nodeRef), nodeRef, true, -1);
 		return childAssociationRef;
 	}
 

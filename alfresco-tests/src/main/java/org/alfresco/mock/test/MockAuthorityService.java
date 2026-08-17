@@ -2,8 +2,6 @@ package org.alfresco.mock.test;
 
 import static org.alfresco.model.ContentModel.ASSOC_CONTAINS;
 import static org.alfresco.model.ContentModel.TYPE_CONTENT;
-import static org.alfresco.model.ContentModel.TYPE_FOLDER;
-import static org.alfresco.service.cmr.repository.StoreRef.PROTOCOL_WORKSPACE;
 import static org.alfresco.service.cmr.repository.StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
 import static org.alfresco.service.namespace.NamespaceService.CONTENT_MODEL_1_0_URI;
 import static org.alfresco.service.namespace.QName.createQName;
@@ -219,11 +217,11 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 			Set<String> authorityZones) {
   /** The name. */
 		String name = getName(null, shortName);
-		NodeRef root = nodeService.getRootNode(new StoreRef(PROTOCOL_WORKSPACE, STORE_REF_WORKSPACE_SPACESSTORE.getIdentifier()));
+		NodeRef root = nodeService.getRootNode(STORE_REF_WORKSPACE_SPACESSTORE);
   /** The name. */
-		NodeRef system = nodeService.getChildByName(root, TYPE_FOLDER, "system");
+		NodeRef system = nodeService.getChildByName(root, ASSOC_CHILDREN, NodeUtils.toAlfrescoCmName("system"));
   /** The name. */
-		NodeRef authorities = nodeService.getChildByName(system, TYPE_FOLDER, "authorities");
+		NodeRef authorities = nodeService.getChildByName(system, ASSOC_CONTAINS, NodeUtils.toAlfrescoCmName("authorities"));
   /** The assoc q name. */
 		QName assocQName = createQName(CONTENT_MODEL_1_0_URI, name);
 		NodeRef node = nodeService.createNode(authorities, ASSOC_CONTAINS, assocQName, TYPE_CONTENT).getChildRef();
