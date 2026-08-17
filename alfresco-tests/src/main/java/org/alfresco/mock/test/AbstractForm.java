@@ -40,9 +40,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
 /**
- * Abstract base class providing common functionality for tests.
+ * Abstract base class for form-based tests. This class provides common functionality for testing
+ * Alfresco components using mock services without requiring a full server instance.
  *
- * @author vige
+ * @author Generated
+ * @version 7.4.2.1.1
  */
 @RunWith(RemoteTestRunner.class)
 @Remote(runnerClass = ClasspathTestRunner.class)
@@ -52,30 +54,29 @@ public abstract class AbstractForm {
   /** The service registry. */
   @Autowired protected ServiceRegistry serviceRegistry;
 
-  /** The spaces store. */
+  /** The spaces store node reference. */
   protected NodeRef spacesStore;
 
-  /** The archive. */
+  /** The archive node reference. */
   protected NodeRef archive;
 
-  /** The sites. */
+  /** The sites node reference. */
   protected NodeRef sites;
 
-  /** The shared. */
+  /** The shared node reference. */
   protected NodeRef shared;
 
-  /** The today. */
+  /** The today date. */
   protected Date today;
 
-  /** The today str. */
+  /** The today date as string. */
   protected String todayStr;
 
-  /** The company home. */
+  /** The company home node reference. */
   protected NodeRef companyHome;
 
-  /** Init. */
+  /** Initializes the component. */
   public void init() {
-
     NamespaceService namespaceService = serviceRegistry.getNamespaceService();
     namespaceService.registerNamespace(
         NamespaceService.APP_MODEL_PREFIX, NamespaceService.APP_MODEL_1_0_URI);
@@ -117,11 +118,11 @@ public abstract class AbstractForm {
   }
 
   /**
-   * Insert folder.
+   * Inserts a new folder.
    *
-   * @param parent the parent
-   * @param name the name
-   * @return the node ref
+   * @param parent the parent node reference
+   * @param name the folder name
+   * @return the created folder node reference
    */
   protected NodeRef insertFolder(NodeRef parent, String name) {
     FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
@@ -129,26 +130,30 @@ public abstract class AbstractForm {
   }
 
   /**
-   * Insert folder.
+   * Inserts a new folder with the specified prefix and local name.
    *
-   * @param parent the parent
-   * @param prefix the prefix
+   * @param parent the parent node reference
+   * @param prefix the namespace prefix
    * @param localName the local name
-   * @return the node ref
+   * @return the created folder node reference
    */
   protected NodeRef insertFolder(NodeRef parent, String prefix, String localName) {
-    return NodeUtils.insertFolder(parent, prefix, localName, serviceRegistry.getNodeService(),
+    return NodeUtils.insertFolder(
+        parent,
+        prefix,
+        localName,
+        serviceRegistry.getNodeService(),
         serviceRegistry.getNamespaceService());
   }
 
   /**
-   * Insert document.
+   * Inserts a new document with text content.
    *
-   * @param parent the parent
-   * @param name the name
-   * @param text the text
-   * @param properties the properties
-   * @return the node ref
+   * @param parent the parent node reference
+   * @param name the document name
+   * @param text the document text content
+   * @param properties the document properties
+   * @return the created document node reference
    */
   protected NodeRef insertDocument(
       NodeRef parent, String name, String text, Map<QName, Serializable> properties) {
@@ -156,24 +161,45 @@ public abstract class AbstractForm {
   }
 
   /**
-   * Insert document.
+   * Inserts a new document with byte array content.
    *
-   * @param parent the parent
-   * @param name the name
-   * @param text the text
-   * @param properties the properties
-   * @return the node ref
+   * @param parent the parent node reference
+   * @param name the document name
+   * @param text the document byte content
+   * @param properties the document properties
+   * @return the created document node reference
    */
   protected NodeRef insertDocument(
       NodeRef parent, String name, byte[] text, Map<QName, Serializable> properties) {
     return NodeUtils.insertDocument(parent, name, text, properties, serviceRegistry);
   }
 
+  /**
+   * Inserts a new version.
+   *
+   * @param nodeRef the node reference
+   * @param name the version name
+   * @param text the version text content
+   * @param version the version label
+   * @param versionType the version type
+   * @return the created version node reference
+   */
   protected NodeRef insertVersion(
       NodeRef nodeRef, String name, String text, String version, VersionType versionType) {
     return NodeUtils.insertVersion(nodeRef, name, text, version, versionType, serviceRegistry);
   }
 
+  /**
+   * Inserts a new ZIP file.
+   *
+   * @param parent the parent node reference
+   * @param zipName the ZIP file name
+   * @param entryName the entry name within the ZIP
+   * @param text the text content
+   * @param properties the properties map
+   * @return the created ZIP node reference
+   * @throws IOException if an I/O error occurs
+   */
   protected NodeRef insertZip(
       NodeRef parent,
       String zipName,
@@ -185,26 +211,28 @@ public abstract class AbstractForm {
   }
 
   /**
-   * Encrypt.
+   * Encrypts the input stream using SHA-256.
    *
-   * @param inputStream the input stream
-   * @return the string
+   * @param inputStream the input stream to encrypt
+   * @return the encrypted hash as a Base64 string
+   * @throws Exception if an error occurs during encryption
    */
   protected String encrypt(InputStream inputStream) throws Exception {
     MessageDigest digest = MessageDigest.getInstance("SHA-256");
     byte[] contentBytes = IOUtils.toByteArray(inputStream);
     byte[] hash = digest.digest(contentBytes);
-
-    /** The hash orig string. */
     String hashOrigString = Base64.encodeBase64String(hash);
     return hashOrigString;
   }
 
   /**
-   * Get object from xml.
+   * Gets an object from XML content.
    *
-   * @param createdNodeRef the created node ref
+   * @param <T> the object type
+   * @param createdNodeRef the node reference containing the XML
    * @param objectClass the object class
+   * @return the unmarshalled object
+   * @throws Exception if an error occurs during unmarshalling
    */
   protected <T> T getObjectFromXml(NodeRef createdNodeRef, Class<T> objectClass) throws Exception {
     ContentService contentService = serviceRegistry.getContentService();
@@ -218,7 +246,7 @@ public abstract class AbstractForm {
     return result;
   }
 
-  /** Execute action. */
+  /** Executes the action and sets the current date. */
   protected void executeAction() {
     // data per cercare i file generati
     today = new Date();
