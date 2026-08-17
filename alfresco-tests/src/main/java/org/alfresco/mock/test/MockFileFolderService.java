@@ -32,6 +32,8 @@ import org.alfresco.service.namespace.QName;
 import org.alfresco.util.Pair;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.alfresco.mock.NodeUtils;
+import java.util.HashMap;
 
 /**
  * Mock implementation of the {@link FileFolderService} interface for testing purposes.
@@ -66,9 +68,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 		List<FileInfo> result = new ArrayList<FileInfo>();
 		List<ChildAssociationRef> associationRefs = nodeService.getChildAssocs(contextNodeRef);
 		for (ChildAssociationRef associationRef : associationRefs) {
-			FileInfo fileInfo = new MockFileInfo(associationRef.getChildRef(), associationRef.getQName().getLocalName(),
-					associationRef.getQName());
-			result.add(fileInfo);
+			result.add(getFileInfo(associationRef.getChildRef()));
 		}
 		return result;
 	}
@@ -184,8 +184,10 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	 */
 	@Override
 	public NodeRef searchSimple(NodeRef contextNodeRef, String name) {
-		// TODO Auto-generated method stub
-		return null;
+		if (contextNodeRef == null || name == null) {
+			return null;
+		}
+		return nodeService.getChildByName(contextNodeRef, ContentModel.ASSOC_CONTAINS, name);
 	}
 
 	/**
@@ -363,17 +365,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	 */
 	@Override
 	public FileInfo create(NodeRef parentNodeRef, String name, QName typeQName) throws FileExistsException {
-		if (!parentNodeRef.getId().isEmpty() && nodeService.getPrimaryParent(parentNodeRef) != null
-				&& !name.contains(":")) {
-			String prefix = NamespaceService.CONTENT_MODEL_PREFIX;
-			name = prefix + ":" + name;
-		}
-		QName assocQName = QName.createQName(name);
-		if (name.contains(":"))
-			assocQName = QName.createQName(name.split(":")[0], name.split(":")[1], namespaceService);
-		ChildAssociationRef association = nodeService.createNode(parentNodeRef, ContentModel.ASSOC_CONTAINS, assocQName,
-				typeQName);
-		return new MockFileInfo(association.getChildRef(), name, typeQName);
+		return create(parentNodeRef, name, typeQName, null);
 	}
 
 	/**
@@ -390,8 +382,23 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	@Override
 	public FileInfo create(NodeRef parentNodeRef, String name, QName typeQName, QName assocQName)
 			throws FileExistsException {
-		// TODO Auto-generated method stub
-		return null;
+			if (assocQName == null) {
+		if (name.contains(":")) {
+			String[] parts = name.split(":", 2);
+			assocQName = QName.createQName(parts[0], parts[1], namespaceService);
+			name = NodeUtils.toAlfrescoCmName(parts[1]);
+		} else if (!parentNodeRef.getId().isEmpty()
+				&& nodeService.getPrimaryParent(parentNodeRef) != null) {
+			assocQName = QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, name);
+		} else {
+			assocQName = QName.createQName(name);
+		}
+	}
+	Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
+	properties.put(ContentModel.PROP_NAME, name);
+	ChildAssociationRef association = nodeService.createNode(parentNodeRef, ContentModel.ASSOC_CONTAINS,
+			assocQName, typeQName, properties);
+	return new MockFileInfo(association.getChildRef(), name, typeQName);
 	}
 
 	/**
@@ -448,7 +455,7 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	 */
 	@Override
 	public FileInfo resolveNamePath(NodeRef rootNodeRef, List<String> pathElements) throws FileNotFoundException {
-		return resolveNamePath(rootNodeRef, pathElements, false);
+		return resolveNamePath(rootNodeRef, pathElements, true);
 	}
 
 	/**
@@ -464,15 +471,34 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	@Override
 	public FileInfo resolveNamePath(NodeRef rootNodeRef, List<String> pathElements, boolean mustExist)
 			throws FileNotFoundException {
-		NodeRef nodeRef = null;
-		NodeRef parent = rootNodeRef;
-		for (String path : pathElements) {
-			nodeRef = nodeService.getChildByName(parent, ContentModel.ASSOC_CONTAINS, path);
-			if (nodeRef == null)
-				return null;
-			parent = nodeRef;
+		if (pathElements == null || pathElements.size() == 0) {
+			throw new IllegalArgumentException("Path elements list is empty");
 		}
-		return getFileInfo(nodeRef);
+		NodeRef parentNodeRef = rootNodeRef;
+		StringBuilder currentPath = new StringBuilder(pathElements.size() << 4);
+		int folderCount = pathElements.size() - 1;
+		for (int i = 0; i < folderCount; i++) {
+			String pathElement = pathElements.get(i);
+			currentPath.append("/").append(pathElement);
+			NodeRef folderNodeRef = searchSimple(parentNodeRef, pathElement);
+			if (folderNodeRef == null) {
+				if (mustExist) {
+					throw new FileNotFoundException("Folder not found: " + currentPath + " (in " + rootNodeRef + ")");
+				}
+				return null;
+			}
+			parentNodeRef = folderNodeRef;
+		}
+		String pathElement = pathElements.get(pathElements.size() - 1);
+		currentPath.append("/").append(pathElement);
+		NodeRef fileNodeRef = searchSimple(parentNodeRef, pathElement);
+		if (fileNodeRef == null) {
+			if (mustExist) {
+				throw new FileNotFoundException("File not found: " + currentPath + " (in " + rootNodeRef + ")");
+			}
+			return null;
+		}
+		return getFileInfo(fileNodeRef);
 	}
 
 	/**
@@ -485,13 +511,19 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	 */
 	@Override
 	public FileInfo getFileInfo(NodeRef nodeRef) {
-		QName qname = ContentModel.TYPE_CONTENT;
 		File file = getNodeService().getNodeRefs().get(nodeRef);
 		if (file == null)
 			throw new InvalidNodeRefException(nodeRef);
-		if (!new File(file + "/" + file.getName()).exists())
-			qname = ContentModel.TYPE_FOLDER;
-		return new MockFileInfo(nodeRef, file.getName(), qname);
+		QName qname = nodeService.getType(nodeRef);
+		if (qname == null) {
+			qname = ContentModel.TYPE_CONTENT;
+			if (!new File(file + "/" + file.getName()).exists())
+				qname = ContentModel.TYPE_FOLDER;
+		}
+		String name = (String) nodeService.getProperty(nodeRef, ContentModel.PROP_NAME);
+		if (name == null)
+			name = file.getName();
+		return new MockFileInfo(nodeRef, name, qname);
 	}
 
 	/**
