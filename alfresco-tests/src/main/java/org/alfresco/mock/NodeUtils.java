@@ -67,6 +67,49 @@ public class NodeUtils {
   }
 
   /**
+   * Inserts a well-known Alfresco space using the association QName and production cm:name.
+   */
+  public static NodeRef insertFolder(NodeRef parent, String prefix, String localName,
+      NodeService nodeService, NamespaceService namespaceService) {
+    QName assocQName = QName.createQName(prefix, localName, namespaceService);
+    QName assocTypeQName = "company_home".equals(localName) || "system".equals(localName)
+        ? ContentModel.ASSOC_CHILDREN : ContentModel.ASSOC_CONTAINS;
+    Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
+    properties.put(ContentModel.PROP_NAME, toAlfrescoCmName(localName));
+    return nodeService.createNode(parent, assocTypeQName, assocQName, ContentModel.TYPE_FOLDER, properties)
+        .getChildRef();
+  }
+
+  /**
+   * Converts an association local name to the cm:name used in a real Alfresco bootstrap.
+   */
+  public static String toAlfrescoCmName(String localName) {
+    if (localName == null || localName.isEmpty()) {
+      return localName;
+    }
+    String known = WELL_KNOWN_CM_NAMES.get(localName);
+    if (known != null) {
+      return known;
+    }
+    String[] parts = localName.split("_");
+    StringBuilder sb = new StringBuilder(localName.length() + 4);
+    for (int i = 0; i < parts.length; i++) {
+      if (i > 0) {
+        sb.append(' ');
+      }
+      String part = parts[i];
+      if (!part.isEmpty()) {
+        sb.append(Character.toUpperCase(part.charAt(0)));
+        if (part.length() > 1) {
+          sb.append(part.substring(1));
+        }
+      }
+    }
+    return sb.toString();
+  }
+
+
+  /**
    * Inserts a new document node with text content.
    *
    * @param parent the parent node reference
