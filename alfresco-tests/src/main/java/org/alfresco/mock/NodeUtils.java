@@ -36,6 +36,22 @@ import org.alfresco.service.namespace.QName;
  */
 public class NodeUtils {
   /**
+   * Production cm:name values for well-known Alfresco spaces.
+   */
+  private static final Map<String, String> WELL_KNOWN_CM_NAMES = new HashMap<String, String>();
+
+  static {
+    WELL_KNOWN_CM_NAMES.put("company_home", "Company Home");
+    WELL_KNOWN_CM_NAMES.put("shared", "Shared");
+    WELL_KNOWN_CM_NAMES.put("sites", "Sites");
+    WELL_KNOWN_CM_NAMES.put("system", "System");
+    WELL_KNOWN_CM_NAMES.put("authorities", "Authorities");
+    WELL_KNOWN_CM_NAMES.put("guest_home", "Guest Home");
+    WELL_KNOWN_CM_NAMES.put("user_homes", "User Homes");
+    WELL_KNOWN_CM_NAMES.put("dictionary", "Data Dictionary");
+  }
+
+  /**
    * Insert folder.
    *
    * @param parent the parent
