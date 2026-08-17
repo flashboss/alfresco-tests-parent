@@ -2,8 +2,6 @@ package org.alfresco.mock.test;
 
 import static org.alfresco.model.ContentModel.ASSOC_CONTAINS;
 import static org.alfresco.model.ContentModel.TYPE_CONTENT;
-import static org.alfresco.model.ContentModel.TYPE_FOLDER;
-import static org.alfresco.service.cmr.repository.StoreRef.PROTOCOL_WORKSPACE;
 import static org.alfresco.service.cmr.repository.StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
 import static org.alfresco.service.namespace.NamespaceService.CONTENT_MODEL_1_0_URI;
 import static org.alfresco.service.namespace.QName.createQName;
@@ -26,6 +24,8 @@ import org.alfresco.service.cmr.security.AuthorityService;
 import org.alfresco.service.cmr.security.AuthorityType;
 import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
+import static org.alfresco.model.ContentModel.ASSOC_CHILDREN;
+import org.alfresco.mock.NodeUtils;
 
 public class MockAuthorityService implements AuthorityService, Serializable {
 
@@ -117,9 +117,9 @@ public class MockAuthorityService implements AuthorityService, Serializable {
 	public String createAuthority(AuthorityType type, String shortName, String authorityDisplayName,
 			Set<String> authorityZones) {
 		String name = getName(null, shortName);
-		NodeRef root = nodeService.getRootNode(new StoreRef(PROTOCOL_WORKSPACE, STORE_REF_WORKSPACE_SPACESSTORE.getIdentifier()));
-		NodeRef system = nodeService.getChildByName(root, TYPE_FOLDER, "system");
-		NodeRef authorities = nodeService.getChildByName(system, TYPE_FOLDER, "authorities");
+		NodeRef root = nodeService.getRootNode(STORE_REF_WORKSPACE_SPACESSTORE);
+		NodeRef system = nodeService.getChildByName(root, ASSOC_CHILDREN, NodeUtils.toAlfrescoCmName("system"));
+		NodeRef authorities = nodeService.getChildByName(system, ASSOC_CONTAINS, NodeUtils.toAlfrescoCmName("authorities"));
 		QName assocQName = createQName(CONTENT_MODEL_1_0_URI, name);
 		NodeRef node = nodeService.createNode(authorities, ASSOC_CONTAINS, assocQName, TYPE_CONTENT).getChildRef();
 		authorityNodes.put(name, node);
