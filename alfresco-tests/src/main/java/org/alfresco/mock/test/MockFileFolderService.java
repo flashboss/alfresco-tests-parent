@@ -30,6 +30,8 @@ import org.alfresco.service.namespace.QName;
 import org.alfresco.util.Pair;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.alfresco.mock.NodeUtils;
+import java.util.HashMap;
 
 public class MockFileFolderService implements FileFolderService, Serializable {
 
@@ -88,8 +90,10 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 
 	@Override
 	public NodeRef searchSimple(NodeRef contextNodeRef, String name) {
-		// TODO Auto-generated method stub
-		return null;
+		if (contextNodeRef == null || name == null) {
+			return null;
+		}
+		return nodeService.getChildByName(contextNodeRef, ContentModel.ASSOC_CONTAINS, name);
 	}
 
 	@Override
@@ -161,8 +165,23 @@ public class MockFileFolderService implements FileFolderService, Serializable {
 	@Override
 	public FileInfo create(NodeRef parentNodeRef, String name, QName typeQName, QName assocQName)
 			throws FileExistsException {
-		// TODO Auto-generated method stub
-		return null;
+			if (assocQName == null) {
+		if (name.contains(":")) {
+			String[] parts = name.split(":", 2);
+			assocQName = QName.createQName(parts[0], parts[1], namespaceService);
+			name = NodeUtils.toAlfrescoCmName(parts[1]);
+		} else if (!parentNodeRef.getId().isEmpty()
+				&& nodeService.getPrimaryParent(parentNodeRef) != null) {
+			assocQName = QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, name);
+		} else {
+			assocQName = QName.createQName(name);
+		}
+	}
+	Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
+	properties.put(ContentModel.PROP_NAME, name);
+	ChildAssociationRef association = nodeService.createNode(parentNodeRef, ContentModel.ASSOC_CONTAINS,
+			assocQName, typeQName, properties);
+	return new MockFileInfo(association.getChildRef(), name, typeQName);
 	}
 
 	@Override
