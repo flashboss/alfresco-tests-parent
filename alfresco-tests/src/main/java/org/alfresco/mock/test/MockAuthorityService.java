@@ -9,7 +9,6 @@ import org.alfresco.repo.security.authority.AuthorityInfo;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.security.AuthorityService;
 import org.alfresco.service.cmr.security.AuthorityType;
-import static org.alfresco.model.ContentModel.ASSOC_CHILDREN;
 
 public class MockAuthorityService implements AuthorityService {
 
