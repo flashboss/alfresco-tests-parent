@@ -1008,6 +1008,13 @@ public class MockNodeService implements NodeService, Serializable {
 			return null;
 	}
 
+	public String getPathAsString(NodeRef nodeRef) throws InvalidNodeRefException {
+		Path path = getPath(nodeRef);
+		if (path != null)
+			return path.toString().replace("\\", "/");
+		return null;
+	}
+
 	@Override
  /**
  * Get paths.
