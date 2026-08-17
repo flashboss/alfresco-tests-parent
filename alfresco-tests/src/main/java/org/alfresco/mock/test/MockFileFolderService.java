@@ -584,7 +584,6 @@ public class MockFileFolderService implements FileFolderService, Serializable {
   }
 
   /** {@inheritDoc} */
-  @Override
   public PagingResults<FileInfo> list(
       NodeRef arg0,
       Set<QName> arg1,
@@ -777,7 +776,6 @@ public class MockFileFolderService implements FileFolderService, Serializable {
   }
 
   /** {@inheritDoc} */
-  @Override
   public PagingResults<FileInfo> list(
       NodeRef rootNodeRef,
       Set<QName> searchTypeQNames,

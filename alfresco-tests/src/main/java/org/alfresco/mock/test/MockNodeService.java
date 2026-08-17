@@ -1224,7 +1224,6 @@ public class MockNodeService implements NodeService, Serializable {
    * @param parent the parent
    * @return the result
    */
-  @Override
   public List<String> findAssocsNotLinkedByTwoOtherAssocs(NodeRef parent) {
     // TODO Auto-generated method stub
     return null;

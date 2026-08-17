@@ -46,7 +46,7 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.subethamail.smtp.server.SMTPServer;
@@ -274,10 +274,10 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
               && parentName.equals("baseJavaDelegate")) {
             beanFactory.registerAlias(bName, simpleClassName);
           }
-          if (className.equals(PropertySourcesPlaceholderConfigurer.class.getName())) {
+          if (className.equals(PropertyPlaceholderConfigurer.class.getName())) {
             Object bean = beanFactory.getBean(bName);
-            PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer =
-                (PropertySourcesPlaceholderConfigurer) bean;
+            PropertyPlaceholderConfigurer propertyPlaceholderConfigurer =
+                (PropertyPlaceholderConfigurer) bean;
             propertyPlaceholderConfigurer.postProcessBeanFactory(beanFactory);
           }
         }
