@@ -108,7 +108,7 @@ public abstract class AbstractForm {
 		archive = insertFolder(archiveRoot, STORE_REF_ARCHIVE_SPACESSTORE.getIdentifier());
 		sites = insertFolder(companyHome, SiteModel.SITE_MODEL_PREFIX, SiteModel.TYPE_SITES.getLocalName());
 		shared = insertFolder(companyHome, NamespaceService.APP_MODEL_PREFIX, "shared");
-		insertFolder(system, SiteModel.SITE_MODEL_PREFIX, "authorities");
+		insertFolder(system, NamespaceService.SYSTEM_MODEL_PREFIX, "authorities");
 	}
 
 	/**
@@ -132,11 +132,9 @@ public abstract class AbstractForm {
 	 * @return the created folder node reference
 	 */
 	protected NodeRef insertFolder(NodeRef parent, String prefix, String localName) {
-		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
-		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
-		QName qname = QName.createQName(prefix, localName, namespaceService);
-		return fileFolderService.create(parent, qname.getPrefixString(), ContentModel.TYPE_FOLDER).getNodeRef();
-	}
+    return NodeUtils.insertFolder(parent, prefix, localName, serviceRegistry.getNodeService(),
+        serviceRegistry.getNamespaceService());
+  }
 
 	/**
 	 * Inserts a new document with text content.
