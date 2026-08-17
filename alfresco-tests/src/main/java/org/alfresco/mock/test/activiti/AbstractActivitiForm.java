@@ -33,63 +33,64 @@ import org.alfresco.mock.test.MockContentService;
 import org.alfresco.mock.test.MockNodeService;
 import org.alfresco.mock.test.MockVersionService;
 import org.alfresco.mock.test.script.MockLogger;
-import org.alfresco.model.ContentModel;
 import org.alfresco.repo.jscript.ScriptUtils;
 import org.alfresco.repo.jscript.Search;
 import org.alfresco.repo.site.SiteModel;
 import org.alfresco.repo.workflow.activiti.ActivitiScriptNode;
 import org.alfresco.service.ServiceRegistry;
-import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.subethamail.smtp.server.SMTPServer;
 
 /**
- * Mock implementation of AbstractActivitiForm for testing purposes.
+ * Abstract base class for Activiti workflow form-based tests. This class provides common
+ * functionality for testing Alfresco Activiti workflows using mock services without requiring a
+ * full server instance.
  *
- * @author vige
+ * @author Generated
+ * @version 7.4.2.1.1
  */
 public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 
-  /** The spaces store. */
+  /** The spaces store node reference. */
   protected NodeRef spacesStore;
 
-  /** The archive. */
+  /** The archive node reference. */
   protected NodeRef archive;
 
-  /** The sites. */
+  /** The sites node reference. */
   protected NodeRef sites;
 
-  /** The shared. */
+  /** The shared node reference. */
   protected NodeRef shared;
 
-  /** The company home. */
+  /** The company home node reference. */
   protected NodeRef companyHome;
 
-  /** The bpm package. */
+  /** The BPM package node. */
   protected ActivitiScriptNode bpmPackage;
 
-  /** The initiator. */
+  /** The workflow initiator. */
   protected Initiator initiator;
 
-  /** Constructs a new AbstractActivitiForm. */
+  /** Constructs a new AbstractActivitiForm instance. */
   public AbstractActivitiForm() {
     super("test-module-context.xml");
   }
 
   /**
-   * Init.
+   * Initializes the component with the given variables.
    *
-   * @param variables the variables
+   * @param variables the variables map
    */
   public void init(Map<String, Object> variables) {
     ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration =
@@ -157,7 +158,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
     variables.put("utils", utils);
   }
 
-  /** End. */
+  /** Cleans up resources and stops services. */
   public void end() {
     // CLEANING DB
     deleteAllIdentities(identityService);
@@ -169,11 +170,11 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
   }
 
   /**
-   * Insert folder.
+   * Inserts a new folder.
    *
-   * @param parent the parent
-   * @param name the name
-   * @return the result
+   * @param parent the parent node reference
+   * @param name the folder name
+   * @return the created folder node reference
    */
   protected NodeRef insertFolder(NodeRef parent, String name) {
     return NodeUtils.insertFolder(
@@ -185,28 +186,32 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
   }
 
   /**
-   * Insert folder.
+   * Inserts a new folder with the specified prefix and local name.
    *
-   * @param parent the parent
-   * @param prefix the prefix
+   * @param parent the parent node reference
+   * @param prefix the namespace prefix
    * @param localName the local name
-   * @return the result
+   * @return the created folder node reference
    */
   protected NodeRef insertFolder(NodeRef parent, String prefix, String localName) {
-    ServiceRegistry serviceRegistry = ((ActivitiProcessEngineConfiguration) processEngineConfiguration)
-        .getServiceRegistry();
-    return NodeUtils.insertFolder(parent, prefix, localName, serviceRegistry.getNodeService(),
+    ServiceRegistry serviceRegistry =
+        ((ActivitiProcessEngineConfiguration) processEngineConfiguration).getServiceRegistry();
+    return NodeUtils.insertFolder(
+        parent,
+        prefix,
+        localName,
+        serviceRegistry.getNodeService(),
         serviceRegistry.getNamespaceService());
   }
 
   /**
-   * Insert document.
+   * Inserts a new document.
    *
-   * @param parent the parent
-   * @param name the name
-   * @param text the text
-   * @param properties the properties
-   * @return the result
+   * @param parent the parent node reference
+   * @param name the document name
+   * @param text the document text content
+   * @param properties the document properties
+   * @return the created document node reference
    */
   protected NodeRef insertDocument(
       NodeRef parent, String name, String text, Map<QName, Serializable> properties) {
@@ -216,6 +221,17 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
         parent, name, text, properties, activitiProcessEngineConfiguration.getServiceRegistry());
   }
 
+  /**
+   * Inserts a new ZIP file.
+   *
+   * @param parent the parent node reference
+   * @param zipName the ZIP file name
+   * @param entryName the entry name within the ZIP
+   * @param text the text content
+   * @param properties the properties map
+   * @return the created ZIP node reference
+   * @throws IOException if an I/O error occurs
+   */
   protected NodeRef insertZip(
       NodeRef parent,
       String zipName,
@@ -234,7 +250,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
         activitiProcessEngineConfiguration.getServiceRegistry());
   }
 
-  /** Initialize process engine. */
+  /** Performs initialize process engine. */
   @Override
   protected void initializeProcessEngine() {
     DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
@@ -258,10 +274,10 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
               && parentName.equals("baseJavaDelegate")) {
             beanFactory.registerAlias(bName, simpleClassName);
           }
-          if (className.equals(PropertyPlaceholderConfigurer.class.getName())) {
+          if (className.equals(PropertySourcesPlaceholderConfigurer.class.getName())) {
             Object bean = beanFactory.getBean(bName);
-            PropertyPlaceholderConfigurer propertyPlaceholderConfigurer =
-                (PropertyPlaceholderConfigurer) bean;
+            PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer =
+                (PropertySourcesPlaceholderConfigurer) bean;
             propertyPlaceholderConfigurer.postProcessBeanFactory(beanFactory);
           }
         }
@@ -275,24 +291,24 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
   private SMTPServer smtpServer;
 
   /**
-   * Get smtp server.
+   * Gets the SMTP server.
    *
-   * @return the result
+   * @return the SMTP server instance
    */
   public SMTPServer getSmtpServer() {
     return smtpServer;
   }
 
   /**
-   * Set smtp server.
+   * Sets the SMTP server.
    *
-   * @param smtpServer the smtp server
+   * @param smtpServer the SMTP server instance
    */
   public void setSmtpServer(SMTPServer smtpServer) {
     this.smtpServer = smtpServer;
   }
 
-  /** Start mail server. */
+  /** Starts the mail server. */
   public void startMailServer() {
     MockMessageHandlerFactory myFactory = new MockMessageHandlerFactory();
     smtpServer = new SMTPServer(myFactory);
@@ -300,23 +316,23 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
     smtpServer.start();
   }
 
-  /** Stop mail server. */
+  /** Stops the mail server. */
   public void stopMailServer() {
     smtpServer.stop();
   }
 
   /**
-   * Creates a user in the identity service.
+   * Creates a new user.
    *
    * @param identityService the identity service
-   * @param userId the user id
+   * @param userId the user ID
    * @param firstName the first name
    * @param lastName the last name
    * @param password the password
-   * @param email the email
-   * @param imageResource the image resource
-   * @param groups the groups
-   * @param userInfo the user info
+   * @param email the email address
+   * @param imageResource the image resource path
+   * @param groups the list of group names
+   * @param userInfo the list of user info key-value pairs
    */
   public void createUser(
       IdentityService identityService,
@@ -367,11 +383,11 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
   }
 
   /**
-   * Create group.
+   * Creates a new group.
    *
    * @param identityService the identity service
-   * @param groupId the group id
-   * @param type the type
+   * @param groupId the group ID
+   * @param type the group type
    */
   public void createGroup(IdentityService identityService, String groupId, String type) {
     if (identityService.createGroupQuery().groupId(groupId).count() == 0) {
@@ -383,7 +399,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
   }
 
   /**
-   * Delete all identities.
+   * Deletes all identities.
    *
    * @param identityService the identity service
    */
@@ -399,7 +415,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
   }
 
   /**
-   * Delete all histories.
+   * Deletes all histories.
    *
    * @param historyService the history service
    */
@@ -415,7 +431,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
   }
 
   /**
-   * Delete all i deployments.
+   * Deletes all deployments.
    *
    * @param repositoryService the repository service
    */
@@ -427,10 +443,10 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
   }
 
   /**
-   * Get date.
+   * Gets a date from the given numbers.
    *
-   * @param number the number
-   * @return the result
+   * @param number the date components (year, month, day, hour, minute)
+   * @return the date
    */
   public static Date getDate(int... number) {
     Calendar c1 = getInstance();
@@ -444,11 +460,11 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
   }
 
   /**
-   * Add hours.
+   * Adds hours to a date.
    *
    * @param date the date
-   * @param hours the hours
-   * @return the result
+   * @param hours the number of hours to add
+   * @return the new date
    */
   public static Date addHours(Date date, int hours) {
     Calendar cal = getInstance(); // creates calendar
@@ -458,12 +474,12 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
   }
 
   /**
-   * Difference between.
+   * Calculates the difference between two dates.
    *
-   * @param date1 the date1
-   * @param date2 the date2
-   * @param timeUnit the time unit
-   * @return the result
+   * @param date1 the first date
+   * @param date2 the second date
+   * @param timeUnit the time unit for the result
+   * @return the difference in the specified time unit
    */
   public static long differenceBetween(Date date1, Date date2, TimeUnit timeUnit) {
     long diffInMillies = date1.getTime() - date2.getTime();
@@ -471,11 +487,11 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
   }
 
   /**
-   * Is admin.
+   * Checks if the user is an admin.
    *
-   * @param user the user
+   * @param user the user ID
    * @param identityService the identity service
-   * @return the result
+   * @return true if the user is an admin, false otherwise
    */
   public static boolean isAdmin(String user, IdentityService identityService) {
     return identityService
@@ -486,7 +502,17 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
         > 0;
   }
 
+  /**
+   * Initializes demo users.
+   *
+   * @param identityService the identity service
+   */
   public abstract void initDemoUsers(IdentityService identityService);
 
+  /**
+   * Initializes demo groups.
+   *
+   * @param identityService the identity service
+   */
   public abstract void initDemoGroups(IdentityService identityService);
 }

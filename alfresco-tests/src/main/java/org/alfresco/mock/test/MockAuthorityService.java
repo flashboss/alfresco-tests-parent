@@ -1,5 +1,6 @@
 package org.alfresco.mock.test;
 
+import static org.alfresco.model.ContentModel.ASSOC_CHILDREN;
 import static org.alfresco.model.ContentModel.ASSOC_CONTAINS;
 import static org.alfresco.model.ContentModel.TYPE_CONTENT;
 import static org.alfresco.service.cmr.repository.StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
@@ -13,23 +14,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.alfresco.mock.NodeUtils;
 import org.alfresco.query.PagingRequest;
 import org.alfresco.query.PagingResults;
 import org.alfresco.repo.security.authority.AuthorityInfo;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
-import org.alfresco.service.cmr.repository.StoreRef;
 import org.alfresco.service.cmr.security.AuthorityService;
 import org.alfresco.service.cmr.security.AuthorityType;
 import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
-import static org.alfresco.model.ContentModel.ASSOC_CHILDREN;
-import org.alfresco.mock.NodeUtils;
 
 /**
- * Mock implementation of MockAuthorityService for testing purposes.
+ * Mock implementation of the MockAuthorityService class for testing purposes. This class provides a
+ * mock implementation that allows unit and integration tests to run without requiring a full
+ * Alfresco server instance.
  *
- * @author vige
+ * @author Generated
+ * @version 7.4.2.1.1
  */
 public class MockAuthorityService implements AuthorityService, Serializable {
 
@@ -38,11 +40,11 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   /** The node service. */
   @Autowired private NodeService nodeService;
 
-  /** The authority nodes. */
+  /** The authority nodes map. */
   private Map<String, NodeRef> authorityNodes = new HashMap<String, NodeRef>();
 
   /**
-   * Has admin authority.
+   * {@inheritDoc}
    *
    * @return the result
    */
@@ -53,9 +55,9 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Is admin authority.
+   * {@inheritDoc}
    *
-   * @param authorityName the authority name
+   * @param authorityName the authorityName
    * @return the result
    */
   @Override
@@ -65,7 +67,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Has guest authority.
+   * {@inheritDoc}
    *
    * @return the result
    */
@@ -76,9 +78,9 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Is guest authority.
+   * {@inheritDoc}
    *
-   * @param authorityName the authority name
+   * @param authorityName the authorityName
    * @return the result
    */
   @Override
@@ -88,7 +90,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Count users.
+   * {@inheritDoc}
    *
    * @return the result
    */
@@ -99,7 +101,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Count groups.
+   * {@inheritDoc}
    *
    * @return the result
    */
@@ -110,7 +112,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Get authorities.
+   * {@inheritDoc}
    *
    * @return the result
    */
@@ -120,9 +122,9 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Get authorities for user.
+   * {@inheritDoc}
    *
-   * @param userName the user name
+   * @param userName the userName
    * @return the result
    */
   @Override
@@ -131,7 +133,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Get all authorities.
+   * {@inheritDoc}
    *
    * @param type the type
    * @return the result
@@ -141,17 +143,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
     return getAuthorities();
   }
 
-  /**
-   * Get authorities info.
-   *
-   * @param type the type
-   * @param zoneName the zone name
-   * @param displayNameFilter the display name filter
-   * @param sortBy the sort by
-   * @param sortAscending the sort ascending
-   * @param pagingRequest the paging request
-   * @return the result
-   */
+  /** {@inheritDoc} */
   @Override
   public PagingResults<AuthorityInfo> getAuthoritiesInfo(
       AuthorityType type,
@@ -164,17 +156,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
     return null;
   }
 
-  /**
-   * Get authorities.
-   *
-   * @param type the type
-   * @param zoneName the zone name
-   * @param displayNameFilter the display name filter
-   * @param sortByDisplayName the sort by display name
-   * @param sortAscending the sort ascending
-   * @param pagingRequest the paging request
-   * @return the result
-   */
+  /** {@inheritDoc} */
   @Override
   public PagingResults<String> getAuthorities(
       AuthorityType type,
@@ -190,7 +172,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Get all root authorities.
+   * {@inheritDoc}
    *
    * @param type the type
    * @return the result
@@ -201,10 +183,10 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Create authority.
+   * {@inheritDoc}
    *
    * @param type the type
-   * @param shortName the short name
+   * @param shortName the shortName
    * @return the result
    */
   @Override
@@ -212,15 +194,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
     return createAuthority(type, shortName, null, null);
   }
 
-  /**
-   * Create authority.
-   *
-   * @param type the type
-   * @param shortName the short name
-   * @param authorityDisplayName the authority display name
-   * @param authorityZones the authority zones
-   * @return the result
-   */
+  /** {@inheritDoc} */
   @Override
   public String createAuthority(
       AuthorityType type,
@@ -229,8 +203,11 @@ public class MockAuthorityService implements AuthorityService, Serializable {
       Set<String> authorityZones) {
     String name = getName(null, shortName);
     NodeRef root = nodeService.getRootNode(STORE_REF_WORKSPACE_SPACESSTORE);
-		NodeRef system = nodeService.getChildByName(root, ASSOC_CHILDREN, NodeUtils.toAlfrescoCmName("system"));
-		NodeRef authorities = nodeService.getChildByName(system, ASSOC_CONTAINS, NodeUtils.toAlfrescoCmName("authorities"));
+    NodeRef system =
+        nodeService.getChildByName(root, ASSOC_CHILDREN, NodeUtils.toAlfrescoCmName("system"));
+    NodeRef authorities =
+        nodeService.getChildByName(
+            system, ASSOC_CONTAINS, NodeUtils.toAlfrescoCmName("authorities"));
     QName assocQName = createQName(CONTENT_MODEL_1_0_URI, name);
     NodeRef node =
         nodeService.createNode(authorities, ASSOC_CONTAINS, assocQName, TYPE_CONTENT).getChildRef();
@@ -239,10 +216,10 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Add authority.
+   * {@inheritDoc}
    *
-   * @param parentName the parent name
-   * @param childName the child name
+   * @param parentName the parentName
+   * @param childName the childName
    */
   @Override
   public void addAuthority(String parentName, String childName) {
@@ -250,10 +227,10 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Add authority.
+   * {@inheritDoc}
    *
-   * @param parentNames the parent names
-   * @param childName the child name
+   * @param parentNames the parentNames
+   * @param childName the childName
    */
   @Override
   public void addAuthority(Collection<String> parentNames, String childName) {
@@ -262,10 +239,10 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Remove authority.
+   * {@inheritDoc}
    *
-   * @param parentName the parent name
-   * @param childName the child name
+   * @param parentName the parentName
+   * @param childName the childName
    */
   @Override
   public void removeAuthority(String parentName, String childName) {
@@ -274,7 +251,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Delete authority.
+   * {@inheritDoc}
    *
    * @param name the name
    */
@@ -285,7 +262,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Delete authority.
+   * {@inheritDoc}
    *
    * @param name the name
    * @param cascade the cascade
@@ -297,7 +274,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Get contained authorities.
+   * {@inheritDoc}
    *
    * @param type the type
    * @param name the name
@@ -311,7 +288,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Get containing authorities.
+   * {@inheritDoc}
    *
    * @param type the type
    * @param name the name
@@ -324,16 +301,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
     return null;
   }
 
-  /**
-   * Get containing authorities in zone.
-   *
-   * @param type the type
-   * @param name the name
-   * @param zoneName the zone name
-   * @param filter the filter
-   * @param size the size
-   * @return the result
-   */
+  /** {@inheritDoc} */
   @Override
   public Set<String> getContainingAuthoritiesInZone(
       AuthorityType type, String name, String zoneName, AuthorityFilter filter, int size) {
@@ -342,7 +310,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Get short name.
+   * {@inheritDoc}
    *
    * @param name the name
    * @return the result
@@ -353,10 +321,10 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Get name.
+   * {@inheritDoc}
    *
    * @param type the type
-   * @param shortName the short name
+   * @param shortName the shortName
    * @return the result
    */
   @Override
@@ -365,7 +333,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Authority exists.
+   * {@inheritDoc}
    *
    * @param name the name
    * @return the result
@@ -376,7 +344,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Get authority display name.
+   * {@inheritDoc}
    *
    * @param name the name
    * @return the result
@@ -388,10 +356,10 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Set authority display name.
+   * {@inheritDoc}
    *
-   * @param authorityName the authority name
-   * @param authorityDisplayName the authority display name
+   * @param authorityName the authorityName
+   * @param authorityDisplayName the authorityDisplayName
    */
   @Override
   public void setAuthorityDisplayName(String authorityName, String authorityDisplayName) {
@@ -400,7 +368,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Get authority node ref.
+   * {@inheritDoc}
    *
    * @param name the name
    * @return the result
@@ -411,9 +379,9 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Get or create zone.
+   * {@inheritDoc}
    *
-   * @param zoneName the zone name
+   * @param zoneName the zoneName
    * @return the result
    */
   @Override
@@ -423,9 +391,9 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Get zone.
+   * {@inheritDoc}
    *
-   * @param zoneName the zone name
+   * @param zoneName the zoneName
    * @return the result
    */
   @Override
@@ -435,7 +403,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Get authority zones.
+   * {@inheritDoc}
    *
    * @param name the name
    * @return the result
@@ -447,9 +415,9 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Get all authorities in zone.
+   * {@inheritDoc}
    *
-   * @param zoneName the zone name
+   * @param zoneName the zoneName
    * @param type the type
    * @return the result
    */
@@ -460,9 +428,9 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Get all root authorities in zone.
+   * {@inheritDoc}
    *
-   * @param zoneName the zone name
+   * @param zoneName the zoneName
    * @param type the type
    * @return the result
    */
@@ -473,9 +441,9 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Add authority to zones.
+   * {@inheritDoc}
    *
-   * @param authorityName the authority name
+   * @param authorityName the authorityName
    * @param zones the zones
    */
   @Override
@@ -485,9 +453,9 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Remove authority from zones.
+   * {@inheritDoc}
    *
-   * @param authorityName the authority name
+   * @param authorityName the authorityName
    * @param zones the zones
    */
   @Override
@@ -497,7 +465,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Get default zones.
+   * {@inheritDoc}
    *
    * @return the result
    */
@@ -507,16 +475,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
     return null;
   }
 
-  /**
-   * Find authorities.
-   *
-   * @param type the type
-   * @param parentAuthority the parent authority
-   * @param immediate the immediate
-   * @param displayNamePattern the display name pattern
-   * @param zoneName the zone name
-   * @return the result
-   */
+  /** {@inheritDoc} */
   @Override
   public Set<String> findAuthorities(
       AuthorityType type,
@@ -529,7 +488,7 @@ public class MockAuthorityService implements AuthorityService, Serializable {
   }
 
   /**
-   * Set node service.
+   * Sets the node service.
    *
    * @param nodeService the node service
    */

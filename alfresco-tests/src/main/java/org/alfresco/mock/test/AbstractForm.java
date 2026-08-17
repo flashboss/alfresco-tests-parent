@@ -40,10 +40,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
 /**
- * Abstract base class for Alfresco test forms. Provides common setup and utility methods for
- * testing Alfresco components.
+ * Abstract base class for form-based tests. This class provides common functionality for testing
+ * Alfresco components using mock services without requiring a full server instance.
  *
- * @author vige
+ * @author Generated
+ * @version 7.4.2.1.1
  */
 @RunWith(RemoteTestRunner.class)
 @Remote(runnerClass = ClasspathTestRunner.class)
@@ -53,30 +54,29 @@ public abstract class AbstractForm {
   /** The service registry. */
   @Autowired protected ServiceRegistry serviceRegistry;
 
-  /** The spaces store. */
+  /** The spaces store node reference. */
   protected NodeRef spacesStore;
 
-  /** The archive. */
+  /** The archive node reference. */
   protected NodeRef archive;
 
-  /** The sites. */
+  /** The sites node reference. */
   protected NodeRef sites;
 
-  /** The shared. */
+  /** The shared node reference. */
   protected NodeRef shared;
 
-  /** The today. */
+  /** The today date. */
   protected Date today;
 
-  /** The today str. */
+  /** The today date as string. */
   protected String todayStr;
 
-  /** The company home. */
+  /** The company home node reference. */
   protected NodeRef companyHome;
 
-  /** Initializes the test environment with default folders and namespaces. */
+  /** Initializes the component. */
   public void init() {
-
     NamespaceService namespaceService = serviceRegistry.getNamespaceService();
     namespaceService.registerNamespace(
         NamespaceService.APP_MODEL_PREFIX, NamespaceService.APP_MODEL_1_0_URI);
@@ -130,7 +130,7 @@ public abstract class AbstractForm {
   }
 
   /**
-   * Inserts a new folder with a qualified name.
+   * Inserts a new folder with the specified prefix and local name.
    *
    * @param parent the parent node reference
    * @param prefix the namespace prefix
@@ -138,7 +138,11 @@ public abstract class AbstractForm {
    * @return the created folder node reference
    */
   protected NodeRef insertFolder(NodeRef parent, String prefix, String localName) {
-    return NodeUtils.insertFolder(parent, prefix, localName, serviceRegistry.getNodeService(),
+    return NodeUtils.insertFolder(
+        parent,
+        prefix,
+        localName,
+        serviceRegistry.getNodeService(),
         serviceRegistry.getNamespaceService());
   }
 
@@ -147,7 +151,7 @@ public abstract class AbstractForm {
    *
    * @param parent the parent node reference
    * @param name the document name
-   * @param text the text content
+   * @param text the document text content
    * @param properties the document properties
    * @return the created document node reference
    */
@@ -161,7 +165,7 @@ public abstract class AbstractForm {
    *
    * @param parent the parent node reference
    * @param name the document name
-   * @param text the byte array content
+   * @param text the document byte content
    * @param properties the document properties
    * @return the created document node reference
    */
@@ -171,14 +175,14 @@ public abstract class AbstractForm {
   }
 
   /**
-   * Inserts a new version for a document.
+   * Inserts a new version.
    *
-   * @param nodeRef the node reference to version
+   * @param nodeRef the node reference
    * @param name the version name
-   * @param text the version content
+   * @param text the version text content
    * @param version the version label
    * @param versionType the version type
-   * @return the frozen state node reference
+   * @return the created version node reference
    */
   protected NodeRef insertVersion(
       NodeRef nodeRef, String name, String text, String version, VersionType versionType) {
@@ -186,14 +190,14 @@ public abstract class AbstractForm {
   }
 
   /**
-   * Inserts a ZIP file as a document.
+   * Inserts a new ZIP file.
    *
    * @param parent the parent node reference
    * @param zipName the ZIP file name
-   * @param entryName the entry name inside the ZIP
+   * @param entryName the entry name within the ZIP
    * @param text the text content
-   * @param properties the document properties
-   * @return the created node reference
+   * @param properties the properties map
+   * @return the created ZIP node reference
    * @throws IOException if an I/O error occurs
    */
   protected NodeRef insertZip(
@@ -207,11 +211,11 @@ public abstract class AbstractForm {
   }
 
   /**
-   * Encrypts an input stream using SHA-256.
+   * Encrypts the input stream using SHA-256.
    *
    * @param inputStream the input stream to encrypt
-   * @return the Base64 encoded hash
-   * @throws Exception if encryption fails
+   * @return the encrypted hash as a Base64 string
+   * @throws Exception if an error occurs during encryption
    */
   protected String encrypt(InputStream inputStream) throws Exception {
     MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -222,13 +226,13 @@ public abstract class AbstractForm {
   }
 
   /**
-   * Unmarshals an XML document from a node into a Java object.
+   * Gets an object from XML content.
    *
-   * @param <T> the type of the object
+   * @param <T> the object type
    * @param createdNodeRef the node reference containing the XML
-   * @param objectClass the target class
+   * @param objectClass the object class
    * @return the unmarshalled object
-   * @throws Exception if unmarshalling fails
+   * @throws Exception if an error occurs during unmarshalling
    */
   protected <T> T getObjectFromXml(NodeRef createdNodeRef, Class<T> objectClass) throws Exception {
     ContentService contentService = serviceRegistry.getContentService();
@@ -242,7 +246,7 @@ public abstract class AbstractForm {
     return result;
   }
 
-  /** Executes the test action. Sets the current date. */
+  /** Executes the action and sets the current date. */
   protected void executeAction() {
     // data per cercare i file generati
     today = new Date();
