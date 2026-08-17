@@ -1,7 +1,12 @@
 package org.alfresco.mock.test;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+import static org.alfresco.service.cmr.repository.StoreRef.PROTOCOL_ARCHIVE;
+import static org.alfresco.service.cmr.repository.StoreRef.PROTOCOL_WORKSPACE;
+import static org.alfresco.service.cmr.repository.StoreRef.STORE_REF_ARCHIVE_SPACESSTORE;
+import static org.alfresco.service.cmr.repository.StoreRef.STORE_REF_WORKSPACE_SPACESSTORE;
+
+import com.tradeshift.test.remote.Remote;
+import com.tradeshift.test.remote.RemoteTestRunner;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,125 +14,241 @@ import java.io.Serializable;
 import java.security.MessageDigest;
 import java.util.Date;
 import java.util.Map;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
-
+import org.alfresco.mock.ClasspathTestRunner;
+import org.alfresco.mock.NodeUtils;
+import org.alfresco.mock.ZipUtils;
 import org.alfresco.model.ContentModel;
-import org.alfresco.repo.content.MimetypeMap;
+import org.alfresco.repo.site.SiteModel;
+import org.alfresco.repo.version.Version2Model;
+import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.model.FileFolderService;
 import org.alfresco.service.cmr.repository.ContentService;
-import org.alfresco.service.cmr.repository.ContentWriter;
-import org.alfresco.service.cmr.repository.MimetypeService;
 import org.alfresco.service.cmr.repository.NodeRef;
-import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.cmr.repository.StoreRef;
-import org.alfresco.service.cmr.search.ResultSet;
-import org.alfresco.service.cmr.search.SearchService;
+import org.alfresco.service.cmr.version.VersionType;
 import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
 
-public class AbstractForm {
+/**
+ * Abstract base class for form-based tests. This class provides common functionality for testing
+ * Alfresco components using mock services without requiring a full server instance.
+ *
+ * @author Generated
+ * @version 7.4.2.1.1
+ */
+@RunWith(RemoteTestRunner.class)
+@Remote(runnerClass = ClasspathTestRunner.class)
+@ContextConfiguration("classpath:test-module-context.xml")
+public abstract class AbstractForm {
 
-	@Autowired
-	protected NodeService nodeService;
+  /** The service registry. */
+  @Autowired protected ServiceRegistry serviceRegistry;
 
-	@Autowired
-	protected ContentService contentService;
+  /** The spaces store node reference. */
+  protected NodeRef spacesStore;
 
-	@Autowired
-	protected FileFolderService fileFolderService;
+  /** The archive node reference. */
+  protected NodeRef archive;
 
-	@Autowired
-	protected SearchService searchService;
+  /** The sites node reference. */
+  protected NodeRef sites;
 
-	@Autowired
-	protected MimetypeService mimetypeService;
+  /** The shared node reference. */
+  protected NodeRef shared;
 
-	protected NodeRef workspace;
-	protected NodeRef archive;
-	protected NodeRef site;
-	protected Date today;
-	protected String todayStr;
+  /** The today date. */
+  protected Date today;
 
-	public void init() {
-		// elimino i vecchi documenti
-		ResultSet nodes = searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE,
-				SearchService.LANGUAGE_FTS_ALFRESCO, "PATH:\"*\"");
-		if (nodes.length() > 0)
-			for (NodeRef node : nodes.getNodeRefs())
-				fileFolderService.delete(node);
-		try {
-			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_WORKSPACE));
-			FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + StoreRef.PROTOCOL_ARCHIVE));
-			FileUtils.deleteDirectory(ZipUtils.TEMP_DIR);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+  /** The today date as string. */
+  protected String todayStr;
 
-		// creo le directory iniziali per i pdv, gli rdv e il repository
-		NodeRef root = insertFolder(new NodeRef(new StoreRef("", ""), ""), ".");
-		workspace = insertFolder(root, StoreRef.PROTOCOL_WORKSPACE);
-		archive = insertFolder(root, StoreRef.PROTOCOL_ARCHIVE);
-		site = insertFolder(workspace, "cm:Site");
-	}
+  /** The company home node reference. */
+  protected NodeRef companyHome;
 
-	protected NodeRef insertFolder(NodeRef parent, String name) {
-		return fileFolderService.create(parent, name, ContentModel.TYPE_FOLDER).getNodeRef();
-	}
+  /** Initializes the component. */
+  public void init() {
+    NamespaceService namespaceService = serviceRegistry.getNamespaceService();
+    namespaceService.registerNamespace(
+        NamespaceService.APP_MODEL_PREFIX, NamespaceService.APP_MODEL_1_0_URI);
+    namespaceService.registerNamespace(SiteModel.SITE_MODEL_PREFIX, SiteModel.SITE_MODEL_URL);
+    namespaceService.registerNamespace(
+        NamespaceService.CONTENT_MODEL_PREFIX, NamespaceService.CONTENT_MODEL_1_0_URI);
+    namespaceService.registerNamespace(
+        NamespaceService.SYSTEM_MODEL_PREFIX, NamespaceService.SYSTEM_MODEL_1_0_URI);
 
-	protected NodeRef insertDocument(NodeRef parent, String name, String text, Map<QName, Serializable> properties) {
-		NodeRef node = nodeService.createNode(parent, ContentModel.ASSOC_CONTAINS,
-				QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, name), ContentModel.TYPE_CONTENT, properties)
-				.getChildRef();
-		InputStream inputStream = new ByteArrayInputStream(text.getBytes());
-		ContentWriter writer = contentService.getWriter(node, ContentModel.PROP_CONTENT, true);
-		writer.setMimetype(mimetypeService.getMimetype(mimetypeService.getExtension(name)));
-		writer.putContent(inputStream);
-		return node;
-	}
+    MockNodeService nodeService = (MockNodeService) serviceRegistry.getNodeService();
+    MockVersionService versionService = (MockVersionService) serviceRegistry.getVersionService();
+    nodeService.init();
+    versionService.init();
+    try {
+      FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + PROTOCOL_WORKSPACE));
+      FileUtils.deleteDirectory(new File(MockContentService.FOLDER_TEST + PROTOCOL_ARCHIVE));
+      FileUtils.deleteDirectory(ZipUtils.TEMP_DIR);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
 
-	protected NodeRef insertZip(NodeRef parent, String zipName, String entryName, String text,
-			Map<QName, Serializable> properties) throws IOException {
-		NodeRef node = nodeService.createNode(parent, ContentModel.ASSOC_CONTAINS,
-				QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, zipName), ContentModel.TYPE_CONTENT,
-				properties).getChildRef();
-		ByteArrayOutputStream output = new ByteArrayOutputStream();
-		ZipUtils.addEntryToZip(text, entryName, output);
-		ContentWriter writer = contentService.getWriter(node, ContentModel.PROP_CONTENT, true);
-		writer.setMimetype(MimetypeMap.MIMETYPE_ZIP);
-		writer.putContent(new ByteArrayInputStream(output.toByteArray()));
-		return node;
-	}
+    // creo le directory iniziali per i pdv, gli rdv e il repository
+    NodeRef root = insertFolder(new NodeRef(new StoreRef("", ""), ""), ".");
+    NodeRef workspaceRoot = insertFolder(root, PROTOCOL_WORKSPACE);
+    spacesStore =
+        insertFolder(
+            workspaceRoot,
+            NamespaceService.APP_MODEL_PREFIX,
+            STORE_REF_WORKSPACE_SPACESSTORE.getIdentifier());
+    insertFolder(workspaceRoot, NamespaceService.APP_MODEL_PREFIX, Version2Model.STORE_ID);
+    companyHome = insertFolder(spacesStore, NamespaceService.APP_MODEL_PREFIX, "company_home");
+    NodeRef system = insertFolder(spacesStore, NamespaceService.SYSTEM_MODEL_PREFIX, "system");
+    NodeRef archiveRoot = insertFolder(root, PROTOCOL_ARCHIVE);
+    archive = insertFolder(archiveRoot, STORE_REF_ARCHIVE_SPACESSTORE.getIdentifier());
+    sites =
+        insertFolder(companyHome, SiteModel.SITE_MODEL_PREFIX, SiteModel.TYPE_SITES.getLocalName());
+    shared = insertFolder(companyHome, NamespaceService.APP_MODEL_PREFIX, "shared");
+    insertFolder(system, NamespaceService.SYSTEM_MODEL_PREFIX, "authorities");
+  }
 
-	protected String encrypt(InputStream inputStream) throws Exception {
-		MessageDigest digest = MessageDigest.getInstance("SHA-256");
-		byte[] contentBytes = IOUtils.toByteArray(inputStream);
-		byte[] hash = digest.digest(contentBytes);
-		String hashOrigString = Base64.encodeBase64String(hash);
-		return hashOrigString;
-	}
+  /**
+   * Inserts a new folder.
+   *
+   * @param parent the parent node reference
+   * @param name the folder name
+   * @return the created folder node reference
+   */
+  protected NodeRef insertFolder(NodeRef parent, String name) {
+    FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
+    return fileFolderService.create(parent, name, ContentModel.TYPE_FOLDER).getNodeRef();
+  }
 
-	protected <T> T getObjectFromXml(NodeRef createdNodeRef, Class<T> objectClass) throws Exception {
-		final JAXBContext contextPdv = JAXBContext.newInstance(objectClass);
-		final Unmarshaller unmarshallerPdv = contextPdv.createUnmarshaller();
-		InputStream inputStream = contentService.getReader(createdNodeRef, ContentModel.PROP_CONTENT)
-				.getContentInputStream();
-		JAXBElement<T> jaxbResult = (JAXBElement<T>) unmarshallerPdv.unmarshal(new StreamSource(inputStream),
-				objectClass);
-		T result = jaxbResult.getValue();
-		return result;
-	}
+  /**
+   * Inserts a new folder with the specified prefix and local name.
+   *
+   * @param parent the parent node reference
+   * @param prefix the namespace prefix
+   * @param localName the local name
+   * @return the created folder node reference
+   */
+  protected NodeRef insertFolder(NodeRef parent, String prefix, String localName) {
+    return NodeUtils.insertFolder(
+        parent,
+        prefix,
+        localName,
+        serviceRegistry.getNodeService(),
+        serviceRegistry.getNamespaceService());
+  }
 
-	protected void executeAction() {
-		// data per cercare i file generati
-		today = new Date();
-	}
+  /**
+   * Inserts a new document with text content.
+   *
+   * @param parent the parent node reference
+   * @param name the document name
+   * @param text the document text content
+   * @param properties the document properties
+   * @return the created document node reference
+   */
+  protected NodeRef insertDocument(
+      NodeRef parent, String name, String text, Map<QName, Serializable> properties) {
+    return NodeUtils.insertDocument(parent, name, text, properties, serviceRegistry);
+  }
 
+  /**
+   * Inserts a new document with byte array content.
+   *
+   * @param parent the parent node reference
+   * @param name the document name
+   * @param text the document byte content
+   * @param properties the document properties
+   * @return the created document node reference
+   */
+  protected NodeRef insertDocument(
+      NodeRef parent, String name, byte[] text, Map<QName, Serializable> properties) {
+    return NodeUtils.insertDocument(parent, name, text, properties, serviceRegistry);
+  }
+
+  /**
+   * Inserts a new version.
+   *
+   * @param nodeRef the node reference
+   * @param name the version name
+   * @param text the version text content
+   * @param version the version label
+   * @param versionType the version type
+   * @return the created version node reference
+   */
+  protected NodeRef insertVersion(
+      NodeRef nodeRef, String name, String text, String version, VersionType versionType) {
+    return NodeUtils.insertVersion(nodeRef, name, text, version, versionType, serviceRegistry);
+  }
+
+  /**
+   * Inserts a new ZIP file.
+   *
+   * @param parent the parent node reference
+   * @param zipName the ZIP file name
+   * @param entryName the entry name within the ZIP
+   * @param text the text content
+   * @param properties the properties map
+   * @return the created ZIP node reference
+   * @throws IOException if an I/O error occurs
+   */
+  protected NodeRef insertZip(
+      NodeRef parent,
+      String zipName,
+      String entryName,
+      String text,
+      Map<QName, Serializable> properties)
+      throws IOException {
+    return ZipUtils.insertZip(parent, zipName, entryName, text, properties, serviceRegistry);
+  }
+
+  /**
+   * Encrypts the input stream using SHA-256.
+   *
+   * @param inputStream the input stream to encrypt
+   * @return the encrypted hash as a Base64 string
+   * @throws Exception if an error occurs during encryption
+   */
+  protected String encrypt(InputStream inputStream) throws Exception {
+    MessageDigest digest = MessageDigest.getInstance("SHA-256");
+    byte[] contentBytes = IOUtils.toByteArray(inputStream);
+    byte[] hash = digest.digest(contentBytes);
+    String hashOrigString = Base64.encodeBase64String(hash);
+    return hashOrigString;
+  }
+
+  /**
+   * Gets an object from XML content.
+   *
+   * @param <T> the object type
+   * @param createdNodeRef the node reference containing the XML
+   * @param objectClass the object class
+   * @return the unmarshalled object
+   * @throws Exception if an error occurs during unmarshalling
+   */
+  protected <T> T getObjectFromXml(NodeRef createdNodeRef, Class<T> objectClass) throws Exception {
+    ContentService contentService = serviceRegistry.getContentService();
+    final JAXBContext contextPdv = JAXBContext.newInstance(objectClass);
+    final Unmarshaller unmarshallerPdv = contextPdv.createUnmarshaller();
+    InputStream inputStream =
+        contentService.getReader(createdNodeRef, ContentModel.PROP_CONTENT).getContentInputStream();
+    JAXBElement<T> jaxbResult =
+        (JAXBElement<T>) unmarshallerPdv.unmarshal(new StreamSource(inputStream), objectClass);
+    T result = jaxbResult.getValue();
+    return result;
+  }
+
+  /** Executes the action and sets the current date. */
+  protected void executeAction() {
+    // data per cercare i file generati
+    today = new Date();
+  }
 }
