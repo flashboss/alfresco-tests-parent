@@ -30,13 +30,18 @@ import org.alfresco.service.namespace.NamespaceService;
 import org.alfresco.service.namespace.QName;
 
 /**
- * Utility class providing helper methods.
+ * Mock implementation of the NodeUtils class for testing purposes. This class provides a mock
+ * implementation that allows unit and integration tests to run without requiring a full Alfresco
+ * server instance.
  *
- * @author vige
+ * @author Generated
+ * @version 7.4.2.1.1
  */
 public class NodeUtils {
+
   /**
-   * Production cm:name values for well-known Alfresco spaces.
+   * Production {@code cm:name} values for well-known Alfresco spaces. Association local names stay
+   * unchanged ({@code company_home}, {@code shared}) so filesystem paths keep working.
    */
   private static final Map<String, String> WELL_KNOWN_CM_NAMES = new HashMap<String, String>();
 
@@ -52,12 +57,12 @@ public class NodeUtils {
   }
 
   /**
-   * Insert folder.
+   * Inserts a new folder.
    *
    * @param parent the parent
    * @param name the name
-   * @param fileFolderService the file folder service
-   * @return the node ref
+   * @param fileFolderService the fileFolderService
+   * @return the result
    */
   public static NodeRef insertFolder(
       NodeRef parent, String name, FileFolderService fileFolderService) {
@@ -65,21 +70,42 @@ public class NodeUtils {
   }
 
   /**
-   * Inserts a well-known Alfresco space using the association QName and production cm:name.
+   * Inserts a well-known Alfresco space using the association QName (for example {@code
+   * app:company_home} / {@code app:shared}) and the production {@code cm:name} (for example {@code
+   * Company Home} / {@code Shared}). Store-root spaces ({@code company_home}, {@code system}) use
+   * {@code sys:children}; folder spaces use {@code cm:contains}.
+   *
+   * @param parent the parent node reference
+   * @param prefix the namespace prefix of the child association
+   * @param localName the local name of the child association
+   * @param nodeService the node service
+   * @param namespaceService the namespace service
+   * @return the created folder node reference
    */
-  public static NodeRef insertFolder(NodeRef parent, String prefix, String localName,
-      NodeService nodeService, NamespaceService namespaceService) {
+  public static NodeRef insertFolder(
+      NodeRef parent,
+      String prefix,
+      String localName,
+      NodeService nodeService,
+      NamespaceService namespaceService) {
     QName assocQName = QName.createQName(prefix, localName, namespaceService);
-    QName assocTypeQName = "company_home".equals(localName) || "system".equals(localName)
-        ? ContentModel.ASSOC_CHILDREN : ContentModel.ASSOC_CONTAINS;
+    QName assocTypeQName =
+        "company_home".equals(localName) || "system".equals(localName)
+            ? ContentModel.ASSOC_CHILDREN
+            : ContentModel.ASSOC_CONTAINS;
     Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
     properties.put(ContentModel.PROP_NAME, toAlfrescoCmName(localName));
-    return nodeService.createNode(parent, assocTypeQName, assocQName, ContentModel.TYPE_FOLDER, properties)
+    return nodeService
+        .createNode(parent, assocTypeQName, assocQName, ContentModel.TYPE_FOLDER, properties)
         .getChildRef();
   }
 
   /**
-   * Converts an association local name to the cm:name used in a real Alfresco bootstrap.
+   * Converts an association local name to the {@code cm:name} used in a real Alfresco bootstrap.
+   * {@code company_home} becomes {@code Company Home}, {@code shared} becomes {@code Shared}.
+   *
+   * @param localName the association local name
+   * @return the display name stored in {@code cm:name}
    */
   public static String toAlfrescoCmName(String localName) {
     if (localName == null || localName.isEmpty()) {
@@ -106,7 +132,16 @@ public class NodeUtils {
     return sb.toString();
   }
 
-
+  /**
+   * Inserts a new document.
+   *
+   * @param parent the parent node reference
+   * @param name the document name
+   * @param text the document text content
+   * @param properties the document properties map
+   * @param serviceRegistry the service registry
+   * @return the created document node reference
+   */
   public static NodeRef insertDocument(
       NodeRef parent,
       String name,
@@ -116,6 +151,16 @@ public class NodeUtils {
     return insertDocument(parent, name, text.getBytes(), properties, serviceRegistry);
   }
 
+  /**
+   * Inserts a new document.
+   *
+   * @param parent the parent node reference
+   * @param name the document name
+   * @param text the document byte content
+   * @param properties the document properties map
+   * @param serviceRegistry the service registry
+   * @return the created document node reference
+   */
   public static NodeRef insertDocument(
       NodeRef parent,
       String name,
@@ -126,8 +171,6 @@ public class NodeUtils {
     ContentService contentService = serviceRegistry.getContentService();
     MimetypeService mimetypeService = serviceRegistry.getMimetypeService();
     NamespaceService namespaceService = serviceRegistry.getNamespaceService();
-
-    /** The type. */
     QName type = null;
     if (properties != null) type = (QName) properties.get(ContentModel.TYPE_BASE);
     if (type == null)
@@ -148,6 +191,17 @@ public class NodeUtils {
     return node;
   }
 
+  /**
+   * Inserts a new version.
+   *
+   * @param nodeRef the node reference
+   * @param name the version name
+   * @param text the version text content
+   * @param version the version label
+   * @param versionType the version type
+   * @param serviceRegistry the service registry
+   * @return the created version node reference
+   */
   public static NodeRef insertVersion(
       NodeRef nodeRef,
       String name,
@@ -166,22 +220,23 @@ public class NodeUtils {
   }
 
   /**
-   * Sort by name.
+   * Sorts node references by name.
    *
-   * @param nodeRefs the node refs
-   * @return the list
+   * @param nodeRefs the set of node references to sort
+   * @return the sorted list of node references
    */
   public static List<NodeRef> sortByName(Set<NodeRef> nodeRefs) {
     NodeRef[] nodeArray = nodeRefs.toArray(new NodeRef[0]);
     Arrays.sort(
         nodeArray,
         new Comparator<NodeRef>() {
+
           /**
-           * Compare.
+           * {@inheritDoc}
            *
            * @param o1 the o1
            * @param o2 the o2
-           * @return the int
+           * @return the result
            */
           @Override
           public int compare(NodeRef o1, NodeRef o2) {
@@ -192,10 +247,10 @@ public class NodeUtils {
   }
 
   /**
-   * Generate u u i d.
+   * Performs generate uuid.
    *
-   * @param nodePath the node path
-   * @return the string
+   * @param nodePath the nodePath
+   * @return the result
    */
   public static String generateUUID(String nodePath) {
     if (nodePath.equals(FOLDER_TEST + PROTOCOL_WORKSPACE))
