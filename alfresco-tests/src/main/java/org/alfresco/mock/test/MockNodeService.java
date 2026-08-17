@@ -313,8 +313,14 @@ public class MockNodeService implements NodeService, Serializable {
 	@Override
 	public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef, QNamePattern typeQNamePattern,
 			QNamePattern qnamePattern) throws InvalidNodeRefException {
-		// TODO Auto-generated method stub
-		return null;
+		List<ChildAssociationRef> result = new ArrayList<ChildAssociationRef>();
+		for (ChildAssociationRef child : getChildAssocs(nodeRef)) {
+			if (matchesAssocType(typeQNamePattern, child.getTypeQName())
+					&& (qnamePattern == null || qnamePattern.isMatch(child.getQName()))) {
+				result.add(child);
+			}
+		}
+		return result;
 	}
 
 	@Override
@@ -346,7 +352,15 @@ public class MockNodeService implements NodeService, Serializable {
 
 	@Override
 	public NodeRef getChildByName(NodeRef nodeRef, QName assocTypeQName, String childName) {
-		// TODO Auto-generated method stub
+				assertNodeExists(nodeRef);
+		List<ChildAssociationRef> children = getChildAssocs(nodeRef);
+		for (ChildAssociationRef ref : children) {
+			if (assocTypeQName != null && !matchesAssocType(assocTypeQName, ref.getTypeQName()))
+				continue;
+			String name = (String) getProperty(ref.getChildRef(), ContentModel.PROP_NAME);
+			if (childName != null && childName.equals(name))
+				return ref.getChildRef();
+		}
 		return null;
 	}
 
