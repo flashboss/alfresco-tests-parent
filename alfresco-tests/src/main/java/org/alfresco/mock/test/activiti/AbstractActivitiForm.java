@@ -134,7 +134,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
     sites =
         insertFolder(companyHome, SiteModel.SITE_MODEL_PREFIX, SiteModel.TYPE_SITES.getLocalName());
     shared = insertFolder(companyHome, NamespaceService.APP_MODEL_PREFIX, "shared");
-    insertFolder(system, SiteModel.SITE_MODEL_PREFIX, "authorities");
+    insertFolder(system, NamespaceService.SYSTEM_MODEL_PREFIX, "authorities");
     NodeRef workflow = insertFolder(spacesStore, "workflow");
     NodeRef packages = insertFolder(workflow, "packages");
     NodeRef bpmPackageFolder = insertFolder(packages, "pkg_919f220e-870a-4c56-ba11-5030ee5325f0");
@@ -193,14 +193,10 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
    * @return the result
    */
   protected NodeRef insertFolder(NodeRef parent, String prefix, String localName) {
-    ServiceRegistry serviceRegistry =
-        ((ActivitiProcessEngineConfiguration) processEngineConfiguration).getServiceRegistry();
-    FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
-    NamespaceService namespaceService = serviceRegistry.getNamespaceService();
-    QName qname = QName.createQName(prefix, localName, namespaceService);
-    return fileFolderService
-        .create(parent, qname.getPrefixString(), ContentModel.TYPE_FOLDER)
-        .getNodeRef();
+    ServiceRegistry serviceRegistry = ((ActivitiProcessEngineConfiguration) processEngineConfiguration)
+        .getServiceRegistry();
+    return NodeUtils.insertFolder(parent, prefix, localName, serviceRegistry.getNodeService(),
+        serviceRegistry.getNamespaceService());
   }
 
   /**
