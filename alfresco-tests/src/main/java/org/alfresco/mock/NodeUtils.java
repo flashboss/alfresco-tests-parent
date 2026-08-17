@@ -40,6 +40,23 @@ import org.alfresco.service.namespace.QName;
 public class NodeUtils {
 
   /**
+   * Production {@code cm:name} values for well-known Alfresco spaces. Association local names stay
+   * unchanged ({@code company_home}, {@code shared}) so filesystem paths keep working.
+   */
+  private static final Map<String, String> WELL_KNOWN_CM_NAMES = new HashMap<String, String>();
+
+  static {
+    WELL_KNOWN_CM_NAMES.put("company_home", "Company Home");
+    WELL_KNOWN_CM_NAMES.put("shared", "Shared");
+    WELL_KNOWN_CM_NAMES.put("sites", "Sites");
+    WELL_KNOWN_CM_NAMES.put("system", "System");
+    WELL_KNOWN_CM_NAMES.put("authorities", "Authorities");
+    WELL_KNOWN_CM_NAMES.put("guest_home", "Guest Home");
+    WELL_KNOWN_CM_NAMES.put("user_homes", "User Homes");
+    WELL_KNOWN_CM_NAMES.put("dictionary", "Data Dictionary");
+  }
+
+  /**
    * Inserts a new folder.
    *
    * @param parent the parent
@@ -50,6 +67,69 @@ public class NodeUtils {
   public static NodeRef insertFolder(
       NodeRef parent, String name, FileFolderService fileFolderService) {
     return fileFolderService.create(parent, name, ContentModel.TYPE_FOLDER).getNodeRef();
+  }
+
+  /**
+   * Inserts a well-known Alfresco space using the association QName (for example {@code
+   * app:company_home} / {@code app:shared}) and the production {@code cm:name} (for example {@code
+   * Company Home} / {@code Shared}). Store-root spaces ({@code company_home}, {@code system}) use
+   * {@code sys:children}; folder spaces use {@code cm:contains}.
+   *
+   * @param parent the parent node reference
+   * @param prefix the namespace prefix of the child association
+   * @param localName the local name of the child association
+   * @param nodeService the node service
+   * @param namespaceService the namespace service
+   * @return the created folder node reference
+   */
+  public static NodeRef insertFolder(
+      NodeRef parent,
+      String prefix,
+      String localName,
+      NodeService nodeService,
+      NamespaceService namespaceService) {
+    QName assocQName = QName.createQName(prefix, localName, namespaceService);
+    QName assocTypeQName =
+        "company_home".equals(localName) || "system".equals(localName)
+            ? ContentModel.ASSOC_CHILDREN
+            : ContentModel.ASSOC_CONTAINS;
+    Map<QName, Serializable> properties = new HashMap<QName, Serializable>();
+    properties.put(ContentModel.PROP_NAME, toAlfrescoCmName(localName));
+    return nodeService
+        .createNode(parent, assocTypeQName, assocQName, ContentModel.TYPE_FOLDER, properties)
+        .getChildRef();
+  }
+
+  /**
+   * Converts an association local name to the {@code cm:name} used in a real Alfresco bootstrap.
+   * {@code company_home} becomes {@code Company Home}, {@code shared} becomes {@code Shared}.
+   *
+   * @param localName the association local name
+   * @return the display name stored in {@code cm:name}
+   */
+  public static String toAlfrescoCmName(String localName) {
+    if (localName == null || localName.isEmpty()) {
+      return localName;
+    }
+    String known = WELL_KNOWN_CM_NAMES.get(localName);
+    if (known != null) {
+      return known;
+    }
+    String[] parts = localName.split("_");
+    StringBuilder sb = new StringBuilder(localName.length() + 4);
+    for (int i = 0; i < parts.length; i++) {
+      if (i > 0) {
+        sb.append(' ');
+      }
+      String part = parts[i];
+      if (!part.isEmpty()) {
+        sb.append(Character.toUpperCase(part.charAt(0)));
+        if (part.length() > 1) {
+          sb.append(part.substring(1));
+        }
+      }
+    }
+    return sb.toString();
   }
 
   /**
