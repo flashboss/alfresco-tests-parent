@@ -134,7 +134,7 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
 		archive = insertFolder(root, StoreRef.PROTOCOL_ARCHIVE);
 		sites = insertFolder(companyHome, SiteModel.SITE_MODEL_PREFIX, SiteModel.TYPE_SITES.getLocalName());
 		shared = insertFolder(companyHome, NamespaceService.APP_MODEL_PREFIX, "shared");
-		insertFolder(system, SiteModel.SITE_MODEL_PREFIX, "authorities");
+		insertFolder(system, NamespaceService.SYSTEM_MODEL_PREFIX, "authorities");
 		NodeRef workflow = insertFolder(spacesStore, "workflow");
 		NodeRef packages = insertFolder(workflow, "packages");
 		NodeRef bpmPackageFolder = insertFolder(packages, "pkg_919f220e-870a-4c56-ba11-5030ee5325f0");
@@ -190,19 +190,11 @@ public abstract class AbstractActivitiForm extends ResourceActivitiTestCase {
  * @return the node ref
  */
 	protected NodeRef insertFolder(NodeRef parent, String prefix, String localName) {
-		ServiceRegistry serviceRegistry = ((ActivitiProcessEngineConfiguration) processEngineConfiguration)
-				.getServiceRegistry();
-		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
-  /**
-  * Init.
-  *
-  * @param variables the variables
-  */
-		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
-  /** The qname. */
-		QName qname = QName.createQName(prefix, localName, namespaceService);
-		return fileFolderService.create(parent, qname.getPrefixString(), ContentModel.TYPE_FOLDER).getNodeRef();
-	}
+    ServiceRegistry serviceRegistry = ((ActivitiProcessEngineConfiguration) processEngineConfiguration)
+        .getServiceRegistry();
+    return NodeUtils.insertFolder(parent, prefix, localName, serviceRegistry.getNodeService(),
+        serviceRegistry.getNamespaceService());
+  }
 
 	protected NodeRef insertDocument(NodeRef parent, String name, String text, Map<QName, Serializable> properties) {
 		ActivitiProcessEngineConfiguration activitiProcessEngineConfiguration = (ActivitiProcessEngineConfiguration) processEngineConfiguration;

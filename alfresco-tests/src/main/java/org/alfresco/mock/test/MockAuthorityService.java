@@ -26,6 +26,8 @@ import org.alfresco.service.cmr.security.AuthorityService;
 import org.alfresco.service.cmr.security.AuthorityType;
 import org.alfresco.service.namespace.QName;
 import org.springframework.beans.factory.annotation.Autowired;
+import static org.alfresco.model.ContentModel.ASSOC_CHILDREN;
+import org.alfresco.mock.NodeUtils;
 
 /**
  * Mock implementation of the Alfresco AuthorityService for testing purposes.

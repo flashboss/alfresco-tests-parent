@@ -105,7 +105,7 @@ public abstract class AbstractForm {
 		archive = insertFolder(archiveRoot, STORE_REF_ARCHIVE_SPACESSTORE.getIdentifier());
 		sites = insertFolder(companyHome, SiteModel.SITE_MODEL_PREFIX, SiteModel.TYPE_SITES.getLocalName());
 		shared = insertFolder(companyHome, NamespaceService.APP_MODEL_PREFIX, "shared");
-		insertFolder(system, SiteModel.SITE_MODEL_PREFIX, "authorities");
+		insertFolder(system, NamespaceService.SYSTEM_MODEL_PREFIX, "authorities");
 	}
 
  /**
@@ -143,20 +143,9 @@ public abstract class AbstractForm {
  * @return the node ref
  */
 	protected NodeRef insertFolder(NodeRef parent, String prefix, String localName) {
-  /**
-  * Insert folder.
-  *
-  * @param parent the parent
-  * @param name the name
-  * @return the node ref
-  */
-		FileFolderService fileFolderService = serviceRegistry.getFileFolderService();
-  /** Init. */
-		NamespaceService namespaceService = serviceRegistry.getNamespaceService();
-  /** The qname. */
-		QName qname = QName.createQName(prefix, localName, namespaceService);
-		return fileFolderService.create(parent, qname.getPrefixString(), ContentModel.TYPE_FOLDER).getNodeRef();
-	}
+    return NodeUtils.insertFolder(parent, prefix, localName, serviceRegistry.getNodeService(),
+        serviceRegistry.getNamespaceService());
+  }
 
 	protected NodeRef insertDocument(NodeRef parent, String name, String text, Map<QName, Serializable> properties) {
 		return NodeUtils.insertDocument(parent, name, text, properties, serviceRegistry);
