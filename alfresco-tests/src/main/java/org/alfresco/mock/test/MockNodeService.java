@@ -611,34 +611,42 @@ public class MockNodeService implements NodeService, Serializable {
    */
   @Override
   public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef) throws InvalidNodeRefException {
+    assertNodeExists(nodeRef);
     List<ChildAssociationRef> result = new ArrayList<ChildAssociationRef>();
+    String parentPath = getPathAsString(nodeRef);
+    if (parentPath == null)
+      return result;
     for (NodeRef node : nodeRefs.keySet()) {
       Path path = getPath(node);
-      /** The parent path. */
-      String parentPath = path.subPath(path.size() - 2).toString();
-      if (getPathAsString(nodeRef).equals(parentPath))
-        result.add(
-            new ChildAssociationRef(ContentModel.ASSOC_CONTAINS, nodeRef, getType(node), node));
+      if (path == null || path.size() < 2)
+        continue;
+      String childParentPath = path.subPath(path.size() - 2).toString();
+      if (parentPath.equals(childParentPath))
+        result.add(new ChildAssociationRef(getAssocTypeQName(node), nodeRef, getAssocQName(node), node));
     }
     return result;
   }
 
   @Override
-  public List<ChildAssociationRef> getChildAssocs(
-      NodeRef nodeRef, QNamePattern typeQNamePattern, QNamePattern qnamePattern)
-      throws InvalidNodeRefException {
-    return getChildAssocs(nodeRef);
+  public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef, QNamePattern typeQNamePattern,
+      QNamePattern qnamePattern) throws InvalidNodeRefException {
+    List<ChildAssociationRef> result = new ArrayList<ChildAssociationRef>();
+    for (ChildAssociationRef child : getChildAssocs(nodeRef)) {
+      if (matchesAssocType(typeQNamePattern, child.getTypeQName())
+          && (qnamePattern == null || qnamePattern.isMatch(child.getQName()))) {
+        result.add(child);
+      }
+    }
+    return result;
   }
 
   @Override
-  public List<ChildAssociationRef> getChildAssocs(
-      NodeRef nodeRef,
-      QNamePattern typeQNamePattern,
-      QNamePattern qnamePattern,
-      int maxResults,
-      boolean preload)
-      throws InvalidNodeRefException {
-    return getChildAssocs(nodeRef, typeQNamePattern, qnamePattern, preload);
+  public List<ChildAssociationRef> getChildAssocs(NodeRef nodeRef, QNamePattern typeQNamePattern,
+      QNamePattern qnamePattern, int maxResults, boolean preload) throws InvalidNodeRefException {
+    List<ChildAssociationRef> result = getChildAssocs(nodeRef, typeQNamePattern, qnamePattern, preload);
+    if (maxResults >= 0 && result.size() > maxResults)
+      return new ArrayList<ChildAssociationRef>(result.subList(0, maxResults));
+    return result;
   }
 
   @Override
@@ -668,8 +676,8 @@ public class MockNodeService implements NodeService, Serializable {
   @Override
   public List<ChildAssociationRef> getChildAssocsByPropertyValue(
       NodeRef nodeRef, QName propertyQName, Serializable value) {
-    // TODO Auto-generated method stub
-    return null;
+        assertNodeExists(nodeRef);
+    return new ArrayList<ChildAssociationRef>();
   }
 
   /**
@@ -694,8 +702,16 @@ public class MockNodeService implements NodeService, Serializable {
   @Override
   public List<ChildAssociationRef> getChildrenByName(
       NodeRef nodeRef, QName assocTypeQName, Collection<String> childNames) {
-    // TODO Auto-generated method stub
-    return null;
+        assertNodeExists(nodeRef);
+    List<ChildAssociationRef> result = new ArrayList<ChildAssociationRef>();
+    if (childNames == null)
+      return result;
+    for (String childName : childNames) {
+      NodeRef child = getChildByName(nodeRef, assocTypeQName, childName);
+      if (child != null)
+        result.add(getPrimaryParent(child));
+    }
+    return result;
   }
 
   /**
@@ -707,19 +723,16 @@ public class MockNodeService implements NodeService, Serializable {
   @Override
   public ChildAssociationRef getPrimaryParent(NodeRef nodeRef) throws InvalidNodeRefException {
     NodeRef result = (NodeRef) getProperty(nodeRef, PRIMARY_PARENT);
-
-    /** The child q name. */
-    QName childQName = QName.createQName((String) getProperty(nodeRef, ContentModel.PROP_NAME));
-    ChildAssociationRef childAssociationRef =
-        new ChildAssociationRef(ContentModel.ASSOC_CONTAINS, result, childQName, nodeRef, true, -1);
+    ChildAssociationRef childAssociationRef = new ChildAssociationRef(getAssocTypeQName(nodeRef), result,
+        getAssocQName(nodeRef), nodeRef, true, -1);
     return childAssociationRef;
   }
 
   @Override
   public Collection<ChildAssociationRef> getChildAssocsWithoutParentAssocsOfType(
       NodeRef parent, QName assocTypeQName) {
-    // TODO Auto-generated method stub
-    return null;
+        assertNodeExists(parent);
+    return new ArrayList<ChildAssociationRef>();
   }
 
   /**
